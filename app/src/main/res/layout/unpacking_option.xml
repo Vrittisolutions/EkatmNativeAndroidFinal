@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:background="#00B38EEE">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/len"
+        android:gravity="center"
+        android:padding="10dp"
+        android:orientation="vertical">
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textSize="16dp"
+    android:padding="@dimen/sp_5"
+    android:gravity="center"
+    android:textStyle="bold"
+    android:text="Select Unpacking Type"
+    android:textColor="@color/black"/>
+        <Button
+            android:id="@+id/btn_full"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_blue_border"
+            android:textStyle="bold"
+            android:text="Full"
+            android:layout_marginTop="@dimen/sp_5"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="18dp"/>
+        <Button
+            android:id="@+id/btn_partial"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_blue_border"
+            android:textStyle="bold"
+            android:text="Partial"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:layout_marginTop="10dp"
+            android:textSize="18dp"/>
+    </LinearLayout>
+
+</LinearLayout>

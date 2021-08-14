@@ -1,0 +1,23 @@
+package com.vritti.vwb.Beans;
+
+import com.google.gson.annotations.SerializedName;
+
+public class SelectedKendraBean {
+
+   @SerializedName("SchoolMasterId")
+   String SchoolMasterId;
+
+    public void setSchoolMasterId(String schoolMasterId) {
+        SchoolMasterId = schoolMasterId;
+    }
+    public String getSchoolMasterId() {
+        return SchoolMasterId;
+    }
+
+
+    public SelectedKendraBean(String s) {
+        this.SchoolMasterId = s;
+    }
+
+
+}

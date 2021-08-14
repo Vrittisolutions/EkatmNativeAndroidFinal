@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="6dp" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/reporteesname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="user name"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/reporteeAssignrd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00"
+            android:layout_marginLeft="5dp"
+            android:textColor="#3366ff"
+            android:textSize="16sp"
+            android:layout_below="@+id/reporteesname"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:id="@+id/reporteeoverdue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00"
+            android:textColor="#ff6600"
+            android:textSize="16sp"
+            android:layout_below="@+id/reporteesname"
+            android:layout_toRightOf="@+id/reporteeAssignrd"
+            android:layout_toEndOf="@+id/reporteeAssignrd"
+            android:layout_marginLeft="60dp"
+            android:layout_marginStart="60dp" />
+    </RelativeLayout>
+
+
+</LinearLayout>

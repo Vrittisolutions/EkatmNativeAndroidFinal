@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="?android:attr/actionBarSize"
+    android:orientation="vertical"
+    tools:showIn="@layout/vwb_activity_my_team">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="#6E6F72"
+    android:layout_gravity="center|left"
+    android:gravity="left|center"
+
+    >
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="8dp"
+        android:text="Team"
+        android:layout_weight="1"
+        android:textColor="#fff"
+        android:textSize="16dp" />
+    <TextView
+        android:id="@+id/txt_wip"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="8dp"
+        android:textStyle="bold"
+        android:text="WIP"
+        android:layout_margin="2dp"
+        android:gravity="center"
+        android:background="@drawable/button_orange"
+        android:textColor="#fff"
+        android:textSize="16dp" />
+    <ImageView
+        android:id="@+id/location"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="15dp"
+        android:tint="#fff"
+        android:src="@drawable/file_location" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="0dp"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="Assigned"
+            android:textColor="#29ACD3"
+            android:textSize="14sp"
+            android:layout_marginLeft="2dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="Today"
+            android:layout_marginLeft="16dp"
+            android:textColor="#0dc792"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="Overdue"
+            android:textColor="#FE8F2A"
+            android:textSize="14sp"
+            android:layout_marginLeft="16dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="Critical"
+            android:textColor="#F05050"
+            android:textSize="14sp"
+            android:layout_marginLeft="16dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="Unapproved"
+            android:textColor="#2F5F8F"
+            android:textSize="14sp"
+            android:layout_marginLeft="16dp"
+            />
+
+
+
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/list_team"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+</LinearLayout>

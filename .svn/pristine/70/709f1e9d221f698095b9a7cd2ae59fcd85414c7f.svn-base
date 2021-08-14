@@ -1,0 +1,1450 @@
+package com.vritti.crm.vcrm7;
+
+import android.app.DatePickerDialog;
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
+import android.support.design.widget.TextInputLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
+import com.vritti.crm.adapter.EntityMasterBankDetailsAdapter;
+import com.vritti.crm.bean.BankDetails;
+import com.vritti.crm.bean.EntityCategoryBean;
+import com.vritti.crm.bean.EntityContactDetails;
+import com.vritti.crm.bean.EntityPaymentTerms;
+import com.vritti.crm.bean.EntitySystemUserBean;
+import com.vritti.crm.bean.EntityTerms;
+import com.vritti.crm.classes.CommonFunctionCrm;
+import com.vritti.databaselib.data.DatabaseHandlers;
+import com.vritti.databaselib.other.Utility;
+import com.vritti.databaselib.other.WebUrlClass;
+import com.vritti.ekatm.R;
+import com.vritti.sales.beans.EntityType_Currency_PriceList;
+import com.vritti.sessionlib.CallbackInterface;
+import com.vritti.sessionlib.StartSession;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.UUID;
+
+public class EntityMasterPurchaseActivity extends AppCompatActivity {
+
+
+    String PlantMasterId = "", LoginId = "", Password = "", CompanyURL = "", EnvMasterId = "",
+            UserMasterId = "", UserName = "", MobileNo = "";
+    Utility ut;
+    DatabaseHandlers db;
+    CommonFunctionCrm cf;
+    Context context;
+    SQLiteDatabase sql;
+
+    Button btn_sales;
+    AutoCompleteTextView edt_entitytype, edt_deliveryTerms, edt_paymentTerms, edt_PO, edt_receipt;
+    TextInputLayout ln_evaluationDt;
+    TextView edt_validFromDt, edt_validToDt, edt_evaluationDt;
+    ArrayList<EntitySystemUserBean> entitySystemUserBeanArrayList;
+    ArrayList<EntityContactDetails> entityContactDetailsArrayList;
+    ArrayList<EntityPaymentTerms> entityPaymentTermsArrayList;
+    ArrayList<EntityTerms> entityTermsArrayList;
+    String paymentTerms = "", deliveryTerms = "", systemUserId = "";
+
+    DatePickerDialog datePickerDialog;
+    int Year, month, day;
+    String[] PO = {"Yes", "No"};
+    String[] receipts = {"Yes", "No"};
+    ArrayList<String> POList = new ArrayList<>();
+    ArrayList<String> receiptList = new ArrayList<>();
+
+    String companyName = "", custVendorCode = "", registrationNo = "", vendorCode = "", address = "",
+            countryId = "", stateId = "",
+            districtId = "", talukaId = "", cityId = "", pinCode = "", landLineNo = "", mobileNo = "", emailId = "",
+            website = "", selPriceListId = "", currencyId = "", shortName = "";
+
+
+    String Stateid = "", Districtid = "", Talukaid = "", Cityid = "", Currencyid = "",
+            entityMasterID = "", contractReq = "";
+    String valPO = "Y", valReceipt = "Y";
+    String finalJsonObj = "";
+
+    String entityClassId="",entityGrpId="",typeOfServiceId="",forPendingDelivery="",forGRN="",forPayment="",creditLimits="",creditDays="",
+            salesCategory="",willingTalkProspect="",taxCodeId="",resellerName="";
+
+    Button btn_save;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_entity_master_purchase);
+
+
+        initView();
+        setListner();
+
+        if (cf.getEntitySystemUserCnt() > 0) {
+            storeSystemUserData();
+        } else {
+            if (ut.isNet(EntityMasterPurchaseActivity.this)) {
+                new StartSession(context, new CallbackInterface() {
+                    @Override
+                    public void callMethod() {
+                        new DownloadSystemCode().execute();
+                    }
+
+                    @Override
+                    public void callfailMethod(String msg) {
+
+                    }
+                });
+            } else {
+                Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if (cf.getEntityPaymentCnt() > 0) {
+            storePaymentTermsData();
+        } else {
+            if (ut.isNet(EntityMasterPurchaseActivity.this)) {
+                new StartSession(context, new CallbackInterface() {
+                    @Override
+                    public void callMethod() {
+                        new DownloadPaymentTerms().execute();
+                    }
+
+                    @Override
+                    public void callfailMethod(String msg) {
+
+                    }
+                });
+            } else {
+                Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if (cf.getDeliveryTermsCnt() > 0) {
+            storeDeliveryTermsData();
+        } else {
+            if (ut.isNet(EntityMasterPurchaseActivity.this)) {
+                new StartSession(context, new CallbackInterface() {
+                    @Override
+                    public void callMethod() {
+                        new DownloadDeliveryTerms().execute();
+                    }
+
+                    @Override
+                    public void callfailMethod(String msg) {
+
+                    }
+                });
+            } else {
+                Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+
+        POList.clear();
+
+        for (int i = 0; i < PO.length; i++) {
+            POList.add(PO[i]);
+        }
+
+        ArrayAdapter<String> influence_adapt = new ArrayAdapter<String>(EntityMasterPurchaseActivity.this,
+                R.layout.crm_custom_spinner_txt, POList);
+
+        edt_PO.setAdapter(influence_adapt);
+        edt_PO.setSelection(0);
+        edt_PO.setThreshold(1);
+
+
+        receiptList.clear();
+
+        for (int i = 0; i < receipts.length; i++) {
+            receiptList.add(receipts[i]);
+        }
+
+        ArrayAdapter<String> receipt_adapter = new ArrayAdapter<String>(EntityMasterPurchaseActivity.this,
+                R.layout.crm_custom_spinner_txt, receiptList);
+
+        edt_receipt.setAdapter(receipt_adapter);
+        edt_receipt.setSelection(0);
+        edt_receipt.setThreshold(1);
+
+
+    }
+
+    private void setListner() {
+
+        btn_sales.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String contactDetailsList = "";
+                if (entityContactDetailsArrayList.size() != 0) {
+                    contactDetailsList = new Gson().toJson(new EntityContactDetails(entityContactDetailsArrayList));
+                }
+                startActivityForResult(new Intent(EntityMasterPurchaseActivity.this, EntityMasterSalesActivity.class)
+                        .putExtra("ContactName", companyName).putExtra("ShortName", shortName)
+                        .putExtra("EntityMasterId", entityMasterID).putExtra("CustVendorCode", custVendorCode)
+                        .putExtra("VendorCode", vendorCode).putExtra("RegistrationNo", registrationNo)
+                        .putExtra("Address", address).putExtra("CountryId", countryId)
+                        .putExtra("StateId", stateId).putExtra("CityId", cityId)
+                        .putExtra("DistrictId", districtId).putExtra("TalukaId", talukaId)
+                        .putExtra("PinCode", pinCode).putExtra("MobileNo", mobileNo)
+                        .putExtra("LandLineno", landLineNo).putExtra("EmailId", emailId)
+                        .putExtra("Website", website).putExtra("CurrencyId", currencyId)
+                        .putExtra("SelPriceListId", selPriceListId).putExtra("ContractRequired", contractReq)
+                        .putExtra("ContactList", contactDetailsList).putExtra("EvaluationDate", edt_evaluationDt.getText().toString())
+                        .putExtra("ValidFromDt", edt_validFromDt.getText().toString()).putExtra("ValidToDt", edt_validToDt.getText().toString())
+                        .putExtra("SystemuserCodeId", systemUserId).putExtra("PaymentTermsId", paymentTerms)
+                        .putExtra("DeliveryTermsId", deliveryTerms).putExtra("ForPO", valPO).putExtra("ForReceipt", valReceipt),1130);
+
+            }
+        });
+
+        edt_entitytype.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Object item = parent.getItemAtPosition(position);
+                try {
+                    systemUserId = getPosition_SystemUserfromspin(entitySystemUserBeanArrayList, item.toString());
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        edt_PO.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Object item = parent.getItemAtPosition(position);
+                if (item.toString().equalsIgnoreCase("yes")) {
+                    valPO = "Y";
+                } else {
+                    valPO = "N";
+                }
+            }
+        });
+
+        edt_receipt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Object item = parent.getItemAtPosition(position);
+                try {
+                    if (item.toString().equalsIgnoreCase("yes")) {
+                        valReceipt = "Y";
+                    } else {
+                        valReceipt = "N";
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        edt_evaluationDt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Date date = new Date();
+                Date start;
+                Date end;
+                final Calendar c = Calendar.getInstance();
+
+                Year = c.get(Calendar.YEAR);
+                month = c.get(Calendar.MONTH);
+                day = c.get(Calendar.DAY_OF_MONTH);
+                int week = c.get(Calendar.WEEK_OF_MONTH);
+                int test = c.get(Calendar.DAY_OF_WEEK);
+                //c.add(Calendar.DATE, test);
+
+
+                c.add(Calendar.DAY_OF_WEEK, 1);
+                c.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
+                long enddate = c.getTime().getTime();
+                c.set(Calendar.WEEK_OF_MONTH, Calendar.SUNDAY);
+                long end2 = c.getTime().getTime();
+
+                Date date1 = new Date(enddate);
+
+                //String strCurrentDate = "Wed, 18 Apr 2012 07:55:29 +0000";
+                /*SimpleDateFormat format = new SimpleDateFormat("EEE, dd MMM yyyy hh:mm:ss Z");*/
+                SimpleDateFormat format = new SimpleDateFormat("E MMM dd HH:mm:ss Z yyyy");
+                Date newDate = null;
+                try {
+                    newDate = format.parse(String.valueOf(enddate));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+
+                // Launch Date Picker Dialog
+                datePickerDialog = new DatePickerDialog(EntityMasterPurchaseActivity.this,
+                        new DatePickerDialog.OnDateSetListener() {
+
+                            @Override
+                            public void onDateSet(DatePicker datePicker, int year,
+                                                  int monthOfYear, int dayOfMonth) {
+                                // Display Selected date in textbox
+                                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                                String dateString = "", date2 = "";
+                                date2 = dayOfMonth + "/"
+                                        + (monthOfYear + 1) + "/" + year;
+                                try {
+                                    Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(date2);
+                                    dateString = sdf.format(date1);
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                }
+
+                                edt_evaluationDt.setText(dateString);
+                                String trnselectDate = year + " / " + (monthOfYear + 1)
+                                        + "/" + dayOfMonth;
+
+                                // String seldate = trnselectDate;
+                                String SelectedDate = (dayOfMonth + " - "
+                                        + (monthOfYear + 1) + " - " + year);
+
+
+                                if (year >= Year) {
+                                    if ((year == Year) && (monthOfYear >= month)) {
+                                        if ((monthOfYear == month) && (dayOfMonth >= day)) {
+                                            edt_evaluationDt.setText(dateString);
+                                            trnselectDate = year + " - " + (monthOfYear + 1)
+                                                    + " - " + dayOfMonth + " 00:00:00.000";
+                                        } else if ((monthOfYear == month) && (dayOfMonth < day)) {
+                                            edt_evaluationDt.setText(day + "/"
+                                                    + (month + 1) + "/" + Year);
+                                            trnselectDate = Year + " - " + (month + 1)
+                                                    + " - " + day + " 00:00:00.000";
+                                            //2018-01-15 16:43:40.440
+                                            Toast.makeText(EntityMasterPurchaseActivity.this, "Past date is not accepted", Toast.LENGTH_SHORT).show();
+                                        } else if (monthOfYear > month) {
+                                            edt_evaluationDt.setText(day + "/"
+                                                    + (month + 1) + "/" + Year);
+                                            trnselectDate = year + " - " + (monthOfYear + 1)
+                                                    + " - " + dayOfMonth + " 00:00:00.000";
+                                        }
+                                    } else if (year > Year) {
+                                        edt_evaluationDt.setText(day + "/"
+                                                + (month + 1) + "/" + Year);
+                                        trnselectDate = year + " - " + (monthOfYear + 1)
+                                                + " - " + dayOfMonth + " 00:00:00.000";
+                                    } else if ((year == Year) && (monthOfYear < month)) {
+                                        edt_evaluationDt.setText(day + "/"
+                                                + (month + 1) + "/" + Year);
+                                        datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+
+                                        trnselectDate = Year + " - " + (month + 1)
+                                                + " - " + day + " 00:00:00.000";
+
+                                        Toast.makeText(getApplicationContext(), "Past date is not accepted", Toast.LENGTH_SHORT).show();
+                                    }
+                                } else {
+                                    edt_evaluationDt.setText(day + "/"
+                                            + (month + 1) + "/" + Year);
+                                    trnselectDate = Year + "/" + (month + 1)
+                                            + " -" + day + " 00:00:00.000";
+                                    Toast.makeText(getApplicationContext(), "Past date is  accepted", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }, Year, month, day);
+
+                /*datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());*/
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+// datePickerDialog.getDatePicker().setMaxDate(enddate);
+                datePickerDialog.show();
+
+                // datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
+                //datePickerDialog.getDatePicker().setMaxDate(enddate);
+                // edt_todate.setText(end_dayof_week);
+
+
+            }
+        });
+
+
+        edt_validFromDt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Date date = new Date();
+                Date start;
+                Date end;
+                final Calendar c = Calendar.getInstance();
+
+                Year = c.get(Calendar.YEAR);
+                month = c.get(Calendar.MONTH);
+                day = c.get(Calendar.DAY_OF_MONTH);
+                int week = c.get(Calendar.WEEK_OF_MONTH);
+                int test = c.get(Calendar.DAY_OF_WEEK);
+                //c.add(Calendar.DATE, test);
+
+
+                c.add(Calendar.DAY_OF_WEEK, 1);
+                c.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
+                long enddate = c.getTime().getTime();
+                c.set(Calendar.WEEK_OF_MONTH, Calendar.SUNDAY);
+                long end2 = c.getTime().getTime();
+
+                Date date1 = new Date(enddate);
+
+                //String strCurrentDate = "Wed, 18 Apr 2012 07:55:29 +0000";
+                /*SimpleDateFormat format = new SimpleDateFormat("EEE, dd MMM yyyy hh:mm:ss Z");*/
+                SimpleDateFormat format = new SimpleDateFormat("E MMM dd HH:mm:ss Z yyyy");
+                Date newDate = null;
+                try {
+                    newDate = format.parse(String.valueOf(enddate));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+
+                // Launch Date Picker Dialog
+                datePickerDialog = new DatePickerDialog(EntityMasterPurchaseActivity.this,
+                        new DatePickerDialog.OnDateSetListener() {
+
+                            @Override
+                            public void onDateSet(DatePicker datePicker, int year,
+                                                  int monthOfYear, int dayOfMonth) {
+                                // Display Selected date in textbox
+                                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                                String dateString = "", date2 = "";
+                                date2 = dayOfMonth + "/"
+                                        + (monthOfYear + 1) + "/" + year;
+                                try {
+                                    Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(date2);
+                                    dateString = sdf.format(date1);
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                }
+
+                                edt_validFromDt.setText(dateString);
+                                String trnselectDate = year + " / " + (monthOfYear + 1)
+                                        + "/" + dayOfMonth;
+
+                                // String seldate = trnselectDate;
+                                String SelectedDate = (dayOfMonth + " - "
+                                        + (monthOfYear + 1) + " - " + year);
+
+
+                                if (year >= Year) {
+                                    if ((year == Year) && (monthOfYear >= month)) {
+                                        if ((monthOfYear == month) && (dayOfMonth >= day)) {
+                                            edt_validFromDt.setText(dateString);
+                                            trnselectDate = year + " - " + (monthOfYear + 1)
+                                                    + " - " + dayOfMonth + " 00:00:00.000";
+                                        } else if ((monthOfYear == month) && (dayOfMonth < day)) {
+                                            edt_validFromDt.setText(day + "/"
+                                                    + (month + 1) + "/" + Year);
+                                            trnselectDate = Year + " - " + (month + 1)
+                                                    + " - " + day + " 00:00:00.000";
+                                            //2018-01-15 16:43:40.440
+                                            Toast.makeText(EntityMasterPurchaseActivity.this, "Past date is not accepted", Toast.LENGTH_SHORT).show();
+                                        } else if (monthOfYear > month) {
+                                            edt_validFromDt.setText(day + "/"
+                                                    + (month + 1) + "/" + Year);
+                                            trnselectDate = year + " - " + (monthOfYear + 1)
+                                                    + " - " + dayOfMonth + " 00:00:00.000";
+                                        }
+                                    } else if (year > Year) {
+                                        edt_validFromDt.setText(day + "/"
+                                                + (month + 1) + "/" + Year);
+                                        trnselectDate = year + " - " + (monthOfYear + 1)
+                                                + " - " + dayOfMonth + " 00:00:00.000";
+                                    } else if ((year == Year) && (monthOfYear < month)) {
+                                        edt_validFromDt.setText(day + "/"
+                                                + (month + 1) + "/" + Year);
+                                        datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+
+                                        trnselectDate = Year + " - " + (month + 1)
+                                                + " - " + day + " 00:00:00.000";
+
+                                        Toast.makeText(getApplicationContext(), "Past date is not accepted", Toast.LENGTH_SHORT).show();
+                                    }
+                                } else {
+                                    edt_validFromDt.setText(day + "/"
+                                            + (month + 1) + "/" + Year);
+                                    trnselectDate = Year + "/" + (month + 1)
+                                            + " -" + day + " 00:00:00.000";
+                                    Toast.makeText(getApplicationContext(), "Past date is  accepted", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }, Year, month, day);
+
+                /*datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());*/
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+// datePickerDialog.getDatePicker().setMaxDate(enddate);
+                datePickerDialog.show();
+
+            }
+        });
+
+
+        edt_validToDt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Date date = new Date();
+                Date start;
+                Date end;
+                final Calendar c = Calendar.getInstance();
+
+                Year = c.get(Calendar.YEAR);
+                month = c.get(Calendar.MONTH);
+                day = c.get(Calendar.DAY_OF_MONTH);
+                int week = c.get(Calendar.WEEK_OF_MONTH);
+                int test = c.get(Calendar.DAY_OF_WEEK);
+                //c.add(Calendar.DATE, test);
+
+
+                c.add(Calendar.DAY_OF_WEEK, 1);
+                c.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
+                long enddate = c.getTime().getTime();
+                c.set(Calendar.WEEK_OF_MONTH, Calendar.SUNDAY);
+                long end2 = c.getTime().getTime();
+
+                Date date1 = new Date(enddate);
+
+                //String strCurrentDate = "Wed, 18 Apr 2012 07:55:29 +0000";
+                /*SimpleDateFormat format = new SimpleDateFormat("EEE, dd MMM yyyy hh:mm:ss Z");*/
+                SimpleDateFormat format = new SimpleDateFormat("E MMM dd HH:mm:ss Z yyyy");
+                Date newDate = null;
+                try {
+                    newDate = format.parse(String.valueOf(enddate));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+
+                // Launch Date Picker Dialog
+                datePickerDialog = new DatePickerDialog(EntityMasterPurchaseActivity.this,
+                        new DatePickerDialog.OnDateSetListener() {
+
+                            @Override
+                            public void onDateSet(DatePicker datePicker, int year,
+                                                  int monthOfYear, int dayOfMonth) {
+                                // Display Selected date in textbox
+                                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                                String dateString = "", date2 = "";
+                                date2 = dayOfMonth + "/"
+                                        + (monthOfYear + 1) + "/" + year;
+                                try {
+                                    Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(date2);
+                                    dateString = sdf.format(date1);
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                }
+
+                                edt_validToDt.setText(dateString);
+                                String trnselectDate = year + " / " + (monthOfYear + 1)
+                                        + "/" + dayOfMonth;
+
+                                // String seldate = trnselectDate;
+                                String SelectedDate = (dayOfMonth + " - "
+                                        + (monthOfYear + 1) + " - " + year);
+
+
+                                if (year >= Year) {
+                                    if ((year == Year) && (monthOfYear >= month)) {
+                                        if ((monthOfYear == month) && (dayOfMonth >= day)) {
+                                            edt_validToDt.setText(dateString);
+                                            trnselectDate = year + " - " + (monthOfYear + 1)
+                                                    + " - " + dayOfMonth + " 00:00:00.000";
+                                        } else if ((monthOfYear == month) && (dayOfMonth < day)) {
+                                            edt_validToDt.setText(day + "/"
+                                                    + (month + 1) + "/" + Year);
+                                            trnselectDate = Year + " - " + (month + 1)
+                                                    + " - " + day + " 00:00:00.000";
+                                            //2018-01-15 16:43:40.440
+                                            Toast.makeText(EntityMasterPurchaseActivity.this, "Past date is not accepted", Toast.LENGTH_SHORT).show();
+                                        } else if (monthOfYear > month) {
+                                            edt_validToDt.setText(day + "/"
+                                                    + (month + 1) + "/" + Year);
+                                            trnselectDate = year + " - " + (monthOfYear + 1)
+                                                    + " - " + dayOfMonth + " 00:00:00.000";
+                                        }
+                                    } else if (year > Year) {
+                                        edt_validToDt.setText(day + "/"
+                                                + (month + 1) + "/" + Year);
+                                        trnselectDate = year + " - " + (monthOfYear + 1)
+                                                + " - " + dayOfMonth + " 00:00:00.000";
+                                    } else if ((year == Year) && (monthOfYear < month)) {
+                                        edt_validToDt.setText(day + "/"
+                                                + (month + 1) + "/" + Year);
+                                        datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+
+                                        trnselectDate = Year + " - " + (month + 1)
+                                                + " - " + day + " 00:00:00.000";
+
+                                        Toast.makeText(getApplicationContext(), "Past date is not accepted", Toast.LENGTH_SHORT).show();
+                                    }
+                                } else {
+                                    edt_validToDt.setText(day + "/"
+                                            + (month + 1) + "/" + Year);
+                                    trnselectDate = Year + "/" + (month + 1)
+                                            + " -" + day + " 00:00:00.000";
+                                    Toast.makeText(getApplicationContext(), "Past date is  accepted", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }, Year, month, day);
+
+                /*datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());*/
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+// datePickerDialog.getDatePicker().setMaxDate(enddate);
+                datePickerDialog.show();
+
+                // datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
+                //datePickerDialog.getDatePicker().setMaxDate(enddate);
+                // edt_todate.setText(end_dayof_week);
+
+
+            }
+        });
+
+        btn_save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                JSONObject jsonObject = new JSONObject();
+                try {
+                    jsonObject.put("AadharNo", "");
+                    jsonObject.put("AccountId", "");
+                    jsonObject.put("AccountNo", "");
+                    jsonObject.put("AccountType", "");
+                    jsonObject.put("Active", "true");
+                    jsonObject.put("Address", address);
+                    jsonObject.put("BankAddress", "");
+                    jsonObject.put("BankName", "");
+                    jsonObject.put("BankPayeeName", "");
+                    jsonObject.put("Branch", address);
+                    jsonObject.put("CAT", "");
+                    jsonObject.put("CIN", "");
+                    jsonObject.put("CSTNo", "");
+                    jsonObject.put("CallId", "");
+                    jsonObject.put("City", Cityid);
+
+                    JSONArray jsonArrayClient = new JSONArray();
+                    // JSONObject jsonClientObject = new JSONObject();
+
+                    if (entityContactDetailsArrayList.size() != 0) {
+                        for (int i = 0; i < entityContactDetailsArrayList.size(); i++) {
+                            JSONObject jsonClientObject = new JSONObject();
+                            jsonClientObject.put("ContPerName", entityContactDetailsArrayList.get(i).getContactname());
+                            jsonClientObject.put("ContactNo", entityContactDetailsArrayList.get(i).getContactMobile());
+                            jsonClientObject.put("DIN", "");
+                            jsonClientObject.put("Designation", entityContactDetailsArrayList.get(i).getContactDesignation());
+                            jsonClientObject.put("EmailId", entityContactDetailsArrayList.get(i).getContactEmail());
+                            jsonClientObject.put("EntityContactInfoId", entityContactDetailsArrayList.get(i).getContactDesignation());
+                            jsonClientObject.put("InfluentialLevel", entityContactDetailsArrayList.get(i).getContactInfluence());
+                            jsonClientObject.put("IsDefault", entityContactDetailsArrayList.get(i).getContactdefault());
+                            jsonClientObject.put("IsVWBLoginAllowed", "N");
+                            jsonClientObject.put("LoginId", "");
+                            jsonClientObject.put("Password", "");
+                            jsonArrayClient.put(jsonClientObject);
+                        }
+                    }
+
+
+                    jsonObject.put("ClientDetails", jsonArrayClient);
+                    jsonObject.put("ContactName", companyName);
+                    jsonObject.put("ContactTitle", companyName);
+                    jsonObject.put("Country", countryId);
+                    jsonObject.put("CountryId", countryId);
+                    jsonObject.put("CreditDays", creditDays);
+                    jsonObject.put("CreditLimit", creditLimits);
+                    jsonObject.put("CreditTerms", paymentTerms);
+                    jsonObject.put("Currency", Currencyid);
+                    jsonObject.put("CurrencyMasterID", Currencyid);
+                    jsonObject.put("CustVendor", "C");
+                    jsonObject.put("CustVendorCode", custVendorCode);
+                    final String guid = UUID.randomUUID().toString();
+                    jsonObject.put("CustVendorMasterId", guid);//guuid self
+                    jsonObject.put("CustVendorName", companyName);
+                    jsonObject.put("CustVendorType", "3");//doubt
+                    jsonObject.put("DeliveryTerms", deliveryTerms);
+                    jsonObject.put("District", Districtid);
+                    jsonObject.put("ECCNo", "");
+                    jsonObject.put("ENGRN", "0");
+                    jsonObject.put("ENInv", "N");//doubt
+                    jsonObject.put("ENPndPO", valPO);
+                    jsonObject.put("ENPymt", "0");//doubt
+                    jsonObject.put("ENRect", valReceipt);//doubt
+                    jsonObject.put("Email", emailId);//doubt--basic
+                    jsonObject.put("EnterpriseType", "");
+                    jsonObject.put("EntityClass", entityClassId);//doubt
+                    jsonObject.put("EntityGroupMasterId", entityGrpId);//doubt
+                    jsonObject.put("EntityRestDate", "");
+                    jsonObject.put("EsicNo", "");
+                    jsonObject.put("EvaluationDt", edt_evaluationDt.getText().toString());
+                    jsonObject.put("ExDivi", "");
+                    jsonObject.put("ExRange", "");
+                    jsonObject.put("ExpertiseDetails", "");
+                    jsonObject.put("FKTerritoryId", "");
+                    jsonObject.put("GSTNO", "");
+                    jsonObject.put("IFSCode", "");
+                    jsonObject.put("GSTNO", "");
+                    jsonObject.put("IndIndemnity", "");//doubt
+                    jsonObject.put("InsuranceDetails", "");
+                    jsonObject.put("IsActive", "");///basic
+                    jsonObject.put("IsApproved", "");//purchase
+                    jsonObject.put("IsContractReqd", contractReq);//basic
+                    jsonObject.put("IsWLForCRMRef", "");/////doubt
+                    jsonObject.put("Latitude", "");//shipTO
+                    jsonObject.put("LenderDetails", "");//doubt
+                    jsonObject.put("Longitude", "");//shipTO
+                    jsonObject.put("MSTNo", "");//doubt
+                    jsonObject.put("Mobile", mobileNo);
+                    jsonObject.put("PANNO", "");
+                    jsonObject.put("PFNo", "");
+                    jsonObject.put("PayeeName", "");
+                    jsonObject.put("PaymentTerms", paymentTerms);//sales
+                    jsonObject.put("Phone", landLineNo);
+                    jsonObject.put("Pin", pinCode);
+                    jsonObject.put("PriceListId", "");
+                    jsonObject.put("RegistrationFormNo", registrationNo);
+                    jsonObject.put("RemittanceInstruction", "");
+                    jsonObject.put("ResellerName", resellerName);
+                    jsonObject.put("SalesFamily", "");
+                    jsonObject.put("ServClId", "");
+                    jsonObject.put("ServiceTaxNo", "");
+
+
+                    JSONObject shipToJsonObj = new JSONObject();
+                    JSONArray shipToJsonArr = new JSONArray();
+                    shipToJsonArr.put(shipToJsonObj);
+                    jsonObject.put("ShipToDetails", shipToJsonArr);
+
+                    jsonObject.put("ShortName", shortName);
+                    jsonObject.put("SlCatId", "");
+                    jsonObject.put("State", Stateid);
+                    if (systemUserId != "") {
+                        jsonObject.put("SystemUserId", systemUserId);//doubt
+                    } else {
+                        jsonObject.put("SystemUserId", UserMasterId);//doubt
+                    }
+
+                    jsonObject.put("TANNO", "");
+                    jsonObject.put("TAN_GSTIN_Number", "");
+                    jsonObject.put("Taluka", Talukaid);
+                    jsonObject.put("TaxClass", "0");
+                    jsonObject.put("TenorYear", "");
+                    jsonObject.put("Typeofservices", "");
+                    jsonObject.put("ValidFrom", edt_validFromDt.getText().toString());
+                    jsonObject.put("ValidTo", edt_validToDt.getText().toString());
+                    jsonObject.put("VendorMasterID", "");
+                    jsonObject.put("Website", "");
+                    jsonObject.put("vendorCode", vendorCode);//doubt
+
+
+                    finalJsonObj = jsonObject.toString();
+
+
+                    if (ut.isNet(EntityMasterPurchaseActivity.this)) {
+                        new StartSession(EntityMasterPurchaseActivity.this, new CallbackInterface() {
+                            @Override
+                            public void callMethod() {
+                                new DownloadCheckDuplicateEmpName().execute(companyName, "A", guid);
+                            }
+
+                            @Override
+                            public void callfailMethod(String msg) {
+
+                            }
+                        });
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
+        edt_paymentTerms.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Object item = parent.getItemAtPosition(position);
+                try {
+                    paymentTerms = getPosition_Paymentfromspin(entityPaymentTermsArrayList, item.toString());
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        edt_deliveryTerms.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Object item = parent.getItemAtPosition(position);
+                try {
+                    deliveryTerms = getPosition_Deliveryfromspin(entityTermsArrayList, item.toString());
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+    }
+
+    private void initView() {
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar1);
+        //toolbar.setLogo(R.mipmap.ic_toolbar_logo_crm);
+        toolbar.setLogo(R.drawable.crm_logo_1);
+        toolbar.setTitle(R.string.app_name_toolbar_CRM);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        context = EntityMasterPurchaseActivity.this;
+
+        ut = new Utility();
+        cf = new CommonFunctionCrm(context);
+        String settingKey = ut.getSharedPreference_SettingKey(context);
+        String dabasename = ut.getValue(context, WebUrlClass.GET_DATABASE_NAME_KEY, settingKey);
+        db = new DatabaseHandlers(context, dabasename);
+        CompanyURL = ut.getValue(context, WebUrlClass.GET_COMPANY_URL_KEY, settingKey);
+        EnvMasterId = ut.getValue(context, WebUrlClass.GET_EnvMasterID_KEY, settingKey);
+        PlantMasterId = ut.getValue(context, WebUrlClass.GET_PlantID_KEY, settingKey);
+        LoginId = ut.getValue(context, WebUrlClass.GET_LOGIN_KEY, settingKey);
+        Password = ut.getValue(context, WebUrlClass.GET_PSW_KEY, settingKey);
+        UserMasterId = ut.getValue(context, WebUrlClass.GET_USERMASTERID_KEY, settingKey);
+        UserName = ut.getValue(context, WebUrlClass.GET_USERNAME_KEY, settingKey);
+        sql = db.getWritableDatabase();
+
+
+        btn_sales = findViewById(R.id.btn_sales);
+        edt_entitytype = findViewById(R.id.edt_entitytype);
+        edt_deliveryTerms = findViewById(R.id.edt_deliveryTerms);
+        edt_paymentTerms = findViewById(R.id.edt_paymentTerms);
+        edt_evaluationDt = findViewById(R.id.edt_evaluationDt);
+        // ln_evaluationDt = findViewById(R.id.ln_evaluationDt);
+        edt_validFromDt = findViewById(R.id.edt_validFromDt);
+        edt_validToDt = findViewById(R.id.edt_validToDt);
+        edt_PO = findViewById(R.id.edt_PO);
+        edt_receipt = findViewById(R.id.edt_receipt);
+        btn_save = findViewById(R.id.btn_save);
+
+        entitySystemUserBeanArrayList = new ArrayList<>();
+        entityPaymentTermsArrayList = new ArrayList<>();
+        entityTermsArrayList = new ArrayList<>();
+        entityContactDetailsArrayList = new ArrayList<>();
+
+        if (getIntent() != null) {
+            companyName = getIntent().getStringExtra("ContactName");
+            shortName = getIntent().getStringExtra("ShortName");
+            entityMasterID = getIntent().getStringExtra("EntityMasterId");
+            custVendorCode = getIntent().getStringExtra("CustVendorCode");
+            vendorCode = getIntent().getStringExtra("VendorCode");
+            registrationNo = getIntent().getStringExtra("RegistrationNo");
+            address = getIntent().getStringExtra("Address");
+            countryId = getIntent().getStringExtra("CountryId");
+            stateId = getIntent().getStringExtra("StateId");
+            cityId = getIntent().getStringExtra("CityId");
+            districtId = getIntent().getStringExtra("DistrictId");
+            talukaId = getIntent().getStringExtra("TalukaId");
+            pinCode = getIntent().getStringExtra("PinCode");
+            mobileNo = getIntent().getStringExtra("MobileNo");
+            landLineNo = getIntent().getStringExtra("LandLineno");
+            emailId = getIntent().getStringExtra("EmailId");
+            website = getIntent().getStringExtra("Website");
+            currencyId = getIntent().getStringExtra("CurrencyId");
+            selPriceListId = getIntent().getStringExtra("SelPriceListId");
+            contractReq = getIntent().getStringExtra("ContractRequired");
+            if (!getIntent().getStringExtra("ContactList").equalsIgnoreCase(""))
+                entityContactDetailsArrayList = new Gson().fromJson(getIntent().getStringExtra("ContactList"),
+                        EntityContactDetails.class).getEntityContactDetailsArrayList();
+        }
+
+    }
+
+    class DownloadSystemCode extends AsyncTask<String, Void, String> {
+        Object res;
+        String response;
+
+        @Override
+        protected void onPreExecute() {
+
+            super.onPreExecute();
+            //  mprogress.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            String url = CompanyURL + WebUrlClass.api_getEntitySystemUser;
+            try {
+                res = ut.OpenConnection(url);
+                if (res != null) {
+
+                    String rplc = "\\\r\\\n";
+                    // response = res.toString().replaceAll(rplc,"");
+                    response = res.toString().replaceAll("\\\\", "");
+                    // response = res.toString().replaceAll("rn","");
+                    response = response.substring(1, response.length() - 1);
+                    ContentValues values = new ContentValues();
+                    JSONArray jResults = new JSONArray(response);
+                    sql.delete(db.TABLE_ENTITY_SYSTEM_USERDATA, null,
+                            null);
+                    Cursor c = sql.rawQuery("SELECT * FROM " + db.TABLE_ENTITY_SYSTEM_USERDATA, null);
+                    int count = c.getCount();
+                    String columnName, columnValue;
+                    for (int i = 0; i < jResults.length(); i++) {
+                        JSONObject jorder = jResults.getJSONObject(i);
+                        for (int j = 0; j < c.getColumnCount(); j++) {
+                            columnName = c.getColumnName(j);
+                            columnValue = jorder.getString(columnName);
+                            values.put(columnName, columnValue);
+                        }
+                        long a = sql.insert(db.TABLE_ENTITY_SYSTEM_USERDATA, null, values);
+                        Log.e("", "" + a);
+
+                    }
+
+                } else {
+                    response = "error";
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                response = "error";
+            }
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(String integer) {
+            super.onPostExecute(integer);
+            // mprogress.setVisibility(View.GONE);
+            if (response.contains("vWBUsermasterId")) {
+                storeSystemUserData();
+            }
+        }
+
+    }
+
+    private void storeSystemUserData() {
+
+        entitySystemUserBeanArrayList.clear();
+
+        String query = "SELECT distinct vWBUsermasterId, UserLoginId, UserName" +
+                " FROM " + db.TABLE_ENTITY_SYSTEM_USERDATA;
+        Cursor cur = sql.rawQuery(query, null);
+        if (cur.getCount() > 0) {
+            cur.moveToFirst();
+            do {
+
+                entitySystemUserBeanArrayList.add(new EntitySystemUserBean(cur.getString(cur.getColumnIndex("vWBUsermasterId")),
+                        cur.getString(cur.getColumnIndex("UserName"))));
+
+            } while (cur.moveToNext());
+        }
+
+        ArrayAdapter<EntitySystemUserBean> categoryBeanArrayAdapter = new ArrayAdapter<EntitySystemUserBean>(EntityMasterPurchaseActivity.this,
+                R.layout.crm_custom_spinner_txt, entitySystemUserBeanArrayList);
+
+        edt_entitytype.setAdapter(categoryBeanArrayAdapter);
+        edt_entitytype.setSelection(0);
+    }
+
+    private class DownloadPaymentTerms extends AsyncTask<String, Void, String> {
+        Object res;
+        String response = "";
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            String url = CompanyURL + WebUrlClass.api_getEntityPaymentTerms;
+            try {
+                res = ut.OpenConnection(url);
+                if (res != null) {
+
+                    String rplc = "\\\r\\\n";
+                    // response = res.toString().replaceAll(rplc,"");
+                    response = res.toString().replaceAll("\\\\", "");
+                    // response = res.toString().replaceAll("rn","");
+                    response = response.substring(1, response.length() - 1);
+                    ContentValues values = new ContentValues();
+                    JSONArray jResults = new JSONArray(response);
+                    sql.delete(db.TABLE_ENTITY_PAYMENT_TERMS, null,
+                            null);
+                    Cursor c = sql.rawQuery("SELECT * FROM " + db.TABLE_ENTITY_PAYMENT_TERMS, null);
+                    int count = c.getCount();
+                    String columnName, columnValue;
+                    for (int i = 0; i < jResults.length(); i++) {
+                        JSONObject jorder = jResults.getJSONObject(i);
+                        for (int j = 0; j < c.getColumnCount(); j++) {
+                            columnName = c.getColumnName(j);
+                            columnValue = jorder.getString(columnName);
+                            values.put(columnName, columnValue);
+                        }
+                        long a = sql.insert(db.TABLE_ENTITY_PAYMENT_TERMS, null, values);
+                        Log.e("", "" + a);
+
+                    }
+
+                } else {
+                    response = "error";
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                response = "error";
+            }
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            if (!response.equals("error")) {
+                storePaymentTermsData();
+            }
+        }
+    }
+
+    private void storePaymentTermsData() {
+
+        entityPaymentTermsArrayList.clear();
+
+        String query = "SELECT distinct TermsCode, TermsDescription, PymtSettTermMasterId" +
+                " FROM " + db.TABLE_ENTITY_PAYMENT_TERMS;
+        Cursor cur = sql.rawQuery(query, null);
+        if (cur.getCount() > 0) {
+            cur.moveToFirst();
+            do {
+
+                entityPaymentTermsArrayList.add(new EntityPaymentTerms(cur.getString(cur.getColumnIndex("TermsCode")),
+                        cur.getString(cur.getColumnIndex("TermsDescription")),
+                        cur.getString(cur.getColumnIndex("PymtSettTermMasterId"))));
+
+            } while (cur.moveToNext());
+        }
+
+        ArrayAdapter<EntityPaymentTerms> categoryBeanArrayAdapter = new ArrayAdapter<EntityPaymentTerms>(EntityMasterPurchaseActivity.this,
+                R.layout.crm_custom_spinner_txt, entityPaymentTermsArrayList);
+
+        edt_paymentTerms.setAdapter(categoryBeanArrayAdapter);
+        edt_paymentTerms.setSelection(0);
+
+    }
+
+    private class DownloadDeliveryTerms extends AsyncTask<String, Void, String> {
+        Object res;
+        String response = "";
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            String url = CompanyURL + WebUrlClass.api_getEntityTerms + "?Value=DeliveryTerms";
+            try {
+                res = ut.OpenConnection(url);
+                if (res != null) {
+
+                    String rplc = "\\\r\\\n";
+                    // response = res.toString().replaceAll(rplc,"");
+                    response = res.toString().replaceAll("\\\\", "");
+                    // response = res.toString().replaceAll("rn","");
+                    response = response.substring(1, response.length() - 1);
+                    ContentValues values = new ContentValues();
+                    JSONArray jResults = new JSONArray(response);
+                    sql.delete(db.TABLE_ENTITY_DELIVERY_TERMS, null,
+                            null);
+                    Cursor c = sql.rawQuery("SELECT * FROM " + db.TABLE_ENTITY_DELIVERY_TERMS, null);
+                    int count = c.getCount();
+                    String columnName, columnValue;
+                    for (int i = 0; i < jResults.length(); i++) {
+                        JSONObject jorder = jResults.getJSONObject(i);
+                        for (int j = 0; j < c.getColumnCount(); j++) {
+                            columnName = c.getColumnName(j);
+                            columnValue = jorder.getString(columnName);
+                            values.put(columnName, columnValue);
+                        }
+                        long a = sql.insert(db.TABLE_ENTITY_DELIVERY_TERMS, null, values);
+                        Log.e("", "" + a);
+
+                    }
+
+                } else {
+                    response = "error";
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                response = "error";
+            }
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            if (!response.equals("error")) {
+                storeDeliveryTermsData();
+            }
+        }
+    }
+
+    private void storeDeliveryTermsData() {
+
+        entityTermsArrayList.clear();
+
+        String query = "SELECT distinct ConfigurationDetailId, Configuration" +
+                " FROM " + db.TABLE_ENTITY_DELIVERY_TERMS;
+        Cursor cur = sql.rawQuery(query, null);
+        if (cur.getCount() > 0) {
+            cur.moveToFirst();
+            do {
+
+                entityTermsArrayList.add(new EntityTerms(cur.getString(cur.getColumnIndex("ConfigurationDetailId")),
+                        cur.getString(cur.getColumnIndex("Configuration"))));
+
+            } while (cur.moveToNext());
+        }
+
+        ArrayAdapter<EntityTerms> entityTermsArrayAdapter = new ArrayAdapter<EntityTerms>(EntityMasterPurchaseActivity.this,
+                R.layout.crm_custom_spinner_txt, entityTermsArrayList);
+
+        edt_deliveryTerms.setAdapter(entityTermsArrayAdapter);
+        edt_deliveryTerms.setSelection(0);
+
+    }
+
+    private String getPosition_Paymentfromspin(ArrayList<EntityPaymentTerms> lst_EntityType, String paymentTermsVal) throws JSONException {
+        String paymentTermId = "";
+        for (EntityPaymentTerms entityPaymentTerms : lst_EntityType) {
+            if (entityPaymentTerms.getTermsDescription().equalsIgnoreCase(paymentTermsVal)) {
+                paymentTermId = entityPaymentTerms.getPymtSettTermMasterId();
+            }
+        }
+        return paymentTermId; //it wasn't found at all
+    }
+
+    private String getPosition_Deliveryfromspin(ArrayList<EntityTerms> lst_EntityType, String deliveryTermsVal) throws JSONException {
+        String deliveryTermId = "";
+        for (EntityTerms entityTerms : lst_EntityType) {
+            if (entityTerms.getConfiguration().equalsIgnoreCase(deliveryTermsVal)) {
+                deliveryTermId = entityTerms.getConfigurationDetailId();
+            }
+        }
+        return deliveryTermId; //it wasn't found at all
+    }
+
+    private String getPosition_SystemUserfromspin(ArrayList<EntitySystemUserBean> userBeanArrayList, String SystemUserVal) throws JSONException {
+        String systemUserId = "";
+        for (EntitySystemUserBean entitySystemUserBean : userBeanArrayList) {
+            if (entitySystemUserBean.getUserName().equalsIgnoreCase(SystemUserVal)) {
+                systemUserId = entitySystemUserBean.getvWBUsermasterId();
+            }
+        }
+        return systemUserId; //it wasn't found at all
+    }
+
+
+    private class PostSaveEntity extends AsyncTask<String, Void, String> {
+
+        Object res;
+        String response = "";
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            String finalJsonObj = params[0];
+            String url = CompanyURL + WebUrlClass.api_POSTEntityMaster;
+            res = ut.OpenPostConnection(url, finalJsonObj, EntityMasterPurchaseActivity.this);
+            try {
+                if (res != null) {
+                    response = res.toString().replaceAll("\\\\", "");
+                    response = response.substring(1, response.length() - 1);
+                } else {
+                    response = "error";
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                response = "error";
+            }
+
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            if (!response.equals("error")) {
+                Toast.makeText(EntityMasterPurchaseActivity.this, "Save Successfully", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        }
+    }
+
+    private class DownloadCheckDuplicateEmpName extends AsyncTask<String, Void, String> {
+
+        Object res;
+        String response = "";
+        String compnyName = "", Mode = "", guid = "";
+        //http://c207.ekatm.com/api/EntityMasterAPI/GETCheckDuplicateEmpName
+        // ?CustVendorName=sayali1234&Mode=A&CustVendorMasterGuid=41b13a46-146d-4051-aa1d-504177ef5c6c
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            compnyName = params[0];
+            Mode = params[1];
+            guid = params[2];
+
+            String url = CompanyURL + WebUrlClass.api_GETCheckDuplicateEmpName + "?CustVendorName=" + compnyName + "&Mode=" + Mode + "&CustVendorMasterGuid=" + guid;
+            res = ut.OpenConnection(url);
+            try {
+                if (res != null) {
+                    response = res.toString().replaceAll("\\\\", "");
+                    response = response.substring(1, response.length() - 1);
+                } else {
+                    response = "error";
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                response = "error";
+            }
+
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            if (response.equalsIgnoreCase("false")) {
+
+
+                if (ut.isNet(EntityMasterPurchaseActivity.this)) {
+                    new StartSession(EntityMasterPurchaseActivity.this, new CallbackInterface() {
+                        @Override
+                        public void callMethod() {
+                            new CheckDuplicateMobileNumber().execute(mobileNo, "C");
+                        }
+
+                        @Override
+                        public void callfailMethod(String msg) {
+
+                        }
+                    });
+                }
+            } else {
+                Toast.makeText(EntityMasterPurchaseActivity.this, "", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private class CheckDuplicateMobileNumber extends AsyncTask<String, Void, String> {
+
+        Object res;
+        String response = "";
+        String mobNo = "", custVendor = "";
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            // //http://c207.ekatm.com/api/EntityMasterAPI/GETCheckDuplicateMobileNumber?CustVendorMobile=3256977564&CustVendor=C
+
+            String url = CompanyURL + WebUrlClass.api_GETCheckDuplicateMobileNumber + "?CustVendorMobile=" + mobNo + "&CustVendor=" + custVendor;
+            res = ut.OpenConnection(url);
+            try {
+                if (res != null) {
+                    response = res.toString().replaceAll("\\\\", "");
+                    response = response.substring(1, response.length() - 1);
+                } else {
+                    response = "error";
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                response = "error";
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            if (response.equalsIgnoreCase("false")) {
+                if (ut.isNet(EntityMasterPurchaseActivity.this)) {
+                    new StartSession(EntityMasterPurchaseActivity.this, new CallbackInterface() {
+                        @Override
+                        public void callMethod() {
+
+                            new GetDuplicateEmailId().execute(emailId, "C");
+                        }
+
+                        @Override
+                        public void callfailMethod(String msg) {
+
+                        }
+                    });
+                }
+            } else {
+                Toast.makeText(EntityMasterPurchaseActivity.this, "", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private class GetDuplicateEmailId extends AsyncTask<String, Void, String> {
+
+        Object res;
+        String response = "";
+        String email = "", CustVendor = "";
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            ////http://c207.ekatm.com/api/EntityMasterAPI/GETCheckDuplicateEmailid?CustVendorEmailId=sayali12%40gmail.com&CustVendor=C
+
+            String url = CompanyURL + WebUrlClass.api_GETCheckDuplicateEmailid + "?CustVendorEmailId=" + email + "&CustVendor=" + CustVendor;
+            res = ut.OpenConnection(url);
+            try {
+                if (res != null) {
+                    response = res.toString().replaceAll("\\\\", "");
+                    response = response.substring(1, response.length() - 1);
+                } else {
+                    response = "error";
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                response = "error";
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            if (response.equalsIgnoreCase("false")) {
+                if (ut.isNet(EntityMasterPurchaseActivity.this)) {
+                    new StartSession(EntityMasterPurchaseActivity.this, new CallbackInterface() {
+                        @Override
+                        public void callMethod() {
+                            new PostSaveEntity().execute(finalJsonObj);
+                        }
+
+                        @Override
+                        public void callfailMethod(String msg) {
+
+                        }
+                    });
+                }
+
+
+            } else {
+                Toast.makeText(EntityMasterPurchaseActivity.this, "", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == 1130 && resultCode == 13){
+            if (data != null) {
+                ArrayList<BankDetails> bankDetailsArrayList = new ArrayList<>();
+
+                if (!(data.getStringExtra("BankDetailslist").equals(""))) {
+                    bankDetailsArrayList.clear();
+                    bankDetailsArrayList = new ArrayList<>();
+                    bankDetailsArrayList = new Gson().fromJson(data.getStringExtra("BankDetailslist"), BankDetails.class).getBankDetailsArrayList();
+
+                }
+
+                if (!(data.getStringExtra("ContactDetailslist").equals(""))) {
+                    entityContactDetailsArrayList.clear();
+                    entityContactDetailsArrayList = new ArrayList<>();
+                    entityContactDetailsArrayList = new Gson().fromJson(data.getStringExtra("ContactDetailslist"), EntityContactDetails.class).getEntityContactDetailsArrayList();
+                }
+
+
+
+                forPendingDelivery = data.getStringExtra("ForPendingDelivery");
+                forGRN = data.getStringExtra("ForGRN");
+                forPayment = data.getStringExtra("ForPayment");
+                currencyId = data.getStringExtra("Currency");
+                creditLimits = data.getStringExtra("CreditLimits");
+                creditDays = data.getStringExtra("CreditDays");
+                paymentTerms = data.getStringExtra("PaymentTerms");
+                deliveryTerms = data.getStringExtra("DeliveryTerms");
+                salesCategory = data.getStringExtra("SalesCategory");
+                willingTalkProspect = data.getStringExtra("WillingTalkProspect");
+                taxCodeId = data.getStringExtra("TaxCode");
+                resellerName = data.getStringExtra("ResellerName");
+
+
+                entityClassId = data.getStringExtra("EntityClass");
+                entityGrpId = data.getStringExtra("EntityGroupMasterId");
+                typeOfServiceId = data.getStringExtra("Typeofservices");
+
+
+            }
+        }
+    }
+}

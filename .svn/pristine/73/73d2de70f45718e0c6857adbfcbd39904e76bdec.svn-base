@@ -1,0 +1,1261 @@
+package com.vritti.crm.vcrm7;
+
+import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.SystemClock;
+import android.support.annotation.Nullable;
+import android.support.design.widget.BottomSheetDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.View;
+import android.webkit.MimeTypeMap;
+import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
+import com.vritti.SaharaModule.SaharaBeans.AttachmentBean;
+import com.vritti.crm.adapter.AttachmentDetailsDisplayAdapter;
+import com.vritti.crm.adapter.DatasheetFormListAdapter;
+import com.vritti.crm.adapter.EditDatasheetAdapterNew;
+import com.vritti.crm.bean.EditDatasheetNew;
+import com.vritti.databaselib.data.DatabaseHandlers;
+import com.vritti.databaselib.other.Utility;
+import com.vritti.databaselib.other.WebUrlClass;
+import com.vritti.ekatm.Constants;
+import com.vritti.ekatm.R;
+import com.vritti.ekatm.services.SendOfflineData;
+import com.vritti.sessionlib.CallbackInterface;
+import com.vritti.sessionlib.StartSession;
+import com.vritti.vwb.Adapter.DatasheetQueListAdapter;
+import com.vritti.vwb.Adapter.EditDatasheetAdapter;
+import com.vritti.vwb.Adapter.Sahara_AttachmentDetailsAdapter;
+import com.vritti.vwb.Beans.Datasheet;
+import com.vritti.vwb.Beans.DatasheetListObject;
+import com.vritti.vwb.Beans.EditDatasheet;
+import com.vritti.vwb.classes.CommonFunction;
+import com.vritti.vwb.vworkbench.AddDatasheetActivityMain;
+import com.vritti.vwb.vworkbench.EditDatasheetActivityMain;
+import com.vritti.vwb.vworkbench.EditDatasheetDetailActivity;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+
+import static com.vritti.vwb.vworkbench.NotificationActivity.progress_bar_type;
+
+public class EditDatasheetActivityMainNew extends AppCompatActivity {
+
+    String PlantMasterId = "", LoginId = "", Password = "", CompanyURL = "", EnvMasterId = "",
+            UserMasterId = "", UserName = "", MobileNo = "", UserProspect = "", Result = "", Mode = "", Designation = "",
+            PKSuspectId = "";
+    int flagFromTeam;
+    Utility ut;
+    DatabaseHandlers db;
+    CommonFunction cf;
+    Context context;
+    SQLiteDatabase sql;
+
+    public static ArrayList<EditDatasheetNew> editDatasheetslist;
+    EditDatasheetNew editDatasheetNew;
+    ArrayList<EditDatasheetNew> results;
+    ArrayList<String> pkCssDetailID;
+    EditDatasheetAdapterNew editDatasheetAdapterNew;
+    RecyclerView listquestions_editdatasheet;
+    int rowClickPos;
+    String formId = "", fKQuesId = "";
+    Button btn_SaveDraft, btnSave, btnReturn;
+    private JSONObject DatasheetAnsData, DatasheetFinalobj;
+    JSONArray DatasheetAnsDataFinal;
+    String prospectId = "", cssFormId = "", sourceType = "", formDesc = "";
+    TextView txt_title;
+    String FinalObj = "";
+    int attachmentDiplayPos;
+    public static ArrayList<AttachmentBean> attachmentList;
+    RecyclerView ls_attachname;
+    Dialog dialog1;
+    Dialog dialog2, dialog3;
+    //Sahara_AttachmentDetailsAdapter sahara_attachmentDetailsAdapter;
+    AttachmentDetailsDisplayAdapter attachmentDetailsDisplayAdapter;
+    AttachmentBean attachmentBean;
+    String fromEdit = "";
+    int deletePos = -1, viewPos = 1, downloadPos = -1;
+    BottomSheetDialog dialog;
+    private final int MEGABYTE = 1024 * 1024;
+    private ProgressDialog pDialog;
+    private long mLastClickTime = 0;
+    ProgressBar progressBar1;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.common_editdatasheet);
+        context = EditDatasheetActivityMainNew.this;
+
+        ut = new Utility();
+        cf = new CommonFunction(context);
+        String settingKey = ut.getSharedPreference_SettingKey(context);
+        String dabasename = ut.getValue(context, WebUrlClass.GET_DATABASE_NAME_KEY, settingKey);
+        db = new DatabaseHandlers(context, dabasename);
+        CompanyURL = ut.getValue(context, WebUrlClass.GET_COMPANY_URL_KEY, settingKey);
+        EnvMasterId = ut.getValue(context, WebUrlClass.GET_EnvMasterID_KEY, settingKey);
+        PlantMasterId = ut.getValue(context, WebUrlClass.GET_PlantID_KEY, settingKey);
+        LoginId = ut.getValue(context, WebUrlClass.GET_LOGIN_KEY, settingKey);
+        Password = ut.getValue(context, WebUrlClass.GET_PSW_KEY, settingKey);
+        UserMasterId = ut.getValue(context, WebUrlClass.GET_USERMASTERID_KEY, settingKey);
+        UserName = ut.getValue(context, WebUrlClass.GET_USERNAME_KEY, settingKey);
+        Designation = ut.getValue(context, WebUrlClass.GET_Designation, settingKey);
+        sql = db.getWritableDatabase();
+
+        InitView();
+        if (getIntent() != null) {
+            prospectId = getIntent().getStringExtra("PropectId");
+            cssFormId = getIntent().getStringExtra("CssFormId");
+            sourceType = getIntent().getStringExtra("Sourcetype");
+            formDesc = getIntent().getStringExtra("FormDesc");
+            txt_title.setText(formDesc);
+        }
+        btn_SaveDraft.setVisibility(View.GONE);
+        GetEditDatasheetDetails();
+        SetListner();
+
+    }
+
+    private void InitView() {
+        Toolbar toolbar_action = (Toolbar) findViewById(R.id.toolbar1);
+        toolbar_action.setLogo(R.mipmap.ic_toolbar_logo_crm);
+        toolbar_action.setTitle(R.string.app_name_toolbar_CRM);
+        setSupportActionBar(toolbar_action);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        listquestions_editdatasheet = findViewById(R.id.lstquestions_editdatasheet);
+        txt_title = findViewById(R.id.txt_title);
+        btn_SaveDraft = findViewById(R.id.btn_SaveDraft);
+        btnSave = findViewById(R.id.btn_Save);
+        btnReturn = findViewById(R.id.btnReturn);
+        progressBar1 = findViewById(R.id.progressBar1);
+        editDatasheetslist = new ArrayList<>();
+        results = new ArrayList<>();
+        pkCssDetailID = new ArrayList<>();
+        attachmentList = new ArrayList<>();
+        DatasheetAnsDataFinal = new JSONArray();
+        DatasheetFinalobj = new JSONObject();
+
+        dialog1 = new Dialog(EditDatasheetActivityMainNew.this);
+        dialog2 = new Dialog(EditDatasheetActivityMainNew.this);
+        dialog3 = new Dialog(EditDatasheetActivityMainNew.this);
+        dialog = new BottomSheetDialog(EditDatasheetActivityMainNew.this);
+
+
+    }
+
+    private void SetListner() {
+        btnReturn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                try {
+                    for (int i = 0; i < editDatasheetslist.size(); i++) {
+                        DatasheetAnsData = new JSONObject();
+
+                        String Questiontext = editDatasheetslist.get(i).getQuesText();
+                        String ansText = editDatasheetslist.get(i).getAnswer();
+
+                        DatasheetAnsData.put("QuesText", editDatasheetslist.get(i).getQuesText().toString());
+
+                        DatasheetAnsData.put("Remarks", " ");
+
+
+                        if (ansText != null) {
+                            DatasheetAnsData.put("ResponseByCustomer", editDatasheetslist.get(i).getAnswer().toString());
+                        } else {
+                            DatasheetAnsData.put("ResponseByCustomer", "");
+                        }
+
+                        DatasheetAnsData.put("FKCssHeaderId", editDatasheetslist.get(i).getPKCssHeaderId());
+                        DatasheetAnsData.put("PKCssFormsQuesID", editDatasheetslist.get(i).getPKCSSFormsQuesId());
+
+                        if (editDatasheetslist.get(i).getResponseType().equalsIgnoreCase("Text")) {
+                            DatasheetAnsData.put("Flag", "T");
+                        } else if (editDatasheetslist.get(i).getResponseType().equalsIgnoreCase("Selection")) {
+                            DatasheetAnsData.put("Flag", "R");
+                        } else if (editDatasheetslist.get(i).getResponseType().equalsIgnoreCase("Numeric")) {
+                            DatasheetAnsData.put("Flag", "T");
+                        } else {
+
+                        }
+
+                        DatasheetAnsData.put("FKQuesId", editDatasheetslist.get(i).getFKQuesId().toString());
+                        String Detailid = editDatasheetslist.get(i).getPKCssDtlsID().toString();
+                        DatasheetAnsData.put("PKCssDtlsID", Detailid);
+                        DatasheetAnsDataFinal.put(DatasheetAnsData);
+                    }
+
+                    DatasheetFinalobj.put("FormId", cssFormId);
+                    DatasheetFinalobj.put("Mode", Mode);
+                    DatasheetFinalobj.put("DatasheetAnsDataFinal", DatasheetAnsDataFinal);
+                    if (EnvMasterId.equalsIgnoreCase("pragati")) {
+                        DatasheetFinalobj.put("FKActivityId", prospectId);
+
+                    } else {
+                        DatasheetFinalobj.put("ActivityId", prospectId);
+                    }
+
+                    if (EnvMasterId.equalsIgnoreCase("pragati")) {
+                        DatasheetFinalobj.put("Module", "Konnect");
+                    } else {
+                        DatasheetFinalobj.put("Module", "VWB");
+                    }
+
+                    DatasheetFinalobj.put("CallId", " ");
+                    DatasheetFinalobj.put("FormDesc", editDatasheetslist.get(0).getCSSFormsDesc());
+                    DatasheetFinalobj.put("FlagSaveAction", "0");
+
+                    JSONArray jsonArray1 = new JSONArray();
+
+
+                    DatasheetFinalobj.put("ArrDocumentReview", jsonArray1);
+
+
+                    FinalObj = DatasheetFinalobj.toString();
+                    //FinalObj = FinalObj.replaceAll("\\\\", "");
+
+                    String url = CompanyURL + WebUrlClass.api_save_datasheet;
+                    String op = "";
+                    //String remark = "Datasheet save successfully for " + ActivityName;
+                    String remark = "";
+                    CreateOfflinedatasheetfill_Appr(url, FinalObj, WebUrlClass.POSTFLAG, remark, op);
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        btn_SaveDraft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+    }
+
+    private void CreateOfflinedatasheetfill_Appr(final String url, final String parameter,
+                                                 final int method, final String remark, final String op) {
+        //final DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+        long a = cf.addofflinedata(url, parameter, method, remark, op);
+        if (a != -1) {
+            //  SQLiteDatabase sql1 = db.getWritableDatabase();
+            // sql1.delete(db.TABLE_ACTIVITYMASTER, "ActivityId=?", new String[]{ActivityId});
+            Toast.makeText(EditDatasheetActivityMainNew.this, "Datasheet save successfully", Toast.LENGTH_LONG).show();
+            //dismissProgressDialog();
+            Intent intent1 = new Intent(getApplicationContext(), SendOfflineData.class);
+            startService(intent1);
+            finish();
+        } else {
+            Toast.makeText(getApplicationContext(), "Data not Saved ", Toast.LENGTH_LONG).show();
+
+
+        }
+
+    }
+
+    private void GetEditDatasheetDetails() {
+
+
+        editDatasheetslist.clear();
+        editDatasheetslist = getdata();
+        Log.i("ArrayList", editDatasheetslist.toString());
+        editDatasheetAdapterNew = new EditDatasheetAdapterNew(EditDatasheetActivityMainNew.this, editDatasheetslist);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(EditDatasheetActivityMainNew.this);
+        listquestions_editdatasheet.setLayoutManager(mLayoutManager);
+        listquestions_editdatasheet.setItemAnimator(new DefaultItemAnimator());
+        listquestions_editdatasheet.setAdapter(editDatasheetAdapterNew);
+
+    }
+
+    private ArrayList<EditDatasheetNew> getdata() {
+        // results = new ArrayList<EditDatasheet>();
+        //  pkCssDetailID = new ArrayList<String>();
+
+
+        Cursor c = sql.rawQuery(
+                "SELECT distinct PKCssHeaderId,FKCustomerId,FKCssFormsId,FeedBackCallId," +
+                        " Responsebycustomer,PKCssDtlsID,PKCSSFormsQuesId,FKQuesId,Weightage," +
+                        " IsResponseMandatory,SequenceNo,ExpectedResponse,IsBranching,IfResponseId," +
+                        " DisableQuesStr,GroupId,GroupName,MaxNoOfResponses," +
+                        " MaxExpectedResponse,ResponseType,QuesCode,QuesText,QM_ResponseType,ValueMin,ValueMax," +
+                        " SelectionText,SelectionValue," +
+                        " Notes,MaxValueText,QM_SelectionType,ControlWidth,IsExtMaster,ExtMasterName," +
+                        " IssuedTo,IsApprove,CSSFormsDesc,AttachCount from "
+                        + db.TABLE_DATASHEET_DATA_NEW + " ORDER BY SequenceNo asc",
+                null);
+
+        if (c.getCount() > 0) {
+            c.moveToFirst();
+            do {
+
+
+                editDatasheetNew = new EditDatasheetNew();
+                editDatasheetNew.setSequenceNo(Integer.parseInt(c.getString(c.getColumnIndex("SequenceNo"))));
+                editDatasheetNew.setPKCssHeaderId(c.getString(c.getColumnIndex("PKCssHeaderId")));
+                editDatasheetNew.setFKCustomerId(c.getString(c.getColumnIndex("FKCustomerId")));
+                editDatasheetNew.setFKCssFormsId(c.getString(c.getColumnIndex("FKCssFormsId")));
+                editDatasheetNew.setFeedBackCallId(c.getString(c.getColumnIndex("FeedBackCallId")));
+                editDatasheetNew.setResponsebycustomer(c.getString(c.getColumnIndex("Responsebycustomer")));
+                editDatasheetNew.setAnswer(c.getString(c.getColumnIndex("Responsebycustomer")));
+                editDatasheetNew.setPKCssDtlsID(c.getString(c.getColumnIndex("PKCssDtlsID")));
+                editDatasheetNew.setPKCSSFormsQuesId(c.getString(c.getColumnIndex("PKCSSFormsQuesId")));
+                editDatasheetNew.setFKQuesId(c.getString(c.getColumnIndex("FKQuesId")));
+                editDatasheetNew.setWeightage(c.getString(c.getColumnIndex("Weightage")));
+                editDatasheetNew.setIsResponseMandatory(c.getString(c.getColumnIndex("IsResponseMandatory")));
+                editDatasheetNew.setExpectedResponse(c.getString(c.getColumnIndex("ExpectedResponse")));
+                editDatasheetNew.setIsBranching(c.getString(c.getColumnIndex("IsBranching")));
+                editDatasheetNew.setIfResponseId(c.getString(c.getColumnIndex("IfResponseId")));
+                editDatasheetNew.setDisableQuesStr(c.getString(c.getColumnIndex("DisableQuesStr")));
+                editDatasheetNew.setGroupId(c.getString(c.getColumnIndex("GroupId")));
+                editDatasheetNew.setGroupName(c.getString(c.getColumnIndex("GroupName")));
+                editDatasheetNew.setMaxNoOfResponses(c.getString(c.getColumnIndex("MaxNoOfResponses")));
+                editDatasheetNew.setMaxExpectedResponse(c.getString(c.getColumnIndex("MaxExpectedResponse")));
+                editDatasheetNew.setResponseType(c.getString(c.getColumnIndex("ResponseType")));
+                editDatasheetNew.setQuesCode(c.getString(c.getColumnIndex("QuesCode")));
+                editDatasheetNew.setQuesText(c.getString(c.getColumnIndex("QuesText")));
+                editDatasheetNew.setQM_ResponseType(c.getString(c.getColumnIndex("QM_ResponseType")));
+                editDatasheetNew.setValueMin(c.getString(c.getColumnIndex("ValueMin")));
+                editDatasheetNew.setValueMax(c.getString(c.getColumnIndex("ValueMax")));
+                editDatasheetNew.setSelectionText(c.getString(c.getColumnIndex("SelectionText")));
+                editDatasheetNew.setSelectionValue(c.getString(c.getColumnIndex("SelectionValue")));
+                editDatasheetNew.setNotes(c.getString(c.getColumnIndex("Notes")));
+                editDatasheetNew.setMaxValueText(c.getString(c.getColumnIndex("MaxValueText")));
+                editDatasheetNew.setQM_SelectionType(c.getString(c.getColumnIndex("QM_SelectionType")));
+                editDatasheetNew.setControlWidth(c.getString(c.getColumnIndex("ControlWidth")));
+                editDatasheetNew.setIsExtMaster(c.getString(c.getColumnIndex("IsExtMaster")));
+                editDatasheetNew.setExtMasterName(c.getString(c.getColumnIndex("ExtMasterName")));
+                editDatasheetNew.setIssuedTo(c.getString(c.getColumnIndex("IssuedTo")));
+                editDatasheetNew.setIsApprove(c.getString(c.getColumnIndex("IsApprove")));
+                editDatasheetNew.setCSSFormsDesc(c.getString(c.getColumnIndex("CSSFormsDesc")));
+                editDatasheetNew.setAttachmentCount(c.getString(c.getColumnIndex("AttachCount")));
+
+                results.add(editDatasheetNew);
+                pkCssDetailID.add(editDatasheetNew.getPKCssDtlsID());
+
+
+            } while (c.moveToNext());
+
+            if (results.size() != 0) {
+                for (int i = 0; i < results.size(); i++) {
+                    if (results.get(i).getResponsebycustomer().equals("")) {
+                        Mode = "A";
+                    } else {
+                        Mode = "E";
+                        break;
+                    }
+                }
+            }
+
+
+        } else {
+
+        }
+        return results;
+
+
+    }
+
+    public void rowClick(int adapterPosition, ArrayList<EditDatasheetNew> editDatasheetAdapterNewArrayList) {
+        rowClickPos = adapterPosition;
+        String aa = editDatasheetAdapterNewArrayList.get(rowClickPos).getQuesText();
+
+        String datasheetObjStr = new Gson().toJson(editDatasheetAdapterNewArrayList.get(rowClickPos));
+        String datasheetList = new Gson().toJson(new DatasheetListObject(editDatasheetAdapterNewArrayList, "Common"));
+        String que = "SELECT FKCssFormsId,FKQuesId FROM " + db.TABLE_DATASHEET_DATA_NEW + " WHERE QuesText LIKE '" + aa + "'";
+        Cursor cur = sql.rawQuery(que, null);
+        if (cur.getCount() > 0) {
+            cur.moveToFirst();
+            do {
+
+                formId = cur.getString(cur.getColumnIndex("FKCssFormsId"));
+                fKQuesId = cur.getString(cur.getColumnIndex("FKQuesId"));
+            } while (cur.moveToNext());
+
+            Intent intent = new Intent(EditDatasheetActivityMainNew.this, EditDatasheetDetailActivityNew.class);
+            intent.putExtra("position", rowClickPos);
+            intent.putExtra("FormId", formId);
+            intent.putExtra("SourceId", editDatasheetAdapterNewArrayList.get(rowClickPos).getPKCssHeaderId());
+            intent.putExtra("FKQuesId", fKQuesId);
+            intent.putExtra("editobj", datasheetObjStr);
+            intent.putExtra("editdatasheetList", datasheetList);
+            startActivityForResult(intent, 1150);
+            //finish();
+        } else {
+            Toast.makeText(EditDatasheetActivityMainNew.this, "Please refresh data", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1150 && resultCode == 1221) {
+            if (data != null) {
+                progressBar1.setVisibility(View.VISIBLE);
+
+                editDatasheetslist = new Gson().fromJson(data.getStringExtra("objStr"), DatasheetListObject.class).
+                        geteditDatasheetsNew();
+
+                editDatasheetAdapterNew.update(editDatasheetslist);
+                progressBar1.setVisibility(View.GONE);
+            }
+        }
+    }
+
+    //  public void displayAttachementFiles(int adapterPosition, ArrayList<EditDatasheetNew> editDatasheetAdapterNewArrayList) {
+
+    public void displayAttachementFiles(int adapterPosition, ArrayList<EditDatasheetNew> editDatasheetAdapterNewArrayList) {
+        final String pkCssDtldID = editDatasheetAdapterNewArrayList.get(adapterPosition).getPKCssDtlsID();
+
+        final int p = adapterPosition;
+        attachmentDiplayPos = adapterPosition;
+//        if(!editDatasheetslist.get(pos).getAttachmentCount().equals("0")) {
+        // if (!editDatasheetAdapterNewArrayList.get(adapterPosition).getAttachmentCount().equals("0")) {
+        if (ut.isNet(context)) {
+            new StartSession(context, new CallbackInterface() {
+                @Override
+                public void callMethod() {
+                    new downloadAttachmentDetails().execute(pkCssDtldID, String.valueOf(p));
+                }
+
+                @Override
+                public void callfailMethod(String msg) {
+                    Toast.makeText(getApplicationContext(), "Please Check Internet Connection", Toast.LENGTH_SHORT).show();
+
+                }
+            });
+        }
+          /*  } else {
+                Toast.makeText(context, "Sorry there is not attachment here", Toast.LENGTH_SHORT).show();
+            }*/
+
+    }
+
+
+    public class downloadAttachmentDetails extends AsyncTask<String, Void, String> {
+
+        String res = "";
+        String pkCssDetailsId = "";
+        int pos;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+
+            pkCssDetailsId = params[0];
+            pos = Integer.parseInt(params[1]);
+            try {
+                String url = CompanyURL + WebUrlClass.api_getUploadedAttachment_Sahara + "?ActivityId=" + params[0] + "&SourceType=Prospect";
+                res = ut.OpenConnection(url, getApplicationContext());
+                if (res != null) {
+                    // res = res.replaceAll("\\\\", "");
+                    String s = res;
+                }
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                res = "Error";
+            }
+
+
+            return res;
+        }
+
+        @Override
+        protected void onPostExecute(String res) {
+            super.onPostExecute(res);
+
+            if (res.contains("[]")) {
+                if (editDatasheetslist.get(pos).getFilePathName() != null) {
+                    if (editDatasheetslist.get(pos).getFilePathName().size() != 0) {
+                        attachmentDetailsDialog1(pos);
+                    }
+                }
+
+
+            } else {
+
+                try {
+
+                    JSONArray jResults = new JSONArray(res.toString());
+
+                    ContentValues values = new ContentValues();
+                    sql.delete(db.TABLE_ATTACHMENT_DETAILS, null, null);
+                    Cursor c = sql.rawQuery("SELECT * FROM " + db.TABLE_ATTACHMENT_DETAILS, null);
+                    int count = c.getCount();
+                    String columnName, columnValue;
+                    for (int index = 0; index < jResults.length(); index++) {
+                        JSONObject jorder = jResults.getJSONObject(index);
+                        for (int j = 0; j < c.getColumnCount(); j++) {
+                            columnName = c.getColumnName(j);
+                            columnValue = jorder.getString(columnName);
+                            values.put(columnName, columnValue);
+                        }
+                        long a = sql.insert(db.TABLE_ATTACHMENT_DETAILS, null, values);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Log.e("res", e.getMessage());
+                }
+
+                attachmentList = getAttachmentDetails();
+
+                attachmentDetailsDialog();
+
+
+            }
+
+
+        }
+    }
+
+    private ArrayList<AttachmentBean> getAttachmentDetails() {
+        ArrayList<AttachmentBean> attachmentDetails = new ArrayList<AttachmentBean>();
+        ArrayList<String> stringArrayList = new ArrayList<>();
+        Cursor c = sql.rawQuery("SELECT * from " + db.TABLE_ATTACHMENT_DETAILS, null);
+
+        if (c.getCount() > 0) {
+            c.moveToFirst();
+            do {
+
+                attachmentBean = new AttachmentBean();
+
+                attachmentBean.setPkAttachId(c.getString(c.getColumnIndex("PkAttachId")));
+                attachmentBean.setAttachGuid(c.getString(c.getColumnIndex("AttachGuid")));
+                attachmentBean.setAttachFilename(c.getString(c.getColumnIndex("AttachFilename")));
+                attachmentBean.setPath(c.getString(c.getColumnIndex("Path")));
+                attachmentBean.setActivityId(c.getString(c.getColumnIndex("ActivityId")));
+                attachmentBean.setAddedBy(c.getString(c.getColumnIndex("AddedBy")));
+                attachmentBean.setModifiedBy(c.getString(c.getColumnIndex("ModifiedBy")));
+                attachmentBean.setModifiedDt(c.getString(c.getColumnIndex("ModifiedDt")));
+                attachmentBean.setIsDeleted(c.getString(c.getColumnIndex("IsDeleted")));
+                attachmentBean.setSourcetype(c.getString(c.getColumnIndex("Sourcetype")));
+                attachmentBean.setGPSId(c.getString(c.getColumnIndex("GPSId")));
+                attachmentBean.setAttachmentType(c.getString(c.getColumnIndex("AttachmentType")));
+                attachmentBean.setLatitude(c.getString(c.getColumnIndex("Latitude")));
+                attachmentBean.setLongitude(c.getString(c.getColumnIndex("Longitude")));
+                attachmentBean.setAttachmentCode(c.getString(c.getColumnIndex("AttachmentCode")));
+                attachmentBean.setAttachmentDesc(c.getString(c.getColumnIndex("AttachmentDesc")));
+
+                attachmentDetails.add(attachmentBean);
+                stringArrayList.add(attachmentBean.getAttachFilename());
+
+            } while (c.moveToNext());
+
+        } else {
+
+        }
+        editDatasheetslist.get(attachmentDiplayPos).setFilePathName(stringArrayList);
+
+        return attachmentDetails;
+
+
+    }
+
+    private void attachmentDetailsDialog() {
+
+        dialog1.setContentView(R.layout.sahara_dialog_attachments);
+
+        ls_attachname = dialog1.findViewById(R.id.ls_attachname);
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        ls_attachname.setLayoutManager(layoutManager);
+        attachmentDetailsDisplayAdapter = new AttachmentDetailsDisplayAdapter(EditDatasheetActivityMainNew.this, attachmentList, true);
+        ls_attachname.setAdapter(attachmentDetailsDisplayAdapter);
+
+      /*  sahara_attachmentDetailsAdapter = new Sahara_AttachmentDetailsAdapter(EditDatasheetActivityMain.this,attachmentList);
+        ls_attachname.setAdapter(sahara_attachmentDetailsAdapter);*/
+        //getFilename();
+        dialog1.show();
+        dialog1.setCanceledOnTouchOutside(true);
+
+
+    }
+
+    private void attachmentDetailsDialog1(int selectedPos) {
+
+        dialog1.setContentView(R.layout.sahara_dialog_attachments);
+        ls_attachname = dialog1.findViewById(R.id.ls_attachname);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        ls_attachname.setLayoutManager(layoutManager);
+     /*   sahara_attachmentDetailsAdapter = new Sahara_AttachmentDetailsAdapter
+                (EditDatasheetActivityMain.this, editDatasheetslist , true);*/
+
+
+        attachmentDetailsDisplayAdapter = new AttachmentDetailsDisplayAdapter(EditDatasheetActivityMainNew.this,
+                editDatasheetslist.get(selectedPos).getFilePathName(), editDatasheetslist,
+                true, selectedPos, "fromEdit");
+
+        ls_attachname.setAdapter(attachmentDetailsDisplayAdapter);
+      /*  sahara_attachmentDetailsAdapter = new Sahara_AttachmentDetailsAdapter(EditDatasheetActivityMain.this,attachmentList);
+        ls_attachname.setAdapter(sahara_attachmentDetailseAdapter);*/
+        //getFilename();
+        dialog1.show();
+        dialog1.setCanceledOnTouchOutside(true);
+    }
+
+    public void deletefileName(int adapterpos, String edit) {
+        deletePos = adapterpos;
+        // adapterPos = adapterpos;
+        fromEdit = edit;
+
+
+        String que = editDatasheetslist.get(adapterpos).getQuesText();
+
+
+        //datasheetArrayList.remove(d)
+
+        dialog = new BottomSheetDialog(this);
+        dialog.setContentView(R.layout.confim_ui);
+
+        dialog.show();
+
+
+    }
+
+    public void deleteAttachment(View view) {
+
+        if (deletePos != -1) {
+
+            if (fromEdit.equalsIgnoreCase("fromEdit")) {
+                String que = editDatasheetslist.get(deletePos).getQuesText();
+                ArrayList<String> arrayList = new ArrayList<>();
+
+                if (editDatasheetslist.get(deletePos).getFilePathName().size() > 0) {
+                    for (int j = 0; j < editDatasheetslist.get(deletePos).getFilePathName().size(); j++) {
+                        String fileName = String.valueOf(editDatasheetslist.get(deletePos).getFilePathName().get(j));
+                        arrayList.add(fileName);
+                    }
+
+                    //   fileName = fileName.replace("[","").replace("]","");
+                    arrayList.remove(deletePos);
+                    editDatasheetslist.get(deletePos).setFilePathName(arrayList);
+                    editDatasheetAdapterNew.deleteChange(editDatasheetslist);
+                }
+                dialog1.dismiss();
+                dialog.dismiss();
+
+
+            } else {
+                callDeleteAttachmentApi(deletePos);
+            }
+
+        }
+
+
+    }
+
+    public void cancelAttatchment(View view) {
+        dialog.dismiss();
+
+    }
+
+    private void callDeleteAttachmentApi(final int selectedPos) {
+        dialog.dismiss();
+        dialog1.dismiss();
+        if (ut.isNet(EditDatasheetActivityMainNew.this)) {
+            new StartSession(context, new CallbackInterface() {
+                @Override
+                public void callMethod() {
+
+                    new DeleteAttachmentApi().execute();
+                }
+
+                @Override
+                public void callfailMethod(String msg) {
+                    // ((NotificationActivity)context).showPopUp(false);
+                }
+            });
+        } else
+            Toast.makeText(context, "Please check your internet connection", Toast.LENGTH_SHORT).show();
+
+    }
+
+    private class DeleteAttachmentApi extends AsyncTask<String, Void, String> {
+        Object res;
+        String response = "error";
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+
+            String url = null;
+            String attachId = attachmentList.get(deletePos).getAttachGuid();
+            url = CompanyURL + WebUrlClass.api_deleteAttachment + "?Attachid=" + attachId;
+
+            try {
+                res = ut.OpenPostConnection(url, "", getApplicationContext());
+                response = res.toString().replaceAll("\\\\", "");
+                response = response.substring(1, response.length() - 1);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                response = "error";
+            }
+
+            return response;
+        }
+
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            Log.i("deleteResponse", response);
+            if (!response.equals("error")) {
+                Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
+                ArrayList<String> arrayList = new ArrayList<>();
+                if (attachmentList.get(deletePos).getAttachFilename() != null && !(attachmentList.get(deletePos).getAttachFilename().equals(""))) {
+
+                    attachmentList.remove(deletePos);
+                    attachmentDetailsDisplayAdapter.update(deletePos);
+                    //  editDatasheetslist.get(attachmentDiplayPos).setFilePathName(attachmentList);
+                    editDatasheetAdapterNew.updateCount(attachmentDiplayPos, attachmentList.size(), deletePos);//deleteChange(editDatasheetslist);
+                    //editDatasheetAdapterNew.updateCount(attachmentList);//deleteChange(editDatasheetslist);
+                    //}
+                }
+
+
+                dialog1.dismiss();
+                dialog.dismiss();
+            }
+
+        }
+    }
+
+    public void viewFile(boolean isDownload, int adapterPosition) {
+        // viewPos = listPos;
+        viewPos = adapterPosition;
+        if (isDownload) {
+            ArrayList<String> arrayList = new ArrayList<>();
+            if (editDatasheetslist.get(viewPos).getFilePathName() == null) {
+
+            } else if (editDatasheetslist.get(viewPos).getFilePathName().size() > 0) {
+                for (int i = 0; i < editDatasheetslist.get(viewPos).getFilePathName().size(); i++) {
+                    String attachmentName1 = editDatasheetslist.get(viewPos).getFilePathName().get(i);
+                    arrayList.add(attachmentName1);
+                }
+            }
+
+            String viewFile = arrayList.get(viewPos);
+
+            if (ut.isNet(context)) {
+                File file = new File(viewFile);
+                String path = file.getPath().replace("[", "").replace("]", "");
+                MimeTypeMap map = MimeTypeMap.getSingleton();
+                String ext = MimeTypeMap.getFileExtensionFromUrl(file.getName().replace("]", ""));
+                /*if(ext.equalsIgnoreCase("jpeg") || ext.equalsIgnoreCase("png") ||
+                        ext.equalsIgnoreCase("jpg")){
+                    Intent intent = new Intent(context, ImageFullScreenActivity.class);
+                    intent.putExtra("share_image_path",path);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }else  {*/
+                openDocument(path);
+                // }
+
+
+
+               /* String path1 = Environment.getExternalStorageDirectory()
+                        .toString();
+                File file = new File(path1 + "/" + "Sahara" + "/" + "File");
+                if (file.exists()) {
+                    final File fileNew = new File(path1 + "/" + attachmentName1);
+                    if (fileNew.exists()) {
+                        Handler handler = new Handler(context.getMainLooper());
+                        handler.post(new Runnable() {
+                            public void run() {
+
+                               *//* urlGetMimeType(fileNew.getAbsolutePath());
+                                Toast.makeText(context, "File Already downloaded", Toast.LENGTH_SHORT).show();
+                                MimeTypeMap myMime = MimeTypeMap.getSingleton();
+                                Intent newIntent = new Intent(Intent.ACTION_VIEW);
+                                String mimeType = myMime.getMimeTypeFromExtension(fileNew.getAbsolutePath());
+                                newIntent.setDataAndType(Uri.fromFile(fileNew), mimeType);
+                                newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                try {
+                                    context.startActivity(newIntent);
+                                } catch (ActivityNotFoundException e) {
+                                    Toast.makeText(context, "No handler for this type of file.", Toast.LENGTH_LONG).show();
+                                }*//*
+                                //((NotificationActivity)context).sendResult(directory.getName());
+
+
+                            }
+                        });
+                    } else {
+                        cllDownloadApi(path, attachmentName1);
+                    }
+                } else {
+                    cllDownloadApi(path, attachmentName1);
+                }*/
+            }
+
+        } else {
+
+            dialog = new BottomSheetDialog(this);
+            dialog.setContentView(R.layout.confim_ui);
+
+            dialog.show();
+
+          /*  AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Are you sure to delete?")
+                    .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // FIRE ZE MISSILES!
+                        }
+                    })
+                    .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // User cancelled the dialog
+                        }
+                    });
+            // Create the AlertDialog object and return it
+            builder.create();*/
+
+            // Toast.makeText(context, "Under development !!!..", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void openDocument(String attachment) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        File file = new File(attachment);
+        String extension = android.webkit.MimeTypeMap.getFileExtensionFromUrl(Uri.fromFile(file).toString());
+        String mimetype = android.webkit.MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension);
+        if (extension.equalsIgnoreCase("") || mimetype == null) {
+            // if there is no extension or there is no definite mimetype, still try to open the file
+            intent.setDataAndType(Uri.fromFile(file), "text/*");
+        } else {
+            intent.setDataAndType(Uri.fromFile(file), mimetype);
+        }
+        // custom message for the intent
+        context.startActivity(Intent.createChooser(intent, "Choose an Application:"));
+    }
+
+    public void downloadFile(int postn, int adapterPosition, boolean isDownload) {
+        downloadPos = adapterPosition;
+        if (isDownload) {
+            String attachmentName1 = attachmentList.get(adapterPosition).getAttachFilename();
+            String path = attachmentList.get(adapterPosition).getPath();
+            String attachGuid = attachmentList.get(adapterPosition).getAttachGuid();
+
+            if (ut.isNet(EditDatasheetActivityMainNew.this)) {
+                String path1 = Environment.getExternalStorageDirectory().toString();
+                final File file = new File(path1 + "/" + "Vwb" + "/" + "File");
+                if (file.exists()) {
+                    final File fileNew = new File(file + "/" + attachmentName1);
+                    if (fileNew.exists()) {
+
+                        //    openDocument(String.valueOf(fileNew));
+                        Handler handler = new Handler(context.getMainLooper());
+                        handler.post(new Runnable() {
+                            public void run() {
+                                //pDialog.dismiss();
+                                Toast.makeText(context, "File Already downloaded", Toast.LENGTH_SHORT).show();
+
+                                MimeTypeMap myMime = MimeTypeMap.getSingleton();
+                                Intent newIntent = new Intent(Intent.ACTION_VIEW);
+                                String extension = android.webkit.MimeTypeMap.getFileExtensionFromUrl(Uri.fromFile(fileNew).toString());
+                                String mimeType = myMime.getMimeTypeFromExtension(fileNew.getAbsolutePath());
+                                String file = fileNew.getAbsolutePath();
+
+                                if (file.contains("jpg") || file.contains("png") || file.contains("jpeg") || file.contains("JPG") ||
+                                        file.contains("PNG") || file.contains("JPEG")) {
+                                    Intent intent = new Intent();
+                                    intent.setAction(Intent.ACTION_VIEW);
+                                    intent.setDataAndType(Uri.fromFile(fileNew), "image/*");
+                                    startActivity(intent);
+                                } else {
+                                    newIntent.setDataAndType(Uri.fromFile(fileNew), mimeType);
+                                    newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    try {
+                                        context.startActivity(newIntent);
+                                    } catch (ActivityNotFoundException e) {
+                                        Toast.makeText(context, "No handler for this type of file.", Toast.LENGTH_LONG).show();
+                                    }
+                                }
+
+                                // newIntent.setDataAndType(Uri.fromFile(fileNew);
+                            /*    newIntent.setDataAndType(Uri.fromFile(fileNew),fileNew.getAbsolutePath());
+                                newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                try {
+                                    context.startActivity(newIntent);
+                                } catch (ActivityNotFoundException e) {
+                                    Toast.makeText(context, "No handler for this type of file.", Toast.LENGTH_LONG).show();
+                                }*/
+                                //((NotificationActivity)context).sendResult(directory.getName());
+
+
+                            }
+                        });
+                    } else {
+                        cllDownloadApi(path, attachmentName1, attachGuid);
+                    }
+                } else {
+                    cllDownloadApi(path, attachmentName1, attachGuid);
+                }
+
+            }
+
+        } else {
+
+            dialog = new BottomSheetDialog(this);
+            dialog.setContentView(R.layout.confim_ui);
+
+            dialog.show();
+
+          /*  AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Are you sure to delete?")
+                    .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // FIRE ZE MISSILES!
+                        }
+                    })
+                    .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // User cancelled the dialog
+                        }
+                    });
+            // Create the AlertDialog object and return it
+            builder.create();*/
+
+            // Toast.makeText(context, "Under development !!!..", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void downloadFile(int adapterPosition, ArrayList<String> stringArrayList, boolean isDownload) {
+        downloadPos = adapterPosition;
+
+        if (isDownload) {
+            String attachmentName1 = attachmentList.get(adapterPosition).getAttachFilename();
+            String path = attachmentList.get(adapterPosition).getPath();
+            String attchguid = attachmentList.get(adapterPosition).getAttachGuid();
+
+            if (ut.isNet(EditDatasheetActivityMainNew.this)) {
+                String path1 = Environment.getExternalStorageDirectory()
+                        .toString();
+                File file = new File(path1 + "/" + "Sahara" + "/" + "File");
+                if (file.exists()) {
+                    final File fileNew = new File(file + "/" + attachmentName1);
+                    if (fileNew.exists()) {
+                        Handler handler = new Handler(context.getMainLooper());
+                        handler.post(new Runnable() {
+                            public void run() {
+                                // urlGetMimeType(fileNew.getAbsolutePath());
+                                Toast.makeText(context, "File Already downloaded", Toast.LENGTH_SHORT).show();
+
+                                MimeTypeMap myMime = MimeTypeMap.getSingleton();
+                                Intent newIntent = new Intent(Intent.ACTION_VIEW);
+                                String extension = android.webkit.MimeTypeMap.getFileExtensionFromUrl(Uri.fromFile(fileNew).toString());
+                                String mimeType = myMime.getMimeTypeFromExtension(fileNew.getAbsolutePath());
+                                String file = fileNew.getAbsolutePath();
+
+                                if (file.contains("jpg") || file.contains("png") || file.contains("jpeg") || file.contains("JPG") ||
+                                        file.contains("PNG") || file.contains("JPEG")) {
+                                    Intent intent = new Intent();
+                                    intent.setAction(Intent.ACTION_VIEW);
+                                    intent.setDataAndType(Uri.fromFile(fileNew), "image/*");
+                                    startActivity(intent);
+                                } else {
+                                    newIntent.setDataAndType(Uri.fromFile(fileNew), mimeType);
+                                    newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    try {
+                                        context.startActivity(newIntent);
+                                    } catch (ActivityNotFoundException e) {
+                                        Toast.makeText(context, "No handler for this type of file.", Toast.LENGTH_LONG).show();
+                                    }
+                                }
+
+                               /* MimeTypeMap myMime = MimeTypeMap.getSingleton();
+                                Intent newIntent = new Intent(Intent.ACTION_VIEW);
+                                String mimeType = myMime.getMimeTypeFromExtension(fileNew.getAbsolutePath());
+                                newIntent.setDataAndType(Uri.fromFile(fileNew), mimeType);
+                                newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                try {
+                                    context.startActivity(newIntent);
+                                } catch (ActivityNotFoundException e) {
+                                    Toast.makeText(context, "No handler for this type of file.", Toast.LENGTH_LONG).show();
+                                }*/
+                                //((NotificationActivity)context).sendResult(directory.getName());
+
+
+                            }
+                        });
+                    } else {
+                        cllDownloadApi(path, attachmentName1, attchguid);
+                    }
+                } else {
+                    cllDownloadApi(path, attachmentName1, attchguid);
+                }
+            }
+
+        } else {
+
+            dialog = new BottomSheetDialog(this);
+            dialog.setContentView(R.layout.confim_ui);
+
+            dialog.show();
+
+          /*  AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Are you sure to delete?")
+                    .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // FIRE ZE MISSILES!
+                        }
+                    })
+                    .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // User cancelled the dialog
+                        }
+                    });
+            // Create the AlertDialog object and return it
+            builder.create();*/
+
+            // Toast.makeText(context, "Under development !!!..", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    private void cllDownloadApi(final String path, final String attachmentName1, final String attachGuid) {
+        new StartSession(context, new CallbackInterface() {
+            @Override
+            public void callMethod() {
+                new DownloadFileApi().execute(path, attachmentName1, attachGuid);
+            }
+
+            @Override
+            public void callfailMethod(String msg) {
+                // ((NotificationActivity)context).showPhhopUp(false);
+            }
+        });
+    }
+
+    private class DownloadFileApi extends AsyncTask<String, Void, String> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            showDialog(progress_bar_type);
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+
+            String pathName = strings[0];
+            final String fileName = strings[1];
+            int count;
+            File file = null;
+
+            String attchId = strings[2];
+            String fileExtn = fileName.split("\\.")[1];
+            //http://c207.ekatm.com/Attachments/adf09e4a-e8bd-4c80-ac96-a1913a54b9e4.jpg  -- will get exact image
+            // String urlStr1 = CompanyURL + "/Downloads/" + EnvMasterId + "/" + fileName;
+            String urlStr = CompanyURL + "/Attachments/" + attchId + "." + fileExtn;
+            //String urlStr = CompanyURL + "/Attachments/" +fileName;
+
+            //pass attachmentid with extension
+            try {
+                final String path1 = Environment.getExternalStorageDirectory()
+                        .toString();
+
+                if (Constants.type == Constants.Type.Sahara) {
+                    file = new File(path1 + "/" + "Sahara" + "/" + "File");
+
+                } else if (Constants.type == Constants.Type.ZP) {
+                    file = new File(path1 + "/" + "ZP" + "/" + "File");
+
+                } else {
+                    // file = new File(path1 + "/" + "Ekatm" + "/" + "File");
+                    file = new File(path1 + "/" + "Vwb" + "/" + "File");
+                }
+                if (!file.exists())
+                    file.mkdirs();
+                //   pdfFile = new File(file + "/" + fileName);
+                // file1 = String.valueOf(pdfFile);
+
+
+                try {
+                    //pdfFile = File.createTempFile(filename /* prefix */,prefix, pdfFile /* directory */);
+
+                    final File fileNew = new File(file + "/" + fileName);
+                    fileNew.createNewFile();
+                    //downloadFileInloacl(url , new File(file + "/" + fileNew));
+
+                    try {
+                        urlStr = urlStr.replaceAll(" ", "%20");
+                        //final File directory =  new File(file + "/" + fileNew);
+                        URL url = new URL(urlStr);
+
+                        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                        urlConnection.connect();
+                        int lenghtOfFile = urlConnection.getContentLength();
+                        long total = 0;
+
+
+                        FileOutputStream fileOutputStream = new FileOutputStream(fileNew);
+                        InputStream inputStream = urlConnection.getInputStream();
+                        int totalSize = urlConnection.getContentLength();
+                        int serverResponseCode = urlConnection.getResponseCode();
+                        String serverResponseMessage = urlConnection.getResponseMessage();
+                        byte[] buffer = new byte[MEGABYTE];
+                        int bufferLength = 0;
+                        while ((bufferLength = inputStream.read(buffer)) > 0) {
+                            total += bufferLength;
+                            fileOutputStream.write(buffer, 0, bufferLength);
+                            onProgressUpdate("" + (int) ((total * 100) / lenghtOfFile));
+                        }
+                        fileOutputStream.close();
+                        Handler handler = new Handler(context.getMainLooper());
+                        handler.post(new Runnable() {
+                            public void run() {
+                                urlGetMimeType(fileNew.getAbsolutePath());
+                              /*  MimeTypeMap myMime = MimeTypeMap.getSingleton();
+                                Intent newIntent = new Intent(Intent.ACTION_VIEW);
+                                String mimeType = myMime.getMimeTypeFromExtension(fileNew.getAbsolutePath());
+                                newIntent.setDataAndType(Uri.fromFile(fileNew), mimeType);
+                                newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                try {
+                                    context.startActivity(newIntent);
+                                } catch (ActivityNotFoundException e) {
+                                    Toast.makeText(context, "No handler for this type of file.", Toast.LENGTH_LONG).show();
+                                }*/
+
+                            }
+                        });
+
+
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                        //((NotificationActivity)context).showPopUp(false);
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                        // ((NotificationActivity)context).showPopUp(false);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        //((NotificationActivity)context).showPopUp(false);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        //((NotificationActivity)context).showPopUp(false);
+                    }
+                    //publishProgress(""+(int)((total*100)/lenghtOfFile));
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                // ((NotificationActivity)context).showPopUp(false);
+            }
+            return null;
+        }
+
+        protected void onProgressUpdate(String... progress) {
+            // setting progress percentage
+            pDialog.setProgress(Integer.parseInt(progress[0]));
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            dismissDialog(progress_bar_type);
+        }
+    }
+
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        switch (id) {
+            case progress_bar_type: // we set this to 0
+                pDialog = new ProgressDialog(this);
+                pDialog.setMessage("Downloading file. Please wait...");
+                pDialog.setIndeterminate(false);
+                pDialog.setMax(100);
+                pDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+                pDialog.setCancelable(true);
+                pDialog.show();
+                return pDialog;
+            default:
+                return null;
+        }
+    }
+
+    private void urlGetMimeType(String path) {
+        File file = new File(path);
+        MimeTypeMap map = MimeTypeMap.getSingleton();
+        String ext = MimeTypeMap.getFileExtensionFromUrl(file.getName());
+        String type = map.getMimeTypeFromExtension(ext);
+
+        if (type == null)
+            type = "*/*";
+
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        Uri data = Uri.fromFile(file);
+
+        intent.setDataAndType(data, type);
+
+        startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (SystemClock.elapsedRealtime() - mLastClickTime > 5000) {
+            Toast.makeText(getApplicationContext(), "Please click again ", Toast.LENGTH_SHORT).show();//18123373
+
+        } else {
+            super.onBackPressed();
+
+        }
+        mLastClickTime = SystemClock.elapsedRealtime();
+
+    }
+}

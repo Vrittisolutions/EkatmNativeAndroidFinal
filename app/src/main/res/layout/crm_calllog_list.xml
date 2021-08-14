@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/card_back"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--<android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/MyToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay"
+            app:subtitleTextAppearance="@style/ToolbarTextAppearance.Subtitle"
+            app:titleTextAppearance="@style/ToolbarTextAppearance.Title">
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>-->
+     <include
+        layout="@layout/toolbar_header"
+        />
+
+    <RelativeLayout
+        android:id="@+id/ln_callogs"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+         android:orientation="vertical"
+        android:layout_marginTop="48dp"
+        >
+
+
+    <LinearLayout
+        android:id="@+id/ln_opp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#6E6F72"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Unlinked Phone Calls"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        android:textStyle="bold" />
+
+    </LinearLayout>
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/list_calllogs"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/ln_opp"/>
+
+    </RelativeLayout>
+    <ProgressBar
+        android:id="@+id/progressbar_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone" />
+</RelativeLayout>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:gpb="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:background="@android:color/transparent">
+
+<com.jpardogo.android.googleprogressbar.library.GoogleProgressBar
+    android:id="@+id/progressbar"
+    android:layout_width="30dp"
+    android:layout_height="30dp"
+    android:layout_gravity="center"
+    android:layout_centerVertical="true"
+    android:layout_centerHorizontal="true"
+    gpb:colors="@array/google_colors"
+    gpb:type="chrome_floating_circles"
+    android:visibility="visible"
+     />
+</RelativeLayout>

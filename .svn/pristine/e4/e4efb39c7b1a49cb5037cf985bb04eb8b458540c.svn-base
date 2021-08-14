@@ -1,0 +1,33 @@
+package com.vritti.vwb.Beans;
+
+public class KendraName {
+
+    String PKBranchId,BranchName;
+
+    public KendraName(String pkBranchId, String branchName) {
+        this.PKBranchId = pkBranchId;
+        this.BranchName = branchName;
+    }
+
+    public String getPKBranchId() {
+        return PKBranchId;
+    }
+
+    public void setPKBranchId(String PKBranchId) {
+        this.PKBranchId = PKBranchId;
+    }
+
+    public String getBranchName() {
+        return BranchName;
+    }
+
+    public void setBranchName(String branchName) {
+        BranchName = branchName;
+    }
+
+    @Override
+    public String toString() {
+        // return super.toString();
+        return this.BranchName;
+    }
+}

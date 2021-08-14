@@ -1,0 +1,1626 @@
+[
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_team.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_team.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\fvl_selector_play.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\fullscreenvideoview-1.1.2.aar\\4aacdf712e3d54b23c52389f91ec2cb7\\res\\drawable\\fvl_selector_play.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\spinner_border.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\spinner_border.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\dropdown.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\dropdown.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\rating.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\rating.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_pevious.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_pevious.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\loading1.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\loading1.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\edit.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\edit.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_ic_expanded_controller_skip_next.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_ic_expanded_controller_skip_next.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_ic_notification_rewind.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_ic_notification_rewind.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\mr_media_play_light.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable\\mr_media_play_light.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_promo_record.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_promo_record.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\abc_ic_search_api_material.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable\\abc_ic_search_api_material.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_pdf.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_pdf.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_ic_mini_controller_stop_large.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_ic_mini_controller_stop_large.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_ic_expanded_controller_rewind30.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_ic_expanded_controller_rewind30.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_menu_material.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_menu_material.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\calender_icon.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\calender_icon.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_ic_notification_skip_next.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_ic_notification_skip_next.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\bg_circle.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\bg_circle.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\abc_edit_text_material.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable\\abc_edit_text_material.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\gps.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\gps.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\map_circle_text.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\map_circle_text.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_setting.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_setting.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\abc_ic_go_search_api_material.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable\\abc_ic_go_search_api_material.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\greenprogress.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\greenprogress.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\common_google_signin_btn_text_dark_focused.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.4.0.aar\\8dd36e9b80d851ee437d5fdf6e7eb9e4\\res\\drawable\\common_google_signin_btn_text_dark_focused.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\appointment_border_text.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\appointment_border_text.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\play_video.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\play_video.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_ic_expanded_controller_pause.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_ic_expanded_controller_pause.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\star_img2.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\star_img2.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\common_google_signin_btn_text_disabled.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.4.0.aar\\8dd36e9b80d851ee437d5fdf6e7eb9e4\\res\\drawable\\common_google_signin_btn_text_disabled.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\backshape_normal.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\backshape_normal.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_call_white.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_call_white.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_ic_notification_disconnect.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_ic_notification_disconnect.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\document.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\document.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\play_button.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\k4l-video-trimmer-1.0.aar\\ce8e68a043d9a9ecfe0d4b111928de0c\\res\\drawable\\play_button.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\minus.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\minus.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\vritti.jpg",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\vritti.jpg"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\round_cal.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\round_cal.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\icon_prospct.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\icon_prospct.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\default_cal_select_round_cal.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\default_cal_select_round_cal.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\vworkbench.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\vworkbench.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\chat_user2.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\chat_user2.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\status.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\status.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_barcode.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_barcode.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\abc_list_selector_background_transition_holo_light.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable\\abc_list_selector_background_transition_holo_light.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\app_border_text_green.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\app_border_text_green.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\loading5.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\loading5.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\keyboard.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\keyboard.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\button_green.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\button_green.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\abc_ic_ab_back_material.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable\\abc_ic_ab_back_material.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\notification_tile_bg.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\36558538b602a41a3f8b7493d79908f8\\res\\drawable\\notification_tile_bg.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_opp_rating.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_opp_rating.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\vwb_border_complete.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\vwb_border_complete.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\receiver.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\receiver.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\message_got_receipt_from_server_onmedia.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\message_got_receipt_from_server_onmedia.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_plus.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_plus.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\approval_white.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\approval_white.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\text_color.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\text_color.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\app_logo.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\PM\\res\\drawable\\app_logo.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\send.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\send.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\refresh_black.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\refresh_black.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_cube.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_cube.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_ic_mini_controller_forward30.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_ic_mini_controller_forward30.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\collection_border_text.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\collection_border_text.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\abc_vector_test.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable\\abc_vector_test.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\expand.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\expand.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\img_warm_call.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\img_warm_call.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\rounded_green.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\rounded_green.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\abc_ratingbar_indicator_material.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable\\abc_ratingbar_indicator_material.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\plus.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\plus.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\abc_btn_check_material.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable\\abc_btn_check_material.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\btn_border_button_white.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\btn_border_button_white.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\login_id.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\login_id.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_ic_notification_skip_prev.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_ic_notification_skip_prev.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\mr_dialog_material_background_dark.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable\\mr_dialog_material_background_dark.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_feedback.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_feedback.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_individual_prospect.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_individual_prospect.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\btn_pause.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\btn_pause.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\side_nav_bar.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\side_nav_bar.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\group.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\group.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\mr_button_connected_dark.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable\\mr_button_connected_dark.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\mr_vol_type_audiotrack_dark.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable\\mr_vol_type_audiotrack_dark.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\message.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\message.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\backshape_selected_red.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\backshape_selected_red.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\common_google_signin_btn_icon_light_focused.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.4.0.aar\\8dd36e9b80d851ee437d5fdf6e7eb9e4\\res\\drawable\\common_google_signin_btn_icon_light_focused.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_ic_expanded_controller_closed_caption.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_ic_expanded_controller_closed_caption.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\btn_border_button.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\btn_border_button.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_ic_mini_controller_pause.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_ic_mini_controller_pause.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\loading4.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\loading4.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\backshape_normal_blue.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\backshape_normal_blue.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\locattion_border.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\locattion_border.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\backshape_normal_red.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\backshape_normal_red.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\password.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\password.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\common_google_signin_btn_icon_dark_focused.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.4.0.aar\\8dd36e9b80d851ee437d5fdf6e7eb9e4\\res\\drawable\\common_google_signin_btn_icon_dark_focused.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\backshapegreen.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\backshapegreen.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\home.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\home.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_ic_mini_controller_rewind30.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_ic_mini_controller_rewind30.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\selector_emoji_people.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\SuperNova-Emoji-1.1.aar\\53e46f8ca5ef55fc7a0c6e6faf85f9ab\\res\\drawable\\selector_emoji_people.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\pm.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\pm.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_refresh.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_refresh.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\star_red.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\star_red.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\icon_group.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\icon_group.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_ic_notification_stop_live_stream.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_ic_notification_stop_live_stream.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\support.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\support.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\attachment.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\attachment.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\datasheet_icon2_white.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\datasheet_icon2_white.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\notification_icon_background.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\36558538b602a41a3f8b7493d79908f8\\res\\drawable\\notification_icon_background.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\vwb_logo.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\vwb_logo.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\fvl_selector_pause.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\fullscreenvideoview-1.1.2.aar\\4aacdf712e3d54b23c52389f91ec2cb7\\res\\drawable\\fvl_selector_pause.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\mr_media_pause_light.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable\\mr_media_pause_light.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\refresh24.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\refresh24.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\abc_list_selector_holo_dark.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable\\abc_list_selector_holo_dark.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\icon_plus.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\icon_plus.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\location.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\location.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_add_friend.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_add_friend.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_search.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_search.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_float_button.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_float_button.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\abc_text_cursor_material.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable\\abc_text_cursor_material.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\dark_blue_border.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\dark_blue_border.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cancel.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\cancel.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\common_google_signin_btn_icon_dark.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.4.0.aar\\8dd36e9b80d851ee437d5fdf6e7eb9e4\\res\\drawable\\common_google_signin_btn_icon_dark.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\travelplan.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\travelplan.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\common_google_signin_btn_icon_disabled.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.4.0.aar\\8dd36e9b80d851ee437d5fdf6e7eb9e4\\res\\drawable\\common_google_signin_btn_icon_disabled.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\chat_user1.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\chat_user1.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\done_background_color.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\datetimepicker-0.2.0.aar\\8906d3585d46b2715ac85166304b9464\\res\\drawable\\done_background_color.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_calling.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_calling.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_mob.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_mob.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\img_hot_call.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\img_hot_call.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\refresh.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\refresh.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\star_img.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\star_img.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\attach.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\attach.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\starred1.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\starred1.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\circular_background.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\circular_background.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_expanded_controller_actionbar_bg_gradient_light.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_expanded_controller_actionbar_bg_gradient_light.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_ic_mini_controller_play.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_ic_mini_controller_play.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\abc_dialog_material_background.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable\\abc_dialog_material_background.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\pause_white.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\pause_white.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\birthday_icon.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\birthday_icon.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\conference.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\conference.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_ic_mini_controller_closed_caption.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_ic_mini_controller_closed_caption.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\edit_text.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\edit_text.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_minus.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_minus.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\icon_service_rpt.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\icon_service_rpt.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\mr_media_play_dark.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable\\mr_media_play_dark.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_expand.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_expand.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\img_edit.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\img_edit.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\loading2.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\loading2.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ticket_white.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ticket_white.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_expanded_controller_seekbar_track.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_expanded_controller_seekbar_track.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\bubble_corner.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\bubble_corner.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\button_border.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\button_border.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\meeting_icon.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\meeting_icon.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\gray_border_wo_padding.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\gray_border_wo_padding.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\media_pause.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\media_pause.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\circle.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\circle.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\calenda1.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\calenda1.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\rounded_textview.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\rounded_textview.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_expand_arrow.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_expand_arrow.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\navigation_empty_icon.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\2a4762706393415c04fa065e59894d9a\\res\\drawable\\navigation_empty_icon.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\notification_bg.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\36558538b602a41a3f8b7493d79908f8\\res\\drawable\\notification_bg.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\common_google_signin_btn_icon_dark_normal.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.4.0.aar\\8dd36e9b80d851ee437d5fdf6e7eb9e4\\res\\drawable\\common_google_signin_btn_icon_dark_normal.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\user.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\user.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_mini_controller_gradient_light.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_mini_controller_gradient_light.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\notification_icon.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\notification_icon.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\circle_text.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\circle_text.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\design_bottom_navigation_item_background.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\2a4762706393415c04fa065e59894d9a\\res\\drawable\\design_bottom_navigation_item_background.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\heade_chat_textview.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\heade_chat_textview.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\common_google_signin_btn_text_dark.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.4.0.aar\\8dd36e9b80d851ee437d5fdf6e7eb9e4\\res\\drawable\\common_google_signin_btn_text_dark.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_timer.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_timer.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_ic_expanded_controller_forward30.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_ic_expanded_controller_forward30.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\mr_button_connecting_dark.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable\\mr_button_connecting_dark.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_skip_ad_label_border.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_skip_ad_label_border.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\backshape_blue.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\backshape_blue.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\collection.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\collection.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\abc_item_background_holo_dark.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable\\abc_item_background_holo_dark.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_expand_1.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_expand_1.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_play_arrow.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_play_arrow.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\icon_map.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\icon_map.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_enquiry.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_enquiry.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_ic_expanded_controller_skip_previous.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_ic_expanded_controller_skip_previous.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\crm_logo.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\crm_logo.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\settings.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\settings.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_ic_expanded_controller_play.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_ic_expanded_controller_play.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\team_final.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\team_final.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\selector_emoji_recent.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\SuperNova-Emoji-1.1.aar\\53e46f8ca5ef55fc7a0c6e6faf85f9ab\\res\\drawable\\selector_emoji_recent.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\abc_cab_background_top_material.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable\\abc_cab_background_top_material.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\abc_item_background_holo_light.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable\\abc_item_background_holo_light.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\abc_btn_radio_material.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable\\abc_btn_radio_material.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\vworkbench_.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\vworkbench_.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\abc_ratingbar_material.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable\\abc_ratingbar_material.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_ic_notification_connecting.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-11.4.0.aar\\c4dcc4afd5bb24f766280f416e367a39\\res\\drawable\\cast_ic_notification_connecting.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\circle_background.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\circle_background.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\otp_border_text.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\otp_border_text.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\design_snackbar_background.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\2a4762706393415c04fa065e59894d9a\\res\\drawable\\design_snackbar_background.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\balloon_outgoing_normal.9.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\balloon_outgoing_normal.9.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\list_icon.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\list_icon.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\arrow_state_blue_expanded.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\arrow_state_blue_expanded.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\progress_hud_bg.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\progress_hud_bg.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_travel.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_travel.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_home.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_home.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\mr_dialog_close_light.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable\\mr_dialog_close_light.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\mobiletrue.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\mobiletrue.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\gpss.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\gpss.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\mr_group_expand.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable\\mr_group_expand.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\abc_ic_menu_overflow_material.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable\\abc_ic_menu_overflow_material.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\feedback_border_text.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\feedback_border_text.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_float_add_group.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_float_add_group.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_collection.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_collection.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\abc_ratingbar_small_material.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable\\abc_ratingbar_small_material.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_ic_mini_controller_mute.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_ic_mini_controller_mute.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\loading3.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\loading3.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\calendar3.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\calendar3.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\abc_ic_clear_material.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable\\abc_ic_clear_material.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_profile.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_profile.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_audio.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_audio.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\refresh_final.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\refresh_final.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\selector_emoji_travel.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\SuperNova-Emoji-1.1.aar\\53e46f8ca5ef55fc7a0c6e6faf85f9ab\\res\\drawable\\selector_emoji_travel.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\crm_logo_2.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\crm_logo_2.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\reminder.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\reminder.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\abc_textfield_search_material.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable\\abc_textfield_search_material.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\abc_btn_colored_material.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable\\abc_btn_colored_material.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\backshape_red.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\backshape_red.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_rating.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_rating.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\abc_list_selector_background_transition_holo_dark.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable\\abc_list_selector_background_transition_holo_dark.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\edittext.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\edittext.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\abc_ic_voice_search_api_material.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable\\abc_ic_voice_search_api_material.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\abc_btn_default_mtrl_shape.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable\\abc_btn_default_mtrl_shape.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_ic_mini_controller_stop.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_ic_mini_controller_stop.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_next.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_next.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_otp.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_otp.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\message_got_receipt_from_server.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\message_got_receipt_from_server.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\right.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\right.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\team_border_text.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\team_border_text.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\mr_media_pause_dark.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable\\mr_media_pause_dark.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cal_select_round_cal.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\cal_select_round_cal.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\rounded_white.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\rounded_white.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\backshape_selected_orange.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\backshape_selected_orange.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\design_password_eye.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\2a4762706393415c04fa065e59894d9a\\res\\drawable\\design_password_eye.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\circular_count_background.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\circular_count_background.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\backshape.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\backshape.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\myteam.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\myteam.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\vwb_border_assigned.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\vwb_border_assigned.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\abc_list_selector_holo_light.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable\\abc_list_selector_holo_light.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\calender.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\calender.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\addtravelplan.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\addtravelplan.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_pomotional_form.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_pomotional_form.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\bg.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\bg.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\enquiry.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\enquiry.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_delete.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_delete.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\mr_button_connecting_light.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable\\mr_button_connecting_light.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_ic_expanded_controller_mute.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_ic_expanded_controller_mute.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\message_got_receipt_from_target_onmedia.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\message_got_receipt_from_target_onmedia.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\mr_vol_type_audiotrack_light.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable\\mr_vol_type_audiotrack_light.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\mr_button_dark.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable\\mr_button_dark.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_send.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_send.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\url.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\url.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_tab_group.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_tab_group.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\spinner.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\spinner.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\add_user.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\add_user.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_ic_notification_forward30.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_ic_notification_forward30.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\menu.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\menu.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\star.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\star.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_receipt.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_receipt.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_web.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_web.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\timesheet_entry.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\timesheet_entry.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_ic_notification_small_icon.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_ic_notification_small_icon.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\customborder.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\customborder.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\mr_button_light.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable\\mr_button_light.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\tooltip_frame_dark.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable\\tooltip_frame_dark.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\notification_bg_low.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\36558538b602a41a3f8b7493d79908f8\\res\\drawable\\notification_bg_low.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\finance.jpg",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\finance.jpg"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_edit.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_edit.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_video.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_video.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_ic_expanded_controller_stop.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_ic_expanded_controller_stop.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_ic_mini_controller_skip_prev.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_ic_mini_controller_skip_prev.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_ic_notification_rewind30.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_ic_notification_rewind30.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_ic_mini_controller_pause_large.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_ic_mini_controller_pause_large.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\tooltip_frame_light.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable\\tooltip_frame_light.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\selector_emoji_food.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\SuperNova-Emoji-1.1.aar\\53e46f8ca5ef55fc7a0c6e6faf85f9ab\\res\\drawable\\selector_emoji_food.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\border.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\border.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\mobilefalse.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\mobilefalse.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\refresh20.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\refresh20.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\vworkbench1.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\vworkbench1.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\common_google_signin_btn_icon_light_normal.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.4.0.aar\\8dd36e9b80d851ee437d5fdf6e7eb9e4\\res\\drawable\\common_google_signin_btn_icon_light_normal.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\selector_emoji_objects.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\SuperNova-Emoji-1.1.aar\\53e46f8ca5ef55fc7a0c6e6faf85f9ab\\res\\drawable\\selector_emoji_objects.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_critical.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_critical.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\abc_seekbar_track_material.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable\\abc_seekbar_track_material.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_ic_mini_controller_skip_next.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_ic_mini_controller_skip_next.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\opportinities.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\opportinities.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\selector_emoji_nature.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\SuperNova-Emoji-1.1.aar\\53e46f8ca5ef55fc7a0c6e6faf85f9ab\\res\\drawable\\selector_emoji_nature.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_mini_controller_progress_drawable.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_mini_controller_progress_drawable.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_accept_cr_group.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_accept_cr_group.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\border_black.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\border_black.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_qr.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_qr.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\selector_emoji_activity.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\SuperNova-Emoji-1.1.aar\\53e46f8ca5ef55fc7a0c6e6faf85f9ab\\res\\drawable\\selector_emoji_activity.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_ic_notification_forward10.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_ic_notification_forward10.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\crmlogowhite.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\crmlogowhite.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_forword_arrow.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_forword_arrow.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\crm_logo_icon.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\crm_logo_icon.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_play.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_play.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\simplify.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\simplify.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\calendar2.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\calendar2.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_ic_notification_rewind10.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_ic_notification_rewind10.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\rating_border_text.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\rating_border_text.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\que.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\que.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\chat_message.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\chat_message.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_tab_person.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_tab_person.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_opportunity_update.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_opportunity_update.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\icon_video.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\icon_video.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\pdf.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\pdf.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\black_button_background.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\k4l-video-trimmer-1.0.aar\\ce8e68a043d9a9ecfe0d4b111928de0c\\res\\drawable\\black_button_background.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\coldcall.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\coldcall.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\mr_group_collapse.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable\\mr_group_collapse.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\calendar.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\calendar.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_previous.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_previous.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\abc_seekbar_thumb_material.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable\\abc_seekbar_thumb_material.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\common_google_signin_btn_text_dark_normal.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.4.0.aar\\8dd36e9b80d851ee437d5fdf6e7eb9e4\\res\\drawable\\common_google_signin_btn_text_dark_normal.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\setfocus.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\setfocus.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_ad_receipt.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_ad_receipt.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\chat_popup_back.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\chat_popup_back.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\appointment.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\appointment.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\crm_logo_1.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\crm_logo_1.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\abc_btn_borderless_material.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable\\abc_btn_borderless_material.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\gallery.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\gallery.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\vwb_border_critical.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\vwb_border_critical.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\menu1.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\menu1.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\backshape_selected_blue.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\backshape_selected_blue.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\mr_dialog_material_background_light.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable\\mr_dialog_material_background_light.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_add.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_add.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\chat_rounded.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\chat_rounded.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\bg_spinner.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\bg_spinner.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\selector_emoji_symbols.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\SuperNova-Emoji-1.1.aar\\53e46f8ca5ef55fc7a0c6e6faf85f9ab\\res\\drawable\\selector_emoji_symbols.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\abc_switch_thumb_material.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable\\abc_switch_thumb_material.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\common_google_signin_btn_text_light_normal.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.4.0.aar\\8dd36e9b80d851ee437d5fdf6e7eb9e4\\res\\drawable\\common_google_signin_btn_text_light_normal.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\call.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\call.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_ic_notification_play.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_ic_notification_play.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\wip_white.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\wip_white.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\dots.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\dots.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\mr_button_connected_light.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable\\mr_button_connected_light.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\icon_contact.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\icon_contact.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\collapse.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\collapse.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_expanded_controller_seekbar_thumb.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_expanded_controller_seekbar_thumb.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\done_background_color_dark.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\datetimepicker-0.2.0.aar\\8906d3585d46b2715ac85166304b9464\\res\\drawable\\done_background_color_dark.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\profile_contact.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\profile_contact.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\message_got_read_receipt_from_target_onmedia.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\message_got_read_receipt_from_target_onmedia.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\message_got_read_receipt_from_target.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\message_got_read_receipt_from_target.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\group_2.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\group_2.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\edittext_boder.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\edittext_boder.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\search.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\search.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_ic_notification_forward.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_ic_notification_forward.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\vwb_border_overdue.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\vwb_border_overdue.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\abc_cab_background_internal_bg.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable\\abc_cab_background_internal_bg.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\hotcall.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\hotcall.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\backshape_normal_orange.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\backshape_normal_orange.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\abc_seekbar_tick_mark_material.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable\\abc_seekbar_tick_mark_material.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\backvwb_logo.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\backvwb_logo.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\design_fab_background.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\2a4762706393415c04fa065e59894d9a\\res\\drawable\\design_fab_background.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\circle_round.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\circle_round.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\abc_tab_indicator_material.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable\\abc_tab_indicator_material.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\active_menu.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\active_menu.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_businaee_prospect.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_businaee_prospect.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\common_google_signin_btn_text_light.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.4.0.aar\\8dd36e9b80d851ee437d5fdf6e7eb9e4\\res\\drawable\\common_google_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\backshape_selected_green.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\backshape_selected_green.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\opp_border_text.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\opp_border_text.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\vworkbenchsplash.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\vworkbenchsplash.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_appointment.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_appointment.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_groups.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_groups.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\user_profile.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\user_profile.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_info.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_info.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\loading6.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\loading6.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\mr_dialog_close_dark.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable\\mr_dialog_close_dark.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\chat_rounded_corner.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\chat_rounded_corner.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\abc_spinner_textfield_background_material.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable\\abc_spinner_textfield_background_material.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\email_icon_white.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\email_icon_white.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\btn_play.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\btn_play.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_offline_data.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_offline_data.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\balloon_incoming_normal.9.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\balloon_incoming_normal.9.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_opportunity.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_opportunity.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\fvl_progress.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\fullscreenvideoview-1.1.2.aar\\4aacdf712e3d54b23c52389f91ec2cb7\\res\\drawable\\fvl_progress.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\share_rounded.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\share_rounded.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\capsuleshape.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\capsuleshape.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_add_user.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_add_user.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\common_google_signin_btn_text_light_focused.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.4.0.aar\\8dd36e9b80d851ee437d5fdf6e7eb9e4\\res\\drawable\\common_google_signin_btn_text_light_focused.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\fvl_selector_fullscreen.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\fullscreenvideoview-1.1.2.aar\\4aacdf712e3d54b23c52389f91ec2cb7\\res\\drawable\\fvl_selector_fullscreen.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\business_edit_text.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\business_edit_text.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\icon_list.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\icon_list.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\camera.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\camera.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\backshape_normal_green.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\backshape_normal_green.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\add_chat.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\add_chat.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\ic_pause.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\ic_pause.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_expanded_controller_bg_gradient_light.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_expanded_controller_bg_gradient_light.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\backshape_orange.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\backshape_orange.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\sender.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\sender.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\message_got_receipt_from_target.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\message_got_receipt_from_target.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\pd.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\pd.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\backshape_selected.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\backshape_selected.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\vwb_border_unapprove.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\vwb_border_unapprove.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_ic_mini_controller_play_large.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_ic_mini_controller_play_large.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\gradient_spinner.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\gradient_spinner.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\icon_calender.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\icon_calender.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\button_orange.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable\\button_orange.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\common_google_signin_btn_icon_light.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.4.0.aar\\8dd36e9b80d851ee437d5fdf6e7eb9e4\\res\\drawable\\common_google_signin_btn_icon_light.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable\\cast_ic_notification_pause.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable\\cast_ic_notification_pause.xml"
+    }
+]

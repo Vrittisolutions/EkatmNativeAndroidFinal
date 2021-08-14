@@ -1,0 +1,964 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.vritti.sales.activity.AddDirectItemActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme"
+        android:visibility="visible"
+        android:background="@color/colorPrimary1">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar1"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            app:popupTheme="@style/AppTheme">
+
+            <ProgressBar
+                android:id="@+id/toolbar_progress_Assgnwork"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="8dp"
+                android:indeterminateDrawable="@drawable/spinner"
+                android:visibility="gone" />
+
+            <!--<TextView
+                android:id="@+id/txtdispcnt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:paddingRight="10dp"
+                android:textColor="#FFFFFF"
+                android:gravity="right"
+                android:layout_gravity="right"/>-->
+
+            <Button
+                android:id="@+id/btncreateitem"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="Create Item"
+                android:gravity="center"
+                android:layout_gravity="right"
+                android:textSize="12sp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/white" />
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Display Sequence"
+                        android:textSize="14sp"
+                        android:paddingRight="10dp"
+                        android:textColor="#111111" />
+
+                    <EditText
+                        android:id="@+id/txtdispcnt"
+                        android:layout_width="35dp"
+                        android:layout_height="25dp"
+                        android:background="@drawable/border"
+                        android:text="10"
+                        android:inputType="number"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:paddingRight="5dp"
+                        android:textSize="13sp"/>
+
+                </LinearLayout>
+
+                <!--itemcode-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clipToPadding="false"
+                            android:paddingLeft="0dp"
+                            android:hint="Item Code"
+                            android:textSize="14sp"
+                            android:layout_weight="0.5">
+
+                            <EditText
+                                android:id="@+id/edtitemcode"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:textSize="14sp"
+                                android:gravity="center_vertical"
+                                android:layout_gravity="center_vertical"
+                                android:editable="false"
+                                android:focusable="false"
+                                android:drawableRight="@drawable/places_ic_search" />
+
+                        </android.support.design.widget.TextInputLayout>
+
+                        <!--<ImageView
+                            android:id="@+id/img_createitem"
+                            android:layout_width="30dp"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/tbuds_add_1" />-->
+                    </LinearLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:paddingLeft="0dp"
+                        android:hint="Item Description"
+                        android:textSize="14sp"
+                        android:layout_weight="0.5">
+
+                        <EditText
+                            android:id="@+id/edtitemdesc"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:textSize="14sp"
+                            android:gravity="center_vertical"
+                            android:layout_gravity="center_vertical"
+                            android:editable="false"
+                            android:focusable="false"
+                            android:drawableRight="@drawable/places_ic_search" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                   <!-- <ImageView
+                        android:id="@+id/img_createitem"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/tbuds_add_1" />-->
+
+                </LinearLayout>
+
+                <!--remark-->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingLeft="0dp"
+                    android:hint="Remark"
+                    android:textSize="14sp"
+                    android:layout_weight="0.5">
+
+                    <EditText
+                        android:id="@+id/edt_remark"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="0dp"
+                        android:paddingLeft="7dp"
+                        android:hint=""
+                        android:maxLines="5"
+                        android:inputType="text"
+                        android:textSize="14sp"
+                        android:textColor="#111"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <!--schedulebtns-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnsoschedule"
+                        android:layout_width="match_parent"
+                        android:layout_height="35sp"
+                        android:text="SO Schedule"
+                        android:textSize="12sp"
+                        android:textColor="#FFFFFF"
+                        android:textAllCaps="false"
+                        android:background="@drawable/tbuds_btn_pressed_2"
+                        android:layout_weight="0.35"
+                        android:layout_margin="5dp"/>
+
+                    <Button
+                        android:id="@+id/btnperiodic"
+                        android:layout_width="match_parent"
+                        android:layout_height="35sp"
+                        android:text="Periodic Schedule"
+                        android:textSize="12sp"
+                        android:textColor="#FFFFFF"
+                        android:textAllCaps="false"
+                        android:background="@drawable/tbuds_btn_pressed_2"
+                        android:layout_weight="0.3"
+                        android:layout_margin="5dp"
+                        android:visibility="gone"/>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:paddingLeft="0dp"
+                        android:hint="Size/Volume"
+                        android:textSize="14sp"
+                        android:layout_weight="0.3">
+
+                        <EditText
+                            android:id="@+id/edtsize"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="0dp"
+                            android:paddingLeft="7dp"
+                            android:hint=""
+                            android:maxLines="5"
+                            android:inputType="numberDecimal"
+                            android:textSize="14sp"
+                            android:textColor="#111"/>
+
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+              <!--  &lt;!&ndash;qty to lineamt&ndash;&gt;
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clipToPadding="false"
+                            android:paddingLeft="0dp"
+                            android:hint="Quantity"
+                            android:textSize="14sp"
+                            android:layout_weight="0.5">
+
+                            <EditText
+                                android:id="@+id/edtqty"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginBottom="0dp"
+                                android:paddingLeft="7dp"
+                                android:hint=""
+                                android:maxLines="5"
+                                android:inputType="text"
+                                android:textSize="14sp"
+                                android:textColor="#111"/>
+
+                        </android.support.design.widget.TextInputLayout>
+
+                        <Spinner
+                            android:id="@+id/spinuom"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_weight="0.5"
+                            android:spinnerMode="dropdown"
+                            android:background="@drawable/border"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clipToPadding="false"
+                            android:paddingLeft="0dp"
+                            android:hint="Unit rate"
+                            android:textSize="14sp"
+                            android:layout_weight="0.5">
+
+                            <EditText
+                                android:id="@+id/edtunitrate"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginBottom="0dp"
+                                android:paddingLeft="7dp"
+                                android:hint=""
+                                android:maxLines="5"
+                                android:inputType="text"
+                                android:textSize="14sp"
+                                android:textColor="#111"/>
+
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clipToPadding="false"
+                            android:paddingLeft="0dp"
+                            android:hint="Line Amt"
+                            android:textSize="14sp"
+                            android:layout_weight="0.5">
+
+                            <EditText
+                                android:id="@+id/edtlineamt"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginBottom="0dp"
+                                android:paddingLeft="7dp"
+                                android:hint=""
+                                android:maxLines="5"
+                                android:inputType="text"
+                                android:textSize="14sp"
+                                android:textColor="#111"/>
+
+                        </android.support.design.widget.TextInputLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginRight="10dp">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:paddingLeft="0dp"
+                        android:hint="Tax Class"
+                        android:textSize="14sp"
+                        android:layout_weight="0.55">
+
+                        <EditText
+                            android:id="@+id/edtaxclass"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginBottom="0dp"
+                            android:paddingLeft="7dp"
+                            android:hint=""
+                            android:maxLines="5"
+                            android:inputType="text"
+                            android:textSize="14sp"
+                            android:textColor="#111"
+                            android:editable="false"
+                            android:focusable="false"
+                            android:drawableRight="@drawable/places_ic_search"/>
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <ImageView
+                        android:id="@+id/imgtaxdetails"
+                        android:layout_width="40dp"
+                        android:layout_height="25dp"
+                        android:padding="5dp"
+                        android:src="@drawable/taxdetail"
+                        android:background="#ededed"
+                        android:layout_gravity="center_vertical" />
+                    <!---->
+
+                </LinearLayout>
+
+                <Switch
+                    android:id="@+id/swtincltax"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rate Inclusive of tax % "
+                    android:paddingLeft="7dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/red"
+                    android:layout_gravity="center_vertical|left"
+                    android:gravity="center|left"/>
+
+                <!--qty to lineamt-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:paddingLeft="0dp"
+                        android:textSize="14sp"
+                        android:hint="Qty"
+                        android:layout_weight="0.58">
+
+                        <EditText
+                            android:id="@+id/edtqty"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="0dp"
+                            android:layout_marginBottom="0dp"
+                            android:paddingLeft="7dp"
+                            android:maxLines="1"
+                            android:inputType="numberDecimal"
+                            android:textSize="14sp"
+                            android:textColor="#111"/>
+
+                    </android.support.design.widget.TextInputLayout>
+
+               <!--     <Spinner
+                        android:id="@+id/spinuom"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_weight="0.55"
+                        android:spinnerMode="dropdown"
+                        android:layout_marginTop="13dp"
+                        android:background="@drawable/border"/>-->
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:paddingLeft="0dp"
+                        android:textSize="14sp"
+                        android:layout_weight="0.55">
+                        <!--    android:hint="UOM"-->
+
+                        <AutoCompleteTextView
+                            android:id="@+id/spinuom"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginLeft="2dp"
+                            android:layout_marginRight="0dp"
+                            android:layout_marginBottom="0dp"
+                            android:paddingLeft="7dp"
+                            android:hint="UOM"
+                            android:maxLines="1"
+                            android:inputType="text"
+                            android:textSize="14sp"
+                            android:textColor="#111" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:paddingLeft="0dp"
+                        android:hint="Unit rate"
+                        android:textSize="14sp"
+                        android:layout_weight="0.55">
+
+                        <EditText
+                            android:id="@+id/edtunitrate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginLeft="2dp"
+                            android:layout_marginRight="0dp"
+                            android:layout_marginBottom="0dp"
+                            android:paddingLeft="7dp"
+                            android:hint=""
+                            android:maxLines="1"
+                            android:inputType="numberDecimal"
+                            android:textSize="14sp"
+                            android:textColor="#111"/>
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:hint="Margin"
+                        android:textSize="12sp"
+                        android:layout_weight="0.55">
+
+                        <EditText
+                            android:id="@+id/edtmargin"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginLeft="2dp"
+                            android:layout_marginRight="0dp"
+                            android:layout_marginBottom="0dp"
+                            android:paddingLeft="7dp"
+                            android:hint=""
+                            android:text="0"
+                            android:inputType="number"
+                            android:textSize="14sp"
+                            android:textColor="#111"/>
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:paddingLeft="0dp"
+                        android:hint="Line Amt"
+                        android:textSize="14sp"
+                        android:layout_weight="0.45"
+                        android:background="#ededed"
+                        android:visibility="visible">
+
+                        <EditText
+                            android:id="@+id/edtlineamt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginLeft="2dp"
+                            android:layout_marginRight="2dp"
+                            android:layout_marginBottom="0dp"
+                            android:paddingLeft="7dp"
+                            android:hint=""
+                            android:maxLines="1"
+                            android:editable="false"
+                            android:focusable="false"
+                            android:clickable="false"
+                            android:inputType="numberDecimal"
+                            android:textSize="14sp"
+                            android:textColor="#111"/>
+
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+                <!--proratefor-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:visibility="gone">
+
+                    <android.support.v7.widget.AppCompatCheckBox
+                        android:id="@+id/radbtnprorate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:text="Pro rata :  Unit rate is for" />
+                    <!--       android:layout_weight="0.5"-->
+
+                    <LinearLayout
+                        android:id="@+id/layprorate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="0.5"
+                        android:visibility="visible">
+
+                        <EditText
+                            android:id="@+id/edtdaycnt"
+                            android:layout_width="30dp"
+                            android:layout_height="25dp"
+                            android:background="@drawable/border"
+                            android:text="1"
+                            android:inputType="number"
+                            android:layout_gravity="center|right"
+                            android:gravity="center|right"
+                            android:paddingRight="5dp"
+                            android:textSize="13sp"/>
+
+                        <!--<Spinner
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:layout_weight="0.5"
+                            android:spinnerMode="dropdown"
+                            android:background="@drawable/border"/>-->
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:clipToPadding="false"
+                            android:paddingLeft="0dp"
+                            android:layout_marginBottom="10dp">
+                            <!-- android:layout_weight="0.65"-->
+
+                            <AutoCompleteTextView
+                                android:id="@+id/spindays"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical|left"
+                                android:gravity="center|left"
+                                android:textColor="#111"
+                                android:textSize="12sp"
+                                android:paddingLeft="10sp"
+                                android:drawableRight="@drawable/tbuds_ic_expand"/>
+
+                        </android.support.design.widget.TextInputLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!--discount-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!--<Switch
+                        android:id="@+id/swtchdisc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Disc in %   "
+                        android:paddingLeft="7dp"
+                        android:textSize="12sp"
+                        android:layout_gravity="center_vertical|left"
+                        android:gravity="center|left"/>-->
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:paddingLeft="0dp"
+                        android:hint="Discount"
+                        android:textSize="14sp"
+                        android:layout_weight="0.65">
+                        <!-- -->
+
+                        <AutoCompleteTextView
+                            android:id="@+id/edt_disc_option"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical|left"
+                            android:gravity="center|left"
+                            android:textColor="#111"
+                            android:textSize="14sp"
+                            android:paddingLeft="10sp"
+                            android:drawableRight="@drawable/tbuds_ic_expand"/>
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/txtlaydisc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:paddingLeft="0dp"
+                        android:hint="%"
+                        android:textSize="14sp"
+                        android:layout_weight="0.65">
+
+                        <EditText
+                            android:id="@+id/edtdisc"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginLeft="0dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginBottom="0dp"
+                            android:paddingLeft="7dp"
+                            android:hint=""
+                            android:maxLines="5"
+                            android:inputType="numberDecimal"
+                            android:textSize="14sp"
+                            android:textColor="#111"/>
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:paddingLeft="0dp"
+                        android:hint="Disc Amt"
+                        android:textSize="14sp"
+                        android:layout_weight="0.45"
+                        android:background="#ededed">
+
+                        <EditText
+                            android:id="@+id/edtdiscamt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="0dp"
+                            android:paddingLeft="7dp"
+                            android:hint=""
+                            android:maxLines="5"
+                            android:inputType="numberDecimal"
+                            android:textSize="14sp"
+                            android:editable="false"
+                            android:enabled="false"
+                            android:focusable="false"
+                            android:textColor="#111"/>
+
+                    </android.support.design.widget.TextInputLayout>
+
+
+                </LinearLayout>
+
+                <!--tax-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!--<LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginRight="10dp">
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clipToPadding="false"
+                            android:paddingLeft="0dp"
+                            android:hint="Tax Class"
+                            android:textSize="14sp"
+                            android:layout_weight="0.55">
+
+                            <EditText
+                                android:id="@+id/edtaxclass"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginBottom="0dp"
+                                android:paddingLeft="7dp"
+                                android:hint=""
+                                android:maxLines="5"
+                                android:inputType="text"
+                                android:textSize="14sp"
+                                android:textColor="#111"
+                                android:editable="false"
+                                android:focusable="false"
+                                android:drawableRight="@drawable/places_ic_search"/>
+
+                        </android.support.design.widget.TextInputLayout>
+
+                        <ImageView
+                            android:id="@+id/imgtaxdetails"
+                            android:layout_width="40dp"
+                            android:layout_height="25dp"
+                            android:padding="5dp"
+                            android:src="@drawable/taxdetail"
+                            android:background="#ededed"
+                            android:layout_gravity="center_vertical" />
+                        &lt;!&ndash;&ndash;&gt;
+
+                    </LinearLayout>-->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp">
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clipToPadding="false"
+                            android:paddingLeft="0dp"
+                            android:hint="Tax amount"
+                            android:textSize="14sp"
+                            android:layout_weight="0.45"
+                            android:background="#ededed">
+
+                            <EditText
+                                android:id="@+id/txt_taxamt"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginBottom="0dp"
+                                android:layout_gravity="center_vertical"
+                                android:gravity="center_vertical"
+                                android:paddingRight="10dp"
+                                android:enabled="false"
+                                android:editable="false"
+                                android:focusable="false"
+                                android:clickable="false"
+                                android:textSize="14sp"
+                                android:textColor="#111" />
+                        </android.support.design.widget.TextInputLayout>
+
+                        <!--ic_menu_material-->
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clipToPadding="false"
+                            android:paddingLeft="0dp"
+                            android:hint="Amount"
+                            android:textSize="14sp"
+                            android:layout_weight="0.45"
+                            android:background="#ededed">
+
+                            <EditText
+                                android:id="@+id/txt_totamt"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginBottom="0dp"
+                                android:paddingRight="10dp"
+                                android:enabled="false"
+                                android:editable="false"
+                                android:focusable="false"
+                                android:clickable="false"
+                                android:layout_gravity="center_vertical"
+                                android:gravity="center_vertical"
+                                android:textSize="14sp"
+                                android:textColor="#111" />
+                        </android.support.design.widget.TextInputLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!--warranty-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clipToPadding="false"
+                            android:paddingLeft="0dp"
+                            android:hint="Warranty Code"
+                            android:textSize="14sp"
+                            android:layout_weight="0.6">
+
+                            <AutoCompleteTextView
+                                android:id="@+id/edtwarntycode"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginBottom="0dp"
+                                android:paddingLeft="7dp"
+                                android:hint=""
+                                android:maxLines="5"
+                                android:inputType="text"
+                                android:textSize="14sp"
+                                android:textColor="#111"/>
+
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clipToPadding="false"
+                            android:paddingLeft="0dp"
+                            android:hint="Warranty Description"
+                            android:textSize="14sp"
+                            android:layout_weight="0.4">
+
+                            <AutoCompleteTextView
+                                android:id="@+id/edt_wrnty_desc"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginBottom="0dp"
+                                android:paddingLeft="7dp"
+                                android:hint=""
+                                android:maxLines="5"
+                                android:inputType="text"
+                                android:textSize="14sp"
+                                android:textColor="#111"/>
+
+                        </android.support.design.widget.TextInputLayout>
+
+                    </LinearLayout>
+
+                    <android.support.v7.widget.AppCompatCheckBox
+                        android:id="@+id/chk_allow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Allow Partial Shipment"
+                        android:layout_weight="0.5"
+                        android:layout_gravity="center_vertical"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnadditem"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:text="Add Item"
+                android:textSize="14dp"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/tbuds_btn_pressed"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

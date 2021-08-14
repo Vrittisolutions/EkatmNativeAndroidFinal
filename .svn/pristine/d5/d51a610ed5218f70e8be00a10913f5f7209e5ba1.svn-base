@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/claim_row"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:padding="5dp">
+
+    <RelativeLayout
+        android:id="@+id/statusLayout"
+        android:layout_width="70dp"
+        android:layout_height="70dp">
+
+        <RelativeLayout
+            android:id="@+id/statusLayout1"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/claim_status_border">
+
+            <TextView
+                android:id="@+id/recordId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:ellipsize="end"
+                android:lines="1"
+                android:padding="5dp"
+                android:text=""
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/sp_12" />
+
+            <TextView
+                android:id="@+id/status"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/recordId"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginBottom="3dp"
+                android:background="@drawable/oreange_backgraound"
+                android:gravity="center"
+                android:text="Created"
+                android:padding="2dp"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/sp_10"
+                />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/detailsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:paddingLeft="5dp"
+        android:layout_toEndOf="@+id/statusLayout"
+        android:layout_toRightOf="@+id/statusLayout"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/claimName"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="2"
+            android:padding="3dp"
+            android:text=""
+            android:textColor="@color/black" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp">
+
+            <TextView
+                android:id="@+id/claimDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/blue_backgroung"
+                android:padding="4dp"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_12" />
+
+            <TextView
+                android:id="@+id/deptDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@id/claimDate"
+                android:background="@drawable/border_blue"
+                android:ellipsize="end"
+                android:lines="1"
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_12" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/detailsLayout"
+        android:layout_marginTop="5dp"
+        android:gravity="end">
+
+        <LinearLayout
+            android:id="@+id/claimLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/claim_status_border">
+
+            <TextView
+                android:id="@+id/claimAmt"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/oreange_backgraound"
+                android:padding="5dp"
+                android:text="0"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_10" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/claim"
+                android:textColor="@color/orange"
+                android:textSize="@dimen/sp_10" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/payLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/claimLayout"
+            android:background="@drawable/green_status_border">
+
+            <TextView
+                android:id="@+id/paidAmt"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/green_backgraound"
+                android:padding="5dp"
+                android:text="0"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_10" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/paid"
+                android:textColor="@color/green"
+                android:textSize="@dimen/sp_10" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/updateLayout"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_toRightOf="@id/payLayout">
+
+            <ImageView
+                android:id="@+id/edit"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="3dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginBottom="3dp"
+                android:layout_weight="1"
+                android:background="@color/blue_claim"
+                android:padding="4dp"
+                android:src="@drawable/editclaim" />
+
+            <ImageView
+                android:id="@+id/delete"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="3dp"
+                android:layout_weight="1"
+                android:background="@color/red"
+                android:padding="4dp"
+                android:src="@drawable/ic_delete"
+                android:tint="@color/white" />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

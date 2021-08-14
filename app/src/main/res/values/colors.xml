@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#0A9BC5</color>
+    <color name="colorPrimaryDark">#016A97</color>
+    <color name="colorAccent">#0A9BC5</color>
+    <color name="colorAccent1">#FF4081</color>
+
+    <color name="textColor">#FFF</color>
+    <color name="textFieldColor">#000</color>
+    <color name="textShadow">#FFF</color>
+    <color name="listViewBg">#DADFEE</color>
+    <color name="sendLightColor">#8897BF</color>
+    <color name="sendLightColor_1">#908897BF</color>
+    <color name="sendMeduimColor">#5D6CA5</color>
+    <color name="sendDarkColor">#515F9F</color>
+    <color name="barDarkColor">#CECECE</color>
+    <color name="barMeduimColor">#DFDEE0</color>
+    <color name="barLightColor">#F2F2F2</color>
+    <color name="tabColor">#376092</color>
+    <color name="blue">#3366FF</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="btn">#376092</color>
+    <color name="btnNext">#27C24C</color>
+    <color name="btnPrv">#F05050</color>
+    <color name="divider">#3366FF</color>
+    <color name="cyan">#33B5E5</color>
+    <color name="transparent_blue">#322100c8</color>
+
+    <color name="colorPrimarys">#f44336</color>
+    <color name="colorPrimaryDarks">#d32f2f</color>
+    <color name="colorAccents">#00c853</color>
+
+    <color name="orange">#FD8E2A</color>
+    <color name="header">#CBDFE2</color>
+    <color name="grey">#BDBDBD</color>
+
+    <color name="background">#777777</color>
+
+    <color name="divider_invisible">#0000</color>
+
+    <color name="grey_border">#888888</color>
+
+    <color name="btn_start">#DF6C63</color>
+
+    <color name="btn_mid">#D3332C</color>
+
+    <color name="btn_end">#D3332C</color>
+
+    <color name="btn_border">#712F2B</color>
+
+    <color name="dark_grey">#808080</color>
+
+    <color name="text_header_backg">#F0f0f0</color>
+    <color name="red">#EF4F4F</color>
+    <color name="purple">#7165B9</color>
+    <color name="green">#26C14B</color>
+    <color name="btnsave">#016A97</color>
+
+    <!-- E8E8E8 -->
+
+
+    <color name="dark_red">#C5000C</color>
+
+    <color name="appintment">#df55f6</color>
+    <color name="rating">#EF4F4F</color>
+    <color name="team">#FD8E2A</color>
+    <color name="hint">#666666</color>
+    <color name="colorfeedback">#FF0090</color>
+    <color name="magneta">#ff902b</color>
+    <color name="appontmentcolor">#9084dd</color>
+
+    <color name="grey_200">#EEEEEE</color>
+    <color name="grey_500">#a4a4a4</color>
+
+    <color name="chat_username_color">#FF0000</color>
+
+    <color name="colorIndivateTab">#FFFFFF</color>
+    <color name="backgroundHeader">#6E6F72</color>
+    <color name="backgroundBlue">#016A97</color>
+    <color name="backgroundSave">#27C24C</color>
+    <color name="backgroundCancel">#FF902B</color>
+    <color name="dgrey">#080808</color>
+    <color name="blue_claim">#00aeef</color>
+    <color name="light_green">#b7faae</color>
+    <color name="dual_green">#deeed3</color>
+    <color name="pink">#fe8e8e</color>
+    <color name="light_yellow">#f8fcc5</color>
+    <color name="light_blue">#e1faf6</color>
+    <color name="light_pink">#ffe2dc</color>
+    <color name="light_purpale">#f2dcfb</color>
+    <color name="purpale">#7C2BE1</color>
+    <color name="row_even">#dbe8ea</color>
+    <color name="row_odd">#f1f6f7</color>
+    <color name="blue_color">#0200AA</color>
+    <color name="replyCode">#F5720225</color>
+    <color name="replyCode1">#F5207E00</color>
+    <color name="border">#016a97</color>
+    <color name="braown_transprent">#1a000000</color>
+    <color name="green_transprent">#1a000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="card_one_color">#DBE8EA</color>
+    <color name="card_two_color">#F1F6F7</color>
+    <color name="arraive_color">#64bf9e</color>
+    <color name="loading_color">#14b6cf</color>
+    <color name="darkgrey">#D3D3D3</color>
+
+    <!-- sales/counter billing-->
+    <color name="backgroundcolor">@color/btncolordark</color>
+    <!--new Order booking theme-->
+    <!--grid box 9 colors-->
+    <color name="grid1">#f7e2f9</color>
+    <color name="grid2">#e0e0e2</color>
+    <color name="grid3">#f6d9d0</color>
+    <color name="grid4">#d9e7f4</color>
+    <color name="grid5">#fbedc8</color>
+    <color name="grid6">#eedcdc</color>
+    <color name="grid7">#dbf6d3</color>
+    <color name="grid8">#fae2ca</color>
+    <color name="grid9">#cdeff0</color>
+
+    <!--new theme-->
+    <color name="btncolordark">#1065a8</color>
+    <color name="btncolorlight">#6fa2ca</color>
+    <color name="btncolordark_orange">#fe920b</color>
+    <color name="btncolorlight_orange">#febd6c</color>
+    <color name="colorPrimary1">#fe920b</color>
+    <color name="colorPrimaryDark1">#fe920b</color>
+    <color name="colorAccent2">#fe920b</color>
+    <color name="brown">#B1773D</color>
+    <color name="viloet_light">#9b59b6</color>
+    <color name="violet_dark">#5d356d</color>
+    <color name="listselector">#fdf1d0</color>
+    <color name="navybluedark">#1065a8</color>
+    <color name="griddark">#fee9ce</color>
+    <color name="gridlight">#fef4e6</color>
+    <color name="colryellow2">#FFD911</color><!--old-->
+    <color name="colryellow">#fe920b</color>
+    <color name="gridseleblue">#87b2d3</color>
+    <color name="backgroundsplash">#FFD911</color><!--f6facb-->
+    <color name="backgrey">#dcdcdc</color>
+    <color name="selctrcolor">#87b2d3</color>
+    <color name="grey2c">#2c2c2c</color>
+    <color name="greydc">#dcdcdc</color>
+    <color name="transp">#c0000000</color>
+    <color name="greyed">#ededed</color>
+    <color name="app_theme_color_maroon">#9B1F1A</color>
+    <color name="app_theme_color_yellow">#FBDE8A</color>
+    <color name="radback_color">#FFFFFF</color>
+    <color name="alfa_green">#7FEA98</color>
+
+    <color name="leave">#4acab4</color>
+    <color name="present">#27c24c</color>
+    <color name="absent">#f05050</color>
+    <color name="roll">#f37d12</color>
+    <color name="stroke">#A9A9A9</color>
+    <color name="cold">#A1F3F9</color>
+    <color name="hot">#FE9862</color>
+    <color name="warm">#9AED21</color>
+
+<!--
+    <color name="card_back">#E5E7E9</color>
+-->
+
+    <color name="card_back">#D3D3D3</color>
+    <color name="act_1">#F05050</color>
+    <color name="act_2">#FF902B</color>
+    <color name="act_3">#27C24C</color>
+    <color name="act_4">#27C24C</color>
+
+
+
+</resources>

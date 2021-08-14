@@ -1,0 +1,104 @@
+package com.vritti.crm.adapter;
+
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.PopupMenu;
+import android.widget.TextView;
+
+import com.vritti.crm.bean.BankDetails;
+import com.vritti.crm.vcrm7.EntityMasterBankActivity;
+import com.vritti.ekatm.R;
+
+import java.util.ArrayList;
+
+public class EntityMasterBankDetailsAdapter extends RecyclerView.Adapter<EntityMasterBankDetailsAdapter.BankHolder> {
+
+    ArrayList<BankDetails> bankDetailsArrayList;
+    Context context;
+
+    public EntityMasterBankDetailsAdapter(Context context, ArrayList<BankDetails> bankDetailsArrayList) {
+        this.bankDetailsArrayList = bankDetailsArrayList;
+        this.context = context;
+    }
+
+    @NonNull
+    @Override
+    public BankHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_entity_master_bank_row,
+                parent, false);
+
+        return new BankHolder(itemView);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull BankHolder holder, int position) {
+
+        try{
+
+            holder.txt_payeeName.setText(bankDetailsArrayList.get(position).getPayeeName());
+            holder.txt_accountNo.setText(bankDetailsArrayList.get(position).getAccountNo());
+            holder.txt_AccType.setText(bankDetailsArrayList.get(position).getAccountType());
+            holder.txt_bankAddress.setText(bankDetailsArrayList.get(position).getBankAddress());
+            holder.txt_bankName.setText(bankDetailsArrayList.get(position).getBankName());
+            holder.txt_branch.setText(bankDetailsArrayList.get(position).getBranch());
+            holder.txt_IFSCcode.setText(bankDetailsArrayList.get(position).getIFSCCode());
+            holder.txt_remittanceInst.setText(bankDetailsArrayList.get(position).getRemittanceInstruction());
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return bankDetailsArrayList.size();
+    }
+
+
+    public class BankHolder extends RecyclerView.ViewHolder {
+
+        TextView txt_payeeName,txt_bankName,txt_branch,txt_bankAddress,
+                txt_accountNo,txt_AccType,txt_IFSCcode,txt_remittanceInst;
+        Button btn_action;
+        ImageView btn_editbankDdetails,btn_deletebankDetails;
+
+        public BankHolder(final View itemView) {
+            super(itemView);
+            txt_payeeName = itemView.findViewById(R.id.txt_payeeName);
+            txt_bankName = itemView.findViewById(R.id.txt_bankName);
+            txt_branch = itemView.findViewById(R.id.txt_branch);
+            txt_bankAddress = itemView.findViewById(R.id.txt_bankAddress);
+            txt_accountNo = itemView.findViewById(R.id.txt_accountNo);
+            txt_AccType = itemView.findViewById(R.id.txt_AccType);
+            txt_IFSCcode = itemView.findViewById(R.id.txt_IFSCcode);
+            txt_remittanceInst = itemView.findViewById(R.id.txt_remittanceInst);
+            btn_editbankDdetails = itemView.findViewById(R.id.btn_editchrge);
+            btn_deletebankDetails = itemView.findViewById(R.id.btn_deletechrge);
+            //btn_action = itemView.findViewById(R.id.btn_action);
+
+            btn_editbankDdetails.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    ((EntityMasterBankActivity)context).EditRowClick(getAdapterPosition(),bankDetailsArrayList);
+                }
+            });
+
+            btn_deletebankDetails.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    ((EntityMasterBankActivity)context).DeleteRowClick(getAdapterPosition(),bankDetailsArrayList);
+                }
+            });
+
+        }
+    }
+}

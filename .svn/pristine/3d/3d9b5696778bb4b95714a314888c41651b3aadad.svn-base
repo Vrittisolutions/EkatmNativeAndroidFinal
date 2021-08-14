@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: se.emilsjolander:stickylistheaders-2.3.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/stickylistheaders-2.3.0.aar/b1966bcfe38dd5e20506567fb269c362/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/stickylistheaders-2.3.0.aar/b1966bcfe38dd5e20506567fb269c362/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/se.emilsjolander/stickylistheaders/2.3.0/fab0b9539dd789817e45c91ada6b041caf83a30/stickylistheaders-2.3.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

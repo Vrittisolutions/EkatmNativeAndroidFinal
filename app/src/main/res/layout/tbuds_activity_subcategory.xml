@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#f9f9f9"
+    tools:context="com.vritti.sales.activity.SubCategoryActivity">
+
+    <include
+        android:id="@+id/tbar"
+        layout="@layout/tbuds_common_toolbar"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="4dp"
+        android:visibility="visible"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical">
+
+        <ImageView
+
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:visibility="gone"
+            android:layout_weight="0"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Group"
+            android:paddingLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:textColor="@color/btncolordark"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_weight="1"/>
+        <!---->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Items Count"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:textColor="@color/btncolordark"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_marginRight="30dp" />
+
+    </LinearLayout>
+
+    <!--<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="1dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:visibility="visible"
+        android:background="#fff"
+        android:layout_marginBottom="5dp"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:visibility="gone"
+            android:layout_weight="0"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Test"
+            android:paddingLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textColor="#222"
+            android:textSize="16sp"
+            android:layout_weight="1"/>
+        &lt;!&ndash;&ndash;&gt;
+
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="5"
+            android:background="@drawable/tbuds_sphere1"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:layout_marginRight="15dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/tbuds_nextarrow" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="1dp"
+        android:background="#fff"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp"
+        android:visibility="visible"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:visibility="gone"
+            android:layout_weight="0"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Test SubCategory"
+            android:paddingLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textColor="#222"
+            android:textSize="16sp"
+            android:layout_weight="1"/>
+        &lt;!&ndash;&ndash;&gt;
+
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="2"
+            android:background="@drawable/tbuds_sphere1"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:layout_marginRight="15dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/tbuds_nextarrow" />
+
+    </LinearLayout>-->
+
+    <ListView
+        android:id="@+id/listview_home_subcategory_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/headerList"
+        android:dividerHeight="0dp"
+        android:divider="@null"
+        android:numColumns="1">
+
+    </ListView>
+
+</LinearLayout>
+
+
+
+
+
+

@@ -1,0 +1,52 @@
+{
+    "logs": [
+        {
+            "outputFile": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\values-v14\\values-v14.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\datetimepicker-0.2.0.aar\\8906d3585d46b2715ac85166304b9464\\res\\values-v14\\values-v14.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "4",
+                        "startOffsets": "168",
+                        "endLines": "6",
+                        "endColumns": "12",
+                        "endOffsets": "314"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "4",
+                        "endColumns": "12",
+                        "endOffsets": "201"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "D:\\ICAI\\PM\\app\\build\\intermediates\\incremental\\mergePMDebugResources\\merged.dir\\values-v14\\values-v14.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\datetimepicker-0.2.0.aar\\8906d3585d46b2715ac85166304b9464\\res\\values-v14\\values-v14.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "4",
+                        "startOffsets": "168",
+                        "endLines": "6",
+                        "endColumns": "12",
+                        "endOffsets": "314"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "4",
+                        "endColumns": "12",
+                        "endOffsets": "201"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,74 @@
+package com.vritti.crm.bean;
+
+public class EntitySystemUserBean {
+
+    String vWBUsermasterId, UserLoginId,UserName,DesigId, DesignationOfficer, UMRT, ReportingUserId, ReportingName, ReportingToEmail,
+            EkatmUserMasterId, DeptCode, Department, Active, PKDeptMasterid, CRMNoofDays, Mobile,CRMCategory, Email,ReportingToEkatmUserId,
+            IsActivePlantName,PlantName;
+
+    public EntitySystemUserBean(String vWBUsermasterId, String userName) {
+        this.vWBUsermasterId = vWBUsermasterId;
+        this.UserName = userName;
+    }
+
+    public String getvWBUsermasterId() {
+        return vWBUsermasterId;
+    }
+
+    public void setvWBUsermasterId(String vWBUsermasterId) {
+        this.vWBUsermasterId = vWBUsermasterId;
+    }
+
+    public String getUserLoginId() {
+        return UserLoginId;
+    }
+
+    public void setUserLoginId(String userLoginId) {
+        UserLoginId = userLoginId;
+    }
+
+    public String getUserName() {
+        return UserName;
+    }
+
+    public void setUserName(String userName) {
+        UserName = userName;
+    }
+
+    public String getDesigId() {
+        return DesigId;
+    }
+
+    public void setDesigId(String desigId) {
+        DesigId = desigId;
+    }
+
+    public String getDesignationOfficer() {
+        return DesignationOfficer;
+    }
+
+    public void setDesignationOfficer(String designationOfficer) {
+        DesignationOfficer = designationOfficer;
+    }
+
+    public String getReportingUserId() {
+        return ReportingUserId;
+    }
+
+    public void setReportingUserId(String reportingUserId) {
+        ReportingUserId = reportingUserId;
+    }
+
+    public String getReportingName() {
+        return ReportingName;
+    }
+
+    public void setReportingName(String reportingName) {
+        ReportingName = reportingName;
+    }
+
+    @Override
+    public String toString() {
+        return this.UserName;
+    }
+}

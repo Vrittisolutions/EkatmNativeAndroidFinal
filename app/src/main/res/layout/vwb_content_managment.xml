@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="?attr/actionBarSize"
+    android:orientation="vertical"
+    tools:showIn="@layout/vwb_activity_managment">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="#6E6F72"
+        android:padding="8dp"
+        android:text="Local GPS Records"
+        android:textColor="#fff"
+        android:textSize="16dp" />
+
+
+    <ListView
+        android:id="@+id/gpsmemberlist"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/reloadmore"
+        android:background="@drawable/border"
+        android:cacheColorHint="#000000"
+        android:dividerHeight="0.5dp"
+        android:scrollbars="none"
+        android:scrollingCache="false" />
+
+</LinearLayout>

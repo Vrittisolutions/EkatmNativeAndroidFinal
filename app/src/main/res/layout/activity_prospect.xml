@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/toolbar_header"
+        />
+
+    <LinearLayout
+        android:id="@+id/lay1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rel_prosbusi"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="5dp"
+            android:layout_weight="0.8"
+            android:text=" Select Prospect Type"
+            android:textColor="#ffffff"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lay_prospect"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/card_back"
+        android:layout_gravity="center_vertical">
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|left"
+            android:gravity="center|left"
+            app:cardElevation="2dp"
+            android:layout_margin="1dp"
+            app:cardMaxElevation="2dp"
+            app:cardCornerRadius="4dp"
+            android:visibility="gone">
+        <LinearLayout
+            android:id="@+id/lay_enterprise"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="@dimen/sp_5"
+            android:visibility="visible"
+            android:layout_gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/icon_prospct"
+                android:padding="2dp"
+                android:tint="@color/colorPrimary"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textAllCaps="false"
+                android:layout_marginLeft="10dp"
+                android:padding="@dimen/sp_5"
+                android:textColor="@color/black"
+                android:text="Enterprise Prospect"/>
+
+        </LinearLayout>
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|left"
+            android:gravity="center|left"
+            app:cardElevation="2dp"
+            android:layout_margin="1dp"
+            app:cardMaxElevation="2dp"
+            app:cardCornerRadius="4dp"
+            android:visibility="visible">
+        <LinearLayout
+            android:id="@+id/lay_business"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="@dimen/sp_5"
+            android:background="@color/white"
+            android:layout_gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="10dp"
+                android:padding="2dp"
+                android:src="@drawable/ic_businaee_prospect"
+                android:tint="@color/colorPrimary"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:textColor="@color/black"
+                android:textAllCaps="false"
+                android:padding="@dimen/sp_5"
+                android:layout_marginLeft="10dp"
+                android:text="Business Prospect" />
+        </LinearLayout>
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|left"
+            android:gravity="center|left"
+            app:cardElevation="2dp"
+            android:layout_margin="1dp"
+            app:cardMaxElevation="2dp"
+            app:cardCornerRadius="4dp"
+            android:visibility="visible">
+        <LinearLayout
+         android:id="@+id/lay_individual"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal"
+         android:gravity="center_vertical"
+         android:layout_marginTop="1sp"
+            android:padding="@dimen/sp_5"
+            android:background="@color/white"
+            android:layout_marginBottom="1dp"
+
+         android:layout_gravity="center_vertical">
+
+     <ImageView
+         android:layout_width="20dp"
+         android:layout_height="20dp"
+         android:layout_marginLeft="10dp"
+         android:tint="@color/colorPrimary"
+         android:padding="2dp"
+         android:src="@drawable/ic_individual_prospect" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp_14"
+        android:textColor="@color/black"
+        android:textAllCaps="false"
+        android:padding="@dimen/sp_5"
+        android:layout_marginLeft="10dp"
+        android:text="Individual Prospect"/>
+</LinearLayout>
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
+</LinearLayout>

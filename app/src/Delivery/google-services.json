@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "12820749292",
+    "firebase_url": "https://delivery-6505d.firebaseio.com",
+    "project_id": "delivery-6505d",
+    "storage_bucket": "delivery-6505d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:12820749292:android:c2b4f4286beb28a96c3ec9",
+        "android_client_info": {
+          "package_name": "vworkbench7.vritti.com.delivery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "12820749292-nsralr8amrd7t763t8uurnh210h7i7ku.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAW6Pbwkj838kdZ3Q_8FcyXKA-UZ5LqqEk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "12820749292-nsralr8amrd7t763t8uurnh210h7i7ku.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

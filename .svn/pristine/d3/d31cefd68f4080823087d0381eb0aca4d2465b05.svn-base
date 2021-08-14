@@ -1,0 +1,158 @@
+package com.vritti.crm.adapter;
+
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.vritti.SaharaModule.SaharaBeans.AttachmentBean;
+import com.vritti.crm.bean.EditDatasheetNew;
+import com.vritti.crm.vcrm7.EditDatasheetActivityMainNew;
+import com.vritti.ekatm.R;
+import com.vritti.vwb.Adapter.Sahara_AttachmentDetailsAdapter;
+import com.vritti.vwb.vworkbench.AddDatasheetActivityMain;
+import com.vritti.vwb.vworkbench.DocumentReviewList;
+import com.vritti.vwb.vworkbench.EditDatasheetActivityMain;
+
+import java.io.File;
+import java.util.ArrayList;
+
+public class AttachmentDetailsDisplayAdapter extends RecyclerView.Adapter<AttachmentDetailsDisplayAdapter.ActivityHolder> {
+    Context context;
+    ArrayList<AttachmentBean> attachmentBeanArrayList;
+    ArrayList<String> stringList;
+    boolean isEdit;
+    int postn;
+    ArrayList<EditDatasheetNew>  editDatasheetNewArrayList;
+    String fromEdit="";
+
+
+    public AttachmentDetailsDisplayAdapter(Context context, ArrayList<String> stringList, ArrayList<EditDatasheetNew> editDatasheetslist, boolean b, int selectedPos, String fromEdit) {
+
+        this.stringList = stringList;
+        this.context = context;
+        this.isEdit = b;
+        this.editDatasheetNewArrayList = editDatasheetslist;
+        this.postn = selectedPos;
+        this.fromEdit = fromEdit;
+    }
+
+    public AttachmentDetailsDisplayAdapter(Context context, ArrayList<AttachmentBean> attachmentList, boolean b) {
+        this.context = context;
+        this.attachmentBeanArrayList = attachmentList;
+        this.isEdit = b ;
+    }
+
+
+    @NonNull
+    @Override
+    public ActivityHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.sahara_attachment, parent, false);
+
+        return new ActivityHolder(itemView);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ActivityHolder holder, int position) {
+
+        if(isEdit){
+            if(fromEdit.equalsIgnoreCase("fromEdit")){
+                String path = stringList.get(position);
+                path = path.replace("[", "").replace("]", "");
+
+                File file = new File(path);
+                file.getName().replace("]", "");
+                String s = file.getName().replace("]", "");
+                holder.txt_attachment.setText(s);
+           //     holder.cardView.setVisibility(View.VISIBLE);
+            }else {
+                String filename = attachmentBeanArrayList.get(position).getAttachFilename();
+                if(filename != null) {
+                    holder.txt_attachment.setText(filename);
+                }
+
+            }
+        }else {
+            String path = stringList.get(position);
+            path = path.replace("[", "").replace("]", "");
+
+            File file = new File(path);
+            file.getName().replace("]", "");
+            String s = file.getName().replace("]", "");
+            holder.txt_attachment.setText(s);
+        }
+
+
+    }
+
+    @Override
+    public int getItemCount() {
+        if(isEdit)
+            if(fromEdit.equalsIgnoreCase("fromEdit"))
+                return stringList.size();
+            else
+                return attachmentBeanArrayList.size();
+        else
+            return stringList.size();
+
+    }
+
+    public void update(int adapterPos) {
+        if(attachmentBeanArrayList.size()!=0) {
+            //attachmentlist.remove(adapterPos);
+            notifyItemRemoved(adapterPos);
+        }
+    }
+
+    public class ActivityHolder extends RecyclerView.ViewHolder {
+        TextView txt_attachment;
+        ImageView deleteFile,downloadFile;
+
+        public ActivityHolder(View itemView) {
+            super(itemView);
+            txt_attachment = itemView.findViewById(R.id.txt_attachment);
+            deleteFile = itemView.findViewById(R.id.deleteFile);
+            downloadFile = itemView.findViewById(R.id.downloadFile);
+
+
+            deleteFile.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(isEdit) {
+                        if(fromEdit.equalsIgnoreCase("fromEdit")) {
+                            ((EditDatasheetActivityMainNew) context).deletefileName(getAdapterPosition(),fromEdit);
+                        }else {
+                            ((EditDatasheetActivityMainNew) context).deletefileName(getAdapterPosition(), "");
+                        }
+                    }else{
+                        ((EditDatasheetActivityMainNew) context).deletefileName(getAdapterPosition(),fromEdit);
+                    }
+                }
+            });
+
+
+            downloadFile.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(isEdit) {
+                        if(fromEdit.equalsIgnoreCase("fromEdit")) {
+                            String pos = stringList.get(getAdapterPosition());
+                            String pos1 = editDatasheetNewArrayList.get(postn).getQuesText();
+                            ((EditDatasheetActivityMainNew) context).downloadFile(getAdapterPosition(),stringList,true);
+                        } else {
+
+                            ((EditDatasheetActivityMainNew) context).downloadFile(postn, getAdapterPosition(), true);
+                        }
+                           // ((EditDatasheetActivityMainNew) context).viewFile(true,getAdapterPosition());
+                    } else {
+                        ((EditDatasheetActivityMainNew) context).downloadFile(postn,getAdapterPosition(), true);
+                    }
+                }
+            });
+        }
+    }
+}

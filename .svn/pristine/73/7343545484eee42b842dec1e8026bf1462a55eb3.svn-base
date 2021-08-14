@@ -1,0 +1,908 @@
+package com.vritti.crm.vcrm7;
+
+import android.content.Context;
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
+import android.os.Build;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.PopupMenu;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
+import com.vritti.crm.adapter.EntityMasterBankDetailsAdapter;
+import com.vritti.crm.adapter.EntityMasterMainAdapter;
+import com.vritti.crm.bean.BankDetails;
+import com.vritti.crm.bean.EntityContactDetails;
+import com.vritti.crm.classes.CommonFunctionCrm;
+import com.vritti.databaselib.data.DatabaseHandlers;
+import com.vritti.databaselib.other.Utility;
+import com.vritti.databaselib.other.WebUrlClass;
+import com.vritti.ekatm.R;
+import com.vritti.sessionlib.CallbackInterface;
+import com.vritti.sessionlib.StartSession;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.UUID;
+
+public class EntityMasterBankActivity extends AppCompatActivity {
+
+
+    String PlantMasterId = "", LoginId = "", Password = "", CompanyURL = "", EnvMasterId = "",
+            UserMasterId = "", UserName = "", MobileNo = "";
+    Utility ut;
+    DatabaseHandlers db;
+    CommonFunctionCrm cf;
+    Context context;
+    SQLiteDatabase sql;
+
+    Button btn_AddBank, btn_savefinal, btn_VerifyIFSCcode, btn_classification, btn_saveBankDetails,btn_finalcancel;
+    LinearLayout ln_AddBank, ln_listDisplay;
+    EditText edt_bankaddress, edt_bankName, edt_branch;
+    EditText edt_remittenceInstruction, edt_accType, edt_accNo, edt_IFSCCode, edt_Payeename;
+
+    ArrayList<BankDetails> bankDetailsArrayList;
+    EntityMasterBankDetailsAdapter entityMasterBankDetailsAdapter;
+    RecyclerView list_bankDetails;
+    int deletePos, editPos;
+
+    String companyName = "", custVendorCode = "", registrationNo = "", vendorCode = "", address = "",
+            countryId = "", stateId = "",
+            districtId = "", talukaId = "", cityId = "", pinCode = "", landLineNo = "", mobileNo = "", emailId = "",
+            website = "", selPriceListId = "", currencyId = "", shortName = "", entityMasterID = "", contractReq = "";
+    String evaluationDt = "", validFromDt = "", validToDt = "", SystemUserCodeId = "", PaymentTermsId = "", DeliveryTermsId = "",
+            finalJsonObj = "", forPendingDelivery = "Y", forGRN = "Y", forPayment = "Y", forPO = "Y", forReceipts = "Y", forTalkProspect = "Y";
+    String salesCategoryId = "", taxCodeId = "", creditLimits = "", creditDays = "", resellerName = "";
+    String entityClassId = "", entityGrpId = "", typeOfServiceId = "";
+    ArrayList<EntityContactDetails> entityContactDetailsArrayList = new ArrayList();
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_entity_master_bank);
+
+
+        initView();
+        setListner();
+
+        entityMasterBankDetailsAdapter = new EntityMasterBankDetailsAdapter(EntityMasterBankActivity.this, bankDetailsArrayList);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(EntityMasterBankActivity.this);
+        list_bankDetails.setLayoutManager(mLayoutManager);
+        list_bankDetails.setAdapter(entityMasterBankDetailsAdapter);
+
+
+    }
+
+    public void initView() {
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //toolbar.setLogo(R.mipmap.ic_toolbar_logo_crm);
+        toolbar.setLogo(R.drawable.crm_logo_1);
+        toolbar.setTitle(R.string.app_name_toolbar_CRM);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        context = EntityMasterBankActivity.this;
+
+        ut = new Utility();
+        cf = new CommonFunctionCrm(context);
+        String settingKey = ut.getSharedPreference_SettingKey(context);
+        String dabasename = ut.getValue(context, WebUrlClass.GET_DATABASE_NAME_KEY, settingKey);
+        db = new DatabaseHandlers(context, dabasename);
+        CompanyURL = ut.getValue(context, WebUrlClass.GET_COMPANY_URL_KEY, settingKey);
+        EnvMasterId = ut.getValue(context, WebUrlClass.GET_EnvMasterID_KEY, settingKey);
+        PlantMasterId = ut.getValue(context, WebUrlClass.GET_PlantID_KEY, settingKey);
+        LoginId = ut.getValue(context, WebUrlClass.GET_LOGIN_KEY, settingKey);
+        Password = ut.getValue(context, WebUrlClass.GET_PSW_KEY, settingKey);
+        UserMasterId = ut.getValue(context, WebUrlClass.GET_USERMASTERID_KEY, settingKey);
+        UserName = ut.getValue(context, WebUrlClass.GET_USERNAME_KEY, settingKey);
+        sql = db.getWritableDatabase();
+
+
+        btn_AddBank = findViewById(R.id.btn_AddBank);
+        ln_AddBank = findViewById(R.id.ln_AddBank);
+        ln_listDisplay = findViewById(R.id.ln_listDisplay);
+        btn_savefinal = findViewById(R.id.btn_savefinal);
+        btn_finalcancel = findViewById(R.id.btn_finalcancel);
+        btn_VerifyIFSCcode = findViewById(R.id.btn_VerifyIFSCcode);
+        btn_classification = findViewById(R.id.btn_classification);
+        edt_bankaddress = findViewById(R.id.edt_bankaddress);
+        edt_bankName = findViewById(R.id.edt_bankName);
+        edt_branch = findViewById(R.id.edt_branch);
+        btn_saveBankDetails = findViewById(R.id.btn_saveBankDetails);
+        edt_remittenceInstruction = findViewById(R.id.edt_remittenceInstruction);
+        edt_accType = findViewById(R.id.edt_accType);
+        edt_accNo = findViewById(R.id.edt_accNo);
+        edt_IFSCCode = findViewById(R.id.edt_IFSCCode);
+        edt_Payeename = findViewById(R.id.edt_Payeename);
+        list_bankDetails = findViewById(R.id.list_bankDetails);
+
+        bankDetailsArrayList = new ArrayList<>();
+
+        if (getIntent() != null) {
+            companyName = getIntent().getStringExtra("ContactName");
+            shortName = getIntent().getStringExtra("ShortName");
+            entityMasterID = getIntent().getStringExtra("EntityMasterId");
+            custVendorCode = getIntent().getStringExtra("CustVendorCode");
+            vendorCode = getIntent().getStringExtra("VendorCode");
+            registrationNo = getIntent().getStringExtra("RegistrationNo");
+            address = getIntent().getStringExtra("Address");
+            countryId = getIntent().getStringExtra("CountryId");
+            stateId = getIntent().getStringExtra("StateId");
+            cityId = getIntent().getStringExtra("CityId");
+            districtId = getIntent().getStringExtra("DistrictId");
+            talukaId = getIntent().getStringExtra("TalukaId");
+            pinCode = getIntent().getStringExtra("PinCode");
+            mobileNo = getIntent().getStringExtra("MobileNo");
+            landLineNo = getIntent().getStringExtra("LandLineno");
+            emailId = getIntent().getStringExtra("EmailId");
+            website = getIntent().getStringExtra("Website");
+            currencyId = getIntent().getStringExtra("CurrencyId");
+            selPriceListId = getIntent().getStringExtra("SelPriceListId");
+            contractReq = getIntent().getStringExtra("ContractRequired");
+
+            if (!getIntent().getStringExtra("ContactList").equals("")) {
+                entityContactDetailsArrayList = new Gson().fromJson(getIntent().getStringExtra("ContactList"),
+                        EntityContactDetails.class).getEntityContactDetailsArrayList();
+            }
+
+            evaluationDt = getIntent().getStringExtra("EvaluationDate");
+            validFromDt = getIntent().getStringExtra("ValidFromDt");
+            validToDt = getIntent().getStringExtra("ValidToDt");
+            SystemUserCodeId = getIntent().getStringExtra("SystemuserCodeId");
+            PaymentTermsId = getIntent().getStringExtra("PaymentTermsId");
+            DeliveryTermsId = getIntent().getStringExtra("DeliveryTermsId");
+            forPO = getIntent().getStringExtra("ForPO");
+            forReceipts = getIntent().getStringExtra("ForReceipt");
+
+            forPendingDelivery = getIntent().getStringExtra("ForPendingDelivery");
+            forGRN = getIntent().getStringExtra("ForGRN");
+            forPayment = getIntent().getStringExtra("ForPayment");
+            // currencyId = getIntent().getStringExtra("CurrencyId");
+            creditLimits = getIntent().getStringExtra("CreditLimits");
+            creditDays = getIntent().getStringExtra("CreditDays");
+            salesCategoryId = getIntent().getStringExtra("SalesCategory");
+            forTalkProspect = getIntent().getStringExtra("TalkProspect");
+            taxCodeId = getIntent().getStringExtra("TaxCode");
+            resellerName = getIntent().getStringExtra("ResellerName");
+
+
+        }
+
+
+    }
+
+    public void setListner() {
+
+        btn_finalcancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+
+
+        btn_classification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                String contactDetailsList = "";
+                if (entityContactDetailsArrayList.size() != 0) {
+                    contactDetailsList = new Gson().toJson(new EntityContactDetails(entityContactDetailsArrayList));
+                }
+
+                String bankDetailsList = "";
+                if (bankDetailsArrayList.size() != 0) {
+                    bankDetailsList = new Gson().toJson(new BankDetails(bankDetailsArrayList));
+                }
+                startActivityForResult(new Intent(EntityMasterBankActivity.this, EntityMasterClassificationActivity.class)
+                        .putExtra("ContactName", companyName).putExtra("ShortName", shortName)
+                        .putExtra("EntityMasterId", entityMasterID).putExtra("CustVendorCode", custVendorCode)
+                        .putExtra("VendorCode", vendorCode).putExtra("RegistrationNo", registrationNo)
+                        .putExtra("Address", address).putExtra("CountryId", countryId)
+                        .putExtra("StateId", stateId).putExtra("CityId", cityId)
+                        .putExtra("DistrictId", districtId).putExtra("TalukaId", talukaId)
+                        .putExtra("PinCode", pinCode).putExtra("MobileNo", mobileNo)
+                        .putExtra("LandLineno", landLineNo).putExtra("EmailId", emailId)
+                        .putExtra("Website", website).putExtra("CurrencyId", currencyId)
+                        .putExtra("SelPriceListId", selPriceListId).putExtra("ContractRequired", contractReq)
+                        .putExtra("ContactList", contactDetailsList).putExtra("EvaluationDate", evaluationDt)
+                        .putExtra("ValidFromDt", validFromDt).putExtra("ValidToDt", validToDt)
+                        .putExtra("SystemuserCodeId", SystemUserCodeId).putExtra("PaymentTermsId", PaymentTermsId)
+                        .putExtra("DeliveryTermsId", DeliveryTermsId).putExtra("ForPO", forPO)
+                        .putExtra("ForReceipt", forReceipts).putExtra("ForPendingDelivery", forPendingDelivery)
+                        .putExtra("ForGRN", forGRN).putExtra("ForPayment", forPayment).putExtra("CurrencyId", currencyId)
+                        .putExtra("CreditLimits", creditLimits)
+                        .putExtra("CreditDays", creditDays)
+                        .putExtra("SalesCategory", salesCategoryId).putExtra("TalkProspect", forTalkProspect)
+                        .putExtra("TaxCode", taxCodeId).putExtra("ResellerName", resellerName)
+                        .putExtra("BankList", bankDetailsList), 1150);
+            }
+        });
+
+
+        btn_AddBank.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ln_AddBank.setVisibility(View.VISIBLE);
+                ln_listDisplay.setVisibility(View.GONE);
+
+            }
+        });
+
+/*        btn_saveBankDetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ln_AddBank.setVisibility(View.GONE);
+                ln_listDisplay.setVisibility(View.VISIBLE);
+
+            }
+        });*/
+
+        btn_VerifyIFSCcode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String IFSCCode = "";
+                IFSCCode = edt_IFSCCode.getText().toString();
+
+                if (IFSCCode != "") {
+
+                    if (ut.isNet(EntityMasterBankActivity.this)) {
+                        final String finalIFSCCode = IFSCCode;
+                        new StartSession(EntityMasterBankActivity.this, new CallbackInterface() {
+                            @Override
+                            public void callMethod() {
+                                //ln_AddBank.setBackground();
+                                new DownloadIFSCcodeData().execute(finalIFSCCode);
+                            }
+
+                            @Override
+                            public void callfailMethod(String msg) {
+
+                            }
+                        });
+                    } else {
+                        Toast.makeText(EntityMasterBankActivity.this, "No internet Connection", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+
+
+            }
+        });
+
+        btn_saveBankDetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                BankDetails bankDetails = new BankDetails();
+
+                bankDetails.setPayeeName(edt_Payeename.getText().toString());
+                bankDetails.setIFSCCode(edt_IFSCCode.getText().toString());
+                bankDetails.setBankName(edt_bankName.getText().toString());
+                bankDetails.setBranch(edt_branch.getText().toString());
+                bankDetails.setBankAddress(edt_bankaddress.getText().toString());
+                bankDetails.setAccountNo(edt_accNo.getText().toString());
+                bankDetails.setAccountType(edt_accType.getText().toString());
+                bankDetails.setRemittanceInstruction(edt_remittenceInstruction.getText().toString());
+
+                bankDetailsArrayList.add(bankDetails);
+                ln_AddBank.setVisibility(View.GONE);
+                ln_listDisplay.setVisibility(View.VISIBLE);
+
+                entityMasterBankDetailsAdapter.notifyDataSetChanged();
+
+            }
+        });
+
+        btn_savefinal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                JSONObject jsonObject = new JSONObject();
+                try {
+                    jsonObject.put("AadharNo", "");
+                    jsonObject.put("AccountId", "");
+                    jsonObject.put("AccountNo", "");
+                    jsonObject.put("AccountType", "");
+                    jsonObject.put("Active", "true");
+                    jsonObject.put("Address", address);
+                    jsonObject.put("BankAddress", "");
+                    jsonObject.put("BankName", "");
+
+                    JSONArray jsonBankArray = new JSONArray();
+
+                    if (bankDetailsArrayList.size() != 0) {
+                        for (int i = 0; i < bankDetailsArrayList.size(); i++) {
+                            JSONObject jsonBankObject = new JSONObject();
+                            jsonBankObject.put("CustVendorPayeeNameId", "");
+                            jsonBankObject.put("PayeeName", bankDetailsArrayList.get(i).getPayeeName());
+                            jsonBankObject.put("BankName", bankDetailsArrayList.get(i).getBankName());
+                            jsonBankObject.put("Branch", bankDetailsArrayList.get(i).getBranch());
+                            jsonBankObject.put("BankAddress", bankDetailsArrayList.get(i).getBankAddress());
+                            jsonBankObject.put("AccountNo", bankDetailsArrayList.get(i).getAccountNo());
+                            jsonBankObject.put("AcountType", bankDetailsArrayList.get(i).getAccountType());
+                            jsonBankObject.put("IFSCode", bankDetailsArrayList.get(i).getIFSCCode());
+                            jsonBankObject.put("RemittanceInstruction", bankDetailsArrayList.get(i).getRemittanceInstruction());
+                            jsonBankArray.put(jsonBankObject);
+                        }
+                    }
+                    jsonObject.put("BankPayeeName", jsonBankArray);
+                    jsonObject.put("Branch", address);
+                    jsonObject.put("CAT", "");
+                    jsonObject.put("CIN", "");
+                    jsonObject.put("CSTNo", "");
+                    jsonObject.put("CallId", "");
+                    jsonObject.put("City", cityId);
+
+                    JSONArray jsonArrayClient = new JSONArray();
+                    // JSONObject jsonClientObject = new JSONObject();
+
+                    if (entityContactDetailsArrayList.size() != 0) {
+                        for (int i = 0; i < entityContactDetailsArrayList.size(); i++) {
+                            JSONObject jsonClientObject = new JSONObject();
+                            jsonClientObject.put("ContPerName", entityContactDetailsArrayList.get(i).getContactname());
+                            jsonClientObject.put("ContactNo", entityContactDetailsArrayList.get(i).getContactMobile());
+                            jsonClientObject.put("DIN", "");
+                            jsonClientObject.put("Designation", entityContactDetailsArrayList.get(i).getContactDesignation());
+                            jsonClientObject.put("EmailId", entityContactDetailsArrayList.get(i).getContactEmail());
+                            jsonClientObject.put("EntityContactInfoId", entityContactDetailsArrayList.get(i).getContactDesignation());
+                            jsonClientObject.put("InfluentialLevel", entityContactDetailsArrayList.get(i).getContactInfluence());
+                            jsonClientObject.put("IsDefault", entityContactDetailsArrayList.get(i).getContactdefault());
+                            jsonClientObject.put("IsVWBLoginAllowed", "N");
+                            jsonClientObject.put("LoginId", "");
+                            jsonClientObject.put("Password", "");
+                            jsonArrayClient.put(jsonClientObject);
+                        }
+                    }
+
+
+                    jsonObject.put("ClientDetails", jsonArrayClient);
+                    jsonObject.put("ContactName", companyName);
+                    jsonObject.put("ContactTitle", companyName);
+                    jsonObject.put("Country", countryId);
+                    jsonObject.put("CountryId", countryId);
+
+                    jsonObject.put("CreditDays", creditDays);
+
+                    jsonObject.put("CreditLimit", creditLimits);
+                    jsonObject.put("CreditTerms", PaymentTermsId);
+                    jsonObject.put("Currency", currencyId);
+                    jsonObject.put("CurrencyMasterID", currencyId);
+                    jsonObject.put("CustVendor", "C");
+                    jsonObject.put("CustVendorCode", custVendorCode);
+                    final String guid = UUID.randomUUID().toString();
+                    jsonObject.put("CustVendorMasterId", guid);//guuid self
+                    jsonObject.put("CustVendorName", companyName);
+                    jsonObject.put("CustVendorType", "3");//doubt
+                    jsonObject.put("DeliveryTerms", DeliveryTermsId);
+                    jsonObject.put("District", districtId);
+                    jsonObject.put("ECCNo", "");
+                    jsonObject.put("ENGRN", forGRN);
+                    jsonObject.put("ENInv", forPO);//doubt
+                    jsonObject.put("ENPndPO", DeliveryTermsId);
+                    jsonObject.put("ENPymt", forPayment);//doubt
+                    jsonObject.put("ENRect", forReceipts);//doubt
+                    jsonObject.put("Email", emailId);//doubt--basic
+                    jsonObject.put("EnterpriseType", "");
+                    jsonObject.put("EntityClass", entityClassId);//doubt
+                    jsonObject.put("EntityGroupMasterId", entityGrpId);//doubt
+                    jsonObject.put("EntityRestDate", "");
+                    jsonObject.put("EsicNo", "");
+                    jsonObject.put("EvaluationDt", evaluationDt);
+                    jsonObject.put("ExDivi", "");
+                    jsonObject.put("ExRange", "");
+                    jsonObject.put("ExpertiseDetails", "");
+                    jsonObject.put("FKTerritoryId", "");
+                    jsonObject.put("GSTNO", "");
+                    jsonObject.put("IFSCode", "");
+                    jsonObject.put("GSTNO", "");
+                    jsonObject.put("IndIndemnity", "");//doubt
+                    jsonObject.put("InsuranceDetails", "");
+                    jsonObject.put("IsActive", "");///basic
+                    jsonObject.put("IsApproved", "");//purchase
+                    jsonObject.put("IsContractReqd", contractReq);//basic
+                    jsonObject.put("IsWLForCRMRef", forTalkProspect);/////doubt
+                    jsonObject.put("Latitude", "");//shipTO
+                    jsonObject.put("LenderDetails", "");//doubt
+                    jsonObject.put("Longitude", "");//shipTO
+                    jsonObject.put("MSTNo", "");//doubt
+                    jsonObject.put("Mobile", mobileNo);
+                    jsonObject.put("PANNO", "");
+                    jsonObject.put("PFNo", "");
+                    jsonObject.put("PayeeName", "");
+                    jsonObject.put("PaymentTerms", PaymentTermsId);//sales
+                    jsonObject.put("Phone", landLineNo);
+                    jsonObject.put("Pin", pinCode);
+                    jsonObject.put("PriceListId", "");
+                    jsonObject.put("RegistrationFormNo", registrationNo);
+                    jsonObject.put("RemittanceInstruction", "");
+                    jsonObject.put("ResellerName", resellerName);
+
+                    jsonObject.put("SalesFamily", "");
+                    jsonObject.put("ServClId", "");
+                    jsonObject.put("ServiceTaxNo", "");
+
+
+                    JSONObject shipToJsonObj = new JSONObject();
+                    JSONArray shipToJsonArr = new JSONArray();
+                    shipToJsonArr.put(shipToJsonObj);
+                    jsonObject.put("ShipToDetails", shipToJsonArr);
+
+                    jsonObject.put("ShortName", shortName);
+                    jsonObject.put("SlCatId", salesCategoryId);
+                    jsonObject.put("State", stateId);
+                    if (SystemUserCodeId != "") {
+                        jsonObject.put("SystemUserId", SystemUserCodeId);//doubt
+                    } else {
+                        jsonObject.put("SystemUserId", UserMasterId);//doubt
+                    }
+
+                    jsonObject.put("TANNO", "");
+                    jsonObject.put("TAN_GSTIN_Number", "");
+                    jsonObject.put("Taluka", talukaId);
+                    jsonObject.put("TaxClass", taxCodeId);
+                    jsonObject.put("TenorYear", "");
+                    jsonObject.put("Typeofservices", typeOfServiceId);
+                    jsonObject.put("ValidFrom", validFromDt);
+                    jsonObject.put("ValidTo", validToDt);
+                    jsonObject.put("VendorMasterID", "");
+                    jsonObject.put("Website", "");
+                    jsonObject.put("vendorCode", vendorCode);//doubt
+
+
+                    finalJsonObj = jsonObject.toString();
+
+
+                    if (ut.isNet(EntityMasterBankActivity.this)) {
+                        new StartSession(EntityMasterBankActivity.this, new CallbackInterface() {
+                            @Override
+                            public void callMethod() {
+                                new DownloadCheckDuplicateEmpName().execute(companyName, "A", guid);
+                            }
+
+                            @Override
+                            public void callfailMethod(String msg) {
+
+                            }
+                        });
+                    } else {
+                        Toast.makeText(EntityMasterBankActivity.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+
+    private class VerifyIFSCCode extends AsyncTask<String, Void, String> {
+
+        String response = "";
+        Object res;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            String url = "https://bankcodesapi.com/in-ifsc/json/1f206b29e35fa519205c2242b5a1ed4c/SBIN0006228/";
+            res = ut.OpenConnection(url, EntityMasterBankActivity.this);
+            Object res1 = ut.OpenConnection(url);
+            try {
+                if (res != null) {
+                    response = res.toString().replaceAll("\\\\", "");
+                    // response = res.toString().replaceAll("rn","");
+                    response = response.substring(1, response.length() - 1);
+                } else {
+                    response = "error";
+                }
+                Log.d("response", "" + response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+        }
+    }
+
+    class DownloadIFSCcodeData extends AsyncTask<String, Void, String> {
+        Object res;
+        String response;
+        String Bankaddress = "", Bankname = "", Branch = "";
+        String ifscCode = "";
+        // ProgressDialog progressDialog;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            //showProgressDialog();
+            //showprogress();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            ifscCode = params[0];
+
+            String url = "https://ifsc.razorpay.com/" + ifscCode;
+
+            try {
+                res = ut.OpenConnection(url, EntityMasterBankActivity.this);
+                if (res != null) {
+                    response = res.toString();
+                   /* response = res.toString().replaceAll("\\\\", "");
+                    response = response.replaceAll("\\\\\\\\/", "");
+                    response = response.substring(1, response.length() - 1);*/
+                    JSONObject jorder = new JSONObject(response);
+                    /*result=result.replaceAll("^\"|\"$", "");*/
+
+                    Bankaddress = jorder.getString("ADDRESS");
+                    Bankname = jorder.getString("BANK");
+                    Branch = jorder.getString("BRANCH");
+
+
+                }
+            } catch (JSONException e1) {
+                e1.printStackTrace();
+                EntityMasterBankActivity.this.runOnUiThread(new Runnable() {
+                    public void run() {
+                        Toast.makeText(EntityMasterBankActivity.this, "Invalid IFSC code", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+            }
+
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(String integer) {
+            super.onPostExecute(integer);
+            //  hidprogress();
+
+
+            edt_bankaddress.setText(Bankaddress);
+            edt_bankName.setText(Bankname);
+            edt_branch.setText(Branch);
+
+
+        }
+
+    }
+
+
+    public void EditRowClick(int adapterPosition, ArrayList<BankDetails> bankDetailsArrayList1) {
+
+        editPos = adapterPosition;
+
+        bankDetailsArrayList.remove(editPos);
+
+        entityMasterBankDetailsAdapter.notifyDataSetChanged();
+        ln_AddBank.setVisibility(View.VISIBLE);
+        ln_listDisplay.setVisibility(View.GONE);
+
+
+    }
+
+    public void DeleteRowClick(int adapterPosition, ArrayList<BankDetails> bankDetailsArrayList1) {
+        deletePos = adapterPosition;
+
+        bankDetailsArrayList.remove(deletePos);
+        entityMasterBankDetailsAdapter.notifyDataSetChanged();
+
+
+    }
+
+    private class PostSaveEntity extends AsyncTask<String, Void, String> {
+
+        Object res;
+        String response = "";
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            String finalJsonObj = params[0];
+            String url = CompanyURL + WebUrlClass.api_POSTEntityMaster;
+            res = ut.OpenPostConnection(url, finalJsonObj, EntityMasterBankActivity.this);
+            try {
+                if (res != null) {
+                    response = res.toString().replaceAll("\\\\", "");
+                    response = response.substring(1, response.length() - 1);
+                } else {
+                    response = "error";
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                response = "error";
+            }
+
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            if (!response.equals("error")) {
+                Toast.makeText(EntityMasterBankActivity.this, "Save Successfully", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        }
+    }
+
+    private class DownloadCheckDuplicateEmpName extends AsyncTask<String, Void, String> {
+
+        Object res;
+        String response = "";
+        String compnyName = "", Mode = "", guid = "";
+        //http://c207.ekatm.com/api/EntityMasterAPI/GETCheckDuplicateEmpName
+        // ?CustVendorName=sayali1234&Mode=A&CustVendorMasterGuid=41b13a46-146d-4051-aa1d-504177ef5c6c
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            compnyName = params[0];
+            Mode = params[1];
+            guid = params[2];
+
+            String url = CompanyURL + WebUrlClass.api_GETCheckDuplicateEmpName + "?CustVendorName=" + compnyName + "&Mode=" + Mode + "&CustVendorMasterGuid=" + guid;
+            res = ut.OpenConnection(url);
+            try {
+                if (res != null) {
+                    response = res.toString().replaceAll("\\\\", "");
+                    response = response.substring(1, response.length() - 1);
+                } else {
+                    response = "error";
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                response = "error";
+            }
+
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            if (response.equalsIgnoreCase("false")) {
+
+
+                if (ut.isNet(EntityMasterBankActivity.this)) {
+                    new StartSession(EntityMasterBankActivity.this, new CallbackInterface() {
+                        @Override
+                        public void callMethod() {
+                            new CheckDuplicateMobileNumber().execute(mobileNo, "C");
+                        }
+
+                        @Override
+                        public void callfailMethod(String msg) {
+
+                        }
+                    });
+                }
+            } else {
+                Toast.makeText(EntityMasterBankActivity.this, "", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private class CheckDuplicateMobileNumber extends AsyncTask<String, Void, String> {
+
+        Object res;
+        String response = "";
+        String mobNo = "", custVendor = "";
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            // //http://c207.ekatm.com/api/EntityMasterAPI/GETCheckDuplicateMobileNumber?CustVendorMobile=3256977564&CustVendor=C
+
+            String url = CompanyURL + WebUrlClass.api_GETCheckDuplicateMobileNumber + "?CustVendorMobile=" + mobNo + "&CustVendor=" + custVendor;
+            res = ut.OpenConnection(url);
+            try {
+                if (res != null) {
+                    response = res.toString().replaceAll("\\\\", "");
+                    response = response.substring(1, response.length() - 1);
+                } else {
+                    response = "error";
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                response = "error";
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            if (response.equalsIgnoreCase("false")) {
+                if (ut.isNet(EntityMasterBankActivity.this)) {
+                    new StartSession(EntityMasterBankActivity.this, new CallbackInterface() {
+                        @Override
+                        public void callMethod() {
+
+                            new GetDuplicateEmailId().execute(emailId, "C");
+                        }
+
+                        @Override
+                        public void callfailMethod(String msg) {
+
+                        }
+                    });
+                }
+            } else {
+                Toast.makeText(EntityMasterBankActivity.this, "", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private class GetDuplicateEmailId extends AsyncTask<String, Void, String> {
+
+        Object res;
+        String response = "";
+        String email = "", CustVendor = "";
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            ////http://c207.ekatm.com/api/EntityMasterAPI/GETCheckDuplicateEmailid?CustVendorEmailId=sayali12%40gmail.com&CustVendor=C
+
+            String url = CompanyURL + WebUrlClass.api_GETCheckDuplicateEmailid + "?CustVendorEmailId=" + email + "&CustVendor=" + CustVendor;
+            res = ut.OpenConnection(url);
+            try {
+                if (res != null) {
+                    response = res.toString().replaceAll("\\\\", "");
+                    response = response.substring(1, response.length() - 1);
+                } else {
+                    response = "error";
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                response = "error";
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            if (response.equalsIgnoreCase("false")) {
+                if (ut.isNet(EntityMasterBankActivity.this)) {
+                    new StartSession(EntityMasterBankActivity.this, new CallbackInterface() {
+                        @Override
+                        public void callMethod() {
+                            new PostSaveEntity().execute(finalJsonObj);
+                        }
+
+                        @Override
+                        public void callfailMethod(String msg) {
+
+                        }
+                    });
+                }
+
+
+            } else {
+                Toast.makeText(EntityMasterBankActivity.this, "", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1150 && resultCode == 15) {
+            if (data != null) {
+
+                if (!(data.getStringExtra("BankDetailslist").equals(""))) {
+                    bankDetailsArrayList.clear();
+                    bankDetailsArrayList = new ArrayList<>();
+                    bankDetailsArrayList = new Gson().fromJson(data.getStringExtra("BankDetailslist"), BankDetails.class).getBankDetailsArrayList();
+                    entityMasterBankDetailsAdapter = new EntityMasterBankDetailsAdapter(EntityMasterBankActivity.this, bankDetailsArrayList);
+                    RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(EntityMasterBankActivity.this);
+                    list_bankDetails.setLayoutManager(mLayoutManager);
+                    list_bankDetails.setAdapter(entityMasterBankDetailsAdapter);
+
+                }
+
+                if (!(data.getStringExtra("ContactDetailslist").equals(""))) {
+                    entityContactDetailsArrayList.clear();
+                    entityContactDetailsArrayList = new ArrayList<>();
+                    entityContactDetailsArrayList = new Gson().fromJson(data.getStringExtra("ContactDetailslist"), EntityContactDetails.class).getEntityContactDetailsArrayList();
+                }
+
+
+                entityClassId = data.getStringExtra("EntityClass");
+                entityGrpId = data.getStringExtra("EntityGroupMasterId");
+                typeOfServiceId = data.getStringExtra("Typeofservices");
+
+
+            }
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        String bankDetailsList = "", contactDetailsList = "";
+
+        if (bankDetailsArrayList.size() != 0) {
+            bankDetailsList = new Gson().toJson(new BankDetails(bankDetailsArrayList));
+        }
+        if (entityContactDetailsArrayList.size() != 0) {
+            contactDetailsList = new Gson().toJson(new EntityContactDetails(entityContactDetailsArrayList));
+        }
+
+        Intent intent = new Intent(EntityMasterBankActivity.this, EntityMasterSalesActivity.class);
+
+        intent.putExtra("EntityClass", entityClassId);
+        intent.putExtra("EntityGroupMasterId", entityGrpId);
+        intent.putExtra("Typeofservices", typeOfServiceId);
+        intent.putExtra("BankDetailslist", bankDetailsList);
+        intent.putExtra("ContactDetailslist", contactDetailsList);
+
+        setResult(14, intent);
+
+        super.onBackPressed();
+    }
+
+
+}

@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\incremental\\mergeVwbDebugResources\\merged.dir\\values-bn-rBD\\values-bn-rBD.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Nilesh\\.gradle\\caches\\transforms-2\\files-2.1\\bcefe1a63aaad0e225ad14675b4e8bed\\datetimepicker-0.2.0\\res\\values-bn-rBD\\values-bn-rBD.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10,11,12,13,14",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "222,332,448,532,650,775,895,990,1081,1174,1262",
+                        "endColumns": "109,115,83,117,124,119,94,90,92,87,94",
+                        "endOffsets": "327,443,527,645,770,890,985,1076,1169,1257,1352"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,215,331,415,533,658,778,873,964,1057,1145",
+                        "endColumns": "109,115,83,117,124,119,94,90,92,87,94",
+                        "endOffsets": "210,326,410,528,653,773,868,959,1052,1140,1235"
+                    }
+                }
+            ]
+        }
+    ]
+}

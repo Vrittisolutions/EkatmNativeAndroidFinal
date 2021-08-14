@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/tripRow"
+    android:layout_height="80dp">
+
+
+
+    <ImageView
+        android:id="@+id/statusImage"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_centerVertical="true"
+
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/complete_icon"
+       />
+
+    <View
+        android:id="@+id/v1"
+        android:layout_width="1dp"
+        android:layout_height="17.5dp"
+        android:layout_marginLeft="32.7dp"
+        android:background="@color/black"/>
+    <View
+        android:id="@+id/v2"
+        android:layout_width="1dp"
+        android:layout_height="17.5dp"
+        android:layout_below="@id/statusImage"
+        android:layout_marginLeft="32.7dp"
+        android:background="@color/black"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@id/statusImage"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/venderName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ravi Bhasker"
+            android:lines="1"
+            android:ellipsize="end"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            />
+        <TextView
+            android:id="@+id/venderNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+45454545458"
+            android:textSize="14sp"
+            android:textColor="@android:color/black"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/locationMarker"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/file_location"
+                android:tint="@color/colorAccent"/>
+        <TextView
+            android:id="@+id/venderAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Vritti Solution"
+            android:paddingLeft="5dp"
+            android:ellipsize="end"
+            android:textSize="12sp"
+            android:maxLines="1"
+            android:textColor="@android:color/black"
+            />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_toRightOf="@id/statusImage"
+        android:background="@color/dark_gray"
+        android:layout_marginLeft="10dp"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

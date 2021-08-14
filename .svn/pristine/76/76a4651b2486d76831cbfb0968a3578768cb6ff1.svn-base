@@ -1,0 +1,1262 @@
+package com.vritti.inventory.MaterialRequisition.activity;
+
+import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
+import com.vritti.databaselib.data.DatabaseHandlers;
+import com.vritti.databaselib.other.Utility;
+import com.vritti.databaselib.other.WebUrlClass;
+import com.vritti.ekatm.R;
+import com.vritti.inventory.MaterialRequisition.adapter.AllLotSelectionAdapter;
+import com.vritti.inventory.MaterialRequisition.adapter.MRSNoDetailsAdapter;
+import com.vritti.inventory.MaterialRequisition.classes.Inventory_CommonFunction;
+import com.vritti.inventory.MaterialRequisition.model.MRSNODetails;
+import com.vritti.inventory.MaterialRequisition.model.ShowAllLotDetails;
+import com.vritti.sessionlib.CallbackInterface;
+import com.vritti.sessionlib.StartSession;
+import com.vritti.vwb.classes.CommonFunction;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
+public class LotSelectionActivity extends AppCompatActivity {
+
+    String PlantMasterId = "", LoginId = "", Password = "", CompanyURL = "", EnvMasterId = "", UserMasterId = "";
+    Utility ut;
+    DatabaseHandlers db;
+    CommonFunction cf;
+    Context context;
+    String UserName, MobileNo;
+    String IsChatApplicable, IsGPSLocation;
+    SQLiteDatabase sql;
+    Inventory_CommonFunction inventory_commonFunction;
+    String type = "";
+
+
+    Dialog lotSelectionDialog;
+    ArrayList<MRSNODetails> mrsnoDetailsArrayList;
+    ArrayList<ShowAllLotDetails> individual_mrsnoDetailsArrayList;
+    ArrayList<ShowAllLotDetails> showAllLotDetailsArrayList;
+    ArrayList<ShowAllLotDetails> finalshowAllLotDetailsArrayList;
+    int position;
+    TextView txt_itemCode, txt_itemDesc, txt_qty, txt_issueQty, txt_warehouse, txt_location, txt_balQty, txt_FIFO, txt_issueNo;
+    TextView txt_warehouselot, txt_locationlot, txt_FIFOlot, txt_balQtylot;
+    RecyclerView list_lotSelection;
+    ImageView img_lotSelectionsearch, img_packetSelectionsearch;
+    EditText txt_lotno, txt_packetno, txt_issued;
+    String itemMasterId = "", LotNo = "", packetNo = "";
+    TextView btn_showallLot;
+    AllLotSelectionAdapter allLotSelectionAdapter;
+    LinearLayout ln_main2, ln_issued, ln_packetSelection, ln_lotsSelection, ln_packetmain, ln_packetissued;
+    TextView btn_add, btn_packetadd, btn_packetalllots;
+    int allLotLclicked = 0;
+    int allPacketClicked = 0;
+    Button btn_save, btn_cancel;
+    EditText txt_alllots_packets;
+    TextView txt_warehousepacket, txt_locationpacket, txt_FIFO_packet, txt_balQtypacket, txt_packetissued,txt_title;
+
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.inventory_lot_selection);
+
+        context = getApplicationContext();
+        ut = new Utility();
+        cf = new CommonFunction(context);
+        String settingKey = ut.getSharedPreference_SettingKey(context);
+        String dabasename = ut.getValue(context, WebUrlClass.GET_DATABASE_NAME_KEY, settingKey);
+        db = new DatabaseHandlers(context, dabasename);
+        CompanyURL = ut.getValue(context, WebUrlClass.GET_COMPANY_URL_KEY, settingKey);
+        EnvMasterId = ut.getValue(context, WebUrlClass.GET_EnvMasterID_KEY, settingKey);
+        PlantMasterId = ut.getValue(context, WebUrlClass.GET_PlantID_KEY, settingKey);
+        LoginId = ut.getValue(context, WebUrlClass.GET_LOGIN_KEY, settingKey);
+        Password = ut.getValue(context, WebUrlClass.GET_PSW_KEY, settingKey);
+        UserName = "";
+        MobileNo = ut.getValue(context, WebUrlClass.GET_MOBILE_KEY, settingKey);
+
+        UserMasterId = ut.getValue(context, WebUrlClass.GET_USERMASTERID_KEY, settingKey);
+        UserName = ut.getValue(context, WebUrlClass.GET_USERNAME_KEY, settingKey);
+        MobileNo = ut.getValue(context, WebUrlClass.GET_MOBILE_KEY, settingKey);
+        IsChatApplicable = ut.getValue(context, WebUrlClass.GET_ISCHATAPPLICABLE_KEY, settingKey);
+        IsGPSLocation = ut.getValue(context, WebUrlClass.GET_ISGPSLOCATION_KEY, settingKey);
+        sql = db.getWritableDatabase();
+        inventory_commonFunction = new Inventory_CommonFunction(LotSelectionActivity.this);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+        initView();
+
+
+        if (getIntent() != null) {
+            mrsnoDetailsArrayList = new Gson().fromJson(getIntent().getStringExtra("List"), MRSNODetails.class).
+                    getMrsnoDetailsArrayList();
+            //  Mode = getIntent().getStringExtra("Mode");
+            position = getIntent().getIntExtra("position", 0);
+            type = getIntent().getStringExtra("type");
+
+            txt_itemCode.setText(mrsnoDetailsArrayList.get(position).getItemCode());
+            txt_itemDesc.setText(mrsnoDetailsArrayList.get(position).getItemDesc());
+            txt_qty.setText(mrsnoDetailsArrayList.get(position).getReqQty());
+            txt_issueQty.setText(mrsnoDetailsArrayList.get(position).getIssuedQty());
+            //    txt_warehouse.setText(mrsnoDetailsArrayList.get(position).getWarehouseCode());
+            //  txt_location.setText(mrsnoDetailsArrayList.get(position).getLocationCode());
+            itemMasterId = mrsnoDetailsArrayList.get(position).getItemMasterId();
+
+        }
+
+
+        if (type.equals("LotSelection")) {
+            btn_showallLot.setText("Show All Lots");
+            ln_packetSelection.setVisibility(View.GONE);
+            ln_lotsSelection.setVisibility(View.VISIBLE);
+            txt_title.setText("Lot Selection");
+        } else if (type.equals("PacketSelection")) {
+            btn_showallLot.setText("All Packets");
+            ln_packetSelection.setVisibility(View.VISIBLE);
+            ln_lotsSelection.setVisibility(View.GONE);
+            txt_packetissued.setClickable(false);
+            txt_title.setText("Packet Selection");
+        } else {
+            btn_showallLot.setText("Show All Lots");
+            ln_packetSelection.setVisibility(View.GONE);
+            ln_lotsSelection.setVisibility(View.VISIBLE);
+            txt_title.setText("Lot Selection");
+        }
+
+        setListner();
+
+
+    }
+
+    private void setListner() {
+
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+        btn_showallLot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (type.equals("LotSelection")) {
+                    allLotLclicked = 1;
+                    if (ut.isNet(LotSelectionActivity.this)) {
+                        new StartSession(LotSelectionActivity.this, new CallbackInterface() {
+                            @Override
+                            public void callMethod() {
+                                new DownloadAllLotSelection().execute(itemMasterId, mrsnoDetailsArrayList.get(position).getBatchControl());
+                            }
+
+                            @Override
+                            public void callfailMethod(String msg) {
+
+                            }
+                        });
+                    }
+                } else if (type.equals("PacketSelection")) {
+                    allPacketClicked = 1;
+                    if (ut.isNet(LotSelectionActivity.this)) {
+                        new StartSession(LotSelectionActivity.this, new CallbackInterface() {
+                            @Override
+                            public void callMethod() {
+                                new DownloadAllPacketSelection().execute(itemMasterId);
+                            }
+
+                            @Override
+                            public void callfailMethod(String msg) {
+
+                            }
+                        });
+                    }
+                }
+            }
+        });
+
+        btn_packetalllots.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final String packetLotno = txt_alllots_packets.getText().toString();
+                if (packetLotno != null || packetLotno != "") {
+                    allPacketClicked = 1;
+                    if (ut.isNet(LotSelectionActivity.this)) {
+                        new StartSession(LotSelectionActivity.this, new CallbackInterface() {
+                            @Override
+                            public void callMethod() {
+                                new ShowAllPacketLots().execute(packetLotno, itemMasterId);
+                            }
+
+                            @Override
+                            public void callfailMethod(String msg) {
+
+                            }
+                        });
+                    }
+                }
+
+
+            }
+        });
+
+
+        img_lotSelectionsearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LotNo = txt_lotno.getText().toString();
+                if (LotNo != null) {
+                    if (ut.isNet(LotSelectionActivity.this)) {
+                        new StartSession(LotSelectionActivity.this, new CallbackInterface() {
+                            @Override
+                            public void callMethod() {
+                                new IndividualLots().execute(LotNo, itemMasterId);
+                            }
+
+                            @Override
+                            public void callfailMethod(String msg) {
+
+                            }
+                        });
+                    }
+                }
+            }
+        });
+
+        img_packetSelectionsearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                packetNo = txt_packetno.getText().toString();
+                if (packetNo != null || packetNo != "") {
+                    if (ut.isNet(LotSelectionActivity.this)) {
+                        new StartSession(LotSelectionActivity.this, new CallbackInterface() {
+                            @Override
+                            public void callMethod() {
+                                new PacketIndividualLots().execute(packetNo, itemMasterId);
+                            }
+
+                            @Override
+                            public void callfailMethod(String msg) {
+
+                            }
+                        });
+                    }
+                }
+            }
+        });
+
+        btn_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (individual_mrsnoDetailsArrayList.size() == 0) {
+                    Toast.makeText(LotSelectionActivity.this, "Please Click onsearch to check if Lot no is present ", Toast.LENGTH_SHORT).show();
+                } else {
+
+
+                    ShowAllLotDetails showAllLotDetails = new ShowAllLotDetails();
+                    String lotNo = txt_lotno.getText().toString();
+                    String warhouse = txt_warehouselot.getText().toString();
+                    String location = txt_locationlot.getText().toString();
+                    String fifo = txt_FIFOlot.getText().toString();
+                    String issueQty = txt_issued.getText().toString();
+                    float issuebal = (float) 0.0;
+                    if (!issueQty.equals("")) {
+                        issuebal = Float.parseFloat(txt_issued.getText().toString());
+                    }
+
+                    String balq = txt_balQtylot.getText().toString();
+                    float balQty = (float) 0.0;
+                    if (!balq.equals("")) {
+                        balQty = Float.parseFloat(txt_balQtylot.getText().toString());
+                    }
+
+
+                    showAllLotDetails.setBatchNo(lotNo);
+                    showAllLotDetails.setBalQty(balQty);
+                    showAllLotDetails.setWarehouseCode(warhouse);
+                    showAllLotDetails.setLocationCode(location);
+                    showAllLotDetails.setFiFo(fifo);
+                    showAllLotDetails.setIssueQty(issuebal);
+
+                    if (allLotLclicked == 0) {
+                        if (issuebal == 0.0) {
+                            Toast.makeText(LotSelectionActivity.this, "Please fill issue quantity", Toast.LENGTH_SHORT).show();
+                        } else {
+
+                            int pos = -1;
+                            if (showAllLotDetailsArrayList.size() != 0) {
+                                for (int i = 0; i < showAllLotDetailsArrayList.size(); i++) {
+                                    if (showAllLotDetails.getBatchNo().equals(showAllLotDetailsArrayList.get(i).getBatchNo())) {
+                                        pos = i;
+                                        break;
+                                    }
+                                }
+                                if (pos != -1) {
+                                    if (balQty > issuebal) {
+
+                                        showAllLotDetailsArrayList.remove(pos);
+                                        showAllLotDetails.setStockDetailsId(individual_mrsnoDetailsArrayList.get(pos).getStockDetailsId());
+                                        showAllLotDetails.setBalQty(balQty);
+                                        showAllLotDetails.setItemMasterId(individual_mrsnoDetailsArrayList.get(pos).getItemMasterId());
+                                        showAllLotDetails.setWarehouseMasterId(individual_mrsnoDetailsArrayList.get(pos).getWarehouseMasterId());
+                                        showAllLotDetails.setLocationMasterId(individual_mrsnoDetailsArrayList.get(pos).getLocationMasterId());
+                                        showAllLotDetails.setBatchNo(individual_mrsnoDetailsArrayList.get(pos).getBatchNo());
+                                        showAllLotDetails.setFiFo(individual_mrsnoDetailsArrayList.get(pos).getFiFo());
+                                        showAllLotDetails.setWarehouseCode(individual_mrsnoDetailsArrayList.get(pos).getWarehouseCode());
+                                        showAllLotDetails.setLocationCode(individual_mrsnoDetailsArrayList.get(pos).getLocationCode());
+                                        showAllLotDetails.setReqQty(individual_mrsnoDetailsArrayList.get(pos).getReqQty());
+                                        showAllLotDetails.setIssueQty(issuebal);
+                                        showAllLotDetails.setOrderId(individual_mrsnoDetailsArrayList.get(pos).getOrderId());
+                                        showAllLotDetails.setMRSDetailId(individual_mrsnoDetailsArrayList.get(pos).getMRSDetailId());
+                                        showAllLotDetails.setUOMMasterId(individual_mrsnoDetailsArrayList.get(pos).getUOMMasterId());
+                                        individual_mrsnoDetailsArrayList.add(showAllLotDetails);
+                                        showAllLotDetailsArrayList.add(showAllLotDetails);
+
+                                        allLotSelectionAdapter = new AllLotSelectionAdapter(LotSelectionActivity.this, showAllLotDetailsArrayList, "fromAll");
+                                        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+                                        list_lotSelection.setLayoutManager(mLayoutManager);
+                                        list_lotSelection.setAdapter(allLotSelectionAdapter);
+                                    } else {
+                                        Toast.makeText(LotSelectionActivity.this, "issue quantity is greater than balance quantity", Toast.LENGTH_SHORT).show();
+                                    }
+                                } else {
+                                    if (balQty > issuebal) {
+                                        if (individual_mrsnoDetailsArrayList.size() != 0) {
+                                            for (int i = 0; i < individual_mrsnoDetailsArrayList.size(); i++) {
+                                                showAllLotDetails.setStockDetailsId(individual_mrsnoDetailsArrayList.get(i).getStockDetailsId());
+                                                showAllLotDetails.setBalQty(balQty);
+                                                showAllLotDetails.setItemMasterId(individual_mrsnoDetailsArrayList.get(i).getItemMasterId());
+                                                showAllLotDetails.setWarehouseMasterId(individual_mrsnoDetailsArrayList.get(i).getWarehouseMasterId());
+                                                showAllLotDetails.setLocationMasterId(individual_mrsnoDetailsArrayList.get(i).getLocationMasterId());
+                                                showAllLotDetails.setBatchNo(individual_mrsnoDetailsArrayList.get(i).getBatchNo());
+                                                showAllLotDetails.setFiFo(individual_mrsnoDetailsArrayList.get(i).getFiFo());
+                                                showAllLotDetails.setWarehouseCode(individual_mrsnoDetailsArrayList.get(i).getWarehouseCode());
+                                                showAllLotDetails.setLocationCode(individual_mrsnoDetailsArrayList.get(i).getLocationCode());
+                                                showAllLotDetails.setReqQty(individual_mrsnoDetailsArrayList.get(i).getReqQty());
+                                                showAllLotDetails.setIssueQty(issuebal);
+                                                showAllLotDetails.setOrderId(individual_mrsnoDetailsArrayList.get(i).getOrderId());
+                                                showAllLotDetails.setMRSDetailId(individual_mrsnoDetailsArrayList.get(i).getMRSDetailId());
+                                                showAllLotDetails.setUOMMasterId(individual_mrsnoDetailsArrayList.get(i).getUOMMasterId());
+                                            }
+                                        }
+                                        individual_mrsnoDetailsArrayList.add(showAllLotDetails);
+                                        showAllLotDetailsArrayList.add(showAllLotDetails);
+
+                                        allLotSelectionAdapter = new AllLotSelectionAdapter(LotSelectionActivity.this, showAllLotDetailsArrayList, "fromAdd");
+                                        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+                                        list_lotSelection.setLayoutManager(mLayoutManager);
+                                        list_lotSelection.setAdapter(allLotSelectionAdapter);
+                                    } else {
+                                        Toast.makeText(LotSelectionActivity.this, "issue quantity is greater than balance quantity", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+
+                            } else {
+                                if (balQty > issuebal) {
+
+
+                                if (individual_mrsnoDetailsArrayList != null) {
+                                    for (int i = 0; i < individual_mrsnoDetailsArrayList.size(); i++) {
+                                        showAllLotDetails.setStockDetailsId(individual_mrsnoDetailsArrayList.get(i).getStockDetailsId());
+                                        showAllLotDetails.setBalQty(balQty);
+                                        showAllLotDetails.setItemMasterId(individual_mrsnoDetailsArrayList.get(i).getItemMasterId());
+                                        showAllLotDetails.setWarehouseMasterId(individual_mrsnoDetailsArrayList.get(i).getWarehouseMasterId());
+                                        showAllLotDetails.setLocationMasterId(individual_mrsnoDetailsArrayList.get(i).getLocationMasterId());
+                                        showAllLotDetails.setBatchNo(individual_mrsnoDetailsArrayList.get(i).getBatchNo());
+                                        showAllLotDetails.setFiFo(individual_mrsnoDetailsArrayList.get(i).getFiFo());
+                                        showAllLotDetails.setWarehouseCode(individual_mrsnoDetailsArrayList.get(i).getWarehouseCode());
+                                        showAllLotDetails.setLocationCode(individual_mrsnoDetailsArrayList.get(i).getLocationCode());
+                                        showAllLotDetails.setReqQty(individual_mrsnoDetailsArrayList.get(i).getReqQty());
+                                        showAllLotDetails.setIssueQty(issuebal);
+                                        showAllLotDetails.setOrderId(individual_mrsnoDetailsArrayList.get(i).getOrderId());
+                                        showAllLotDetails.setMRSDetailId(individual_mrsnoDetailsArrayList.get(i).getMRSDetailId());
+                                        showAllLotDetails.setUOMMasterId(individual_mrsnoDetailsArrayList.get(i).getUOMMasterId());
+                                    }
+                                }
+
+                                individual_mrsnoDetailsArrayList.add(showAllLotDetails);
+                                showAllLotDetailsArrayList.add(showAllLotDetails);
+
+                                allLotSelectionAdapter = new AllLotSelectionAdapter(LotSelectionActivity.this, showAllLotDetailsArrayList, "fromAdd");
+                                RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+                                list_lotSelection.setLayoutManager(mLayoutManager);
+                                list_lotSelection.setAdapter(allLotSelectionAdapter);
+
+                            }else{
+                                    Toast.makeText(LotSelectionActivity.this, "issue quantity is greater than balance quantity", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }
+                    } else {
+                        if (issuebal == 0.0) {
+                            Toast.makeText(LotSelectionActivity.this, "Please fill issue quantity", Toast.LENGTH_SHORT).show();
+                        } else {
+
+                            int pos = -1;
+                            if (showAllLotDetailsArrayList.size() != 0) {
+                                for (int i = 0; i < showAllLotDetailsArrayList.size(); i++) {
+                                    if (showAllLotDetails.getBatchNo().equals(showAllLotDetailsArrayList.get(i).getBatchNo())) {
+                                        pos = i;
+                                        break;
+                                    }
+                                }
+
+                                if (pos != -1) {
+                                    Toast.makeText(LotSelectionActivity.this, "Lot no already present in list", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    if (balQty > issuebal) {
+                                        if (individual_mrsnoDetailsArrayList.size() != 0) {
+                                            for (int i = 0; i < individual_mrsnoDetailsArrayList.size(); i++) {
+                                                showAllLotDetails.setStockDetailsId(individual_mrsnoDetailsArrayList.get(pos).getStockDetailsId());
+                                                showAllLotDetails.setBalQty(balQty);
+                                                showAllLotDetails.setItemMasterId(individual_mrsnoDetailsArrayList.get(pos).getItemMasterId());
+                                                showAllLotDetails.setWarehouseMasterId(individual_mrsnoDetailsArrayList.get(pos).getWarehouseMasterId());
+                                                showAllLotDetails.setLocationMasterId(individual_mrsnoDetailsArrayList.get(pos).getLocationMasterId());
+                                                showAllLotDetails.setBatchNo(individual_mrsnoDetailsArrayList.get(pos).getBatchNo());
+                                                showAllLotDetails.setFiFo(individual_mrsnoDetailsArrayList.get(pos).getFiFo());
+                                                showAllLotDetails.setWarehouseCode(individual_mrsnoDetailsArrayList.get(pos).getWarehouseCode());
+                                                showAllLotDetails.setLocationCode(individual_mrsnoDetailsArrayList.get(pos).getLocationCode());
+                                                showAllLotDetails.setReqQty(individual_mrsnoDetailsArrayList.get(pos).getReqQty());
+                                                showAllLotDetails.setIssueQty(issuebal);
+                                                showAllLotDetails.setOrderId(individual_mrsnoDetailsArrayList.get(pos).getOrderId());
+                                                showAllLotDetails.setMRSDetailId(individual_mrsnoDetailsArrayList.get(pos).getMRSDetailId());
+                                                showAllLotDetails.setUOMMasterId(individual_mrsnoDetailsArrayList.get(pos).getUOMMasterId());
+                                            }
+                                        }
+
+                                        individual_mrsnoDetailsArrayList.add(showAllLotDetails);
+                                        showAllLotDetailsArrayList.add(showAllLotDetails);
+
+                                        allLotSelectionAdapter = new AllLotSelectionAdapter(LotSelectionActivity.this, showAllLotDetailsArrayList, "fromAdd");
+                                        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+                                        list_lotSelection.setLayoutManager(mLayoutManager);
+                                        list_lotSelection.setAdapter(allLotSelectionAdapter);
+                                    }else{
+                                        Toast.makeText(LotSelectionActivity.this, "issue quantity is greater than balance quantity", Toast.LENGTH_SHORT).show();
+                                    }
+
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+        });
+
+        btn_packetadd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ShowAllLotDetails showAllLotDetails = new ShowAllLotDetails();
+                // String lotNo = txt_l.getText().toString();
+                String warhouse = txt_warehousepacket.getText().toString();
+                String location = txt_locationpacket.getText().toString();
+                String fifo = txt_FIFO_packet.getText().toString();
+                String issueQty = txt_packetissued.getText().toString();
+                String packetNo = txt_packetno.getText().toString();
+                float issuebal = (float) 0.0;
+                if (!issueQty.equals("")) {
+                    issuebal = Float.parseFloat(txt_packetissued.getText().toString());
+                }
+
+                String balq = txt_balQtypacket.getText().toString();
+                float balQty = (float) 0.0;
+                if (!balq.equals("")) {
+                    balQty = Float.parseFloat(txt_balQtypacket.getText().toString());
+                }
+
+
+                // showAllLotDetails.setBatchNo(lotNo);
+                showAllLotDetails.setBalQty(balQty);
+                showAllLotDetails.setWarehouseCode(warhouse);
+                showAllLotDetails.setLocationCode(location);
+                showAllLotDetails.setFiFo(fifo);
+                showAllLotDetails.setIssueQty(issuebal);
+                showAllLotDetails.setPacketNo(packetNo);
+
+
+                if (allPacketClicked == 0) {
+
+                    int pos = -1;
+                    if (showAllLotDetailsArrayList.size() != 0) {
+                        for (int i = 0; i < showAllLotDetailsArrayList.size(); i++) {
+                            if (showAllLotDetails.getPacketNo().equals(showAllLotDetailsArrayList.get(i).getPacketNo())) {
+                                pos = i;
+                                break;
+                            }
+                        }
+                        if (pos != -1) {
+                            if (balQty >= issuebal) {
+                                individual_mrsnoDetailsArrayList.add(showAllLotDetails);
+                                showAllLotDetailsArrayList.remove(pos);
+
+                                // PacketCommonDetails(individual_mrsnoDetailsArrayList,pos);
+                                showAllLotDetails.setPacketMasterId(individual_mrsnoDetailsArrayList.get(pos).getPacketMasterId());
+                                showAllLotDetails.setItemMasterId(individual_mrsnoDetailsArrayList.get(pos).getItemMasterId());
+                                showAllLotDetails.setPacketSrNo(individual_mrsnoDetailsArrayList.get(pos).getPacketSrNo());
+                                showAllLotDetails.setPacketSrNo(individual_mrsnoDetailsArrayList.get(pos).getPacketSrNo());
+                                showAllLotDetails.setPacketNo(individual_mrsnoDetailsArrayList.get(pos).getPacketNo());
+                                showAllLotDetails.setStockDetailsId(individual_mrsnoDetailsArrayList.get(pos).getStockDetailsId());
+                                showAllLotDetails.setFiFo(individual_mrsnoDetailsArrayList.get(pos).getFiFo());
+                                showAllLotDetails.setWarehouseCode(individual_mrsnoDetailsArrayList.get(pos).getWarehouseCode());
+                                showAllLotDetails.setBalQty(balQty);
+                                showAllLotDetails.setBatchNo(individual_mrsnoDetailsArrayList.get(pos).getBatchNo());
+                                showAllLotDetails.setLocationCode(individual_mrsnoDetailsArrayList.get(pos).getLocationCode());
+                                showAllLotDetails.setReqQty(individual_mrsnoDetailsArrayList.get(pos).getReqQty());
+                                showAllLotDetails.setIssueQty(issuebal);
+                                showAllLotDetails.setOrderId(individual_mrsnoDetailsArrayList.get(pos).getOrderId());
+                                showAllLotDetails.setMRSDetailId(individual_mrsnoDetailsArrayList.get(pos).getMRSDetailId());
+                                showAllLotDetails.setUOMMasterId(individual_mrsnoDetailsArrayList.get(pos).getUOMMasterId());
+
+                                showAllLotDetailsArrayList.add(showAllLotDetails);
+
+                                allLotSelectionAdapter = new AllLotSelectionAdapter(LotSelectionActivity.this, showAllLotDetailsArrayList, "PacketSelection");
+                                RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+                                list_lotSelection.setLayoutManager(mLayoutManager);
+                                list_lotSelection.setAdapter(allLotSelectionAdapter);
+                            } else {
+                                Toast.makeText(LotSelectionActivity.this, "issue quantity is greater than balance quantity", Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            if (balQty >= issuebal) {
+                                if(individual_mrsnoDetailsArrayList.size() != 0) {
+                                    for (int i = 0; i < individual_mrsnoDetailsArrayList.size(); i++) {
+                                        showAllLotDetails.setPacketMasterId(individual_mrsnoDetailsArrayList.get(i).getPacketMasterId());
+                                        showAllLotDetails.setItemMasterId(individual_mrsnoDetailsArrayList.get(i).getItemMasterId());
+                                        showAllLotDetails.setPacketSrNo(individual_mrsnoDetailsArrayList.get(i).getPacketSrNo());
+                                        showAllLotDetails.setPacketSrNo(individual_mrsnoDetailsArrayList.get(i).getPacketSrNo());
+                                        showAllLotDetails.setPacketNo(individual_mrsnoDetailsArrayList.get(i).getPacketNo());
+                                        showAllLotDetails.setStockDetailsId(individual_mrsnoDetailsArrayList.get(i).getStockDetailsId());
+                                        showAllLotDetails.setFiFo(individual_mrsnoDetailsArrayList.get(i).getFiFo());
+                                        showAllLotDetails.setWarehouseCode(individual_mrsnoDetailsArrayList.get(i).getWarehouseCode());
+                                        showAllLotDetails.setBalQty(balQty);
+                                        showAllLotDetails.setBatchNo(individual_mrsnoDetailsArrayList.get(i).getBatchNo());
+                                        showAllLotDetails.setLocationCode(individual_mrsnoDetailsArrayList.get(i).getLocationCode());
+                                        showAllLotDetails.setReqQty(individual_mrsnoDetailsArrayList.get(i).getReqQty());
+                                        showAllLotDetails.setIssueQty(issuebal);
+                                        showAllLotDetails.setOrderId(individual_mrsnoDetailsArrayList.get(i).getOrderId());
+                                        showAllLotDetails.setMRSDetailId(individual_mrsnoDetailsArrayList.get(i).getMRSDetailId());
+                                        showAllLotDetails.setUOMMasterId(individual_mrsnoDetailsArrayList.get(i).getUOMMasterId());
+                                    }
+                                }
+                                individual_mrsnoDetailsArrayList.add(showAllLotDetails);
+                                showAllLotDetailsArrayList.add(showAllLotDetails);
+
+                                allLotSelectionAdapter = new AllLotSelectionAdapter(LotSelectionActivity.this, showAllLotDetailsArrayList, "PacketSelection");
+                                RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+                                list_lotSelection.setLayoutManager(mLayoutManager);
+                                list_lotSelection.setAdapter(allLotSelectionAdapter);
+                            }else {
+                                Toast.makeText(LotSelectionActivity.this, "issue quantity is greater than balance quantity", Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
+
+                    } else {
+                        // showAllLotDetailsArrayList.add(showAllLotDetails);
+
+                        if (individual_mrsnoDetailsArrayList.size() != 0) {
+                            for (int i = 0; i < individual_mrsnoDetailsArrayList.size(); i++) {
+                                if (individual_mrsnoDetailsArrayList.get(i).getPacketNo().equals(showAllLotDetails.getPacketNo())) {
+                                    pos = i;
+                                }
+                            }
+                            if (pos != -1) {
+                                //ShowAllLotDetails allLotDetails = new ShowAllLotDetails();
+                                if (balQty >= issuebal) {
+                                    showAllLotDetails.setPacketMasterId(individual_mrsnoDetailsArrayList.get(pos).getPacketMasterId());
+                                    showAllLotDetails.setItemMasterId(individual_mrsnoDetailsArrayList.get(pos).getItemMasterId());
+                                    showAllLotDetails.setPacketSrNo(individual_mrsnoDetailsArrayList.get(pos).getPacketSrNo());
+                                    showAllLotDetails.setPacketSrNo(individual_mrsnoDetailsArrayList.get(pos).getPacketSrNo());
+                                    showAllLotDetails.setPacketNo(individual_mrsnoDetailsArrayList.get(pos).getPacketNo());
+                                    showAllLotDetails.setStockDetailsId(individual_mrsnoDetailsArrayList.get(pos).getStockDetailsId());
+                                    showAllLotDetails.setFiFo(individual_mrsnoDetailsArrayList.get(pos).getFiFo());
+                                    showAllLotDetails.setWarehouseCode(individual_mrsnoDetailsArrayList.get(pos).getWarehouseCode());
+                                    showAllLotDetails.setBalQty(balQty);
+                                    showAllLotDetails.setBatchNo(individual_mrsnoDetailsArrayList.get(pos).getBatchNo());
+                                    showAllLotDetails.setLocationCode(individual_mrsnoDetailsArrayList.get(pos).getLocationCode());
+                                    showAllLotDetails.setReqQty(individual_mrsnoDetailsArrayList.get(pos).getReqQty());
+                                    showAllLotDetails.setIssueQty(issuebal);
+                                    showAllLotDetails.setOrderId(individual_mrsnoDetailsArrayList.get(pos).getOrderId());
+                                    showAllLotDetails.setMRSDetailId(individual_mrsnoDetailsArrayList.get(pos).getMRSDetailId());
+                                    showAllLotDetails.setUOMMasterId(individual_mrsnoDetailsArrayList.get(pos).getUOMMasterId());
+
+                                    showAllLotDetailsArrayList.add(showAllLotDetails);
+                                    individual_mrsnoDetailsArrayList.add(showAllLotDetails);
+                                }else {
+                                    Toast.makeText(LotSelectionActivity.this, "issue quantity is greater than balance quantity", Toast.LENGTH_SHORT).show();
+                                }
+
+
+
+                            } else {
+
+                            }
+                        } else {
+                            individual_mrsnoDetailsArrayList.add(showAllLotDetails);
+                            showAllLotDetailsArrayList.add(showAllLotDetails);
+                        }
+
+
+                        allLotSelectionAdapter = new AllLotSelectionAdapter(LotSelectionActivity.this, showAllLotDetailsArrayList, "PacketSelection");
+                        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+                        list_lotSelection.setLayoutManager(mLayoutManager);
+                        list_lotSelection.setAdapter(allLotSelectionAdapter);
+
+                    }
+                } else {
+                    int pos = -1;
+                    if (showAllLotDetailsArrayList.size() != 0) {
+                        for (int i = 0; i < showAllLotDetailsArrayList.size(); i++) {
+                            if (showAllLotDetails.getPacketNo().equals(showAllLotDetailsArrayList.get(i).getPacketNo())) {
+                                pos = i;
+                                break;
+                            }
+                        }
+
+                        if (pos != -1) {
+                            Toast.makeText(LotSelectionActivity.this, "Lot no already present in list", Toast.LENGTH_SHORT).show();
+                        } else {
+                          /*  individual_mrsnoDetailsArrayList.add(showAllLotDetails);
+                            showAllLotDetailsArrayList.add(showAllLotDetails);
+
+                            allLotSelectionAdapter = new AllLotSelectionAdapter(LotSelectionActivity.this, showAllLotDetailsArrayList, "PacketSelection");
+                            RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+                            list_lotSelection.setLayoutManager(mLayoutManager);
+                            list_lotSelection.setAdapter(allLotSelectionAdapter);*/
+                        }
+                    }
+
+
+                }
+            }
+
+
+        });
+
+        btn_save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String datasheetList = "";
+                // finalshowAllLotDetailsArrayList = allLotSelectionAdapter.getlist();
+
+                if (showAllLotDetailsArrayList.size() != 0) {
+                    int pos = -1;
+                    for (int i = 0; i < showAllLotDetailsArrayList.size(); i++) {
+                        if (showAllLotDetailsArrayList.get(i).getBalQty() < showAllLotDetailsArrayList.get(i).getIssueQty()) {
+                            pos = i;
+                            break;
+                        }
+                    }
+                    if (pos != -1) {
+                        Toast.makeText(LotSelectionActivity.this, "Issue qty should be less than or equal to balance qty", Toast.LENGTH_SHORT).show();
+                    } else {
+                        mrsnoDetailsArrayList.get(position).setShowAllLotDetailsArrayList(showAllLotDetailsArrayList);
+
+                        datasheetList = new Gson().toJson(new MRSNODetails(mrsnoDetailsArrayList));
+
+                        Intent intent = new Intent();
+                        intent.putExtra("objStr", datasheetList);
+                        intent.putExtra("position", position);
+                        //  intent.putExtra("isAns",isAns);
+
+                        setResult(1221, intent);
+                        finish();
+
+                    }
+                } else {
+                    Toast.makeText(LotSelectionActivity.this, "You have not selected or change any of the contents", Toast.LENGTH_SHORT).show();
+                }
+
+
+               /* } else if (type.equals("PacketSelection")) {
+
+                    if (showAllLotDetailsArrayList.size() != 0) {
+                        int pos = -1;
+                        for (int i = 0; i < showAllLotDetailsArrayList.size(); i++) {
+                            if (showAllLotDetailsArrayList.get(i).getBalQty() < showAllLotDetailsArrayList.get(i).getIssueQty()) {
+                                pos = i;
+                                break;
+                            }
+                        }
+                        if (pos != -1) {
+                            Toast.makeText(LotSelectionActivity.this, "Issue qty should be less than or equal to balance qty", Toast.LENGTH_SHORT).show();
+                        } else {
+                            mrsnoDetailsArrayList.get(position).setShowAllLotDetailsArrayList(showAllLotDetailsArrayList);
+
+                            datasheetList = new Gson().toJson(new MRSNODetails(mrsnoDetailsArrayList));
+                            Intent intent = new Intent();
+                            intent.putExtra("objStr", datasheetList);
+                            intent.putExtra("position", position);
+                            //  intent.putExtra("isAns",isAns);
+
+                            setResult(1221, intent);
+                            finish();
+                        }
+
+
+                    } else {
+
+                    }
+
+*/
+
+            }
+        });
+
+    }
+
+
+    private void initView() {
+        txt_itemCode = findViewById(R.id.txt_itemCode);
+        txt_itemDesc = findViewById(R.id.txt_itemDesc);
+        txt_qty = findViewById(R.id.txt_qty);
+        txt_issueQty = findViewById(R.id.txt_issueQty);
+        txt_warehouse = findViewById(R.id.txt_warehouse);
+        txt_FIFO = findViewById(R.id.txt_FIFO);
+        txt_location = findViewById(R.id.txt_location);
+        list_lotSelection = findViewById(R.id.list_lotSelection);
+        img_lotSelectionsearch = findViewById(R.id.img_lotSelectionsearch);
+        btn_showallLot = findViewById(R.id.btn_showallLot);
+        txt_lotno = findViewById(R.id.txt_lotno);
+        ln_main2 = findViewById(R.id.ln_main2);
+        ln_issued = findViewById(R.id.ln_issued);
+        txt_issueNo = findViewById(R.id.txt_issueNo);
+        txt_balQty = findViewById(R.id.txt_balQty);
+        btn_add = findViewById(R.id.btn_add);
+        txt_issued = findViewById(R.id.txt_issued);
+        txt_warehouselot = findViewById(R.id.txt_warehouselot);
+        txt_locationlot = findViewById(R.id.txt_locationlot);
+        txt_FIFOlot = findViewById(R.id.txt_FIFOlot);
+        txt_balQtylot = findViewById(R.id.txt_balQtylot);
+        btn_save = findViewById(R.id.btn_save);
+        btn_cancel = findViewById(R.id.btn_cancel);
+        ln_packetSelection = findViewById(R.id.ln_packetSelection);
+        ln_lotsSelection = findViewById(R.id.ln_lotsSelection);
+        txt_packetno = findViewById(R.id.txt_packetno);
+        img_packetSelectionsearch = findViewById(R.id.img_packetSelectionsearch);
+        txt_packetissued = findViewById(R.id.txt_packetissued);
+        btn_packetadd = findViewById(R.id.btn_packetadd);
+        txt_alllots_packets = findViewById(R.id.txt_alllots_packets);
+        btn_packetalllots = findViewById(R.id.btn_packetalllots);
+        txt_warehousepacket = findViewById(R.id.txt_warehousepacket);
+        txt_locationpacket = findViewById(R.id.txt_locationpacket);
+        txt_FIFO_packet = findViewById(R.id.txt_FIFO_packet);
+        txt_balQtypacket = findViewById(R.id.txt_balQtypacket);
+        ln_packetmain = findViewById(R.id.ln_packetmain);
+        ln_packetissued = findViewById(R.id.ln_packetissued);
+        txt_title = findViewById(R.id.txt_title);
+
+        showAllLotDetailsArrayList = new ArrayList<>();
+        mrsnoDetailsArrayList = new ArrayList<>();
+        individual_mrsnoDetailsArrayList = new ArrayList<>();
+        finalshowAllLotDetailsArrayList = new ArrayList<>();
+        allLotSelectionAdapter = new AllLotSelectionAdapter();
+
+    }
+
+
+    private class DownloadAllLotSelection extends AsyncTask<String, Void, String> {
+        Object res;
+        String response;
+        ProgressDialog progressDialog;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog = new ProgressDialog(LotSelectionActivity.this);
+            progressDialog.setMessage("Please wait data loading...");
+            progressDialog.show();
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            String itemMasterId = strings[0];
+            String batchControl = strings[1];
+
+            String url = CompanyURL + WebUrlClass.api_GetLotDetailsData + "?ItemMasterId=" + itemMasterId + "&BatchControl=" + batchControl;
+
+            try {
+                res = ut.OpenConnection(url);
+                if (res != null) {
+                    response = res.toString();
+                    response = res.toString().replaceAll("\\\\", "");
+                    response = response.replaceAll("\\\\\\\\/", "");
+                    response = response.substring(1, response.length() - 1);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                response = "error";
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            progressDialog.dismiss();
+            if (response.equals("error")) {
+
+            }else if(response.equals("[]")){
+                Toast.makeText(LotSelectionActivity.this, "No Record Present", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                JSONArray jsonElements = null;
+                try {
+                    jsonElements = new JSONArray(response);
+                    //   mrsnoDetailsArrayList.clear();
+                    for (int i = 0; i < jsonElements.length(); i++) {
+
+                        JSONObject jsonObject = jsonElements.getJSONObject(i);
+                        MRSNODetails mrsnoDetails = new MRSNODetails();
+                        ShowAllLotDetails showAllLotDetails = new ShowAllLotDetails();
+                        ArrayList<ShowAllLotDetails> showAllLotDetails1 = new ArrayList<>();
+
+                        showAllLotDetails.setStockDetailsId(jsonObject.getString("StockDetailsId"));
+                        showAllLotDetails.setBalQty((float) jsonObject.getDouble("BalQty"));
+                        showAllLotDetails.setItemMasterId(jsonObject.getString("ItemMasterId"));
+                        showAllLotDetails.setWarehouseMasterId(jsonObject.getString("WarehouseMasterId"));
+                        showAllLotDetails.setLocationMasterId(jsonObject.getString("LocationMasterId"));
+                        showAllLotDetails.setBatchNo(jsonObject.getString("BatchNo"));
+                        showAllLotDetails.setFiFo(jsonObject.getString("FiFo"));
+                        showAllLotDetails.setWarehouseCode(jsonObject.getString("WarehouseCode"));
+                        showAllLotDetails.setLocationCode(jsonObject.getString("LocationCode"));
+                        showAllLotDetails.setReqQty(jsonObject.getString("ReqQty"));
+                        showAllLotDetails.setIssueQty((float) jsonObject.getDouble("IssueQty"));
+                        showAllLotDetails.setOrderId(jsonObject.getString("OrderId"));
+                        showAllLotDetails.setMRSDetailId(jsonObject.getString("MRSDetailId"));
+                        showAllLotDetails.setUOMMasterId(jsonObject.getString("UOMMasterId"));
+                        int pos = -1;
+                        if (showAllLotDetailsArrayList.size() != 0) {
+                            for (int j = 0; j < showAllLotDetailsArrayList.size(); j++) {
+                                if (showAllLotDetails.getBatchNo().equals(showAllLotDetailsArrayList.get(j).getBatchNo())) {
+                                    pos = j;
+                                }
+                            }
+                            if (pos != -1) {
+
+                            } else {
+                                showAllLotDetailsArrayList.add(showAllLotDetails);
+                                mrsnoDetailsArrayList.get(position).setShowAllLotDetailsArrayList(showAllLotDetailsArrayList);
+                            }
+                        } else {
+                            showAllLotDetailsArrayList.add(showAllLotDetails);
+                            mrsnoDetailsArrayList.get(position).setShowAllLotDetailsArrayList(showAllLotDetailsArrayList);
+                        }
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                allLotSelectionAdapter = new AllLotSelectionAdapter(LotSelectionActivity.this, showAllLotDetailsArrayList, "fromAll");
+                RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+                list_lotSelection.setLayoutManager(mLayoutManager);
+                list_lotSelection.setAdapter(allLotSelectionAdapter);
+            }
+        }
+
+    }
+
+    private class IndividualLots extends AsyncTask<String, Void, String> {
+
+        Object res;
+        String response;
+        ProgressDialog progressDialog;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog = new ProgressDialog(LotSelectionActivity.this);
+            progressDialog.setMessage("Please wait data loading...");
+            progressDialog.show();
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            String lotNo = strings[0];
+            String itemMasterid = strings[1];
+            String url = CompanyURL + WebUrlClass.api_GetLotSelection + "?LotNo=" + lotNo + "&ItemMasterId=" + itemMasterid;
+
+            try {
+                res = ut.OpenConnection(url);
+                if (res != null) {
+                    response = res.toString();
+                    response = res.toString().replaceAll("\\\\", "");
+                    response = response.replaceAll("\\\\\\\\/", "");
+                    response = response.substring(1, response.length() - 1);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                response = "error";
+            }
+
+            return null;
+        }
+
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            progressDialog.dismiss();
+            if (response.equals("error") || response.equals("[]")) {
+                Toast.makeText(LotSelectionActivity.this, "Invalid Lot No !!!", Toast.LENGTH_SHORT).show();
+                ln_issued.setVisibility(View.GONE);
+                ln_main2.setVisibility(View.GONE);
+                btn_add.setEnabled(false);
+            } else {
+                ln_issued.setVisibility(View.VISIBLE);
+                ln_main2.setVisibility(View.VISIBLE);
+                ln_issued.setVisibility(View.VISIBLE);
+                btn_add.setVisibility(View.VISIBLE);
+                btn_add.setEnabled(true);
+                JSONArray jsonElements = null;
+                try {
+                    jsonElements = new JSONArray(response);
+                    individual_mrsnoDetailsArrayList.clear();
+                    //   mrsnoDetailsArrayList.clear();
+                    for (int i = 0; i < jsonElements.length(); i++) {
+
+                        JSONObject jsonObject = jsonElements.getJSONObject(i);
+                        MRSNODetails mrsnoDetails = new MRSNODetails();
+                        ShowAllLotDetails showAllLotDetails = new ShowAllLotDetails();
+                        ArrayList<ShowAllLotDetails> showAllLotDetails1 = new ArrayList<>();
+                        showAllLotDetails.setStockDetailsId(jsonObject.getString("StockDetailsId"));
+                        showAllLotDetails.setBalQty((float) jsonObject.getDouble("BalQty"));
+                        txt_balQtylot.setText(String.format("%.2f", Float.valueOf(String.valueOf(jsonObject.getDouble("BalQty")))));
+                        showAllLotDetails.setItemMasterId(jsonObject.getString("ItemMasterId"));
+                        showAllLotDetails.setWarehouseMasterId(jsonObject.getString("WarehouseMasterId"));
+                        showAllLotDetails.setLocationMasterId(jsonObject.getString("LocationMasterId"));
+                        showAllLotDetails.setBatchNo(jsonObject.getString("BatchNo"));
+                        showAllLotDetails.setFiFo(jsonObject.getString("FiFo"));
+                        txt_FIFOlot.setText(jsonObject.getString("FiFo"));
+                        showAllLotDetails.setWarehouseCode(jsonObject.getString("WarehouseCode"));
+                        txt_warehouselot.setText(jsonObject.getString("WarehouseCode"));
+                        showAllLotDetails.setLocationCode(jsonObject.getString("LocationCode"));
+                        txt_locationlot.setText(jsonObject.getString("LocationCode"));
+                        showAllLotDetails.setReqQty(jsonObject.getString("ReqQty"));
+                        showAllLotDetails.setIssueQty((float) (jsonObject.getDouble("IssueQty")));
+                        showAllLotDetails.setOrderId(jsonObject.getString("OrderId"));
+                        showAllLotDetails.setMRSDetailId(jsonObject.getString("MRSDetailId"));
+                        showAllLotDetails.setUOMMasterId(jsonObject.getString("UOMMasterId"));
+
+
+                        individual_mrsnoDetailsArrayList.add(showAllLotDetails);
+
+                        //   mrsnoDetailsArrayList.get(position).setShowAllLotDetailsArrayList(showAllLotDetails1);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+
+        }
+    }
+
+    private class PacketIndividualLots extends AsyncTask<String, Void, String> {
+
+        Object res;
+        String response;
+        ProgressDialog progressDialog;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog = new ProgressDialog(LotSelectionActivity.this);
+            progressDialog.setMessage("Please wait data loading...");
+            progressDialog.show();
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+
+            String packetNo = strings[0];
+            String itemMasterid = strings[1];
+            String url = CompanyURL + WebUrlClass.api_GetPacketData + "?PacketNo=" + packetNo + "&ItemMasterId=" + itemMasterid;
+
+            try {
+                res = ut.OpenConnection(url);
+                if (res != null) {
+                    response = res.toString();
+                    response = res.toString().replaceAll("\\\\", "");
+                    response = response.replaceAll("\\\\\\\\/", "");
+                    response = response.substring(1, response.length() - 1);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                response = "error";
+            }
+
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            progressDialog.dismiss();
+            if (response.equals("error") || response.equals("[]")) {
+                // btn_packetadd.setEnabled(false);
+                ln_packetissued.setVisibility(View.GONE);
+                ln_packetmain.setVisibility(View.GONE);
+                Toast.makeText(LotSelectionActivity.this, "Invalid Packet No !!!", Toast.LENGTH_SHORT).show();
+
+            } else {
+                ln_packetmain.setVisibility(View.VISIBLE);
+                ln_packetissued.setVisibility(View.VISIBLE);
+                ln_packetissued.setBackgroundColor(Color.parseColor("#DBE8EA"));
+                JSONArray jsonElements = null;
+                try {
+                    jsonElements = new JSONArray(response);
+                    individual_mrsnoDetailsArrayList.clear();
+                    //   mrsnoDetailsArrayList.clear();
+                    for (int i = 0; i < jsonElements.length(); i++) {
+
+                        JSONObject jsonObject = jsonElements.getJSONObject(i);
+                        MRSNODetails mrsnoDetails = new MRSNODetails();
+                        ShowAllLotDetails showAllLotDetails = new ShowAllLotDetails();
+                        ArrayList<ShowAllLotDetails> showAllLotDetails1 = new ArrayList<>();
+                        showAllLotDetails.setStockDetailsId(jsonObject.getString("StockDetailsId"));
+                        showAllLotDetails.setPacketMasterId(jsonObject.getString("PacketMasterId"));
+                        showAllLotDetails.setItemMasterId(jsonObject.getString("ItemPlantId"));
+                        showAllLotDetails.setPacketSrNo(jsonObject.getString("PacketSrNo"));
+                        showAllLotDetails.setPacketNo(jsonObject.getString("PacketNo"));
+                        showAllLotDetails.setBalQty((float) jsonObject.getDouble("BalQty"));
+                        txt_balQtypacket.setText(String.format("%.2f", Float.valueOf(String.valueOf(jsonObject.getDouble("BalQty")))));
+                        showAllLotDetails.setFiFo(jsonObject.getString("FiFo"));
+                        txt_FIFO_packet.setText(jsonObject.getString("FiFo"));
+                        showAllLotDetails.setBatchNo(jsonObject.getString("BatchNo"));
+                        showAllLotDetails.setWarehouseCode(jsonObject.getString("WarehouseCode"));
+                        txt_warehousepacket.setText(jsonObject.getString("WarehouseCode"));
+                        showAllLotDetails.setLocationCode(jsonObject.getString("LocationCode"));
+                        txt_locationpacket.setText(jsonObject.getString("LocationCode"));
+                        showAllLotDetails.setReqQty(jsonObject.getString("ReqQty"));
+                        showAllLotDetails.setIssueQty((float) (jsonObject.getDouble("IssueQty")));
+                        txt_packetissued.setText(String.format("%.2f", Float.valueOf(String.valueOf(jsonObject.getDouble("IssueQty")))));
+                        showAllLotDetails.setOrderId(jsonObject.getString("OrderId"));
+                        showAllLotDetails.setMRSDetailId(jsonObject.getString("MRSDetailId"));
+                        showAllLotDetails.setUOMMasterId(jsonObject.getString("UOMMasterId"));
+
+                        individual_mrsnoDetailsArrayList.add(showAllLotDetails);
+
+                        //   mrsnoDetailsArrayList.get(position).setShowAllLotDetailsArrayList(showAllLotDetails1);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    private class ShowAllPacketLots extends AsyncTask<String, Void, String> {
+        Object res;
+        String response;
+        ProgressDialog progressDialog;
+
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog = new ProgressDialog(LotSelectionActivity.this);
+            progressDialog.setMessage("Please wait data loading...");
+            progressDialog.show();
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+
+            String packetlotno = strings[0];
+            String itemMasterid = strings[1];
+            String url = CompanyURL + WebUrlClass.api_GetPKtLotDetails + "?LotNo=" + packetlotno + "&ItemMasterId=" + itemMasterid;
+
+            try {
+                res = ut.OpenConnection(url);
+                if (res != null) {
+                    response = res.toString();
+                    response = res.toString().replaceAll("\\\\", "");
+                    response = response.replaceAll("\\\\\\\\/", "");
+                    response = response.substring(1, response.length() - 1);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                response = "error";
+            }
+
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            progressDialog.dismiss();
+
+            if (response.equals("error")) {
+
+            } else {
+                PacketSelectionJsonObject(response, "frompacketLots");
+            }
+        }
+    }
+
+    private class DownloadAllPacketSelection extends AsyncTask<String, Void, String> {
+
+        Object res;
+        String response;
+        ProgressDialog progressDialog;
+
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog = new ProgressDialog(LotSelectionActivity.this);
+            progressDialog.setMessage("Please wait data loading...");
+            progressDialog.show();
+        }
+
+
+        @Override
+        protected String doInBackground(String... strings) {
+
+            String itemMasterid = strings[0];
+            String url = CompanyURL + WebUrlClass.api_GetAllPacketData + "?ItemMasterId=" + itemMasterid;
+
+            try {
+                res = ut.OpenConnection(url);
+                if (res != null) {
+                    response = res.toString();
+                    response = res.toString().replaceAll("\\\\", "");
+                    response = response.replaceAll("\\\\\\\\/", "");
+                    response = response.substring(1, response.length() - 1);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                response = "error";
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            progressDialog.dismiss();
+            if (response.equals("error")) {
+
+            }else if(response.equals("[]")){
+                Toast.makeText(LotSelectionActivity.this, "Packtes not available for selected lot.", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                PacketSelectionJsonObject(response, "fromallpackets");
+            }
+        }
+    }
+
+    private void PacketSelectionJsonObject(String response, String destination) {
+
+       /* if (destination.equals("frompacketLots")) {
+            showAllLotDetailsArrayList.clear();
+        }*/
+
+        JSONArray jsonElements = null;
+        try {
+            jsonElements = new JSONArray(response);
+            //   mrsnoDetailsArrayList.clear();
+            for (int i = 0; i < jsonElements.length(); i++) {
+
+                JSONObject jsonObject = jsonElements.getJSONObject(i);
+                MRSNODetails mrsnoDetails = new MRSNODetails();
+                ShowAllLotDetails showAllLotDetails = new ShowAllLotDetails();
+                ArrayList<ShowAllLotDetails> showAllLotDetails1 = new ArrayList<>();
+
+                showAllLotDetails.setStockDetailsId(jsonObject.getString("StockDetailsId"));
+                showAllLotDetails.setPacketMasterId(jsonObject.getString("PacketMasterId"));
+                if (destination.equals("fromallpackets")) {
+                    showAllLotDetails.setItemMasterId(jsonObject.getString("ItemMasterId"));
+                } else {
+                    showAllLotDetails.setItemMasterId(jsonObject.getString("ItemPlantId"));
+                }
+                showAllLotDetails.setPacketSrNo(jsonObject.getString("PacketSrNo"));
+                showAllLotDetails.setPacketNo(jsonObject.getString("PacketNo"));
+                showAllLotDetails.setBalQty((float) jsonObject.getDouble("BalQty"));
+                showAllLotDetails.setFiFo(jsonObject.getString("FiFo"));
+                showAllLotDetails.setBatchNo(jsonObject.getString("BatchNo"));
+                showAllLotDetails.setWarehouseCode(jsonObject.getString("WarehouseCode"));
+                showAllLotDetails.setLocationCode(jsonObject.getString("LocationCode"));
+                showAllLotDetails.setReqQty(jsonObject.getString("ReqQty"));
+                showAllLotDetails.setIssueQty((float) (jsonObject.getDouble("IssueQty")));
+                showAllLotDetails.setOrderId(jsonObject.getString("OrderId"));
+                showAllLotDetails.setMRSDetailId(jsonObject.getString("MRSDetailId"));
+                showAllLotDetails.setUOMMasterId(jsonObject.getString("UOMMasterId"));
+                showAllLotDetails1.add(showAllLotDetails);
+
+                int pos = -1;
+                if (showAllLotDetailsArrayList.size() != 0) {
+                    for (int j = 0; j < showAllLotDetailsArrayList.size(); j++) {
+                        if (showAllLotDetails.getPacketNo().equals(showAllLotDetailsArrayList.get(j).getPacketNo())) {
+                            pos = j;
+                        }
+                    }
+                    if (pos != -1) {
+
+                    } else {
+                        showAllLotDetailsArrayList.add(showAllLotDetails);
+                        mrsnoDetailsArrayList.get(position).setShowAllLotDetailsArrayList(showAllLotDetailsArrayList);
+                    }
+                } else {
+                    showAllLotDetailsArrayList.add(showAllLotDetails);
+                    mrsnoDetailsArrayList.get(position).setShowAllLotDetailsArrayList(showAllLotDetailsArrayList);
+                }
+
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        allLotSelectionAdapter = new AllLotSelectionAdapter(LotSelectionActivity.this, showAllLotDetailsArrayList, "PacketSelection");
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        list_lotSelection.setLayoutManager(mLayoutManager);
+        list_lotSelection.setAdapter(allLotSelectionAdapter);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
+
+    private void PacketCommonDetails(ArrayList<ShowAllLotDetails> individual_mrsnoDetailsArrayList, int pos) {
+
+
+    }
+
+}

@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/vwb_bar"
+        android:id="@+id/appbar"/>
+
+    <LinearLayout
+        android:id="@+id/claimTextLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/appbar"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#707070"
+            android:padding="5dp"
+            android:text="Claim Application"
+            android:textColor="#fff"
+            android:textSize="14dp"
+            android:typeface="serif" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/claimTextLayout"
+        android:paddingBottom="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <LinearLayout
+                    android:id="@+id/lay_claim_against"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.22"
+                        android:gravity="left"
+                        android:padding="5dp"
+                        android:text="Claim Against"
+                        android:textColor="#000"
+                        android:textSize="14sp"
+                        android:typeface="serif" />
+
+                    <Spinner
+                        android:id="@+id/Sp_climAgainst"
+                        style="@style/Widget.AppCompat.Spinner.Underlined"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.78"
+                        android:textColor="#000"
+                        android:textSize="14dp"
+                        android:theme="@style/ThemeSpinner"
+                        android:typeface="serif" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.22"
+                        android:gravity="left"
+                        android:text="Task"
+                        android:textColor="#000"
+                        android:textSize="14sp"
+                        android:typeface="serif" />
+
+                    <Spinner
+                        android:id="@+id/sp_task"
+                        style="@style/Widget.AppCompat.Spinner.Underlined"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.78"
+                        android:textColor="#000"
+                        android:textSize="14dp"
+                        android:theme="@style/ThemeSpinner"
+                        android:typeface="serif" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_costcenter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.22"
+                        android:gravity="left"
+                        android:text="Cost Center"
+                        android:textColor="#000"
+                        android:textSize="14sp"
+                        android:typeface="serif" />
+
+                    <Spinner
+                        android:id="@+id/sp_costcenter"
+                        style="@style/Widget.AppCompat.Spinner.Underlined"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.78"
+                        android:textColor="#000"
+                        android:textSize="14dp"
+                        android:theme="@style/ThemeSpinner"
+                        android:typeface="serif" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.22"
+                        android:gravity="left"
+                        android:text="Approver"
+                        android:textColor="#000"
+                        android:textSize="14sp"
+                        android:typeface="serif" />
+
+                    <Spinner
+                        android:id="@+id/sp_approver"
+                        style="@style/Widget.AppCompat.Spinner.Underlined"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.78"
+                        android:textColor="#000"
+                        android:textSize="14dp"
+                        android:theme="@style/ThemeSpinner"
+                        android:typeface="serif" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.22"
+                        android:gravity="left"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:text="Purpose of Travel"
+                        android:textColor="#000"
+                        android:textSize="14sp"
+                        android:typeface="serif" />
+
+                    <EditText
+                        android:id="@+id/ed_travel_purpose"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.78"
+                        android:drawableRight="@drawable/star_img2"
+                        android:hint="Enter text here..."
+                        android:textColor="#000"
+                        android:textSize="14sp"
+                        android:theme="@style/ThemeSpinner"
+                        android:typeface="serif" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.22"
+                        android:gravity="center_vertical"
+                        android:text="Remark"
+                        android:textColor="#000"
+                        android:textSize="14sp"
+                        android:typeface="serif" />
+
+                    <EditText
+                        android:id="@+id/ed_remark"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.78"
+                        android:hint="Enter text here..."
+                        android:textColor="#000"
+                        android:textSize="14sp"
+                        android:drawableRight="@drawable/star_img2"
+                        android:theme="@style/ThemeSpinner"
+                        android:typeface="serif" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/addLayout"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp">
+
+                <Button
+                    android:id="@+id/btn_add_claim"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/button_size"
+                    android:layout_weight="7"
+                    android:background="@drawable/backshapegreen"
+                    android:text="Add New claim"
+                    android:textColor="#fff"
+                    android:layout_below="@+id/addLayout"
+                    android:layout_marginRight="3dp"/>
+                <RelativeLayout
+                    android:id="@+id/imAttachment"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:background="@color/orange"
+                    android:layout_marginLeft="3dp"
+                    >
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/attach"
+                        android:tint="@android:color/white"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/lay_claim_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/addLayout"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+            </android.support.v7.widget.RecyclerView>
+
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_size"
+                android:background="@drawable/blue_backgroung"
+                android:text="Save"
+                android:textColor="#fff"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginBottom="8dp"
+                android:layout_below="@+id/lay_claim_details"/>
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+</RelativeLayout>

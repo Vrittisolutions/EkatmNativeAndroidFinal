@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.vritti.sales.OrderBookingNew.WishlistActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbarlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:background="@color/colorPrimary1"
+        android:paddingBottom="5dp">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar1"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+            <!--?attr/actionBarSize-->
+
+            <RelativeLayout
+                android:id="@+id/layyellow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|right"
+                android:layout_gravity="center_vertical|right"
+                android:visibility="gone">
+                <!-- android:padding="5dp"
+                android:layout_marginTop="@dimen/actionbar_height"-->
+
+                <ImageView
+                    android:id="@+id/imgcart"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:src="@drawable/cart2"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center_vertical|right" />
+
+                <TextView
+                    android:id="@+id/textview_cart"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/shape_cart_count"
+                    android:layout_marginLeft="25dp"
+                    android:text="0"
+                    android:textColor="#111"
+                    android:gravity="center"
+                    android:textSize="10sp"
+                    android:textStyle="bold"/>
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/appbarlayout">
+        <!--android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"-->
+
+        <LinearLayout
+            android:id="@+id/layouttitle"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="10"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/txtitems"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4.5"
+                android:gravity="center"
+                android:text="Wishlist Products"
+                android:textColor="@color/btncolordark"
+                android:textSize="15dp"
+                android:fontFamily="@string/ButtonFont"/>
+
+            <TextView
+                android:id="@+id/rate"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="Price"
+                android:textColor="@color/btncolordark"
+                android:textSize="15dp"
+                android:fontFamily="@string/ButtonFont" />
+
+            <TextView
+                android:id="@+id/txtqtytitle"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:gravity="center"
+                android:text="Qty"
+                android:textColor="@color/btncolordark"
+                android:textSize="15dp"
+                android:fontFamily="@string/ButtonFont" />
+
+            <TextView
+                android:id="@+id/pricewishlist"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="Total"
+                android:textColor="@color/btncolordark"
+                android:textSize="15dp"
+                android:fontFamily="@string/ButtonFont" />
+
+            <!--  android:layout_marginRight="20dp"-->
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/noitems"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:visibility="gone">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/noitems"
+                android:textSize="40dp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/msgnoitm"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_margin="20dp"
+                android:layout_gravity="center"
+                android:gravity="center"/>
+
+            <View
+                android:layout_width="100dp"
+                android:layout_height="1dp"
+                android:background="@color/colorPrimary1"
+                android:layout_gravity="center"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/edtsearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/searchprod"
+            android:textSize="13sp"
+            android:paddingLeft="5sp"/>
+
+            <ListView
+                android:id="@+id/wishlist2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@null"
+                android:dividerHeight="0dp"
+                android:layout_marginBottom="80dp"
+                android:visibility="visible"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="35dp"
+            android:background="@color/colorPrimary1"
+            android:gravity="fill_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="3dp"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:gravity="left"
+                android:text="@string/amount"
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                android:fontFamily="@string/ButtonFont" />
+
+            <TextView
+                android:id="@+id/total_amount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:gravity="right"
+                android:text="Rs.0.00"
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                android:fontFamily="@string/ButtonFont" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/laybutn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true">
+
+            <Button
+                android:id="@+id/btndiscard"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/colorPrimary1"
+                android:layout_alignParentBottom="true"
+                android:drawableLeft="@drawable/discard1"
+                android:text="@string/discard"
+                android:fontFamily="@string/ButtonFont"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                android:layout_weight="0.5"
+                android:paddingLeft="10dp"
+                android:layout_margin="5dp"/>
+
+            <Button
+                android:id="@+id/button_placeproceed"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/btn_pressed"
+                android:layout_alignParentBottom="true"
+                android:text="@string/prochkout"
+                android:fontFamily="@string/ButtonFont"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                android:layout_weight="0.5"
+                android:layout_margin="5dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/imgzoomview_lay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/border_white"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="60dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:elevation="5dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/imgzoomview"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:visibility="visible"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"
+            android:elevation="5dp"/>
+
+        <TextView
+            android:id="@+id/txtiname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Item Name"
+            android:textSize="16sp"
+            android:textColor="#111"
+            android:textStyle="bold"
+            android:paddingLeft="10sp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtbname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="By Brand"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:paddingLeft="10sp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                android:visibility="visible"
+                android:textColor="@color/violet_dark"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Content+UOM"
+                android:textSize="14sp"
+                android:textColor="#111"
+                android:textStyle="bold"
+                android:paddingRight="10sp"
+                android:layout_gravity="left"
+                android:gravity="left"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

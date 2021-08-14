@@ -1,0 +1,50 @@
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/putaway"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:alpha="4"
+    android:background="#ffffff">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <EditText
+                android:id="@+id/s_search"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:textColor="#000"
+                android:textSize="15dp"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:hint="Enter GRN No.or scan " />
+            <!--    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@+id/s_search"
+        android:id="@+id/my_recycler_view_picklist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        />
+    </RelativeLayou-->
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/my_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_below="@id/s_search"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

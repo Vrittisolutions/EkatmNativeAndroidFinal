@@ -1,0 +1,48 @@
+package com.vritti.crm.adapter;
+
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ListAdapter;
+
+import com.vritti.crm.bean.EntityMasterEnterpriseType;
+import com.vritti.crm.vcrm7.EntityMasterClassificationActivity;
+
+import java.util.ArrayList;
+
+public class EntityMasterEnterpriseAdapter extends RecyclerView.Adapter<EntityMasterEnterpriseAdapter.EnterpriseHolder> {
+
+    Context context;
+    ArrayList<EntityMasterEnterpriseType> entityMasterEnterpriseTypeArrayList;
+
+
+
+    public EntityMasterEnterpriseAdapter(Context context, ArrayList<EntityMasterEnterpriseType> entityMasterEnterpriseTypeArrayList) {
+        this.context = context;
+        this.entityMasterEnterpriseTypeArrayList = entityMasterEnterpriseTypeArrayList;
+    }
+
+    @NonNull
+    @Override
+    public EnterpriseHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return null;
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull EnterpriseHolder holder, int position) {
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return entityMasterEnterpriseTypeArrayList.size();
+    }
+
+    public class EnterpriseHolder extends RecyclerView.ViewHolder {
+        public EnterpriseHolder(View itemView) {
+            super(itemView);
+        }
+    }
+}

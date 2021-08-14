@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/len_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_text"
+        android:gravity="left|center"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/edt_scanPacket"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Scan "
+            android:textSize="18sp"
+            android:padding="10dp"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:layout_weight="1"
+            android:textColorHint="@color/black"
+            ></EditText>
+
+        <ImageView
+            android:id="@+id/img_search"
+            android:layout_width="30dp"
+            android:layout_marginRight="5dp"
+            android:layout_toRightOf="@+id/edt_scanPacket"
+            android:src="@drawable/ic_search"
+            android:layout_height="30dp"/>
+    </LinearLayout>
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="5dp"
+        android:visibility="gone"
+        android:layout_below="@id/len_search"
+        android:background="#111"></View>
+    <android.support.v7.widget.RecyclerView
+    android:id="@+id/my_recycler_view"
+    android:layout_width="match_parent"
+    android:layout_below="@id/view2"
+    android:layout_height="match_parent"
+    />
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:layout_gravity="center"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        />
+
+</RelativeLayout>

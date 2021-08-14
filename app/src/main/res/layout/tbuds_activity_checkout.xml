@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/tbar"
+        layout="@layout/tbuds_common_toolbar"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:gravity="fill_vertical"
+        android:orientation="vertical"
+        android:layout_below="@+id/tbar">
+        <!---->
+
+        <LinearLayout
+
+            android:id="@+id/l1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:background="#3d3d3d"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:id="@+id/textview_cart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center"
+                android:text="cart"
+                android:fontFamily="@string/ButtonFont"
+                android:textColor="#ffffff"
+                android:textSize="14sp"
+
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/l1"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp"
+            android:paddingTop="1dp"
+            android:weightSum="10">
+
+            <!--android:background="@color/wallet_hint_foreground_holo_dark"-->
+
+
+            <TextView
+                android:id="@+id/textview_product_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center"
+                android:layout_weight="5.5"
+                android:gravity="center"
+                android:text="Products"
+                android:textColor="@color/btncolordark"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:fontFamily="@string/ButtonFont"
+
+                />
+
+            <TextView
+                android:id="@+id/textview_Qty"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1.5"
+                android:gravity="center"
+                android:text="Qty"
+                android:fontFamily="@string/ButtonFont"
+                android:textColor="@color/btncolordark"
+                android:textSize="15dp"
+                android:textStyle="bold"/>
+
+            <!--<TextView
+                android:id="@+id/textview_offer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="0.1"
+                android:gravity="right"
+                android:text="Offer"
+                android:textStyle="bold"
+                android:textColor="@color/btncolordark"
+                android:textSize="14sp" />-->
+
+            <TextView
+                android:id="@+id/textview_Subtotal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:text="Amount"
+                android:fontFamily="@string/ButtonFont"
+                android:textColor="@color/btncolordark"
+                android:textSize="15dp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/scrollayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/linear"
+        android:layout_above="@+id/linearLayout3">
+
+        <ScrollView
+            android:id="@+id/scrollview_cart_list"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+
+            android:fillViewport="true">
+            <!--android:layout_above="@+id/linearLayout3"-->
+            <!-- android:layout_marginTop="@dimen/button_height"-->
+
+            <LinearLayout
+                android:id="@+id/linearlayout_checkout_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ListView
+                    android:id="@+id/listcheckout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:divider="@null"
+                    android:dividerHeight="0dp">
+                    <!--android:layout_marginLeft="8dp"-->
+
+                </ListView>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="fill_vertical"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:background="@color/colorPrimary1"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/textview_amt_payable"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center|right"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="0.5"
+                android:text="Amount Payable"
+                android:textColor="#ffffff"
+                android:textSize="15dp"
+                android:fontFamily="@string/ButtonFont"/>
+
+            <TextView
+                android:id="@+id/textview_total_amount_pay"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center|right"
+                android:layout_marginRight="10dp"
+                android:layout_weight="0.5"
+                android:gravity="right"
+                android:text="0.00 ₹"
+                android:textColor="#ffffff"
+                android:textSize="15dp"
+                android:fontFamily="@string/ButtonFont"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Shipment Details :"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="5dp"
+            android:fontFamily="@string/ButtonFont" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="3dp"
+            android:background="#ededed">
+
+            <AutoCompleteTextView
+                android:id="@+id/editTextAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/tbuds_border_white"
+                android:elevation="3dp"
+                android:editable="true"
+                android:clickable="true"
+                android:hint="Delivery Address "
+                android:padding="5dp"
+                android:textSize="14dp"
+                android:maxLines="5"
+                android:fontFamily="@string/ButtonFont"/>
+            <!--android:drawablePadding="5dp"
+             android:background="@drawable/border_main"
+               android:drawableRight="@drawable/tbuds_picksel2"-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="0.33"
+                    android:background="@drawable/tbuds_border_white">
+
+                    <EditText
+                        android:id="@+id/btndate"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:background="@drawable/edittext_boder"
+                        android:elevation="3dp"
+                        android:focusable="false"
+                        android:editable="false"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"
+                        android:hint="Delivery Date"
+                        android:fontFamily="@string/ButtonFont"
+                        android:paddingLeft="5dp"
+                        android:textSize="14dp"
+                        android:textColor="#111"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <!--<Button
+                    android:id="@+id/btndate"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="0.33"
+                    android:background="@drawable/tbuds_border_white"
+                    android:elevation="3dp"
+                    android:drawablePadding="5dp"
+                    android:gravity="center"
+                    android:hint="Delivery Date"
+                    android:paddingLeft="5dp"
+                    android:textColorHint="#222"
+                    android:textSize="14dp"
+                    android:fontFamily="@string/ButtonFont"/>-->
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="0.33"
+                    android:background="@drawable/tbuds_border_white">
+
+                    <EditText
+                        android:id="@+id/btntime"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:background="@drawable/edittext_boder"
+                        android:elevation="3dp"
+                        android:focusable="false"
+                        android:editable="false"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"
+                        android:hint="Time From"
+                        android:fontFamily="@string/ButtonFont"
+                        android:paddingLeft="5dp"
+                        android:textSize="14dp"
+                        android:textColor="#111"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <!--<Button
+                    android:id="@+id/btntime"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="0.33"
+                    android:background="@drawable/tbuds_border_white"
+                    android:elevation="3dp"
+                    android:drawablePadding="5dp"
+                    android:gravity="center"
+                    android:hint="Time From"
+                    android:fontFamily="@string/ButtonFont"
+                    android:paddingLeft="5dp"
+                    android:textColorHint="#222"
+                    android:textSize="14dp"
+                    android:visibility="visible"/>-->
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="0.33"
+                    android:background="@drawable/tbuds_border_white">
+
+                    <EditText
+                        android:id="@+id/btntime_to"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:elevation="3dp"
+                        android:background="@drawable/edittext_boder"
+                        android:focusable="false"
+                        android:editable="false"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"
+                        android:hint="Time To"
+                        android:fontFamily="@string/ButtonFont"
+                        android:paddingLeft="5dp"
+                        android:textSize="14dp"
+                        android:textColor="#111"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <!-- <Button
+                     android:id="@+id/btntime_to"
+                     android:layout_width="0dp"
+                     android:layout_height="40dp"
+                     android:layout_marginBottom="8dp"
+                     android:layout_marginLeft="5dp"
+                     android:layout_marginRight="10dp"
+                     android:layout_weight="0.33"
+                     android:background="@drawable/tbuds_border_white"
+                     android:elevation="3dp"
+                     android:drawablePadding="5dp"
+                     android:gravity="center"
+                     android:hint="Time To"
+                     android:fontFamily="@string/ButtonFont"
+                     android:paddingLeft="5dp"
+                     android:textColorHint="#222"
+                     android:textSize="16dp" />-->
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_place_order"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginBottom="0dp"
+            android:background="@drawable/btn_pressed_2"
+            android:gravity="center"
+            android:text="Place Order"
+            android:textColor="#ffffff"
+            android:textSize="17dp"
+            android:fontFamily="@string/ButtonFont"
+            android:textAllCaps="false"/>
+        <!--android:padding="10dp"-->
+
+    </LinearLayout>
+
+</RelativeLayout>

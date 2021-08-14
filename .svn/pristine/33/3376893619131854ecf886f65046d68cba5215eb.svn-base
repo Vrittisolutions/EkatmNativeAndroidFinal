@@ -1,0 +1,95 @@
+package com.vritti.crm.adapter;
+
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.vritti.crm.bean.EntityContactDetails;
+import com.vritti.crm.vcrm7.EntityMasterBasicActivity;
+import com.vritti.ekatm.R;
+
+import java.util.ArrayList;
+
+public class EntityContactDetailsAdapter extends RecyclerView.Adapter<EntityContactDetailsAdapter.ContactHolder> {
+
+    Context context;
+    ArrayList<EntityContactDetails> entityContactDetailsArrayList;
+
+    public EntityContactDetailsAdapter(Context context, ArrayList<EntityContactDetails> entityContactDetailsArrayList) {
+        this.context = context;
+        this.entityContactDetailsArrayList = entityContactDetailsArrayList;
+    }
+
+    @NonNull
+    @Override
+    public ContactHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.entity_contact_list_row,
+                parent, false);
+
+        return new ContactHolder(itemView);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ContactHolder holder, int position) {
+
+        try {
+            holder.txt_contactName.setText(entityContactDetailsArrayList.get(position).getContactname());
+            holder.txt_Designation.setText(entityContactDetailsArrayList.get(position).getContactDesignation());
+            holder.txt_emailId.setText(entityContactDetailsArrayList.get(position).getContactEmail());
+            holder.txt_influentialLevel.setText(entityContactDetailsArrayList.get(position).getContactInfluence());
+            holder.txt_default.setText(entityContactDetailsArrayList.get(position).getContactdefault());
+            holder.txt_contactMobileNo.setText(entityContactDetailsArrayList.get(position).getContactMobile());
+            holder.txt_email.setText(entityContactDetailsArrayList.get(position).getContactEmail());
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public int getItemCount() {
+        return entityContactDetailsArrayList.size();
+    }
+
+    public class ContactHolder extends RecyclerView.ViewHolder {
+        TextView txt_contactName, txt_Designation, txt_emailId, txt_influentialLevel, txt_default, txt_contactMobileNo, txt_email;
+        ImageView btn_editchrge,btn_deletechrge;
+
+        public ContactHolder(View itemView) {
+            super(itemView);
+            txt_contactName = itemView.findViewById(R.id.txt_contactName);
+            txt_Designation = itemView.findViewById(R.id.txt_Designation);
+            txt_emailId = itemView.findViewById(R.id.txt_emailId);
+            txt_influentialLevel = itemView.findViewById(R.id.txt_influentialLevel);
+            txt_default = itemView.findViewById(R.id.txt_default);
+            txt_contactMobileNo = itemView.findViewById(R.id.txt_contactMobileNo);
+            txt_email = itemView.findViewById(R.id.txt_emailId);
+            btn_editchrge = itemView.findViewById(R.id.btn_editchrge);
+            btn_deletechrge = itemView.findViewById(R.id.btn_deletechrge);
+
+            btn_editchrge.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    ((EntityMasterBasicActivity)context).EditContactDetails(getAdapterPosition(),entityContactDetailsArrayList);
+
+                }
+            });
+
+            btn_deletechrge.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    ((EntityMasterBasicActivity)context).DeleteContactDetails(getAdapterPosition(),entityContactDetailsArrayList);
+
+                }
+            });
+        }
+    }
+}

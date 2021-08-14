@@ -1,0 +1,29 @@
+package com.vritti.vwb.Beans;
+
+import com.google.gson.annotations.SerializedName;
+
+import java.util.ArrayList;
+
+public class KendraIdJsonBean  {
+    @SerializedName("objarr")
+    ArrayList<String> stringArrayList;
+
+    @SerializedName("Microvertical")
+    String Microvertical;
+
+    public ArrayList<String> getStringArrayList() {
+        return stringArrayList;
+    }
+
+    public void setStringArrayList(ArrayList<String> stringArrayList) {
+        this.stringArrayList = stringArrayList;
+    }
+
+    public String getMicrovertical() {
+        return Microvertical;
+    }
+
+    public void setMicrovertical(String microvertical) {
+        Microvertical = microvertical;
+    }
+}

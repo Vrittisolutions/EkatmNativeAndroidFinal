@@ -1,0 +1,148 @@
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="3dp"
+    android:layout_marginRight="3dp"
+    android:layout_marginTop="3dp"
+    card_view:cardCornerRadius="5dp">
+
+    <LinearLayout
+        android:id="@+id/card_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5sp"
+        android:alpha="2"
+
+        android:gravity="center|fill_horizontal"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tv_itemcode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="3sp"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="data add"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tv_itemname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="data add"
+                android:textColor="@color/background"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="Location :"
+                    android:textColor="#7652af" />
+
+                <TextView
+                    android:id="@+id/edtlocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="12345"
+                    android:textColor="#000000" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="Quantity :"
+                    android:textColor="#7652af"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/edtQuantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="2345237"
+                    android:textColor="#000000" />
+            </LinearLayout>
+
+            <!-- <android.support.design.widget.TextInputLayout
+                 android:id="@+id/Quantity_hint"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:textColorHint="#795548"
+                 android:layout_weight="0.5">
+
+                 <EditText
+                     android:id="@+id/edtQuantity"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:hint="Quantity"
+                     android:inputType="text"
+                     android:singleLine="true"
+                     android:text="00.000"
+                     android:textColor="#795548" />
+             </android.support.design.widget.TextInputLayout>
+
+             <android.support.design.widget.TextInputLayout
+                 android:id="@+id/location_hint"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_alignParentTop="true"
+                 android:layout_weight="0.5"
+                 android:layout_toRightOf="@+id/Quantity_hint"
+                 android:layout_marginRight="10dp">
+
+                 <EditText
+                     android:id="@+id/edtlocation"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_alignParentEnd="true"
+                     android:layout_alignParentRight="true"
+                     android:layout_below="@+id/Quantity"
+                     android:hint="Location"
+                     android:inputType="none"
+                     android:singleLine="true"
+                     android:text="Location Name"
+                     android:textColor="#795548" />
+
+                      android:background="@drawable/item_backshape"
+
+             </android.support.design.widget.TextInputLayout>-->
+
+
+        </LinearLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>

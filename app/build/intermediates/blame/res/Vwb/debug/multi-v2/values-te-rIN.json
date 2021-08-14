@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\incremental\\mergeVwbDebugResources\\merged.dir\\values-te-rIN\\values-te-rIN.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Nilesh\\.gradle\\caches\\transforms-2\\files-2.1\\bcefe1a63aaad0e225ad14675b4e8bed\\datetimepicker-0.2.0\\res\\values-te-rIN\\values-te-rIN.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10,11,12,13,14",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "222,326,439,519,625,743,854,950,1038,1131,1224",
+                        "endColumns": "103,112,79,105,117,110,95,87,92,92,96",
+                        "endOffsets": "321,434,514,620,738,849,945,1033,1126,1219,1316"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,209,322,402,508,626,737,833,921,1014,1107",
+                        "endColumns": "103,112,79,105,117,110,95,87,92,92,96",
+                        "endOffsets": "204,317,397,503,621,732,828,916,1009,1102,1199"
+                    }
+                }
+            ]
+        }
+    ]
+}

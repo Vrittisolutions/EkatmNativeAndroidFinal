@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|left"
+        android:gravity="center|left"
+        android:orientation="horizontal">
+    <TextView
+        android:id="@+id/textname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_marginLeft="10dp"
+        android:textStyle="bold" />
+        <ImageView
+            android:id="@+id/img_team"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:padding="5dp"
+            android:visibility="gone"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/team_final"/>
+    </LinearLayout>
+   <!-- <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:text="Assigned"
+            android:gravity="center"
+            android:textColor="@color/divider" />
+
+        <TextView
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:text="Overdue"
+            android:textColor="@color/divider" />
+
+        <TextView
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:text="Today"
+            android:textColor="@color/divider"
+            android:id="@+id/textView3" />
+
+        <TextView
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:text="Collection(Cnt/Value)"
+            android:textColor="@color/divider" />
+
+        <TextView
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:text="Hot(Cnt/Value)"
+            android:textColor="@color/divider" />
+    </LinearLayout>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:id="@+id/textassigned"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:text="TextView"
+            android:textSize="12dp"
+            android:textColor="#8B008B"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textoverdue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:text="TextView"
+            android:textColor="@color/orange"
+            android:textStyle="bold"
+            android:textSize="12dp"
+            />
+
+        <TextView
+            android:id="@+id/texttoday"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:text="TextView"
+            android:textColor="@color/btnNext"
+            android:textStyle="bold"
+            android:textSize="12dp"
+            />
+        <TextView
+            android:id="@+id/texttomorrow"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:text="TextView"
+            android:textColor="@color/btnNext"
+            android:textStyle="bold"
+            android:textSize="12dp"
+            />
+
+        <TextView
+            android:id="@+id/textcollection"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:text="TextView"
+            android:textColor="@color/cyan"
+            android:textStyle="bold"
+            android:textSize="12dp"
+            />
+
+        <TextView
+            android:id="@+id/texthot"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:text="TextView"
+            android:textColor="@color/btnPrv"
+            android:textStyle="bold"
+            android:textSize="12dp"
+            />
+    </LinearLayout>
+</LinearLayout>

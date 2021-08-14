@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#D3D3D3"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/rel_prosbusi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/MyToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/colorPrimary"
+            app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay"
+            app:subtitleTextAppearance="@style/ToolbarTextAppearance.Subtitle"
+            app:titleTextAppearance="@style/ToolbarTextAppearance.Title"
+            app:contentInsetLeft="0dp"
+            app:contentInsetStart="0dp"
+            app:contentInsetStartWithNavigation="0dp">
+
+            <ImageView
+                android:id="@+id/img_back"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="left"
+                android:padding="2dp"
+                android:src="@drawable/crm_back_arrow"
+                android:tint="@color/white"
+                android:visibility="visible" />
+            <TextView
+                android:id="@+id/txt_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:focusable="true"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/white"
+                android:textColorHint="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:visibility="visible"></TextView>
+
+
+            <ImageView
+                android:id="@+id/img_home"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/menu_vertical"
+                android:padding="2dp"
+                android:tint="@color/white"
+                android:layout_gravity="right|center"
+                android:layout_marginRight="5dp"
+                />
+
+            <ImageView
+                android:id="@+id/img_refresh"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/refresh_icon"
+                android:layout_gravity="right|center"
+                android:layout_marginRight="10dp"
+                android:visibility="gone"
+                android:tint="@color/white"/>
+            <ProgressBar
+                android:id="@+id/progressbar_business"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="right"
+                android:layout_marginRight="10dp"
+                android:indeterminateDrawable="@drawable/spinner"
+                android:visibility="gone" />
+        </android.support.v7.widget.Toolbar>
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/nav_view"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:orientation="horizontal"
+                android:paddingBottom="4dp"
+                android:paddingLeft="18dp"
+                android:paddingRight="8dp"
+                android:padding="8dp"
+                android:visibility="gone"
+                android:layout_gravity="left|center"
+                android:gravity="center|left"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark">
+                <com.facebook.drawee.view.SimpleDraweeView
+
+                    android:id="@+id/img_userpic"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    app:roundAsCircle="true"
+                    app:roundingBorderWidth="2dp"
+                    app:roundingBorderColor="@color/red"
+                    app:placeholderImage="@drawable/userph"
+
+                    />
+                <!--<TextView
+                    android:id="@+id/tv_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nilesh"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center|left"
+                    android:gravity="center|left"
+                    android:textSize="16dp"
+                    android:textColor="@color/white"
+                    android:padding="5dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:maxLines="2"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />-->
+               <!-- <ImageView
+                    android:id="@+id/img_refresh"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/refresh_icon"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="10dp"
+                    android:tint="@color/white"/>-->
+               <!-- <ImageView
+                    android:id="@+id/img_home"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/home_icon"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="5dp"
+                    />-->
+            </LinearLayout>
+
+
+            <include
+                layout="@layout/crm_navigation_drawer_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+
+            <LinearLayout
+                android:id="@+id/footer"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:background="#444959"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Version "
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txt_app_version"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="2.0.3"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,157 @@
+package com.vritti.inventory.MaterialRequisition.model;
+
+public class ShowAllLotDetails {
+
+    String StockDetailsId, ItemMasterId, WarehouseMasterId, LocationMasterId,
+            BatchNo, FiFo, WarehouseCode, LocationCode, ReqQty, OrderId, MRSDetailId, UOMMasterId;
+    float BalQty;
+    float IssueQty;
+    String PacketMasterId, ItemPlantId, PacketSrNo, PacketNo;
+
+    public String getPacketMasterId() {
+        return PacketMasterId;
+    }
+
+    public void setPacketMasterId(String packetMasterId) {
+        PacketMasterId = packetMasterId;
+    }
+
+    public String getItemPlantId() {
+        return ItemPlantId;
+    }
+
+    public void setItemPlantId(String itemPlantId) {
+        ItemPlantId = itemPlantId;
+    }
+
+    public String getPacketSrNo() {
+        return PacketSrNo;
+    }
+
+    public void setPacketSrNo(String packetSrNo) {
+        PacketSrNo = packetSrNo;
+    }
+
+    public String getPacketNo() {
+        return PacketNo;
+    }
+
+    public void setPacketNo(String packetNo) {
+        PacketNo = packetNo;
+    }
+    /* FiFo, BatchNo, WarehouseCode, LocationCode, ReqQty, IssueQty, OrderId, MRSDetailId, UOMMasterId;*/
+
+
+    public float getIssueQty() {
+        return IssueQty;
+    }
+
+    public void setIssueQty(float issueQty) {
+        IssueQty = issueQty;
+    }
+
+
+    public String getStockDetailsId() {
+        return StockDetailsId;
+    }
+
+    public void setStockDetailsId(String stockDetailsId) {
+        StockDetailsId = stockDetailsId;
+    }
+
+    public float getBalQty() {
+        return BalQty;
+    }
+
+    public void setBalQty(float balQty) {
+        BalQty = balQty;
+    }
+
+    public String getItemMasterId() {
+        return ItemMasterId;
+    }
+
+    public void setItemMasterId(String itemMasterId) {
+        ItemMasterId = itemMasterId;
+    }
+
+    public String getWarehouseMasterId() {
+        return WarehouseMasterId;
+    }
+
+    public void setWarehouseMasterId(String warehouseMasterId) {
+        WarehouseMasterId = warehouseMasterId;
+    }
+
+    public String getLocationMasterId() {
+        return LocationMasterId;
+    }
+
+    public void setLocationMasterId(String locationMasterId) {
+        LocationMasterId = locationMasterId;
+    }
+
+    public String getBatchNo() {
+        return BatchNo;
+    }
+
+    public void setBatchNo(String batchNo) {
+        BatchNo = batchNo;
+    }
+
+    public String getFiFo() {
+        return FiFo;
+    }
+
+    public void setFiFo(String fiFo) {
+        FiFo = fiFo;
+    }
+
+    public String getWarehouseCode() {
+        return WarehouseCode;
+    }
+
+    public void setWarehouseCode(String warehouseCode) {
+        WarehouseCode = warehouseCode;
+    }
+
+    public String getLocationCode() {
+        return LocationCode;
+    }
+
+    public void setLocationCode(String locationCode) {
+        LocationCode = locationCode;
+    }
+
+    public String getReqQty() {
+        return ReqQty;
+    }
+
+    public void setReqQty(String reqQty) {
+        ReqQty = reqQty;
+    }
+
+    public String getOrderId() {
+        return OrderId;
+    }
+
+    public void setOrderId(String orderId) {
+        OrderId = orderId;
+    }
+
+    public String getMRSDetailId() {
+        return MRSDetailId;
+    }
+
+    public void setMRSDetailId(String MRSDetailId) {
+        this.MRSDetailId = MRSDetailId;
+    }
+
+    public String getUOMMasterId() {
+        return UOMMasterId;
+    }
+
+    public void setUOMMasterId(String UOMMasterId) {
+        this.UOMMasterId = UOMMasterId;
+    }
+}

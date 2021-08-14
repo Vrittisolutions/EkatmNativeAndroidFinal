@@ -1,0 +1,741 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.vritti.sales.activity.Sales_OrderTypeSelectionActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme"
+        android:visibility="visible"
+        android:background="@color/colorPrimary1">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar1"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            app:popupTheme="@style/AppTheme">
+
+            <ProgressBar
+                android:id="@+id/toolbar_progress_Assgnwork"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="8dp"
+                android:indeterminateDrawable="@drawable/spinner"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/btnrefresh"
+                android:layout_width="30dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/ic_refresh"
+                android:layout_gravity="center|right" />
+
+            <ImageView
+                android:id="@+id/btnnewcust"
+                android:layout_width="30dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/tbuds_add_custmr"
+                android:layout_gravity="center|right" />
+
+            <ImageView
+                android:id="@+id/btnprospsetting"
+                android:layout_width="30dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/tbuds_settings"
+                android:layout_gravity="center|right" />
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <include
+        android:id="@+id/tbar"
+        layout="@layout/tbuds_common_toolbar"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/colorPrimary1"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|left"
+            android:text="Sales Order"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_weight="0.6"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/tbuds_add_custmr"
+            android:layout_gravity="center|right"
+            android:layout_weight="0.4"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/tbuds_settings"
+            android:layout_gravity="center|right"
+            android:layout_weight="0.4"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!--order type-->
+        <LinearLayout
+            android:id="@+id/lay_ordtype"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="4dp"
+            android:layout_marginTop="5dp"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.9"
+                android:layout_gravity="center"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Order type : "
+                    android:textSize="14dp"
+                    android:textColor="#111"
+                    android:layout_weight="0.2"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="6dp"
+                    android:src="@drawable/starred1"
+                    android:paddingRight="8dp"/>
+
+            </LinearLayout>
+
+            <Spinner
+                android:id="@+id/edt_ordtype"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:hint="Choose Order Type"
+                android:layout_weight="0.4"
+                android:paddingTop="1dp"
+                android:paddingBottom="1dp"
+                android:paddingLeft="9dp"
+                android:textSize="14sp"
+                android:background="@drawable/edit_text"/>
+            <!---->
+
+        </LinearLayout>
+
+        <!--customer-->
+        <LinearLayout
+            android:id="@+id/lay_custtype"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="4dp"
+            android:layout_marginTop="1dp"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.9"
+                android:layout_gravity="center"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Customer : "
+                    android:textSize="14dp"
+                    android:textColor="#111"
+                    android:layout_weight="0.2"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="6dp"
+                    android:src="@drawable/starred1"
+                    android:paddingRight="8dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_text"
+                android:layout_weight="0.4">
+
+                <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                    android:id="@+id/edt_custtype"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:hint="Search customer"
+                    android:paddingLeft="9dp"
+                    android:textSize="14sp"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!--add new cust-->
+        <LinearLayout
+            android:id="@+id/lay_addnewcust"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="5dp"
+            android:visibility="gone">
+
+            <!--name-->
+            <LinearLayout
+                android:id="@+id/lay_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="5dp"
+                android:layout_marginTop="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.9"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Name : "
+                        android:textSize="14dp"
+                        android:textColor="#111"
+                        android:layout_weight="0.2"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="6dp"
+                        android:src="@drawable/starred1"
+                        android:paddingRight="8dp"/>
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/edt_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:hint="Enter customer's name"
+                    android:inputType="text"
+                    android:layout_weight="0.4"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="9dp"
+                    android:textSize="14sp"
+                    android:background="@drawable/edit_text"/>
+
+            </LinearLayout>
+
+            <!--email-->
+            <LinearLayout
+                android:id="@+id/lay_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="5dp"
+                android:layout_marginTop="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.9"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Email : "
+                        android:textSize="14dp"
+                        android:textColor="#111"
+                        android:layout_weight="0.2"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="6dp"
+                        android:src="@drawable/starred1"
+                        android:paddingRight="8dp"
+                        android:visibility="gone"/>
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/edt_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:hint="Enter email"
+                    android:inputType="textEmailAddress"
+                    android:layout_weight="0.4"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="9dp"
+                    android:textSize="14sp"
+                    android:background="@drawable/edit_text"/>
+
+            </LinearLayout>
+
+            <!--mobile-->
+            <LinearLayout
+                android:id="@+id/lay_mobile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="5dp"
+                android:layout_marginTop="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.9"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mobile : "
+                        android:textSize="14dp"
+                        android:textColor="#111"
+                        android:layout_weight="0.2"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="6dp"
+                        android:src="@drawable/starred1"
+                        android:paddingRight="8dp"/>
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/edt_mobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:hint="Enter mobile number"
+                    android:inputType="phone"
+                    android:layout_weight="0.4"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="9dp"
+                    android:textSize="14sp"
+                    android:background="@drawable/edit_text"/>
+
+            </LinearLayout>
+
+            <!--addrs-->
+            <LinearLayout
+                android:id="@+id/lay_addr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="5dp"
+                android:layout_marginTop="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.9"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Address : "
+                        android:textSize="14dp"
+                        android:textColor="#111"
+                        android:layout_weight="0.2"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="6dp"
+                        android:src="@drawable/starred1"
+                        android:paddingRight="8dp"
+                        android:visibility="gone"/>
+
+                </LinearLayout>
+
+                <AutoCompleteTextView
+                    android:id="@+id/edt_addr"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:hint="Enter address"
+                    android:inputType="text"
+                    android:layout_weight="0.4"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="9dp"
+                    android:textSize="14sp"
+                    android:background="@drawable/edit_text"/>
+
+            </LinearLayout>
+
+            <!--pincode-->
+            <LinearLayout
+                android:id="@+id/lay_pincode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="5dp"
+                android:layout_marginTop="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.9"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pincode : "
+                        android:textSize="14dp"
+                        android:textColor="#111"
+                        android:layout_weight="0.2"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="6dp"
+                        android:src="@drawable/starred1"
+                        android:paddingRight="8dp"
+                        android:visibility="gone"/>
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/edt_pincode"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:hint="Enter pincode"
+                    android:inputType="number"
+                    android:layout_weight="0.4"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="9dp"
+                    android:textSize="14sp"
+                    android:background="@drawable/edit_text"/>
+
+            </LinearLayout>
+
+            <!--city-->
+            <LinearLayout
+                android:id="@+id/lay_city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="5dp"
+                android:layout_marginTop="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.9"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="City : "
+                        android:textSize="14dp"
+                        android:textColor="#111"
+                        android:layout_weight="0.2"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="6dp"
+                        android:src="@drawable/starred1"
+                        android:paddingRight="8dp"
+                        android:visibility="gone"/>
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/edt_city"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:hint="Enter city"
+                    android:inputType="text"
+                    android:layout_weight="0.4"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="9dp"
+                    android:textSize="14sp"
+                    android:background="@drawable/edit_text"/>
+
+            </LinearLayout>
+
+            <!--state-->
+            <LinearLayout
+                android:id="@+id/lay_state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="5dp"
+                android:layout_marginTop="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.9"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="State : "
+                        android:textSize="14dp"
+                        android:textColor="#111"
+                        android:layout_weight="0.2"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="6dp"
+                        android:src="@drawable/starred1"
+                        android:paddingRight="8dp"
+                        android:visibility="gone"/>
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/edt_state"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:hint="Enter state"
+                    android:inputType="text"
+                    android:layout_weight="0.4"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="9dp"
+                    android:textSize="14sp"
+                    android:background="@drawable/edit_text"/>
+
+            </LinearLayout>
+
+            <!--GSTN-->
+            <LinearLayout
+                android:id="@+id/lay_gstn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="5dp"
+                android:layout_marginTop="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.9"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="GSTN : "
+                        android:textSize="14dp"
+                        android:textColor="#111"
+                        android:layout_weight="0.2"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="6dp"
+                        android:src="@drawable/starred1"
+                        android:paddingRight="8dp"
+                        android:visibility="gone"/>
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/edt_gstn"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:hint="Enter GSTN number"
+                    android:inputType="text"
+                    android:layout_weight="0.4"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="9dp"
+                    android:textSize="14sp"
+                    android:background="@drawable/edit_text"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:gravity="center"
+                >
+                <!--android:layout_weight="1"-->
+
+                <Button
+                    android:id="@+id/btnsavecust"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:background="@drawable/backshapegreen"
+                    android:text="Save"
+                    android:textColor="@color/white"
+                    android:padding="5dp"
+                    android:layout_margin="5dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="1"/>
+
+                <Button
+                    android:id="@+id/btncancelcust"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:background="@drawable/backshape_orange"
+                    android:text="Cancel"
+                    android:textColor="@color/white"
+                    android:padding="5dp"
+                    android:layout_margin="5dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!--Buttons bookord/cntrsales-->
+        <LinearLayout
+            android:id="@+id/lay_btns"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center|bottom"
+            android:gravity="center|bottom"
+            android:layout_marginTop="10dp"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/btnbookord"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@drawable/tbuds_btn_pressed"
+                android:text="Next"
+                android:textColor="@color/white"
+                android:padding="5dp"
+                android:layout_margin="5dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/btncntrsales"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@drawable/backshape_orange"
+                android:text="Counter Sales"
+                android:textColor="@color/white"
+                android:padding="5dp"
+                android:layout_margin="5dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ship To Address :"
+        android:paddingLeft="10dp"
+        android:paddingTop="3dp"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/txtaddr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_boder"
+        android:text="address"
+        android:layout_margin="5dp"
+        android:paddingRight="2dp"
+        android:paddingLeft="5dp"
+        android:paddingTop="1dp"
+        android:maxLines="4"
+        android:textColor="#111"
+        android:elevation="10dp"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ededed">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Order Type Selection"
+            android:padding="5dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"/>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/list_ordertypes"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:dividerHeight="1dp"
+        android:visibility="visible"/>
+
+</LinearLayout>

@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/header">
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar1"
+            style="@style/MyToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay"
+            app:subtitleTextAppearance="@style/ToolbarTextAppearance.Subtitle"
+            app:titleTextAppearance="@style/ToolbarTextAppearance.Title" >
+
+            <ProgressBar
+                android:id="@+id/toolbar_progress_App_bar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:indeterminateDrawable="@drawable/spinner"
+                android:visibility="gone" />
+        </android.support.v7.widget.Toolbar>
+
+
+    </android.support.design.widget.AppBarLayout>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:text="Activity Trail"
+        android:background="@color/background"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/edit_text"
+            android:layout_marginLeft="2dp"
+            >
+            <TextView
+                android:id="@+id/txt_issueto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:textColor="@color/black"
+                android:padding="2dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="5dp"/>
+            <TextView
+                android:id="@+id/txt_assign"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:textColor="@color/black"
+                android:padding="2dp"
+                android:layout_marginLeft="2dp"/>
+            <TextView
+                android:id="@+id/txt_activity_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:textColor="@color/black"
+                android:padding="2dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginBottom="5dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/edit_text"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="2dp"
+            >
+            <TextView
+                android:id="@+id/txt_workspace"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:textColor="@color/black"
+                android:padding="2dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="5dp"/>
+            <TextView
+                android:id="@+id/txt_maingroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:textColor="@color/black"
+                android:padding="2dp"
+                android:layout_marginLeft="2dp"/>
+            <TextView
+                android:id="@+id/txt_subgroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:textColor="@color/black"
+                android:padding="2dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginBottom="5dp"/>
+
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/edit_text"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="2dp"
+        >
+        <TextView
+            android:id="@+id/txt_estimate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:textColor="@color/black"
+            android:padding="2dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="5dp"/>
+        <TextView
+            android:id="@+id/txt_booked_hr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:textColor="@color/black"
+            android:padding="2dp"
+            android:layout_marginLeft="2dp"/>
+        <TextView
+            android:id="@+id/txt_remark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:textColor="@color/black"
+            android:padding="2dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginBottom="5dp"/>
+
+    </LinearLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginTop="2dp"
+    >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/edit_text"
+            android:layout_marginLeft="2dp"
+            android:layout_weight="1"
+
+            >
+            <TextView
+                android:id="@+id/txt_start_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:textColor="@color/black"
+                android:padding="2dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="5dp"/>
+            <TextView
+                android:id="@+id/txt_end_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:textColor="@color/black"
+                android:padding="2dp"
+                android:layout_marginLeft="2dp"/>
+            <TextView
+                android:id="@+id/txt_assign_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:textColor="@color/black"
+                android:padding="2dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginBottom="5dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/edit_text"
+            android:layout_marginLeft="2dp"
+            android:layout_weight="1"
+
+            >
+            <TextView
+                android:id="@+id/txt_priority"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:textColor="@color/black"
+                android:padding="2dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="5dp"/>
+            <TextView
+                android:id="@+id/txt_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:textColor="@color/black"
+                android:padding="2dp"
+                android:layout_marginLeft="2dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:textColor="@color/black"
+                android:padding="2dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginBottom="5dp"/>
+
+        </LinearLayout>
+</LinearLayout>
+<LinearLayout
+    android:id="@+id/len_trail_desc"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:visibility="visible">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/dgrey"
+        android:layout_marginLeft="5dp"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:padding="5dp"
+        android:text="Activity Trail"
+        android:layout_marginTop="5dp"
+        android:background="@color/header"/>
+    <LinearLayout
+        android:id="@+id/len_activity_trail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="5dp"
+        >
+
+        </LinearLayout>
+</LinearLayout>
+    </LinearLayout>
+    </ScrollView>
+    </LinearLayout>

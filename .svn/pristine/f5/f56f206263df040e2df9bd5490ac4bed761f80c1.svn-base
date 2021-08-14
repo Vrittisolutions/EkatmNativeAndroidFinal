@@ -1,0 +1,267 @@
+package com.vritti.vwb.vworkbench;
+
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.Environment;
+import android.support.annotation.Nullable;
+import android.util.Log;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.facebook.drawee.view.SimpleDraweeView;
+import com.vritti.databaselib.other.Utility;
+import com.vritti.databaselib.other.WebUrlClass;
+import com.vritti.ekatm.R;
+import com.vritti.ekatm.services.EnoJobService;
+import com.vritti.sessionlib.CallbackInterface;
+import com.vritti.sessionlib.StartSession;
+import com.vritti.vwb.CommonClass.AppCommon;
+import com.vritti.vwb.ImageWithLocation.FileUtils;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+public class AttendenceWithImage extends Activity {
+
+    @BindView(R.id.image)
+    SimpleDraweeView image;
+    @BindView(R.id.eAddress)
+    TextView eAddress;
+    @BindView(R.id.locationImage)
+    SimpleDraweeView locationImage;
+    @BindView(R.id.fullImage)
+    RelativeLayout fullImage;
+    @BindView(R.id.locationLayout)
+    LinearLayout locationLayout;
+    String PlantMasterId = "", LoginId = "", Password = "", CompanyURL = "", EnvMasterId = "",
+            UserMasterId = "", UserName = "", activityId;
+    Utility ut;
+    boolean isGeo;
+    Uri uri = null;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.vwb_attachments_image);
+        ButterKnife.bind(this);
+        Context context = this;
+        ut = new Utility();
+        String settingKey = ut.getSharedPreference_SettingKey(context);
+        CompanyURL = ut.getValue(context, WebUrlClass.GET_COMPANY_URL_KEY, settingKey);
+        EnvMasterId = ut.getValue(context, WebUrlClass.GET_EnvMasterID_KEY, settingKey);
+        if (getIntent() != null) {
+            uri = Uri.parse(getIntent().getStringExtra("fileUri"));
+            image.setImageURI(Uri.parse(getIntent().getStringExtra("fileUri")));
+            locationImage.setImageURI(Uri.parse(getIntent().getStringExtra("path")));
+            eAddress.setText(getIntent().getStringExtra("address"));
+            activityId = getIntent().getStringExtra("activityId");
+            isGeo = getIntent().getBooleanExtra("isGeo" , false);
+            if(isGeo)
+                locationLayout.setVisibility(View.VISIBLE);
+            else
+                locationLayout.setVisibility(View.GONE);
+        }
+
+    }
+
+    @OnClick(R.id.save)
+    void saveImage() {
+        if(AppCommon.getInstance(AttendenceWithImage.this).isConnectingToInternet(AttendenceWithImage.this)) {
+           // if (isGeo) {
+                Bitmap b = takescreenshotOfRootView(fullImage);
+                if (b != null) {
+                    //  showScreenShotImage(b);//show bitmap over imageview
+
+                    File saveFile = getMainDirectoryName(this);//get the path to save screenshot
+                    // Create a media file name
+                    String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss",
+                            Locale.getDefault()).format(new Date());
+                    File file = storeFile(b, activityId+"_" + timeStamp + ".jpg", saveFile);//save the screenshot to selected path
+                    Date now = new Date(); // java.util.Date, NOT java.sql.Date
+                    // or
+                    // java.sql.Timestamp!
+
+                    String format2 = new SimpleDateFormat("dd-MMM-yy ")
+                            .format(now);
+
+
+                    //  setResult(998, new Intent().putExtra("objClass", objStr));
+                    // else {
+                    uploadFile(file);
+           /* setResult(998, new Intent()
+                    .putExtra("filescreenValue", Uri.fromFile(file).toString()));
+            //  }
+            finish();*/
+
+
+                } else
+                    //If bitmap is null show toast message
+                    Toast.makeText(this, "Somthing went wroung", Toast.LENGTH_SHORT).show();
+          //  } else {
+
+           //     uploadFile(new File(uri.getPath()));
+           // }
+        }else {
+            Toast.makeText(this, "Please check the internet connection", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @OnClick(R.id.cancel)
+    void cancel() {
+       onBackPressed();
+    }
+
+    private void uploadFile(final File file) {
+        new StartSession(AttendenceWithImage.this, new CallbackInterface() {
+            @Override
+            public void callMethod() {
+                new PostUploadImageMethodProspect().execute(String.valueOf(file), activityId);
+            }
+
+            @Override
+            public void callfailMethod(String msg) {
+                ut.displayToast(getApplicationContext(), msg);
+               // dismissProgress();
+            }
+        });
+
+    }
+
+
+
+    public class PostUploadImageMethodProspect extends AsyncTask<String, Void, String> {
+        JSONArray jsonArray = new JSONArray();
+        JSONObject jsonimage = new JSONObject();
+        private Exception exception;
+        String params;
+        //   ProgressDialog SPdialog;
+
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+        }
+
+        protected String doInBackground(String... urls) {
+            String response = null;
+            try {
+
+
+                File sourceFile = FileUtils.getFile(AttendenceWithImage.this, Uri.fromFile(new File(urls[0])));
+                String ActivityID = urls[1];//AtendanceSheredPreferance.getString(WebUrlClass.ATTENDANCE_PREFERENCES_ACTIVITY_KEY, null);
+
+                String upLoadServerUri = CompanyURL + WebUrlClass.api_UploadAttechmentnew + "?AppEnvMasterId=" + EnvMasterId + "&ActivityId=" + ActivityID;
+                // FileInputStream fileInputStream = new FileInputStream(sourceFile);
+                Object res = null;
+                // String response = null;
+                response = String.valueOf(Utility.OpenMultiPart(upLoadServerUri, sourceFile));
+                if (response != null && (!response.equals(""))) {
+                    try {
+                        File from = new File(urls[0]);
+                        //File saveFile =
+                        File to = new File(getMainDirectoryName(AttendenceWithImage.this),activityId + "_"+response.trim());
+                        if(from.exists())
+                            from.renameTo(to);
+                        Log.i("imageNameDone:", urls[0]);
+                        // jsonimage.put("File", urls[0]);
+                        // jsonArray.put(jsonimage);
+                        Log.i("imageNameError:", urls[0]);
+
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+
+                } else {
+                    Log.i("imageNameError:", urls[0]);
+
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+           /* ArrayList<String> Data = new ArrayList<>();
+            Data.add(urls[0]);
+            Data.add(urls[1]);
+            Data.add(urls[2]);
+            Data.add(urls[3]);*/
+
+            return response;
+
+        }
+
+        protected void onPostExecute(String feed) {
+            if(feed != null && (!feed.equals(""))){
+
+                setResult(998);
+                finish();
+            }else {
+                Toast.makeText(AttendenceWithImage.this, "Server Error", Toast.LENGTH_SHORT).show();
+            }
+
+
+        }
+    }
+
+    private File storeFile(Bitmap bm, String fileName, File saveFilePath) {
+        File dir = new File(saveFilePath.getAbsolutePath());
+        if (!dir.exists())
+            dir.mkdirs();
+        File file = new File(saveFilePath.getAbsolutePath(), fileName);
+        try {
+            FileOutputStream fOut = new FileOutputStream(file);
+            bm.compress(Bitmap.CompressFormat.JPEG, 85, fOut);
+            fOut.flush();
+            fOut.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return file;
+    }
+
+    private Bitmap takescreenshotOfRootView(View v) {
+        return takescreenshot(v);
+    }
+
+    private Bitmap takescreenshot(View v) {
+        v.setDrawingCacheEnabled(true);
+        v.buildDrawingCache(true);
+        Bitmap b = Bitmap.createBitmap(v.getDrawingCache());
+        v.setDrawingCacheEnabled(false);
+        return b;
+    }
+
+    private File getMainDirectoryName(Context context) {
+        File mainDir = new File(
+                context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), "Demo");
+
+        //If File is not present create directory
+        if (!mainDir.exists()) {
+            if (mainDir.mkdir())
+                Log.e("Create Directory", "Main Directory Created : " + mainDir);
+        }
+        return mainDir;
+    }
+
+}

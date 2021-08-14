@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+<LinearLayout
+    android:id="@+id/len_search"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/edit_text"
+    android:gravity="left|center"
+    android:orientation="horizontal">
+    <EditText
+        android:id="@+id/edt_scanPacket"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Scan Packet No"
+        android:textSize="18sp"
+        android:padding="10dp"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
+        android:layout_marginRight="10dp"
+        android:layout_weight="1"
+        android:textColorHint="@color/black"
+        ></EditText>
+
+    <ImageView
+        android:id="@+id/img_search"
+        android:layout_width="30dp"
+        android:layout_marginRight="5dp"
+        android:layout_toRightOf="@+id/edt_scanPacket"
+        android:src="@drawable/ic_search"
+        android:layout_height="30dp"/>
+</LinearLayout>
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/len_search"
+        android:background="#111"></View>
+
+    <TextView
+        android:id="@+id/txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:visibility="gone"
+        android:layout_below="@+id/view2"
+        android:background="@color/white"
+        android:padding="5dp"
+        android:textColor="@color/black"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/list_itemDetailList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/txt"
+        android:layout_marginTop="5dp"
+        android:paddingRight="5dp"
+        android:visibility="gone"
+        android:layout_above="@+id/btn_finish"
+        android:paddingLeft="5dp">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/btn_finish"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Create Shipment"
+        android:textSize="16dp"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:textColor="@color/white"
+        android:background="@color/colorPrimary"
+        android:textStyle="bold"/>
+</RelativeLayout>

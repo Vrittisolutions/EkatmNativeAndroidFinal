@@ -1,0 +1,85 @@
+package com.vritti.vwb.Beans;
+
+public class LeftClientDataBean {
+
+    String ShipToMasterId,
+            CustVendorMasterId,
+            EmployeeId,
+            ConsigneeName,
+            OpenActivities,
+            OverDue,
+            WaitingApproval,
+            Critical,clientCount;
+
+    public String getShipToMasterId() {
+        return ShipToMasterId;
+    }
+
+    public void setShipToMasterId(String shipToMasterId) {
+        ShipToMasterId = shipToMasterId;
+    }
+
+    public String getCustVendorMasterId() {
+        return CustVendorMasterId;
+    }
+
+    public void setCustVendorMasterId(String custVendorMasterId) {
+        CustVendorMasterId = custVendorMasterId;
+    }
+
+    public String getEmployeeId() {
+        return EmployeeId;
+    }
+
+    public void setEmployeeId(String employeeId) {
+        EmployeeId = employeeId;
+    }
+
+    public String getConsigneeName() {
+        return ConsigneeName;
+    }
+
+    public void setConsigneeName(String consigneeName) {
+        ConsigneeName = consigneeName;
+    }
+
+    public String getOpenActivities() {
+        return OpenActivities;
+    }
+
+    public void setOpenActivities(String openActivities) {
+        OpenActivities = openActivities;
+    }
+
+    public String getOverDue() {
+        return OverDue;
+    }
+
+    public void setOverDue(String overDue) {
+        OverDue = overDue;
+    }
+
+    public String getWaitingApproval() {
+        return WaitingApproval;
+    }
+
+    public void setWaitingApproval(String waitingApproval) {
+        WaitingApproval = waitingApproval;
+    }
+
+    public String getCritical() {
+        return Critical;
+    }
+
+    public void setCritical(String critical) {
+        Critical = critical;
+    }
+
+    public String getClientCount() {
+        return clientCount;
+    }
+
+    public void setClientCount(String clientCount) {
+        this.clientCount = clientCount;
+    }
+}

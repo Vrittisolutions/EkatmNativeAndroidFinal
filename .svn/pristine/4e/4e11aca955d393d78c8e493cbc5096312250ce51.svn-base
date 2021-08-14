@@ -1,0 +1,1238 @@
+package com.vritti.vwb.vworkbench;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.View;
+import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.DatePicker;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.bea.xml.stream.samples.Parse;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.annotations.SerializedName;
+import com.vritti.crm.bean.Country;
+import com.vritti.crm.classes.CommonFunctionCrm;
+import com.vritti.crm.classes.CommonObjectProperties;
+import com.vritti.databaselib.data.DatabaseHandlers;
+import com.vritti.databaselib.other.Utility;
+import com.vritti.databaselib.other.WebUrlClass;
+import com.vritti.ekatm.R;
+import com.vritti.sessionlib.CallbackInterface;
+import com.vritti.sessionlib.StartSession;
+import com.vritti.vwb.Adapter.ActivityListMainAdapter_New;
+import com.vritti.vwb.Adapter.DocListAdapter;
+import com.vritti.vwb.Beans.ActivityBean;
+import com.vritti.vwb.Beans.CommonClass;
+import com.vritti.vwb.Beans.CommonObject;
+import com.vritti.vwb.Beans.CommonSubObject;
+import com.vritti.vwb.Beans.CommonSubObjectSchool;
+import com.vritti.vwb.Beans.FormNameSahara;
+import com.vritti.vwb.Beans.KendraIdJsonBean;
+import com.vritti.vwb.Beans.KendraName;
+import com.vritti.vwb.Beans.ListObjectDoc;
+import com.vritti.vwb.Beans.MultipleKendraId;
+import com.vritti.vwb.Beans.Test;
+import com.vritti.vwb.classes.CommonFunction;
+import com.vritti.vwb.classes.commonObjectProperties;
+
+import org.apache.commons.lang3.StringUtils;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.Serializable;
+import java.net.URLDecoder;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+
+public class DocumentReviewActivity extends AppCompatActivity {
+
+
+    String PlantMasterId = "", LoginId = "", Password = "", CompanyURL = "", EnvMasterId = "",
+            UserMasterId = "", UserName = "", MobileNo = "";
+    Utility ut;
+    String type = "",text="";
+    CommonObject commonObgj;
+    JsonArray jsonElements;
+    DatabaseHandlers db;
+    CommonFunction cf;
+    SQLiteDatabase sql;
+    Context context;
+    TextView txt_fromDate, txt_toDate;
+    Spinner /*spinner_schoolName*/spinner_academinYear, spinner_form;
+    String formId = "", academicYear = "";
+    // MultiSpinner multiSpinner;/* = (MultiSpinner) findViewById(R.id.multi_spinner);*/
+    static int year, month, day;
+    Date result;
+    String fromDate = "", toDate = "";
+    String date;
+    String Birthdate = "";
+    List<KendraName> list_KendraName = new ArrayList<KendraName>();
+    ArrayList<FormNameSahara> list_FormName = new ArrayList<>();
+    CheckBox check_currentSubmission, check_academicYear, check_previousSubmission, check_school, check_form, check_fillBetween;
+    LinearLayout /*ln_schoolName,*/ ln_form, ln_fromDate, ln_academicYear, ln_date, ln_previous, ln_current, ln_main, ln_school;
+    RecyclerView list_SchoolName;
+    ArrayList<ListObjectDoc> listObjectDocs = new ArrayList<>();
+    String[] user;
+    String userMasterId="",schoolId="",kendraNames;
+    MultipleKendraId multipleKendraId;
+    TextView spinner_schoolName;
+    //CharSequence[] bnames;
+    protected CharSequence[] kendraId;
+
+    public ArrayList<CharSequence> selectedKendra = new ArrayList<CharSequence>();
+    protected ArrayList<String> selectedKendraId = new ArrayList<>();
+    protected CharSequence[] kendraName;
+    KendraIdJsonBean kendraIdJsonObject;
+    Button btn_showKendra, btn_view;
+    StringBuilder stringBuilder;
+
+
+    String FinalObj;
+    DocListAdapter docListAdapter;
+    commonObjectProperties commonObjectProperties;
+    ArrayList<ActivityBean> lsActivityList;
+    ActivityListMainAdapter_New activityListadapterNew;
+    TextView txt_heading;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_document_review);
+
+        Toolbar toolbar_action = (Toolbar) findViewById(R.id.toolbar);
+        toolbar_action.setLogo(R.mipmap.ic_toolbar_logo_vwb);
+        toolbar_action.setTitle(R.string.app_name_toolbar_Vwb);
+        setSupportActionBar(toolbar_action);
+       // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        context = getApplicationContext();
+        ut = new Utility();
+        cf = new CommonFunction(context);
+        String settingKey = ut.getSharedPreference_SettingKey(context);
+        String dabasename = ut.getValue(context, WebUrlClass.GET_DATABASE_NAME_KEY, settingKey);
+        db = new DatabaseHandlers(context, dabasename);
+        CompanyURL = ut.getValue(context, WebUrlClass.GET_COMPANY_URL_KEY, settingKey);
+        EnvMasterId = ut.getValue(context, WebUrlClass.GET_EnvMasterID_KEY, settingKey);
+        PlantMasterId = ut.getValue(context, WebUrlClass.GET_PlantID_KEY, settingKey);
+        LoginId = ut.getValue(context, WebUrlClass.GET_LOGIN_KEY, settingKey);
+        Password = ut.getValue(context, WebUrlClass.GET_PSW_KEY, settingKey);
+        UserMasterId = ut.getValue(context, WebUrlClass.GET_USERMASTERID_KEY, settingKey);
+        UserName = ut.getValue(context, WebUrlClass.GET_USERNAME_KEY, settingKey);
+        sql = db.getWritableDatabase();
+
+        initView();
+        setListner();
+
+        Intent intent = getIntent();
+        type = getIntent().getStringExtra("Type");
+        text = getIntent().getStringExtra("text");
+        if (type.equalsIgnoreCase("current")) {
+            ln_school.setVisibility(View.VISIBLE);
+            ln_main.setVisibility(View.GONE);
+            txt_heading.setText("Datasheet Document Review - "+text);
+        } else if(type.equalsIgnoreCase("Previous")){
+            ln_school.setVisibility(View.VISIBLE);
+            ln_main.setVisibility(View.VISIBLE);
+            txt_heading.setText("Datasheet Document Review - "+text);
+        }
+
+        if (cf.getBranchNameCount() > 0) {
+            getKendraName();
+        } else {
+            if (ut.isNet(context)) {
+                new StartSession(context, new CallbackInterface() {
+                    @Override
+                    public void callMethod() {
+                        new DownloadKendraNameJSON().execute();
+                    }
+
+                    @Override
+                    public void callfailMethod(String msg) {
+
+                    }
+                });
+            }
+        }
+
+
+        if (cf.getFormNameCount() > 0) {
+            getFormName();
+        } else {
+            if (ut.isNet(context)) {
+                new StartSession(context, new CallbackInterface() {
+                    @Override
+                    public void callMethod() {
+                        new DownloadFormNameJSON().execute();
+                    }
+
+                    @Override
+                    public void callfailMethod(String msg) {
+
+                    }
+                });
+            }
+        }
+
+
+        spinner_schoolName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                switch (v.getId()) {
+
+                    case R.id.spinner_schoolName:
+
+
+                        // TODO: Show the colours dialog
+                      //  showSelectColoursDialog();
+                        //showKendraNames();
+
+                        break;
+
+                    default:
+
+                        break;
+
+                }
+
+
+            }
+        });
+
+    }
+
+    private void initView() {
+        txt_fromDate = findViewById(R.id.txt_fromDate);
+        txt_toDate = findViewById(R.id.txt_toDate);
+        spinner_schoolName = findViewById(R.id.spinner_schoolName);
+        spinner_academinYear = findViewById(R.id.spinner_academinYear);
+        spinner_form = findViewById(R.id.spinner_form);
+
+        ln_academicYear = findViewById(R.id.ln_academicYear);
+      //  ln_schoolName = findViewById(R.id.ln_schoolName);
+        ln_form = findViewById(R.id.ln_form);
+        ln_date = findViewById(R.id.ln_date);
+        ln_previous = findViewById(R.id.ln_previous);
+        ln_current = findViewById(R.id.ln_current);
+        ln_main = findViewById(R.id.ln_main);
+        ln_school = findViewById(R.id.ln_school);
+        btn_showKendra = findViewById(R.id.btn_showKendra);
+        btn_view = findViewById(R.id.btn_view);
+
+        check_academicYear = findViewById(R.id.check_academicYear);
+        check_currentSubmission = findViewById(R.id.check_currentSubmission);
+        check_previousSubmission = findViewById(R.id.check_previousSubmission);
+        check_school = findViewById(R.id.check_school);
+        check_form = findViewById(R.id.check_form);
+        check_academicYear = findViewById(R.id.check_academicYear);
+        check_fillBetween = findViewById(R.id.check_fillBetween);
+        txt_heading = findViewById(R.id.txt_heading);
+
+        list_SchoolName = findViewById(R.id.list_SchoolName);
+        jsonElements = new JsonArray();
+        lsActivityList = new ArrayList<ActivityBean>();
+
+        String[] academicYear = getResources().getStringArray(R.array.academic_Year);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.vwb_custom_spinner_txt, academicYear);
+        spinner_academinYear.setAdapter(adapter);
+
+
+    }
+
+    private void setListner() {
+
+     /*   spinner_form.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                formId  = spinner_form.getSelectedItem().toString();
+                //String ClickName = list_FormName.get(position).getCSSFormsDesc();
+
+            }
+        });*/
+
+        spinner_form.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                //formId  = spinner_form.getSelectedItem().toString();
+                formId = list_FormName.get(position).getPKCssFormsId();
+                String formDesc = list_FormName.get(position).getCSSFormsDesc();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        spinner_academinYear.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                academicYear = spinner_academinYear.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+        btn_showKendra.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // btn_view.setVisibility(View.VISIBLE);
+              //  String selectedKendraId1 = new Gson().toJson(selectedKendraId);
+                Intent intent = new Intent(DocumentReviewActivity.this,SaharaSchoolDisplayList.class);
+                intent.putExtra("SelectedKendraId",selectedKendraId);
+                intent.putExtra("type",type);
+                intent.putExtra("formId",formId);
+                intent.putExtra("academicYear",academicYear);
+                intent.putExtra("fromDate",fromDate);
+                intent.putExtra("toDate",toDate);
+
+                startActivity(intent);
+
+             //   selectedKendraId
+              //  showKendraNames();
+                    /* Bundle bundle = new Bundle();
+                bundle.putSerializable("abc" , (Serializable)selectedKendraId);
+                intent.putExtra("SelectedKendraId",bundle);*/
+
+
+            }
+        });
+
+
+        btn_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               ArrayList<String> schoolId1 = new ArrayList<>();
+                String join;
+
+                if (listObjectDocs.size() > 0) {
+                 user = new String[listObjectDocs.size()];
+                    for (int i = 1; i < listObjectDocs.size(); i++) {
+                        if(listObjectDocs.get(i).isSelected()) {
+                            userMasterId = listObjectDocs.get(i).getUserMasterId();
+                            schoolId1.add(userMasterId);
+                            if(schoolId1.size() > 0){
+                                schoolId = "'" + StringUtils.join(schoolId1,"','") + "'";
+                            }
+                        }
+                    }
+                }
+
+                if(schoolId.equals("") &&
+                        (fromDate.equals("") && toDate.equals("")) &&
+                        academicYear.equals("") && formId.equals("")){
+                    Toast.makeText(DocumentReviewActivity.this, "Please Select any of the fields", Toast.LENGTH_SHORT).show();
+                }else {
+                    if (schoolId.length() != 0) {
+                        getActivityDetails(schoolId);
+                    } else {
+                        getActivityDetails(schoolId);
+                        // Toast.makeText(context, "No Record Found", Toast.LENGTH_SHORT).show();
+
+                    }
+                }
+
+            }
+        });
+
+
+        txt_fromDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar c = Calendar.getInstance();
+                year = c.get(Calendar.YEAR);
+                month = c.get(Calendar.MONTH);
+                day = c.get(Calendar.DAY_OF_MONTH);
+                date = "";
+                result = c.getTime();
+                android.app.DatePickerDialog datePickerDialog = new android.app.DatePickerDialog(DocumentReviewActivity.this,
+                        new android.app.DatePickerDialog.OnDateSetListener() {
+
+                            @Override
+                            public void onDateSet(DatePicker datePicker, int year,
+                                                  int monthOfYear, int dayOfMonth) {
+
+                                //  datePicker.setMinDate(c.getTimeInMillis() - 10000);
+                                date = dayOfMonth + "/"
+                                        + String.format("%02d", (monthOfYear + 1))
+                                        + "/" + year;
+                                txt_fromDate.setText(date);
+                                fromDate = formateDateFromstring("dd/MM/yyyy", "yyyy-MM-dd", date);
+
+
+                            }
+                        }, year, month, day);
+                datePickerDialog.setTitle("Select Date");
+
+                datePickerDialog.show();
+
+            }
+        });
+
+
+        txt_toDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar c = Calendar.getInstance();
+                year = c.get(Calendar.YEAR);
+                month = c.get(Calendar.MONTH);
+                day = c.get(Calendar.DAY_OF_MONTH);
+                date = "";
+                result = c.getTime();
+                android.app.DatePickerDialog datePickerDialog = new android.app.DatePickerDialog(DocumentReviewActivity.this,
+                        new android.app.DatePickerDialog.OnDateSetListener() {
+
+                            @Override
+                            public void onDateSet(DatePicker datePicker, int year,
+                                                  int monthOfYear, int dayOfMonth) {
+
+                                //  datePicker.setMinDate(c.getTimeInMillis() - 10000);
+                                date = dayOfMonth + "/"
+                                        + String.format("%02d", (monthOfYear + 1))
+                                        + "/" + year;
+                                txt_toDate.setText(date);
+                                toDate = formateDateFromstring("dd/MM/yyyy", "yyyy-MM-dd", date);
+                                //format: 'YYYY-MM-DD'
+
+                            }
+                        }, year, month, day);
+                datePickerDialog.setTitle("Select Date");
+
+                datePickerDialog.show();
+
+            }
+        });
+
+        check_school.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    spinner_schoolName.setVisibility(View.VISIBLE);
+                    btn_showKendra.setVisibility(View.VISIBLE);
+                    btn_view.setVisibility(View.GONE);
+                    showSelectColoursDialog();
+                }else{
+                    spinner_schoolName.setVisibility(View.GONE);
+                    btn_showKendra.setVisibility(View.GONE);
+                    btn_view.setVisibility(View.VISIBLE);
+                    selectedKendra.clear();
+                    selectedKendraId.clear();
+                    spinner_schoolName.setText("");
+                }
+
+            }
+        });
+
+        check_form.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    spinner_form.setSelection(0);
+                    ln_form.setVisibility(View.VISIBLE);
+
+                } else{
+                    ln_form.setVisibility(View.GONE);
+                    formId = "";
+                }
+
+            }
+        });
+
+        check_academicYear.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    spinner_academinYear.setSelection(0);
+                    ln_academicYear.setVisibility(View.VISIBLE);
+                }else{
+                    academicYear="";
+                    ln_academicYear.setVisibility(View.GONE);
+                }
+
+
+            }
+        });
+
+        check_fillBetween.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    ln_date.setVisibility(View.VISIBLE);
+                }else{
+                    txt_fromDate.setText("");
+                    txt_toDate.setText("");
+                    fromDate="";
+                    toDate="";
+                    ln_date.setVisibility(View.GONE);
+                }
+
+            }
+        });
+
+        check_currentSubmission.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    ln_school.setVisibility(View.VISIBLE);
+                    ln_main.setVisibility(View.GONE);
+                } else {
+                    ln_school.setVisibility(View.GONE);
+                    ln_main.setVisibility(View.GONE);
+                }
+
+            }
+        });
+        check_previousSubmission.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    ln_school.setVisibility(View.VISIBLE);
+                    ln_main.setVisibility(View.VISIBLE);
+                } else {
+                    ln_school.setVisibility(View.GONE);
+                    ln_main.setVisibility(View.GONE);
+                }
+
+            }
+        });
+
+
+    }
+
+    public static String formateDateFromstring(String inputFormat, String outputFormat, String inputDate) {
+
+        Date parsed = null;
+        String outputDate = "";
+
+        SimpleDateFormat df_input = new SimpleDateFormat(inputFormat, Locale.getDefault());
+        SimpleDateFormat df_output = new SimpleDateFormat(outputFormat, Locale.getDefault());
+
+        try {
+            parsed = df_input.parse(inputDate);
+            outputDate = df_output.format(parsed);
+
+        } catch (ParseException e) {
+
+        }
+
+        return outputDate;
+
+    }
+
+    public void updateCheck(int adapterPosition) {
+        //ArrayList<ListObjectDoc> listObjectDocs = new ArrayList<>();
+        if (listObjectDocs.get(adapterPosition).isSelected()) {
+            listObjectDocs.get(adapterPosition).setSelected(false);
+        } else {
+            listObjectDocs.get(adapterPosition).setSelected(true);
+
+        }
+
+        docListAdapter.updateList(adapterPosition);
+
+        // arrayList.add();
+
+
+    }
+
+    public void updateCheckAll() {
+        int i = -1;
+        if (listObjectDocs.get(0).isSelected())
+            i = 0;
+        else
+            i = 1;
+
+        for (int j = 0; j < listObjectDocs.size(); j++) {
+            if (i == 1)
+                listObjectDocs.get(j).setSelected(true);
+            else
+                listObjectDocs.get(j).setSelected(false);
+        }
+        docListAdapter.notifyDataSetChanged();
+
+    }
+
+    class DownloadKendraNameJSON extends AsyncTask<String, Void, String> {
+        Object res;
+        String response;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            String url = CompanyURL + WebUrlClass.api_GetBranchName +"?Designation=";
+
+            try {
+                res = ut.OpenConnection(url);
+                if (res != null) {
+                    response = res.toString().replaceAll("\\\\", "");
+
+
+                    JSONArray jResults = new JSONArray(res.toString());
+
+                    ContentValues values = new ContentValues();
+                    sql.delete(db.TABLE_BRANCH_NAME, null, null);
+                    Cursor c = sql.rawQuery("SELECT * FROM " + db.TABLE_BRANCH_NAME, null);
+                    int count = c.getCount();
+                    String columnName, columnValue;
+                    for (int index = 0; index < jResults.length(); index++) {
+                        JSONObject jorder = jResults.getJSONObject(index);
+                        for (int j = 0; j < c.getColumnCount(); j++) {
+                            columnName = c.getColumnName(j);
+                            columnValue = jorder.getString(columnName);
+                            values.put(columnName, columnValue);
+                        }
+                        long a = sql.insert(db.TABLE_BRANCH_NAME, null, values);
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(String res) {
+            super.onPostExecute(res);
+
+            if (response != null || response.contains("No action was found")) {
+                getKendraName();
+            }else{
+                Toast.makeText(DocumentReviewActivity.this, "Unable to load Kendra Name...Please contact to support", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+    }
+
+    class DownloadFormNameJSON extends AsyncTask<String, Void, String> {
+        Object res;
+        String response;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            String url = CompanyURL + WebUrlClass.api_GetformName_Sahara;
+
+            try {
+                res = ut.OpenConnection(url);
+                if (res != null) {
+                    response = res.toString().replaceAll("\\\\", "");
+
+
+                    JSONArray jResults = new JSONArray(res.toString());
+
+                    ContentValues values = new ContentValues();
+                    sql.delete(db.TABLE_FORM_NAME, null, null);
+                    Cursor c = sql.rawQuery("SELECT * FROM " + db.TABLE_FORM_NAME, null);
+                    int count = c.getCount();
+                    String columnName, columnValue;
+                    for (int index = 0; index < jResults.length(); index++) {
+                        JSONObject jorder = jResults.getJSONObject(index);
+                        for (int j = 0; j < c.getColumnCount(); j++) {
+                            columnName = c.getColumnName(j);
+                            columnValue = jorder.getString(columnName);
+                            values.put(columnName, columnValue);
+                        }
+                        long a = sql.insert(db.TABLE_FORM_NAME, null, values);
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(String res) {
+            super.onPostExecute(res);
+
+            if (response != null) {
+                getFormName();
+            }
+
+        }
+    }
+
+    private void getKendraName() {
+//
+        list_KendraName.clear();
+        String query = "SELECT * FROM " + db.TABLE_BRANCH_NAME;
+        Cursor cur = sql.rawQuery(query, null);
+        //   lstReferenceType.add("Select");
+        if (cur.getCount() > 0) {
+            cur.moveToFirst();
+
+            do {
+
+                list_KendraName.add(new KendraName(cur.getString(cur.getColumnIndex("PKBranchId")),
+                        cur.getString(cur.getColumnIndex("BranchName"))));
+
+            } while (cur.moveToNext());
+
+        }
+
+    }
+
+    private void getFormName() {
+//
+        list_FormName.clear();
+        String query = "SELECT * FROM " + db.TABLE_FORM_NAME;
+        Cursor cur = sql.rawQuery(query, null);
+        //   lstReferenceType.add("Select");
+        if (cur.getCount() > 0) {
+
+            cur.moveToFirst();
+            do {
+
+                list_FormName.add(new FormNameSahara(cur.getString(cur.getColumnIndex("PKCssFormsId")),
+                        cur.getString(cur.getColumnIndex("CSSFormsCode")),
+                        cur.getString(cur.getColumnIndex("CSSFormsDesc"))));
+
+
+            } while (cur.moveToNext());
+
+        }
+
+        /*cityArrayList.add(0, Select);*/
+        FormNameSahara formNameSahara = new FormNameSahara();
+        formNameSahara.setCSSFormsDesc("Select");
+        list_FormName.add(0, formNameSahara);
+
+
+        ArrayAdapter<FormNameSahara> formNameSaharaArrayAdapter = new ArrayAdapter<FormNameSahara>
+                (DocumentReviewActivity.this,
+                        android.R.layout.simple_spinner_dropdown_item, list_FormName);
+        spinner_form.setAdapter(formNameSaharaArrayAdapter);
+
+    }
+
+    protected void showSelectColoursDialog() {
+
+      //  String flag = from
+      /*  if(selectedKendra.size() !=0){
+            for(int j=0;j<selectedKendra.size();j++){
+
+            }
+        }*/
+
+
+        kendraName = toCharSequenceArray(list_KendraName);
+
+        boolean[] checkedColours = new boolean[kendraName.length];
+
+        int count = kendraName.length;
+        if(selectedKendra.size() !=0) {
+
+
+            for (int i = 0; i < kendraName.length; i++) {
+                // selectedKendra )
+                boolean flag = false;
+                for (int j = 0; j < selectedKendra.size(); j++) {
+                    flag = kendraName[i].equals(selectedKendra.get(j));
+                    if (flag)
+                        break;
+                }
+                checkedColours[i] = flag;
+
+
+            }
+        }
+      /*  for (int i = 0; i < count; i++)
+            checkedColours[3] = true;
+       */
+           // checkedColours[3] = list_KendraName.contains(kendraName[i]);
+
+        DialogInterface.OnMultiChoiceClickListener coloursDialogListener = new DialogInterface.OnMultiChoiceClickListener() {
+
+            @Override
+
+            public void onClick(DialogInterface dialog, int position, boolean isChecked) {
+
+                if (isChecked) {
+
+                    selectedKendra.add(kendraName[position]);
+                    selectedKendraId.add(list_KendraName.get(position).getPKBranchId());
+
+                } else {
+
+                    selectedKendra.remove(kendraName[position]);
+                    selectedKendraId.remove(list_KendraName.get(position).getPKBranchId());
+                }
+
+                onChangeSelectedColours();
+
+            }
+
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+
+       builder.setTitle("Select Kendra");
+       // builder.setIcon(R.drawable.correct);
+
+        builder.setPositiveButton("Select Schools", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+               /* ArrayList<String> arrayList = new ArrayList<>();
+                arrayList.add(String.valueOf(selectedKendra));*/
+                kendraNames="";
+                kendraNames = String.valueOf(selectedKendra).replaceAll("\\[","").replaceAll("\\]","");
+
+                spinner_schoolName.setText(kendraNames);
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+               /* ArrayList<String> arrayList = new ArrayList<>();
+                arrayList.add(String.valueOf(selectedKendra));*/
+                kendraNames="";
+                selectedKendra.clear();
+                check_school.setChecked(false);
+                spinner_schoolName.setVisibility(View.GONE);
+               // kendraNames = String.valueOf(selectedKendra).replaceAll("\\[","").replaceAll("\\]","");
+
+                spinner_schoolName.setText(kendraNames);
+            }
+        });
+
+
+        builder.setMultiChoiceItems(kendraName, checkedColours, coloursDialogListener);
+
+        AlertDialog dialog = builder.create();
+
+        dialog.show();
+
+
+
+    }
+
+    public void onChangeSelectedColours() {
+
+       stringBuilder = new StringBuilder();
+
+        for (CharSequence colour : selectedKendra) {
+            stringBuilder.append(colour + " , ");
+        }
+        kendraNames = String.valueOf(selectedKendra).replaceAll("\\[","").replaceAll("\\]","");
+
+        spinner_schoolName.setText(kendraNames);
+
+
+
+    }
+
+    public CharSequence[] toCharSequenceArray(List<KendraName> kendraNames) {
+
+        CharSequence[] bookTitles = new CharSequence[kendraNames.size()];
+        for (int i = 0; i < bookTitles.length; i++) {
+            bookTitles[i] = kendraNames.get(i).getBranchName();
+        }
+        return bookTitles;
+    }
+
+    private void showKendraNames() {
+
+        for (int i = 0; i < selectedKendraId.size(); i++) {
+            kendraIdJsonObject = new KendraIdJsonBean();
+
+            try {
+                kendraIdJsonObject.setStringArrayList(selectedKendraId);
+                kendraIdJsonObject.setMicrovertical("sahara");
+                //kendraIdJsonObject.put("Microvertical", "Microvertical");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
+            FinalObj = new Gson().toJson(kendraIdJsonObject);
+            FinalObj = FinalObj.replaceAll("\\\\", "");
+
+
+            if (ut.isNet(context)) {
+                new StartSession(context, new CallbackInterface() {
+                    @Override
+                    public void callMethod() {
+                        new showMultiClient().execute();
+                    }
+
+                    @Override
+                    public void callfailMethod(String msg) {
+                        Toast.makeText(context, "Please check your internet connection", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+
+
+        }
+
+    }
+
+
+    class showMultiClient extends AsyncTask<Integer, Void, Integer> {
+        Object respond;
+        String res, response;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+        }
+
+
+        @Override
+        protected Integer doInBackground(Integer... params) {
+
+            String url = CompanyURL + WebUrlClass.api_ShowMultiClient_Sahara;
+            try {
+
+                respond = ut.OpenPostConnection(url, FinalObj, getApplicationContext());
+                res = respond.toString();
+                // res = res.replaceAll("\"", "");
+                response = res;
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Integer integer) {
+            super.onPostExecute(integer);
+            if (response != null && !res.equals("")) {
+
+                JSONArray jArray = null;
+                try {
+                    jArray = new JSONArray(response);
+
+                    if (jArray.length() > 0) {
+                        for (int i = 0; i < jArray.length(); i++) {
+                            // String jorder = new Gson().toJson(jArray.getJSONObject(i).getJSONObject(""));
+                            listObjectDocs.add(new Gson().fromJson(jArray.getJSONObject(i).toString(), ListObjectDoc.class));
+                        }
+                    }
+                    if (listObjectDocs.size() != 0) {
+                        //btn_view.setVisibility(View.VISIBLE);
+                        openListUi(listObjectDocs);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }
+    }
+
+    private void openListUi(ArrayList<ListObjectDoc> listObjectDocs) {
+        list_SchoolName.setVisibility(View.VISIBLE);
+        listObjectDocs.add(0, new ListObjectDoc());
+        docListAdapter = new DocListAdapter(this, listObjectDocs);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        list_SchoolName.setLayoutManager(mLayoutManager);
+        list_SchoolName.setAdapter(docListAdapter);
+    }
+
+    public void getActivityDetails(String schoolId) {
+        //  showProgressDialog();
+
+        // JSONArray jsArray = new JSONArray(schoolId);
+
+        commonObjectProperties = new commonObjectProperties();
+
+        JSONObject jsoncommonObj = commonObjectProperties.WorkDataObj();
+        JSONObject jsonObj;
+        commonObgj = new CommonObject();
+
+
+        commonObgj.setActivityCode(new CommonSubObject("activityCode"));
+        commonObgj.getActivityCode().setOperator("eq");
+        commonObgj.setActDesc(new CommonSubObject("actDesc"));
+        commonObgj.getActDesc().setOperator("eq");
+        commonObgj.setIssuedTo(new CommonSubObject("issuedTo"));
+        commonObgj.getIssuedTo().setOperator("eq");
+        commonObgj.setAssignBy(new CommonSubObject("assignBy"));
+        commonObgj.getAssignBy().setOperator("eq");
+        commonObgj.setProjId(new CommonSubObject("ProjId"));
+        commonObgj.getProjId().setOperator("eq");
+        commonObgj.setMainGrpId(new CommonSubObject("MainGrpId"));
+        commonObgj.getMainGrpId().setOperator("eq");
+        commonObgj.setUnitId(new CommonSubObject("UnitId"));
+        commonObgj.getUnitId().setOperator("eq");
+
+        commonObgj.setFromDt(new CommonSubObject("FromDt"));
+        commonObgj.getFromDt().setOperator("bet");
+        if (fromDate.equals("")) {
+            commonObgj.getFromDt().setSet(false);
+
+        } else {
+            commonObgj.getFromDt().setSet(true);
+        }
+        commonObgj.getFromDt().setValue1(fromDate);
+
+
+        commonObgj.setToDt(new CommonSubObject("ToDt"));
+        //commonObgj.getToDt().setName("ToDt");
+        commonObgj.getToDt().setOperator("bet");
+        commonObgj.getToDt().setValue1(toDate);
+        if (toDate.equals("")) {
+            commonObgj.getToDt().setSet(false);
+
+        } else {
+            commonObgj.getToDt().setSet(true);
+        }
+
+
+        commonObgj.setExpCompltnDt(new CommonSubObject("ExpCompltnDt"));
+        commonObgj.getExpCompltnDt().setOperator("eq");
+        commonObgj.setSourceType(new CommonSubObject("SourceType"));
+        commonObgj.getSourceType().setOperator("eq");
+        commonObgj.setSourceId(new CommonSubObject("SourceId"));
+        commonObgj.getSourceId().setOperator("eq");
+
+        commonObgj.setStatus(new CommonSubObject("Status"));
+        commonObgj.getStatus().setName("Status");
+        commonObgj.getStatus().setSet(true);
+        commonObgj.getStatus().setOperator("<>");
+        if (type.equalsIgnoreCase("previous")) {
+            commonObgj.getStatus().setValue1("('15','13')");
+        } else if (type.equalsIgnoreCase("current")) {
+            commonObgj.getStatus().setValue1("('15','12')");
+        }
+
+        commonObgj.setPriorityId(new CommonSubObject("PriorityId"));
+        commonObgj.getPriorityId().setOperator("eq");
+        commonObgj.setHoursRequired(new CommonSubObject("HoursRequired"));
+        commonObgj.getHoursRequired().setOperator("eq");
+        commonObgj.setComFromDt(new CommonSubObject("comFromDt"));
+        commonObgj.getComFromDt().setOperator("eq");
+        commonObgj.setComToDt(new CommonSubObject("comToDt"));
+        commonObgj.getComToDt().setOperator("eq");
+        commonObgj.setPerform(new CommonSubObject("perform"));
+        commonObgj.getPerform().setOperator("eq");
+        commonObgj.setIsSystemGenerated(new CommonSubObject("IsSystemGenerated"));
+        commonObgj.getIsSystemGenerated().setOperator("eq");
+        commonObgj.setIsUnplanned(new CommonSubObject("IsUnplanned"));
+        commonObgj.getIsUnplanned().setOperator("eq");
+        commonObgj.setAwait(new CommonSubObject("Await"));
+        commonObgj.getAwait().setOperator("eq");
+        commonObgj.setPriorityIndex(new CommonSubObject("PriorityIndex"));
+        commonObgj.getPriorityIndex().setOperator("eq");
+
+
+        commonObgj.setParentActId(new CommonSubObject("ParentActId"));
+        commonObgj.getParentActId().setName("ParentActId");
+        commonObgj.getParentActId().setSet(true);
+        commonObgj.getParentActId().setValue1("");//"["wsc
+        commonObgj.getParentActId().setOperator("eq");
+
+        commonObgj.setModifiedDt(new CommonSubObject("ModifiedDt"));
+        commonObgj.getModifiedDt().setOperator("eq");
+
+        commonObgj.setYear(new CommonSubObject("year"));
+        if(academicYear.equals("")){
+            commonObgj.getYear().setSet(false);
+        }else{
+            commonObgj.getYear().setSet(true);
+        }
+        commonObgj.getYear().setValue1(academicYear);
+        commonObgj.getYear().setOperator("eq");
+
+
+        commonObgj.setFormId(new CommonSubObject("FormId"));
+        if(formId.equals("")){
+            commonObgj.getFormId().setSet(false);
+        }else{
+            commonObgj.getFormId().setSet(true);
+        }
+        commonObgj.getFormId().setValue1(formId);
+        commonObgj.getFormId().setOperator("eq");
+
+
+        commonObgj.setDocumentType(new CommonSubObject("DocumentType"));
+        commonObgj.getDocumentType().setSet(true);
+        commonObgj.getDocumentType().setValue1(type);
+        commonObgj.getDocumentType().setOperator("eq");
+
+            //CommonSubObjectSchool commonSubObjectSchool=new CommonSubObjectSchool();
+        /*    if (schoolId.size()>0) {*/
+               // commonSubObjectSchool.setValue1(schoolId);
+                commonObgj.setSchholId(new CommonSubObject("SchholId"));
+                if(!schoolId.equals("")){
+                    String join = "'" + StringUtils.join(schoolId,"','") + "'";
+                    commonObgj.getSchholId().setValue1("("+schoolId+")");
+                    commonObgj.getSchholId().setSet(true);
+                    commonObgj.getSchholId().setOperator("IN");
+                } else {
+                    commonObgj.getSchholId().setValue1(schoolId.replace("(","").replace(")",""));
+                    commonObgj.getSchholId().setSet(false);
+                    commonObgj.getSchholId().setOperator("eq");//
+                }
+
+        commonObgj.setDatasheetStatus(new CommonSubObject("DatasheetStatus"));
+        String es = "=";
+        commonObgj.getDatasheetStatus().setSet(true);
+        if (type.equalsIgnoreCase("current")) {
+            commonObgj.getDatasheetStatus().setValue1("('20','21','11')");
+            commonObgj.getDatasheetStatus().setOperator("");
+
+        } else if (type.equalsIgnoreCase("previous")) {
+            commonObgj.getDatasheetStatus().setValue1("30");
+            commonObgj.getDatasheetStatus().setOperator(es);
+        }
+
+        try {
+            FinalObj = new JSONObject(new Gson().toJson(commonObgj)).toString();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        if(ut.isNet(context)){
+            new StartSession(DocumentReviewActivity.this, new CallbackInterface() {
+                @Override
+                public void callMethod() {
+                    new DownloadCommanDataURLJSON().execute();
+                }
+
+                @Override
+                public void callfailMethod(String msg) {
+                    Toast.makeText(DocumentReviewActivity.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+    }else{
+            Toast.makeText(DocumentReviewActivity.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+        }
+
+
+
+
+}
+
+    class DownloadCommanDataURLJSON extends AsyncTask<Integer, Void, String> {
+        Object res;
+        String response;
+
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+
+        @Override
+        protected String doInBackground(Integer... params) {
+            String url = CompanyURL + WebUrlClass.api_PostloadWorkData;
+            try {
+                res = ut.OpenPostConnection(url,FinalObj, DocumentReviewActivity.this);
+                response = res.toString().replaceAll("\\\\\\\\\\\"", "");
+                response = response.replaceAll("\\\\", "");
+                response = response.replaceAll("u0026", "&");
+                response = response.replaceAll("%", "per.");
+                response = response.substring(1, response.length() - 1);
+
+
+                ContentValues values = new ContentValues();
+                JSONArray jResults = new JSONArray(response);
+                String msg = "";
+                sql.delete(db.TABLE_ACTIVITYMASTER, null,
+                        null);
+                Cursor c = sql.rawQuery("SELECT * FROM " + db.TABLE_ACTIVITYMASTER, null);
+                int count = c.getCount();
+                String columnName, columnValue;
+                for (int i = 0; i < jResults.length(); i++) {
+                    JSONObject jorder = jResults.getJSONObject(i);
+                    for (int j = 0; j < c.getColumnCount(); j++) {
+
+                        columnName = c.getColumnName(j);
+                        columnValue = jorder.getString(columnName);
+                        if (columnName.equalsIgnoreCase("ActivityName")) {
+                            columnValue = jorder.getString(columnName);
+                            columnValue = URLDecoder.decode(columnValue, "UTF-8");
+                        }
+                        values.put(columnName, columnValue);
+                    }
+                    long a = sql.insert(db.TABLE_ACTIVITYMASTER, null, values);
+                    Log.e("", "" + a);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                response = WebUrlClass.Errormsg;
+            }
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(String res) {
+            super.onPostExecute(res);
+
+            if(res.contains("[]")){
+                Toast.makeText(DocumentReviewActivity.this, "No Record Found", Toast.LENGTH_SHORT).show();
+
+            }else{
+                Intent intent = new Intent(DocumentReviewActivity.this, SaharaDisplayActivity.class);
+                intent.putExtra("response", response);
+                startActivity(intent);
+            }
+
+        }
+
+    }
+
+
+}
+
+
+
+
+
+
+

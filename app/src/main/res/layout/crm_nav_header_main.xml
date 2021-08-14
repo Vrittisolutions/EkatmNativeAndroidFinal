@@ -1,0 +1,35 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimary"
+    android:orientation="horizontal"
+    android:paddingBottom="4dp"
+    android:paddingLeft="18dp"
+    android:paddingRight="8dp"
+    android:padding="8dp"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+        <com.facebook.drawee.view.SimpleDraweeView
+
+            android:id="@+id/img_userpic"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:roundAsCircle="true"
+            app:roundingBorderWidth="2dp"
+            app:roundingBorderColor="@color/red"
+            app:placeholderImage="@drawable/userph"
+
+            />
+    <TextView
+        android:id="@+id/tv_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nilesh"
+        android:layout_marginLeft="10dp"
+        android:layout_gravity="center|left"
+        android:gravity="center|left"
+        android:textSize="16dp"
+        android:textColor="@color/white"
+        android:padding="5dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+    </LinearLayout>

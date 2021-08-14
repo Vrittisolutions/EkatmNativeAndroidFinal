@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinatorLayout_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar1"
+            style="@style/MyToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay"
+            app:subtitleTextAppearance="@style/ToolbarTextAppearance.Subtitle"
+            app:titleTextAppearance="@style/ToolbarTextAppearance.Title" >
+
+            <ProgressBar
+                android:id="@+id/toolbar_progress_Activity_main"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:indeterminateDrawable="@drawable/spinner"
+                android:visibility="gone" />
+        </android.support.v7.widget.Toolbar>
+
+        <LinearLayout
+            android:id="@+id/ln_worklist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#6E6F72"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/txt_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Work List"
+                android:textColor="#fff"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:textSize="16dp" />
+
+            <LinearLayout
+                android:id="@+id/layout_meeting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+
+                >
+
+                <RelativeLayout
+
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:visibility="visible">
+
+                    <ImageView
+
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center|right"
+                        android:background="@drawable/icon_chat"
+                        android:visibility="gone"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_meeting_cnt"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/circular_count_background"
+                        android:gravity="center"
+                        android:text="99"
+                        android:textColor="#fff"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_notification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+
+                >
+
+                <RelativeLayout
+
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_centerVertical="true"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:id="@+id/img_notification"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center|right"
+                        android:paddingLeft="10dp" />
+
+                    <TextView
+                        android:id="@+id/tv_notification_cnt"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/circular_count_background"
+                        android:gravity="center"
+                        android:text="99"
+                        android:textColor="#fff"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_birthday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:visibility="visible"
+
+                >
+
+                <RelativeLayout
+
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:id="@+id/img_birthday"
+
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center|right"
+                        android:background="@drawable/birthday_icon"
+                        android:paddingLeft="10dp" />
+
+                    <TextView
+                        android:id="@+id/tv_birthday_cnt"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/circular_count_background"
+                        android:gravity="center"
+                        android:text="99"
+                        android:textColor="#fff"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/content_main_activitylist" />
+
+</LinearLayout>

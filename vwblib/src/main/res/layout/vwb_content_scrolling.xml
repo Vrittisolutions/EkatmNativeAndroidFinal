@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true"
+
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/vwb_scrolling">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true">
+
+
+        <TextView
+            android:id="@+id/txt_participants"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="10dp"
+            android:text="data"
+            android:textColor="@color/green"
+            android:textSize="16dp" />
+
+
+        <View
+
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@+id/txt_participants"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:background="@color/colorPrimaryDark" />
+
+        <ListView
+            android:id="@+id/list_group_member"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view"
+        android:divider="@android:color/transparent"
+
+        ></ListView>
+        <TextView
+            android:id="@+id/txt_exit_chatroom"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="8dp"
+            android:layout_below="@+id/list_group_member"
+            android:background="@color/white"
+            android:gravity="center"
+            android:padding="10dp"
+            android:drawableLeft="@android:drawable/ic_delete"
+            android:text="Exit chat room"
+            android:textColor="@color/red"
+            android:textSize="16dp"
+           android:visibility="visible" />
+
+
+    </RelativeLayout>
+</android.support.v4.widget.NestedScrollView>

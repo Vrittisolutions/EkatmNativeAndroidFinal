@@ -1,0 +1,57 @@
+{
+    "logs": [
+        {
+            "outputFile": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\incremental\\mergeAlfaLavalDebugResources\\merged.dir\\values-v16\\values-v16.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Nilesh\\.gradle\\caches\\transforms-2\\files-2.1\\ce0f7e8914be9f2000b7464545a18b6d\\appcompat-v7-27.1.1\\res\\values-v16\\values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "5",
+                        "endColumns": "12",
+                        "endOffsets": "223"
+                    },
+                    "to": {
+                        "startLines": "4",
+                        "startColumns": "4",
+                        "startOffsets": "193",
+                        "endLines": "7",
+                        "endColumns": "12",
+                        "endOffsets": "361"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Nilesh\\.gradle\\caches\\transforms-2\\files-2.1\\6d7864c11b06d904b503fa4c819a6f50\\support-compat-27.1.1\\res\\values-v16\\values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "65",
+                        "endOffsets": "116"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Nilesh\\.gradle\\caches\\transforms-2\\files-2.1\\bcefe1a63aaad0e225ad14675b4e8bed\\datetimepicker-0.2.0\\res\\values-v16\\values-v16.xml",
+                    "from": {
+                        "startLines": "4,7,10,13",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "169,354,482,596",
+                        "endLines": "4,9,12,15",
+                        "endColumns": "71,12,12,12",
+                        "endOffsets": "236,477,591,703"
+                    },
+                    "to": {
+                        "startLines": "3,8,11,14",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "121,366,494,608",
+                        "endLines": "3,10,13,16",
+                        "endColumns": "71,12,12,12",
+                        "endOffsets": "188,489,603,715"
+                    }
+                }
+            ]
+        }
+    ]
+}

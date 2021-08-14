@@ -1,0 +1,120 @@
+package com.vritti.vwb.Adapter;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.vritti.databaselib.other.WebUrlClass;
+import com.vritti.ekatm.R;
+import com.vritti.vwb.Beans.ViewReportsDT;
+import com.vritti.vwb.vworkbench.ViewReports;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+public class ViewReportsAdapter extends RecyclerView.Adapter<ViewReportsAdapter.ActivityHolder> {
+
+    SharedPreferences userpreferences;
+    String EnvMasterId, LoginId, Password, PlantMasterId;
+    SharedPreferences AtendanceSheredPreferance;
+    Context context;
+    ArrayList<ViewReportsDT> reportsDTS;
+
+    public ViewReportsAdapter(ViewReports viewReports, ArrayList<ViewReportsDT> reportsDTS) {
+        this.context = viewReports;
+        this.reportsDTS = reportsDTS;
+
+    }
+
+    @NonNull
+    @Override
+    public ViewReportsAdapter.ActivityHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+        View itemView = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.zp_view_reports_adapter, parent, false);
+
+        return new ActivityHolder(itemView);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewReportsAdapter.ActivityHolder holder, int position) {
+
+
+        String name = reportsDTS.get(position).getFeedbackBy();
+        holder.txt_name.setText(name);
+        String a13 = reportsDTS.get(position).getA13();
+        holder.txt_a13.setText(a13);
+        String a14 = reportsDTS.get(position).getA14();
+        holder.txt_a14.setText(a14);
+        String date = reportsDTS.get(position).getFeedbackDate();
+        String date1[] = date.split("T");
+        String dt = formateDateFromstring("yyyy-MM-dd", "dd-MM-yyyy", date1[0]);
+        holder.txt_date.setText(dt);
+
+        /*String StartDate=jorder.getString("StartDate");
+        String[] arr = StartDate.split("T");*/
+
+
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return reportsDTS.size();
+    }
+
+    public class ActivityHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.txt_date)
+        TextView txt_date;
+
+        @BindView(R.id.txt_name)
+        TextView txt_name;
+
+        @BindView(R.id.txt_a13)
+        TextView txt_a13;
+
+        @BindView(R.id.txt_a14)
+        TextView txt_a14;
+
+
+
+
+        public ActivityHolder(View itemView) {
+            super(itemView);
+            ButterKnife.bind(this,itemView);
+        }
+
+
+
+    }
+    public static String formateDateFromstring(String inputFormat, String outputFormat, String inputDate) {
+
+        Date parsed = null;
+        String outputDate = "";
+
+        SimpleDateFormat df_input = new SimpleDateFormat(inputFormat, Locale.getDefault());
+        SimpleDateFormat df_output = new SimpleDateFormat(outputFormat, Locale.getDefault());
+
+        try {
+            parsed = df_input.parse(inputDate);
+            outputDate = df_output.format(parsed);
+
+        } catch (ParseException e) {
+
+        }
+
+        return outputDate;
+
+    }
+}

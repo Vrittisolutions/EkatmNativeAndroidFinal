@@ -1,0 +1,22 @@
+package com.vritti.vwb.Beans;
+
+import com.google.gson.annotations.SerializedName;
+
+import java.util.ArrayList;
+
+public class ZPSelectedKendraBean {
+    @SerializedName("objarr")
+    String objarr;
+
+    public ZPSelectedKendraBean(String s) {
+        this.objarr = s;
+    }
+
+    public String getObjarr() {
+        return objarr;
+    }
+
+    public void setObjarr(String objarr) {
+        this.objarr = objarr;
+    }
+}

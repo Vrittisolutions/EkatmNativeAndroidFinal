@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/location"
+            android:title="Management" />
+        <item
+            android:id="@+id/myinfo"
+            android:title="Assign Activity" />
+        <item
+            android:id="@+id/history"
+            android:title="Apply Claim" />
+        <item
+            android:id="@+id/cart"
+            android:title="Apply Leave" />
+        <item
+            android:id="@+id/notification"
+
+            android:title="View GPS Locatio" />
+        <item
+
+            android:title="Employee Information" />
+        <item
+
+            android:title="Sync Data" />
+        <item
+
+            android:title="Setting" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:title="Share"
+
+                />
+
+            <item
+                android:id="@+id/nav_help"
+                android:title="Help" />
+        </menu>
+    </item>
+
+</menu>

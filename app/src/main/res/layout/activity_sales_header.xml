@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.vritti.sales.activity.SalesHeaderActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme"
+        android:visibility="visible"
+        android:background="@color/colorPrimary1">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar1"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            app:popupTheme="@style/AppTheme"
+            app:titleTextAppearance="@style/yourstyle">
+
+            <ProgressBar
+                android:id="@+id/toolbar_progress_Assgnwork"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="8dp"
+                android:indeterminateDrawable="@drawable/spinner"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/btnnewcust"
+                android:layout_width="30dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/tbuds_add_custmr"
+                android:layout_gravity="center|right"
+                android:visibility="gone"/>
+
+            <ImageView
+                android:id="@+id/btnprospsetting"
+                android:layout_width="30dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/tbuds_settings"
+                android:layout_gravity="center|right"
+                android:visibility="gone"/>
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="0.5"><!--width:130dp-->
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingLeft="0dp"
+                    android:hint="SO Date"
+                    android:textSize="14sp"><!-- android:layout_weight="0.3"-->
+
+                    <EditText
+                        android:id="@+id/edtsodate"
+                        android:layout_width="90dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:paddingLeft="5sp"
+                        android:editable="false"
+                        android:focusable="false"
+                        android:layout_gravity="center_vertical|left"
+                        android:gravity="center|left" />
+                    <!-- android:background="@drawable/border"-->
+
+                </android.support.design.widget.TextInputLayout>
+
+                <ImageView
+                    android:id="@+id/imgdateso"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center_vertical|left"
+                    android:src="@drawable/calender"/>
+                <!--android:layout_weight="0.7"-->
+
+            </LinearLayout>
+
+            <!--cust-consignee-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingLeft="0dp"
+                    android:hint="Search Customer"
+                    android:textSize="14sp"
+                    android:layout_marginTop="0dp"
+                    android:layout_weight="0.5">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_custname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="0dp"
+                        android:paddingLeft="7dp"
+                        android:drawableRight="@drawable/places_ic_search"
+                        android:hint=""
+                        android:editable="false"
+                        android:focusable="false"
+                        android:inputType="text"
+                        android:textSize="14sp"
+                        android:textColor="#111"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingLeft="0dp"
+                    android:hint="Search Consignee"
+                    android:textSize="14sp"
+                    android:layout_marginTop="0dp"
+                    android:layout_weight="0.5">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_consignee"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="0dp"
+                        android:paddingLeft="7dp"
+                        android:drawableRight="@drawable/places_ic_search"
+                        android:hint=""
+                        android:editable="false"
+                        android:focusable="false"
+                        android:inputType="text"
+                        android:textSize="14sp"
+                        android:textColor="#111"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <!--billto-sodate-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingLeft="0dp"
+                    android:hint="Search Bill to"
+                    android:textSize="14sp"
+                    android:layout_marginTop="0dp"
+                    android:layout_weight="0.5">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_billto"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="0dp"
+                        android:paddingLeft="7dp"
+                        android:drawableRight="@drawable/places_ic_search"
+                        android:hint=""
+                        android:editable="false"
+                        android:focusable="false"
+                        android:inputType="text"
+                        android:textSize="14sp"
+                        android:textColor="#111"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <!--<LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:layout_weight="0.5">
+
+                    <TextView
+                        android:id="@+id/txtsodate"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:hint="SO Date"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center"
+                        android:background="@drawable/border"
+                        android:layout_weight="0.3"/>
+
+                    <ImageView
+                        android:id="@+id/imgdateso"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_weight="0.7"
+                        android:src="@drawable/calender"/>
+
+                </LinearLayout>-->
+
+            </LinearLayout>
+
+            <!--ponumbr-podate-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingLeft="0dp"
+                    android:hint="Customer PO"
+                    android:textSize="14sp"
+                    android:layout_marginTop="0dp"
+                    android:layout_weight="0.4">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_ponumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="0dp"
+                        android:paddingLeft="7dp"
+                        android:hint=""
+                        android:inputType="text"
+                        android:textSize="14sp"
+                        android:editable="true"
+                        android:textColor="#111"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:layout_weight="0.6">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:paddingLeft="0dp"
+                        android:hint="PO Date"
+                        android:textSize="14sp">
+                        <!-- android:layout_weight="0.3"-->
+
+                        <EditText
+                            android:id="@+id/edtpodate"
+                            android:layout_width="90dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:paddingLeft="5sp"
+                            android:editable="false"
+                            android:focusable="false"
+                            android:layout_gravity="center_vertical|left"
+                            android:gravity="center|left" />
+                        <!--android:background="@drawable/border"
+                            android:layout_weight="0.3"-->
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <ImageView
+                        android:id="@+id/imgdatepo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:src="@drawable/calender"/>
+                    <!--  android:layout_weight="0.7"-->
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--sename = login person name-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingLeft="0dp"
+                    android:hint="SE Name"
+                    android:textSize="14sp"
+                    android:layout_marginTop="0dp"
+                    android:layout_weight="0.5">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_sename"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="0dp"
+                        android:paddingLeft="7dp"
+                        android:hint=""
+                        android:inputType="text"
+                        android:textSize="14sp"
+                        android:textColor="#111"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_pro_apprvr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/selproject"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:paddingLeft="0dp"
+                        android:hint="Project"
+                        android:textSize="14sp"
+                        android:layout_marginTop="0dp"
+                        android:layout_weight="0.5"
+                        android:visibility="visible">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/edt_selproject"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="0dp"
+                            android:paddingLeft="7dp"
+                            android:hint=""
+                            android:inputType="text"
+                            android:textSize="14sp"
+                            android:textColor="#111"/>
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/selapprvr"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:paddingLeft="0dp"
+                        android:hint="Select Approver"
+                        android:textSize="14sp"
+                        android:layout_marginTop="0dp"
+                        android:layout_weight="0.5"
+                        android:visibility="visible">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/edt_approver"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="0dp"
+                            android:paddingLeft="7dp"
+                            android:hint=""
+                            android:inputType="text"
+                            android:textSize="14sp"
+                            android:textColor="#111"/>
+
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--start, end date-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"><!-- android:layout_weight="0.5"-->
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:paddingLeft="0dp"
+                        android:hint="Start Date"
+                        android:textSize="14sp">
+                        <!-- android:layout_weight="0.3"-->
+
+                        <EditText
+                            android:id="@+id/edtstartdate"
+                            android:layout_width="90dp"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="5sp"
+                            android:editable="false"
+                            android:focusable="false"
+                            android:layout_gravity="center_vertical|left"
+                            android:gravity="center|left"
+                            android:textSize="14sp" />
+                        <!--android:layout_weight="0.3"-->
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <ImageView
+                        android:id="@+id/imgdatestart"
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:src="@drawable/calender"/>
+                    <!--android:layout_weight="0.7"-->
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="10dp"><!--android:layout_weight="0.5"-->
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:paddingLeft="0dp"
+                        android:hint="End Date"
+                        android:textSize="14sp"><!--android:layout_weight="0.3"-->
+
+                        <EditText
+                            android:id="@+id/edtenddate"
+                            android:layout_width="90dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:paddingLeft="5sp"
+                            android:editable="false"
+                            android:focusable="false"
+                            android:layout_gravity="center_vertical|left"
+                            android:gravity="center|left" /><!-- android:layout_weight="0.3"-->
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <ImageView
+                        android:id="@+id/imgdatend"
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:src="@drawable/calender"/><!-- android:layout_weight="0.7"-->
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--remark-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingLeft="0dp"
+                    android:hint="Remark"
+                    android:textSize="14sp"
+                    android:layout_marginTop="0dp"
+                    android:layout_weight="0.5">
+
+                    <EditText
+                        android:id="@+id/edt_remark"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="0dp"
+                        android:paddingLeft="7dp"
+                        android:hint=""
+                        android:maxLines="5"
+                        android:inputType="text"
+                        android:textSize="14sp"
+                        android:textColor="#111"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <!--continue-->
+            <Button
+                android:id="@+id/btncontinue"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:text="Continue"
+                android:textSize="15sp"
+                android:textColor="#FFFFFF"
+                android:layout_margin="5dp"
+                android:background="@drawable/tbuds_btn_pressed_2"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

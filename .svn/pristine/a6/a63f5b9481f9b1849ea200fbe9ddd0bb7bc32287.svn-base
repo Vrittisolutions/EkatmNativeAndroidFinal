@@ -1,0 +1,260 @@
+package com.vritti.sales.beans;
+
+public class MyCartBean {
+    String MerchantId;
+    String MerchantName;
+    String CustomerName;
+    String CustMobno;
+    Float qnty;
+    String offers;
+    Float price;
+    String Product_name;
+    String product_id;
+    String free_item_name_trade;
+    String free_item_qnty_trade;
+    String  netrate, freeitemid,  validto, validfrom,validto_trade, validfrom_trade,DISCOUNT ,UNIT, Perdigit;
+    String minqnty, Freeitemname,CouponId,discount,ItemImgPath,unit_V;
+    int minvalue,freeitemqnty;
+    Float Amount;
+    boolean isChecked;
+
+    public boolean getIsChecked() {
+        return this.isChecked;
+    }
+
+    public void setChecked(boolean ckecked) {
+        isChecked = ckecked;
+    }
+
+    public String getUnit_V() {
+        return unit_V;
+    }
+
+    public void setUnit_V(String unit_V) {
+        this.unit_V = unit_V;
+    }
+
+    public String getPerdigit() {
+        return Perdigit;
+    }
+
+    public void setPerdigit(String perdigit) {
+        Perdigit = perdigit;
+    }
+
+    public String getDISCOUNT() {
+        return DISCOUNT;
+    }
+
+    public void setDISCOUNT(String DISCOUNT) {
+        this.DISCOUNT = DISCOUNT;
+    }
+
+    public String getUNIT() {
+        return UNIT;
+    }
+
+    public void setUNIT(String UNIT) {
+        this.UNIT = UNIT;
+    }
+
+    public String getCustomerName() {
+        return CustomerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        CustomerName = customerName;
+    }
+
+    public String getCustMobno() {
+        return CustMobno;
+    }
+
+    public void setCustMobno(String custMobno) {
+        CustMobno = custMobno;
+    }
+
+    public String getItemImgPath() {
+        return ItemImgPath;
+    }
+
+    public void setItemImgPath(String itemImgPath) {
+        ItemImgPath = itemImgPath;
+    }
+
+    public String getValidto_trade() {
+        return validto_trade;
+    }
+
+    public void setValidto_trade(String validto_trade) {
+        this.validto_trade = validto_trade;
+    }
+
+    public String getValidfrom_trade() {
+        return validfrom_trade;
+    }
+
+    public void setValidfrom_trade(String validfrom_trade) {
+        this.validfrom_trade = validfrom_trade;
+    }
+
+    public String getCouponId() {
+        return CouponId;
+    }
+
+    public void setCouponId(String couponId) {
+        CouponId = couponId;
+    }
+
+    public String getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(String discount) {
+        this.discount = discount;
+    }
+
+    public String getFree_item_name_trade() {
+        return free_item_name_trade;
+    }
+
+    public void setFree_item_name_trade(String free_item_name) {
+        this.free_item_name_trade = free_item_name;
+    }
+
+    public String getFree_item_qnty_trade() {
+        return free_item_qnty_trade;
+    }
+
+    public void setFree_item_qnty_trade(String free_item_qnty) {
+        this.free_item_qnty_trade = free_item_qnty;
+    }
+
+    public String getFreeitemname() {
+        return Freeitemname;
+    }
+
+    public void setFreeitemname(String freeitemname) {
+        Freeitemname = freeitemname;
+    }
+
+    public String getMinqnty() {
+        return minqnty;
+    }
+
+    public void setMinqnty(String minqnty) {
+        this.minqnty = minqnty;
+    }
+
+    public String getProduct_id() {
+        return product_id;
+    }
+
+    public void setProduct_id(String product_id) {
+        this.product_id = product_id;
+    }
+
+    public Float getAmount() {
+        return Amount;
+    }
+
+    public void setAmount(Float amount) {
+        Amount = amount;
+    }
+
+    public int getMinvalue() {
+        return minvalue;
+    }
+
+    public void setMinvalue(int minvalue) {
+        this.minvalue = minvalue;
+    }
+
+    public String getNetrate() {
+        return netrate;
+    }
+
+    public void setNetrate(String netrate) {
+        this.netrate = netrate;
+    }
+
+    public String getFreeitemid() {
+        return freeitemid;
+    }
+
+    public void setFreeitemid(String freeitemid) {
+        this.freeitemid = freeitemid;
+    }
+
+    public int getFreeitemqnty() {
+        return freeitemqnty;
+    }
+
+    public void setFreeitemqnty(int freeitemqnty) {
+        this.freeitemqnty = freeitemqnty;
+    }
+
+    public String getValidto() {
+        return validto;
+    }
+
+    public void setValidto(String validto) {
+        this.validto = validto;
+    }
+
+    public String getValidfrom() {
+        return validfrom;
+    }
+
+    public void setValidfrom(String validfrom) {
+        this.validfrom = validfrom;
+    }
+
+    public String getMerchantId() {
+        return MerchantId;
+    }
+
+    public void setMerchantId(String merchantId) {
+        MerchantId = merchantId;
+    }
+
+    public String getMerchantName() {
+        return MerchantName;
+    }
+
+    public void setMerchantName(String merchantName) {
+        MerchantName = merchantName;
+    }
+
+    public Float getQnty() {
+        return qnty;
+    }
+
+    public void setQnty(Float qnty) {
+        this.qnty = qnty;
+    }
+
+    public String getOffers() {
+        return offers;
+    }
+
+    public void setOffers(String offers) {
+        this.offers = offers;
+    }
+
+    public String getPrice() {
+        return String.valueOf(price);
+    }
+
+    public void setPrice(Float price) {
+        this.price = price;
+    }
+
+    public String getProduct_name() {
+        return Product_name;
+    }
+
+    public void setProduct_name(String product_name) {
+        Product_name = product_name;
+    }
+}

@@ -1,0 +1,1645 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <include
+        layout="@layout/toolbar_header"
+        />
+
+    <RelativeLayout
+        android:id="@+id/lay1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/len"
+        android:layout_marginTop="?android:attr/actionBarSize"
+
+        android:orientation="vertical">
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:scrollbars="none">
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="visible"
+                android:layout_marginBottom="0dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:textColor="@color/white"
+                    android:text="Individual Details"
+                    android:visibility="gone"
+                    android:layout_marginBottom="5dp"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    style="@style/ToolbarStyle"
+                    android:textSize="16dp"
+                    android:padding="10dp"
+                    />
+
+
+
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/card_viewdetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="1dp"
+                    android:layout_margin="2dp"
+                    app:cardMaxElevation="1dp">
+
+
+                    <ProgressBar
+                        android:id="@+id/center_progressbar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center"
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            >
+                            <AutoCompleteTextView
+                                android:id="@+id/edt_first_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:imeOptions="actionNext"
+                                android:singleLine="true"
+                                android:hint="Firm Name"
+                                android:padding="10dp"
+                                android:drawableTint="@color/colorPrimary"
+                                android:drawablePadding="8dp"
+                                android:drawableLeft="@drawable/travel_name"
+                                android:textColorHint="@color/colorPrimary"
+                                android:textColor="#111"
+                                android:textSize="14dp" />
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            >
+
+                            <EditText
+                                android:id="@+id/edt_middle_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:imeOptions="actionNext"
+                                android:singleLine="true"
+                                android:hint="Middle Name "
+                                android:padding="10dp"
+                                android:drawableTint="@color/colorPrimary"
+                                android:drawablePadding="8dp"
+                                android:drawableLeft="@drawable/travel_name"
+                                android:textColorHint="@color/colorPrimary"
+                                android:textColor="#111"
+                                android:textSize="14dp"/>
+                        </android.support.design.widget.TextInputLayout>
+
+                         <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+               >
+
+                <EditText
+                    android:id="@+id/edt_last_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:padding="10dp"
+                    android:drawableTint="@color/colorPrimary"
+                    android:hint="Last Name"
+                    android:drawablePadding="8dp"
+                    android:drawableLeft="@drawable/travel_name"
+                    android:textColorHint="@color/colorPrimary"
+                    android:singleLine="true"
+                    android:textColor="#111"
+                    android:textSize="14dp" />
+
+            </android.support.design.widget.TextInputLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ln_gender"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center|left"
+                            android:layout_marginTop="5dp"
+
+                            android:gravity="center|left"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/txt_gender"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Gender"
+                                android:layout_marginLeft="@dimen/sp_10"
+                                android:drawableTint="@color/colorPrimary"
+                                android:textColor="@color/dark_grey"
+                                android:textSize="13dp" />
+
+                            <RadioGroup
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center|left"
+                                android:gravity="center|left"
+                                android:drawableTint="@color/colorPrimary"
+                                android:layout_toRightOf="@+id/txt_gender"
+                                android:orientation="horizontal">
+
+                                <android.support.v7.widget.AppCompatRadioButton
+                                    android:id="@+id/radio_male"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:buttonTint="@color/colorPrimary"
+                                    android:text="Male"
+                                    android:padding="5dp"
+                                    android:layout_marginLeft="@dimen/sp_5"
+                                    android:drawableTint="@color/colorPrimary"
+                                    android:checked="true"
+                                    android:textSize="12dp"
+                                    android:textColor="@color/dark_grey"
+                                    />
+
+                                <android.support.v7.widget.AppCompatRadioButton
+                                    android:id="@+id/radio_female"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="5dp"
+                                    android:drawableTint="@color/colorPrimary"
+                                    android:buttonTint="@color/colorPrimary"
+                                    android:text="Female"
+                                    android:textSize="12dp"
+                                    android:textColor="@color/dark_grey"
+                                    />
+
+                                <android.support.v7.widget.AppCompatRadioButton
+                                    android:id="@+id/radio_transgender"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:buttonTint="@color/colorPrimary"
+                                    android:text="Transgender "
+                                    android:padding="5dp"
+                                    android:drawableTint="@color/colorPrimary"
+                                    android:textSize="12dp"
+                                    android:textColor="@color/dark_grey"
+                                    />
+                            </RadioGroup>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ln_marriddstatus"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center|left"
+                            android:gravity="center|left"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_marriedstatus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Marital Status"
+                                android:layout_marginLeft="@dimen/sp_5"
+                                android:padding="5dp"
+                                android:drawableTint="@color/colorPrimary"
+                                android:textColor="@color/dark_grey"
+                                android:textSize="12dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center|left"
+                                android:drawableTint="@color/colorPrimary"
+                                android:orientation="horizontal">
+
+                                <RadioGroup
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:drawableTint="@color/colorPrimary"
+                                    android:layout_toRightOf="@+id/txt_gender"
+                                    android:orientation="horizontal">
+
+                                    <android.support.v7.widget.AppCompatRadioButton
+                                        android:id="@+id/radionutton_single"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:buttonTint="@color/colorPrimary"
+                                        android:text="Single"
+                                        android:padding="5dp"
+                                        android:textSize="12dp"
+                                        android:textColor="@color/dark_grey"
+                                        />
+
+                                    <android.support.v7.widget.AppCompatRadioButton
+                                        android:id="@+id/radionutton_married"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:padding="5dp"
+                                        android:buttonTint="@color/colorPrimary"
+                                        android:text="Married"
+                                        android:textSize="12dp"
+                                        android:textColor="@color/dark_grey"
+                                        />
+                                </RadioGroup>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="left|center"
+    android:gravity="center|left"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/lay_Date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_gravity="left|center"
+        android:gravity="center|left"
+        >
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtDate"
+            android:hint="Date of Birth"
+            >
+
+            <EditText
+                android:id="@+id/editTextDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:textColor="#111"
+                android:textSize="14dp"
+                android:padding="10dp"
+                android:editable="false"
+                android:focusable="false"
+                android:drawablePadding="8dp"
+                android:drawableLeft="@drawable/date"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+
+    </LinearLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                android:hint="E-mail">
+
+                <EditText
+                    android:id="@+id/edt_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:singleLine="true"
+                    android:drawableLeft="@drawable/email_24"
+                    android:padding="10dp"
+                    android:drawableTint="@color/colorPrimary"
+                    android:drawablePadding="8dp"
+                    android:textColorHint="@color/hint"
+                    android:textColor="#111"
+                    android:textSize="14dp"/>
+            </android.support.design.widget.TextInputLayout>
+
+
+</LinearLayout>
+
+
+                        <!--mobile/home-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+
+                    <EditText
+                        android:id="@+id/edt_monbile"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:hint="Mobile No"
+                        android:padding="10dp"
+                        android:drawableLeft="@drawable/mobile"
+                        android:drawablePadding="8dp"
+                        android:singleLine="true"
+                        android:textColorHint="@color/hint"
+                        android:textColor="#111"
+                        android:textSize="14dp"  />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:id="@+id/edt_telephone"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:padding="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:hint="Home No"
+                        android:drawableLeft="@drawable/call_24"
+                        android:drawablePadding="8dp"
+                        android:singleLine="true"
+                        android:textColorHint="@color/hint"
+                        android:textColor="#111"
+                        android:textSize="12sp" />
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+
+
+            <!--staus-->
+
+
+
+            <LinearLayout
+                android:id="@+id/len_spouse_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+                <EditText
+                    android:id="@+id/edt_spouse_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:hint="Spouse Name"
+                    android:maxLines="3"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:drawableTint="@color/colorPrimary"
+                    android:drawablePadding="8dp"
+                    android:drawableLeft="@drawable/travel_name"
+                    android:textColorHint="@color/colorPrimary"
+                    android:textSize="14dp" />
+                </android.support.design.widget.TextInputLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_anniversary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:gravity="center|left"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+
+                        android:id="@+id/txt_anniversary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Anniversary :"
+                        android:visibility="gone"
+                        android:textColor="@color/black"
+                        android:textSize="16dp" />
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Anniversary"
+                        >
+                    <EditText
+                        android:id="@+id/edit_anni_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:editable="false"
+                        android:imeOptions="actionNext"
+                        android:focusable="false"
+                        android:drawablePadding="8dp"
+                        android:drawableLeft="@drawable/date"
+                        android:clickable="true"
+                        android:padding="@dimen/sp_10"
+                        android:singleLine="true"
+                        android:textSize="14dp" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <ImageView
+                        android:id="@+id/img_anniversary"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginRight="40dp"
+                        android:src="@drawable/calender" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!--address-->
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <EditText
+                    android:id="@+id/edt_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:singleLine="true"
+                    android:hint="Address"
+                    android:padding="10dp"
+                    android:drawablePadding="8dp"
+                    android:drawableLeft="@drawable/address"
+                    android:drawableTint="@color/colorPrimary"
+                    android:textColorHint="@color/hint"
+                    android:textColor="#111"
+                    android:textSize="14dp"  />
+            </android.support.design.widget.TextInputLayout>
+
+            <!--country/state-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!--country-->
+                <LinearLayout
+                    android:id="@+id/ln_country"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/tv_country"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <AutoCompleteTextView
+                            android:id="@+id/spinner_country"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:imeOptions="actionNext"
+                            android:singleLine="false"
+                            android:textColor="#111"
+                            android:textColorHint="@color/hint"
+                            android:padding="10dp"
+                            android:drawablePadding="8dp"
+                            android:drawableLeft="@drawable/country"
+                            android:hint="Country"
+                            android:drawableTint="@color/colorPrimary"
+                            android:textSize="12dp"
+                            android:clickable="true"
+                            android:editable="false"
+                            android:focusable="false"/>
+
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+                <!--state-->
+                <LinearLayout
+                    android:id="@+id/ln_state"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_weight="1"
+                    android:gravity="center|left"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/tv_state"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="State">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/spinner_state"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:imeOptions="actionNext"
+                            android:singleLine="false"
+                            android:textColor="#111"
+                            android:textColorHint="@color/hint"
+                            android:padding="10dp"
+                            android:drawablePadding="8dp"
+                            android:drawableLeft="@drawable/state"
+                            android:drawableTint="@color/colorPrimary"
+                            android:textSize="14dp"
+                            android:clickable="true"
+                            android:editable="false"
+                            android:focusable="false"/>
+
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--territory/city-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!--city-->
+                <LinearLayout
+                    android:id="@+id/ln_city"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_city">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/eAutoCity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:imeOptions="actionNext"
+                            android:singleLine="false"
+                            android:textColor="#111"
+                            android:hint="City"
+                            android:textColorHint="@color/hint"
+                            android:textSize="14dp"
+                            android:drawableTint="@color/colorPrimary"
+                            android:drawablePadding="8dp"
+                            android:padding="10dp"
+                            android:drawableLeft="@drawable/city"
+                            android:clickable="true"
+                            android:editable="false"
+                            android:focusable="false" />
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+                <!--territory-->
+                <LinearLayout
+                    android:id="@+id/ln_territory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:visibility="visible">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/tv_territory"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Territory">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/eAutoTerritory"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:imeOptions="actionNext"
+                            android:singleLine="false"
+                            android:drawableLeft="@drawable/territory"
+                            android:padding="10dp"
+                            android:drawablePadding="8dp"
+                            android:drawableTint="@color/colorPrimary"
+                            android:textColorHint="@color/hint"
+                            android:textSize="14dp"
+                            android:clickable="true"
+                            android:editable="false"
+                            android:focusable="false"/>
+
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--Select Product-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/business_edit_text"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/edt_Products"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:clickable="true"
+                    android:hint="Select Product"
+                    android:textColorHint="@color/hint"
+                    android:textSize="14sp" />
+
+                <Spinner
+                    android:id="@+id/spinner_product"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:spinnerMode="dialog"
+
+                    ></Spinner>
+            </LinearLayout>
+
+            <!--Source of ProspectSelectionActivity-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/ln_sourceofprospect">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_sourceofprospect">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/autotxtProspect"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:drawablePadding="8dp"
+                        android:drawableTint="@color/colorPrimary"
+                        android:drawableLeft="@drawable/confirm"
+                        android:imeOptions="actionNext"
+                        android:hint="Source of Prospect"
+                        android:textColor="#000000"
+                        android:editable="false"
+                        android:focusable="false"
+                        android:textColorHint="@color/hint"
+                        android:textSize="14dp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+
+
+            </LinearLayout>
+
+            <!--Select reference -->
+            <LinearLayout
+                android:id="@+id/ln_reference"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:padding="3dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tv_reference"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Select reference"
+                    android:visibility="gone"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+
+                        <AutoCompleteTextView
+                            android:id="@+id/sReferenceType"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:layout_weight="1"
+                            android:spinnerMode="dialog"/>
+
+                    </android.support.design.widget.TextInputLayout>
+
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/sReference"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            android:spinnerMode="dialog"/>
+
+                    </android.support.design.widget.TextInputLayout>
+
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <EditText
+                    android:id="@+id/edt_postalcode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:hint="Postal Code"
+                    android:maxLength="6"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/colorPrimary"
+                    android:padding="10dp"
+                    android:drawablePadding="8dp"
+                    android:drawableLeft="@drawable/postal"
+                    android:drawableTint="@color/colorPrimary"
+                    android:textSize="14dp"
+                    android:visibility="visible" />
+            </android.support.design.widget.TextInputLayout>
+
+
+
+            <!--notes-->
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <EditText
+                    android:id="@+id/edt_notes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:singleLine="true"
+                    android:hint="Notes"
+                    android:drawableLeft="@drawable/notes"
+                    android:drawablePadding="8dp"
+                    android:padding="10dp"
+                    android:textColorHint="@color/hint"
+                    android:textColor="#111"
+                    android:textSize="14dp" />
+            </android.support.design.widget.TextInputLayout>
+
+                        <!--district-->
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="District"
+                            android:visibility="gone">
+
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:imeOptions="actionNext"
+                                android:singleLine="true"
+                                android:textColorHint="@color/hint"
+                                android:textColor="#111"
+                                android:textSize="12sp" />
+                        </android.support.design.widget.TextInputLayout>
+
+
+                        <!--val1/val10-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <LinearLayout
+                                android:id="@+id/ln_village"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center|left"
+                                android:layout_margin="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/business_edit_text"
+                                android:gravity="center|left"
+                                android:orientation="horizontal"
+                                android:padding="5dp"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:id="@+id/tv_village"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:text="Test type :"
+                                    android:textColor="@color/black"
+                                    android:textSize="14dp" />
+
+                                <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                                    android:id="@+id/spinner_village"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_weight="1"
+                                    android:imeOptions="actionNext"
+                                    android:singleLine="true"
+                                    android:textColor="#000000"
+                                    android:textColorHint="@color/hint"
+                                    android:textSize="16sp"
+                                    android:visibility="visible" />
+
+                                <EditText
+                                    android:id="@+id/edt_village"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_weight="1"
+                                    android:imeOptions="actionNext"
+                                    android:singleLine="true"
+                                    android:textColor="#000000"
+                                    android:textColorHint="@color/hint"
+                                    android:textSize="16sp"
+                                    android:visibility="gone" />
+                            </LinearLayout>
+
+                            <EditText
+                                android:id="@+id/edt_Experience"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/business_edit_text"
+                                android:hint="Enter Experience"
+                                android:maxLines="3"
+                                android:padding="10dp"
+                                android:text=""
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/hint"
+                                android:textSize="14dp"
+                                android:visibility="visible" />
+
+                            <LinearLayout
+                                android:id="@+id/ln_qualification"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center|left"
+                                android:layout_marginTop="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/business_edit_text"
+                                android:gravity="center|left"
+                                android:orientation="horizontal"
+                                android:padding="5dp"
+                                android:visibility="visible">
+
+                                <TextView
+                                    android:id="@+id/tv_qualification"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:text="Qualification :"
+                                    android:textColor="@color/black"
+                                    android:textSize="14dp" />
+
+                                <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                                    android:id="@+id/spinner_qualification"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_weight="1"
+                                    android:entries="@array/qualification"
+                                    android:imeOptions="actionNext"
+                                    android:textColor="#000000"
+                                    android:textColorHint="@color/hint"
+                                    android:textSize="16sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/ln_District"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center|left"
+                                android:layout_marginTop="1dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/business_edit_text"
+                                android:gravity="center|left"
+                                android:orientation="horizontal"
+                                android:padding="1dp"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:id="@+id/tv_District"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:text="Test type :"
+                                    android:textColor="@color/black"
+                                    android:textSize="14dp" />
+
+                                <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                                    android:id="@+id/spinner_District"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_weight="1"
+                                    android:imeOptions="actionNext"
+                                    android:singleLine="true"
+                                    android:textColor="#000000"
+                                    android:textColorHint="@color/hint"
+                                    android:textSize="16sp"
+                                    android:visibility="visible" />
+
+                                <EditText
+                                    android:id="@+id/edt_District"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_weight="1"
+                                    android:imeOptions="actionNext"
+                                    android:singleLine="true"
+                                    android:textColor="#000000"
+                                    android:textColorHint="@color/hint"
+                                    android:textSize="16sp"
+                                    android:visibility="gone"
+
+                                    />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/ln_sex"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center|left"
+                                android:layout_margin="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/business_edit_text"
+                                android:gravity="center|left"
+                                android:orientation="horizontal"
+                                android:padding="5dp"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:id="@+id/tv_sex"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:text="Test type :"
+                                    android:textColor="@color/black"
+                                    android:textSize="14dp" />
+
+                                <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                                    android:id="@+id/spinner_sex"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_weight="1"
+                                    android:imeOptions="actionNext"
+                                    android:singleLine="true"
+                                    android:textColor="#000000"
+                                    android:textColorHint="@color/hint"
+                                    android:textSize="16sp"
+                                    android:visibility="visible" />
+
+                                <EditText
+                                    android:id="@+id/edt_sex"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_weight="1"
+                                    android:imeOptions="actionNext"
+                                    android:singleLine="true"
+                                    android:textColor="#000000"
+                                    android:textColorHint="@color/hint"
+                                    android:textSize="16sp"
+                                    android:visibility="gone"
+
+                                    />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/ln_val1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center|left"
+                                android:layout_margin="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/business_edit_text"
+                                android:gravity="center|left"
+                                android:orientation="horizontal"
+                                android:padding="5dp"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:id="@+id/tv_val1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:text="Test type :"
+                                    android:textColor="@color/black"
+                                    android:textSize="14dp" />
+
+                                <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                                    android:id="@+id/spinner_val1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_weight="1"
+                                    android:imeOptions="actionNext"
+                                    android:singleLine="true"
+                                    android:textColor="#000000"
+                                    android:textColorHint="@color/hint"
+                                    android:textSize="16sp"
+                                    android:visibility="visible" />
+
+                                <EditText
+                                    android:id="@+id/edt_val1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_weight="1"
+                                    android:imeOptions="actionNext"
+                                    android:singleLine="true"
+                                    android:textColor="#000000"
+                                    android:textColorHint="@color/hint"
+                                    android:textSize="16sp"
+                                    android:visibility="gone" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/ln_val2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center|left"
+                                android:layout_margin="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/business_edit_text"
+                                android:gravity="center|left"
+                                android:orientation="horizontal"
+                                android:padding="5dp"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:id="@+id/tv_val2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:text="Test type :"
+                                    android:textColor="@color/black"
+                                    android:textSize="14dp" />
+
+                                <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                                    android:id="@+id/spinner_val2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_weight="1"
+
+                                    android:imeOptions="actionNext"
+                                    android:singleLine="true"
+                                    android:textColor="#000000"
+                                    android:textColorHint="@color/hint"
+                                    android:textSize="16sp"
+                                    android:visibility="visible" />
+
+                                <EditText
+                                    android:id="@+id/edt_val2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_weight="1"
+                                    android:imeOptions="actionNext"
+                                    android:singleLine="true"
+                                    android:textColor="#000000"
+                                    android:textColorHint="@color/hint"
+                                    android:textSize="16sp"
+                                    android:visibility="gone"
+
+                                    />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/ln_val3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center|left"
+                                android:layout_margin="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/business_edit_text"
+                                android:gravity="center|left"
+                                android:orientation="horizontal"
+                                android:padding="5dp"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:id="@+id/tv_val3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:text="Test type :"
+                                    android:textColor="@color/black"
+                                    android:textSize="14dp" />
+
+                                <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                                    android:id="@+id/spinner_val3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_weight="1"
+                                    android:imeOptions="actionNext"
+                                    android:singleLine="true"
+                                    android:textColor="#000000"
+                                    android:textColorHint="@color/hint"
+                                    android:textSize="16sp"
+                                    android:visibility="visible" />
+
+                                <EditText
+                                    android:id="@+id/edt_val3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_weight="1"
+                                    android:imeOptions="actionNext"
+                                    android:singleLine="true"
+                                    android:textColor="#000000"
+                                    android:textColorHint="@color/hint"
+                                    android:textSize="16sp"
+                                    android:visibility="gone" />
+
+                                <EditText
+                                    android:id="@+id/edt1_val3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_weight="1"
+                                    android:background="@null"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="number"
+                                    android:singleLine="true"
+                                    android:textColor="#000000"
+                                    android:textColorHint="@color/hint"
+                                    android:textSize="16sp"
+                                    android:visibility="gone" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/ln_val4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center|left"
+                                android:layout_margin="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/business_edit_text"
+                                android:gravity="center|left"
+                                android:orientation="horizontal"
+                                android:padding="5dp"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:id="@+id/tv_val4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:text="Test type :"
+                                    android:textColor="@color/black"
+                                    android:textSize="14dp" />
+
+                                <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                                    android:id="@+id/spinner_val4"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_weight="1"
+                                    android:imeOptions="actionNext"
+                                    android:singleLine="true"
+                                    android:textColor="#000000"
+                                    android:textColorHint="@color/hint"
+                                    android:textSize="16sp"
+                                    android:visibility="visible" />
+
+                                <EditText
+                                    android:id="@+id/edt_val4"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_weight="1"
+                                    android:imeOptions="actionNext"
+                                    android:singleLine="true"
+                                    android:textColor="#000000"
+                                    android:textColorHint="@color/hint"
+                                    android:textSize="16sp"
+                                    android:visibility="gone"
+
+                                    />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/ln_val5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center|left"
+                                android:layout_margin="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/business_edit_text"
+                                android:gravity="center|left"
+                                android:orientation="horizontal"
+                                android:padding="5dp"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:id="@+id/tv_val5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:text="Test type :"
+                                    android:textColor="@color/black"
+                                    android:textSize="14dp" />
+
+                                <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                                    android:id="@+id/spinner_val5"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_weight="1"
+                                    android:imeOptions="actionNext"
+                                    android:singleLine="true"
+                                    android:textColor="#000000"
+                                    android:textColorHint="@color/hint"
+                                    android:textSize="16sp"
+                                    android:visibility="visible" />
+
+                                <EditText
+                                    android:id="@+id/edt_val5"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_weight="1"
+                                    android:imeOptions="actionNext"
+                                    android:singleLine="true"
+                                    android:textColor="#000000"
+                                    android:textColorHint="@color/hint"
+                                    android:textSize="16sp"
+                                    android:visibility="gone"
+
+                                    />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/ln_val6"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center|left"
+                                android:layout_margin="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/business_edit_text"
+                                android:gravity="center|left"
+                                android:orientation="horizontal"
+                                android:padding="5dp"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:id="@+id/tv_val6"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:text="Test type :"
+                                    android:textColor="@color/black"
+                                    android:textSize="14dp" />
+
+                                <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                                    android:id="@+id/spinner_val6"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_weight="1"
+                                    android:imeOptions="actionNext"
+                                    android:singleLine="true"
+                                    android:textColor="#000000"
+                                    android:textColorHint="@color/hint"
+                                    android:textSize="16sp"
+                                    android:visibility="visible" />
+
+                                <EditText
+                                    android:id="@+id/edt_val6"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_weight="1"
+                                    android:imeOptions="actionNext"
+                                    android:singleLine="true"
+                                    android:textColor="#000000"
+                                    android:textColorHint="@color/hint"
+                                    android:textSize="16sp"
+                                    android:visibility="gone"
+
+                                    />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/ln_val7"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center|left"
+                                android:layout_margin="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/business_edit_text"
+                                android:gravity="center|left"
+                                android:orientation="horizontal"
+                                android:padding="5dp"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:id="@+id/tv_val7"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:text="Test type :"
+                                    android:textColor="@color/black"
+                                    android:textSize="14dp" />
+
+                                <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                                    android:id="@+id/spinner_val7"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_weight="1"
+                                    android:imeOptions="actionNext"
+                                    android:singleLine="true"
+                                    android:textColor="#000000"
+                                    android:textColorHint="@color/hint"
+                                    android:textSize="16sp"
+                                    android:visibility="visible" />
+
+                                <EditText
+                                    android:id="@+id/edt_val7"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_weight="1"
+                                    android:imeOptions="actionNext"
+                                    android:singleLine="true"
+                                    android:textColor="#000000"
+                                    android:textColorHint="@color/hint"
+                                    android:textSize="16sp"
+                                    android:visibility="gone"
+
+                                    />
+
+                                <Button
+                                    android:id="@+id/button_val7scan"
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:layout_marginLeft="5dp"
+                                    android:background="@drawable/ic_qrcode"
+                                    android:text="Test type :"
+
+                                    android:textColor="@color/black"
+                                    android:textSize="14dp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/ln_val8"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center|left"
+                                android:layout_margin="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/business_edit_text"
+                                android:gravity="center|left"
+                                android:orientation="horizontal"
+                                android:padding="5dp"
+                                android:visibility="gone">
+
+                                <CheckBox
+                                    android:id="@+id/check_addinfo"
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:layout_marginLeft="5dp"
+                                    android:textColor="@color/black"
+                                    android:textSize="14dp" />
+
+                                <TextView
+                                    android:id="@+id/tv_val8"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:text="Test type :"
+                                    android:textColor="@color/black"
+                                    android:textSize="14dp" />
+
+                                <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                                    android:id="@+id/spinner_val8"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_weight="1"
+                                    android:imeOptions="actionNext"
+                                    android:singleLine="true"
+                                    android:textColor="#000000"
+                                    android:textColorHint="@color/hint"
+                                    android:textSize="16sp"
+                                    android:visibility="visible" />
+
+                                <EditText
+                                    android:id="@+id/edt_val8"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_weight="1"
+                                    android:imeOptions="actionNext"
+                                    android:singleLine="true"
+                                    android:textColor="#000000"
+                                    android:textColorHint="@color/hint"
+                                    android:textSize="16sp"
+                                    android:visibility="gone" />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/ln_val9"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center|left"
+                                android:layout_margin="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/business_edit_text"
+                                android:gravity="center|left"
+                                android:orientation="horizontal"
+                                android:padding="5dp"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:id="@+id/tv_val9"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:text="Test type :"
+                                    android:textColor="@color/black"
+                                    android:textSize="14dp" />
+
+                                <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                                    android:id="@+id/spinner_val9"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_weight="1"
+                                    android:imeOptions="actionNext"
+                                    android:singleLine="true"
+                                    android:textColor="#000000"
+                                    android:textColorHint="@color/hint"
+                                    android:textSize="16sp"
+                                    android:visibility="visible" />
+
+                                <EditText
+                                    android:id="@+id/edt_val9"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_weight="1"
+                                    android:imeOptions="actionNext"
+                                    android:singleLine="true"
+                                    android:textColor="#000000"
+                                    android:textColorHint="@color/hint"
+                                    android:textSize="16sp"
+                                    android:visibility="gone"
+
+                                    />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/ln_val10"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center|left"
+                                android:layout_margin="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/business_edit_text"
+                                android:gravity="center|left"
+                                android:orientation="horizontal"
+                                android:padding="5dp"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:id="@+id/tv_val10"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:text="Test type :"
+                                    android:textColor="@color/black"
+                                    android:textSize="14dp" />
+
+                                <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                                    android:id="@+id/spinner_val10"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_weight="1"
+                                    android:imeOptions="actionNext"
+                                    android:singleLine="true"
+                                    android:textColor="#000000"
+                                    android:textColorHint="@color/hint"
+                                    android:textSize="16sp"
+                                    android:visibility="visible" />
+
+                                <EditText
+                                    android:id="@+id/edt_val10"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_weight="1"
+                                    android:imeOptions="actionNext"
+                                    android:singleLine="true"
+                                    android:textColor="#000000"
+                                    android:textColorHint="@color/hint"
+                                    android:textSize="16sp"
+                                    android:visibility="gone" />
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+            </RelativeLayout>
+
+        </ScrollView>
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/len"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/sp_5"
+        android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonSave_prospect"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:textSize="13dp"
+                android:background="@drawable/button_orange"
+                android:text="Save Prospect"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:visibility="visible"/>
+
+
+            <Button
+                android:id="@+id/buttonSaveandstartcall_prospect"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="5dp"
+                android:textSize="13dp"
+                android:background="@drawable/button_green"
+                android:text="Start Opportunity"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:visibility="visible"/>
+
+            <Button
+                android:id="@+id/buttonClose_prospect"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:textSize="13dp"
+                android:background="@drawable/button_orange"
+                android:text="Close"
+                android:textColor="@color/white"
+                android:textAllCaps="false" />
+    </LinearLayout>
+</RelativeLayout>

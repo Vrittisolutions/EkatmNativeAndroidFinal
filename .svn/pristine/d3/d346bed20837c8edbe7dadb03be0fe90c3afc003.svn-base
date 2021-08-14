@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayout_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ProgressBar
+        android:id="@+id/google_progress"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:indeterminateDrawable="@drawable/spinner"
+        android:visibility="gone" />
+
+    <include
+        layout="@layout/crm_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/lay1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="?android:attr/actionBarSize"
+            android:background="#6E6F72"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="#6E6F72"
+                android:layout_gravity="center|left"
+                android:gravity="left|center"
+
+                >
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="8dp"
+                    android:text="Team"
+                    android:layout_weight="0.1"
+                    android:textColor="#fff"
+                    android:textSize="16dp" />
+
+                <ImageView
+                    android:id="@+id/location"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="15dp"
+                    android:tint="#fff"
+                    android:src="@drawable/file_location" />
+            </LinearLayout>
+
+
+
+
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+           >
+
+            <TextView
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:text="Assigned"
+                android:gravity="center_vertical"
+                android:textSize="12dp"
+                android:textColor="@color/divider" />
+
+            <TextView
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:gravity="center_vertical"
+                android:textSize="12dp"
+                android:text="Overdue"
+                android:textColor="@color/divider" />
+
+            <TextView
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.08"
+                android:gravity="center_vertical"
+                android:text="Today"
+                android:textColor="@color/divider"
+                android:id="@+id/textView3"
+                android:textSize="12dp"
+                />
+
+            <TextView
+
+                android:id="@+id/text_tommorow"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:gravity="center_vertical"
+                android:text="Tomorrow"
+                android:textColor="@color/divider"
+                android:textSize="12dp" />
+
+            <TextView
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:gravity="center_vertical"
+                android:text="Collection(Cnt/Value)"
+                android:textColor="@color/divider"
+                android:textSize="12dp"
+                />
+
+            <TextView
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:layout_marginLeft="5dp"
+                android:gravity="center_vertical"
+                android:text="Hot(Cnt/Value)"
+                android:textColor="@color/divider"
+                android:textSize="12dp"
+                />
+        </LinearLayout>
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <ListView
+                android:id="@+id/ls_team"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                ></ListView>
+        </LinearLayout>
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

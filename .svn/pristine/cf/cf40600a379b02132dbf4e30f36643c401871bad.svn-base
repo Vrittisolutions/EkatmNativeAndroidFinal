@@ -1,0 +1,52 @@
+package com.vritti.vwb.Beans;
+
+import com.google.gson.annotations.SerializedName;
+
+public class ListObjectDoc {
+    @SerializedName("UserMasterId")
+    String UserMasterId;
+
+    @SerializedName("UserLoginId")
+    String UserLoginId;
+
+    @SerializedName("UserName")
+    String UserName;
+
+    boolean isSelected;
+
+
+    public String getUserMasterId() {
+        return UserMasterId;
+    }
+
+    public void setUserMasterId(String userMasterId) {
+        UserMasterId = userMasterId;
+    }
+
+    public String getUserLoginId() {
+        return UserLoginId;
+    }
+
+    public void setUserLoginId(String userLoginId) {
+        UserLoginId = userLoginId;
+    }
+
+    public String getUserName() {
+        return UserName;
+    }
+
+    public void setUserName(String userName) {
+        UserName = userName;
+    }
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
+    }
+
+
+
+}

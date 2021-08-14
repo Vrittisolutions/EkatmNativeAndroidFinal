@@ -1,0 +1,94 @@
+package com.vritti.vwb.Beans;
+
+import com.google.gson.annotations.SerializedName;
+
+public class DocumentReviewListBean {
+
+    @SerializedName("PKCssDtlsID")
+    String PKCssDtlsID;
+
+    @SerializedName("QuesText")
+    String QuesText;
+
+    @SerializedName("Kendra")
+    String Kendra;
+
+    @SerializedName("Extension")
+    String Extension;
+
+    @SerializedName("BEO")
+    String BEO;
+
+    @SerializedName("Responsebycustomer")
+    String Responsebycustomer;
+
+    @SerializedName("AttachmentCount")
+    String AttachmentCount;
+
+     @SerializedName("SequenceNo")
+     int  SequenceNo;
+
+    public String getPKCssDtlsID() {
+        return PKCssDtlsID;
+    }
+
+    public void setPKCssDtlsID(String PKCssDtlsID) {
+        this.PKCssDtlsID = PKCssDtlsID;
+    }
+
+    public String getQuesText() {
+        return QuesText;
+    }
+
+    public void setQuesText(String quesText) {
+        QuesText = quesText;
+    }
+
+    public String getKendra() {
+        return Kendra;
+    }
+
+    public void setKendra(String kendra) {
+        Kendra = kendra;
+    }
+
+    public String getExtension() {
+        return Extension;
+    }
+
+    public void setExtension(String extension) {
+        Extension = extension;
+    }
+
+    public String getBEO() {
+        return BEO;
+    }
+
+    public void setBEO(String BEO) {
+        this.BEO = BEO;
+    }
+
+    public String getResponsebycustomer() {
+        return Responsebycustomer;
+    }
+
+    public String getAttachmentCount() {
+        return AttachmentCount;
+    }
+
+    public void setAttachmentCount(String attachmentCount) {
+        AttachmentCount = attachmentCount;
+    }
+
+    public int getSequenceNo() {
+        return SequenceNo;
+    }
+
+    public void setSequenceNo(int sequenceNo) {
+        SequenceNo = sequenceNo;
+    }
+
+    public void setResponsebycustomer(String responsebycustomer) {
+        Responsebycustomer = responsebycustomer;
+    }
+}

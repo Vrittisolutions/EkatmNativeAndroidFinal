@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ListView
+        android:id="@+id/list_group_member"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@android:color/transparent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+    </ListView>
+    <TextView
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="wrap_content"
+        android:text="Exit Chat Room"
+        android:textColor="@color/red"
+        android:textSize="16dp"
+        android:visibility="visible"
+        android:layout_gravity="bottom|center"
+        android:gravity="bottom|center"
+        android:padding="10dp"
+        android:textStyle="bold"
+
+        android:layout_alignParentLeft="true" />
+</RelativeLayout>

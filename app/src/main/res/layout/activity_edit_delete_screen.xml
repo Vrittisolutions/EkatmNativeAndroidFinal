@@ -1,0 +1,692 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.vritti.inventory.physicalInventory.activity.AudiScreenActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/MyToolbar"
+            android:layout_width="match_parent"
+           android:layout_height="40dp"
+            android:background="@color/colorPrimary"
+            app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay"
+            app:subtitleTextAppearance="@style/ToolbarTextAppearance.Subtitle"
+            app:titleTextAppearance="@style/ToolbarTextAppearance.Title"
+            android:visibility="visible">
+            <!-- android:layout_height="?android:attr/actionBarSize"-->
+
+            <ProgressBar
+                android:id="@+id/toolbar_progress_App_bar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="8dp"
+                android:indeterminateDrawable="@drawable/spinner"
+                android:visibility="gone" />
+
+        </android.support.v7.widget.Toolbar>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/backgroundHeader"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Edit"
+                android:textColor="#fff"
+                android:textSize="16dp"
+                android:layout_weight="0.4"/>
+
+            <ImageView
+                android:id="@+id/imgdelete"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_delete"
+                android:layout_weight="0.6"/>
+
+        </LinearLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:id="@+id/laytag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/appbar"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="#ededed"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical">
+
+        <AutoCompleteTextView
+            android:id="@+id/edttagno"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="Enter Tag Number"
+            android:textSize="15sp"
+            android:maxLength="5"
+            android:textColor="#111111"
+            android:background="@drawable/border"
+            android:layout_marginLeft="10sp"
+            android:paddingLeft="10dp"
+            android:layout_weight="0.7"/>
+
+            <ImageView
+                android:id="@+id/img_barcode"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:src="@drawable/barcode"
+                android:text=""
+                android:textSize="16sp"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="0.4"
+                android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/imgserch"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_search"
+            android:layout_weight="0.1"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:layout_below="@+id/laytag"
+        android:visibility="visible">
+
+        <!--audit screen-->
+        <LinearLayout
+            android:id="@+id/dtlslay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="#ffffff"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <!--partcode-->
+                <LinearLayout
+                    android:id="@+id/invoiceLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/t1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.7"
+                        android:padding="5dp"
+                        android:text="Part Number:"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/edt_itemcode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="0.25"
+                        android:background="@drawable/border_delivery"
+                        android:editable="false"
+                        android:gravity="center_vertical"
+                        android:hint="Select part number"
+                        android:padding="6dp"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:text=""
+                        android:textSize="14sp">
+
+                        <requestFocus />
+                    </TextView>
+
+                    <ImageButton
+                        android:id="@+id/imgedtpartno"
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/edit" />
+
+                </LinearLayout>
+
+                <!--partdesc-->
+                <LinearLayout
+                    android:id="@+id/nameLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/t2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.7"
+                        android:padding="5dp"
+                        android:text="Part Description :"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/edt_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/border_delivery"
+                        android:editable="false"
+                        android:gravity="center_vertical"
+                        android:hint="Select part description"
+                        android:padding="6dp"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:text=""
+                        android:textSize="14sp"
+                        android:layout_weight="0.25">
+
+                        <requestFocus />
+                    </TextView>
+
+                    <ImageButton
+                        android:id="@+id/imgedtpartdesc"
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/edit" />
+
+                </LinearLayout>
+
+                <!--location-->
+                <LinearLayout
+                    android:id="@+id/locationLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:alpha="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.7"
+                        android:padding="5dp"
+                        android:text="Location : "
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/edt_location"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/t1"
+                        android:layout_marginTop="5dp"
+                        android:hint="Select location"
+                        android:background="@drawable/border_delivery"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:padding="6dp"
+                        android:editable="false"
+                        android:text=""
+                        android:textSize="14sp"
+                        android:layout_weight="0.25">
+                        <requestFocus />
+                    </TextView>
+
+                    <ImageButton
+                        android:id="@+id/imgedtpartloc"
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/edit" />
+
+                </LinearLayout>
+
+                <!--area-->
+                <LinearLayout
+                    android:id="@+id/locationarea"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:alpha="0.5"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="0.7"
+                        android:padding="5dp"
+                        android:text="Area : "
+                        android:textSize="11sp" />
+
+                    <EditText
+                        android:id="@+id/edt_area"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="0.25"
+                        android:background="@drawable/border_delivery"
+                        android:editable="false"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:gravity="center_vertical"
+                        android:hint="Enter area"
+                        android:textColor="#111"
+                        android:minHeight="30dp"
+                        android:padding="5dp"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:text=""
+                        android:textSize="14sp" />
+
+                    <ImageButton
+                        android:id="@+id/imgedtarea"
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/edit"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false" />
+
+                </LinearLayout>
+
+                <!--weightqty-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!--weight-->
+                    <LinearLayout
+                        android:id="@+id/addressLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:alpha="1"
+                        android:orientation="vertical"
+                        android:layout_weight="0.6"
+                        android:visibility="visible">
+
+                        <!--weight-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:layout_weight="0.68"
+                                android:padding="5dp"
+                                android:text="Weight : "
+                                android:textSize="11sp"
+                                android:visibility="gone"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_weight="0.25">
+                                <EditText
+                                    android:id="@+id/txt_weight"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_weight="0.2"
+                                    android:background="@drawable/border_delivery"
+                                    android:gravity="center_vertical"
+                                    android:hint="Enter weight"
+                                    android:inputType="numberDecimal"
+                                    android:minHeight="30dp"
+                                    android:padding="5dp"
+                                    android:paddingLeft="8dp"
+                                    android:paddingRight="0dp"
+                                    android:text=""
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Kg"
+                                    android:textSize="11sp"
+                                    android:textColor="#111"
+                                    android:textStyle="bold"
+                                    android:paddingLeft="5sp"
+                                    android:gravity="center_vertical|left"
+                                    android:layout_gravity="center_vertical|left"
+                                    android:layout_weight="0.99"/>
+                            </LinearLayout>
+
+                            <ImageButton
+                                android:id="@+id/imgedtweight"
+                                android:layout_width="40dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:src="@drawable/edit" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!--qty-->
+                    <LinearLayout
+                        android:id="@+id/phoneLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal"
+                        android:layout_weight="0.4"
+                        android:visibility="visible">
+
+                        <TextView
+                            android:id="@+id/t4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="0.67"
+                            android:padding="5dp"
+                            android:text="Qty :"
+                            android:textSize="11sp"
+                            android:visibility="visible"/>
+
+                        <EditText
+                            android:id="@+id/edt_qty"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="0.4"
+                            android:background="@drawable/border_delivery"
+                            android:editable="true"
+                            android:gravity="center_vertical"
+                            android:hint="Enter quantity"
+                            android:inputType="numberDecimal"
+                            android:padding="5dp"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:text=""
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/txtuom"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="13sp"
+                            android:textColor="#111"
+                            android:textStyle="bold"
+                            android:paddingLeft="5sp"
+                            android:gravity="center_vertical|left"
+                            android:layout_gravity="center_vertical|left"
+                            android:layout_weight="0.65"/>
+
+                        <ImageButton
+                            android:id="@+id/imgedtqty"
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/edit" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!--counted-->
+                    <LinearLayout
+                        android:id="@+id/countedbyayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="5dp"
+                        android:alpha="1"
+                        android:visibility="visible"
+                        android:layout_weight="0.5">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Counted By : "
+                            android:padding="5dp"
+                            android:layout_weight="0.7"
+                            android:layout_marginTop="5dp"
+                            android:textSize="11sp"
+                            android:visibility="visible"
+                            android:gravity="center_vertical|top"
+                            android:layout_gravity="center_vertical|top"/>
+
+                        <EditText
+                            android:id="@+id/edt_countedby"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Enter counted by"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/border_delivery"
+                            android:gravity="center_vertical"
+                            android:minHeight="30dp"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:padding="6dp"
+                            android:layout_weight="0.25"
+                            android:editable="true"
+                            android:text=""
+                            android:textSize="14sp" />
+
+                        <ImageButton
+                            android:id="@+id/imgedtcountedby"
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical|top"
+                            android:src="@drawable/edit" />
+
+                    </LinearLayout>
+
+                    <!--verify-->
+                    <LinearLayout
+                        android:id="@+id/verifybylayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="5dp"
+                        android:alpha="1"
+                        android:visibility="visible"
+                        android:layout_weight="0.5">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Verified By : "
+                            android:padding="5dp"
+                            android:layout_weight="0.7"
+                            android:layout_marginTop="5dp"
+                            android:textSize="11sp"
+                            android:visibility="visible"
+                            android:gravity="center|top"
+                            android:layout_gravity="center|top"/>
+
+                        <EditText
+                            android:id="@+id/edt_verifyby"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="0.25"
+                            android:background="@drawable/border_delivery"
+                            android:editable="true"
+                            android:gravity="center_vertical"
+                            android:hint="Enter verified by"
+                            android:minHeight="30dp"
+                            android:padding="6dp"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:text=""
+                            android:textSize="14sp" />
+
+                        <ImageButton
+                            android:id="@+id/imgedtverifyby"
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical|top"
+                            android:src="@drawable/edit" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingRight="0dp"
+                    android:paddingLeft="0dp"
+                    android:layout_marginTop="10dp">
+
+                    <EditText
+                        android:id="@+id/edt_tag_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter tag description"
+                        android:background="@drawable/border_delivery"
+                        android:layout_weight="1"
+                        android:textColor="#111111"
+                        android:textSize="14dp"
+                        android:paddingLeft="5dp"
+                        android:padding="6dp"
+                        android:maxLines="10" />
+
+                    <!-- <android.support.design.widget.TextInputLayout
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:clipToPadding="false"
+                         android:paddingLeft="0dp"
+                         android:textSize="14sp">
+
+                         <EditText
+                             android:id="@+id/edt_tag_desc"
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:hint="Enter tag description"
+                             android:layout_weight="1"
+                             android:textColor="#111111"
+                             android:textSize="15dp"
+                             android:paddingLeft="5dp"
+                             android:maxLines="10" />
+
+                     </android.support.design.widget.TextInputLayout>-->
+
+                    <!--  <TextView
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="TAG Description : " />-->
+
+                    <!-- <EditText
+                         android:id="@+id/edt_tag_desc"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:hint="Enter tag description"
+                         android:layout_weight="1"
+                         android:textColor="#111111"
+                         android:textSize="12dp"
+                         android:paddingLeft="5dp"
+                         android:maxLines="4"/>-->
+
+                </LinearLayout>
+
+                <!--button-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal"
+                    android:layout_margin="10dp">
+
+                    <Button
+                        android:id="@+id/btnsave"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_blue_border"
+                        android:text="Submit"
+                        android:textColor="@color/white"
+                        android:textSize="16dp"
+                        android:textStyle="bold"
+                        android:visibility="visible"/>
+
+                    <Button
+                        android:id="@+id/btnprint"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_blue_border"
+                        android:text="Print"
+                        android:textColor="@color/white"
+                        android:textSize="16dp"
+                        android:textStyle="bold"
+                        android:visibility="gone"/>
+
+                    <Button
+                        android:id="@+id/btncancel"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_orange"
+                        android:text="CANCEL"
+                        android:textColor="@color/white"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

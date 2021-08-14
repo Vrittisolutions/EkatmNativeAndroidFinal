@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:gpb="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:paddingTop="18dp"
+    tools:context="vcrm7.vritti.com.vcrm7.CallListActivity"
+    tools:showIn="@layout/crm_app_bar_main">
+
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="128dp"
+        android:isScrollContainer="false"
+        android:layout_above="@+id/layloadmore">
+
+        <LinearLayout
+            android:id="@+id/lsCall_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
+
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+    <ProgressBar
+        android:id="@+id/google_progress"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateDrawable="@drawable/spinner"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:id="@+id/layloadmore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="Load Future Opportunities"
+            android:textColor="#000"
+            android:textSize="16dp"
+            android:textStyle="normal"
+            android:background="@color/white"
+            android:padding="10dp"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/google_progress"
+            android:layout_toEndOf="@+id/google_progress" />
+       <!-- <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#7165B9"
+            android:paddingTop="5dp"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            android:paddingBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:orientation="horizontal"
+            >
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+
+                android:text="Within 3 months"
+                android:textColor="#fff"
+                android:textSize="16dp"
+                android:textStyle="normal"
+
+                />
+        </LinearLayout>-->
+
+
+
+</RelativeLayout>

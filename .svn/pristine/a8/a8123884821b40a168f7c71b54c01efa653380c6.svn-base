@@ -1,0 +1,220 @@
+package com.vritti.inventory.MaterialRequisition.classes;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
+import com.vritti.crm.bean.Teritorybean;
+import com.vritti.databaselib.data.DatabaseHandlers;
+import com.vritti.databaselib.other.Utility;
+import com.vritti.databaselib.other.WebUrlClass;
+import com.vritti.inventory.MaterialRequisition.model.AllUsers;
+import com.vritti.inventory.MaterialRequisition.model.MRSList;
+import com.vritti.inventory.MaterialRequisition.model.MaterialOrder;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.vritti.databaselib.data.DatabaseHandlers.TABLE_AddMaterialPoOrder;
+import static com.vritti.databaselib.data.DatabaseHandlers.TABLE_MaterialItemList;
+import static com.vritti.databaselib.data.DatabaseHandlers.TABLE_WORK_ORDER;
+
+public class Inventory_CommonFunction {
+
+    String CompanyURL, EnvMasterId = "", LoginId = "", Password = "", PlantMasterId = "";
+    Utility ut;
+    DatabaseHandlers db;
+    Context mContext;
+
+    public Inventory_CommonFunction(Context context) {
+
+        ut = new Utility();
+        this.mContext = context;
+        String settingKey = ut.getSharedPreference_SettingKey(mContext);
+        String dabasename = ut.getValue(mContext, WebUrlClass.GET_DATABASE_NAME_KEY, settingKey);
+        db = new DatabaseHandlers(mContext, dabasename);
+        CompanyURL = ut.getValue(mContext, WebUrlClass.GET_COMPANY_URL_KEY, settingKey);
+        EnvMasterId = ut.getValue(mContext, WebUrlClass.GET_EnvMasterID_KEY, settingKey);
+        LoginId = ut.getValue(mContext, WebUrlClass.GET_LOGIN_KEY, settingKey);
+        Password = ut.getValue(mContext, WebUrlClass.GET_PSW_KEY, settingKey);
+
+        PlantMasterId = ut.getValue(mContext, WebUrlClass.GET_PlantID_KEY, settingKey);
+    }
+
+
+    public void deleteItemLocal(MaterialOrder material) {
+        SQLiteDatabase sql = db.getWritableDatabase();
+        sql.execSQL("delete from "+ db.TABLE_AddMaterialPoOrder +" where ItemMasterId ='"+ material.getItemMasterId() +"'");
+        //   db.close();
+    }
+
+    public int getWorkOrdercount() {
+        String countQuery = "SELECT  * FROM "
+                + db.TABLE_WORK_ORDER;
+        int count = 0;
+        SQLiteDatabase sql = db.getReadableDatabase();
+        Cursor cursor = sql.rawQuery(countQuery, null);
+        if (cursor != null && !cursor.isClosed()) {
+            count = cursor.getCount();
+            cursor.close();
+        }
+        return count;
+    }
+
+    public int getMarerialListcount() {
+        String countQuery = "SELECT  * FROM "
+                + db.TABLE_MaterialItemList;
+        int count = 0;
+        SQLiteDatabase sql = db.getReadableDatabase();
+        Cursor cursor = sql.rawQuery(countQuery, null);
+        if (cursor != null && !cursor.isClosed()) {
+            count = cursor.getCount();
+            cursor.close();
+        }
+        return count;
+    }
+
+    public void AddMaterialData(MaterialOrder materialOrder) {
+        SQLiteDatabase sql = db.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put("MRSDetailId",materialOrder.getMRSDetailId());
+        contentValues.put("ItemMasterId",materialOrder.getItemMasterId());
+        contentValues.put("ItemCode",materialOrder.getItemCode());
+        contentValues.put("ItemDesc",materialOrder.getItemDesc());
+        contentValues.put("UOMDesc",materialOrder.getUOMDesc());
+        contentValues.put("UOMMasterId",materialOrder.getUOMMasterId());
+        contentValues.put("StockQuantity",materialOrder.getStockQuantity());
+        contentValues.put("ReqQty",materialOrder.getReqQty());
+        contentValues.put("Remark",materialOrder.getRemark());
+        contentValues.put("lblhdn",materialOrder.getlblhdn());
+        contentValues.put("MODetailId",materialOrder.getMODetailId());
+        contentValues.put("SupplierId",materialOrder.getSupplierId());
+        contentValues.put("RouteName",materialOrder.getRouteName());
+        contentValues.put("SegmentType",materialOrder.getSegmentType());
+        contentValues.put("RouteFrom",materialOrder.getRouteFrom());
+        contentValues.put("RouteTo",materialOrder.getRouteTo());
+        contentValues.put("Address",materialOrder.getAddress());
+        contentValues.put("WarehouseName",materialOrder.getWarehouseMasterName());
+        contentValues.put("LocationMasterName",materialOrder.getLocationMasterName());
+        long a = sql.insert(db.TABLE_AddMaterialPoOrder, null, contentValues);
+
+        // sql.update(db.TABLE_AddMaterialPoOrder, contentValues, "ItemMasterId=" + materialOrder.getItemMasterId(), null);
+
+    }
+
+    public void UpdateMaterialOrders(MaterialOrder materialOrder) {
+        SQLiteDatabase sql = db.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put("MRSDetailId",materialOrder.getMRSDetailId());
+        contentValues.put("ItemMasterId",materialOrder.getItemMasterId());
+        contentValues.put("ItemCode",materialOrder.getItemCode());
+        contentValues.put("ItemDesc",materialOrder.getItemDesc());
+        contentValues.put("UOMDesc",materialOrder.getUOMDesc());
+        contentValues.put("UOMMasterId",materialOrder.getUOMMasterId());
+        contentValues.put("StockQuantity",materialOrder.getStockQuantity());
+        contentValues.put("ReqQty",materialOrder.getReqQty());
+        contentValues.put("Remark",materialOrder.getRemark());
+        contentValues.put("lblhdn",materialOrder.getlblhdn());
+        contentValues.put("MODetailId",materialOrder.getMODetailId());
+        contentValues.put("SupplierId",materialOrder.getSupplierId());
+        contentValues.put("RouteName",materialOrder.getRouteName());
+        contentValues.put("SegmentType",materialOrder.getSegmentType());
+        contentValues.put("RouteFrom",materialOrder.getRouteFrom());
+        contentValues.put("RouteTo",materialOrder.getRouteTo());
+        contentValues.put("Address",materialOrder.getAddress());
+        contentValues.put("WarehouseName",materialOrder.getWarehouseMasterName());
+        contentValues.put("LocationMasterName",materialOrder.getLocationMasterName());
+       // long a = sql.insert(db.TABLE_AddMaterialPoOrder, null, contentValues);
+        sql.update(db.TABLE_AddMaterialPoOrder, contentValues, "ItemMasterId=?",
+                new String[]{materialOrder.getItemMasterId()});
+    }
+
+    public int getMRSListCnt() {
+        String countQuery = "SELECT * FROM  " + db.TABLE_MRSList;
+        int count = 0;
+        SQLiteDatabase sql = db.getReadableDatabase();
+        Cursor cursor = sql.rawQuery(countQuery, null);
+        if (cursor != null && !cursor.isClosed()) {
+            count = cursor.getCount();
+            cursor.close();
+        }
+        return count;
+    }
+
+    public int getAllUsersCnt() {
+        String countQuery = "SELECT * FROM  " + db.TABLE_GETALLUsers;
+        int count = 0;
+        SQLiteDatabase sql = db.getReadableDatabase();
+        Cursor cursor = sql.rawQuery(countQuery, null);
+        if (cursor != null && !cursor.isClosed()) {
+            count = cursor.getCount();
+            cursor.close();
+        }
+        return count;
+    }
+
+
+
+    public ArrayList<MRSList> getMRSList() {
+        ArrayList<MRSList> list = new ArrayList<MRSList>();
+        list.clear();
+        //  Firmbean[] list = null;
+        SQLiteDatabase sql = db.getReadableDatabase();
+        String qry = "";
+        qry += "SELECT * FROM " + db.TABLE_MRSList;
+
+        Cursor cur = sql.rawQuery(qry, null);
+        if (cur.getCount() > 0) {
+            int x = 0;
+            cur.moveToFirst();
+
+            do {
+                MRSList bean = new MRSList();
+                bean.setMRSHeaderId(cur.getString(cur.getColumnIndex("MRSHeaderId")));
+                bean.setMRSNO(cur.getString(cur.getColumnIndex("MRSNO")));
+                //bean.setId(cur.getString(cur.getColumnIndex("Id")));
+                list.add(bean);
+
+                x++;
+
+            } while (cur.moveToNext());
+        }
+        return list;
+
+    }
+
+    public ArrayList<AllUsers> getAllUsers() {
+        ArrayList<AllUsers> list = new ArrayList<AllUsers>();
+        list.clear();
+        //  Firmbean[] list = null;
+        SQLiteDatabase sql = db.getReadableDatabase();
+        String qry = "";
+        qry += "SELECT * FROM " + db.TABLE_GETALLUsers;
+
+        Cursor cur = sql.rawQuery(qry, null);
+        if (cur.getCount() > 0) {
+            int x = 0;
+            cur.moveToFirst();
+
+            do {
+                AllUsers bean = new AllUsers();
+                bean.setUserLoginId(cur.getString(cur.getColumnIndex("UserLoginId")));
+                bean.setUserMasterId(cur.getString(cur.getColumnIndex("UserMasterId")));
+                bean.setUserName(cur.getString(cur.getColumnIndex("UserName")));
+                //bean.setId(cur.getString(cur.getColumnIndex("Id")));
+                list.add(bean);
+
+                x++;
+
+            } while (cur.moveToNext());
+        }
+        return list;
+
+    }
+
+
+
+}

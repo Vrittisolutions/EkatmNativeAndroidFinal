@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\incremental\\mergeVwbReleaseResources\\merged.dir\\values-hy-rAM\\values-hy-rAM.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Nilesh\\.gradle\\caches\\transforms-2\\files-2.1\\bcefe1a63aaad0e225ad14675b4e8bed\\datetimepicker-0.2.0\\res\\values-hy-rAM\\values-hy-rAM.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10,11,12,13,14",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "222,331,437,517,630,743,860,949,1034,1123,1206",
+                        "endColumns": "108,105,79,112,112,116,88,84,88,82,96",
+                        "endOffsets": "326,432,512,625,738,855,944,1029,1118,1201,1298"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,214,320,400,513,626,743,832,917,1006,1089",
+                        "endColumns": "108,105,79,112,112,116,88,84,88,82,96",
+                        "endOffsets": "209,315,395,508,621,738,827,912,1001,1084,1181"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,25 @@
+package com.vritti.vwb.Beans;
+
+import java.util.ArrayList;
+
+public class MultipleKendraId {
+
+    ArrayList<String> listObjectDocs1;
+
+    public MultipleKendraId(ArrayList<String> userMasterId) {
+        this.listObjectDocs1 = userMasterId;
+    }
+
+    public MultipleKendraId() {
+
+    }
+
+
+    public ArrayList<String> getListObjectDocs() {
+        return listObjectDocs1;
+    }
+
+    public void setListObjectDocs(ArrayList<String>  listObjectDocs) {
+        this.listObjectDocs1 = listObjectDocs;
+    }
+}

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+     <item
+        android:id="@+id/menu_create"
+        android:title="Create New Carton"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_suspend"
+        android:title="Suspend"
+        app:showAsAction="never"
+        android:visible="true"/>
+    <item
+        android:id="@+id/menu_finished"
+        android:title="Finish"
+        app:showAsAction="never"
+        android:visible="true"/>
+    <item
+        android:id="@+id/menu_refresh"
+        android:title="Refresh"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_resume"
+        android:title="Resume secondary pack"
+        android:visible="false"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_weighing"
+        android:title="Weighing secondary pack"
+        app:showAsAction="never"
+        android:visible="false"/>
+    <item
+        android:id="@+id/menu_label"
+        android:title="Print packing list"
+        app:showAsAction="never"
+        android:visible="false"/>
+
+</menu>

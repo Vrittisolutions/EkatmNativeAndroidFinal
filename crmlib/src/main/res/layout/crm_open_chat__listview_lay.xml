@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <EditText
+        android:id="@+id/edt_search_chatroomname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_weight="1"
+        android:background="@drawable/edit_text"
+        android:hint="Search"
+        android:padding="15dp"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:textColorHint="@color/dark_grey"
+        android:textSize="14dp"
+        android:layout_marginTop="5dp"
+        >
+
+    </EditText>
+
+    <ListView
+        android:id="@+id/listview_multiple_group"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@android:color/transparent"
+        android:layout_below="@+id/edt_search_chatroomname"
+        android:layout_marginTop="5dp"
+        >
+
+
+    </ListView>
+    <TextView
+        android:id="@+id/txt_chatroom_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Chat Room not available"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:padding="10dp"
+        android:gravity="center"
+        android:visibility="gone"
+
+        />
+</RelativeLayout>

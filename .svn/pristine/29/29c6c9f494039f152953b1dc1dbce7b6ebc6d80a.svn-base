@@ -1,0 +1,619 @@
+package com.vritti.crm.vcrm7;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
+import com.vritti.crm.bean.CalendarCollection;
+import com.vritti.crm.bean.CallLogsDetails;
+import com.vritti.crm.classes.CommonFunctionCrm;
+import com.vritti.databaselib.data.DatabaseHandlers;
+import com.vritti.databaselib.other.Utility;
+import com.vritti.databaselib.other.WebUrlClass;
+import com.vritti.ekatm.R;
+import com.vritti.ekatm.services.SendOfflineData;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
+import java.util.UUID;
+
+public class CallUpdateActivity extends AppCompatActivity {
+    String PlantMasterId = "", LoginId = "", Password = "", CompanyURL = "", EnvMasterId = "",
+            UserMasterId = "", UserName = "", MobileNo = "";
+    Utility ut;
+    DatabaseHandlers db;
+    CommonFunctionCrm cf;
+    Context context;
+    String UserType, Token;
+    RecyclerView list_calllogs;
+    public String IsChatApplicable;
+    public String IsCollectionApplicable;
+    SharedPreferences userpreferences;
+    SQLiteDatabase sql;
+    static String Salesmodulevisible = "true";
+    static String Salesmoduleinvisible = "false";
+    private String settingKey, dabasename;
+
+
+    ArrayList<CallLogsDetails> callLogsDetailsArrayList = new ArrayList<>();
+    int pos;
+    String contactedMobNo = "", FinalJSOnObject = "", callType = "", Date = "";
+    TextView txt_type_status, txt_statusdetails;
+    LinearLayout ln_button, ln_spinner, ln_savebutton;
+    Button btn_opporunity, btn_collection, btn_save, btn_cancel;
+    Spinner spinner_calltype;
+    String from = "";
+    JSONArray opportunityJsonArray = null;
+    JSONArray collectionJsonArray = null;
+    JSONArray colleagueJsonArray = null;
+    String callingType = "", UsernameRecord = "";
+
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.calllogs_askfor_calltype);
+
+        userpreferences = getSharedPreferences(WebUrlClass.USERINFO,
+                Context.MODE_PRIVATE);
+
+        UserType = userpreferences.getString(WebUrlClass.USERINFO_USER_TYPE, "");
+        IsCollectionApplicable = userpreferences.getString(WebUrlClass.USERINFO_ISCOLLECTION_APPLICABLE, Salesmodulevisible);
+
+        CalendarCollection.date_collection_arr = new ArrayList<CalendarCollection>();
+
+
+        context = getApplicationContext();
+        ut = new Utility();
+        cf = new CommonFunctionCrm(context);
+        settingKey = ut.getSharedPreference_SettingKey(context);
+        dabasename = ut.getValue(context, WebUrlClass.GET_DATABASE_NAME_KEY, settingKey);
+        db = new DatabaseHandlers(context, dabasename);
+        CompanyURL = ut.getValue(context, WebUrlClass.GET_COMPANY_URL_KEY, settingKey);
+        EnvMasterId = ut.getValue(context, WebUrlClass.GET_EnvMasterID_KEY, settingKey);
+        PlantMasterId = ut.getValue(context, WebUrlClass.GET_PlantID_KEY, settingKey);
+        LoginId = ut.getValue(context, WebUrlClass.GET_LOGIN_KEY, settingKey);
+        Password = ut.getValue(context, WebUrlClass.GET_PSW_KEY, settingKey);
+        UserMasterId = ut.getValue(context, WebUrlClass.GET_USERMASTERID_KEY, settingKey);
+        UserName = ut.getValue(context, WebUrlClass.GET_USERNAME_KEY, settingKey);
+        IsChatApplicable = ut.getValue(context, WebUrlClass.GET_ISCHATAPPLICABLE_KEY, settingKey);
+        sql = db.getWritableDatabase();
+
+        initView();
+        setListner();
+
+        if (getIntent() != null) {
+            callLogsDetailsArrayList = new Gson().fromJson(getIntent().getStringExtra("list"), CallLogsDetails.class).
+                    getCallLogsDetailsArrayList();
+            String jsonArray = getIntent().getStringExtra("opportunityjson");
+            if (jsonArray != null) {
+                try {
+                    opportunityJsonArray = new JSONArray(jsonArray);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            String jsonArray1 = getIntent().getStringExtra("collectionjson");
+            if (jsonArray1 != null) {
+                try {
+                    collectionJsonArray = new JSONArray(jsonArray1);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            String jsonArray2 = getIntent().getStringExtra("colleaguejson");
+            if (jsonArray2 != null) {
+                try {
+                    colleagueJsonArray = new JSONArray(jsonArray2);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+
+
+            pos = getIntent().getIntExtra("position", 0);
+            contactedMobNo = callLogsDetailsArrayList.get(pos).getNumber();
+            from = getIntent().getStringExtra("IsBoth");
+            Date = formateDateFromstring("yyyy-MM-dd HH:mm:ss.SSS", "dd-MMM",
+                    callLogsDetailsArrayList.get(pos).getStartTime());
+            callType = callLogsDetailsArrayList.get(pos).getCallType();
+
+
+            String Date = formateDateFromstring("yyyy-MM-dd HH:mm:ss.SSS", "dd-MMM",
+                    callLogsDetailsArrayList.get(pos).getStartTime());
+            String time = formateDateFromstring("yyyy-MM-dd HH:mm:ss.SSS", "hh:mm",
+                    callLogsDetailsArrayList.get(pos).getStartTime());
+            String[] startTime = time.split(":");
+            int hours = Integer.parseInt(startTime[0]);
+            int minutes = Integer.parseInt(startTime[1]);
+
+            String StartTime = updateTime(hours, minutes);
+
+
+            if (callType.equalsIgnoreCase("outgoing")) {
+                //txt_type_status.setText("");
+                txt_type_status.setText(" " + callType + " to " + contactedMobNo + " on " + Date + " at " + StartTime);
+            } else {
+                txt_type_status.setText(" " + callType + " from " + contactedMobNo + " on " + Date + " at " + StartTime);
+            }
+            txt_statusdetails.setText("This is call from " + callLogsDetailsArrayList.get(pos).getCallType());
+
+            if (from.equalsIgnoreCase("fromOppCollec")) {
+                ln_button.setVisibility(View.VISIBLE);
+                ln_spinner.setVisibility(View.GONE);
+                ln_savebutton.setVisibility(View.GONE);
+            } else {
+                ln_spinner.setVisibility(View.VISIBLE);
+                ln_savebutton.setVisibility(View.VISIBLE);
+                ln_button.setVisibility(View.GONE);
+                if(colleagueJsonArray != null){
+                    if (colleagueJsonArray.length() != 0) {
+                        for (int i = 0; i < colleagueJsonArray.length(); i++) {
+                            JSONObject jsonObject1 = null;
+                            try {
+                                jsonObject1 = colleagueJsonArray.getJSONObject(i);
+                                UsernameRecord = jsonObject1.getString("UserName");
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                        ContentValues cv = new ContentValues();
+                        cv.put("MobileCallType", "Colleague");
+                        cv.put("ContactPersonName", UsernameRecord);
+                        callLogsDetailsArrayList.get(pos).setCallType("Colleague");
+                        sql.update(db.TABLE_CALL_LOG, cv, "RowNo=?", new String[]{callLogsDetailsArrayList.get(pos).getRowNo()});
+                        //spinner_calltype.setSelection(1);
+                    }
+                }
+
+
+
+                if (callLogsDetailsArrayList.get(pos).getCallType().equalsIgnoreCase("personal")) {
+                    callingType = "5";
+                    spinner_calltype.setSelection(3);
+                } else if (callLogsDetailsArrayList.get(pos).getCallType().equalsIgnoreCase("spam")) {
+                    callingType = "4";
+                    spinner_calltype.setSelection(2);
+                } else if (callLogsDetailsArrayList.get(pos).getCallType().equalsIgnoreCase("Colleague")) {
+                    callingType = "3";
+                    spinner_calltype.setSelection(1);
+                } else {
+                    callType = "";
+                    spinner_calltype.setSelection(0);
+
+                }
+
+            }
+
+
+        }
+
+
+    }
+
+    private void setListner() {
+
+        btn_opporunity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //  Cursor c = sql.rawQuery("SELECT * FROM " + db.TABLE_CRM_CALL_PARTIAL, null);
+                Cursor c = sql.rawQuery("SELECT * FROM " + db.TABLE_CRM_CALL_OPPORTUNITY, null);
+                int count = c.getCount();
+                String callid = "", callType = "", FirmName = "", prospectId = "", userNameRecord = "";
+                String columnName, columnValue;
+                ContentValues contentValues = new ContentValues();
+                if (opportunityJsonArray != null) {
+                    try {
+                        for (int i = 0; i < opportunityJsonArray.length(); i++) {
+                            JSONObject jorder = opportunityJsonArray.getJSONObject(i);
+                            for (int j = 0; j < c.getColumnCount(); j++) {
+
+                                columnName = c.getColumnName(j);
+                                String jsonDOB = jorder.getString("NextActionDateTime");
+                                callid = jorder.getString("CallId");
+                                callType = jorder.getString("CallType");
+                                FirmName = jorder.getString("FirmName");
+                                prospectId = jorder.getString("ProspectId");
+                                userNameRecord = jorder.getString("ContactName");
+
+
+                                if (columnName.equalsIgnoreCase("isPartial")) {
+
+                                    contentValues.put(columnName, "P");
+                                } else if (columnName.equalsIgnoreCase("Product")) {
+                                    contentValues.put("Product", "");
+
+                                } else if (columnName.equalsIgnoreCase("Mobile")) {
+                                    if (jorder.getString("Mobile").equalsIgnoreCase("null")) {
+                                        contentValues.put(columnName, "No Contact Available");
+                                    } else {
+                                        columnValue = jorder.getString(columnName);
+                                        contentValues.put(columnName, columnValue);
+                                    }
+
+                                } else if (columnName.equalsIgnoreCase("ContactName")) {
+                                    if (jorder.getString("ContactName").equalsIgnoreCase("null")) {
+                                        contentValues.put(columnName, "");
+                                    } else {
+                                        columnValue = jorder.getString(columnName);
+                                        contentValues.put(columnName, columnValue);
+                                    }
+
+                                } else {
+                                    columnValue = jorder.getString(columnName);
+                                    contentValues.put(columnName, columnValue);
+                                }
+                            }
+                            // long a = sql.insert(db.TABLE_CRM_CALL_PARTIAL, null, contentValues);
+                            long a = sql.insert(db.TABLE_CRM_CALL_OPPORTUNITY, null, contentValues);
+                            Log.e("", "" + a);
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                JSONObject jsonObject1 = new JSONObject();
+                String uniqueID = UUID.randomUUID().toString();
+                try {
+                    jsonObject1.put("UserMasterId", UserMasterId);
+                    jsonObject1.put("MobileNo", contactedMobNo);
+                    jsonObject1.put("StartTime", callLogsDetailsArrayList.get(pos).getStartTime());
+                    jsonObject1.put("EndTime", callLogsDetailsArrayList.get(pos).getEndTime());
+                    jsonObject1.put("Duration", callLogsDetailsArrayList.get(pos).getDuration());
+                    jsonObject1.put("MobileCallType", "Opportunity");
+                    jsonObject1.put("CallingType", "1");
+                    jsonObject1.put("CallType", "Opportunity");
+                    jsonObject1.put("CallId", callid);
+                    jsonObject1.put("NewId", uniqueID);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                FinalJSOnObject = jsonObject1.toString();
+
+                SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+                String date = sdf1.format(new Date());
+                String remark1 = "Call has been added of Number " + contactedMobNo + " on " + date;
+                String url1 = CompanyURL + WebUrlClass.api_save_Mocall_Record;
+                String op = "true";
+                CreateOfflineIntend(url1, FinalJSOnObject, WebUrlClass.POSTFLAG, remark1, op, context);
+
+               ContentValues cv = new ContentValues();
+               // cv.put("MobileCallType", "Opportunity");
+                cv.put("ContactPersonName", userNameRecord);
+                cv.put("CustomerName", FirmName);
+                sql.update(db.TABLE_CALL_LOG, cv, "RowNo=?", new String[]{callLogsDetailsArrayList.get(pos).getRowNo()});
+
+
+                String sTime = formateDateFromstring("yyyy-MM-dd HH:mm:ss.SSS", "hh:mm:ss",
+                        callLogsDetailsArrayList.get(pos).getStartTime());
+                String eTime = formateDateFromstring("yyyy-MM-dd HH:mm:ss.SSS", "hh:mm:ss",
+                        callLogsDetailsArrayList.get(pos).getEndTime());
+
+
+                Intent intent = new Intent(CallUpdateActivity.this, OpportunityActivity.class);
+                intent.putExtra("Opportunity", "opportunitycall");
+                intent.putExtra("MobileNo", contactedMobNo);
+                intent.putExtra("starttime", sTime);
+                intent.putExtra("endtime",eTime);
+                intent.putExtra("duration", callLogsDetailsArrayList.get(pos).getDuration());
+                intent.putExtra("Rowno",callLogsDetailsArrayList.get(pos).getRowNo());
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        btn_collection.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String callid = "", userNameRecord = "", firmName = "", calltype = "", prospectid = "";
+                Cursor c = sql.rawQuery("SELECT * FROM " + db.TABLE_CRM_CALL_COLLECTION_CALL_OPPORTUNITY, null);
+                int count = c.getCount();
+                ContentValues contentValues = new ContentValues();
+                String columnName, columnValue;
+                if (collectionJsonArray != null) {
+                    try {
+                        for (int i = 0; i < collectionJsonArray.length(); i++) {
+                            JSONObject jorder = collectionJsonArray.getJSONObject(i);
+                            for (int j = 0; j < c.getColumnCount(); j++) {
+
+                                columnName = c.getColumnName(j);
+                                String jsonDOB = jorder.getString("NextActionDateTime");
+                                callid = jorder.getString("CallId");
+                                userNameRecord = jorder.getString("ContactName");
+                                firmName = jorder.getString("FirmName");
+                                calltype = jorder.getString("CallType");
+                                prospectid = jorder.getString("ProspectId");
+                                if (columnName.equalsIgnoreCase("isPartial")) {
+
+                                    contentValues.put(columnName, "P");
+                                } else if (columnName.equalsIgnoreCase("Mobile")) {
+                                    if (jorder.getString("Mobile").equalsIgnoreCase("null")) {
+                                        contentValues.put(columnName, "No Contact Available");
+                                    } else {
+                                        columnValue = jorder.getString(columnName);
+                                        contentValues.put(columnName, columnValue);
+                                    }
+
+                                } else if (columnName.equalsIgnoreCase("ContactName")) {
+                                    if (jorder.getString("ContactName").equalsIgnoreCase("null")) {
+                                        contentValues.put(columnName, "");
+                                    } else {
+                                        columnValue = jorder.getString(columnName);
+                                        contentValues.put(columnName, columnValue);
+                                    }
+
+                                } else {
+                                    columnValue = jorder.getString(columnName);
+                                    contentValues.put(columnName, columnValue);
+                                }
+
+
+                            }
+                            long a = sql.insert(db.TABLE_CRM_CALL_COLLECTION_CALL_OPPORTUNITY, null, contentValues);
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+
+                JSONObject jsonObject1 = new JSONObject();
+                String uniqueID = UUID.randomUUID().toString();
+                try {
+                    jsonObject1.put("UserMasterId", UserMasterId);
+                    jsonObject1.put("MobileNo", contactedMobNo);
+                    jsonObject1.put("StartTime", callLogsDetailsArrayList.get(pos).getStartTime());
+                    jsonObject1.put("EndTime", callLogsDetailsArrayList.get(pos).getEndTime());
+                    jsonObject1.put("Duration", callLogsDetailsArrayList.get(pos).getDuration());
+                    jsonObject1.put("MobileCallType", "Collection");
+                    jsonObject1.put("CallingType", "2");
+                    jsonObject1.put("CallType", "Collection");
+                    jsonObject1.put("CallId", callid);
+                    jsonObject1.put("NewId", uniqueID);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                FinalJSOnObject = jsonObject1.toString();
+
+                SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+                String date = sdf1.format(new Date());
+                String remark1 = "Call has been added of Number " + contactedMobNo + " on " + date;
+                String url1 = CompanyURL + WebUrlClass.api_save_Mocall_Record;
+                String op = "true";
+                CreateOfflineIntend(url1, FinalJSOnObject, WebUrlClass.POSTFLAG, remark1, op, context);
+
+                ContentValues cv = new ContentValues();
+               // cv.put("MobileCallType", "Collection");
+                cv.put("ContactPersonName", userNameRecord);
+                cv.put("CustomerName", firmName);
+                sql.update(db.TABLE_CALL_LOG, cv, "RowNo=?", new String[]{callLogsDetailsArrayList.get(pos).getRowNo()});
+
+
+                String sTime = formateDateFromstring("yyyy-MM-dd HH:mm:ss.SSS", "hh:mm:ss",
+                        callLogsDetailsArrayList.get(pos).getStartTime());
+                String eTime = formateDateFromstring("yyyy-MM-dd HH:mm:ss.SSS", "hh:mm:ss",
+                        callLogsDetailsArrayList.get(pos).getEndTime());
+
+
+                Intent intent = new Intent(CallUpdateActivity.this, OpportunityActivity.class);
+                intent.putExtra("Opportunity", "collectioncall");
+                intent.putExtra("MobileNo", contactedMobNo);
+                intent.putExtra("starttime", sTime);
+                intent.putExtra("endtime",eTime);
+                intent.putExtra("duration", callLogsDetailsArrayList.get(pos).getDuration());
+                intent.putExtra("Rowno",callLogsDetailsArrayList.get(pos).getRowNo());
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        btn_save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String uniqueID = UUID.randomUUID().toString();
+                if (callType.equals("Select Option")) {
+                    Toast.makeText(CallUpdateActivity.this, "Please select call type", Toast.LENGTH_SHORT).show();
+                } else {
+
+                    JSONObject jsonObject = new JSONObject();
+                    try {
+                        jsonObject.put("UserMasterId", UserMasterId);
+                        jsonObject.put("MobileNo", contactedMobNo);
+                        jsonObject.put("StartTime", callLogsDetailsArrayList.get(pos).getStartTime());
+                        jsonObject.put("EndTime", callLogsDetailsArrayList.get(pos).getEndTime());
+                        jsonObject.put("Duration", callLogsDetailsArrayList.get(pos).getDuration());
+                        jsonObject.put("MobileCallType", callType);
+                        jsonObject.put("CallingType", callingType);
+                        jsonObject.put("CallType", "");
+                        jsonObject.put("CallId", "");
+                        jsonObject.put("NewId", uniqueID);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    FinalJSOnObject = jsonObject.toString();
+
+                    SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+                    String date = sdf1.format(new Date());
+                    String remark1 = "Incomingcall Record has been added of Number " + contactedMobNo + " on " + date;
+                    String url = CompanyURL + WebUrlClass.api_save_Mocall_Record;
+                    String op = "true";
+                    CreateOfflineIntend(url, FinalJSOnObject, WebUrlClass.POSTFLAG, remark1, op, context);
+
+                    //CreateOfflineIntend(url, FinalJSOnObject, WebUrlClass.GETFlAG, "Call Update", op, CRM_CallLogList.this);
+                    //sql.execSQL("UPDATE " + db.TABLE_CALL_LOG + " SET MobileCallType =" + callType + " WHERE RowNo =" + rowNo);
+
+                    ContentValues cv = new ContentValues();
+                    cv.put("MobileCallType", callType);
+                    sql.update(db.TABLE_CALL_LOG, cv, "RowNo=?", new String[]{callLogsDetailsArrayList.get(pos).getRowNo()});
+                    Toast.makeText(CallUpdateActivity.this, "Call type is updated", Toast.LENGTH_SHORT).show();
+                    onBackPressed();
+                }
+            }
+        });
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callType = "";
+                onBackPressed();
+            }
+        });
+
+        spinner_calltype.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                callType = spinner_calltype.getSelectedItem().toString();
+                if (callType.equals("Colleague")) {
+                    callingType = "3";
+                } else if (callType.equals("Spam")) {
+                    callingType = "4";
+                } else if (callType.equals("Personal")) {
+                    callingType = "5";
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+    }
+
+    private void initView() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setLogo(R.mipmap.ic_toolbar_logo_crm);
+        toolbar.setTitle(R.string.app_name_toolbar_CRM);
+        setSupportActionBar(toolbar);
+
+        txt_type_status = findViewById(R.id.txt_type_status);
+        ln_button = findViewById(R.id.ln_button);
+        btn_collection = findViewById(R.id.btn_collection);
+        btn_opporunity = findViewById(R.id.btn_opporunity);
+        btn_save = findViewById(R.id.btn_save);
+        btn_cancel = findViewById(R.id.btn_cancel);
+        txt_statusdetails = findViewById(R.id.txt_statusdetails);
+        ln_savebutton = findViewById(R.id.ln_savebutton);
+        ln_spinner = findViewById(R.id.ln_spinner);
+        spinner_calltype = findViewById(R.id.spinner_calltype);
+        String[] calltype1 = getResources().getStringArray(R.array.Calltype);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(CallUpdateActivity.this, R.layout.vwb_custom_spinner_txt, calltype1);
+        spinner_calltype.setAdapter(adapter);
+
+
+    }
+
+    public static String updateTime(int hours, int mins) {
+        String timeSet = "";
+        if (hours > 12) {
+            hours -= 12;
+            if (hours > 12) {
+                hours = hours - 12;
+                timeSet = "AM";
+            } else if (hours == 12) {
+                timeSet = "AM";
+            } else {
+                timeSet = "PM";
+            }
+
+        } else if (hours == 0) {
+            hours += 12;
+            timeSet = "AM";
+        } else if (hours == 12)
+            timeSet = "PM";
+        else
+            timeSet = "AM";
+
+        String minutes = "";
+        if (mins < 10)
+            minutes = "0" + mins;
+        else
+            minutes = String.valueOf(mins);
+
+        // Append in a StringBuilder
+        String aTime = new StringBuilder().append(hours).append(':')
+                .append(minutes).append(" ").append(timeSet).toString();
+
+        return aTime;
+    }
+
+
+    private void CreateOfflineIntend(final String url, final String parameter,
+                                     final int method, final String remark, final String op, Context context) {
+
+        long a = cf.addofflinedata(url, parameter, method, remark, op);
+        if (a != -1) {
+            //Toast.makeText(getApplicationContext(), "Record Saved Sucessfully", Toast.LENGTH_LONG).show();
+            Intent intent1 = new Intent(context,
+                    SendOfflineData.class);
+            intent1.putExtra("flag", "direct");
+            startService(intent1);
+            //CallReceiverIntentService.enqueueWork(context, intent1);
+
+        } else {
+            // Toast.makeText(getApplicationContext(), "Data not Saved", Toast.LENGTH_LONG).show();
+        }
+
+    }
+
+    public static String formateDateFromstring(String inputFormat, String outputFormat, String inputDate) {
+
+        Date parsed = null;
+        String outputDate = "";
+
+        SimpleDateFormat df_input = new SimpleDateFormat(inputFormat, Locale.getDefault());
+        SimpleDateFormat df_output = new SimpleDateFormat(outputFormat, Locale.getDefault());
+
+        try {
+            parsed = df_input.parse(inputDate);
+            outputDate = df_output.format(parsed);
+
+        } catch (ParseException e) {
+
+        }
+
+        return outputDate;
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+    }
+}

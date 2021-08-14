@@ -1,0 +1,102 @@
+[
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\mipmap-xxhdpi-v4\\ic_app_logo.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_app_logo.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\mipmap-xxhdpi-v4\\ic_offline.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_offline.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\mipmap-xxhdpi-v4\\balloon_incoming_normal.9.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\mipmap-xxhdpi\\balloon_incoming_normal.9.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\mipmap-xxhdpi-v4\\ic_nosync.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_nosync.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\mipmap-xxhdpi-v4\\ic_progress.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_progress.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\mipmap-xxhdpi-v4\\ic_group.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_group.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\mipmap-xxhdpi-v4\\ic_progress3.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_progress3.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\mipmap-xxhdpi-v4\\ic_simplify.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_simplify.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\mipmap-xxhdpi-v4\\ic_addtravel.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_addtravel.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\mipmap-xxhdpi-v4\\ic_progress4.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_progress4.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\mipmap-xxhdpi-v4\\ic_password.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_password.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\mipmap-xxhdpi-v4\\ic_mobile.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_mobile.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\mipmap-xxhdpi-v4\\ic_vwb.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_vwb.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\mipmap-xxhdpi-v4\\ic_progress1.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_progress1.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\mipmap-xxhdpi-v4\\ic_expand.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_expand.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\mipmap-xxhdpi-v4\\ic_toolbar_logo_crm.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\PM\\res\\mipmap-xxhdpi\\ic_toolbar_logo_crm.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\mipmap-xxhdpi-v4\\input_emoji.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\mipmap-xxhdpi\\input_emoji.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\mipmap-xxhdpi-v4\\ic_crm.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_crm.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\mipmap-xxhdpi-v4\\ic_progress2.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_progress2.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\mipmap-xxhdpi-v4\\balloon_outgoing_normal.9.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\mipmap-xxhdpi\\balloon_outgoing_normal.9.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\mipmap-xxhdpi-v4\\ic_progress5.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_progress5.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\mipmap-xxhdpi-v4\\ic_launcher_round.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\mipmap-xxhdpi-v4\\ic_toolbar_logo_vwb.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\PM\\res\\mipmap-xxhdpi\\ic_toolbar_logo_vwb.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\mipmap-xxhdpi-v4\\ic_launcher.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\mipmap-xxhdpi-v4\\message_got_receipt_from_server.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\mipmap-xxhdpi\\message_got_receipt_from_server.png"
+    }
+]

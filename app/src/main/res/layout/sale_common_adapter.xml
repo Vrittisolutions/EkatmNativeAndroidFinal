@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardCornerRadius="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:padding="0dp"
+        card_view:cardElevation="0dp"
+        card_view:cardMaxElevation="0.5dp"
+        card_view:cardUseCompatPadding="true"
+        card_view:contentPadding="1dp"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto">
+
+        <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical">
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/chkbox"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/txtitemcode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Item Code"
+                android:textStyle="bold"
+                android:textColor="#111"
+                android:textSize="10sp"
+                android:visibility="visible"
+                android:layout_weight="0.2"/>
+
+            <TextView
+                android:id="@+id/txtitem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Item Desc"
+                android:textStyle="bold"
+                android:textColor="#111"
+                android:textSize="10sp"
+                android:visibility="visible"
+                android:layout_weight="0.8"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/edtqty"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="0"
+                android:textColor="#111"
+                android:textSize="12sp"
+                android:layout_weight="0.55"
+                android:paddingRight="5sp"
+                android:inputType="numberDecimal"
+                android:layout_gravity="center|right"
+                android:gravity="center|right"
+                android:editable="true"
+                android:background="@drawable/border"/>
+
+            <EditText
+                android:id="@+id/txtrate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="0"
+                android:textColor="#111"
+                android:textSize="12sp"
+                android:layout_weight="0.54"
+                android:paddingRight="5sp"
+                android:inputType="numberDecimal"
+                android:layout_gravity="center|right"
+                android:gravity="center|right"
+                android:background="@drawable/border"/>
+
+            <TextView
+                android:id="@+id/txtuom"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint=""
+                android:textColor="#111"
+                android:textSize="10sp"
+                android:layout_weight="0.54"
+                android:paddingRight="5sp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:background="@drawable/border_grey"/>
+
+            <TextView
+                android:id="@+id/txtamt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="0"
+                android:textColor="#111"
+                android:textSize="12sp"
+                android:layout_weight="0.5"
+                android:paddingRight="5sp"
+                android:layout_gravity="center|right"
+                android:gravity="center|right"
+                android:background="@drawable/border_grey"/>
+
+            <EditText
+                android:id="@+id/edtdisc"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="0"
+                android:textColor="#111"
+                android:textSize="12sp"
+                android:layout_weight="0.51"
+                android:paddingRight="5sp"
+                android:editable="true"
+                android:inputType="numberDecimal"
+                android:layout_gravity="center|right"
+                android:gravity="center|right"
+                android:background="@drawable/border"/>
+
+            <TextView
+                android:id="@+id/txtdiscamt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="0"
+                android:textColor="#111"
+                android:textSize="12sp"
+                android:layout_weight="0.51"
+                android:paddingRight="5sp"
+                android:layout_gravity="center|right"
+                android:gravity="center|right"
+                android:background="@drawable/border_grey"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:orientation="horizontal">
+
+            <AutoCompleteTextView
+                android:id="@+id/txttaxcls"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Tax class"
+                android:textColor="#111"
+                android:textSize="12sp"
+                android:layout_weight="0.2"
+                android:paddingRight="5sp"
+                android:editable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:inputType="text"
+                android:drawableLeft="@drawable/places_ic_search"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:background="@drawable/border"/>
+
+            <TextView
+                android:id="@+id/txttaxamt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="0"
+                android:textColor="#111"
+                android:textSize="12sp"
+                android:layout_weight="0.75"
+                android:paddingRight="5sp"
+                android:layout_gravity="center|right"
+                android:gravity="center|right"
+                android:background="@drawable/border_grey"/>
+
+            <!--<View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#111"
+                android:layout_marginLeft="5dp"/>-->
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

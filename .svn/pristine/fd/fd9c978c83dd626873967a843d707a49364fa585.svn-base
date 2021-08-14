@@ -1,0 +1,36 @@
+package com.vritti.crm.bean;
+
+public class EntityMasterEnterpriseType {
+
+    String EntityMasterId,EntityMasterDesc;
+    boolean isCheck;
+
+    public EntityMasterEnterpriseType(String id, String desc) {
+        this.EntityMasterId = id;
+        this.EntityMasterDesc = desc;
+    }
+
+    public String getEntityMasterId() {
+        return EntityMasterId;
+    }
+
+    public void setEntityMasterId(String entityMasterId) {
+        EntityMasterId = entityMasterId;
+    }
+
+    public String getEntityMasterDesc() {
+        return EntityMasterDesc;
+    }
+
+    public void setEntityMasterDesc(String entityMasterDesc) {
+        EntityMasterDesc = entityMasterDesc;
+    }
+
+    public boolean isCheck() {
+        return isCheck;
+    }
+
+    public void setCheck(boolean check) {
+        isCheck = check;
+    }
+}

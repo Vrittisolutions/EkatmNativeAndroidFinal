@@ -1,0 +1,978 @@
+[
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_stop_grey600_36.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_stop_grey600_36.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_textfield_default_mtrl_alpha.9.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_textfield_default_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\cast_ic_notification_1.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-11.4.0.aar\\c4dcc4afd5bb24f766280f416e367a39\\res\\drawable-xhdpi-v4\\cast_ic_notification_1.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_15_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_15_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_scrubber_primary_mtrl_alpha.9.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_scrubber_primary_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_07_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_07_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_19_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_19_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\notify_panel_notification_icon_bg.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\36558538b602a41a3f8b7493d79908f8\\res\\drawable-xhdpi-v4\\notify_panel_notification_icon_bg.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_09_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_09_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_pause_white_24.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_pause_white_24.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_03_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_03_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_13_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_13_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_create_new_folder_black_24dp.png",
+        "source": "D:\\ICAI\\PM\\app\\build\\generated\\res\\pngs\\PM\\debug\\drawable-xhdpi\\ic_create_new_folder_black_24dp.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_art_track_grey600_48.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_art_track_grey600_48.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_08_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_08_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_22_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_22_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\cast_ic_notification_on.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-11.4.0.aar\\c4dcc4afd5bb24f766280f416e367a39\\res\\drawable-xhdpi-v4\\cast_ic_notification_on.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_14_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_14_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_dialog_close_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_dialog_close_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_08_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_08_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_09_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_09_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_14_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_14_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_12_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_12_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_19_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_19_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_cab_background_top_mtrl_alpha.9.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_cab_background_top_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_plusone_medium_off_client.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-plus-11.4.0.aar\\eeae1b0daef9ffb3826b73e5df3a0552\\res\\drawable-xhdpi-v4\\ic_plusone_medium_off_client.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_22_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_22_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_bigtop_updates_white_24.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_bigtop_updates_white_24.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_forward_10_white_24.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_forward_10_white_24.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_02_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_02_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\common_google_signin_btn_icon_dark_normal_background.9.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.4.0.aar\\8dd36e9b80d851ee437d5fdf6e7eb9e4\\res\\drawable-xhdpi-v4\\common_google_signin_btn_icon_dark_normal_background.9.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_08_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_08_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_replay_30_white_24.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_replay_30_white_24.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_18_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_18_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\powered_by_google_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-places-11.4.0.aar\\9c60aaf505b6efc267b09f4bf5566d34\\res\\drawable-xhdpi-v4\\powered_by_google_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_textfield_activated_mtrl_alpha.9.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_textfield_activated_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_07_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_07_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_media_pause_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_media_pause_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_forward_30_grey600_36.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_forward_30_grey600_36.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\places_ic_clear.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-places-11.4.0.aar\\9c60aaf505b6efc267b09f4bf5566d34\\res\\drawable-xhdpi-v4\\places_ic_clear.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_09_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_09_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_volume_off_white_36.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_volume_off_white_36.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_btn_radio_to_on_mtrl_000.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_btn_radio_to_on_mtrl_000.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\googleg_standard_color_18.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.4.0.aar\\8dd36e9b80d851ee437d5fdf6e7eb9e4\\res\\drawable-xhdpi-v4\\googleg_standard_color_18.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_ic_menu_share_mtrl_alpha.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_ic_menu_share_mtrl_alpha.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_13_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_13_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\cast_ic_stop_circle_filled_white.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\cast_ic_stop_circle_filled_white.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_menu_manage.png",
+        "source": "D:\\ICAI\\PM\\app\\build\\generated\\res\\pngs\\PM\\debug\\drawable-xhdpi\\ic_menu_manage.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_text_select_handle_right_mtrl_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_text_select_handle_right_mtrl_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_audiotrack_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_audiotrack_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_13_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_13_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_17_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_17_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_volume_up_white_36.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_volume_up_white_36.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_16_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_16_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_14_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_14_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_04_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_04_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_ic_star_black_48dp.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_ic_star_black_48dp.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_03_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_03_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_08_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_08_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_play_circle_filled_white_36.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_play_circle_filled_white_36.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_menu_share.png",
+        "source": "D:\\ICAI\\PM\\app\\build\\generated\\res\\pngs\\PM\\debug\\drawable-xhdpi\\ic_menu_share.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_dialog_close_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_dialog_close_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_12_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_12_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_06_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_06_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_list_divider_mtrl_alpha.9.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_list_divider_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\notification_bg_low_normal.9.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\36558538b602a41a3f8b7493d79908f8\\res\\drawable-xhdpi-v4\\notification_bg_low_normal.9.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_22_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_22_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_launcher_background.png",
+        "source": "D:\\ICAI\\PM\\app\\build\\generated\\res\\pngs\\PM\\debug\\drawable-xhdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_21_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_21_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_spinner_mtrl_am_alpha.9.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_spinner_mtrl_am_alpha.9.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_volume_up_grey600_36.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_volume_up_grey600_36.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_04_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_04_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_menu_gallery.png",
+        "source": "D:\\ICAI\\PM\\app\\build\\generated\\res\\pngs\\PM\\debug\\drawable-xhdpi\\ic_menu_gallery.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_04_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_04_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_text_select_handle_left_mtrl_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_text_select_handle_left_mtrl_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_list_selector_disabled_holo_dark.9.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_list_selector_disabled_holo_dark.9.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_03_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_03_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_07_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_07_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_list_pressed_holo_dark.9.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_list_pressed_holo_dark.9.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_pause_circle_filled_grey600_36.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_pause_circle_filled_grey600_36.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_menu_hardkey_panel_mtrl_mult.9.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_menu_hardkey_panel_mtrl_mult.9.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_01_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_01_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_21_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_21_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_ic_commit_search_api_mtrl_alpha.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_ic_commit_search_api_mtrl_alpha.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\keyboard_background_holo.9.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\SuperNova-Emoji-1.1.aar\\53e46f8ca5ef55fc7a0c6e6faf85f9ab\\res\\drawable-xhdpi-v4\\keyboard_background_holo.9.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_vol_type_speaker_group_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_vol_type_speaker_group_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\cast_ic_stop_circle_filled_grey600.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\cast_ic_stop_circle_filled_grey600.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_replay_30_grey600_36.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_replay_30_grey600_36.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_vol_type_tv_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_vol_type_tv_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_closed_caption_white_36.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_closed_caption_white_36.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_10_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_10_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_11_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_11_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_vol_type_speaker_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_vol_type_speaker_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_11_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_11_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_grey.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_grey.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_12_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_12_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_text_select_handle_right_mtrl_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_text_select_handle_right_mtrl_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_clear_white_24.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_clear_white_24.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\design_ic_visibility_off.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\2a4762706393415c04fa065e59894d9a\\res\\drawable-xhdpi-v4\\design_ic_visibility_off.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_popup_background_mtrl_mult.9.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_popup_background_mtrl_mult.9.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_20_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_20_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_00_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_00_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\notification_bg_normal.9.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\36558538b602a41a3f8b7493d79908f8\\res\\drawable-xhdpi-v4\\notification_bg_normal.9.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_list_focused_holo.9.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_list_focused_holo.9.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_stop_grey600_48.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_stop_grey600_48.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_vol_type_tv_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_vol_type_tv_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\design_ic_visibility.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\2a4762706393415c04fa065e59894d9a\\res\\drawable-xhdpi-v4\\design_ic_visibility.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\places_ic_search.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-places-11.4.0.aar\\9c60aaf505b6efc267b09f4bf5566d34\\res\\drawable-xhdpi-v4\\places_ic_search.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\sym_keyboard_delete_holo_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\SuperNova-Emoji-1.1.aar\\53e46f8ca5ef55fc7a0c6e6faf85f9ab\\res\\drawable-xhdpi-v4\\sym_keyboard_delete_holo_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_10_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_10_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_09_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_09_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_media_pause_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_media_pause_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_menu_camera.png",
+        "source": "D:\\ICAI\\PM\\app\\build\\generated\\res\\pngs\\PM\\debug\\drawable-xhdpi\\ic_menu_camera.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_replay_30_white_36.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_replay_30_white_36.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_ic_star_black_16dp.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_ic_star_black_16dp.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_ic_star_half_black_48dp.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_ic_star_half_black_48dp.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_disabled_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_disabled_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_btn_check_to_on_mtrl_015.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_btn_check_to_on_mtrl_015.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_skip_previous_white_24.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_skip_previous_white_24.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_warning_black_48dp.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\acr-1.0.1.aar\\6be5fbade9ebf9429fb530dafa8ae864\\res\\drawable-xhdpi-v4\\ic_warning_black_48dp.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_02_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_02_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_15_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_15_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_forward_30_white_36.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_forward_30_white_36.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_03_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_03_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_16_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_16_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_play_arrow_grey600_48.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_play_arrow_grey600_48.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_00_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_00_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_text_select_handle_middle_mtrl_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_text_select_handle_middle_mtrl_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_00_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_00_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_16_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_16_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_skip_next_white_36.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_skip_next_white_36.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_text_select_handle_left_mtrl_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_text_select_handle_left_mtrl_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_20_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_20_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\cast_abc_scrubber_control_off_mtrl_alpha.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\cast_abc_scrubber_control_off_mtrl_alpha.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_ic_star_half_black_36dp.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_ic_star_half_black_36dp.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_00_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_00_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_btn_check_to_on_mtrl_000.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_btn_check_to_on_mtrl_000.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\cast_ic_notification_2.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-11.4.0.aar\\c4dcc4afd5bb24f766280f416e367a39\\res\\drawable-xhdpi-v4\\cast_ic_notification_2.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_play_circle_filled_grey600_36.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_play_circle_filled_grey600_36.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_10_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_10_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_01_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_01_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_01_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_01_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_stop_white_24.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_stop_white_24.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_textfield_search_default_mtrl_alpha.9.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_textfield_search_default_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\cast_abc_scrubber_control_to_pressed_mtrl_005.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\cast_abc_scrubber_control_to_pressed_mtrl_005.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\cast_ic_notification_0.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-11.4.0.aar\\c4dcc4afd5bb24f766280f416e367a39\\res\\drawable-xhdpi-v4\\cast_ic_notification_0.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\cast_abc_scrubber_primary_mtrl_alpha.9.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\cast_abc_scrubber_primary_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_skip_next_white_24.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_skip_next_white_24.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_menu_slideshow.png",
+        "source": "D:\\ICAI\\PM\\app\\build\\generated\\res\\pngs\\PM\\debug\\drawable-xhdpi\\ic_menu_slideshow.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\common_google_signin_btn_icon_light_normal_background.9.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.4.0.aar\\8dd36e9b80d851ee437d5fdf6e7eb9e4\\res\\drawable-xhdpi-v4\\common_google_signin_btn_icon_light_normal_background.9.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_07_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_07_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_pause_grey600_36.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_pause_grey600_36.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_17_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_17_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\common_google_signin_btn_text_light_normal_background.9.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.4.0.aar\\8dd36e9b80d851ee437d5fdf6e7eb9e4\\res\\drawable-xhdpi-v4\\common_google_signin_btn_text_light_normal_background.9.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_vol_type_speaker_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_vol_type_speaker_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_16_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_16_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_pause_circle_filled_white_36.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_pause_circle_filled_white_36.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_02_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_02_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\notification_bg_normal_pressed.9.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\36558538b602a41a3f8b7493d79908f8\\res\\drawable-xhdpi-v4\\notification_bg_normal_pressed.9.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_replay_10_white_24.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_replay_10_white_24.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_disconnected_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_disconnected_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_launcher.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\audio-wife-1.0.3.aar\\60c1b0aacad530e001aecade2ae2bb1e\\res\\drawable-xhdpi-v4\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_pause_grey600_48.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_pause_grey600_48.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_ic_star_black_36dp.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_ic_star_black_36dp.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_skip_next_grey600_36.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_skip_next_grey600_36.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_05_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_05_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_06_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_06_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_15_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_15_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_vol_type_speaker_group_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_vol_type_speaker_group_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_disconnected_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_disconnected_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_05_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_05_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_15_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_15_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_06_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_06_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_btn_radio_to_on_mtrl_015.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_btn_radio_to_on_mtrl_015.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_refresh_white_24.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_refresh_white_24.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\notification_bg_low_pressed.9.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\36558538b602a41a3f8b7493d79908f8\\res\\drawable-xhdpi-v4\\notification_bg_low_pressed.9.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_media_play_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_media_play_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_17_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_17_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_tab_indicator_mtrl_alpha.9.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_tab_indicator_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_14_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_14_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_play_arrow_white_24.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_play_arrow_white_24.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_plusone_tall_off_client.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-plus-11.4.0.aar\\eeae1b0daef9ffb3826b73e5df3a0552\\res\\drawable-xhdpi-v4\\ic_plusone_tall_off_client.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_19_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_19_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_ic_star_half_black_16dp.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_ic_star_half_black_16dp.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_11_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_11_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_audiotrack_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_audiotrack_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_btn_switch_to_on_mtrl_00012.9.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_btn_switch_to_on_mtrl_00012.9.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_skip_previous_white_36.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_skip_previous_white_36.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_18_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_18_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_menu_send.png",
+        "source": "D:\\ICAI\\PM\\app\\build\\generated\\res\\pngs\\PM\\debug\\drawable-xhdpi\\ic_menu_send.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_list_longpressed_holo.9.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_list_longpressed_holo.9.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_play_arrow_grey600_36.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_play_arrow_grey600_36.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_20_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_20_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_20_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_20_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_forward_30_white_24.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_forward_30_white_24.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_11_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_11_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\common_google_signin_btn_text_dark_normal_background.9.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.4.0.aar\\8dd36e9b80d851ee437d5fdf6e7eb9e4\\res\\drawable-xhdpi-v4\\common_google_signin_btn_text_dark_normal_background.9.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_18_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_18_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_list_selector_disabled_holo_light.9.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_list_selector_disabled_holo_light.9.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_02_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_02_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_05_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_05_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_17_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_17_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_04_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_04_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_21_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_21_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_list_pressed_holo_light.9.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_list_pressed_holo_light.9.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_22_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_22_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_01_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_01_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\powered_by_google_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-places-11.4.0.aar\\9c60aaf505b6efc267b09f4bf5566d34\\res\\drawable-xhdpi-v4\\powered_by_google_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_keyboard_arrow_down_white_36.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_keyboard_arrow_down_white_36.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_text_select_handle_middle_mtrl_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_text_select_handle_middle_mtrl_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\common_full_open_on_phone.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.4.0.aar\\8dd36e9b80d851ee437d5fdf6e7eb9e4\\res\\drawable-xhdpi-v4\\common_full_open_on_phone.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_21_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_21_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_10_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_10_light.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_13_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_13_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_05_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_05_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_disabled_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_disabled_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_cast_white_36.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_cast_white_36.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\googleg_disabled_color_18.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.4.0.aar\\8dd36e9b80d851ee437d5fdf6e7eb9e4\\res\\drawable-xhdpi-v4\\googleg_disabled_color_18.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_skip_previous_grey600_36.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_skip_previous_grey600_36.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_closed_caption_grey600_36.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_closed_caption_grey600_36.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_scrubber_track_mtrl_alpha.9.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_scrubber_track_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_replay_white_24.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_replay_white_24.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\cast_abc_scrubber_control_to_pressed_mtrl_000.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\cast_abc_scrubber_control_to_pressed_mtrl_000.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_adduser.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable-xhdpi\\ic_adduser.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_ic_menu_selectall_mtrl_alpha.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_ic_menu_selectall_mtrl_alpha.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_plusone_small_off_client.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-plus-11.4.0.aar\\eeae1b0daef9ffb3826b73e5df3a0552\\res\\drawable-xhdpi-v4\\ic_plusone_small_off_client.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_volume_off_grey600_36.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_volume_off_grey600_36.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_12_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_12_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_19_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_19_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\abc_switch_track_mtrl_alpha.9.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-xhdpi-v4\\abc_switch_track_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connecting_18_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connecting_18_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_mr_button_connected_06_dark.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_mr_button_connected_06_dark.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_plusone_standard_off_client.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-plus-11.4.0.aar\\eeae1b0daef9ffb3826b73e5df3a0552\\res\\drawable-xhdpi-v4\\ic_plusone_standard_off_client.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\quantum_ic_cast_connected_white_24.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\drawable-xhdpi-v4\\quantum_ic_cast_connected_white_24.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-xhdpi-v4\\ic_media_play_light.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\drawable-xhdpi-v4\\ic_media_play_light.png"
+    }
+]

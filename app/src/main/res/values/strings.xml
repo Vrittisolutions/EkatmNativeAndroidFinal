@@ -1,0 +1,849 @@
+<resources>
+
+
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="tick">\u2713\u2713</string>
+    <string name="wait">\u2713</string>
+    <string name="turn_off_flashlight">FlashLight on</string>
+    <string name="turn_on_flashlight">flashLight off</string>
+    <string name="title_activity_main">QR and Barcode Scanner</string>
+    <string name="message">Place a barcode inside the viewfinder rectangle to scan it.</string>
+    <string name="Mark_attain">
+        Mark your In time
+    </string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_dra">Call List</string>
+    <string name="Unit">Select Status</string>
+    <string-array name="Status">
+        <item>Select</item>
+        <item>Hot</item>
+        <item>Warm</item>
+        <item>Cold</item>
+
+    </string-array>
+    <string-array name="ToWhom">
+        <!-- <item>Select</item>-->
+        <item>SE</item>
+        <item>BOE</item>
+
+    </string-array>
+
+
+    <string-array name="OptionYN">
+        <!-- <item>Select</item>-->
+        <item>No</item>
+        <item>Yes</item>
+
+    </string-array>
+
+    <string-array name="OptionSex">
+        <!-- <item>Select</item>-->
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+
+
+    </string-array>
+    <string-array name="OptionTest">
+        <!-- <item>Select</item>-->
+        <item>Door to Door</item>
+        <item>Haat Bazar</item>
+
+
+    </string-array>
+    <string-array name="action">
+        <item>Action</item>
+        <item>Edit</item>
+        <item>Delete</item>
+
+
+    </string-array>
+    <string-array name="Yes">
+        <item>No</item>
+        <item>Yes</item>
+
+
+    </string-array>
+    <string-array name="Turnover">
+
+        <item>Lac</item>
+        <item>Cr</item>
+
+
+    </string-array>
+    <string-array name="CallAgain">
+        <item>Select</item>
+        <item>No</item>
+        <item>Yes</item>
+
+
+    </string-array>
+
+    <string-array name="Processed">
+        <item>Select</item>
+        <item>Online</item>
+        <item>Physical</item>
+
+
+    </string-array>
+
+    <string-array name="Action">
+        <item>Action</item>
+        <item>Delete</item>
+    </string-array>
+
+    <string-array name="rs">
+        <item>Select</item>
+        <item>Crores</item>
+        <item>Million</item>
+        <item>Billion</item>
+
+    </string-array>
+    <string-array name="cbs">
+        <item>Select</item>
+        <item>Dont know</item>
+        <item>Being done</item>
+        <item>Yes</item>
+
+    </string-array>
+    <string-array name="time">
+
+        <item>09:00</item>
+        <item>09:15</item>
+        <item>09:30</item>
+        <item>09:45</item>
+        <item>10:00</item>
+        <item>10:15</item>
+        <item>10:30</item>
+        <item>10:45</item>
+        <item>11:00</item>
+        <item>11:15</item>
+        <item>11:30</item>
+        <item>11:45</item>
+        <item>12:00</item>
+        <item>12:15</item>
+        <item>12:30</item>
+        <item>12:45</item>
+        <item>13:00</item>
+        <item>13:15</item>
+        <item>13:30</item>
+        <item>13:45</item>
+        <item>14:00</item>
+        <item>14:15</item>
+        <item>14:30</item>
+        <item>14:45</item>
+        <item>15:00</item>
+        <item>15:15</item>
+        <item>15:30</item>
+        <item>15:45</item>
+        <item>16:00</item>
+        <item>16:15</item>
+        <item>16:30</item>
+        <item>16:45</item>
+        <item>17:00</item>
+        <item>17:15</item>
+        <item>17:30</item>
+        <item>17:45</item>
+        <item>18:00</item>
+        <item>18:15</item>
+        <item>18:30</item>
+        <item>18:45</item>
+        <item>19:00</item>
+        <item>19:15</item>
+        <item>19:30</item>
+        <item>19:45</item>
+        <item>20:00</item>
+    </string-array>
+
+
+    <string-array name="year">
+
+        <item>2000</item>
+        <item>2001</item>
+        <item>2002</item>
+        <item>2003</item>
+        <item>2004</item>
+        <item>2005</item>
+        <item>2006</item>
+        <item>2007</item>
+        <item>2008</item>
+        <item>2009</item>
+        <item>2010</item>
+        <item>2011</item>
+        <item>2012</item>
+        <item>2013</item>
+        <item>2014</item>
+        <item>2015</item>
+        <item>2016</item>
+        <item>2017</item>
+        <item>2018</item>
+        <item>2019</item>
+        <item>2020</item>
+        <item>2021</item>
+        <item>2022</item>
+        <item>2023</item>
+        <item>2024</item>
+        <item>2025</item>
+        <item>2026</item>
+        <item>2027</item>
+        <item>2028</item>
+        <item>2029</item>
+        <item>2030</item>
+        <item>2031</item>
+        <item>2032</item>
+        <item>2033</item>
+        <item>2034</item>
+        <item>2035</item>
+        <item>2036</item>
+        <item>2037</item>
+        <item>2038</item>
+        <item>2039</item>
+        <item>2040</item>
+    </string-array>
+    <string-array name="mode">
+        <item>Select..</item>
+        <item>Cheque</item>
+        <item>DD</item>
+        <item>RTGS</item>
+        <item>NEFT</item>
+        <item>CASH</item>
+    </string-array>
+    <string name="title_activity_opportunity_update">OpportunityUpdateActivity</string>
+    <string name="title_activity_enquiry_form">EnquiryFormActivity</string>
+    <string name="criteria">Search Prospect</string>
+    <string name="docReview">Datasheet Document Review</string>
+    <string name="reports">Reports</string>
+    <string name="docSendBack">Activities Sent Back by Kendra</string>
+    <string name="docForward">Activities Sent Forward by Kendra</string>
+    <string name="savecall">Save &amp; Start Call</string>
+    <string-array name="department">
+        <item>User</item>
+        <item>Technical Evalution</item>
+        <item>Purchase-Commercial</item>
+        <item>Decision Maker</item>
+
+    </string-array>
+    <string-array name="collection">
+        <item> Action </item>
+        <item>Provisional Receipt</item>
+        <item>Discount Voucher</item>
+    </string-array>
+
+    <string-array name="added_date">
+        <item>Last Month </item>
+        <item>Before</item>
+        <item>After</item>
+        <item>Between</item>
+    </string-array>
+
+    <string-array name="academic_Year">
+        <item>2015</item>
+        <item>2016</item>
+        <item>2017</item>
+        <item>2018</item>
+        <item>2019</item>
+        <item>2020</item>
+
+
+    </string-array>
+    <string-array name="qualification">
+        <item>Graduate</item>
+        <item>Under Graduate</item>
+        <item>Diploma</item>
+        <item>HSC</item>
+
+
+    </string-array>
+    <string name="title_activity_enquiry_list">ActivityEnquiryList</string>
+    <string name="title_activity_actvity_enquiry_details">ActvityEnquiryDetails</string>
+    <string name="title_activity_promotional_form_record">ActivityPromotionalFormRecord</string>
+    <string name="title_activity_promotional_formselection">ActivityPromotionalFormselection
+    </string>
+
+
+    <string name="Env_code">Environment</string>
+    <string name="api_getEnv">c207.ekatm.com/api/LoginAPI/GetEnvis</string>
+    <string name="api_getPlants">.ekatm.com/api/LoginAPI/GetPlants</string>
+    <string name="api_PostloadWorkData">.ekatm.com/api/TimesheetAPI/PostloadWorkData</string>
+    <string name="api_GetUserMasterId">.ekatm.com/api/TimesheetAPI/GetUserMasterId</string>
+    <string name="api_GetSessions">.ekatm.com/api/LoginAPI/GetSessions</string>
+    <string name="api_GetIsValidUser">.ekatm.com/api/LoginAPI/GetIsValidUser</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+    //
+    <string name="type_your_message">Type Message here</string>
+    <string name="otpmsg">Sit back and relax !\n while we verify your mobile number</string>
+    <string name="UpTicMat_Default_Setting">Default setting</string>
+    <string name="UpTicMat_Change_Setting">Change warehouse and location</string>
+    -
+    <string-array name="planets_array">
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
+    -
+    <string-array name="time_array">
+        <item>09:00</item>
+        <item>09:15</item>
+        <item>09:30</item>
+        <item>09:45</item>
+        <item>10:00</item>
+        <item>10:15</item>
+        <item>10:30</item>
+        <item>10:45</item>
+        <item>11:00</item>
+        <item>11:15</item>
+        <item>11:30</item>
+        <item>11:45</item>
+        <item>12:00</item>
+        <item>12:15</item>
+        <item>12:30</item>
+        <item>12:45</item>
+        <item>13:00</item>
+        <item>13:15</item>
+        <item>13:30</item>
+        <item>13:45</item>
+        <item>14:00</item>
+        <item>14:15</item>
+        <item>14:30</item>
+        <item>14:45</item>
+        <item>15:00</item>
+        <item>15:15</item>
+        <item>15:30</item>
+        <item>15:45</item>
+        <item>16:00</item>
+        <item>16:15</item>
+        <item>16:30</item>
+        <item>16:45</item>
+        <item>17:00</item>
+        <item>17:15</item>
+        <item>17:30</item>
+        <item>17:45</item>
+        <item>18:00</item>
+        <item>18:15</item>
+        <item>18:30</item>
+        <item>18:45</item>
+        <item>19:00</item>
+        <item>19:15</item>
+        <item>19:30</item>
+        <item>19:45</item>
+        <item>20:00</item>
+    </string-array>
+    <string name="google_map_key">AIzaSyD3ONS8gu5RY-Db5shmfI1Fc4NyygBGHSk</string>
+    <string name="claim_records">Claim Records</string>
+    <string name="claim">Claim</string>
+    <string name="paid">Paid</string>
+    <string name="location">Location</string>
+    <string name="copy">Copy</string>
+    <string name="AssginWork">Assign Work</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="app_name_toolbar_service">Service Desk</string>
+    <string name="live_location">Live Location</string>
+    <string name="internal_storage">Internal storage</string>
+    <string name="deliveryDetails">Delivery Deatils</string>
+    <string name="rs">\u20B9</string>
+    <string name="cancel">Cancel</string>
+
+    <string-array name="tutor">
+
+        <item>Male</item>
+        <item>Female</item>
+        <item>Any</item>
+        <item>Female Preferable</item>
+
+    </string-array>
+    <string-array name="Account_Type">
+        <item>Saving</item>
+        <item>Current</item>
+        <item>Fix</item>
+    </string-array>
+
+    <string-array name="category">
+        <item>Personal</item>
+        <item>Official</item>
+    </string-array>
+    <string-array name="vehicle">
+        <item>2 Wheeler</item>
+        <item>4 Wheeler</item>
+        <item>Bus</item>
+        <item>Taxi</item>
+        <item>Airplane</item>
+        <item>Train</item>
+        <item>Auto</item>
+        <item>Travels</item>
+    </string-array>
+    <string-array name="subcat">
+        <item>Education</item>
+        <item>Entertainment</item>
+        <item>Food</item>
+        <item>Fuel</item>
+        <item>Grocery</item>
+        <item>Hotel</item>
+        <item>Hospital</item>
+        <item>Lodging</item>
+        <item>Local</item>
+        <item>Movie</item>
+        <item>Medical</item>
+        <item>Maintenance</item>
+        <item>Other</item>
+        <item>Shopping</item>
+        <item>Travel</item>
+
+    </string-array>
+    <string-array name="official">
+        <item>Travelling</item>
+        <item>Lodging</item>
+        <item>Food</item>
+        <item>Laundry</item>
+        <item>Local</item>
+        <item>Entertainment</item>
+        <item>Phone</item>
+        <item>Tips</item>
+        <item>Maintenance</item>
+        <item>Other</item>
+    </string-array>
+    <string-array name="payment">
+        <item>Cash</item>
+        <item>Credit Card</item>
+        <item>Debit Card</item>
+    </string-array>
+    <string-array name="linkdata">
+        <item>Activity</item>
+        <item>Sales Call</item>
+    </string-array>
+
+    <string-array name="indent">
+        <item>Regular Purchase</item>
+        <item>Capital Purchase</item>
+        <item>Project Purchase</item>
+    </string-array>
+
+    <string name="speak_button">Speak</string>
+
+    <!--   Sales / counter billing -->
+    <string name="ButtonFont">sans-serif-dark</string>
+    <string name="DarkFont">sans-serif-medium</string>
+    <string name="TextFont">sans-serif-light</string>
+    <string name="scanning">scanning for devices...</string>
+    <string name="select_device">select a device to connect</string>
+    <string name="none_found">No devices found</string>
+    <string name="none_paired">No devices have been paired</string>
+    <string name="app_name_toolbar_sales">Sales</string>
+
+    <string name="label_title">LABEL PRINT</string>
+    <string name="number_label">"Item Code:"</string>
+    <string name="name_label">"Tag No:"</string>
+    <string name="tag_desc">""</string>
+    <string name="desc">""</string>
+    <string name="area">Area:</string>
+    <string name="loc">Loc:</string>
+    <!--<string name="qty">Qty:</string>-->
+    <string name="weight">Weight:</string>
+    <string name="produce_date">Date Time:</string>
+    <string name="produce_company">Counted By:</string>
+    <string name="barcode">""</string>
+
+    <string name="title_paired_devices">Paired</string>
+    <string name="title_other_devices">Other devices</string>
+    <string name="button_scan">SCAN</string>
+
+    <!--label printer QSPrinter-->
+    <string name="str_checkdevice">check equipment </string>
+    <string name="str_open">turn on Bluetooth</string>
+    <string name="str_close">turn off Bluetooth</string>
+    <string name="str_matched">View paired devices</string>
+    <string name="str_openimg">Open picture </string>
+    <string name="str_create2d">Qrcode</string>
+    <string name="str_createbar">Barcode</string>
+    <string name="str_order">FontSize</string>
+    <string name="str_scan">Scanning equipment</string>
+    <string name="str_printword">Print </string>
+    <string name="str_printword_desc">Print GBK, Unicode text encoding</string>
+    <string name="str_printimg">Print pictures</string>
+    <string name="str_printimg_desc">Select the picture to print</string>
+    <string name="str_printbarcode">BARcode printing </string>
+    <string name="str_printbarcode_desc">Dynamically create a dimensional code printing </string>
+    <string name="str_printqrcode">QRcode printing </string>
+    <string name="str_printqrcode_desc">Dynamically create 2D code printing </string>
+    <string name="str_printcmd">Send printer instructions </string>
+    <string name="str_printcmd_desc">Send a print instruction set other instructions </string>
+    <string name="str_disconnect">Disconnect</string>
+    <string name="str_device">Device List</string>
+    <string name="str_scaning">Scanning</string>
+    <string name="str_unconnected">Not connected!</string>
+    <string name="str_succonnect">Connected successfully!</string>
+    <string name="str_faileconnect">Connection failed!</string>
+    <string name="str_lose">Connection lost!</string>
+    <string name="str_cannotcreate2d">Create 2D failed!</string>
+    <string name="str_cannotcreatebar">Failed to create a one-dimensional code </string>
+    <string name="str_devecehasblue">Bluetooth equipment! </string>
+    <string name="str_nomatched">No matching equipment!</string>
+    <string name="str_connected">Connected </string>
+    <string name="str_disconnected">Not connected to </string>
+    <string name="str_connecting">Connecting to </string>
+    <string name="str_hasnodevice">No Bluetooth devices! </string>
+    <string name="str_scanover">Scanning is finished!</string>
+    <string name="chose">Select</string>
+    <string name="mode_bt">BT Printer</string>
+    <string name="mode_wifi">Wifi Printer</string>
+    <string name="mode_usb">USB Printer</string>
+    <string name="str_printunicode">Print Unicode</string>
+    <string name="str_printtext">str_printtext</string>
+    <string name="str_exit">Sure exit and close the equipment?</string>
+    <string name="str_autotime">Interval(ms):</string>
+    <string name="str_autoprint">Auto Print</string>
+
+    <string name="str_printer_state">STATE</string>
+    <string name="str_printer_printing">Printing</string>
+    <string name="str_printer_lowpower">Low power</string>
+    <string name="str_printer_nopaper">No paper</string>
+    <string name="str_printer_bufferfull">Buffer full</string>
+    <string name="str_printer_buffernull">Buffer null</string>
+    <string name="str_printer_hightemperature">High temperature</string>
+
+    <string name="str_custom_instruction">Instruction</string>
+    <string name="button_send_instruction">Send</string>
+
+    <string name="print_setting">Printer Setting</string>
+    <string name="code_transformation">Black Mark</string>
+
+    <string name="black_mark_open">Open</string>
+    <string name="black_mark_close">Close</string>
+    <string name="black_mark_height">Height</string>
+    <string name="black_mark_width">Width</string>
+    <string name="black_mark_start_bit">Position</string>
+    <string name="black_mark_voltage">Voltage</string>
+    <string name="black_mark_to_bmark">Go to the black mark</string>
+    <string name="black_mark_to_update">Update</string>
+    <string name="black_mark_to_plz_open">Must Open The BlackMark!</string>
+    <string name="black_mark_to_test">Test Print</string>
+    <string name="black_mark_to_startbit">Test Print</string>
+    <string name="black_mark_to_text">Text</string>
+    <string name="black_mark_to_bar">Bar</string>
+    <string name="black_mark_to_qr">QR</string>
+
+    <style name="yourstyle" parent="@style/Base.TextAppearance.AppCompat.Title">
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <!--order booking strings-->
+    <string name="whtbuy">What would you like to buy?</string>
+    <string name="hotel">Hotels \n &amp;\n Restaurants</string>
+    <string name="clickoffr">Click here to Get Offers and Discount</string>
+    <string name="nointernet">No internet connection available...</string>
+    <string name="shopby">Select product category</string>
+    <string name="shopby2">Select Sub - Category</string>
+    <string name="openordlist">Open Orders List</string>
+    <string name="thanks_for_interes">Thanks for your interest. We are launching </string>
+    <string name="thanks_for_interes_item">Thanks for your interest. We will make </string>
+    <string name="soon"> soon.</string>
+    <string name="soon_item"> available soon.</string>
+    <string name="servererror">Sorry! something went wrong, no response from server.</string>
+    <string name="contnue">Continue</string>
+    <string name="addtocart">Add to cart</string>
+    <string name="srch_prodbrand">Search product/brand...</string>
+    <string name="searchprod">Search product here...</string>
+    <string name="prod">Product</string>
+    <string name="prodtitle">Product Details</string>
+    <string name="distance">Around - </string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="ok">Ok</string>
+    <string name="edt">Edit</string>
+    <string name="rangenote">Merchant will confirm rate while order acceptance</string>
+    <string name="maxordlimit">Quantity should within range of max order qty and min order qty limit</string>
+    <string name="combo1">Combo</string>
+    <string name="buy1get1">Get benefit of Buy 1 Get 1 free</string>
+    <string name="outofstock">Out of stock</string>
+    <string name="stocknote">Sorry, Currently not in stock</string>
+    <string name="minordqty">Min order qty  : </string>
+    <string name="maxordqty">Max order qty : </string>
+    <string name="raterange">Rate in Range : </string>
+    <string name="range">Range</string>
+    <string name="dist">distance</string>
+    <string name="amt">Amount</string>
+    <string name="mrp">MRP</string>
+    <string name="selrate">Selling rate</string>
+    <string name="qty">Qty</string>
+    <string name="orgqty">Org Qty</string>
+    <string name="yousave">You save</string>
+    <string name="chkseller">Check Merchant</string>
+    <string name="delete">Remove</string>
+    <string name="rate">Rate  </string>
+    <string name="discard">Discard cart</string>
+    <string name="prochkout">Proceed to Checkout</string>
+    <string name="amount">Amount Payable </string>
+    <string name="noitems">No Items</string>
+    <string name="msgnoitm">It looks like there is no item added in your cart.</string>
+    <string name="shopmoer">Shop More</string>
+    <string name="chekout">Checkout</string>
+    <string name="mycart">My Cart</string>
+    <string name="no_prod_to_checkout">No products to checkout</string>
+    <string name="no_items_in_cart">No items in cart</string>
+    <string name="itm_added">Item added to cart</string>
+    <string name="seldelivery">Select Delivery</string>
+    <string name="merchname">Merchant name</string>
+    <string name="you_can_not_sel_day_early">You cannot select a day earlier than today!</string>
+    <string name="selectdate">Select Date</string>
+    <string name="plz_sel_datefirst">Please select date first!</string>
+    <string name="you_cant_sel_time_early">You cannot select a time earlier than current time!</string>
+    <string name="selecttime">Select Time</string>
+    <string name="plz_fill_address">Please fill address</string>
+    <string name="plz_fill_deldate">Please fill date of delivery</string>
+    <string name="plz_fill_deltime">Please fill time of delivery</string>
+    <string name="sorry_ord_not_place">Sorry! Order not Placed due to network error</string>
+    <string name="sorry_ord_not_update">Sorry! Order not updated due to network error</string>
+    <string name="ord_place_success">Order Placed Successfully</string>
+    <string name="viewdeldtls">View Delivery Details</string>
+    <string name="unabletofind">Unable to find location.</string>
+    <string name="dialogcnfrmord">Do you really want to place this order? </string>
+    <string name="deldtls">Delivery Details</string>
+    <string name="placeord1">Place Order</string>
+    <string name="totime">Time To</string>
+    <string name="frmtime">Time From</string>
+    <string name="deldate">Delivery Date</string>
+    <string name="deladdress">Delivery Address</string>
+    <string name="delcharges">Delivery Charges</string>
+    <string name="subtot">Sub - Total</string>
+    <string name="offrdiscount">Offer Discount</string>
+    <string name="prodtotal">Products Total</string>
+    <string name="pricedtl">Price Details</string>
+    <string name="delmsg">Delivery charges will get applied for Door Step.</string>
+    <string name="doorstep">Door Step</string>
+    <string name="takeaway">Take Away</string>
+    <string name="seldeloption">Select Delivery Mode</string>
+    <string name="sorrydelserv">Sorry! We are unable to provide delivery service in your area.</string>
+    <string name="thankyou">Thank you</string>
+    <string name="d1"> km distance</string>
+    <string name="fm">from</string>
+    <string name="to">to</string>
+    <string name="fm_1">From : </string>
+    <string name="delvto">Delivery to</string>
+    <string name="ordplacemsg">Your order has been placed successfully.</string>
+    <string name="cart_discarded">Cart discarded successfully </string>
+    <string name="inprog">In Progress</string>
+    <string name="loading">Loading please wait...</string>
+    <string name="order">Order Booking </string>
+    <string name="order_acceptance">Order Acceptance </string>
+    <string name="packaging">Packaging and Invoicing</string>
+    <string name="pending">Pending Deliveries</string>
+    <string name="transit">In Transit Packaging </string>
+    <string name="sales">Orders</string>
+    <string name="so">Order No.</string>
+    <string name="sd">Order Date</string>
+    <string name="dd">Delv. Date</string>
+    <string name="incl">Inclusive Delivery Charges</string>
+    <string name="sndng">Sending...</string>
+    <string name="decline">Decline</string>
+    <string name="accept">Accept</string>
+    <string name="acpt">Accepted</string>
+    <string name="greetings">Greetings from FreshMart!</string>
+    <string name="ordamt">Order Amt.</string>
+    <string name="custdtl">Customer Details -</string>
+    <string name="merchdtl">Merchant Details -</string>
+    <string name="expdelon">Expected delivery on </string>
+    <string name="choseone">Choose one to Share order details</string>
+    <string name="clickhere">Click here to download FreshMart application</string>
+    <string name="ordno">Order No.</string>
+    <string name="status">Status</string>
+    <string name="name">Name</string>
+    <string name="mobile">Mobile</string>
+    <string name="address">Address</string>
+    <string name="partpckgd">Partially Packaged </string>
+    <string name="sorry_no_ord_aval">Sorry! No orders available </string>
+    <string name="addt">Added Date</string>
+    <string name="expdldt">Exp. Del. Date</string>
+    <string name="consignee">Consignee</string>
+    <string name="showmore">Show more  </string>
+    <string name="sonum">Order Number : </string>
+    <string name="itmcodedesc">Item Code - Desc</string>
+    <string name="schadddt">Sch.date/ Add. date</string>
+    <string name="shpsch">Shp.Qty/ Sch. Qty</string>
+    <string name="nodatafound">No Data found</string>
+    <string name="procpckg">Proceed Packaging</string>
+    <string name="pckgsavesucc">Packaging saved successfully, your invoice no is  </string>
+    <string name="pckgsav">Packaging not saved  </string>
+    <string name="schdt">Schedule Date</string>
+    <string name="schqty">Schedule Qty</string>
+    <string name="scpqty">Shipment Qty</string>
+    <string name="pckqty">Packed Qty</string>
+    <string name="entshpqty">Entered shipment quantity is greater than actual shipment quantity</string>
+    <string name="serchpndingdel">Searching for pending deliveries...</string>
+    <string name="nopnddel">Sorry! no pending deliveries found.</string>
+    <string name="invno">Invoice No.</string>
+    <string name="invdate">Invoice Date</string>
+    <string name="serchtransit">Searching for transit packages...</string>
+    <string name="notransit">No transit packages found.</string>
+
+    <!--==========================================================================================-->
+        <string name="name_hindi">नाम</string>
+        <string name="mobno_hindi">मोबाइल नंबर</string>
+        <string name="gender_hindi">लिंग</string>
+        <string name="age_hindi">उम्र</string>
+        <string name="btn_forward">आगे</string>
+        <string name="txt_greet">वोट देने के लिए धन्यवाद</string>
+        <string name="txt_male">पुरुष</string>
+        <string name="txt_female">महिला</string>
+        <string name="txt_other">अन्य</string>
+
+        <!--<string name="address">""</string>-->
+        <string name="zip_code">Area:</string>
+        <string name="phone_number">Loc:</string>
+        <string name="company_name">Qty:</string>
+        <string name="produce_name">Weight:</string>
+        <string name="produce_number">""</string>
+
+         <string-array name="nav_item_activity_titles">
+            <item>Home</item>
+            <item>Inward</item>
+            <item>Production</item>
+            <item>Shipping</item>
+            <item>Logout</item>
+
+
+        </string-array>
+        <string name="openDrawer">open_drawer</string>
+        <string name="closeDrawer">close_drawer</string>
+
+
+        <string-array name="array_packaging">
+            <item>Create secondary pack</item>
+            <item>Suspend secondary pack</item>
+            <item>Resume secondary pack</item>
+            <item>Finished secondary pack</item>
+            <item>Weighing secondary pack</item>
+            <item>Print packing list</item>
+
+        </string-array>
+
+        <string-array name="array_do_no">
+            <item>4368534</item>
+            <item>INV/19-20/018</item>
+            <item>INV/19-20/021</item>
+            <item>INV/19-20/024</item>
+            <item>INV/19-20/025</item>
+            <item>INV/19-20/026</item>
+
+        </string-array>
+        <string-array name="array_picking">
+            <item>Load DO</item>
+            <item>Split primary label</item>
+
+        </string-array>
+
+        <string-array name="array_do">
+            <item>Select Delivery Note</item>
+            <item>4368534</item>
+            <item>INV/19-20/018</item>
+            <item>INV/19-20/021</item>
+
+        </string-array>
+    <string-array name="Calltype">
+
+    <item>Select Option</item>
+    <item>Colleague</item>
+    <item>Spam</item>
+    <item>Personal</item>
+    </string-array>
+
+    <string-array name="business">
+        <item>grocery_or_supermarket</item>
+        <item>supermarket</item>
+        <item>restaurant</item>
+        <item>pharmacy</item>
+        <item>bakery</item>
+        <item>book_store</item>
+    </string-array>
+
+    <string-array name="radious">
+        <item>3</item>
+        <item>5</item>
+        <item>10</item>
+        <item>20</item>
+    </string-array>
+
+    <string name="no_geocoder_available">No geocoder available</string>
+
+    <string name="fetch_address">Fetch address</string>
+
+    <string name="address_found">Address found</string>
+
+    <string name="no_address_found">Sorry, no address found</string>
+    <string name="no_location_data_provided">No location data provided</string>
+    <string name="service_not_available">Sorry, the service is not available</string>
+    <string name="invalid_lat_long_used">Invalid latitude or longitude used</string>
+
+
+    <string-array name="CRMDateFilter">
+        <item>Select</item>
+        <item>Before</item>
+        <item>After</item>
+        <item>Between</item>
+    </string-array>
+
+    <string-array name="ViewReseller">
+        <item>Select</item>
+        <item>Vendor</item>
+        <item>Retail Agency</item>
+        <item>Corporate Agency</item>
+        <item>Retails Dealer</item>
+    </string-array>
+
+    <string-array name="AddedPeriod">
+        <item>Last Month</item>
+        <item>Before</item>
+        <item>After</item>
+        <item>Between</item>
+    </string-array>
+
+    <string name="text1">• Ekatm CRM Call log will record your outgoing and incoming phone calls. It captures contact number,time and duration of the call.</string>
+    <string name="text2">• Call log is stored locally on your phone only. Call information is sent to server only when you link number with prospect or customer. So, your call information is absolutely private to you.</string>
+    <string name="text3">• In Ekatm app you will see icon</string>
+    <string name="text4">• This will be visible only if there is call not updated in CRM or service desk.</string>
+    <string name="text5">• You will see your phone call record.</string>
+    <string name="text6">• The phone number will be checked in Ekatm. If this number exists in prospect or customer contact list then name of prospect or customer will be displayed.</string>
+    <string name="text7">• You click on the number. You will get options to</string>
+    <string name="text8">o	Link to opportunity</string>
+    <string name="text9">o	Link to Collection</string>
+    <string name="text10">o	Link to Ticket</string>
+    <string name="text11">o	Create new opportunity</string>
+    <string name="text12">o	Mark as personal</string>
+    <string name="text13">o	Mark as Colleague</string>
+    <string name="text14">o	Mark as Spam</string>
+
+
+    <string name="cod">Cash on Delivery</string>
+    <string name="upi1">UPI</string>
+    <string name="paynow">Pay Now</string>
+    <!--Order history status-->
+    <string name="apprvd">Accepted </string>
+    <string name="notapprvd">Not Accepted </string>
+    <string name="placed">Placed </string>
+    <string name="notpckgd">Not Packaged </string>
+    <string name="notrcvd">Not Received </string>
+    <string name="pckcmpltd">Packaging Completed </string>
+    <string name="rcvd">Received </string>
+    <string name="closed">Closed </string>
+    <string name="cancld">Cancelled </string>
+    <string name="rejctd">Rejected </string>
+    <string name="exptill">Expected till </string>
+    <string name="myordhistory">My Order History</string>
+    <string name="openords">Placed Orders</string>
+    <string name="apprords">Accepted Orders</string>
+    <string name="pckgdords">Partially Packed Orders</string>
+    <string name="fulpackord">Full packed Orders</string>
+    <string name="delvords">Delivered Orders</string>
+    <string name="canords">Cancelled Orders</string>
+
+</resources>
+

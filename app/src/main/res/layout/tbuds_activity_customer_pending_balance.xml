@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/tbar"
+        layout="@layout/tbuds_common_toolbar"
+        android:visibility="visible" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:weightSum="1">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center"
+                android:paddingLeft="5dp"
+                android:text="Customer Mobile Number :"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/MobileNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_weight="0.1"
+                android:gravity="center|left"
+                android:layout_marginLeft="10dp"
+                android:text="Mobile Number"
+                android:textColor="#000"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/linearLayout6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:gravity="center"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_weight="0.20"
+                android:gravity="center"
+                android:text="BillNo"
+                android:textColor="#6CAD1C"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_weight="0.20"
+                android:gravity="center"
+                android:text="Date"
+                android:textColor="#6CAD1C"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="0.20"
+                android:text="Total Amount"
+                android:textColor="#6CAD1C"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_weight="0.20"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:text="Paid Amount"
+                android:textColor="#6CAD1C"
+                android:textSize="16dp" />
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_weight="0.20"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:text="Remaining Amount"
+                android:textColor="#6CAD1C"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout_pending"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/linearlayout_cart_bottom_layout"
+            android:layout_below="@+id/linearLayout6"
+            android:orientation="vertical" />
+
+        <LinearLayout
+            android:id="@+id/linearlayout_cart_bottom_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="#FF4112"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Receivable Amount : "
+                    android:textColor="#fff"
+                    android:textSize="16dp"
+                    android:layout_gravity="center_vertical|left"
+                    android:gravity="center_vertical|left"
+                    android:layout_weight="0.7"/>
+
+                <TextView
+                    android:id="@+id/textview_total_pending_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" 0.00 ₹"
+                    android:textColor="#fff"
+                    android:textSize="16dp"
+                    android:layout_gravity="center_vertical|right"
+                    android:gravity="center_vertical|right"
+                    android:layout_weight="0.3"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

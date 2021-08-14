@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/ln_View"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+
+        //new
+        <LinearLayout
+            android:id="@+id/cView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:paddingLeft="5dp">
+
+
+            <TextView
+                android:id="@+id/txtquestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:text="Title"
+                android:padding="2dp"
+                android:typeface="serif"
+                android:textColor="#000"
+                android:textSize="14sp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/txtanswer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Answer"
+                    android:padding="2dp"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:typeface="serif"
+                    android:layout_weight="0.7"
+                    android:textSize="14sp"
+                    />
+
+                <RelativeLayout
+                    android:id="@+id/rel_attachment"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.1"
+                    android:visibility="visible"
+                    android:gravity="right">
+
+
+                    <ImageView
+                        android:id="@+id/img_attachment"
+                        android:layout_width="35dp"
+                        android:layout_height="25dp"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:adjustViewBounds="true"
+                        android:gravity="center_vertical"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/paperclip" />
+
+                    <TextView
+                        android:id="@+id/attachment_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignRight="@id/img_attachment"
+                        android:layout_marginRight="-3dp"
+                        android:layout_marginTop="1dp"
+                        android:background="@drawable/bg_circle_red"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="10sp"
+                        tools:text="1" />
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+
+
+
+            <TextView
+                android:id="@+id/txtremark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Extension Officer-Extension Officer 1, Approved on 20/01/2020 11:56"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:visibility="gone"
+                />
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/txt_remarkstatus"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    tools:text="completed succesfully"
+                    android:layout_weight="0.5"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:textSize="12dp"
+
+                    />
+
+
+                <RelativeLayout
+                    android:id="@+id/rel_statusimg"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".1">
+
+
+                    <ImageView
+                        android:id="@+id/img_RemarkStatus"
+                        android:layout_width="20dp"
+                        android:layout_height="15dp"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:adjustViewBounds="true"
+                        android:gravity="center_vertical"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/see_all_icon"
+
+                        />
+
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="35dp"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="2dp"
+                    android:layout_weight="0.2">
+
+                    <RelativeLayout
+                        android:id="@+id/rel_appr"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.8"
+                        android:gravity="right"
+                        android:visibility="gone">
+
+
+                        <ImageView
+                            android:id="@+id/img_appr"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:adjustViewBounds="true"
+                            android:gravity="center_vertical"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/doc_bg_pending_icon" />
+
+
+                    </RelativeLayout>
+
+
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+

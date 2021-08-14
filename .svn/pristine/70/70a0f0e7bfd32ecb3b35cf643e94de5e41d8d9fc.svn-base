@@ -1,0 +1,78 @@
+package com.vritti.crm.adapter;
+
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.vritti.crm.bean.EntityBIData;
+import com.vritti.ekatm.R;
+
+import java.util.ArrayList;
+
+public class EntityMasterMainAdapter extends RecyclerView.Adapter<EntityMasterMainAdapter.EntityHolder> {
+Context context;
+ArrayList<EntityBIData> entityMasterBeanArrayList;
+
+    public EntityMasterMainAdapter(Context context, ArrayList<EntityBIData> entityMasterBeanList) {
+        this.context = context;
+        this.entityMasterBeanArrayList = entityMasterBeanList;
+    }
+
+    @NonNull
+    @Override
+    public EntityHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.entity_list_row,
+                parent, false);
+
+        return new EntityHolder(itemView);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull EntityHolder holder, int position) {
+
+        try{
+            holder.txt_Code.setText(entityMasterBeanArrayList.get(position).getCustVendorCode());
+            holder.txt_Name.setText(entityMasterBeanArrayList.get(position).getCustVendorName());
+            holder.txt_entityClass.setText(entityMasterBeanArrayList.get(position).getEntityclass());
+            holder.txt_city.setText(entityMasterBeanArrayList.get(position).getCity());
+            holder.txt_address.setText(entityMasterBeanArrayList.get(position).getAddress());
+            holder.txt_contact.setText(entityMasterBeanArrayList.get(position).getContact());
+            holder.txt_email.setText(entityMasterBeanArrayList.get(position).getEmail());
+            holder.txt_mobile.setText(entityMasterBeanArrayList.get(position).getContact());
+          /*  holder.txt_Name.setText(entityMasterBeanArrayList.get(position).getE());*/
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return entityMasterBeanArrayList.size();
+    }
+
+    public class EntityHolder extends RecyclerView.ViewHolder {
+
+        TextView txt_action,txt_mobile,txt_email,txt_contact,
+                txt_address,txt_city,txt_entityClass,txt_Name,txt_Code;
+
+        public EntityHolder(View itemView) {
+            super(itemView);
+
+            txt_action = itemView.findViewById(R.id.txt_action);
+            txt_mobile = itemView.findViewById(R.id.txt_mobile);
+            txt_email = itemView.findViewById(R.id.txt_email);
+            txt_contact = itemView.findViewById(R.id.txt_contact);
+            txt_address = itemView.findViewById(R.id.txt_address);
+            txt_city = itemView.findViewById(R.id.txt_city);
+            txt_entityClass = itemView.findViewById(R.id.txt_entityClass);
+            txt_Name = itemView.findViewById(R.id.txt_Name);
+            txt_Code = itemView.findViewById(R.id.txt_Code);
+        }
+    }
+}

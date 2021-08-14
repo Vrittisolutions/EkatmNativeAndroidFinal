@@ -1,0 +1,315 @@
+package com.vritti.vwb.Adapter;
+
+import android.content.Context;
+import android.graphics.Color;
+import android.os.Build;
+import android.os.Parcelable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.vritti.ekatm.Constants;
+import com.vritti.ekatm.R;
+import com.vritti.vwb.Beans.EditDatasheet;
+import com.vritti.vwb.vworkbench.EditDatasheetActivityMain;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+
+public class EditDatasheetKendraAdapter extends BaseAdapter {
+    ArrayList<EditDatasheet> datasheetlists;
+    Context context;
+    private ViewHolder holder;
+    EditDatasheet datasheet;
+    int flagFromTeam;
+    String designation = "";
+
+    public EditDatasheetKendraAdapter(Context context, ArrayList<EditDatasheet> datasheetlists, int flagFromTeam) {
+        super();
+        this.context = context;
+        this.datasheetlists = datasheetlists;
+        this.flagFromTeam = flagFromTeam;
+    }
+
+    public EditDatasheetKendraAdapter(Context context, ArrayList<EditDatasheet> datasheetlists, int flagFromTeam, String designation) {
+
+        this.context = context;
+        this.datasheetlists = datasheetlists;
+        this.flagFromTeam = flagFromTeam;
+        this.designation = designation;
+
+    }
+
+    public int getCount() {
+
+        if (datasheetlists != null)
+
+            return datasheetlists.size();
+        else
+            return 0;
+    }
+
+    public void update(ArrayList<EditDatasheet> editdatasheetlists) {
+        datasheetlists = editdatasheetlists;
+        notifyDataSetChanged();
+    }
+
+    @Override
+    public Object getItem(int pos) {
+
+        return datasheetlists.get(pos);
+    }
+
+    @Override
+    public long getItemId(int pos) {
+
+        return pos;
+    }
+
+    @Override
+    public int getViewTypeCount() {
+        return super.getViewTypeCount();
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+
+        return position;
+    }
+
+    @Override
+    public View getView(int position, View view, ViewGroup viewGroup) {
+
+        final int pos = position;
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy hh:mm");
+        if (view == null) {
+            holder = new ViewHolder();
+
+            LayoutInflater inflater = (LayoutInflater) context
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            view = inflater
+                    .inflate(R.layout.vwb_custom_datasheet_sahara, viewGroup, false);
+            holder.txtQuestion = (TextView) view.findViewById(R.id.txtquestion);
+            holder.txtAnswer = (TextView) view.findViewById(R.id.txtanswer);
+            holder.txtremark = (TextView) view.findViewById(R.id.txtremark);
+            holder.txt_remarkstatus = (TextView) view.findViewById(R.id.txt_remarkstatus);
+            holder.rel_statusimg = view.findViewById(R.id.rel_statusimg);
+            holder.img_attachment = view.findViewById(R.id.img_attachment);
+            holder.attachment_count = view.findViewById(R.id.attachment_count);
+            holder.ln_View = view.findViewById(R.id.cView);
+            holder.img_appr = view.findViewById(R.id.img_appr);
+            holder.rel_appr = view.findViewById(R.id.rel_appr);
+			/*holder.txt_approve = view.findViewById(R.id.txt_approve);
+			holder.txt_disapprove = view.findViewById(R.id.txt_disapprove);
+			holder.txt_dispname = view.findViewById(R.id.txt_dispname);
+			holder.ln_main = view.findViewById(R.id.ln_main);
+			holder.attachment_count = view.findViewById(R.id.attachment_count);
+			holder.rel_attachment = view.findViewById(R.id.rel_attachment);*/
+            view.setTag(holder);
+
+        } else {
+            holder = (ViewHolder) view.getTag();
+        }
+
+        if (flagFromTeam == 1) {
+            holder.img_appr.setVisibility(View.GONE);
+            holder.img_appr.setVisibility(View.GONE);
+        } else {
+            if (Constants.type == Constants.Type.ZP) {
+                holder.img_appr.setVisibility(View.GONE);
+                holder.img_appr.setVisibility(View.GONE);
+            } else {
+                holder.img_appr.setVisibility(View.VISIBLE);
+                holder.img_appr.setVisibility(View.VISIBLE);
+            }
+        }
+
+
+        holder.txtQuestion.setText(datasheetlists.get(pos).getQuesText());
+
+
+        if (datasheetlists.get(pos).isRemarks()) {
+
+            String date = datasheetlists.get(pos).getAddeddt();
+            String remark = datasheetlists.get(pos).getRemark();
+            String date1 = "";
+
+            if (datasheetlists.get(pos).getRemark() == null) {
+
+                holder.txt_remarkstatus.setVisibility(View.INVISIBLE);
+                holder.txtremark.setVisibility(View.INVISIBLE);
+
+            } else {
+			/*  if (datasheetlists.get(pos).getRemark().equals("")) {
+				  //	holder.txt_remarkstatus.setVisibility(View.INVISIBLE);
+			  } else {*/
+                if (datasheetlists.get(pos).getAddeddt() == null) {
+
+                } else {
+                    holder.txt_remarkstatus.setVisibility(View.VISIBLE);
+                    holder.txtremark.setVisibility(View.VISIBLE);
+
+                    date1 = formateDateFromstring("yyyy-MM-dd hh:mm:ss", "dd/MM/yyyy hh:mm", date);
+                    holder.txt_remarkstatus.setText(datasheetlists.get(pos).getRemark());
+                    String append_String = datasheetlists.get(pos).getDescr() + "-" + datasheetlists.get(pos).getUsername() + " , " + datasheetlists.get(pos).getIsApprDisAppr() + " on " + date1;
+                    holder.txtremark.setText(append_String);
+                    // }
+                }
+            }
+        } else {
+            holder.txt_remarkstatus.setVisibility(View.INVISIBLE);
+            holder.txtremark.setVisibility(View.INVISIBLE);
+
+        }
+
+
+        if (datasheetlists.get(pos).getAttachmentCount().equalsIgnoreCase("0")
+                || datasheetlists.get(pos).getAttachmentCount().equalsIgnoreCase("")) {
+
+            holder.attachment_count.setText("0");
+        }
+
+        else {
+            holder.attachment_count.setText(datasheetlists.get(pos).getAttachmentCount());
+        }
+
+
+        // holder.txtQuestion.setTextColor(Color.RED);
+        Log.d("test", "Que : " + datasheetlists.get(pos).getQuesText());
+
+        String Answer = datasheetlists.get(pos).getResponsebycustomer();
+
+        if (Answer.contains("@")) {
+            Answer = Answer.replaceAll("@", "");
+            holder.txtAnswer.setText(Answer);
+
+        } else {
+            holder.txtAnswer.setText(Answer);
+        }
+
+
+        holder.img_attachment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String pkCssDetailId = datasheetlists.get(pos).getPkcssdtlsid();
+                ((EditDatasheetActivityMain) context).attachmentDetailsShow(pos);
+
+            }
+        });
+
+
+
+		/*if(datasheetlists.get(pos).getAddeddt() == null){
+
+		}else{
+
+
+			if(datasheetlists.get(pos).getRemark() == null){
+				holder.txt_remarkstatus.setVisibility(View.INVISIBLE);
+			}else{
+
+
+		}
+
+		}*/
+        //date = sdf.format(date);
+
+        if (designation.equals("")) {
+
+        } else {
+
+            String isApprdisAppr = datasheetlists.get(pos).getIsApprDisAppr();
+            if (isApprdisAppr != null) {
+                if (datasheetlists.get(pos).getDescr().equalsIgnoreCase(designation)) {
+
+                    if (isApprdisAppr.equalsIgnoreCase("Pending")) {
+                        holder.img_appr.setImageResource(R.drawable.doc_bg_pending_icon);
+                    } else if (isApprdisAppr.equalsIgnoreCase("Approved")) {
+                        holder.img_appr.setImageResource(R.drawable.doc_bg_approve_icon);
+                    } else if (isApprdisAppr.equalsIgnoreCase("Disapproved")) {
+                        holder.img_appr.setImageResource(R.drawable.doc_bg_disapprove_icon);
+                    }
+                } else {
+                    holder.img_appr.setImageResource(R.drawable.doc_bg_pending_icon);
+                }
+            } else {
+                holder.img_appr.setImageResource(R.drawable.doc_bg_pending_icon);
+            }
+
+        }
+
+        holder.rel_statusimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((EditDatasheetActivityMain) context).remarksDetails(pos, true);
+            }
+        });
+
+        holder.rel_appr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((EditDatasheetActivityMain) context).editRemark(pos);
+            }
+        });
+
+
+        if (position % 2 == 1) {
+            holder.ln_View.setBackgroundColor(Color.parseColor("#DBE8EA"));
+        } else {
+            holder.ln_View.setBackgroundColor(Color.parseColor("#F1F6F7"));
+
+        }
+        return view;
+    }
+
+
+    static class ViewHolder {
+        //Button btn_approve,btn_disapprove;
+        //TextView txt_dispname,txt_approve,txt_disapprove;
+        LinearLayout ln_main;
+        RelativeLayout rel_statusimg, rel_appr;
+        TextView txtremark, txt_remarkstatus;
+        ImageView img_attachment, img_appr;
+        TextView attachment_count;
+        TextView txtQuestion, txtAnswer;
+        LinearLayout ln_View;
+
+        // ImageButton imgcomplete;
+
+    }
+
+    public static String formateDateFromstring(String inputFormat, String outputFormat, String inputDate) {
+
+        Date parsed = null;
+        String outputDate = "";
+
+        SimpleDateFormat df_input = new SimpleDateFormat(inputFormat, java.util.Locale.getDefault());
+        SimpleDateFormat df_output = new SimpleDateFormat(outputFormat, java.util.Locale.getDefault());
+
+        try {
+            parsed = df_input.parse(inputDate);
+            outputDate = df_output.format(parsed);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+
+        }
+
+        return outputDate;
+
+    }
+
+
+}

@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.vritti.sales.beans.OrderedItems_Fragment">
+
+    <LinearLayout
+        android:id="@+id/ordl1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="50">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="3"
+            android:layout_gravity="center|right"
+            android:gravity="center|right"
+            android:background="@drawable/tbuds_edt_login_transprtant"
+            android:orientation="horizontal">
+            <!---->
+
+            <TextView
+                android:id="@+id/non_orderedList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.5"
+                android:gravity="center"
+                android:text="Non-Ordered Items"
+                android:textColor="#fff"
+                android:textSize="18dp"
+                android:titleCondensed="@string/ButtonFont"
+                android:visibility="gone" />
+
+            <android.support.v7.widget.SearchView
+                android:id="@+id/searchview"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center|right"
+                android:gravity="center|right"
+
+                android:layout_marginRight="10dp"/>
+            <!--android:layout_weight="2.5"-->
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="#6CAD1C"
+            android:layout_weight="3"
+            android:layout_below="@+id/tbar"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/orderedList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ordered Items"
+                android:textColor="#fff"
+                android:fontFamily="@string/ButtonFont"
+                android:gravity="center"
+                android:textSize="18dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_weight="3"
+            android:weightSum="10"
+           android:layout_gravity="center_vertical"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="5"
+                android:text="Products"
+                android:textColor="#6CAD1C"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:titleCondensed="@string/ButtonFont" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1.5"
+                android:gravity="center"
+                android:text="Qty"
+                android:textColor="#6CAD1C"
+                android:textSize="15dp"
+                android:textStyle="bold"
+
+                android:titleCondensed="@string/ButtonFont" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="2.5"
+                android:gravity="center"
+                android:text="Total"
+                android:textColor="#6CAD1C"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:titleCondensed="@string/ButtonFont" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_ordered"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_weight="37"
+            android:weightSum="40">
+
+            <LinearLayout
+                android:id="@+id/containerView1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                android:layout_weight="35.5">
+
+                <ListView
+                    android:id="@+id/listView_ordered"
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:divider="@null"
+                    android:dividerHeight="0dp">
+
+                </ListView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_btns"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                android:layout_weight="4.5">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/button_product_add_to_cart"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="4"
+                        android:background="@drawable/tbuds_btn_pressed_2"
+                        android:text="Confirm Order"
+                        android:textAllCaps="false"
+                        android:textColor="#fff"
+                        android:textSize="15dp"
+                        android:titleCondensed="@string/ButtonFont" />
+
+                    <LinearLayout
+                        android:id="@+id/layout_total"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="6"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp">
+
+                        <TextView
+                            android:id="@+id/total_topay"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="center"
+                            android:hint="100 ₹"
+                            android:inputType="numberDecimal"
+                            android:textStyle="bold"
+                            android:textSize="16dp"
+                            android:titleCondensed="@string/ButtonFont"
+                            android:textColor="@color/black"
+                            android:background="@drawable/tbuds_border_orenge" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btncancel"
+                    android:layout_width="90dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/tbuds_border_2"
+                    android:text="Cancel"
+                    android:titleCondensed="@string/ButtonFont"
+                    android:textAllCaps="false"
+                    android:textSize="15dp"
+                    android:textColor="@color/white"
+                    android:visibility="gone"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

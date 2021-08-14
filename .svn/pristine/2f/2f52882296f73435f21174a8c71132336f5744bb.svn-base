@@ -1,0 +1,64 @@
+package com.vritti.inventory.MaterialRequisition.model;
+
+import java.io.Serializable;
+
+/**
+ * Created by sharvari on 21-Aug-17.
+ */
+
+public class MaterialListDataShow implements Serializable {
+
+
+    String MRSNO,MRSDate,Department,Requisition,Status;
+
+    public MaterialListDataShow() {
+    }
+
+    public MaterialListDataShow(String MRSNO, String MRSDate, String department, String requisition, String status) {
+        this.MRSNO = MRSNO;
+        this.MRSDate = MRSDate;
+        Department = department;
+        Requisition = requisition;
+        Status = status;
+    }
+
+    public String getMRSNO() {
+        return MRSNO;
+    }
+
+    public void setMRSNO(String MRSNO) {
+        this.MRSNO = MRSNO;
+    }
+
+    public String getMRSDate() {
+        return MRSDate;
+    }
+
+    public void setMRSDate(String MRSDate) {
+        this.MRSDate = MRSDate;
+    }
+
+    public String getDepartment() {
+        return Department;
+    }
+
+    public void setDepartment(String department) {
+        Department = department;
+    }
+
+    public String getRequisition() {
+        return Requisition;
+    }
+
+    public void setRequisition(String requisition) {
+        Requisition = requisition;
+    }
+
+    public String getStatus() {
+        return Status;
+    }
+
+    public void setStatus(String status) {
+        Status = status;
+    }
+}

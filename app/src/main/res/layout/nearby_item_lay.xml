@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="5dp"
+    android:background="@drawable/edittext_border_lightblue"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal">
+           <ImageView
+               android:id="@+id/img_shop"
+               android:layout_width="50dp"
+               android:layout_height="50dp"
+               android:layout_margin="3dp"
+               android:padding="2dp"
+               android:layout_gravity="center"
+               />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginLeft="5dp"
+                android:layout_gravity="center|left"
+                android:layout_weight="1"
+                android:gravity="left|center">
+
+                <TextView
+                    android:id="@+id/txt_shopname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    android:singleLine="true"
+                    android:layout_gravity="center|left"
+                    android:gravity="left|center"
+                    android:text=""
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/txt_shoptype"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="12dp"
+                    android:singleLine="true"
+                    android:layout_gravity="center|left"
+                    android:gravity="left|center"
+                    android:text=""
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/txt_shop_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="2"
+                    android:textColor="@color/dark_gray"
+                    android:layout_gravity="center|left"
+                    android:gravity="left|center"
+                    android:textSize="12dp"
+                    android:text=""
+                    android:textStyle="bold"/>
+                <android.support.v7.widget.AppCompatRatingBar
+                    android:id="@+id/txt_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/grey"
+                    style="@style/Base.Widget.AppCompat.RatingBar.Small"
+                    android:theme="@style/RatingBar"
+                    android:numStars="5"
+                    android:stepSize="1"
+                />
+
+            </LinearLayout>
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/check_shop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/colorPrimaryDark"/>
+
+
+</LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

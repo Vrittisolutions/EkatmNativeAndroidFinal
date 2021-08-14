@@ -1,0 +1,2585 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rel_prosbusi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/MyToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay"
+            app:subtitleTextAppearance="@style/ToolbarTextAppearance.Subtitle"
+            app:titleTextAppearance="@style/ToolbarTextAppearance.Title"
+            app:contentInsetLeft="0dp"
+            app:contentInsetStart="0dp"
+            app:contentInsetStartWithNavigation="0dp">
+
+
+            <ProgressBar
+                android:id="@+id/progressbar_business"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="right"
+                android:indeterminateDrawable="@drawable/spinner"
+                android:visibility="gone" />
+
+        </android.support.v7.widget.Toolbar>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/lay1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rel_prosbusi"
+        android:background="#6E6F72"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="5dp"
+            android:layout_weight="0.8"
+            android:text="Create Prospect - Business"
+            android:textColor="#ffffff"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+        <ImageView
+            android:id="@+id/img_DatasheetForms"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center_vertical|right"
+            android:layout_weight="0.2"
+            android:visibility="gone"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/document" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/lay2"
+        android:layout_below="@+id/lay1"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:isScrollContainer="false"
+        android:orientation="vertical"
+        android:scrollbars="none">
+
+        <!-- <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginBottom="5dp"
+             android:layout_marginTop="5dp"
+             android:focusableInTouchMode="true"
+             android:orientation="vertical">
+
+             <LinearLayout
+                 android:id="@+id/ln_efName1"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center|left"
+                 android:layout_marginTop="5dp"
+                 android:background="@drawable/business_edit_text"
+                 android:focusableInTouchMode="true"
+                 android:gravity="center|left"
+                 android:orientation="horizontal">
+
+                 <AutoCompleteTextView
+                     android:id="@+id/efName1"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginRight="10dp"
+                     android:layout_weight="1"
+                     android:background="@android:color/transparent"
+                     android:completionThreshold="1"
+                     android:hint="Enter ProspectSelectionActivity Name "
+                     android:imeOptions="actionNext"
+                     android:padding="10dp"
+                     android:singleLine="true"
+                     android:text=""
+                     android:textColor="#000"
+                     android:textColorHint="@color/hint"
+                     android:textSize="16sp"
+                     android:visibility="visible">
+
+                     <requestFocus />
+
+                 </AutoCompleteTextView>
+
+                 <ProgressBar
+                     android:id="@+id/progress_bar"
+                     style="@android:style/Widget.ProgressBar.Small"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginRight="10dp"
+                     android:padding="7dp"
+                     android:visibility="gone" />
+             </LinearLayout>
+
+             <EditText
+                 android:id="@+id/edt_contact_name_person"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_marginTop="5dp"
+                 android:background="@drawable/business_edit_text"
+                 android:hint="Enter Contact Name"
+                 android:padding="10dp"
+                 android:singleLine="true"
+                 android:text=""
+                 android:textColor="@color/black"
+                 android:textColorHint="@color/hint"
+                 android:textSize="14dp"
+                 android:visibility="visible" />
+
+             <EditText
+                 android:id="@+id/edt_address"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_marginTop="5dp"
+                 android:background="@drawable/business_edit_text"
+                 android:hint="Enter Address"
+                 android:maxLines="3"
+                 android:padding="10dp"
+                 android:text=""
+                 android:textColor="@color/black"
+                 android:textColorHint="@color/hint"
+                 android:textSize="14dp"
+                 android:visibility="visible" />
+
+             <EditText
+                 android:id="@+id/edt_mobile"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_marginTop="5dp"
+                 android:layout_weight="1"
+                 android:background="@drawable/business_edit_text"
+                 android:hint="Mobile No."
+                 android:imeOptions="actionNext"
+                 android:inputType="number"
+                 android:maxLength="10"
+                 android:padding="10dp"
+                 android:singleLine="true"
+                 android:text=""
+                 android:textColor="@color/black"
+                 android:textColorHint="@color/hint"
+                 android:textSize="14dp"
+                 android:visibility="visible" />
+
+             <EditText
+                 android:id="@+id/edt_whatsaap"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_marginTop="5dp"
+                 android:layout_weight="1"
+                 android:background="@drawable/business_edit_text"
+                 android:hint="WhatsApp No."
+                 android:imeOptions="actionNext"
+                 android:inputType="number"
+                 android:maxLength="10"
+                 android:padding="10dp"
+                 android:singleLine="true"
+                 android:text=""
+                 android:textColor="@color/black"
+                 android:textColorHint="@color/hint"
+                 android:textSize="14dp"
+                 android:visibility="visible" />
+
+             <EditText
+                 android:id="@+id/edt_telephone"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_marginTop="5dp"
+                 android:layout_weight="1"
+                 android:background="@drawable/business_edit_text"
+                 android:hint="Telephone No."
+                 android:imeOptions="actionNext"
+                 android:inputType="number"
+                 android:padding="10dp"
+                 android:maxLength="12"
+                 android:singleLine="true"
+                 android:text=""
+                 android:textColor="@color/black"
+                 android:textColorHint="@color/hint"
+                 android:textSize="14dp"
+                 android:visibility="visible" />
+
+
+             <LinearLayout
+                 android:id="@+id/ln_country"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center|left"
+                 android:layout_marginTop="5dp"
+                 android:padding="7dp"
+                 android:background="@drawable/business_edit_text"
+                 android:gravity="center|left"
+                 android:orientation="horizontal"
+                 android:visibility="visible">
+
+
+
+                 <TextView
+                     android:id="@+id/tv_country"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="7dp"
+                     android:text="Country :"
+                     android:textColor="@color/black"
+                     android:textSize="14dp" />
+
+                 <AutoCompleteTextView
+                     android:id="@+id/spinner_country"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:background="@null"
+                     android:spinnerMode="dialog"
+                     android:singleLine="false"
+
+
+                     >
+
+                 </AutoCompleteTextView>
+
+             </LinearLayout>
+
+             <LinearLayout
+                 android:id="@+id/ln_state"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center|left"
+                 android:layout_marginTop="5dp"
+                 android:padding="7dp"
+                 android:background="@drawable/business_edit_text"
+                 android:gravity="center|left"
+                 android:orientation="horizontal">
+
+                 <TextView
+                     android:id="@+id/tv_state"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="7dp"
+                     android:text="State :"
+                     android:textColor="@color/black"
+                     android:textSize="14dp" />
+
+                 <AutoCompleteTextView
+                     android:id="@+id/spinner_state"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:spinnerMode="dialog"
+                     android:background="@null"
+                     android:singleLine="false"
+
+                     ></AutoCompleteTextView>
+
+             </LinearLayout>
+
+             <LinearLayout
+                 android:id="@+id/ln_city"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_marginTop="5dp"
+                 android:padding="7dp"
+                 android:background="@drawable/business_edit_text"
+                 android:orientation="horizontal">
+
+                 <TextView
+                     android:id="@+id/tv_city"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="7dp"
+                     android:text="City :"
+                     android:textColor="@color/black"
+                     android:textSize="14sp" />
+
+                 <AutoCompleteTextView
+                     android:id="@+id/eAutoCity"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:imeOptions="actionNext"
+                     android:singleLine="false"
+                     android:background="@null"
+                     android:textColor="@color/black"
+                     android:textColorHint="@color/hint"
+                     android:textSize="16sp" />
+             </LinearLayout>
+
+             <LinearLayout
+                 android:id="@+id/ln_territory"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center|left"
+                 android:layout_marginTop="5dp"
+                 android:padding="7dp"
+                 android:background="@drawable/business_edit_text"
+                 android:gravity="left|center"
+                 android:orientation="horizontal">
+
+                 <TextView
+                     android:id="@+id/tv_territory"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:text="Territory :"
+                     android:textColor="@color/black"
+                     android:textSize="14sp" />
+
+                 <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                     android:id="@+id/eAutoTerritory"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="7dp"
+                     android:hint="Territory"
+                     android:padding="3dp"
+                     android:imeOptions="actionNext"
+                     android:singleLine="true"
+                     android:textColor="#000000"
+                     android:textColorHint="@color/hint"
+                     android:textSize="16sp"
+
+                     />
+
+             </LinearLayout>
+
+             <EditText
+                 android:id="@+id/edt_email"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_marginTop="5dp"
+                 android:background="@drawable/business_edit_text"
+                 android:hint="E-mail"
+                 android:imeOptions="actionNext"
+                 android:padding="10dp"
+                 android:singleLine="true"
+                 android:text=""
+                 android:textColor="@color/black"
+                 android:textColorHint="@color/hint"
+                 android:textSize="14dp"
+
+                 />
+
+             <EditText
+                 android:id="@+id/edt_website"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_marginTop="5dp"
+                 android:background="@drawable/business_edit_text"
+                 android:hint="Website"
+                 android:imeOptions="actionNext"
+                 android:padding="10dp"
+                 android:singleLine="true"
+                 android:text=""
+                 android:textColor="@color/black"
+                 android:textColorHint="@color/hint"
+                 android:textSize="14dp" />
+
+             <LinearLayout
+                 android:id="@+id/ln_businessSegment"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center|left"
+                 android:layout_marginTop="5dp"
+                 android:layout_weight="1"
+                 android:background="@drawable/business_edit_text"
+                 android:gravity="center|left"
+                 android:orientation="horizontal"
+                 android:padding="7dp">
+
+                 <TextView
+                     android:id="@+id/tv_businessSegment"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:text="Business Segment :"
+                     android:textColor="@color/black"
+                     android:textSize="14dp" />
+
+                 <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                     android:id="@+id/autotxtBusinessSegment"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:layout_weight="1"
+                     android:imeOptions="actionNext"
+                     android:singleLine="true"
+                     android:textColor="#000000"
+                     android:textColorHint="@color/hint"
+                     android:textSize="16dp" />
+
+             </LinearLayout>
+
+             <LinearLayout
+                 android:id="@+id/ln_currency"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center|left"
+                 android:layout_marginTop="5dp"
+                 android:layout_weight="1"
+                 android:background="@drawable/business_edit_text"
+                 android:gravity="center|left"
+                 android:orientation="horizontal"
+                 android:padding="7dp">
+
+                 <TextView
+                     android:id="@+id/tv_currency"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:text="Currency :"
+                     android:textColor="@color/black"
+                     android:textSize="14dp" />
+
+                 <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                     android:id="@+id/sCurrency"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="10dp"
+                     android:spinnerMode="dialog"
+
+                     ></com.toptoche.searchablespinnerlibrary.SearchableSpinner>
+             </LinearLayout>
+
+             <LinearLayout
+                 android:id="@+id/ln_Product"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center|left"
+                 android:layout_marginTop="5dp"
+                 android:background="@drawable/business_edit_text"
+                 android:gravity="center|left"
+                 android:orientation="horizontal"
+                 android:padding="7dp"
+                 android:visibility="visible">
+
+
+                 <TextView
+                     android:id="@+id/tv_product"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:clickable="true"
+                     android:hint="Sales Family :"
+                     android:textColorHint="@color/black"
+                     android:textSize="14sp"
+                     android:visibility="visible" />
+
+                 <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                     android:id="@+id/spinner_product"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:layout_weight="1"
+                     android:spinnerMode="dialog"
+
+                     >
+
+                 </com.toptoche.searchablespinnerlibrary.SearchableSpinner>
+             </LinearLayout>
+
+             <LinearLayout
+                 android:id="@+id/ln_sourceofprospect"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center|left"
+                 android:layout_marginTop="5dp"
+                 android:layout_weight="1"
+                 android:background="@drawable/business_edit_text"
+                 android:gravity="center|left"
+                 android:orientation="horizontal"
+                 android:padding="7dp">
+
+                 <TextView
+                     android:id="@+id/tv_sourceofprospect"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:text="Source Of ProspectSelectionActivity :"
+                     android:textColor="@color/black"
+                     android:textSize="14dp" />
+
+                 <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                     android:id="@+id/spinner_sourceofprospect"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:layout_weight="1"
+                     android:hint="Source of ProspectSelectionActivity"
+                     android:imeOptions="actionNext"
+                     android:singleLine="true"
+                     android:textColor="#000000"
+                     android:textColorHint="@color/hint"
+                     android:textSize="16sp" />
+             </LinearLayout>
+
+             <LinearLayout
+                 android:id="@+id/ln_reference"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:orientation="vertical"
+                 android:visibility="visible">
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center|left"
+                     android:layout_marginTop="5dp"
+                     android:gravity="center|left"
+                     android:orientation="horizontal"
+                     android:padding="5dp">
+
+                     <TextView
+                         android:id="@+id/tv_reference"
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:layout_weight="1"
+                         android:padding="5dp"
+                         android:text="ProspectSelectionActivity Shared By :"
+                         android:textColor="@color/black"
+                         android:textSize="14dp" />
+
+                     <ProgressBar
+                         android:id="@+id/proress_reference"
+                         style="?android:attr/progressBarStyle"
+                         android:layout_width="40dp"
+                         android:layout_height="40dp"
+                         android:layout_alignParentRight="true"
+                         android:layout_centerHorizontal="true"
+                         android:layout_centerVertical="true"
+                         android:layout_gravity="center"
+                         android:layout_marginRight="10dp"
+                         android:indeterminateDrawable="@drawable/spinner"
+                         android:visibility="gone" />
+
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginBottom="5dp"
+                     android:background="@drawable/business_edit_text"
+                     android:orientation="horizontal"
+                     android:padding="5dp">
+
+                     <LinearLayout
+                         android:layout_width="150dp"
+                         android:layout_height="wrap_content"
+                         android:background="@drawable/business_edit_text"
+                         android:layout_marginLeft="3dp"
+                         android:padding="5dp">
+
+                         <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                             android:id="@+id/sReferenceType"
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:layout_weight="1"
+                             android:padding="2dp"
+                             android:spinnerMode="dialog">
+
+                         </com.toptoche.searchablespinnerlibrary.SearchableSpinner>
+
+                     </LinearLayout>
+
+                     <LinearLayout
+                         android:layout_width="150dp"
+                         android:layout_height="wrap_content"
+                         android:layout_marginLeft="7dp"
+                         android:layout_gravity="center_vertical"
+                         android:gravity="center_vertical"
+                         android:background="@drawable/business_edit_text"
+                         android:padding="5dp">
+
+                         <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                             android:id="@+id/sReference"
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_marginLeft="10dp"
+                             android:layout_weight="1"
+                             android:padding="2dp"
+                             android:spinnerMode="dialog">
+
+                         </com.toptoche.searchablespinnerlibrary.SearchableSpinner>
+
+                     </LinearLayout>
+
+
+                 </LinearLayout>
+             </LinearLayout>
+
+             <LinearLayout
+                 android:id="@+id/ln_village"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center|left"
+                 android:layout_margin="5dp"
+                 android:layout_weight="1"
+                 android:background="@drawable/business_edit_text"
+                 android:gravity="center|left"
+                 android:orientation="horizontal"
+                 android:padding="5dp">
+
+                 <TextView
+                     android:id="@+id/tv_village"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:text="Test type :"
+                     android:textColor="@color/black"
+                     android:textSize="14dp" />
+
+                 <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                     android:id="@+id/spinner_village"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:layout_weight="1"
+                     android:hint="Source of ProspectSelectionActivity"
+                     android:imeOptions="actionNext"
+                     android:singleLine="true"
+                     android:textColor="#000000"
+                     android:textColorHint="@color/hint"
+                     android:textSize="16sp"
+                     android:visibility="visible" />
+
+                 <EditText
+                     android:id="@+id/edt_village"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:layout_weight="1"
+                     android:imeOptions="actionNext"
+                     android:singleLine="true"
+                     android:textColor="#000000"
+                     android:textColorHint="@color/hint"
+                     android:textSize="16sp"
+                     android:visibility="gone"
+
+                     />
+             </LinearLayout>
+
+             <LinearLayout
+                 android:id="@+id/ln_District"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center|left"
+                 android:layout_margin="5dp"
+                 android:layout_weight="1"
+                 android:background="@drawable/business_edit_text"
+                 android:gravity="center|left"
+                 android:orientation="horizontal"
+                 android:padding="5dp">
+
+                 <TextView
+                     android:id="@+id/tv_District"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:text="District :"
+                     android:textColor="@color/black"
+                     android:textSize="14dp" />
+
+                 <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                     android:id="@+id/spinner_District"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:layout_weight="1"
+                     android:hint="Source of ProspectSelectionActivity"
+                     android:imeOptions="actionNext"
+                     android:singleLine="true"
+                     android:textColor="#000000"
+                     android:textColorHint="@color/hint"
+                     android:textSize="16sp"
+                     android:visibility="visible" />
+
+                 <EditText
+                     android:id="@+id/edt_District"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:layout_weight="1"
+                     android:imeOptions="actionNext"
+                     android:singleLine="true"
+                     android:textColor="#000000"
+                     android:background="@null"
+                     android:textColorHint="@color/hint"
+                     android:textSize="16sp"
+                     android:visibility="gone"
+
+                     />
+             </LinearLayout>
+
+             <LinearLayout
+                 android:id="@+id/ln_sex"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center|left"
+                 android:layout_margin="5dp"
+                 android:layout_weight="1"
+                 android:background="@drawable/business_edit_text"
+                 android:gravity="center|left"
+                 android:orientation="horizontal"
+                 android:padding="5dp">
+
+                 <TextView
+                     android:id="@+id/tv_sex"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:text="Test type :"
+                     android:textColor="@color/black"
+                     android:textSize="14dp" />
+
+                 <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                     android:id="@+id/spinner_sex"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:layout_weight="1"
+                     android:hint="Source of ProspectSelectionActivity"
+                     android:imeOptions="actionNext"
+                     android:singleLine="true"
+                     android:textColor="#000000"
+                     android:textColorHint="@color/hint"
+                     android:textSize="16sp"
+                     android:visibility="visible" />
+
+                 <EditText
+                     android:id="@+id/edt_sex"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:layout_weight="1"
+                     android:imeOptions="actionNext"
+                     android:singleLine="true"
+                     android:textColor="#000000"
+                     android:textColorHint="@color/hint"
+                     android:textSize="16sp"
+                     android:visibility="gone"
+
+                     />
+             </LinearLayout>
+
+             <LinearLayout
+                 android:id="@+id/ln_val1"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center|left"
+                 android:layout_margin="5dp"
+                 android:layout_weight="1"
+                 android:background="@drawable/business_edit_text"
+                 android:gravity="center|left"
+                 android:orientation="horizontal"
+                 android:padding="5dp">
+
+                 <TextView
+                     android:id="@+id/tv_val1"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:text="Test type :"
+                     android:textColor="@color/black"
+                     android:textSize="14dp" />
+
+                 <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                     android:id="@+id/spinner_val1"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:layout_weight="1"
+                     android:hint="Source of ProspectSelectionActivity"
+                     android:imeOptions="actionNext"
+                     android:singleLine="true"
+                     android:textColor="#000000"
+                     android:textColorHint="@color/hint"
+                     android:textSize="16sp"
+                     android:visibility="visible" />
+
+                 <EditText
+                     android:id="@+id/edt_val1"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:layout_weight="1"
+                     android:imeOptions="actionNext"
+                     android:singleLine="true"
+                     android:textColor="#000000"
+                     android:textColorHint="@color/hint"
+                     android:textSize="16sp"
+                     android:visibility="gone" />
+             </LinearLayout>
+
+             <LinearLayout
+                 android:id="@+id/ln_val2"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center|left"
+                 android:layout_margin="5dp"
+                 android:layout_weight="1"
+                 android:background="@drawable/business_edit_text"
+                 android:gravity="center|left"
+                 android:orientation="horizontal"
+                 android:padding="5dp">
+
+                 <TextView
+                     android:id="@+id/tv_val2"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:text="Test type :"
+                     android:textColor="@color/black"
+                     android:textSize="14dp" />
+
+                 <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                     android:id="@+id/spinner_val2"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:layout_weight="1"
+                     android:hint="Source of ProspectSelectionActivity"
+                     android:imeOptions="actionNext"
+                     android:singleLine="true"
+                     android:textColor="#000000"
+                     android:textColorHint="@color/hint"
+                     android:textSize="16sp"
+                     android:visibility="visible" />
+
+                 <EditText
+                     android:id="@+id/edt_val2"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:layout_weight="1"
+                     android:imeOptions="actionNext"
+                     android:singleLine="true"
+                     android:textColor="#000000"
+                     android:textColorHint="@color/hint"
+                     android:textSize="16sp"
+                     android:visibility="gone"
+
+                     />
+             </LinearLayout>
+
+             <LinearLayout
+                 android:id="@+id/ln_val3"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center|left"
+                 android:layout_margin="5dp"
+                 android:layout_weight="1"
+                 android:background="@drawable/business_edit_text"
+                 android:gravity="center|left"
+                 android:orientation="horizontal"
+                 android:padding="5dp">
+
+                 <TextView
+                     android:id="@+id/tv_val3"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:text="Test type :"
+                     android:textColor="@color/black"
+                     android:textSize="14dp" />
+
+                 <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                     android:id="@+id/spinner_val3"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:layout_weight="1"
+                     android:hint="Source of ProspectSelectionActivity"
+                     android:imeOptions="actionNext"
+                     android:singleLine="true"
+                     android:textColor="#000000"
+                     android:textColorHint="@color/hint"
+                     android:textSize="16sp"
+                     android:visibility="visible" />
+
+                 <EditText
+                     android:id="@+id/edt_val3"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:layout_weight="1"
+                     android:imeOptions="actionNext"
+                     android:singleLine="true"
+                     android:textColor="#000000"
+                     android:textColorHint="@color/hint"
+                     android:textSize="16sp"
+                     android:visibility="gone" />
+             </LinearLayout>
+
+             <LinearLayout
+                 android:id="@+id/ln_val4"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center|left"
+                 android:layout_margin="5dp"
+                 android:layout_weight="1"
+                 android:background="@drawable/business_edit_text"
+                 android:gravity="center|left"
+                 android:orientation="horizontal"
+                 android:padding="5dp">
+
+                 <TextView
+                     android:id="@+id/tv_val4"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:text="Test type :"
+                     android:textColor="@color/black"
+                     android:textSize="14dp" />
+
+                 <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                     android:id="@+id/spinner_val4"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:layout_weight="1"
+                     android:hint="Source of ProspectSelectionActivity"
+                     android:imeOptions="actionNext"
+                     android:singleLine="true"
+                     android:textColor="#000000"
+                     android:textColorHint="@color/hint"
+                     android:textSize="16sp"
+                     android:visibility="visible" />
+
+                 <EditText
+                     android:id="@+id/edt_val4"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:layout_weight="1"
+                     android:imeOptions="actionNext"
+                     android:singleLine="true"
+                     android:textColor="#000000"
+                     android:textColorHint="@color/hint"
+                     android:textSize="16sp"
+                     android:visibility="gone"
+
+                     />
+             </LinearLayout>
+
+             <LinearLayout
+                 android:id="@+id/ln_val5"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center|left"
+                 android:layout_margin="5dp"
+                 android:layout_weight="1"
+                 android:background="@drawable/business_edit_text"
+                 android:gravity="center|left"
+                 android:orientation="horizontal"
+                 android:padding="5dp">
+
+                 <TextView
+                     android:id="@+id/tv_val5"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:text="Test type :"
+                     android:textColor="@color/black"
+                     android:textSize="14dp" />
+
+                 <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                     android:id="@+id/spinner_val5"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:layout_weight="1"
+                     android:hint="Source of ProspectSelectionActivity"
+                     android:imeOptions="actionNext"
+                     android:singleLine="true"
+                     android:textColor="#000000"
+                     android:textColorHint="@color/hint"
+                     android:textSize="16sp"
+                     android:visibility="visible" />
+
+                 <EditText
+                     android:id="@+id/edt_val5"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:layout_weight="1"
+                     android:imeOptions="actionNext"
+                     android:singleLine="true"
+                     android:textColor="#000000"
+                     android:textColorHint="@color/hint"
+                     android:textSize="16sp"
+                     android:visibility="gone"
+
+                     />
+             </LinearLayout>
+
+             <LinearLayout
+                 android:id="@+id/ln_val6"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center|left"
+                 android:layout_margin="5dp"
+                 android:layout_weight="1"
+                 android:background="@drawable/business_edit_text"
+                 android:gravity="center|left"
+                 android:orientation="horizontal"
+                 android:padding="5dp">
+
+                 <TextView
+                     android:id="@+id/tv_val6"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:text="Test type :"
+                     android:textColor="@color/black"
+                     android:textSize="14dp" />
+
+                 <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                     android:id="@+id/spinner_val6"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:layout_weight="1"
+                     android:hint="Source of ProspectSelectionActivity"
+                     android:imeOptions="actionNext"
+                     android:singleLine="true"
+                     android:textColor="#000000"
+                     android:textColorHint="@color/hint"
+                     android:textSize="16sp"
+                     android:visibility="visible" />
+
+                 <EditText
+                     android:id="@+id/edt_val6"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:layout_weight="1"
+                     android:imeOptions="actionNext"
+                     android:singleLine="true"
+                     android:textColor="#000000"
+                     android:textColorHint="@color/hint"
+                     android:textSize="16sp"
+                     android:visibility="gone"
+
+                     />
+             </LinearLayout>
+
+             <LinearLayout
+                 android:id="@+id/ln_val7"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center|left"
+                 android:layout_margin="5dp"
+                 android:layout_weight="1"
+                 android:background="@drawable/business_edit_text"
+                 android:gravity="center|left"
+                 android:orientation="horizontal"
+                 android:padding="5dp">
+
+                 <TextView
+                     android:id="@+id/tv_val7"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:text="Test type :"
+                     android:textColor="@color/black"
+                     android:textSize="14dp" />
+
+                 <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                     android:id="@+id/spinner_val7"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:layout_weight="1"
+                     android:hint="Source of ProspectSelectionActivity"
+                     android:imeOptions="actionNext"
+                     android:singleLine="true"
+                     android:textColor="#000000"
+                     android:textColorHint="@color/hint"
+                     android:textSize="16sp"
+                     android:visibility="visible" />
+
+                 <EditText
+                     android:id="@+id/edt_val7"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:layout_weight="1"
+                     android:imeOptions="actionNext"
+                     android:singleLine="true"
+                     android:textColor="#000000"
+                     android:textColorHint="@color/hint"
+                     android:textSize="16sp"
+                     android:visibility="gone"
+
+                     />
+             </LinearLayout>
+
+             <LinearLayout
+                 android:id="@+id/ln_val8"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center|left"
+                 android:layout_margin="5dp"
+                 android:layout_weight="1"
+                 android:background="@drawable/business_edit_text"
+                 android:gravity="center|left"
+                 android:orientation="horizontal"
+                 android:padding="5dp">
+
+                 <TextView
+                     android:id="@+id/tv_val8"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:text="Test type :"
+                     android:textColor="@color/black"
+                     android:textSize="14dp" />
+
+                 <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                     android:id="@+id/spinner_val8"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:layout_weight="1"
+                     android:hint="Source of ProspectSelectionActivity"
+                     android:imeOptions="actionNext"
+                     android:singleLine="true"
+                     android:textColor="#000000"
+                     android:textColorHint="@color/hint"
+                     android:textSize="16sp"
+                     android:visibility="visible" />
+
+                 <EditText
+                     android:id="@+id/edt_val8"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:layout_weight="1"
+                     android:imeOptions="actionNext"
+                     android:singleLine="true"
+                     android:textColor="#000000"
+                     android:textColorHint="@color/hint"
+                     android:textSize="16sp"
+                     android:visibility="gone"
+
+                     />
+             </LinearLayout>
+
+             <LinearLayout
+                 android:id="@+id/ln_val9"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center|left"
+                 android:layout_margin="5dp"
+                 android:layout_weight="1"
+                 android:background="@drawable/business_edit_text"
+                 android:gravity="center|left"
+                 android:orientation="horizontal"
+                 android:padding="5dp">
+
+                 <TextView
+                     android:id="@+id/tv_val9"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:text="Test type :"
+                     android:textColor="@color/black"
+                     android:textSize="14dp" />
+
+                 <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                     android:id="@+id/spinner_val9"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:layout_weight="1"
+                     android:hint="Source of ProspectSelectionActivity"
+                     android:imeOptions="actionNext"
+                     android:singleLine="true"
+                     android:textColor="#000000"
+                     android:textColorHint="@color/hint"
+                     android:textSize="16sp"
+                     android:visibility="visible" />
+
+                 <EditText
+                     android:id="@+id/edt_val9"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:layout_weight="1"
+                     android:imeOptions="actionNext"
+                     android:singleLine="true"
+                     android:textColor="#000000"
+                     android:textColorHint="@color/hint"
+                     android:textSize="16sp"
+                     android:visibility="gone"
+
+                     />
+             </LinearLayout>
+
+             <LinearLayout
+                 android:id="@+id/ln_val10"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center|left"
+                 android:layout_margin="5dp"
+                 android:layout_weight="1"
+                 android:background="@drawable/business_edit_text"
+                 android:gravity="center|left"
+                 android:orientation="horizontal"
+                 android:padding="5dp">
+
+                 <TextView
+                     android:id="@+id/tv_val10"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:text="Test type :"
+                     android:textColor="@color/black"
+                     android:textSize="14dp" />
+
+                 <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                     android:id="@+id/spinner_val10"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:layout_weight="1"
+                     android:hint="Source of ProspectSelectionActivity"
+                     android:imeOptions="actionNext"
+                     android:singleLine="true"
+                     android:textColor="#000000"
+                     android:textColorHint="@color/hint"
+                     android:textSize="16sp"
+                     android:visibility="visible" />
+
+                 <EditText
+                     android:id="@+id/edt_val10"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="5dp"
+                     android:layout_weight="1"
+                     android:imeOptions="actionNext"
+                     android:singleLine="true"
+                     android:textColor="#000000"
+                     android:textColorHint="@color/hint"
+                     android:textSize="16sp"
+                     android:visibility="gone" />
+             </LinearLayout>
+         </LinearLayout>-->
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
+
+            <!--prospect name-->
+            <LinearLayout
+                android:id="@+id/ln_efName1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusableInTouchMode="true"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Prospect Name">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/efName1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:textColor="#111"
+                        android:textSize="12sp">
+                        <requestFocus />
+
+                    </AutoCompleteTextView>
+                </android.support.design.widget.TextInputLayout>
+
+
+
+                <ProgressBar
+                    android:id="@+id/progress_bar"
+                    style="@android:style/Widget.ProgressBar.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:padding="7dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <!--contactname-->
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint=" Contact Name">
+
+                <EditText
+                    android:id="@+id/edt_contact_name_person"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:singleLine="true"
+                    android:textColorHint="@color/hint"
+                    android:textColor="#111"
+                    android:textSize="12sp" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <!--address-->
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint=" Address">
+
+                <EditText
+                    android:id="@+id/edt_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:singleLine="true"
+                    android:textColorHint="@color/hint"
+                    android:textColor="#111"
+                    android:textSize="12sp" />
+            </android.support.design.widget.TextInputLayout>
+
+            <!--mobileno-->
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint=" Mobile No.">
+
+                <EditText
+                    android:id="@+id/edt_mobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:singleLine="true"
+                    android:textColorHint="@color/hint"
+                    android:textColor="#111"
+                    android:textSize="12sp"
+                    android:inputType="number"
+                    android:maxLength="10"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!--whatappno-->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="WhatsApp No."
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:id="@+id/edt_whatsaap"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:textColorHint="@color/hint"
+                        android:textColor="#111"
+                        android:textSize="12sp"
+                        android:inputType="number"
+                        android:maxLength="10"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <!--telephoneno-->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Telephone No."
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:id="@+id/edt_telephone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:textColorHint="@color/hint"
+                        android:textColor="#111"
+                        android:textSize="12sp"
+                        android:inputType="number"
+                        android:maxLength="10"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+
+            </LinearLayout>
+
+            <!--countrystate-->
+            <LinearLayout
+                android:id="@+id/ln_country"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+
+                <!--country-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+
+                    android:layout_weight="1">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Country"
+                        android:id="@+id/tv_country">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/spinner_country"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:imeOptions="actionNext"
+                            android:singleLine="false"
+                            android:textColor="#111"
+                            android:textColorHint="@color/hint"
+                            android:textSize="12dp"
+                            android:clickable="true"
+                            android:editable="false"
+                            android:focusable="false">
+
+                        </AutoCompleteTextView>
+
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+                <!--state-->
+                <LinearLayout
+                    android:id="@+id/ln_state"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:gravity="center|left"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/tv_state"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="State">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/spinner_state"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:imeOptions="actionNext"
+                            android:singleLine="false"
+                            android:textColor="#111"
+                            android:textColorHint="@color/hint"
+                            android:textSize="12dp"
+                            android:clickable="true"
+                            android:editable="false"
+                            android:focusable="false">
+
+                        </AutoCompleteTextView>
+                    </android.support.design.widget.TextInputLayout>
+
+
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <!--city/terriotory-->
+            <LinearLayout
+                android:id="@+id/ln_city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!--city-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="City"
+                        android:id="@+id/tv_city">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/eAutoCity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:imeOptions="actionNext"
+                            android:singleLine="false"
+                            android:textColor="#111"
+                            android:textColorHint="@color/hint"
+                            android:textSize="12dp"
+                            android:clickable="true"
+                            android:editable="false"
+                            android:focusable="false">
+
+                        </AutoCompleteTextView>
+
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+                <!--terriotory-->
+                <LinearLayout
+                    android:id="@+id/ln_territory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:gravity="center|left"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/tv_territory"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Territory">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/eAutoTerritory"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:imeOptions="actionNext"
+                            android:singleLine="false"
+                            android:textColor="#111"
+                            android:textColorHint="@color/hint"
+                            android:textSize="12dp"
+                            android:clickable="true"
+                            android:editable="false"
+                            android:focusable="false">
+
+                        </AutoCompleteTextView>
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--mail/website-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="E-mail"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:id="@+id/edt_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:textColorHint="@color/hint"
+                        android:textColor="#111"
+                        android:textSize="12sp"  />
+                </android.support.design.widget.TextInputLayout>
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Website"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:id="@+id/edt_website"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:textColorHint="@color/hint"
+                        android:textColor="#111"
+                        android:textSize="12sp"  />
+                </android.support.design.widget.TextInputLayout>
+
+
+            </LinearLayout>
+
+            <!--businesssegment-->
+            <LinearLayout
+                android:id="@+id/ln_businessSegment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:orientation="horizontal">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/tv_businessSegment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Business Segment"
+                    android:layout_weight="1">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/autotxtBusinessSegment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:spinnerMode="dialog"
+                        android:textSize="12sp"/>
+                </android.support.design.widget.TextInputLayout>
+
+
+            </LinearLayout>
+
+            <!--currency-->
+            <LinearLayout
+                android:id="@+id/ln_currency"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:orientation="horizontal">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/tv_currency"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Currency"
+                    android:layout_weight="1">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/sCurrency"
+                        android:layout_width="match_parent"
+                        android:layout_height="33dp"
+                        android:layout_weight="1"
+                        android:spinnerMode="dialog"
+                        android:textSize="12sp" />
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+            <!--salesfamily-->
+            <LinearLayout
+                android:id="@+id/ln_Product"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:orientation="horizontal">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_product"
+                    android:hint="Sales Family">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/spinner_product"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:spinnerMode="dialog"
+                        android:textSize="12sp"/>
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <!--sourceofprospect-->
+            <LinearLayout
+                android:id="@+id/ln_sourceofprospect"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:orientation="horizontal">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_sourceofprospect"
+                    android:hint="Source Of Prospect">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/spinner_sourceofprospect"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:spinnerMode="dialog"
+                        android:textSize="12sp"/>
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <!--prospectsharedby-->
+            <LinearLayout
+                android:id="@+id/ln_reference"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:gravity="center|left"
+                    android:orientation="horizontal">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_reference"
+                        android:hint="Prospect Shared ">
+
+                        <AutoCompleteTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:spinnerMode="dialog"
+                            android:textSize="12sp"/>
+                    </android.support.design.widget.TextInputLayout>
+
+
+                    <ProgressBar
+                        android:id="@+id/proress_reference"
+                        style="?android:attr/progressBarStyle"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="10dp"
+                        android:indeterminateDrawable="@drawable/spinner"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:orientation="vertical">
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+
+                            <AutoCompleteTextView
+                                android:id="@+id/sReferenceType"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:padding="2dp"
+                                android:spinnerMode="dialog"/>
+
+                        </android.support.design.widget.TextInputLayout>
+
+
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="7dp"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:padding="5dp"
+                        android:visibility="gone">
+
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <AutoCompleteTextView
+                                android:id="@+id/sReference"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight="1"
+                                android:padding="2dp"
+                                android:spinnerMode="dialog"/>
+                        </android.support.design.widget.TextInputLayout>
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!--layouts village to 10-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:id="@+id/ln_village"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/business_edit_text"
+                    android:gravity="center|left"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/tv_village"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="Test type :"
+                        android:textColor="@color/black"
+                        android:textSize="14dp" />
+
+                    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                        android:id="@+id/spinner_village"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:hint="Source of Prospect"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textColorHint="@color/hint"
+                        android:textSize="16sp"
+                        android:visibility="visible" />
+
+                    <EditText
+                        android:id="@+id/edt_village"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textColorHint="@color/hint"
+                        android:textSize="16sp"
+                        android:visibility="gone"
+
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ln_District"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/business_edit_text"
+                    android:gravity="center|left"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/tv_District"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="District :"
+                        android:textColor="@color/black"
+                        android:textSize="14dp" />
+
+                    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                        android:id="@+id/spinner_District"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:hint="Source of Prospect"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textColorHint="@color/hint"
+                        android:textSize="16sp"
+                        android:visibility="visible" />
+
+                    <EditText
+                        android:id="@+id/edt_District"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:background="@null"
+                        android:textColorHint="@color/hint"
+                        android:textSize="16sp"
+                        android:visibility="gone"
+
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ln_sex"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/business_edit_text"
+                    android:gravity="center|left"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/tv_sex"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="Test type :"
+                        android:textColor="@color/black"
+                        android:textSize="14dp" />
+
+                    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                        android:id="@+id/spinner_sex"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:hint="Source of Prospect"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textColorHint="@color/hint"
+                        android:textSize="16sp"
+                        android:visibility="visible" />
+
+                    <EditText
+                        android:id="@+id/edt_sex"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textColorHint="@color/hint"
+                        android:textSize="16sp"
+                        android:visibility="gone"
+
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ln_val1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/business_edit_text"
+                    android:gravity="center|left"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/tv_val1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="Test type :"
+                        android:textColor="@color/black"
+                        android:textSize="14dp" />
+
+                    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                        android:id="@+id/spinner_val1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:hint="Source of Prospect"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textColorHint="@color/hint"
+                        android:textSize="16sp"
+                        android:visibility="visible" />
+
+                    <EditText
+                        android:id="@+id/edt_val1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textColorHint="@color/hint"
+                        android:textSize="16sp"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ln_val2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/business_edit_text"
+                    android:gravity="center|left"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/tv_val2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="Test type :"
+                        android:textColor="@color/black"
+                        android:textSize="14dp" />
+
+                    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                        android:id="@+id/spinner_val2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:hint="Source of Prospect"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textColorHint="@color/hint"
+                        android:textSize="16sp"
+                        android:visibility="visible" />
+
+                    <EditText
+                        android:id="@+id/edt_val2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textColorHint="@color/hint"
+                        android:textSize="16sp"
+                        android:visibility="gone"
+
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ln_val3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/business_edit_text"
+                    android:gravity="center|left"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/tv_val3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="Test type :"
+                        android:textColor="@color/black"
+                        android:textSize="14dp" />
+
+                    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                        android:id="@+id/spinner_val3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:hint="Source of Prospect"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textColorHint="@color/hint"
+                        android:textSize="16sp"
+                        android:visibility="visible" />
+
+                    <EditText
+                        android:id="@+id/edt_val3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textColorHint="@color/hint"
+                        android:textSize="16sp"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ln_val4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/business_edit_text"
+                    android:gravity="center|left"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/tv_val4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="Test type :"
+                        android:textColor="@color/black"
+                        android:textSize="14dp" />
+
+                    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                        android:id="@+id/spinner_val4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:hint="Source of Prospect"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textColorHint="@color/hint"
+                        android:textSize="16sp"
+                        android:visibility="visible" />
+
+                    <EditText
+                        android:id="@+id/edt_val4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textColorHint="@color/hint"
+                        android:textSize="16sp"
+                        android:visibility="gone"
+
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ln_val5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/business_edit_text"
+                    android:gravity="center|left"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/tv_val5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="Test type :"
+                        android:textColor="@color/black"
+                        android:textSize="14dp" />
+
+                    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                        android:id="@+id/spinner_val5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:hint="Source of Prospect"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textColorHint="@color/hint"
+                        android:textSize="16sp"
+                        android:visibility="visible" />
+
+                    <EditText
+                        android:id="@+id/edt_val5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textColorHint="@color/hint"
+                        android:textSize="16sp"
+                        android:visibility="gone"
+
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ln_val6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/business_edit_text"
+                    android:gravity="center|left"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/tv_val6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="Test type :"
+                        android:textColor="@color/black"
+                        android:textSize="14dp" />
+
+                    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                        android:id="@+id/spinner_val6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:hint="Source of Prospect"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textColorHint="@color/hint"
+                        android:textSize="16sp"
+                        android:visibility="visible" />
+
+                    <EditText
+                        android:id="@+id/edt_val6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textColorHint="@color/hint"
+                        android:textSize="16sp"
+                        android:visibility="gone"
+
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ln_val7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/business_edit_text"
+                    android:gravity="center|left"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/tv_val7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="Test type :"
+                        android:textColor="@color/black"
+                        android:textSize="14dp" />
+
+                    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                        android:id="@+id/spinner_val7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:hint="Source of Prospect"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textColorHint="@color/hint"
+                        android:textSize="16sp"
+                        android:visibility="visible" />
+
+                    <EditText
+                        android:id="@+id/edt_val7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textColorHint="@color/hint"
+                        android:textSize="16sp"
+                        android:visibility="gone"
+
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ln_val8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/business_edit_text"
+                    android:gravity="center|left"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/tv_val8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="Test type :"
+                        android:textColor="@color/black"
+                        android:textSize="14dp" />
+
+                    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                        android:id="@+id/spinner_val8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:hint="Source of Prospect"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textColorHint="@color/hint"
+                        android:textSize="16sp"
+                        android:visibility="visible" />
+
+                    <EditText
+                        android:id="@+id/edt_val8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textColorHint="@color/hint"
+                        android:textSize="16sp"
+                        android:visibility="gone"
+
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ln_val9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/business_edit_text"
+                    android:gravity="center|left"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/tv_val9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="Test type :"
+                        android:textColor="@color/black"
+                        android:textSize="14dp" />
+
+                    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                        android:id="@+id/spinner_val9"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:hint="Source of Prospect"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textColorHint="@color/hint"
+                        android:textSize="16sp"
+                        android:visibility="visible" />
+
+                    <EditText
+                        android:id="@+id/edt_val9"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textColorHint="@color/hint"
+                        android:textSize="16sp"
+                        android:visibility="gone"
+
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ln_val10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/business_edit_text"
+                    android:gravity="center|left"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/tv_val10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="Test type :"
+                        android:textColor="@color/black"
+                        android:textSize="14dp" />
+
+                    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                        android:id="@+id/spinner_val10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:hint="Source of Prospect"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textColorHint="@color/hint"
+                        android:textSize="16sp"
+                        android:visibility="visible" />
+
+                    <EditText
+                        android:id="@+id/edt_val10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textColorHint="@color/hint"
+                        android:textSize="16sp"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/lay2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center|bottom"
+        android:layout_margin="5dp"
+        android:gravity="center|bottom"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <Button
+            android:id="@+id/buttonSave_prospect"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/green_backgraound"
+            android:text="Save Prospect"
+            android:textAllCaps="false"
+            android:textSize="13sp"
+            android:textColor="@color/white"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/buttonSaveandstartcall_prospect"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:textSize="13sp"
+            android:background="@drawable/green_backgraound"
+            android:text="Start Opportunity"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:visibility="visible"/>
+
+        <Button
+            android:id="@+id/buttonClose_prospect"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_weight="1"
+            android:textSize="13sp"
+            android:background="@drawable/button_orange"
+            android:text="Cancel"
+            android:textColor="@color/white"
+            android:textAllCaps="false" />
+    </LinearLayout>
+
+
+</RelativeLayout>

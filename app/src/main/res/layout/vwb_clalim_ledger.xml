@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:cardCornerRadius="8dp"
+            card_view:cardElevation="1dp"
+            card_view:cardUseCompatPadding="true"
+            card_view:cardPreventCornerOverlap="false"
+            card_view:cardMaxElevation="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:gravity="left|center"
+                    android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txt_transaction"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="12345"
+                    android:drawablePadding="8dp"
+                    android:layout_gravity="center|left"
+                    android:gravity="left|center"
+                    android:layout_weight="1"
+                    android:layout_marginRight="@dimen/sp_5"
+                    android:drawableLeft="@drawable/notes"
+                    android:drawableTint="@color/colorPrimary"
+                    android:textSize="12dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/grey2c"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableTint="@color/colorPrimary"
+                        android:drawablePadding="8dp"
+                        android:hint="DR- "
+                        android:layout_gravity="center|left"
+                        android:gravity="left|center"
+                        android:visibility="gone"
+                        android:layout_marginLeft="15dp"
+                        android:textSize="12dp" />
+
+                    <TextView
+                        android:id="@+id/txt_debit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="456"
+                        android:layout_marginRight="5dp"
+                        android:textStyle="bold"
+                        android:layout_gravity="center|left"
+                        android:gravity="left|center"
+                        android:padding="2dp"
+                        android:textColor="@color/black"
+                        android:textSize="12dp" />
+
+
+                </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:gravity="left|center"
+                android:orientation="horizontal">
+
+
+            <TextView
+                    android:id="@+id/txt_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="9th May"
+                    android:drawablePadding="8dp"
+                    android:layout_gravity="center|left"
+                    android:gravity="left|center"
+                    android:drawableLeft="@drawable/date"
+                    android:drawableTint="@color/colorPrimary"
+                    android:textSize="12dp"
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableTint="@color/colorPrimary"
+                    android:drawablePadding="8dp"
+                    android:hint="CR- "
+                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="center|left"
+                    android:gravity="left|center"
+                    android:visibility="gone"
+                    android:textSize="12dp" />
+                <TextView
+                    android:id="@+id/txt_credit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="45688"
+                    android:textStyle="bold"
+                    android:layout_gravity="center|left"
+                    android:gravity="left|center"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="12dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Claim Amount - "
+                    android:layout_marginLeft="5dp"
+                    android:textSize="12dp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/txt_tot"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="678"
+                    android:layout_marginRight="5dp"
+                    android:textStyle="bold"
+                    android:textSize="12dp"
+                    android:layout_gravity="center|left"
+                    android:gravity="left|center"
+                    android:textColor="@color/black"/>
+            </LinearLayout>
+
+                <TextView
+                    android:id="@+id/txt_narration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:drawableLeft="@drawable/notes"
+                    android:drawablePadding="8dp"
+                    android:drawableTint="@color/colorPrimary"
+                    android:gravity="left|center"
+                    android:text="abc"
+                    android:textColor="@color/black"
+                    android:textSize="12dp" />
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+</LinearLayout>

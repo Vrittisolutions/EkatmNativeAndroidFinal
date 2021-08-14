@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar1"
+        card_view:cardUseCompatPadding="true"
+        card_view:cardCornerRadius="2dp"
+        card_view:cardBackgroundColor="@color/header">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/black"
+            android:text="Item Code :"/>
+        <TextView
+            android:id="@+id/txt_item_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="16dp"
+            android:layout_marginLeft="10dp"
+            android:text="DWP120"
+            android:textColor="@color/black"
+
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="5dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:textColor="@color/black"
+            android:text="Item Desc/Technical Desc :"
+            android:layout_marginLeft="5dp"/>
+        <TextView
+            android:id="@+id/txt_item_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="14dp"
+            android:singleLine="true"
+            android:layout_marginLeft="10dp"
+            android:text="DWC HDPE Pipe- 120 mm OD X 103 mm ID"
+            android:textColor="@color/black"
+
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="2dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:textColor="@color/black"
+            android:text="Requisition Quantity :"
+            android:layout_marginLeft="5dp"/>
+        <TextView
+            android:id="@+id/txt_req_quantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="16dp"
+            android:singleLine="true"
+            android:layout_marginLeft="10dp"
+            android:text="1"
+            android:textColor="@color/black"
+
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center|left"
+        android:gravity="center|left"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="2dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:textColor="@color/black"
+            android:text="UOM :"
+            android:layout_marginLeft="5dp"/>
+        <TextView
+            android:id="@+id/txt_uom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="16dp"
+            android:singleLine="true"
+            android:layout_marginLeft="10dp"
+            android:text="--Select--"
+            android:textColor="@color/black"
+
+            />
+      <Button
+          android:id="@+id/txt_action"
+          android:layout_width="200dp"
+          android:layout_height="30dp"
+          android:background="@color/white"
+          android:layout_weight="1"
+          android:layout_gravity="center"
+          android:gravity="center"
+          android:textSize="16dp"
+          android:textColor="@color/black"
+          android:text="Action"
+          android:entries="@array/action"/>
+    </LinearLayout>
+
+    </LinearLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>

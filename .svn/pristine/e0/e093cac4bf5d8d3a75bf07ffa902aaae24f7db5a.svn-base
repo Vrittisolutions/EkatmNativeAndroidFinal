@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-tvdpi-v4\\ic_plusone_standard_off_client.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-plus-11.4.0.aar\\eeae1b0daef9ffb3826b73e5df3a0552\\res\\drawable-tvdpi-v4\\ic_plusone_standard_off_client.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-tvdpi-v4\\ic_plusone_medium_off_client.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-plus-11.4.0.aar\\eeae1b0daef9ffb3826b73e5df3a0552\\res\\drawable-tvdpi-v4\\ic_plusone_medium_off_client.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-tvdpi-v4\\ic_plusone_tall_off_client.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-plus-11.4.0.aar\\eeae1b0daef9ffb3826b73e5df3a0552\\res\\drawable-tvdpi-v4\\ic_plusone_tall_off_client.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-tvdpi-v4\\ic_plusone_small_off_client.png",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-plus-11.4.0.aar\\eeae1b0daef9ffb3826b73e5df3a0552\\res\\drawable-tvdpi-v4\\ic_plusone_small_off_client.png"
+    }
+]

@@ -1,0 +1,76 @@
+<resources>
+<string name="app_name">vWorkbench</string>
+<string name="Env_code">Environment</string>
+<string name="api_getEnv">c207.ekatm.com/api/LoginAPI/GetEnvis</string>
+<string name="api_getPlants">.ekatm.com/api/LoginAPI/GetPlants</string>
+<string name="api_PostloadWorkData">.ekatm.com/api/TimesheetAPI/PostloadWorkData</string>
+<string name="api_GetUserMasterId">.ekatm.com/api/TimesheetAPI/GetUserMasterId</string>
+<string name="api_GetSessions">.ekatm.com/api/LoginAPI/GetSessions</string>
+<string name="api_GetIsValidUser">.ekatm.com/api/LoginAPI/GetIsValidUser</string>
+<string name="drawer_open">Open</string>
+<string name="drawer_close">Close</string>
+//
+<string name="type_your_message">Type Message here</string>
+<string name="otpmsg">Sit back and relax !\n while we verify your mobile number</string>
+<string name="UpTicMat_Default_Setting">Default setting</string>
+<string name="UpTicMat_Change_Setting">Change warehouse and location</string>
+- <string-array name="planets_array">
+    <item>Mercury</item>
+    <item>Venus</item>
+    <item>Earth</item>
+    <item>Mars</item>
+    <item>Jupiter</item>
+    <item>Saturn</item>
+    <item>Uranus</item>
+    <item>Neptune</item>
+</string-array>
+- <string-array name="time_array">
+    <item>09:00</item>
+    <item>09:15</item>
+    <item>09:30</item>
+    <item>09:45</item>
+    <item>10:00</item>
+    <item>10:15</item>
+    <item>10:30</item>
+    <item>10:45</item>
+    <item>11:00</item>
+    <item>11:15</item>
+    <item>11:30</item>
+    <item>11:45</item>
+    <item>12:00</item>
+    <item>12:15</item>
+    <item>12:30</item>
+    <item>12:45</item>
+    <item>13:00</item>
+    <item>13:15</item>
+    <item>13:30</item>
+    <item>13:45</item>
+    <item>14:00</item>
+    <item>14:15</item>
+    <item>14:30</item>
+    <item>14:45</item>
+    <item>15:00</item>
+    <item>15:15</item>
+    <item>15:30</item>
+    <item>15:45</item>
+    <item>16:00</item>
+    <item>16:15</item>
+    <item>16:30</item>
+    <item>16:45</item>
+    <item>17:00</item>
+    <item>17:15</item>
+    <item>17:30</item>
+    <item>17:45</item>
+    <item>18:00</item>
+    <item>18:15</item>
+    <item>18:30</item>
+    <item>18:45</item>
+    <item>19:00</item>
+    <item>19:15</item>
+    <item>19:30</item>
+    <item>19:45</item>
+    <item>20:00</item>
+</string-array>
+<string name="tick">\u2713\u2713</string>
+<string name="google_map_key">AIzaSyD3ONS8gu5RY-Db5shmfI1Fc4NyygBGHSk</string>
+</resources>

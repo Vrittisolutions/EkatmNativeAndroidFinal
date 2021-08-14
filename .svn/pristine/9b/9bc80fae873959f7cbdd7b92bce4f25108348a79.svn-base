@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.vritti.crm.vcrm7.EntityMasterSelectionMainActivity"
+    android:orientation="vertical">
+
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/toolbar1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/MyToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay"
+            app:subtitleTextAppearance="@style/ToolbarTextAppearance.Subtitle"
+            app:titleTextAppearance="@style/ToolbarTextAppearance.Title"/>
+
+
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ln_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#6E6F72"
+        android:orientation="horizontal"
+        android:padding="3dp"
+        android:layout_below="@id/toolbar1">
+
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Entity Master"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:layout_weight="0.6"
+            android:padding="5dp"
+            android:textSize="18dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btn_Addcustomer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Customer"
+            android:layout_margin="30dp"
+            android:background="@color/listViewBg"/>
+
+        <Button
+            android:id="@+id/btn_DisplayList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:text="Display Entity List"
+            android:background="@color/listViewBg"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

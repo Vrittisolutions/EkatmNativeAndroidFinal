@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="45dp"
+      android:background="#F3F9FD"
+      android:visibility="gone">
+
+      <RelativeLayout
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="3"
+          android:background="#F3F9FD"
+          android:gravity="center">
+
+          <TextView
+              android:id="@+id/txt_date"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_centerInParent="true"
+              android:layout_centerVertical="true"
+              android:text="Lot No"
+              android:textColor="@color/black" />
+
+      </RelativeLayout>
+
+      <View
+          android:layout_width="0.5dp"
+          android:layout_height="match_parent"
+          android:background="#CFDBE2"/>
+
+      <RelativeLayout
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="5"
+          android:background="#F3F9FD"
+          android:gravity="center">
+
+          <TextView
+              android:id="@+id/txt_name"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_centerInParent="true"
+              android:layout_centerVertical="true"
+              android:text="Bal Qty"
+              android:textColor="@color/black" />
+
+      </RelativeLayout>
+
+      <View
+          android:layout_width="0.5dp"
+          android:layout_height="match_parent"
+          android:background="#CFDBE2"/>
+
+      <RelativeLayout
+
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="2"
+          android:background="#F3F9FD"
+          android:gravity="center">
+
+          <TextView
+              android:id="@+id/txt_a13"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_centerInParent="true"
+              android:layout_centerVertical="true"
+              android:text="Issue Qty"
+              android:textColor="@color/black" />
+
+      </RelativeLayout>
+
+      <View
+          android:layout_width="0.5dp"
+          android:layout_height="match_parent"
+          android:background="#CFDBE2"/>
+
+
+
+  </LinearLayout>
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardCornerRadius="2dp"
+        card_view:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:id="@+id/ln_packetmain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ln_contains"
+            android:orientation="horizontal"
+            android:padding="2dp"
+            android:visibility="gone">
+
+            //packet no
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.5"
+                android:visibility="visible"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:padding="1dp"
+                    android:text="Packet No: "
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/txt_packetNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:hint="123421342314234"
+                    android:padding="1dp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ln_packetmain"
+        android:orientation="horizontal"
+        android:padding="2dp">
+
+        //lot no
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.5"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:padding="1dp"
+                android:text="Lot No: "
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/txt_LotNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:hint="10 mul 10 MBPS"
+                android:padding="1dp"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            android:layout_weight="0.7"
+            android:visibility="visible">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_weight="0.07"
+                android:padding="1dp"
+                android:text="Issue Qty :"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <EditText
+                android:id="@+id/txt_issueNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_weight="0.7"
+                android:background="@drawable/business_edit_text"
+                android:inputType="number"
+                android:padding="2dp"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+        //Warehouse
+
+        <LinearLayout
+            android:id="@+id/ln_main1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ln_contains"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:padding="1dp"
+                    android:text="Warehouse :"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/txt_warehouse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    tools:hint="Baner"
+                    android:padding="1dp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:padding="1dp"
+                    android:text="Location :"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/txt_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    tools:hint="Angad"
+                    android:padding="1dp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        //FIFO and Bal Qty
+
+        <LinearLayout
+            android:id="@+id/ln_FIFO"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ln_contains"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:padding="1dp"
+                    android:text="FIFO :"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/txt_FIFO"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    tools:hint="0"
+                    android:padding="1dp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:padding="1dp"
+                    android:text="Bal Qty :"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/txt_balQty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    tools:hint="1.00"
+                    android:padding="1dp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+</RelativeLayout>

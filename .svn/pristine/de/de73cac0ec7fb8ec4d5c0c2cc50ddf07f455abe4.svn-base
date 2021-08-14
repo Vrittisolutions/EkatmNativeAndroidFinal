@@ -1,0 +1,110 @@
+[
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-v21\\ic_menu_manage.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable-v21\\ic_menu_manage.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-v21\\abc_edit_text_material.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-v21\\abc_edit_text_material.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-v21\\ic_menu_gallery.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable-v21\\ic_menu_gallery.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-v21\\avd_show_password.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\2a4762706393415c04fa065e59894d9a\\res\\drawable-v21\\avd_show_password.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-v21\\rounded_textview.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable-v21\\rounded_textview.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-v21\\ic_menu_share.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable-v21\\ic_menu_share.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-v21\\avd_hide_password.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\2a4762706393415c04fa065e59894d9a\\res\\drawable-v21\\avd_hide_password.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-v21\\design_password_eye.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\2a4762706393415c04fa065e59894d9a\\res\\drawable-v21\\design_password_eye.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-v21\\ic_tab_person.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable-v21\\ic_tab_person.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-v21\\design_bottom_navigation_item_background.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\2a4762706393415c04fa065e59894d9a\\res\\drawable-v21\\design_bottom_navigation_item_background.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-v21\\heade_chat_textview.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable-v21\\heade_chat_textview.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-v21\\ic_add_friend.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable-v21\\ic_add_friend.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-v21\\notification_action_background.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\36558538b602a41a3f8b7493d79908f8\\res\\drawable-v21\\notification_action_background.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-v21\\ic_menu_camera.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable-v21\\ic_menu_camera.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-v21\\play_button.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\k4l-video-trimmer-1.0.aar\\ce8e68a043d9a9ecfe0d4b111928de0c\\res\\drawable-v21\\play_button.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-v21\\ic_float_add_group.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable-v21\\ic_float_add_group.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-v21\\abc_btn_colored_material.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-v21\\abc_btn_colored_material.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-v21\\ic_menu_slideshow.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable-v21\\ic_menu_slideshow.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-v21\\abc_action_bar_item_background_material.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\drawable-v21\\abc_action_bar_item_background_material.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-v21\\button_green.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable-v21\\button_green.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-v21\\black_button_background.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\k4l-video-trimmer-1.0.aar\\ce8e68a043d9a9ecfe0d4b111928de0c\\res\\drawable-v21\\black_button_background.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-v21\\feedback_border_text.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable-v21\\feedback_border_text.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-v21\\expand.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable-v21\\expand.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-v21\\ic_float_button.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable-v21\\ic_float_button.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-v21\\ic_menu_send.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable-v21\\ic_menu_send.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-v21\\ic_tab_group.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable-v21\\ic_tab_group.png"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\drawable-v21\\ic_accept_cr_group.png",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\drawable-v21\\ic_accept_cr_group.png"
+    }
+]

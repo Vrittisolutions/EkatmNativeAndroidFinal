@@ -1,0 +1,90 @@
+package com.vritti.crm.bean;
+
+public class EntityCategoryBean {
+
+    String SlCatId ,SlCatDesc ,CreationLevel ,UserLevel ,IsDeleted ,AddedBy,
+            AddedDt,ModifiedBy,ModifiedDt;
+
+    public EntityCategoryBean(String slCatId, String slCatDesc) {
+        this.SlCatId = slCatId;
+        this.SlCatDesc = slCatDesc;
+    }
+
+
+    public String getSlCatId() {
+        return SlCatId;
+    }
+
+    public void setSlCatId(String slCatId) {
+        SlCatId = slCatId;
+    }
+
+    public String getSlCatDesc() {
+        return SlCatDesc;
+    }
+
+    public void setSlCatDesc(String slCatDesc) {
+        SlCatDesc = slCatDesc;
+    }
+
+    public String getCreationLevel() {
+        return CreationLevel;
+    }
+
+    public void setCreationLevel(String creationLevel) {
+        CreationLevel = creationLevel;
+    }
+
+    public String getUserLevel() {
+        return UserLevel;
+    }
+
+    public void setUserLevel(String userLevel) {
+        UserLevel = userLevel;
+    }
+
+    public String getIsDeleted() {
+        return IsDeleted;
+    }
+
+    public void setIsDeleted(String isDeleted) {
+        IsDeleted = isDeleted;
+    }
+
+    public String getAddedBy() {
+        return AddedBy;
+    }
+
+    public void setAddedBy(String addedBy) {
+        AddedBy = addedBy;
+    }
+
+    public String getAddedDt() {
+        return AddedDt;
+    }
+
+    public void setAddedDt(String addedDt) {
+        AddedDt = addedDt;
+    }
+
+    public String getModifiedBy() {
+        return ModifiedBy;
+    }
+
+    public void setModifiedBy(String modifiedBy) {
+        ModifiedBy = modifiedBy;
+    }
+
+    public String getModifiedDt() {
+        return ModifiedDt;
+    }
+
+    public void setModifiedDt(String modifiedDt) {
+        ModifiedDt = modifiedDt;
+    }
+
+    @Override
+    public String toString() {
+        return this.SlCatDesc;
+    }
+}

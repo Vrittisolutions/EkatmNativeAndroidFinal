@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "230822660520",
+    "firebase_url": "https://sahara-fafcf.firebaseio.com",
+    "project_id": "sahara-fafcf",
+    "storage_bucket": "sahara-fafcf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:230822660520:android:b4049fee90968556d5b59d",
+        "android_client_info": {
+          "package_name": "sahara.vritti.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "230822660520-or2bieolo6h7nmgt9i7kvqh6krnejas3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoX_rbuYTvFMMc1DXE693HaQrKco6vcaE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "230822660520-or2bieolo6h7nmgt9i7kvqh6krnejas3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

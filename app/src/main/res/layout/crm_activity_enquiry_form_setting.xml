@@ -1,0 +1,219 @@
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+
+    tools:context="com.vritti.crm.vcrm7.PromotionalFormSettingActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.NoActionBar.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/MyToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay"
+            app:subtitleTextAppearance="@style/ToolbarTextAppearance.Subtitle"
+            app:titleTextAppearance="@style/ToolbarTextAppearance.Title"
+            app:contentInsetLeft="0dp"
+            app:contentInsetStart="0dp"
+            app:contentInsetStartWithNavigation="0dp"/>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/lay1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="?android:attr/actionBarSize"
+            android:background="#6E6F72"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.7"
+                android:text=" Promotional Form Setting"
+                android:textColor="#fff"
+                android:textSize="16dp" />
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <ScrollView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/headerColor">
+
+                    <LinearLayout
+                        android:id="@+id/loc"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/headerColor"
+                        android:orientation="vertical"
+                        android:paddingLeft="5sp"
+                        android:paddingRight="5sp">
+
+                        <CheckBox
+                            android:id="@+id/checkBoxCity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="1"
+                            android:textSize="16dp"
+                            android:paddingTop="5dp"
+                            android:text="  City" />
+
+
+                        <CheckBox
+                            android:id="@+id/checkBoxAddress"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="1"
+                            android:paddingTop="5dp"
+                            android:textSize="16dp"
+                            android:text="  Address" />
+
+                        <CheckBox
+                            android:id="@+id/checkBoxEmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="1"
+                            android:paddingTop="5dp"
+                            android:textSize="16dp"
+                            android:text="  Email" />
+
+
+                        <CheckBox
+                            android:id="@+id/checkBoxAge"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="1"
+                            android:paddingTop="5dp"
+                            android:textSize="16dp"
+                            android:text="  Age" />
+
+
+                        <CheckBox
+                            android:id="@+id/checkBoxOccupation"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="1"
+                            android:paddingTop="5dp"
+                            android:textSize="16dp"
+                            android:text="  Occupation" />
+
+
+                        <CheckBox
+                            android:id="@+id/checkBoxPurchasemode"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="1"
+                            android:textSize="16dp"
+                            android:paddingTop="5dp"
+                            android:text="  Purchase mode" />
+
+                        <CheckBox
+                            android:id="@+id/checkBoxBuyplan"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="1"
+                            android:paddingTop="5dp"
+                            android:textSize="16dp"
+                            android:text="  Buy plan" />
+
+                        <CheckBox
+                            android:id="@+id/checkBoxProduct"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="1"
+                            android:paddingTop="5dp"
+                            android:textSize="16dp"
+                            android:text="  Product" />
+
+
+                        <CheckBox
+                            android:id="@+id/checkBoxRemark"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="1"
+                            android:paddingTop="5dp"
+                            android:textSize="16dp"
+                            android:text="  Remark" />
+                    </LinearLayout>
+                </ScrollView>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/linearlayout_cart_bottom_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@color/header"
+                android:gravity="center"
+                android:padding="5dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+
+                <Button
+                    android:id="@+id/button_add_enqsetting"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/btnsave"
+                    android:text="Add"
+                    android:layout_weight="1"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/button_cancel_enq_setting"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/white"
+                    android:text="Cancel"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+        </RelativeLayout>
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

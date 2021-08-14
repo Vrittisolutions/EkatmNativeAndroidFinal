@@ -1,0 +1,124 @@
+package com.vritti.crm.bean;
+
+public class EntityBIData {
+
+String CustVendorMasterId,
+        CustVendor,
+        CustVendorCode,
+        Entityclass,
+        CustVendorName,
+        ContactName,
+        Contact,
+        Email,
+        Address,
+        EntityType,
+        City;
+
+
+    public EntityBIData(String custVendorMasterId, String custVendor,
+                        String custVendorCode, String entityclass, String custVendorName, String contactName,
+                        String contact, String email, String address, String entityType, String city) {
+        this.CustVendorMasterId = custVendorMasterId;
+        this.CustVendor = custVendor;
+        this.CustVendorName = custVendorName;
+        this.ContactName = contactName;
+        this.Contact = contact;
+        this.Email = email;
+        this.Address = address;
+        this.EntityType = entityType;
+        this.City = city;
+
+    }
+
+    public EntityBIData() {
+
+    }
+
+    public String getCustVendorMasterId() {
+        return CustVendorMasterId;
+    }
+
+    public void setCustVendorMasterId(String custVendorMasterId) {
+        CustVendorMasterId = custVendorMasterId;
+    }
+
+    public String getCustVendor() {
+        return CustVendor;
+    }
+
+    public void setCustVendor(String custVendor) {
+        CustVendor = custVendor;
+    }
+
+    public String getCustVendorCode() {
+        return CustVendorCode;
+    }
+
+    public void setCustVendorCode(String custVendorCode) {
+        CustVendorCode = custVendorCode;
+    }
+
+    public String getEntityclass() {
+        return Entityclass;
+    }
+
+    public void setEntityclass(String entityclass) {
+        Entityclass = entityclass;
+    }
+
+    public String getCustVendorName() {
+        return CustVendorName;
+    }
+
+    public void setCustVendorName(String custVendorName) {
+        CustVendorName = custVendorName;
+    }
+
+    public String getContactName() {
+        return ContactName;
+    }
+
+    public void setContactName(String contactName) {
+        ContactName = contactName;
+    }
+
+    public String getContact() {
+        return Contact;
+    }
+
+    public void setContact(String contact) {
+        Contact = contact;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String email) {
+        Email = email;
+    }
+
+    public String getAddress() {
+        return Address;
+    }
+
+    public void setAddress(String address) {
+        Address = address;
+    }
+
+    public String getEntityType() {
+        return EntityType;
+    }
+
+    public void setEntityType(String entityType) {
+        EntityType = entityType;
+    }
+
+    public String getCity() {
+        return City;
+    }
+
+    public void setCity(String city) {
+        City = city;
+    }
+}

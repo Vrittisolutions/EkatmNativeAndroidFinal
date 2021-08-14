@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.vritti.sales.activity.SalesCommissionActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme"
+        android:visibility="visible"
+        android:background="@color/colorPrimary1">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar1"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            app:popupTheme="@style/AppTheme">
+
+            <ProgressBar
+                android:id="@+id/toolbar_progress_Assgnwork"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="8dp"
+                android:indeterminateDrawable="@drawable/spinner"
+                android:visibility="gone" />
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingLeft="0dp"
+                    android:hint="Commission Type"
+                    android:textSize="14sp"
+                    android:layout_weight="0.5">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_comm_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|left"
+                        android:gravity="center|left"
+                        android:textColor="#111"
+                        android:textSize="12sp"
+                        android:paddingLeft="10sp"
+                        android:drawableRight="@drawable/tbuds_ic_expand"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:paddingLeft="0dp"
+                        android:hint="Commission at"
+                        android:textSize="14sp"
+                        android:layout_weight="0.5">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/edt_commat"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical|left"
+                            android:gravity="center|left"
+                            android:textColor="#111"
+                            android:textSize="12sp"
+                            android:paddingLeft="10sp"
+                            android:drawableRight="@drawable/tbuds_ic_expand"/>
+                        <!--         android:layout_weight="0.25"-->
+
+                        <!--  <Spinner
+                              android:id="@+id/spin_commat"
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:layout_marginLeft="2dp"
+                              android:layout_marginTop="1dp"
+                              android:background="@drawable/border"/>-->
+                        <!--         android:layout_weight="0.25"-->
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:paddingLeft="0dp"
+                        android:hint="Payable to"
+                        android:textSize="14sp"
+                        android:layout_weight="0.5"
+                        android:layout_marginTop="0dp">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/edt_payble_to"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical|left"
+                            android:gravity="center|left"
+                            android:textColor="#111"
+                            android:textSize="12sp"
+                            android:paddingLeft="10sp"
+                            android:drawableRight="@drawable/tbuds_ic_expand"/>
+
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingLeft="0dp"
+                    android:hint="Payable to name"
+                    android:textSize="14sp">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_payble_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|left"
+                        android:gravity="center|left"
+                        android:textColor="#111"
+                        android:textSize="12sp"
+                        android:inputType="text"
+                        android:paddingLeft="10sp"
+                        android:editable="false"
+                        android:focusable="false"
+                        android:drawableRight="@drawable/places_ic_search"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <!--soamt-->
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:paddingLeft="0dp"
+                android:hint="SO Amount"
+                android:textSize="14sp"
+                android:layout_weight="0.5"
+                android:background="#ededed">
+
+                <EditText
+                    android:id="@+id/edt_soamt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|left"
+                    android:gravity="center|left"
+                    android:textColor="#111"
+                    android:textSize="12sp"
+                    android:enabled="false"
+                    android:focusable="false"
+                    android:inputType="numberDecimal"
+                    android:paddingLeft="10sp"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <RadioGroup
+                android:id="@+id/radgrp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp">
+
+                <android.support.v7.widget.AppCompatRadioButton
+                    android:id="@+id/rad_percntg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Percentage"
+                    android:textSize="12sp"
+                    android:layout_weight="0.5"/>
+
+                <android.support.v7.widget.AppCompatRadioButton
+                    android:id="@+id/rad_amt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Amount"
+                    android:textSize="12sp"
+                    android:layout_weight="0.5"/>
+
+            </RadioGroup>
+
+            <!--credit-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/lay_credptg"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingLeft="0dp"
+                    android:hint="Credit %"
+                    android:textSize="14sp">
+                    <!-- android:layout_weight="0.5"-->
+
+                    <EditText
+                        android:id="@+id/edt_credit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|left"
+                        android:gravity="center|left"
+                        android:textColor="#111"
+                        android:textSize="12sp"
+                        android:inputType="numberDecimal"
+                        android:paddingLeft="10sp"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/lay_credamt"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingLeft="0dp"
+                    android:hint="Credit Amount"
+                    android:textSize="14sp">
+                    <!--       android:layout_weight="0.5"-->
+
+                    <EditText
+                        android:id="@+id/edt_creditamt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|left"
+                        android:gravity="center|left"
+                        android:textColor="#111"
+                        android:textSize="12sp"
+                        android:inputType="numberDecimal"
+                        android:paddingLeft="10sp"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <!--commission-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/lay_comptg"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingLeft="0dp"
+                    android:hint="Commission %"
+                    android:textSize="14sp">
+                    <!-- android:layout_weight="0.5"-->
+
+                    <EditText
+                        android:id="@+id/edt_commission"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|left"
+                        android:gravity="center|left"
+                        android:textColor="#111"
+                        android:textSize="12sp"
+                        android:inputType="numberDecimal"
+                        android:paddingLeft="10sp"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/lay_comamt"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingLeft="0dp"
+                    android:hint="Commission Amount"
+                    android:textSize="14sp">
+                    <!--android:layout_weight="0.5"-->
+
+                    <EditText
+                        android:id="@+id/edt_commamt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|left"
+                        android:gravity="center|left"
+                        android:textColor="#111"
+                        android:textSize="12sp"
+                        android:inputType="numberDecimal"
+                        android:paddingLeft="10sp"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:paddingLeft="0dp"
+                android:hint="Remark"
+                android:textSize="14sp"
+                android:layout_weight="0.5">
+
+                <EditText
+                    android:id="@+id/edt_remark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|left"
+                    android:gravity="center|left"
+                    android:textColor="#111"
+                    android:textSize="12sp"
+                    android:maxLines="5"
+                    android:paddingLeft="10sp"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <!--buttons-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="5dp">
+
+                <Button
+                    android:id="@+id/btnadd"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:text="Add Commission"
+                    android:textSize="14dp"
+                    android:textColor="#FFFFFF"
+                    android:background="@drawable/tbuds_btn_pressed_2"
+                    android:layout_weight="0.4"
+                    android:layout_margin="5dp"/>
+
+                <Button
+                    android:id="@+id/btn_cancel"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:text="Cancel"
+                    android:textSize="14dp"
+                    android:textColor="#FFFFFF"
+                    android:background="@drawable/tbuds_btn_pressed_2_orange"
+                    android:layout_weight="0.6"
+                    android:layout_margin="5dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

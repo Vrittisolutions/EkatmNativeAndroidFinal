@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ededed">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" Add Customer Details "
+            android:textColor="#111"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="16dp"
+            android:fontFamily="@string/ButtonFont"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:id="@+id/editText_customerName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:hint="Enter Name"
+            android:inputType="text"
+            android:fontFamily="@string/TextFont"/>
+
+        <EditText
+            android:id="@+id/editText_MobNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:hint="Enter Mobile Number"
+            android:inputType="number"
+            android:maxLength="10"
+            android:fontFamily="@string/TextFont"/>
+
+        <Button
+            android:id="@+id/buttonOk"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textSize="17dp"
+            android:fontFamily="@string/ButtonFont"
+            android:textAllCaps="false"
+            android:background="@drawable/tbuds_btn_pressed_2"
+            android:text="OK" />
+    </LinearLayout>
+
+</LinearLayout>
+

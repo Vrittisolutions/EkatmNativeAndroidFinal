@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollview_claim_summary_baselayout"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#707070"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="Claim Header"
+            android:typeface="serif"
+
+            android:textColor="#fff"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+
+<!--        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:padding="5dp"
+                android:text="Workspace : "
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/textview_claim_summary_workspace"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.65"
+                android:padding="5dp"
+                android:textSize="13sp" />
+        </LinearLayout>-->
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:padding="5dp"
+                android:typeface="serif"
+                android:textColor="#000"
+                android:textSize="14dp"
+                android:text="Task : "
+                 />
+
+            <TextView
+                android:id="@+id/textview_claim_summary_task"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.65"
+                android:padding="5dp"
+
+                android:typeface="serif"
+                android:textColor="#000"
+                android:textSize="14dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:padding="5dp"
+                android:typeface="serif"
+                android:textColor="#000"
+                android:textSize="14dp"
+                android:text="Approver : "
+                />
+
+            <TextView
+                android:id="@+id/textview_claim_summary_approver"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.65"
+                android:padding="5dp"
+                android:typeface="serif"
+                android:textColor="#000"
+                android:textSize="14dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:padding="5dp"
+                android:text="Cost Center : "
+                android:typeface="serif"
+                android:textColor="#000"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/textview_claim_summary_costcenter"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.65"
+                android:padding="5dp"
+                android:typeface="serif"
+                android:textColor="#000"
+                android:textSize="14dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:padding="5dp"
+                android:text="Purpose : "
+                android:typeface="serif"
+                android:textColor="#000"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/textview_claim_summary_purpose"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.65"
+                android:padding="5dp"
+                android:typeface="serif"
+                android:textColor="#000"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:padding="5dp"
+                android:text="Remarks : "
+                android:typeface="serif"
+                android:textColor="#000"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/textview_claim_summary_remarks"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.65"
+                android:padding="5dp"
+                android:typeface="serif"
+                android:textColor="#000"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#707070"
+            android:gravity="center"
+            android:padding="5dp"
+            android:layout_marginBottom="3dp"
+            android:text="Claim Details"
+            android:textColor="#fff"
+            android:typeface="serif"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+
+        <LinearLayout
+            android:id="@+id/listview_claims_summary_details"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:scrollbars="none" />
+
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#707070"
+            android:gravity="center"
+            android:layout_marginTop="5dp"
+            android:padding="5dp"
+            android:text="Claim Attachments"
+            android:textColor="#fff"
+            android:typeface="serif"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+
+        <ListView
+            android:id="@+id/listview_claims_summary_attachments"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none" />
+
+
+        <Button
+            android:id="@+id/button_claim_summary_apply_claim"
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/backshapegreen"
+            android:text="Apply Claim"
+            android:textColor="#fff" />
+    </LinearLayout>
+
+</ScrollView>

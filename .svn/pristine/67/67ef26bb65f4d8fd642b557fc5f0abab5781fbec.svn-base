@@ -1,0 +1,490 @@
+package com.vritti.vwb.vworkbench;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.os.AsyncTask;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.Toast;
+
+import com.vritti.databaselib.data.DatabaseHandlers;
+import com.vritti.databaselib.other.Utility;
+import com.vritti.databaselib.other.WebUrlClass;
+import com.vritti.ekatm.Constants;
+import com.vritti.ekatm.R;
+import com.vritti.sessionlib.CallbackInterface;
+import com.vritti.sessionlib.StartSession;
+import com.vritti.vwb.Adapter.ActivityListMainAdapter_New;
+import com.vritti.vwb.Adapter.ClientDetailsAdapter;
+import com.vritti.vwb.Beans.ActivityBean;
+import com.vritti.vwb.Beans.ClientDetailsBeans;
+import com.vritti.vwb.classes.CommonFunction;
+import com.vritti.vwb.classes.commonObjectProperties;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.net.URLDecoder;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+
+public class ClientDetailsDisplay extends AppCompatActivity {
+
+    String PlantMasterId = "", LoginId = "", Password = "", CompanyURL = "", EnvMasterId = "",
+            UserMasterId = "", UserName = "", MobileNo = "";
+    Utility ut;
+    DatabaseHandlers db;
+    CommonFunction cf;
+    Context context;
+    SQLiteDatabase sql;
+    ArrayList<ClientDetailsBeans> clientDetailsBeansArrayList;
+    ClientDetailsAdapter clientDetailsAdapter;
+    RecyclerView list_clientDetails;
+    String status = "";
+    commonObjectProperties commonObj;
+    String shiptoMasterId = "", current_date = "";
+    private String FinalObj;
+    ArrayList<ActivityBean> lsActivityList;
+    ActivityListMainAdapter_New activityListadapterNew;
+    ProgressBar progressBar;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_client_details_display);
+
+        context = getApplicationContext();
+        ut = new Utility();
+        cf = new CommonFunction(context);
+        String settingKey = ut.getSharedPreference_SettingKey(context);
+        String dabasename = ut.getValue(context, WebUrlClass.GET_DATABASE_NAME_KEY, settingKey);
+        db = new DatabaseHandlers(context, dabasename);
+        CompanyURL = ut.getValue(context, WebUrlClass.GET_COMPANY_URL_KEY, settingKey);
+        EnvMasterId = ut.getValue(context, WebUrlClass.GET_EnvMasterID_KEY, settingKey);
+        PlantMasterId = ut.getValue(context, WebUrlClass.GET_PlantID_KEY, settingKey);
+        LoginId = ut.getValue(context, WebUrlClass.GET_LOGIN_KEY, settingKey);
+        Password = ut.getValue(context, WebUrlClass.GET_PSW_KEY, settingKey);
+        UserMasterId = ut.getValue(context, WebUrlClass.GET_USERMASTERID_KEY, settingKey);
+        UserName = ut.getValue(context, WebUrlClass.GET_USERNAME_KEY, settingKey);
+
+        sql = db.getWritableDatabase();
+        InitView();
+
+        Date c = Calendar.getInstance().getTime();
+        System.out.println("Current time => " + c);
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        current_date = df.format(c);
+
+        if (ut.isNet(ClientDetailsDisplay.this)) {
+
+            new StartSession(ClientDetailsDisplay.this, new CallbackInterface() {
+                @Override
+                public void callMethod() {
+                    new DownloadClientDetails().execute();
+                }
+
+                @Override
+                public void callfailMethod(String msg) {
+                    progressBar.setVisibility(View.GONE);
+                }
+            });
+        }
+
+        activityListadapterNew = new ActivityListMainAdapter_New(this, lsActivityList);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        list_clientDetails.setLayoutManager(mLayoutManager);
+        list_clientDetails.setItemAnimator(new DefaultItemAnimator());
+        list_clientDetails.setAdapter(activityListadapterNew);
+
+    }
+
+    private void InitView() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar1);
+        toolbar.setLogo(R.mipmap.ic_toolbar_logo_vwb);
+        //toolbar.setLogo(R.mipmap.ic_toolbar_logo_vwb);
+        toolbar.setTitle(R.string.app_name_toolbar_Vwb);
+        toolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(toolbar);
+
+        list_clientDetails = findViewById(R.id.list_clientDetails);
+        progressBar = findViewById(R.id.progressBar);
+        clientDetailsBeansArrayList = new ArrayList<>();
+        lsActivityList = new ArrayList<>();
+    }
+
+
+    private class DownloadClientDetails extends AsyncTask<String, Void, String> {
+        Object res;
+        String response = "";
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressBar.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            String url = CompanyURL + WebUrlClass.api_GetClientwiseactivities;
+            res = ut.OpenConnection(url, ClientDetailsDisplay.this);
+
+            try {
+                if (res != null) {
+                    response = res.toString();
+                    /*replaceAll("\\\\\\\\\\\"", "");
+                    response = response.replaceAll("\\\\", "");
+                    response = response.replaceAll("u0026", "&");
+                    response = response.substring(1, response.length() - 1);*/
+                } else {
+                    response = "error";
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                response = "error";
+            }
+
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            if (!response.equals("error")) {
+                try {
+                    JSONArray jsonArray = new JSONArray(response);
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        ClientDetailsBeans clientDetailsBeans = new ClientDetailsBeans();
+                        clientDetailsBeans.setShipToMasterId(jsonObject.getString("ShipToMasterId"));
+                        clientDetailsBeans.setCustVendorMasterId(jsonObject.getString("CustVendorMasterId"));
+                        clientDetailsBeans.setEmployeeId(jsonObject.getString("EmployeeId"));
+                        clientDetailsBeans.setConsigneeName(jsonObject.getString("ConsigneeName"));
+                        clientDetailsBeans.setOpenActivities(jsonObject.getString("OpenActivities"));
+                        clientDetailsBeans.setOverDue(jsonObject.getString("OverDue"));
+                        clientDetailsBeans.setWaitingApproval(jsonObject.getString("WaitingApproval"));
+                        clientDetailsBeans.setUnbilledCount(jsonObject.getString("UnbilledCount"));
+                        clientDetailsBeans.setUnbilledAmt(jsonObject.getString("UnbilledAmt"));
+                        clientDetailsBeans.setCritical(jsonObject.getString("Critical"));
+                        clientDetailsBeansArrayList.add(clientDetailsBeans);
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                clientDetailsAdapter = new ClientDetailsAdapter(ClientDetailsDisplay.this, clientDetailsBeansArrayList);
+                RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+                list_clientDetails.setLayoutManager(mLayoutManager);
+                list_clientDetails.setItemAnimator(new DefaultItemAnimator());
+                list_clientDetails.setAdapter(clientDetailsAdapter);
+
+            }
+            progressBar.setVisibility(View.GONE);
+
+        }
+    }
+
+    public void rowClick(String status1, ClientDetailsBeans clientDetailsBeansList, int pos) {
+        shiptoMasterId = clientDetailsBeansList.getShipToMasterId();
+
+        if (status1.equals("assigned")) {
+            status = "A";
+        } else if (status1.equals("overdue")) {
+            status = "O";
+        } else if (status1.equals("critical")) {
+            status = "C";
+        } else if (status1.equals("unapproved")) {
+            status = "Appr";
+        }
+        ClientJsonObject(status);
+
+
+    }
+
+    public void ClientJsonObject(String status) {
+        commonObj = new commonObjectProperties();
+        JSONObject jsoncommonObj = commonObj.WorkDataObj();
+        JSONObject jsonObj;
+        try {
+            if (status == "A") {
+                jsonObj = jsoncommonObj.getJSONObject("Status");
+                jsonObj.put("IsSet", true);
+                jsonObj.put("Operator", "<>");
+                jsonObj.put("value1", "('15','12')");
+
+            } else if (status == "O") {
+                jsonObj = jsoncommonObj.getJSONObject("Status");
+                jsonObj.put("IsSet", true);
+                jsonObj.put("Operator", "<>");
+                jsonObj.put("value1", "('15','12')");
+
+                jsonObj = jsoncommonObj.getJSONObject("ToDt");
+                jsonObj.put("IsSet", true);
+                jsonObj.put("Operator", "<");
+                jsonObj.put("value1", current_date);
+
+            } else if (status == "Appr") {
+                jsonObj = jsoncommonObj.getJSONObject("Status");
+                jsonObj.put("IsSet", true);
+                jsonObj.put("Operator", "eq");
+                jsonObj.put("value1", "('12')");
+                jsonObj = jsoncommonObj.getJSONObject("Await");
+                jsonObj.put("IsSet", true);
+
+            } else if (status == "C") {
+                jsonObj = jsoncommonObj.getJSONObject("Status");
+                jsonObj.put("IsSet", true);
+                jsonObj.put("Operator", "<>");
+                jsonObj.put("value1", "('15','12')");
+                jsonObj = jsoncommonObj.getJSONObject("PriorityIndex");
+                jsonObj.put("IsSet", true);
+            }
+
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("name", "ClientId");
+            jsonObject.put("IsSet", true);
+            jsonObject.put("Operator", "eq");
+            jsonObject.put("value1", shiptoMasterId);
+            jsonObject.put("value2", "");
+
+            jsoncommonObj.put("ClientId", jsonObject);
+            jsoncommonObj.put("ReQuery", "Y");
+            jsoncommonObj.put("RowEnd", 10);
+            jsoncommonObj.put("RowStart", 0);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        FinalObj = jsoncommonObj.toString();
+        FinalObj = FinalObj.replaceAll("\\\\", "");
+
+        //new DownloadCommanDataURLJSON().execute();
+        new DownloaPostWorkLoadPaging().execute(FinalObj);
+      /*  try {
+            jsonObj = jsoncommonObj.getJSONObject("assignBy");
+            jsonObj.put("IsSet", true);
+            jsonObj.put("value1", UserMasterId);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        try {
+            jsonObj = jsoncommonObj.getJSONObject("Status");
+            jsonObj.put("Operator", "<>");
+            jsonObj.put("IsSet", true);
+            jsonObj.put("value1", "('12,'15')");
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            //dismissProgressDialog();
+        }
+        try {
+      *//*  JSONObject jsonObject = new JSONObject();
+        jsonObject.put()*//*
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("name", "ClientId");
+            jsonObject.put("IsSet", false);
+            jsonObject.put("Operator", "eq");
+            jsonObject.put("value1", "");
+            jsonObject.put("value2", "");
+
+            jsoncommonObj.put("ClientId", jsonObject);
+
+            jsoncommonObj.put("ReQuery", "Y");
+            jsoncommonObj.put("RowEnd", 10);
+            jsoncommonObj.put("RowStart", 0);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }*/
+
+    }
+
+    class DownloaPostWorkLoadPaging extends AsyncTask<String, Void, String> {
+        Object res;
+        String response;
+
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+
+        @Override
+        protected String doInBackground(String... params) {
+            String json = params[0];
+
+
+            String url = CompanyURL + WebUrlClass.api_PostAssignByMeData_Paging;
+            try {
+                res = ut.OpenPostConnection(url, json, ClientDetailsDisplay.this);
+                response = res.toString().replaceAll("\\\\\\\\\\\"", "");
+                response = response.replaceAll("\\\\", "");
+                response = response.replaceAll("u0026", "&");
+                response = response.replaceAll("%", "per.");
+                response = response.substring(1, response.length() - 1);
+
+
+                ContentValues values = new ContentValues();
+                JSONArray jResults = new JSONArray(response);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                response = WebUrlClass.Errormsg;
+            }
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(String res) {
+            super.onPostExecute(res);
+            if (res != null) {
+                if (!(res.equalsIgnoreCase(WebUrlClass.Errormsg))) {
+
+                } else {
+                    ut.displayToast(ClientDetailsDisplay.this, "Could not connect to server");
+                }
+            } else {
+                ut.displayToast(ClientDetailsDisplay.this, "Could Not Connect to server");
+            }
+
+
+            getActivity_Paging();
+            //getTicketActivity_Paging();
+            // updateList();
+
+        }
+
+    }
+
+    public void getActivity_Paging() {
+        lsActivityList.clear();
+
+        Cursor cur = sql.rawQuery("SELECT * FROM " + db.TABLE_ACTIVITYMASTER, null);
+        int count = cur.getCount();
+        Log.i("cnt:", String.valueOf(cur.getCount()));
+
+        int cnt = cur.getCount();
+        if (cur.getCount() > 0) {
+            cur.moveToFirst();
+            do {
+                ActivityBean bean = new ActivityBean();
+
+                bean.setIsChargable(cur.getString(cur.getColumnIndex("IsChargable")));
+                bean.setActivityName(cur.getString(cur.getColumnIndex("ActivityName")));
+                bean.setAssignedById(cur.getString(cur.getColumnIndex("AssignedById")));
+                bean.setAssigned_By(cur.getString(cur.getColumnIndex("Assigned_By")));
+                bean.setIssuedToName(cur.getString(cur.getColumnIndex("IssuedToName")));
+                bean.setUserMasterId(cur.getString(cur.getColumnIndex("UserMasterId")));
+                //reporitngTo
+                //SubcontAct
+                //SubActStaus
+                bean.setActivityId(cur.getString(cur.getColumnIndex("ActivityId")));
+                bean.setEndDate(cur.getString(cur.getColumnIndex("EndDate")));
+                bean.setStartDate(cur.getString(cur.getColumnIndex("StartDate")));
+                bean.setExpectedCompleteDate(cur.getString(cur.getColumnIndex("ExpectedCompleteDate")));
+                bean.setModifiedBy(cur.getString(cur.getColumnIndex("ModifiedBy")));
+                bean.setModified_By(cur.getString(cur.getColumnIndex("Modified_By")));
+                bean.setFormatStDt(cur.getString(cur.getColumnIndex("FormatStDt")));
+                bean.setFormatEndDt(cur.getString(cur.getColumnIndex("FormatEndDt")));
+                bean.setStatus(cur.getString(cur.getColumnIndex("Status")));
+                bean.setProjectID(cur.getString(cur.getColumnIndex("ProjectId")));
+                bean.setPAllowUsrTimeSlotHrs(cur.getString(cur.getColumnIndex("PAllowUsrTimeSlotHrs")));
+                //IsDelayActivityAllowed
+                bean.setCd(cur.getString(cur.getColumnIndex("Cd")));
+                bean.setUnitId(cur.getString(cur.getColumnIndex("UnitId")));
+                bean.setPKModuleMastId(cur.getString(cur.getColumnIndex("PKModuleMastId")));
+                bean.setPriorityName(cur.getString(cur.getColumnIndex("PriorityName")));
+                bean.setColour(cur.getString(cur.getColumnIndex("Colour")));
+                bean.setPriorityIndex(cur.getString(cur.getColumnIndex("PriorityIndex")));
+                bean.setTotalHoursBooked(cur.getString(cur.getColumnIndex("TotalHoursBooked")));
+                bean.setAddedDt(cur.getString(cur.getColumnIndex("AddedDt")));
+                bean.setModifiedDt(cur.getString(cur.getColumnIndex("ModifiedDt")));
+                bean.setAssignedById1(cur.getString(cur.getColumnIndex("AssignedById1")));
+                bean.setIsDeleted(cur.getString(cur.getColumnIndex("IsDeleted")));
+                bean.setIsApproved(cur.getString(cur.getColumnIndex("IsApproved")));
+                bean.setIsChargable1(cur.getString(cur.getColumnIndex("IsChargable1")));
+                bean.setActivityTypeId(cur.getString(cur.getColumnIndex("ActivityTypeId")));
+                bean.setIsApproval(cur.getString(cur.getColumnIndex("IsApproval")));
+                bean.setHoursRequired(cur.getString(cur.getColumnIndex("HoursRequired")));
+                bean.setAttachmentName(cur.getString(cur.getColumnIndex("AttachmentName")));
+                //bean.setAttachmentContent(cur.getString(cur.getColumnIndex("AttachmentContent")));
+                // bean.setModifiedDt1(cur.getString(cur.getColumnIndex("ModifiedDt1")));
+                bean.setSourceType(cur.getString(cur.getColumnIndex("SourceType")));
+                bean.setSourceId(cur.getString(cur.getColumnIndex("SourceId")));
+                bean.setUnitName(cur.getString(cur.getColumnIndex("UnitName")));
+                bean.setUnitDesc(cur.getString(cur.getColumnIndex("UnitDesc")));
+                bean.setModuleName(cur.getString(cur.getColumnIndex("ModuleName")));
+                //   bean.setActivityName(cur.getString(cur.getColumnIndex("ActivityName1")));
+                bean.setRemarks(cur.getString(cur.getColumnIndex("Remarks")));
+                bean.setProjectCode(cur.getString(cur.getColumnIndex("ProjectCode")));
+                bean.setUserName(cur.getString(cur.getColumnIndex("UserName")));
+                bean.setExpectedComplete_Date(cur.getString(cur.getColumnIndex("ExpectedComplete_Date")));
+                bean.setDeptDesc(cur.getString(cur.getColumnIndex("DeptDesc")));
+                bean.setDeptMasterId(cur.getString(cur.getColumnIndex("DeptMasterId")));
+                bean.setCompletionIntimate(cur.getString(cur.getColumnIndex("CompletionIntimate")));
+                bean.setActivityCode(cur.getString(cur.getColumnIndex("ActivityCode")));
+                bean.setModifiedBy1(cur.getString(cur.getColumnIndex("ModifiedBy1")));
+                bean.setReassignedBy(cur.getString(cur.getColumnIndex("ReassignedBy")));
+                bean.setReassignedDt(cur.getString(cur.getColumnIndex("ReassignedDt")));
+                bean.setActualCompletionDate(cur.getString(cur.getColumnIndex("ActualCompletionDate")));
+                bean.setWarrantyCode(cur.getString(cur.getColumnIndex("WarrantyCode")));
+                bean.setTicketCategory(cur.getString(cur.getColumnIndex("TicketCategory")));
+                bean.setIsEndTime(cur.getString(cur.getColumnIndex("IsEndTime")));
+                bean.setIsCompActPresent(cur.getString(cur.getColumnIndex("IsCompActPresent")));
+                bean.setCompletionActId(cur.getString(cur.getColumnIndex("CompletionActId")));
+                bean.setTktCustReportedBy(cur.getString(cur.getColumnIndex("TktCustReportedBy")));
+                bean.setTktCustApprovedBy(cur.getString(cur.getColumnIndex("TktCustApprovedBy")));
+                bean.setIsSubActivity(cur.getString(cur.getColumnIndex("IsSubActivity")));
+                bean.setParentActId(cur.getString(cur.getColumnIndex("ParentActId")));
+                bean.setConsigneeName(cur.getString(cur.getColumnIndex("ConsigneeName")));
+                bean.setActivityTypeName(cur.getString(cur.getColumnIndex("ActivityTypeName")));
+                //FYCode
+                //TotalCount
+
+                lsActivityList.add(bean);
+
+
+            } while (cur.moveToNext());
+
+
+            activityListadapterNew.notifyDataSetChanged();
+            //   activityListadapterNew.notifyItemRangeChanged(0, activityListadapterNew.getItemCount());
+            //  progress_bar.setVisibility(View.GONE);
+
+
+        } else {
+            if (Constants.type == Constants.Type.Sahara || Constants.type == Constants.Type.ZP) {
+                Toast.makeText(getApplicationContext(), "No Activity Present", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(ClientDetailsDisplay.this, ActvityNotificationTypeNameActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+            }
+
+        }
+
+
+        //}
+    }
+
+}

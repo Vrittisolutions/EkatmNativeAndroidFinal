@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\incremental\\mergeVwbReleaseResources\\merged.dir\\values-uz-rUZ\\values-uz-rUZ.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Nilesh\\.gradle\\caches\\transforms-2\\files-2.1\\bcefe1a63aaad0e225ad14675b4e8bed\\datetimepicker-0.2.0\\res\\values-uz-rUZ\\values-uz-rUZ.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10,11,12,13,14",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "222,322,432,508,615,729,840,929,1015,1105,1189",
+                        "endColumns": "99,109,75,106,113,110,88,85,89,83,97",
+                        "endOffsets": "317,427,503,610,724,835,924,1010,1100,1184,1282"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,205,315,391,498,612,723,812,898,988,1072",
+                        "endColumns": "99,109,75,106,113,110,88,85,89,83,97",
+                        "endOffsets": "200,310,386,493,607,718,807,893,983,1067,1165"
+                    }
+                }
+            ]
+        }
+    ]
+}

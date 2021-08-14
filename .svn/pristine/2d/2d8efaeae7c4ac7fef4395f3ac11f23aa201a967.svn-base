@@ -1,0 +1,55 @@
+package com.vritti.crm.bean;
+
+public class DatasheetFormList {
+
+
+       String PKCssFormsId ,CSSFormsCode , CSSFormsDesc ,AllowDatasheetEntryOn,ItemLevelApproval,Attachment;
+
+    public String getPKCssFormsId() {
+        return PKCssFormsId;
+    }
+
+    public void setPKCssFormsId(String PKCssFormsId) {
+        this.PKCssFormsId = PKCssFormsId;
+    }
+
+    public String getCSSFormsCode() {
+        return CSSFormsCode;
+    }
+
+    public void setCSSFormsCode(String CSSFormsCode) {
+        this.CSSFormsCode = CSSFormsCode;
+    }
+
+    public String getCSSFormsDesc() {
+        return CSSFormsDesc;
+    }
+
+    public void setCSSFormsDesc(String CSSFormsDesc) {
+        this.CSSFormsDesc = CSSFormsDesc;
+    }
+
+    public String getAllowDatasheetEntryOn() {
+        return AllowDatasheetEntryOn;
+    }
+
+    public void setAllowDatasheetEntryOn(String allowDatasheetEntryOn) {
+        AllowDatasheetEntryOn = allowDatasheetEntryOn;
+    }
+
+    public String getItemLevelApproval() {
+        return ItemLevelApproval;
+    }
+
+    public void setItemLevelApproval(String itemLevelApproval) {
+        ItemLevelApproval = itemLevelApproval;
+    }
+
+    public String getAttachment() {
+        return Attachment;
+    }
+
+    public void setAttachment(String attachment) {
+        Attachment = attachment;
+    }
+}

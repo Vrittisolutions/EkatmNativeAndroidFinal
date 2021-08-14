@@ -1,0 +1,744 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#ededed"
+    tools:context="com.vritti.sales.activity.DeliveryAgentSelection">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme"
+        android:visibility="gone">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar1"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:popupTheme="@style/AppTheme">
+
+            <ProgressBar
+                android:id="@+id/toolbar_progress_Assgnwork"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="8dp"
+                android:indeterminateDrawable="@drawable/spinner"
+                android:visibility="gone" />
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <include
+        android:id="@+id/tbar"
+        layout="@layout/tbuds_common_toolbar"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="3dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:background="#ffffff"
+            android:elevation="10dp"
+            android:orientation="vertical"
+            android:paddingLeft="3dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="2dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.7"
+                    android:text="Invoice No. : "
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/txtinvoiceno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.3"
+                    android:text="PRHW19-20/062"
+                    android:textColor="#111"
+                    android:textStyle="bold"
+                    android:textSize="13dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="2dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.7"
+                    android:text="Delivery date : "
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/txtdelvdate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.3"
+                    android:text="27 Jun 2019 "
+                    android:textColor="#111"
+                    android:textStyle="bold"
+                    android:textSize="13dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="2dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.7"
+                    android:text="Consignee : "
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/txtcustomer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.3"
+                    android:text="Sayali Gonjari"
+                    android:textColor="#111"
+                    android:textStyle="bold"
+                    android:textSize="13dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="2dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.7"
+                    android:text="Address : "
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/txtaddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.3"
+                    android:maxLines="4"
+                    android:text="9 Continental park, Vritti Solutions ltd. pune"
+                    android:textColor="#111"
+                    android:textStyle="bold"
+                    android:textSize="13dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:background="#ffffff"
+            android:elevation="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Preferred Delivery Time:"
+                android:textColor="#111"
+                android:textSize="13dp"
+                android:paddingLeft="5dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="0dp">
+
+                <TextView
+                    android:id="@+id/txt_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.75"
+                    android:text="From 09:00 AM : "
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center_vertical|right"
+                    android:gravity="center_vertical|right"/>
+
+                <SeekBar
+                    android:id="@+id/skbarfromtime"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_weight="0.25"
+                    android:max="96"
+                    android:progress="36"/><!--96,36-->
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="0dp">
+
+                <TextView
+                    android:id="@+id/txt_time_to"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.75"
+                    android:text="To 18:00 PM : "
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center_vertical|right"
+                    android:gravity="center_vertical|right"/>
+
+                <SeekBar
+                    android:id="@+id/skbartotime"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_weight="0.25"
+                    android:max="96"
+                    android:progress="72"/><!--96,72-->
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="0dp"
+        android:layout_margin="5dp"
+        android:visibility="visible"
+        android:background="#ededed"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:layout_weight="0"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="0.5"
+            android:textSize="12sp"
+            android:text="Delivery Agent Details"
+            android:textColor="#111"/>
+
+        <!---->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|right"
+            android:layout_marginRight="5dp"
+            android:layout_weight="0.5"
+            android:gravity="center|right"
+            android:text="Pending Delivery"
+            android:textColor="#111"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/tbuds_nextarrow"
+            android:visibility="gone"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:textColor="#111"
+            android:text="Select"
+            android:textSize="11sp"
+            android:visibility="visible"/>
+
+    </LinearLayout>
+
+    <!--testing purpose-->
+    <!--<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="2dp"
+        android:layout_margin="3dp"
+        android:visibility="visible"
+        android:background="#ffffff"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="35dp"
+            android:visibility="visible"
+            android:src="@drawable/tbuds_dellivery_scooter"
+            android:layout_weight="0" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Agent 123"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="#222"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:layout_weight="0.8"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DA001"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="#222"
+                    android:textSize="12sp"
+                    android:layout_gravity="right"
+                    android:gravity="right"
+                    android:layout_weight="0.2"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="9876543210"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="#222"
+                    android:textSize="12sp"
+                    android:maxLength="10"
+                    android:layout_weight="0.7"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="00:30"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="#222"
+                    android:textSize="12sp"
+                    android:layout_gravity="right"
+                    android:gravity="right"
+                    android:layout_weight="0.3"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="10dp"
+                    android:paddingLeft="5dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/location"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="9 Continental Park, Vritti Solutions ltd, Kothrud, Pune"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="10dp"
+                    android:textColor="#222"
+                    android:textSize="12sp"
+                    android:maxLines="4"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:text="1"
+            android:background="@drawable/tbuds_sphere1"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:layout_marginRight="5dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/tbuds_nextarrow"
+            android:visibility="gone"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:visibility="visible"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="2dp"
+        android:layout_margin="3dp"
+        android:visibility="visible"
+        android:background="#ffffff"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="35dp"
+            android:visibility="visible"
+            android:src="@drawable/tbuds_dellivery_scooter"
+            android:layout_weight="0" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Amol 345"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="#222"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:layout_weight="0.8"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DA009"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="#222"
+                    android:textSize="12sp"
+                    android:layout_gravity="right"
+                    android:gravity="right"
+                    android:layout_weight="0.2"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="7685932088"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="#222"
+                    android:textSize="12sp"
+                    android:maxLength="10"
+                    android:layout_weight="0.7"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="00:20"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="#222"
+                    android:textSize="12sp"
+                    android:layout_gravity="right"
+                    android:gravity="right"
+                    android:layout_weight="0.3"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="10dp"
+                    android:paddingLeft="5dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/location"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Location"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="10dp"
+                    android:textColor="#222"
+                    android:textSize="13sp"
+                    android:maxLines="4"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:text="5"
+            android:background="@drawable/tbuds_sphere1"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:layout_marginRight="5dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/tbuds_nextarrow"
+            android:visibility="gone"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:visibility="visible"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="2dp"
+        android:layout_margin="3dp"
+        android:visibility="visible"
+        android:background="#ffffff"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="35dp"
+            android:visibility="visible"
+            android:src="@drawable/tbuds_dellivery_scooter"
+            android:layout_weight="0" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Agent Name"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="#222"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:layout_weight="0.8"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Agent Id"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="#222"
+                    android:textSize="12sp"
+                    android:layout_gravity="right"
+                    android:gravity="right"
+                    android:layout_weight="0.2"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mobile"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="#222"
+                    android:textSize="12sp"
+                    android:maxLength="10"
+                    android:layout_weight="0.7"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Estimated Time"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="#222"
+                    android:textSize="12sp"
+                    android:layout_gravity="right"
+                    android:gravity="right"
+                    android:layout_weight="0.3"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="10dp"
+                    android:paddingLeft="5dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/location"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Location"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="10dp"
+                    android:textColor="#222"
+                    android:textSize="13sp"
+                    android:maxLines="4"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/txt_subcat_count"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:text="3"
+            android:background="@drawable/tbuds_sphere1"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:layout_marginRight="5dp" />
+
+        <ImageView
+            android:id="@+id/imageview_next"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/tbuds_nextarrow"
+            android:visibility="gone"/>
+
+        <CheckBox
+            android:id="@+id/chkagent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:visibility="visible"/>
+
+    </LinearLayout>-->
+    <!--testing purpose-->
+
+
+    <ListView
+        android:id="@+id/list_agents"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.9"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:visibility="visible" />
+
+
+    <Button
+        android:id="@+id/btnassign"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/tbuds_btn_pressed"
+        android:layout_alignParentBottom="true"
+        android:text="Assign Activity"
+        android:layout_gravity="bottom"
+        android:titleCondensed="@string/ButtonFont"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:textSize="17dp" />
+
+
+</LinearLayout>

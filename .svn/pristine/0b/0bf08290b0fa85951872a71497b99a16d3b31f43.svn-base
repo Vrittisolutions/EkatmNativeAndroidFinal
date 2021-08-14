@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:textSize="14dp"
+            android:layout_marginBottom="2dp"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content"
+            android:id="@+id/lv_leavetyoe"
+            android:text="SL"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:orientation="horizontal">
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:background="#5DC6FB"
+                        android:text="" />
+
+                    <TextView
+                        android:id="@+id/lv_Credited"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text=""
+                        android:layout_marginLeft="8dp"
+                        android:textColor="#000"
+                        android:textSize="14dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:background="#3DF757"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/lv_available"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text=""
+                    android:layout_marginLeft="8dp"
+                    android:textColor="#000"
+                    android:textSize="14dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:background="#FA6666"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/lv_consumed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text=""
+                    android:layout_marginLeft="8dp"
+                    android:textColor="#000"
+                    android:textSize="14dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:background="#FA9E5D"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/lv_opening"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text=""
+                    android:layout_marginLeft="8dp"
+                    android:textColor="#000"
+                    android:textSize="12dp" />
+            </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>

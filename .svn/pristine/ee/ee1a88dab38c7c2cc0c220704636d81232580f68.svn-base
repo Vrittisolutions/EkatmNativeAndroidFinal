@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\mipmap-anydpi-v26\\ic_launcher.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\mipmap-anydpi-v26\\ic_launcher_round.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    }
+]

@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.vritti.sales.activity.NewSalesOrderBooking">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme"
+        android:visibility="visible"
+        android:background="#FF4112">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar1"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            app:popupTheme="@style/AppTheme">
+
+            <ProgressBar
+                android:id="@+id/toolbar_progress_Assgnwork"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="8dp"
+                android:indeterminateDrawable="@drawable/spinner"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/btnnewcust"
+                android:layout_width="30dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/tbuds_add_custmr"
+                android:layout_gravity="center|right"
+                android:visibility="gone"/>
+
+            <ImageView
+                android:id="@+id/btnprospsetting"
+                android:layout_width="30dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/tbuds_settings"
+                android:layout_gravity="center|right"
+                android:visibility="gone"/>
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:layout_margin="5dp"
+        android:background="#ededed">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Customer  :"
+                android:textColor="#111"
+                android:textSize="14sp"
+                android:padding="5dp"
+                android:layout_weight="0.75"/>
+
+            <TextView
+                android:id="@+id/txtcustname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Test Chetana"
+                android:textColor="#111"
+                android:textSize="14sp"
+                android:padding="5dp"
+                android:layout_weight="0.25"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SO No.  :"
+                android:textColor="#111"
+                android:textSize="14sp"
+                android:padding="5dp"
+                android:layout_weight="0.75"/>
+
+            <TextView
+                android:id="@+id/txtsono"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SOHW19-20/000"
+                android:textColor="#111"
+                android:textSize="14sp"
+                android:padding="5dp"
+                android:layout_weight="0.25"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnhdr"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:textColor="#111"
+        android:background="#ededed"
+        android:text="Header"
+        android:textSize="15sp"
+        android:textAllCaps="false"
+        android:paddingLeft="10dp"
+        android:layout_margin="5dp"/>
+
+    <Button
+        android:id="@+id/btnitem"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:textColor="#111"
+        android:background="#ededed"
+        android:text="Item"
+        android:textSize="15sp"
+        android:textAllCaps="false"
+        android:paddingLeft="10dp"
+        android:layout_margin="5dp"/>
+
+    <Button
+        android:id="@+id/btncharge"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:textColor="#111"
+        android:background="#ededed"
+        android:text="Charge"
+        android:textSize="15sp"
+        android:textAllCaps="false"
+        android:paddingLeft="10dp"
+        android:layout_margin="5dp"/>
+
+    <Button
+        android:id="@+id/btntc"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:textColor="#111"
+        android:background="#ededed"
+        android:text="T And C"
+        android:textSize="15sp"
+        android:textAllCaps="false"
+        android:paddingLeft="10dp"
+        android:layout_margin="5dp"/>
+
+    <Button
+        android:id="@+id/btncomision"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:textColor="#111"
+        android:background="#ededed"
+        android:text="Commission"
+        android:textSize="15sp"
+        android:textAllCaps="false"
+        android:paddingLeft="10dp"
+        android:layout_margin="5dp"/>
+
+    <Button
+        android:id="@+id/btnpayment"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:textColor="#111"
+        android:background="#ededed"
+        android:text="Payment"
+        android:textSize="15sp"
+        android:textAllCaps="false"
+        android:paddingLeft="10dp"
+        android:layout_margin="5dp"/>
+
+    <Button
+        android:id="@+id/btnreimbursmnt"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_margin="5dp"
+        android:background="#ededed"
+        android:paddingLeft="10dp"
+        android:text="Reimbursement"
+        android:textAllCaps="false"
+        android:textColor="#111"
+        android:textSize="15sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#666666"
+        android:layout_marginTop="10dp">
+
+        <LinearLayout
+            android:id="@+id/layproductamt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="0.5">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Product Amount"
+                android:textColor="#FFFFFF"
+                android:textSize="10sp"
+                android:padding="5dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="0.75"/>
+
+            <TextView
+                android:id="@+id/txtprodamt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="000"
+                android:textColor="#FFFFFF"
+                android:textSize="10sp"
+                android:padding="5dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_weight="0.75"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layproduct_taxamt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="0.5">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Product Tax Amount"
+                android:textColor="#FFFFFF"
+                android:textSize="10sp"
+                android:padding="5dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="0.75"/>
+
+            <TextView
+                android:id="@+id/txtprodtaxamt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="000"
+                android:textColor="#FFFFFF"
+                android:textSize="10sp"
+                android:padding="5dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_weight="0.75"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/laychargeamt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="0.5">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Charge Amount"
+                android:textColor="#FFFFFF"
+                android:textSize="10sp"
+                android:padding="5dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="0.75"/>
+
+            <TextView
+                android:id="@+id/txtchrgamt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="000"
+                android:textColor="#FFFFFF"
+                android:textSize="10sp"
+                android:padding="5dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_weight="0.75"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/laycharhe_taxamt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="0.5">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Charge Tax Amount"
+                android:textColor="#FFFFFF"
+                android:textSize="10sp"
+                android:padding="5dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="0.75"/>
+
+            <TextView
+                android:id="@+id/txtchrgtaxamt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="000"
+                android:textColor="#FFFFFF"
+                android:textSize="10sp"
+                android:padding="5dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_weight="0.75"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/laydiscountamt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="0.5">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Discount Amount"
+                android:textColor="#FFFFFF"
+                android:textSize="10sp"
+                android:padding="5dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="0.75"/>
+
+            <TextView
+                android:id="@+id/txtdiscamt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="000"
+                android:textColor="#FFFFFF"
+                android:textSize="10sp"
+                android:padding="5dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_weight="0.75"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/laytotalamt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="0.5">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Total Amount"
+                android:textColor="#FFFFFF"
+                android:textSize="10sp"
+                android:padding="5dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="0.75"/>
+
+            <TextView
+                android:id="@+id/txttotamt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="000"
+                android:textColor="#FFFFFF"
+                android:textSize="10sp"
+                android:padding="5dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_weight="0.75"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <Button
+            android:id="@+id/btnfinalsave"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="Save"
+            android:textColor="#FFF"
+            android:textSize="15sp"
+            android:layout_weight="0.5"
+            android:background="@drawable/tbuds_btn_pressed_2"
+            android:layout_margin="10dp"/>
+
+        <Button
+            android:id="@+id/btnfinalcancel"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="Cancel"
+            android:textColor="#FFF"
+            android:textSize="15sp"
+            android:layout_weight="0.5"
+            android:background="@drawable/tbuds_btn_pressed_2_orange"
+            android:layout_margin="10dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

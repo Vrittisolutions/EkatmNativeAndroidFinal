@@ -1,0 +1,107 @@
+package com.vritti.crm.adapter;
+
+import android.content.Context;
+import android.support.v7.widget.AppCompatCheckBox;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
+
+import com.vritti.crm.bean.EntityMasterEnterpriseType;
+import com.vritti.ekatm.R;
+
+import java.util.ArrayList;
+
+
+/**
+ * Created by pradnya on 10/13/16.
+ */
+
+public class WorkOperationAdapter extends BaseAdapter {
+    ArrayList<EntityMasterEnterpriseType> entityMasterEnterpriseTypeArrayList;
+    LayoutInflater mInflater;
+    Context context;
+    private RadioButton mSelectedRB;
+    private int mSelectedPosition = -1;
+    private RadioButton lastCheckedRB = null;
+    private RadioButton lastCheckedRB1 = null;
+    String Method_of_operation = "", radval = "";
+    int check = 0;
+
+
+    public WorkOperationAdapter(Context context1, ArrayList<EntityMasterEnterpriseType> entityMasterEnterpriseTypeArrayList) {
+        this.entityMasterEnterpriseTypeArrayList = entityMasterEnterpriseTypeArrayList;
+        mInflater = LayoutInflater.from(context1);
+        context = context1;
+
+    }
+
+    @Override
+    public int getCount() {
+        return entityMasterEnterpriseTypeArrayList.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return entityMasterEnterpriseTypeArrayList.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return 0;
+    }
+
+    @Override
+    public View getView(final int position, View convertView, ViewGroup parent) {
+        final ViewHolder holder;
+        //final ViewHolder pos;
+
+        if (convertView == null) {
+            convertView = mInflater.inflate(R.layout.operation_item_lay, null);
+            holder = new ViewHolder();
+            // holder.radiogrp_operation= (RadioGroup) convertView.findViewById(R.id.radiogrp_operation1);
+            holder.check_yes = convertView.findViewById(R.id.check_yes);
+
+            convertView.setTag(holder);
+
+        } else {
+            holder = (ViewHolder) convertView.getTag();
+
+        }
+
+        holder.check_yes.setText(entityMasterEnterpriseTypeArrayList.get(position).getEntityMasterDesc());
+
+
+        return convertView;
+    }
+
+
+    public String getcheckedradio() {
+
+        String OperationCode = radval;
+
+        return OperationCode;
+    }
+
+
+    public ArrayList<EntityMasterEnterpriseType> getArrayList() {
+        ArrayList<EntityMasterEnterpriseType> list = new ArrayList<>();
+        for (int i = 0; i < entityMasterEnterpriseTypeArrayList.size(); i++) {
+            if (entityMasterEnterpriseTypeArrayList.get(i).isCheck())
+                list.add(entityMasterEnterpriseTypeArrayList.get(i));
+        }
+        return list;
+    }
+
+
+    static class ViewHolder {
+        RadioGroup radiogrp_operation;
+        RadioButton check_yes;
+
+    }
+
+
+}

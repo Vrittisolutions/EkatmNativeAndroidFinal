@@ -1,0 +1,163 @@
+package com.vritti.inventory.MaterialRequisition.adapter;
+
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.support.v7.app.AlertDialog;
+import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.PopupMenu;
+import android.widget.Spinner;
+import android.widget.TextView;
+
+import com.vritti.crm.vcrm7.OpportunityActivity;
+import com.vritti.databaselib.data.DatabaseHandlers;
+import com.vritti.ekatm.R;
+import com.vritti.inventory.MaterialRequisition.activity.InventoryShow;
+import com.vritti.inventory.MaterialRequisition.classes.Inventory_CommonFunction;
+import com.vritti.inventory.MaterialRequisition.model.MaterialOrder;
+
+import java.util.ArrayList;
+
+
+/**
+ * Created by 300151 on 10/13/16.
+ */
+public class ItemlistAdapter extends BaseAdapter {
+    ArrayList<MaterialOrder> materialOrderArrayList;
+    int action_Pos;
+    LayoutInflater mInflater;
+    Context context;
+    AlertDialog alertDialog;
+    DatabaseHandlers db;
+    SQLiteDatabase sql;
+    Inventory_CommonFunction inventory_commonFunction;
+
+    public ItemlistAdapter(Context context1, ArrayList<MaterialOrder> materialOrderArrayList) {
+        this.materialOrderArrayList = materialOrderArrayList;
+        mInflater = LayoutInflater.from(context1);
+        context = context1;
+        db = new DatabaseHandlers(context1);
+        sql = db.getWritableDatabase();
+        inventory_commonFunction = new Inventory_CommonFunction(context);
+
+    }
+
+    @Override
+    public int getCount() {
+        return materialOrderArrayList.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return materialOrderArrayList.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return 0;
+    }
+
+    @Override
+    public View getView(final int position, View convertView, ViewGroup parent) {
+        final ViewHolder holder;
+        if (convertView == null) {
+            convertView = mInflater.inflate(R.layout.inventory_item_lay_list, null);
+            holder = new ViewHolder();
+            holder.txt_item_code = (TextView) convertView.findViewById(R.id.txt_item_code);
+            holder.txt_item_desc = (TextView) convertView.findViewById(R.id.txt_item_desc);
+            holder.txt_req_quantity = (TextView) convertView.findViewById(R.id.txt_req_quantity);
+            holder.txt_uom = (TextView) convertView.findViewById(R.id.txt_uom);
+            holder.txt_action = convertView.findViewById(R.id.txt_action);
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
+        }
+
+        holder.txt_item_code.setText(materialOrderArrayList.get(position).getItemCode());
+        holder.txt_item_desc.setText(materialOrderArrayList.get(position).getItemDesc());
+        holder.txt_req_quantity.setText(materialOrderArrayList.get(position).getReqQty());
+        holder.txt_uom.setText(materialOrderArrayList.get(position).getUOMDesc());
+        // holder.txt_item_code.setText(materialOrderArrayList.get(position).getItemCode());
+
+        holder.txt_action.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ((InventoryShow) context).showPopup(v, materialOrderArrayList, position);
+
+
+            }
+        });
+
+
+
+
+             /* holder.txt_action.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                  @Override
+                  public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                      String Action_name=holder.txt_action.getSelectedItem().toString();
+                      if (Action_name.equals("Delete")){
+                          MaterialOrder itemMasterId = materialOrderArrayList.get(position);
+                          inventory_commonFunction = new Inventory_CommonFunction(context);
+                          inventory_commonFunction.deleteItemLocal(itemMasterId);
+                          materialOrderArrayList.remove(position);
+                          String query = "SELECT * FROM " + db.TABLE_AddMaterialPoOrder;
+                          Cursor cur = sql.rawQuery(query, null);
+                          int count = cur.getCount();
+                          notifyDataSetChanged();
+                      }
+
+                  }
+
+                  @Override
+                  public void onNothingSelected(AdapterView<?> adapterView) {
+
+                  }
+              });*/
+
+
+        return convertView;
+    }
+
+    public void updateList(ArrayList<MaterialOrder> materialOrders, int action_pos) {
+        this.materialOrderArrayList = materialOrders;
+        notifyDataSetChanged();
+    }
+
+
+  /*  @Override
+    public boolean onMenuItemClick(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.edit:
+                return true;
+            case R.id.delete:
+                MaterialOrder itemMasterId = materialOrderArrayList.get(action_Pos);
+                inventory_commonFunction = new Inventory_CommonFunction(context);
+                inventory_commonFunction.deleteItemLocal(itemMasterId);
+                materialOrderArrayList.remove(action_Pos);
+                String query = "SELECT * FROM " + db.TABLE_AddMaterialPoOrder;
+                Cursor cur = sql.rawQuery(query, null);
+                int count = cur.getCount();
+                notifyDataSetChanged();
+
+
+                return true;
+            default:
+                return false;
+        }
+    }*/
+
+    static class ViewHolder {
+        TextView txt_item_code, txt_item_desc, txt_req_quantity, txt_uom;
+        Button txt_action;
+    }
+}

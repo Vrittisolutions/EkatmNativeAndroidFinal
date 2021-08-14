@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/toolbar_header"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:layout_marginBottom="0dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/white"
+            android:text="Business Profile"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            style="@style/ToolbarStyle"
+            android:textSize="16dp"
+            android:padding="10dp"
+            />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/sp_5">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_viewdetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardCornerRadius="8dp"
+        card_view:cardElevation="1dp"
+        android:layout_margin="2dp"
+        card_view:cardUseCompatPadding="true"
+        card_view:cardMaxElevation="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <EditText
+                    android:id="@+id/edt_OfficeCnt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="No. of Offices"
+                    android:drawablePadding="8dp"
+                    android:padding="10dp"
+                    android:drawableLeft="@drawable/office"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:visibility="visible"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="#111"
+                    android:textColorHint="@color/hint"
+                    android:textSize="14dp"
+                    android:clickable="true" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <EditText
+                    android:id="@+id/edt_EmployeeStrength"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="No. of Employees"
+                    android:drawableLeft="@drawable/customer"
+                    android:drawableTint="@color/colorPrimary"
+                    android:drawablePadding="8dp"
+                    android:padding="10dp"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:visibility="visible"
+                    android:text=""
+                    android:singleLine="true"
+                    android:textColor="#111"
+                    android:textSize="14dp"
+                    android:clickable="true" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                <AutoCompleteTextView
+                    android:id="@+id/spinner_currency"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/money_24"
+                    android:drawableTint="@color/colorPrimary"
+                    android:drawablePadding="8dp"
+                    android:padding="10dp"
+                    android:hint="Currency"
+                    android:textColor="#111"
+                    android:textSize="14dp"
+                    android:clickable="true" />
+
+            </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:hint="Turnover">
+
+
+                    <EditText
+                        android:id="@+id/edt_turnover"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|left"
+                        android:layout_weight="1"
+                        android:gravity="center|left"
+                        android:text=""
+                        android:drawableLeft="@drawable/money_24"
+                        android:drawableTint="@color/colorPrimary"
+                        android:drawablePadding="8dp"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberDecimal|numberSigned"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textColorHint="@color/hint"
+                        android:textSize="13sp"
+                        />
+                </android.support.design.widget.TextInputLayout>
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+
+
+                    <AutoCompleteTextView
+                        android:id="@+id/spinner_turnover"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:hint="Turnover"
+                        android:padding="10dp"
+                        android:drawableLeft="@drawable/credit_card"
+                        android:drawableTint="@color/colorPrimary"
+                        android:drawablePadding="8dp"
+                        android:textColor="#111"
+                        android:textSize="12sp"
+                        android:clickable="true" />
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="1dp"
+                android:hint="Enter business details"
+                >
+
+                <AutoCompleteTextView
+                    android:id="@+id/edt_businessDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:inputType="textMultiLine"
+                    android:singleLine="false"
+                    android:maxLines="20"
+                    android:drawablePadding="8dp"
+                    android:padding="10dp"
+                    android:textColor="#111"
+                    android:drawableLeft="@drawable/office"
+                    android:textColorHint="@color/colorPrimary"
+                    android:textSize="14dp"
+                    android:visibility="visible" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <EditText
+                    android:id="@+id/edt_trans_per_day_cnt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Transaction per day"
+                    android:imeOptions="actionNext"
+                    android:drawableLeft="@drawable/initiatedarrow"
+                    android:drawablePadding="8dp"
+                    android:padding="10dp"
+                    android:inputType="number"
+                    android:visibility="visible"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="#111"
+                    android:textColorHint="@color/colorPrimary"
+                    android:textSize="12sp" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <AutoCompleteTextView
+                    android:id="@+id/spinner_product"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:imeOptions="actionNext"
+                    android:singleLine="true"
+                    android:drawableLeft="@drawable/product"
+                    android:drawableTint="@color/colorPrimary"
+                    android:textColor="#111"
+                    android:drawablePadding="8dp"
+                    android:padding="10dp"
+                    android:textColorHint="@color/colorPrimary"
+                    android:textSize="14dp"
+                    android:clickable="true"
+                    android:editable="false"
+                    android:focusable="false"
+                    android:hint="Product" />
+
+                                </android.support.design.widget.TextInputLayout>
+
+
+
+
+
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_margin="@dimen/sp_10"
+                android:orientation="horizontal">
+
+                <TableRow
+                    android:id="@+id/tableRow1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom">
+
+                    <Button
+                        android:id="@+id/buttonback_prospect"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_orange"
+                        android:text="Back"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="13dp"
+                        android:visibility="visible" />
+
+
+                    <Button
+                        android:id="@+id/buttonSave_prospect"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_green"
+                        android:text="Save"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="13dp"
+                        android:visibility="visible" />
+
+                    <Button
+                        android:id="@+id/buttonSaveandstartcall_prospect"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="13dp"
+                        android:background="@drawable/button_green"
+                        android:text="Start Opportunity"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:visibility="visible"/>
+                </TableRow>
+            </LinearLayout>
+
+
+
+
+
+
+
+
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+    </ScrollView>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>

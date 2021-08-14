@@ -1,0 +1,1025 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.vritti.sales.CounterBilling.AddEditItemForCBilling">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme"
+        android:background="@color/colorPrimary1"
+        android:visibility="visible">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar1"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="@color/colorPrimary1"
+            app:popupTheme="@style/AppTheme">
+
+            <ProgressBar
+                android:id="@+id/toolbar_progress_edititem"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_gravity="right"
+                android:layout_marginRight="8dp"
+                android:indeterminateDrawable="@drawable/spinner"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/imgrefresh"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="right"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/ic_refresh"
+                android:visibility="visible" />
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <include
+        android:id="@+id/tbar"
+        layout="@layout/tbuds_common_toolbar"
+        android:visibility="gone" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:clipToPadding="false"
+                    android:paddingLeft="0dp"
+                    android:clickable="false"
+                    android:textSize="14sp"
+                    android:layout_marginTop="1dp"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/border_lightblue"
+                    android:layout_margin="5dp">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/selwarehouse"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="0dp"
+                        android:paddingLeft="7dp"
+                        android:hint="Warehouse"
+                        android:editable="false"
+                        android:clickable="false"
+                        android:inputType="text"
+                        android:textSize="14sp"
+                        android:textColor="#111"
+                        android:background="#ededed"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:clipToPadding="false"
+                    android:paddingLeft="0dp"
+                    android:clickable="false"
+                    android:textSize="14sp"
+                    android:layout_marginTop="1dp"
+                    android:layout_weight="0.5"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/border_lightblue">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/sellocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="0dp"
+                        android:paddingLeft="7dp"
+                        android:hint="Location"
+                        android:editable="false"
+                        android:clickable="false"
+                        android:inputType="text"
+                        android:textSize="14sp"
+                        android:textColor="#111"
+                        android:background="#ededed"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:clipToPadding="false"
+                    android:paddingLeft="0dp"
+                    android:clickable="false"
+                    android:textSize="14sp"
+                    android:layout_marginTop="1dp"
+                    android:layout_weight="0.5"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/border_lightblue">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/selordtype"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="0dp"
+                        android:paddingLeft="7dp"
+                        android:hint="Order Type"
+                        android:editable="false"
+                        android:clickable="false"
+                        android:inputType="text"
+                        android:textSize="14sp"
+                        android:textColor="#111"
+                        android:background="#ededed"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingRight="5dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="0dp">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingLeft="0dp"
+                    android:hint="Item Code"
+                    android:clickable="false"
+                    android:textSize="14sp"
+                    android:layout_marginTop="1dp"
+                    android:layout_weight="0.65">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edtitmcode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="0dp"
+                        android:paddingLeft="7dp"
+                        android:hint=""
+                        android:editable="false"
+                        android:clickable="false"
+                        android:inputType="number"
+                        android:textSize="14sp"
+                        android:textColor="#111"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingLeft="0dp"
+                    android:hint="Item Description"
+                    android:textSize="14sp"
+                    android:layout_marginTop="1dp"
+                    android:layout_weight="0.35">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edtitmdesc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="0dp"
+                        android:paddingLeft="7dp"
+                        android:hint=""
+                        android:inputType="text"
+                        android:textSize="14sp"
+                        android:textColor="#111"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingRight="5dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="3dp"
+                android:layout_marginTop="0dp">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingLeft="0dp"
+                    android:hint="Quantity"
+                    android:textSize="12sp"
+                    android:layout_marginTop="0dp"
+                    android:layout_weight="0.3">
+
+                    <EditText
+                        android:id="@+id/edtqty"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="0dp"
+                        android:paddingLeft="7dp"
+                        android:hint=""
+                        android:inputType="number"
+                        android:textSize="12sp"
+                        android:textColor="#111"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingLeft="0dp"
+                    android:hint="MRP in ₹"
+                    android:textSize="12sp"
+                    android:layout_marginTop="1dp"
+                    android:layout_weight="0.3">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edtmrp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="0dp"
+                        android:paddingLeft="7dp"
+                        android:hint=""
+                        android:inputType="number"
+                        android:textSize="12sp"
+                        android:textColor="#111"
+                        android:editable="false"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingLeft="0dp"
+                    android:hint="Margin"
+                    android:textSize="12sp"
+                    android:layout_marginTop="0dp"
+                    android:layout_weight="0.3">
+
+                    <EditText
+                        android:id="@+id/edtmargin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="0dp"
+                        android:paddingLeft="7dp"
+                        android:hint=""
+                        android:inputType="number"
+                        android:textSize="12sp"
+                        android:textColor="#111"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_weight="0.3"
+                    android:padding="2dp"
+                    android:background="#ededed"
+                    android:orientation="vertical"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Line Amt in ₹"
+                        android:paddingRight="3dp"
+                        android:layout_weight="0.1"
+                        android:textSize="10sp"
+                        android:layout_gravity="center_horizontal|right"/>
+
+                    <TextView
+                        android:id="@+id/txtlineamt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="00.00"
+                        android:textStyle="bold"
+                        android:paddingRight="7dp"
+                        android:editable="false"
+                        android:clickable="false"
+                        android:layout_gravity="center_horizontal|right"/>
+
+                </LinearLayout>
+
+                <!--    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:paddingLeft="0dp"
+                        android:hint="Line Amt in ₹"
+                        android:textSize="14sp"
+                        android:layout_marginTop="1dp"
+                        android:layout_weight="0.3">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/txtlineamt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="0dp"
+                            android:paddingLeft="7dp"
+                            android:Text="Line Amt"
+                            android:inputType="text"
+                            android:textSize="14sp"
+                            android:editable="false"
+                            android:clickable="false"/>
+
+                    </android.support.design.widget.TextInputLayout>-->
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingRight="5dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="3dp"
+                android:layout_marginTop="4dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="Unit :"
+                    android:textSize="14dp"
+                    /><!--android:layout_weight="0.25"-->
+
+                <AutoCompleteTextView
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Select unit..."
+                    android:textSize="14dp"
+                    android:padding="7dp"
+                    android:background="@drawable/edit_text" />
+                <!--android:layout_weight="0.75"-->
+
+            </LinearLayout>
+
+            <!-- </LinearLayout>
+     -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.5px"
+                android:background="#000000"
+                android:layout_marginTop="5dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingRight="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="3dp"
+                    android:layout_marginTop="4dp">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="MRP in ₹ :"
+                        android:textSize="14dp"
+                        /><!--android:layout_weight="0.25"-->
+
+                    <AutoCompleteTextView
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter MRP..."
+                        android:textSize="14dp"
+                        android:padding="7dp"
+                        android:textColor="#111"
+                        android:background="@drawable/edit_text" />
+                    <!--android:layout_weight="0.75"-->
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingRight="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="3dp"
+                    android:layout_marginTop="4dp">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="TAX in % :"
+                        android:textSize="14dp"
+                        /><!--android:layout_weight="0.25"-->
+
+                    <AutoCompleteTextView
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:hint="Tax in %..."
+                        android:textSize="14dp"
+                        android:padding="7dp"
+                        android:textColor="#111"
+                        android:background="@drawable/edit_text" />
+                    <!--android:layout_weight="0.75"-->
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingRight="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingBottom="5dp"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="TAX amt. in ₹ :"
+                        android:textSize="14dp"
+                        android:layout_weight="0.7" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Calculated Tax amount"
+                        android:textSize="14dp"
+                        android:paddingLeft="2dp"
+                        android:padding="5dp"
+                        android:layout_weight="0.3"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingRight="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="2dp"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Total Amt (Incl. tax) :"
+                        android:textSize="14dp"
+                        android:layout_weight="0.7"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Calculated amt. incl. tax."
+                        android:textSize="14dp"
+                        android:padding="5dp"
+                        android:textColor="#111"
+                        android:layout_weight="0.3"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible"
+                android:layout_marginTop="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="0dp"
+                    android:paddingLeft="3dp"
+                    android:paddingRight="3dp"
+                    android:visibility="visible">
+
+                    <Switch
+                        android:id="@+id/swtchdisc"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:text="Discount in %"
+                        android:paddingLeft="7dp"
+                        android:textSize="14sp"
+                        android:layout_gravity="center_vertical|left"
+                        android:gravity="center|left"/>
+                    <!--android:layout_weight="0.3"-->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clipToPadding="false"
+                            android:paddingLeft="0dp"
+                            android:hint="Discount"
+                            android:textSize="14sp"
+                            android:layout_marginTop="0dp"
+                            android:layout_weight="0.3">
+
+                            <AutoCompleteTextView
+                                android:id="@+id/edtdisc"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginBottom="0dp"
+                                android:paddingLeft="7dp"
+                                android:hint=""
+                                android:inputType="number"
+                                android:textSize="14sp"
+                                android:textColor="#111"/>
+
+                        </android.support.design.widget.TextInputLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_weight="0.3"
+                            android:padding="2dp"
+                            android:layout_marginRight="5dp"
+                            android:background="#ededed"
+                            android:orientation="vertical"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Discount in ₹"
+                                android:paddingRight="3dp"
+                                android:layout_weight="0.1"
+                                android:layout_gravity="center_horizontal|right"/>
+
+                            <TextView
+                                android:id="@+id/txtdisc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.1"
+                                android:text="00.00"
+                                android:textStyle="bold"
+                                android:paddingRight="7dp"
+                                android:editable="false"
+                                android:clickable="false"
+                                android:layout_gravity="center_horizontal|right"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_weight="0.3"
+                            android:padding="2dp"
+                            android:background="#ededed"
+                            android:orientation="vertical"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Total in ₹"
+                                android:paddingRight="3dp"
+                                android:layout_weight="0.1"
+                                android:layout_gravity="center_horizontal|right"/>
+
+                            <TextView
+                                android:id="@+id/txttotwithdisc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.1"
+                                android:text="00.00"
+                                android:textStyle="bold"
+                                android:paddingRight="7dp"
+                                android:editable="false"
+                                android:clickable="false"
+                                android:layout_gravity="center_horizontal|right"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!--<android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:paddingLeft="0dp"
+                        android:hint="Discount Amt in ₹"
+                        android:textSize="14sp"
+                        android:layout_marginTop="0dp"
+                        android:layout_weight="0.3">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/txtdisc"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="0dp"
+                            android:paddingLeft="7dp"
+                            android:Text="Line Amt"
+                            android:inputType="text"
+                            android:textSize="14sp"
+                            android:editable="false"
+                            android:clickable="false"/>
+
+                    </android.support.design.widget.TextInputLayout>-->
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1.5px"
+                    android:background="#000000"
+                    android:layout_marginTop="5dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="5dp"
+                    android:paddingBottom="0dp">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:paddingLeft="0dp"
+                        android:hint="TAX Class"
+                        android:textSize="14sp"
+                        android:layout_marginTop="0dp"
+                        android:layout_weight="0.3">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/spintaxclass"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="0dp"
+                            android:paddingLeft="7dp"
+                            android:inputType="text|textMultiLine"
+                            android:textSize="14sp"
+                            android:textColor="#111"/>
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <!--  <TextView
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:text="TAX Class : "
+                          android:textSize="14sp"
+                          android:layout_weight="0.71"
+                          android:layout_gravity="center_vertical|left"
+                          android:gravity="center_vertical|left"/>
+
+                      <Spinner
+                          android:id="@+id/spintaxclass"
+                          android:layout_width="match_parent"
+                          android:layout_height="35dp"
+                          android:hint="Select tax class "
+                          android:textSize="14sp"
+                          android:padding="3dp"
+                          android:paddingRight="10dp"
+                          android:textColor="#111"
+                          android:layout_weight="0.29"
+                          android:layout_marginLeft="3dp"
+                          android:layout_marginRight="3dp"
+                          android:layout_gravity="center_vertical|right"
+                          android:gravity="center_vertical|right"
+                          android:background="@drawable/edit_text" />-->
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:paddingTop="0dp"
+                    android:padding="3dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="3dp"
+                    android:paddingRight="3dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_weight="0.5"
+                        android:padding="3dp"
+                        android:layout_marginRight="5dp"
+                        android:orientation="vertical"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tax Amount in ₹"
+                            android:paddingRight="3dp"
+                            android:layout_weight="0.1"
+                            android:layout_gravity="center_horizontal|right"/>
+
+                        <TextView
+                            android:id="@+id/txttaxinrups"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.1"
+                            android:text="00.00"
+                            android:layout_marginTop="2dp"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:paddingRight="7dp"
+                            android:editable="false"
+                            android:clickable="false"
+                            android:layout_gravity="center_horizontal|right"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_weight="0.5"
+                        android:padding="2dp"
+                        android:layout_marginLeft="5dp"
+                        android:background="#ededed"
+                        android:orientation="vertical"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Total (Incl. tax) in ₹"
+                            android:paddingRight="3dp"
+                            android:layout_weight="0.1"
+                            android:layout_gravity="center_horizontal|right"/>
+
+                        <TextView
+                            android:id="@+id/txttotamt_incltax"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.1"
+                            android:text="00.00"
+                            android:layout_marginTop="2dp"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:paddingRight="7dp"
+                            android:editable="false"
+                            android:clickable="false"
+                            android:layout_gravity="center_horizontal|right"/>
+
+                    </LinearLayout>
+
+                    <!-- <android.support.design.widget.TextInputLayout
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:clipToPadding="false"
+                         android:paddingLeft="0dp"
+                         android:hint="Tax Amount in ₹ "
+                         android:textSize="14sp"
+                         android:layout_marginTop="1dp"
+                         android:layout_weight="0.65">
+
+                         <AutoCompleteTextView
+                             android:id="@+id/txttaxinrups"
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_marginTop="0dp"
+                             android:layout_marginLeft="5dp"
+                             android:layout_marginRight="10dp"
+                             android:layout_marginBottom="0dp"
+                             android:paddingLeft="7dp"
+                             android:hint=""
+                             android:inputType="text"
+                             android:textSize="14sp"
+                             android:textColor="#111"/>
+
+                     </android.support.design.widget.TextInputLayout>
+
+                     <android.support.design.widget.TextInputLayout
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:clipToPadding="false"
+                         android:paddingLeft="0dp"
+                         android:hint="Total (Incl. tax)"
+                         android:textSize="14sp"
+                         android:layout_marginTop="1dp"
+                         android:layout_weight="0.65">
+
+                         <AutoCompleteTextView
+                             android:id="@+id/txttotamt_incltax"
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_marginTop="0dp"
+                             android:layout_marginLeft="5dp"
+                             android:layout_marginRight="10dp"
+                             android:layout_marginBottom="0dp"
+                             android:paddingLeft="7dp"
+                             android:hint=""
+                             android:inputType="text"
+                             android:textSize="14sp"
+                             android:textColor="#111"/>
+
+                     </android.support.design.widget.TextInputLayout>-->
+
+                </LinearLayout>
+
+                <!--<LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:paddingTop="5dp"
+                    android:paddingLeft="3dp"
+                    android:paddingBottom="5dp">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Total (Incl. tax)"
+                        android:textSize="14sp"
+                        android:layout_gravity="center_vertical|left"
+                        android:gravity="center_vertical|left"/>
+
+                    <TextView
+                        android:id="@+id/txttotamt_incltax"
+                        android:layout_width="120dp"
+                        android:layout_height="35dp"
+                        android:text="0.00"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:paddingLeft="8dp"
+                        android:paddingTop="5dp"
+                        android:textColor="#111"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_gravity="center_vertical|left"
+                        android:gravity="center_vertical|left"
+                        android:background="@drawable/edit_text" />
+
+                </LinearLayout>-->
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.5px"
+                android:background="#000000"
+                android:layout_marginTop="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Select Payment Mode"
+                    android:textColor="#2c2c2c"/>
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
+
+                    <RadioButton
+                        android:id="@+id/rdbtncash"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Cash"/>
+
+                    <RadioButton
+                        android:id="@+id/rdbtncard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Card"/>
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.5px"
+                android:background="#000000"
+                android:visibility="gone"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="10dp">
+                <!--android:layout_weight="1"
+                android:layout_gravity="bottom"
+                android:gravity="bottom"-->
+
+                <Button
+                    android:id="@+id/btnsave"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:background="@drawable/btn_pressed_2"
+                    android:text="Save"
+                    android:textColor="#fff"
+                    android:layout_weight="0.5"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"/>
+
+                <Button
+                    android:id="@+id/btndelete"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:background="@drawable/tbuds_border_orange"
+                    android:text="Delete"
+                    android:textColor="#fff"
+                    android:layout_weight="0.5"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:id="@+id/btncancel"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:background="@drawable/btn_pressed_2_orange"
+                    android:text="Cancel"
+                    android:textColor="#fff"
+                    android:layout_weight="0.5"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

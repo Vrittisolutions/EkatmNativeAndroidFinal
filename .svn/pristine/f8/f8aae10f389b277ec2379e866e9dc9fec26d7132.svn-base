@@ -1,0 +1,175 @@
+package com.vritti.sales.beans;
+
+import android.annotation.SuppressLint;
+import android.app.SearchManager;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.Toast;
+
+import com.vritti.crm.classes.ProgressHUD;
+import com.vritti.databaselib.data.DatabaseHandlers;
+import com.vritti.databaselib.other.Utility;
+import com.vritti.databaselib.other.WebUrlClass;
+import com.vritti.ekatm.R;
+import com.vritti.sales.CounterBilling.PrintedBillDetailsActivity;
+import com.vritti.sales.activity.ProductList_TabActivity;
+import com.vritti.sales.adapters.BillListAdapter;
+import com.vritti.sales.adapters.ItemListAdapter_customer;
+import com.vritti.sales.adapters.NonPrintedBillListAdapter;
+import com.vritti.sales.data.AnyMartDatabaseConstants;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
+import static com.vritti.sales.beans.OrderedItems_Fragment.GetOrderedItemsInList;
+
+@SuppressLint("ValidFragment")
+public class NonPrintedBill_Fragment extends Fragment {
+    private static Context parent;
+
+    SharedPreferences sharedpreferences;
+    SearchView searchView;
+    String jsonData;
+
+    ListView list_non_printed_bills;
+    ArrayList<CounterbillingBean> nonprintedBillList;
+    NonPrintedBillListAdapter billAdapter;
+
+    Tbuds_commonFunctions tcf;
+    Utility ut;
+    private DatabaseHandlers databaseHelper;
+    static SQLiteDatabase sql_db;
+    ProgressBar mprogress;
+    String PlantMasterId = "", LoginId = "", Password = "", CompanyURL = "", EnvMasterId = "",
+            UserMasterId = "", UserName = "", MobileNo = "", Sourcetype = "";
+
+    @SuppressLint("ValidFragment")
+    public NonPrintedBill_Fragment() {
+
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //setContentView(R.layout.activity_non_ordered__fragment);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.tbuds_non_printed_bill, container, false);
+
+        parent = getActivity();
+
+        sharedpreferences = getActivity().getSharedPreferences(WebUrlClass.MyPREFERENCES, Context.MODE_PRIVATE);
+
+        list_non_printed_bills = (ListView)view.findViewById(R.id.list_non_printed_bills);
+
+        ut = new Utility();
+        tcf = new Tbuds_commonFunctions(parent);
+        String settingKey = ut.getSharedPreference_SettingKey(parent);
+        String dabasename = ut.getValue(parent, WebUrlClass.GET_DATABASE_NAME_KEY, settingKey);
+        databaseHelper = new DatabaseHandlers(parent, dabasename);
+        sql_db = databaseHelper.getWritableDatabase();
+        CompanyURL = ut.getValue(parent, WebUrlClass.GET_COMPANY_URL_KEY, settingKey);
+        EnvMasterId = ut.getValue(parent, WebUrlClass.GET_EnvMasterID_KEY, settingKey);
+        PlantMasterId = ut.getValue(parent, WebUrlClass.GET_PlantID_KEY, settingKey);
+        LoginId = ut.getValue(parent, WebUrlClass.GET_LOGIN_KEY, settingKey);
+        Password =ut.getValue(parent, WebUrlClass.GET_PSW_KEY, settingKey);
+        UserMasterId = ut.getValue(parent, WebUrlClass.GET_USERMASTERID_KEY, settingKey);
+        UserName = ut.getValue(parent, WebUrlClass.GET_USERNAME_KEY, settingKey);
+
+        /*SearchManager searchManager = (SearchManager)getActivity().getSystemService(Context.SEARCH_SERVICE);
+        searchView =(SearchView)view.findViewById(R.id.searchview);
+        searchView.setVisibility(View.VISIBLE);
+        searchView.setFocusable(true);// searchView is null
+        searchView.setFocusableInTouchMode(true);
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));*/
+
+       //get non-printed bills data from database
+        nonprintedBillList = new ArrayList<CounterbillingBean>();
+
+        //get printed bills records from database
+        getPrintedBillsList();
+
+        setListener();
+
+        return view;
+    }
+
+
+    private void setListener() {
+        list_non_printed_bills.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String billNo = nonprintedBillList.get(position).getBillNo();
+                String billDate = nonprintedBillList.get(position).getDateTime();
+                Intent intent = new Intent(getActivity(), PrintedBillDetailsActivity.class);
+                intent.putExtra("IntentFrom", "NonPrintedBills");
+                intent.putExtra("BillNo",billNo);
+                intent.putExtra("BillDate",billDate);
+                startActivity(intent);
+                getActivity().finish();
+            }
+        });
+
+    }
+
+    public void getPrintedBillsList(){
+
+        String billNo = "", dateTime = "", billPaybleAmount = "";
+
+        String query = "SELECT DISTINCT BillPrintNo from  "+ databaseHelper.TABLE_BILL_CB + " WHERE isPrinted='No'";
+        Cursor c = sql_db.rawQuery(query,null);
+        if(c.getCount() > 0){
+            c.moveToFirst();
+            do{
+                billNo = c.getString(c.getColumnIndex("BillPrintNo"));
+
+                String qry = "SELECT Date,PayableAmt from  "+ databaseHelper.TABLE_BILL_CB +
+                        " WHERE BillPrintNo="+billNo+" AND isPrinted='No' LIMIT 1";
+                Cursor c1 = sql_db.rawQuery(qry,null);
+                if(c1.getCount() > 0){
+                    c1.moveToLast();
+                    dateTime = c1.getString(c1.getColumnIndex("Date"));
+                    billPaybleAmount = c1.getString(c1.getColumnIndex("PayableAmt"));
+
+                    CounterbillingBean counterbillingBean = new CounterbillingBean();
+                    counterbillingBean.setBillNo(billNo);
+                    counterbillingBean.setDateTime(dateTime);
+                    counterbillingBean.setBillPaybleAmount(billPaybleAmount);
+
+                    nonprintedBillList.add(counterbillingBean);
+                }
+
+            }while (c.moveToNext());
+
+            billAdapter = new NonPrintedBillListAdapter(parent, nonprintedBillList);
+            list_non_printed_bills.setAdapter(billAdapter);
+            billAdapter.notifyDataSetChanged();
+
+        }else {
+
+        }
+    }
+
+}

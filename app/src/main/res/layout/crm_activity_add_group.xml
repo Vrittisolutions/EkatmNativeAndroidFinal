@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorIndivateTab">
+
+
+
+    <RelativeLayout
+        android:id="@+id/len_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:background="@color/white"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:id="@+id/icon_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_textview"
+            android:gravity="center"
+            android:text="C"
+            android:textColor="@android:color/white"
+            android:textSize="30sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="5dp"/>
+
+        <EditText
+            android:id="@+id/editGroupName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:hint="Type chat room name"
+            android:singleLine="true"
+            android:padding="10dp"
+            android:layout_toRightOf="@+id/icon_group"
+            android:background="@android:color/transparent"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Create Chat Room"
+            android:gravity="center"
+            android:textSize="16dp"
+            android:textColor="@color/white"
+            android:layout_marginRight="10dp"
+            android:visibility="gone"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/btn_border_button"
+            android:layout_below="@+id/editGroupName"
+            android:layout_alignParentRight="true"/>
+        <ImageView
+            android:id="@+id/txt_create_room"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="13dp"
+            android:layout_marginRight="13dp"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:src="@drawable/right"
+            android:text=""
+            android:textColor="@android:color/white"
+            android:textSize="30sp" />
+    </RelativeLayout>
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/header"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/len_group"
+
+        />
+    <RelativeLayout
+        android:id="@+id/len_add_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/view"
+        android:visibility="gone">
+    <LinearLayout
+        android:id="@+id/len_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="5dp"
+        android:layout_gravity="center|left"
+        android:gravity="center|left"
+        android:orientation="horizontal"
+
+
+        >
+        <EditText
+            android:id="@+id/edt_search_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit_text"
+            android:textColorHint="@color/grey"
+            android:textColor="@color/black"
+            android:textSize="14dp"
+            android:layout_marginLeft="5dp"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:layout_weight="1"
+            android:layout_marginRight="5dp"
+            android:hint="Search name"/>
+
+
+    </LinearLayout>
+        <ImageView
+            android:id="@+id/img_adduser"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:src="@drawable/right"
+            android:text=""
+            android:textColor="@android:color/white"
+            android:textSize="30sp"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
+             />
+    <ListView
+        android:id="@+id/listview_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:layout_above="@+id/txt_adduser"
+        android:layout_below="@+id/img_adduser" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Participants"
+        android:background="@color/colorPrimary"
+        android:textSize="18dp"
+        android:padding="10dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/txt_adduser"
+        android:visibility="gone"
+        android:scrollbars="none"/>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

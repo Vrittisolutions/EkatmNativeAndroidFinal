@@ -1,0 +1,20 @@
+package com.vritti.vwb.Beans;
+
+import java.util.ArrayList;
+
+public class ActivityBeanList {
+
+    ArrayList<ActivityBean> activityBeanArrayList;
+
+    public ActivityBeanList(ArrayList<ActivityBean> lsActivityList) {
+        this.activityBeanArrayList  = lsActivityList;
+    }
+
+    public ArrayList<ActivityBean> getActivityBeanArrayList() {
+        return activityBeanArrayList;
+    }
+
+    public void setActivityBeanArrayList(ArrayList<ActivityBean> activityBeanArrayList) {
+        this.activityBeanArrayList = activityBeanArrayList;
+    }
+}

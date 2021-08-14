@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#0A9BC5</color>
+    <color name="colorPrimaryDark">#016A97</color>
+    <color name="colorAccent">#FF902B</color>
+    <color name="background">#777777</color>
+    <color name="textColor">#FFF</color>
+    <color name="textFieldColor">#000</color>
+    <color name="textShadow">#FFF</color>
+    <color name="listViewBg">#DADFEE</color>
+    <color name="sendLightColor">#8897BF</color>
+    <color name="sendMeduimColor">#5D6CA5</color>
+    <color name="sendDarkColor">#515F9F</color>
+    <color name="barDarkColor">#CECECE</color>
+    <color name="barMeduimColor">#DFDEE0</color>
+    <color name="barLightColor">#F2F2F2</color>
+    <color name="tabColor">#376092</color>
+    <color name="blue">#3366FF</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="btn">#376092</color>
+    <color name="btnNext">#27C24C</color>
+    <color name="btnPrv">#F05050</color>
+    <color name="divider">#3366FF</color>
+    <color name="cyan">#33B5E5</color>
+    <color name="header">#CBDFE2</color>
+    <color name="dark_grey">#808080</color>
+    <color name="colorIndivateTab">#FFFFFF</color>
+    <color name="grey_200">#EEEEEE</color>
+    <color name="grey_500">#a4a4a4</color>
+    <color name="green">#26C14B</color>
+    <color name="red">#F05050</color>
+    <color name="chat_username_color">#266091</color>
+
+
+
+    <color name="backgroundHeader">#6E6F72</color>
+    <color name="backgroundBlue">#016A97</color>
+    <color name="backgroundSave">#27C24C</color>
+    <color name="backgroundCancel">#FF902B</color>
+    <color name="dgrey">#080808</color>
+    <color name="darkgrey">#D3D3D3</color>
+
+
+
+
+
+</resources>

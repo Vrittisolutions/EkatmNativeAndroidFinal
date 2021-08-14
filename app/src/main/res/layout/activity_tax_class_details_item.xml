@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.vritti.sales.activity.TaxClassDetails_itemActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme"
+        android:visibility="visible"
+        android:background="@color/colorPrimary1">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar1"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            app:popupTheme="@style/AppTheme">
+
+            <ProgressBar
+                android:id="@+id/toolbar_progress_Assgnwork"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="8dp"
+                android:indeterminateDrawable="@drawable/spinner"
+                android:visibility="gone" />
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:background="#ededed">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tax Code"
+                android:textSize="12sp"
+                android:textColor="#111"
+                android:layout_weight="0.6"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tax Desc"
+                android:textSize="12sp"
+                android:textColor="#111"
+                android:layout_weight="0.55"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tax%"
+                android:textSize="12sp"
+                android:textColor="#111"
+                android:layout_weight="0.6"
+                android:layout_gravity="right"
+                android:gravity="right"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tax Amount"
+                android:textSize="12sp"
+                android:textColor="#111"
+                android:layout_weight="0.55"
+                android:layout_gravity="right"
+                android:gravity="right"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="FTax Amount"
+                android:textSize="12sp"
+                android:textColor="#111"
+                android:layout_weight="0.55"
+                android:layout_gravity="right"
+                android:gravity="right"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/laysgcgst"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!--SGST-->
+            <LinearLayout
+                android:id="@+id/laysgst"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/txtcodesgst"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TX0024"
+                    android:textSize="12sp"
+                    android:textColor="#111"
+                    android:layout_weight="0.6"/>
+
+                <TextView
+                    android:id="@+id/txtsgstdesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="SGST"
+                    android:textSize="12sp"
+                    android:textColor="#111"
+                    android:layout_weight="0.55"/>
+
+                <TextView
+                    android:id="@+id/txtsgstval"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="%"
+                    android:textSize="12sp"
+                    android:textColor="#111"
+                    android:layout_weight="0.6"
+                    android:layout_gravity="right"
+                    android:gravity="right"/>
+
+                <TextView
+                    android:id="@+id/txttaxamt_sgst"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="0.00"
+                    android:textSize="12sp"
+                    android:textColor="#111"
+                    android:layout_weight="0.55"
+                    android:layout_gravity="right"
+                    android:gravity="right"/>
+
+                <TextView
+                    android:id="@+id/txt_fsgst"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="0.00"
+                    android:textSize="12sp"
+                    android:textColor="#111"
+                    android:layout_weight="0.55"
+                    android:layout_gravity="right"
+                    android:gravity="right"/>
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/viewsgst"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#dcdcdc"/>
+
+            <!--CGST-->
+            <LinearLayout
+                android:id="@+id/laycgst"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/txtcodecgst"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TX0023"
+                    android:textSize="12sp"
+                    android:textColor="#111"
+                    android:layout_weight="0.6"/>
+
+                <TextView
+                    android:id="@+id/txtcgstdesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="CGST"
+                    android:textSize="12sp"
+                    android:textColor="#111"
+                    android:layout_weight="0.55"/>
+
+                <TextView
+                    android:id="@+id/txtcgstval"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="%"
+                    android:textSize="12sp"
+                    android:textColor="#111"
+                    android:layout_weight="0.6"
+                    android:layout_gravity="right"
+                    android:gravity="right"/>
+
+                <TextView
+                    android:id="@+id/txttaxamt_cgst"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="0.00"
+                    android:textSize="12sp"
+                    android:textColor="#111"
+                    android:layout_weight="0.55"
+                    android:layout_gravity="right"
+                    android:gravity="right"/>
+
+                <TextView
+                    android:id="@+id/txt_fcgst"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="0.00"
+                    android:textSize="12sp"
+                    android:textColor="#111"
+                    android:layout_weight="0.55"
+                    android:layout_gravity="right"
+                    android:gravity="right"/>
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/viewcgst"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#dcdcdc"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layigst"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <!--IGST-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/txtcodeigst"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TX0025"
+                    android:textSize="12sp"
+                    android:textColor="#111"
+                    android:layout_weight="0.6"/>
+
+                <TextView
+                    android:id="@+id/txtigstdesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="IGST"
+                    android:textSize="12sp"
+                    android:textColor="#111"
+                    android:layout_weight="0.55"/>
+
+                <TextView
+                    android:id="@+id/txtigstval"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="%"
+                    android:textSize="12sp"
+                    android:textColor="#111"
+                    android:layout_weight="0.6"
+                    android:layout_gravity="right"
+                    android:gravity="right"/>
+
+                <TextView
+                    android:id="@+id/txttaxamt_igst"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="0.00"
+                    android:textSize="12sp"
+                    android:textColor="#111"
+                    android:layout_weight="0.55"
+                    android:layout_gravity="right"
+                    android:gravity="right"/>
+
+                <TextView
+                    android:id="@+id/txt_figst"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="0.00"
+                    android:textSize="12sp"
+                    android:textColor="#111"
+                    android:layout_weight="0.55"
+                    android:layout_gravity="right"
+                    android:gravity="right"/>
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/viewigst"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#dcdcdc"/>
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/list_taxdtls"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:dividerHeight="0dp"
+            android:divider="@null"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,1066 @@
+package com.vritti.crm.vcrm7;
+
+import android.annotation.SuppressLint;
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.location.Address;
+import android.location.Geocoder;
+import android.os.AsyncTask;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.HorizontalScrollView;
+import android.widget.LinearLayout;
+import android.widget.TableLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
+import com.vritti.crm.adapter.EntityContactDetailsAdapter;
+import com.vritti.crm.adapter.EntityShiptToAdapter;
+import com.vritti.crm.bean.EntityShiptoDetailsBean;
+import com.vritti.crm.bean.Teritorybean;
+import com.vritti.crm.bean.Territory;
+import com.vritti.crm.classes.CommonFunctionCrm;
+import com.vritti.databaselib.data.DatabaseHandlers;
+import com.vritti.databaselib.other.Utility;
+import com.vritti.databaselib.other.WebUrlClass;
+import com.vritti.ekatm.R;
+import com.vritti.sales.PlaceClasses.PlacePredictions;
+import com.vritti.sales.activity.LocateOnMapActivity;
+import com.vritti.sales.beans.CityBean;
+import com.vritti.sales.beans.CountryBean;
+import com.vritti.sales.beans.DistrictBean;
+import com.vritti.sales.beans.StateBean;
+import com.vritti.sales.beans.TalukaBean;
+import com.vritti.sales.data.AnyMartData;
+import com.vritti.sessionlib.CallbackInterface;
+import com.vritti.sessionlib.StartSession;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+public class EntityMasterShipToActivity extends AppCompatActivity {
+
+
+    String PlantMasterId = "", LoginId = "", Password = "", CompanyURL = "", EnvMasterId = "",
+            UserMasterId = "", UserName = "", MobileNo = "";
+    Utility ut;
+    DatabaseHandlers db;
+    CommonFunctionCrm cf;
+    Context context;
+    SQLiteDatabase sql;
+
+    String Countryid = "", Stateid = "", Districtid = "", Talukaid = "", Cityid = "", territoryId = "";
+    ArrayList<CountryBean> mList = new ArrayList<>();
+    ArrayList<StateBean> lstState = new ArrayList<>();
+    ArrayList<DistrictBean> lstDistrict = new ArrayList<>();
+    ArrayList<TalukaBean> lstTaluka = new ArrayList<>();
+    ArrayList<CityBean> lstCity = new ArrayList<>();
+    ArrayList<Teritorybean> lstTerrority = new ArrayList<>();
+    AutoCompleteTextView edt_country, edt_state, edt_city, edt_territory, edt_pincode, edt_mainaddress, edt_name, edt_mobile, edt_email,
+            edt_tan, edt_gstn, edt_tanBasedGSTN, edt_pan, edt_contact_name_person, edt_phnno, edt_skp, edt_tanName, edt_aadharNo, edt_ESIC, edt_PFNo;
+    Button btn_confirm, btn_Add, btn_savechanges;
+    PlacePredictions placePredictions = new PlacePredictions();
+    TextView txtline_mainaddr, txtline_subaddr, txtline_state_city_pincode;
+
+    String northLat = "", southLatValue = "", northLng = "", southLngValue = "", currentAddres;
+    String delAddress_latitude = "", delAddress_longitude = "";
+    RecyclerView list_SaveChanges;
+    LinearLayout ln_saveChanges, ln_mainView;
+    HorizontalScrollView horizontalScroll;
+    TableLayout list_tableLayout;
+    String consigneename = "", address = "", cityName = "", mobileNo = "", contactPersonName = "", phoneNo = "";
+    ArrayList<EntityShiptoDetailsBean> entityShiptoDetailsBeanArrayList;
+    EntityShiptToAdapter entityShiptToAdapter;
+    int editPos = -1;
+    int isEdit = -1;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_entity_master_ship_to);
+
+
+        InitView();
+        setListner();
+
+        entityShiptToAdapter = new EntityShiptToAdapter(EntityMasterShipToActivity.this, entityShiptoDetailsBeanArrayList);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(EntityMasterShipToActivity.this);
+        list_SaveChanges.setLayoutManager(mLayoutManager);
+        list_SaveChanges.setAdapter(entityShiptToAdapter);
+
+        if (cf.getCountrycount() > 0) {
+            getCountry();
+        } else {
+            if (ut.isNet(EntityMasterShipToActivity.this)) {
+                new StartSession(context, new CallbackInterface() {
+                    @Override
+                    public void callMethod() {
+                        new DownloadCountryListJSON().execute();
+                    }
+
+                    @Override
+                    public void callfailMethod(String msg) {
+
+                    }
+                });
+            } else {
+                Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if (cf.getEntityTerritorycount() > 0) {
+            getTerritory();
+        } else {
+            if (ut.isNet(EntityMasterShipToActivity.this)) {
+                new StartSession(context, new CallbackInterface() {
+                    @Override
+                    public void callMethod() {
+                        new DownloadterritoryJSON().execute();
+                    }
+
+                    @Override
+                    public void callfailMethod(String msg) {
+
+                    }
+                });
+            } else {
+                Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+    }
+
+    private void setListner() {
+
+        edt_country.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Object item = adapterView.getItemAtPosition(position);
+                String countryname = edt_country.getText().toString().trim();
+                try {
+                    Countryid = getPosition_Countryfromspin(mList, countryname);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                System.out.println(item.toString());
+
+                if (cf.getStatecount_ENTITY() > 0) {
+                    getState();
+                } else {
+                    new DownloadStatelistJSON().execute(Countryid);
+                }
+            }
+        });
+
+        edt_state.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+                edt_city.setText("");
+
+                Districtid = "";
+                Talukaid = "";
+
+                Object item = adapterView.getItemAtPosition(position);
+                String statename = edt_state.getText().toString().trim();
+                try {
+                    Stateid = getPosition_Statefromspin(lstState, statename);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                System.out.println(item.toString());
+
+
+                new DownloadCityJSONData().execute(Stateid);
+            }
+        });
+
+        edt_city.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Object item = parent.getItemAtPosition(position);
+                String cityName = edt_city.getText().toString().trim();
+                try {
+                    Cityid = getPosition_Cityfromspin(lstCity, cityName);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        edt_territory.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Object item = adapterView.getItemAtPosition(position);
+                String territoryName = edt_territory.getText().toString().trim();
+                try {
+                    territoryId = getPosition_Territoryfromspin(lstTerrority, territoryName);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                System.out.println(item.toString());
+
+            }
+        });
+
+        btn_confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String GSTN = "[0-9]{2}[a-zA-Z]{5}[0-9]{4}[a-zA-Z]{1}[0-9]{2}";//[a-zA-Z]{1}[0-9]{1}
+                String TAN_No = "[a-zA-Z]{4}[0-9]{5}[a-zA-Z]{1}";
+                //Tan based GSTIN  06 DDDDD 1111 DBZE
+                String TANBasedGSTIN = "[0-9]{2}[a-zA-Z]{5}[0-9]{4}[a-zA-Z]{4}";
+                //PAN No   AAAAA 1234 A
+                String PanNo = "[a-zA-Z]{5}[0-9]{4}[a-zA-Z]{1}";
+
+                if (edt_gstn.getText().toString().equals("") || !(edt_gstn.getText().toString().matches(GSTN))) {
+                    Toast.makeText(EntityMasterShipToActivity.this, "Please enter valid gstn no.", Toast.LENGTH_SHORT).show();
+                } else if (edt_tan.getText().toString().equals("") || !(edt_tan.getText().toString().matches(TAN_No))) {
+                    Toast.makeText(EntityMasterShipToActivity.this, "Please enter valid tan no.", Toast.LENGTH_SHORT).show();
+                } else if (edt_tanBasedGSTN.getText().toString().equals("") || !(edt_tanBasedGSTN.getText().toString().matches(TANBasedGSTIN))) {
+                    Toast.makeText(EntityMasterShipToActivity.this, "Please enter valid tan based GSTIN.", Toast.LENGTH_SHORT).show();
+                } else if (edt_pan.getText().toString().equals("") || !(edt_pan.getText().toString().matches(PanNo))) {
+                    Toast.makeText(EntityMasterShipToActivity.this, "Please enter valid pan no.", Toast.LENGTH_SHORT).show();
+                } else {
+
+
+                    String final_address_main = txtline_mainaddr.getText().toString().trim();
+                    String final_subaddress = txtline_subaddr.getText().toString().trim();
+                    String City = edt_city.getText().toString().trim();
+                    String State = edt_state.getText().toString().trim();
+                    String pincode = edt_pincode.getText().toString().trim();
+                    String CompleteAddress = txtline_mainaddr.getText().toString().trim() + " " +
+                            txtline_state_city_pincode.getText().toString().trim();
+
+                    AnyMartData.ADDRESS = CompleteAddress;
+
+                    getLatlngFromAddress();
+
+                    AnyMartData.LATITUDE = delAddress_latitude;      // placePredictions.strSourceLatitude;
+                    AnyMartData.LONGITUDE = delAddress_longitude;    //placePredictions.strSourceLongitude;
+
+                    /*try {
+                        JSONObject jsonObject = new JSONObject();
+                        jsonObject.put("Address", address);
+                        jsonObject.put("City", Cityid);
+                        jsonObject.put("CityName", edt_city.getText().toString().trim());
+                        jsonObject.put("ConsigneeName", edt_name.getText().toString());
+                        jsonObject.put("ContactPerson", edt_contact_name_person.getText().toString());
+                        jsonObject.put("Country", Countryid);
+                        jsonObject.put("CountryName", edt_country.getText().toString());
+                        jsonObject.put("Distance", "");
+                        jsonObject.put("EmailId", edt_email.getText().toString());
+                        jsonObject.put("Fax", "");
+                        jsonObject.put("GSTCode", "");
+                        jsonObject.put("GSTRMK", "");
+                        jsonObject.put("GSTState", Stateid);
+                        jsonObject.put("GSTState", Stateid);
+
+
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+*/
+
+
+/*	"ShipToDetails": [{
+			"Address": "Vita",
+			"City": "2ec3f7ee-3629-4834-a59e-77278525397b",
+			"CityName": "katraj",
+			"ConsigneeName": "test121",
+			"ContactPerson": "Jitu singh",
+			"Country": "1",
+			"CountryName": "India",
+			"Distance": "",
+			"EmailId": "a@gmail.com",
+			"Fax": "",
+			"GSTCode": "",
+			"GSTRMK": "ok",
+			"GSTState": "15",
+			"GeoLocation": "https://www.facebook.com/profile.php?id=100026400223213 https://www.facebook.com/profile.php?id=100026400223213, Khattalwada, Wadgaon, Maharashtra 274401, India",
+			"LOCAAdhar": "",
+			"LOCESIC": "",
+			"LOCPFNo": "",
+			"Latitude": "20.593684",
+			"Longitude": "78.96288",
+			"Mobile": "2345654324",
+			"PAN": "",
+			"Phone": "21212",
+			"Rating": "",
+			"RouteMasterId": "",
+			"ShipToMasterId": "",
+			"State": "15",
+			"StateName": "Maharashtra",
+			"TANNo": "",
+			"TANNoName": "",
+			"TAN_GSTIN_Number": "",
+			"isBlocked": "N"
+		}],*/
+                    String shipToDetailsList = new Gson().toJson(new EntityShiptoDetailsBean(entityShiptoDetailsBeanArrayList));
+                    Intent intent = new Intent(EntityMasterShipToActivity.this, EntityMasterLocateOnMapActivity.class);
+                    intent.putExtra("address_line_main", final_address_main);
+                    intent.putExtra("address_line_two", final_subaddress);
+                    intent.putExtra("city_state_area", City + " " + State + " " + pincode);
+                    intent.putExtra("CompleteAddress", CompleteAddress);
+                    intent.putExtra("latitude", AnyMartData.LATITUDE);
+                    intent.putExtra("longitude", AnyMartData.LONGITUDE);
+                    intent.putExtra("ConsigneeName", edt_name.getText().toString().trim());
+                    intent.putExtra("City", edt_city.getText().toString().trim());
+                    intent.putExtra("Country", "India");
+                    intent.putExtra("State", edt_state.getText().toString().trim());
+                    intent.putExtra("Mobile", edt_mobile.getText().toString().trim());
+                    intent.putExtra("ShipToMasterId", "");
+                    intent.putExtra("EmailId", edt_email.getText().toString().trim());
+                    intent.putExtra("TANNo", edt_tan.getText().toString().trim());
+                    intent.putExtra("TAN_GSTIN_Number", edt_gstn.getText().toString().trim());
+                    intent.putExtra("CustVendorMasterId", UserMasterId);
+                    intent.putExtra("username", UserName);
+                    intent.putExtra("ArrList", shipToDetailsList);
+                    startActivity(intent);
+                    placePredictions.strSourceLatitude = "";
+                    placePredictions.strSourceLongitude = "";
+                   // finish();
+
+
+                }
+
+            }
+        });
+
+
+        btn_savechanges.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // String gstnPattern = "22AAAAA0000A15";
+                // String gstnPattern = "22 AAAAA 0000 A 15";
+                //TAN No  PDES 03028 F
+                String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+                String GSTN = "[0-9]{2}[a-zA-Z]{5}[0-9]{4}[a-zA-Z]{1}[0-9]{2}";//[a-zA-Z]{1}[0-9]{1}
+                String TAN_No = "[a-zA-Z]{4}[0-9]{5}[a-zA-Z]{1}";
+
+                if (edt_name.getText().toString().equals("")) {
+                    Toast.makeText(EntityMasterShipToActivity.this, "Please enter Consignee name", Toast.LENGTH_SHORT).show();
+                } else if (edt_country.getText().toString().equals("")) {
+                    Toast.makeText(EntityMasterShipToActivity.this, "Please enter country name", Toast.LENGTH_SHORT).show();
+                } else if (edt_state.getText().toString().equals("")) {
+                    Toast.makeText(EntityMasterShipToActivity.this, "Please enter state name", Toast.LENGTH_SHORT).show();
+                } else if (edt_city.getText().toString().equals("")) {
+                    Toast.makeText(EntityMasterShipToActivity.this, "Please enter city name", Toast.LENGTH_SHORT).show();
+                } else if (edt_territory.getText().toString().equals("")) {
+                    Toast.makeText(EntityMasterShipToActivity.this, "Please enter territory", Toast.LENGTH_SHORT).show();
+                } else if (edt_gstn.getText().toString().equals("") || !(edt_gstn.getText().toString().matches(GSTN))) {
+                    Toast.makeText(EntityMasterShipToActivity.this, "Please valid gstn", Toast.LENGTH_SHORT).show();
+                } else {
+                    consigneename = edt_name.getText().toString();
+                    address = edt_mainaddress.getText().toString();
+                    cityName = edt_city.getText().toString();
+                    mobileNo = edt_mobile.getText().toString();
+                    contactPersonName = edt_contact_name_person.getText().toString();
+                    phoneNo = edt_phnno.getText().toString();
+
+
+                    if (isEdit == 1) {
+                        entityShiptoDetailsBeanArrayList.remove(editPos);
+                        isEdit = -1;
+                    }
+
+                    EntityShiptoDetailsBean entityShiptoDetailsBean = new EntityShiptoDetailsBean();
+                    //country,state,city,territory,pincode,mobile,email,skype,gstn,tanbasedgstin,tanname,tan,pan,aadharNo,ESICNo,PFNo
+                    entityShiptoDetailsBean.setConsigneename(consigneename);
+                    entityShiptoDetailsBean.setAddress(address);
+                    entityShiptoDetailsBean.setCityName(cityName);
+                    entityShiptoDetailsBean.setMobileNo(mobileNo);
+                    entityShiptoDetailsBean.setGstnno(edt_gstn.getText().toString());
+                    entityShiptoDetailsBean.setCountryName(edt_country.getText().toString());
+                    entityShiptoDetailsBean.setStateName(edt_state.getText().toString());
+                    entityShiptoDetailsBean.setCityName(edt_city.getText().toString());
+                    entityShiptoDetailsBean.setTerritoryName(edt_territory.getText().toString());
+                    entityShiptoDetailsBean.setCountryId(Countryid);
+                    entityShiptoDetailsBean.setStateId(Stateid);
+                    entityShiptoDetailsBean.setCityId(Cityid);
+                    entityShiptoDetailsBean.setTerritoryId(territoryId);
+                    entityShiptoDetailsBean.setPincode(edt_pincode.getText().toString());
+                    entityShiptoDetailsBean.setEmail(edt_email.getText().toString());
+                    entityShiptoDetailsBean.setSkype(edt_skp.getText().toString());
+                    entityShiptoDetailsBean.setTanBasedGSTIN(edt_tanBasedGSTN.getText().toString());
+                    entityShiptoDetailsBean.setTanName(edt_tanName.getText().toString());
+                    entityShiptoDetailsBean.setTan(edt_tan.getText().toString());
+                    entityShiptoDetailsBean.setPan(edt_pan.getText().toString());
+                    entityShiptoDetailsBean.setAddharNo(edt_aadharNo.getText().toString());
+                    entityShiptoDetailsBean.setESICNo(edt_ESIC.getText().toString());
+                    entityShiptoDetailsBean.setPfNo(edt_PFNo.getText().toString());
+
+
+                    entityShiptoDetailsBeanArrayList.add(entityShiptoDetailsBean);
+
+                    entityShiptToAdapter.notifyDataSetChanged();
+
+                    horizontalScroll.setVisibility(View.VISIBLE);
+                    list_tableLayout.setVisibility(View.VISIBLE);
+                    ln_mainView.setVisibility(View.GONE);
+                    btn_Add.setVisibility(View.VISIBLE);
+
+
+                }
+
+            }
+        });
+
+        btn_Add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                edt_name.setText("");
+                edt_mainaddress.setText("");
+                edt_country.setText("");
+                edt_state.setText("");
+                edt_city.setText("");
+                edt_territory.setText("");
+                edt_pincode.setText("");
+                edt_mobile.setText("");
+                edt_gstn.setText("");
+                edt_email.setText("");
+
+
+                ln_mainView.setVisibility(View.VISIBLE);
+                horizontalScroll.setVisibility(View.GONE);
+                list_tableLayout.setVisibility(View.GONE);
+                btn_Add.setVisibility(View.GONE);
+            }
+        });
+
+
+    }
+
+    private void InitView() {
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar1);
+        //toolbar.setLogo(R.mipmap.ic_toolbar_logo_crm);
+        toolbar.setLogo(R.drawable.crm_logo_1);
+        toolbar.setTitle(R.string.app_name_toolbar_CRM);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        context = EntityMasterShipToActivity.this;
+
+        ut = new Utility();
+        cf = new CommonFunctionCrm(context);
+        String settingKey = ut.getSharedPreference_SettingKey(context);
+        String dabasename = ut.getValue(context, WebUrlClass.GET_DATABASE_NAME_KEY, settingKey);
+        db = new DatabaseHandlers(context, dabasename);
+        CompanyURL = ut.getValue(context, WebUrlClass.GET_COMPANY_URL_KEY, settingKey);
+        EnvMasterId = ut.getValue(context, WebUrlClass.GET_EnvMasterID_KEY, settingKey);
+        PlantMasterId = ut.getValue(context, WebUrlClass.GET_PlantID_KEY, settingKey);
+        LoginId = ut.getValue(context, WebUrlClass.GET_LOGIN_KEY, settingKey);
+        Password = ut.getValue(context, WebUrlClass.GET_PSW_KEY, settingKey);
+        UserMasterId = ut.getValue(context, WebUrlClass.GET_USERMASTERID_KEY, settingKey);
+        UserName = ut.getValue(context, WebUrlClass.GET_USERNAME_KEY, settingKey);
+        sql = db.getWritableDatabase();
+
+        edt_country = (AutoCompleteTextView) findViewById(R.id.edt_country);
+        edt_country.setEnabled(false);
+        edt_state = (AutoCompleteTextView) findViewById(R.id.edt_state);
+        edt_state.setEnabled(false);
+        edt_city = (AutoCompleteTextView) findViewById(R.id.edt_city);
+        edt_territory = (AutoCompleteTextView) findViewById(R.id.edt_territory);
+
+        btn_confirm = findViewById(R.id.btn_confirm);
+        txtline_mainaddr = findViewById(R.id.txtline_mainaddr);
+        txtline_subaddr = findViewById(R.id.txtline_subaddr);
+        txtline_state_city_pincode = findViewById(R.id.txtline_state_city_pincode);
+        edt_pincode = findViewById(R.id.edt_pincode);
+        edt_mainaddress = findViewById(R.id.edt_mainaddress);
+        edt_mainaddress = findViewById(R.id.edt_mainaddress);
+        edt_name = findViewById(R.id.edt_name);
+        edt_mobile = findViewById(R.id.edt_mobile);
+        edt_email = findViewById(R.id.edt_email);
+        edt_tan = findViewById(R.id.edt_tan);
+        edt_gstn = findViewById(R.id.edt_gstn);
+        edt_tanBasedGSTN = findViewById(R.id.edt_tanBasedGSTN);
+        edt_pan = findViewById(R.id.edt_pan);
+        edt_contact_name_person = findViewById(R.id.edt_contact_name_person);
+        edt_phnno = findViewById(R.id.edt_phnno);
+        edt_skp = findViewById(R.id.edt_skp);
+        edt_tanName = findViewById(R.id.edt_tanName);
+        edt_aadharNo = findViewById(R.id.edt_aadharNo);
+        edt_ESIC = findViewById(R.id.edt_ESIC);
+        edt_PFNo = findViewById(R.id.edt_PFNo);
+
+        //  ln_Contact =  findViewById(R.id.ln_Contact);
+        horizontalScroll = findViewById(R.id.horizontalScroll);
+        list_tableLayout = findViewById(R.id.list_tableLayout);
+        ln_saveChanges = findViewById(R.id.ln_saveChanges);
+        ln_mainView = findViewById(R.id.ln_mainView);
+        btn_Add = findViewById(R.id.btn_Add);
+        btn_savechanges = findViewById(R.id.btn_savechanges);
+        list_SaveChanges = findViewById(R.id.list_SaveChanges);
+
+        entityShiptoDetailsBeanArrayList = new ArrayList<>();
+    }
+
+
+    class DownloadCountryListJSON extends AsyncTask<String, Void, String> {
+        Object res;
+        String response = "error";
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            //mprogress.setVisibility(View.VISIBLE);
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            /*String url = CompanyURL + WebUrlClass.api_get_countrylist;*/
+            String url = CompanyURL + WebUrlClass.api_getEntityCountry;
+
+            try {
+                res = ut.OpenConnection(url);
+
+                response = res.toString().replaceAll("\\\\", "");
+                response = response.replaceAll("\\\\\\\\/", "");
+                response = response.substring(1, response.length() - 1);
+                ContentValues values = new ContentValues();
+                JSONArray jResults = new JSONArray(response);
+                sql.delete(db.TABLE_COUNTRY, null, null);
+                Cursor c = sql.rawQuery("SELECT * FROM " + db.TABLE_COUNTRY, null);
+                int count = c.getCount();
+                String columnName, columnValue;
+
+                for (int i = 0; i < jResults.length(); i++) {
+                    JSONObject jorder = jResults.getJSONObject(i);
+
+                    for (int j = 0; j < c.getColumnCount(); j++) {
+                        columnName = c.getColumnName(j);
+                        columnValue = jorder.getString(columnName);
+                        values.put(columnName, columnValue);
+                    }
+                    long a = sql.insert(db.TABLE_COUNTRY, null, values);
+                    Log.e("country", "" + a);
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                response = "error";
+            }
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(String integer) {
+            super.onPostExecute(integer);
+            //mprogress.setVisibility(View.GONE);
+
+            if (response.contains("PKCountryId")) {
+                getCountry();
+            } else if (response.equalsIgnoreCase("[]") || response == "" || response == null) {
+            }
+        }
+    }
+
+    class DownloadStatelistJSON extends AsyncTask<String, Void, String> {
+        Object res;
+        String response;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            //mprogress.setVisibility(View.VISIBLE);
+
+        }
+
+        @SuppressLint("WrongThread")
+        @Override
+        protected String doInBackground(String... params) {
+            String counId = params[0];
+            String url = CompanyURL + WebUrlClass.api_get_statelistdata + "?Id=" + counId;
+            // String url = CompanyURL + WebUrlClass.api_get_Statelist;
+            try {
+                res = ut.OpenConnection(url);
+                response = res.toString().replaceAll("\\\\", "");
+                response = response.replaceAll("\\\\\\\\/", "");
+                response = response.substring(1, response.length() - 1);
+                ContentValues values = new ContentValues();
+                JSONArray jResults = new JSONArray(response);
+
+                //sql.delete(db.TABLE_STATE, null, null);
+                Cursor c = sql.rawQuery("SELECT * FROM " + db.TABLE_STATE_ENTITY, null);
+                int count = c.getCount();
+                String columnName, columnValue;
+
+                for (int i = 0; i < jResults.length(); i++) {
+                    JSONObject jorder = jResults.getJSONObject(i);
+                    for (int j = 0; j < c.getColumnCount(); j++) {
+                        columnName = c.getColumnName(j);
+                        columnValue = jorder.getString(columnName);
+                        values.put(columnName, columnValue);
+                        if (j == 0)
+                            Stateid = columnValue;
+                    }
+
+                    long a = sql.insert(db.TABLE_STATE_ENTITY, null, values);
+
+                }
+
+            } catch (Exception e) {
+                //mprogress.setVisibility(View.GONE);
+
+                e.printStackTrace();
+            }
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(String integer) {
+            super.onPostExecute(integer);
+            //dismissProgressDialog();
+            //mprogress.setVisibility(View.GONE);
+            if (response.equals("") || response.equals("[]")) {
+                Toast.makeText(EntityMasterShipToActivity.this, "No State Found", Toast.LENGTH_SHORT).show();
+            } else {
+                getState();
+                if (ut.isNet(EntityMasterShipToActivity.this)) {
+                    new StartSession(EntityMasterShipToActivity.this, new CallbackInterface() {
+                        @Override
+                        public void callMethod() {
+                            new DownloadCityJSONData().execute(Stateid);
+                        }
+
+                        @Override
+                        public void callfailMethod(String msg) {
+                            Toast.makeText(EntityMasterShipToActivity.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                } else {
+                    Toast.makeText(EntityMasterShipToActivity.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+        }
+    }
+
+    class DownloadCityJSONData extends AsyncTask<String, Void, String> {
+        Object res;
+        String response;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            // //mprogress.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            String citycnt = params[0];
+            Log.i("stateId ::", citycnt);
+            try {
+                String url = CompanyURL + WebUrlClass.api_getCityMaster;    //+ "?Id=" + Stateid;
+
+                res = ut.OpenConnection(url);
+                response = res.toString().replaceAll("\\\\", "");
+                response = response.replaceAll("\\\\\\\\/", "");
+                response = response.substring(1, response.length() - 1);
+                ContentValues values = new ContentValues();
+
+                sql.delete(db.TABLE_CITY_ENTITY, null,
+                        null);
+                Cursor c = sql.rawQuery("SELECT * FROM " + db.TABLE_CITY_ENTITY, null);
+                int count = c.getCount();
+                String columnName, columnValue;
+
+                lstTaluka.clear();
+                JSONArray jResults = new JSONArray(response);
+
+                for (int i = 0; i < jResults.length(); i++) {
+                    JSONObject jorder = jResults.getJSONObject(i);
+                    for (int j = 0; j < c.getColumnCount(); j++) {
+                        columnName = c.getColumnName(j);
+                        columnValue = jorder.getString(columnName);
+                        values.put(columnName, columnValue);
+                    }
+                    long a = sql.insert(db.TABLE_CITY_ENTITY, null, values);
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String integer) {
+            super.onPostExecute(integer);
+            ////mprogress.setVisibility(View.GONE);
+            if (response.contains("PKCityID")) {
+                //lay_city.setBackgroundColor(Color.parseColor("#ffffff"));
+                getCitydata(Stateid);
+            } else if (response.equalsIgnoreCase("[]")) {
+                // edt_city.setEnabled(false);
+                // lay_city.setBackgroundColor(Color.parseColor("#ededed"));
+                Toast.makeText(EntityMasterShipToActivity.this, "No City Found", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    class DownloadterritoryJSON extends AsyncTask<Integer, Void, Integer> {
+        Object res;
+        String response = "";
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy  hh:mm a");
+        Date DOBDate = null;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            // showProgressDialog();
+        }
+
+        @Override
+        protected Integer doInBackground(Integer... params) {
+            String url = CompanyURL + WebUrlClass.api_get_fill_territory;
+            try {
+                res = ut.OpenConnection(url);
+                if (res != null) {
+                    response = res.toString().replaceAll("\\\\", "");
+                    response = response.replaceAll("\\\\\\\\/", "");
+                    response = response.substring(1, response.length() - 1);
+                    ContentValues values = new ContentValues();
+                    JSONArray jResults = new JSONArray(response);
+
+                    sql.delete(db.TABLE_ENTITY_TERRITORY, null,
+                            null);
+                    Cursor c = sql.rawQuery("SELECT * FROM " + db.TABLE_ENTITY_TERRITORY, null);
+                    int count = c.getCount();
+                    String columnName, columnValue;
+
+                    for (int i = 0; i < jResults.length(); i++) {
+                        JSONObject jorder = jResults.getJSONObject(i);
+                        for (int j = 0; j < c.getColumnCount(); j++) {
+                            columnName = c.getColumnName(j);
+                            columnValue = jorder.getString(columnName);
+                            values.put(columnName, columnValue);
+
+
+                        }
+
+                        long a = sql.insert(db.TABLE_ENTITY_TERRITORY, null, values);
+
+                    }
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Integer integer) {
+            super.onPostExecute(integer);
+
+            if (!response.equals("")) {
+                getTerritory();
+            }
+
+        }
+
+    }
+
+    private void getCountry() {
+        //  //mprogress.setVisibility(View.VISIBLE);
+        mList.clear();
+        String query = "SELECT distinct PKCountryId, CountryName FROM " + db.TABLE_COUNTRY;
+        Cursor cur = sql.rawQuery(query, null);
+        //   lstReferenceType.add("Select");
+        if (cur.getCount() > 0) {
+            cur.moveToFirst();
+            do {
+                mList.add(new CountryBean(cur.getString(cur.getColumnIndex("PKCountryId")),
+                        cur.getString(cur.getColumnIndex("CountryName"))));
+
+            } while (cur.moveToNext());
+
+        }
+
+        ArrayAdapter<CountryBean> countryArrayAdapter = new ArrayAdapter<CountryBean>
+                (EntityMasterShipToActivity.this, android.R.layout.simple_spinner_dropdown_item, mList);
+        edt_country.setAdapter(countryArrayAdapter);
+        edt_country.setThreshold(0);
+
+        if (mList.size() > 1) {
+            edt_country.setEnabled(true);
+        } else if (mList.size() == 1) {
+            edt_country.setEnabled(false);
+            edt_country.setText(mList.get(0).getCountryName());
+            Countryid = mList.get(0).getPKCountryId();
+        }
+
+        if (cf.getStatecount_ENTITY() > 0) {
+            getState();
+        } else {
+            if (ut.isNet(EntityMasterShipToActivity.this)) {
+                new StartSession(EntityMasterShipToActivity.this, new CallbackInterface() {
+                    @Override
+                    public void callMethod() {
+                        if (mList.get(0) != null)
+                            new DownloadStatelistJSON().execute(Countryid);
+                    }
+
+                    @Override
+                    public void callfailMethod(String msg) {
+
+                    }
+                });
+            }
+        }
+    }
+
+    private void getState() {
+
+        lstState.clear();
+        if (Countryid.equalsIgnoreCase("") || Countryid.equalsIgnoreCase(" ")
+                || Countryid.equalsIgnoreCase("null") || Countryid.equalsIgnoreCase(null)) {
+
+            Countryid = mList.get(0).getPKCountryId();
+
+        } else {
+
+        }
+        String query = "SELECT distinct PKStateId,StateDesc" +
+                " FROM " + db.TABLE_STATE_ENTITY + " WHERE FKCountryId='" + Countryid + "'";
+
+        Cursor cur = sql.rawQuery(query, null);
+        if (cur.getCount() > 0) {
+
+            cur.moveToFirst();
+            do {
+
+                lstState.add(new StateBean(cur.getString(cur.getColumnIndex("PKStateId")),
+                        cur.getString(cur.getColumnIndex("StateDesc"))
+                ));
+
+            } while (cur.moveToNext());
+
+            ArrayAdapter<StateBean> statearrayadapter = new ArrayAdapter<StateBean>
+                    (EntityMasterShipToActivity.this,
+                            android.R.layout.simple_spinner_dropdown_item, lstState);
+            edt_state.setAdapter(statearrayadapter);
+            //   customDept.notifyDataSetChanged();
+            edt_state.setSelection(0);
+
+            if (lstState.size() > 1) {
+                edt_state.setEnabled(true);
+            } else {
+                edt_state.setEnabled(false);
+                edt_state.setText(lstState.get(0).getStateDesc());
+                Stateid = lstState.get(0).getPKStateId();
+            }
+
+        } else {
+                /*if (isnet()) {
+                    new StartSession(parent, new CallbackInterface() {
+                        @Override
+                        public void callMethod() {
+                            new DownloadStatelistJSON().execute(Countryid);
+                        }
+
+                        @Override
+                        public void callfailMethod(String msg) {
+
+                        }
+                    });
+                }*/
+        }
+
+    }
+
+    private void getCitydata(String stateid) {
+        ////mprogress.setVisibility(View.GONE);
+
+        lstCity.clear();
+
+        Stateid = stateid;
+        String query = "SELECT distinct PKCityID,CityName FROM " + db.TABLE_CITY_ENTITY +
+                " WHERE FKStateId='" + Stateid + "'";
+
+        Cursor cur = sql.rawQuery(query, null);
+
+        if (cur.getCount() > 0) {
+
+            cur.moveToFirst();
+            do {
+
+                lstCity.add(new CityBean(cur.getString(cur.getColumnIndex("PKCityID")),
+                        cur.getString(cur.getColumnIndex("CityName"))));
+
+            } while (cur.moveToNext());
+
+            ArrayAdapter<CityBean> cityarraStateArrayAdapter = new ArrayAdapter<CityBean>
+                    (EntityMasterShipToActivity.this,
+                            android.R.layout.simple_spinner_dropdown_item, lstCity);
+            edt_city.setAdapter(cityarraStateArrayAdapter);
+            edt_city.setSelection(0);
+
+            if (lstCity.size() > 1) {
+                edt_city.setEnabled(true);
+            } else {
+                // edt_city.setEnabled(false);
+                edt_city.setText(lstCity.get(0).getCityName());
+                Cityid = lstCity.get(0).getPKCityID();
+            }
+
+            // lay_city.setBackgroundColor(Color.parseColor("#ffffff"));
+
+        } else {
+            if (ut.isNet(context)) {
+                //  lay_city.setBackgroundColor(Color.parseColor("#ededed"));
+                new StartSession(context, new CallbackInterface() {
+                    @Override
+                    public void callMethod() {
+                        new DownloadCityJSONData().execute(Stateid);
+                    }
+
+                    @Override
+                    public void callfailMethod(String msg) {
+
+                    }
+                });
+            }
+        }
+    }
+
+    private void getTerritory() {
+
+        lstTerrority.clear();
+        String query = "SELECT distinct PKTerritoryId, TerritoryName FROM " + db.TABLE_ENTITY_TERRITORY;
+        Cursor cur = sql.rawQuery(query, null);
+        //   lstReferenceType.add("Select");
+        if (cur.getCount() > 0) {
+            cur.moveToFirst();
+            do {
+                lstTerrority.add(new Teritorybean(cur.getString(cur.getColumnIndex("PKTerritoryId")),
+                        cur.getString(cur.getColumnIndex("TerritoryName"))));
+
+            } while (cur.moveToNext());
+
+        }
+
+        ArrayAdapter<Teritorybean> teritorybeanArrayAdapter = new ArrayAdapter<Teritorybean>
+                (EntityMasterShipToActivity.this, android.R.layout.simple_spinner_dropdown_item, lstTerrority);
+        edt_territory.setAdapter(teritorybeanArrayAdapter);
+        edt_territory.setThreshold(0);
+    }
+
+    private String getPosition_Countryfromspin(ArrayList<CountryBean> lst_country, String country) throws JSONException {
+        String Country_Id = null;
+        for (CountryBean countryBean : lst_country) {
+            if (countryBean.getCountryName().equalsIgnoreCase(country)) {
+                Country_Id = countryBean.getPKCountryId();
+            }
+        }
+        return Country_Id; //it wasn't found at all
+    }
+
+    private String getPosition_Statefromspin(ArrayList<StateBean> lst_State, String State) throws JSONException {
+        String StateId = null;
+        for (StateBean stateBean : lst_State) {
+            if (stateBean.getStateDesc().equalsIgnoreCase(State)) {
+                StateId = stateBean.getPKStateId();
+            }
+        }
+        return StateId; //it wasn't found at all
+    }
+
+    private String getPosition_Cityfromspin(ArrayList<CityBean> lst_State, String city) throws JSONException {
+        String cityId = null;
+        for (CityBean cityBean : lst_State) {
+            if (cityBean.getCityName().equalsIgnoreCase(city)) {
+                cityId = cityBean.getPKCityID();
+            }
+        }
+        return cityId; //it wasn't found at all
+    }
+
+    private String getPosition_Territoryfromspin(ArrayList<Teritorybean> lstTerrority, String territoryName) throws JSONException {
+        String territory_Id = null;
+        for (Teritorybean teritorybean : lstTerrority) {
+            if (teritorybean.getTerritoryName().equalsIgnoreCase(territoryName)) {
+                territory_Id = teritorybean.getPKTerritoryId();
+            }
+        }
+        return territory_Id; //it wasn't found at all
+    }
+
+
+    public void getLatlngFromAddress() {
+        Geocoder geocoder = new Geocoder(context);
+        try {
+            List<Address> addressesList = geocoder.getFromLocationName(edt_mainaddress.getText().toString().trim(), 5);
+            double lat = addressesList.get(0).getLatitude();
+            double lng = addressesList.get(0).getLongitude();
+
+            delAddress_latitude = String.valueOf(lat);
+            delAddress_longitude = String.valueOf(lng);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void EditDetails(int adapterPosition, ArrayList<EntityShiptoDetailsBean> entityShiptoDetailsBeanArrayList1) {
+
+        editPos = adapterPosition;
+        isEdit = 1;
+
+        edt_name.setText(entityShiptoDetailsBeanArrayList.get(editPos).getConsigneename());
+        edt_mainaddress.setText(entityShiptoDetailsBeanArrayList.get(editPos).getAddress());
+        edt_country.setText(entityShiptoDetailsBeanArrayList.get(editPos).getCountryName());
+        edt_state.setText(entityShiptoDetailsBeanArrayList.get(editPos).getStateName());
+        edt_city.setText(entityShiptoDetailsBeanArrayList.get(editPos).getCityName());
+        edt_territory.setText(entityShiptoDetailsBeanArrayList.get(editPos).getTerritoryName());
+        edt_gstn.setText(entityShiptoDetailsBeanArrayList.get(editPos).getGstnno());
+
+
+        horizontalScroll.setVisibility(View.GONE);
+        list_tableLayout.setVisibility(View.GONE);
+        ln_mainView.setVisibility(View.VISIBLE);
+
+
+    }
+
+    public void DeleteDetails(int adapterPosition, ArrayList<EntityShiptoDetailsBean> entityShiptoDetailsBeanArrayList1) {
+
+        entityShiptoDetailsBeanArrayList.remove(adapterPosition);
+        entityShiptToAdapter.notifyDataSetChanged();
+
+    }
+
+
+}

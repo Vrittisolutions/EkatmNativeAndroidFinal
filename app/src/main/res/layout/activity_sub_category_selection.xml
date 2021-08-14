@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:ignore="MissingDefaultResource">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbarlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:background="@color/colorPrimary1"
+        android:paddingBottom="5dp">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar1"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+            <!--?attr/actionBarSize-->
+
+            <RelativeLayout
+                android:id="@+id/layyellow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|right"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginTop="2dp">
+                <!-- android:layout_weight="0.8"-->
+                <!-- android:padding="5dp"
+                android:layout_marginTop="@dimen/actionbar_height"-->
+
+                <ImageView
+                    android:id="@+id/imgcart"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:src="@drawable/cart2"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center_vertical|right" />
+
+                <TextView
+                    android:id="@+id/textview_cart"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/shape_cart_count"
+                    android:layout_marginLeft="25dp"
+                    android:text="0"
+                    android:textColor="#111"
+                    android:gravity="center"
+                    android:textSize="10sp"
+                    android:textStyle="bold"/>
+
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/btnchangemode"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:text="Change Shop by mode"
+                android:textSize="9sp"
+                android:textColor="#111"
+                android:textAllCaps="false"
+                android:background="@drawable/border_white"
+                android:layout_marginLeft="50dp"
+                android:visibility="gone"/>
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:padding="4dp"
+        android:visibility="visible"
+        android:background="@color/navybluedark"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:visibility="gone"
+            android:layout_weight="0"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|left"
+            android:layout_weight="1"
+            android:gravity="center_vertical|left"
+            android:paddingLeft="5dp"
+            android:text="@string/shopby2"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <!--<TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sub_group"
+            android:paddingLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:textColor="@color/btncolordark"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/itmcount"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:textColor="@color/btncolordark"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_marginRight="30dp" />-->
+
+    </LinearLayout>
+
+    <GridView
+        android:id="@+id/listview_home_subcategory_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/headerList"
+        android:dividerHeight="0dp"
+        android:divider="@null"
+        android:numColumns="3"
+        android:visibility="visible">
+
+    </GridView>
+
+    <LinearLayout
+        android:id="@+id/txtnoordnote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:visibility="gone"
+        android:layout_marginTop="20dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/border_lightblue"
+            android:elevation="5dp">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:src="@drawable/comingsoon"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:id="@+id/txtlaunchsoon"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:text="@string/thanks_for_interes"
+                android:textColor="@color/btncolordark"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_margin="5dp"
+                android:padding="5dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

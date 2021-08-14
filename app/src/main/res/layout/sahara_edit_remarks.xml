@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:layout_gravity="right"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_margin="5dp"
+    android:background="#F1F6F7">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginLeft="2dp"
+        android:layout_weight=".5">
+
+
+        <EditText
+            android:id="@+id/edit_remarks"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/edit_text"
+            android:hint="Remarks"
+            android:padding="5dp"
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".5"
+            android:layout_marginRight="2dp">
+
+
+        <RelativeLayout
+            android:id="@+id/rel_pending"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2"
+            android:layout_marginLeft="10dp"
+            >
+
+
+            <ImageView
+                android:id="@+id/img_pending"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:adjustViewBounds="true"
+                android:gravity="center"
+                android:scaleType="fitCenter"
+                android:src="@drawable/doc_bg_pending_icon" />
+
+
+        </RelativeLayout>
+
+         <RelativeLayout
+            android:id="@+id/rel_appr"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+             android:layout_weight="0.2"
+             android:layout_marginLeft="5dp">
+
+
+            <ImageView
+                android:id="@+id/img_appr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:adjustViewBounds="true"
+                android:gravity="center"
+                android:scaleType="fitCenter"
+                android:src="@drawable/doc_bg_approve_icon" />
+
+
+        </RelativeLayout>
+
+         <RelativeLayout
+            android:id="@+id/rel_disappr"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+             android:layout_weight="0.2"
+             android:layout_marginLeft="5dp">
+
+
+            <ImageView
+                android:id="@+id/img_disappr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:adjustViewBounds="true"
+                android:gravity="center"
+                android:scaleType="fitCenter"
+                android:src="@drawable/doc_bg_disapprove_icon" />
+
+
+        </RelativeLayout>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>

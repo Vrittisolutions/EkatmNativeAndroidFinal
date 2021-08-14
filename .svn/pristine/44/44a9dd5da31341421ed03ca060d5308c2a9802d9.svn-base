@@ -1,0 +1,133 @@
+package com.vritti.vwb.Adapter;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.vritti.databaselib.other.WebUrlClass;
+import com.vritti.ekatm.R;
+import com.vritti.vwb.Beans.SendBackForwardBean;
+import com.vritti.vwb.vworkbench.ActivityMain;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+public class SendBackForwardAdapter extends RecyclerView.Adapter<SendBackForwardAdapter.ActivityHolder> {
+
+    Context context;
+    ArrayList<SendBackForwardBean> sendBackForwardBeanArrayList;
+    SharedPreferences userpreferences;
+    SharedPreferences AtendanceSheredPreferance;
+
+
+    public SendBackForwardAdapter(Context context, ArrayList<SendBackForwardBean> sendBackForwardBeanArrayList) {
+        this.context = context;
+        this.sendBackForwardBeanArrayList = sendBackForwardBeanArrayList;
+
+    }
+
+
+    @NonNull
+    @Override
+    public SendBackForwardAdapter.ActivityHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.sendback_forward_adapter, parent, false);
+        userpreferences = context.getSharedPreferences(WebUrlClass.USERINFO,
+                Context.MODE_PRIVATE);
+        AtendanceSheredPreferance = context.getSharedPreferences(WebUrlClass.ATTENDANCE_PREFERENCES,
+                Context.MODE_PRIVATE);
+
+
+        return new ActivityHolder(itemView);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull SendBackForwardAdapter.ActivityHolder holder, int position) {
+
+        if (position < sendBackForwardBeanArrayList.size()) {
+
+            String activityName = sendBackForwardBeanArrayList.get(position).getActivityName();
+            String endDate = sendBackForwardBeanArrayList.get(position).getEndDate();
+            String userName = sendBackForwardBeanArrayList.get(position).getUserName();
+            String projectName = sendBackForwardBeanArrayList.get(position).getProjectName();
+
+            String[] idate = endDate.split("T");
+            endDate = idate[0];//2020-01-20
+
+            endDate = formateDateFromstring("yyyy-MM-dd", "dd MMM", endDate);
+
+
+            holder.txt_activityname.setText(activityName);
+            holder.txt_endDate.setText(endDate);
+            holder.txt_current_assign.setText("Currently Assigned To "+userName);
+            holder.txt_workspace_name.setText(projectName);
+
+            if (position % 2 == 1) {
+                holder.header.setBackgroundColor(Color.parseColor("#DBE8EA"));
+            } else {
+                holder.header.setBackgroundColor(Color.parseColor("#F1F6F7"));
+            }
+
+        }
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return sendBackForwardBeanArrayList.size();
+    }
+
+    public class ActivityHolder extends RecyclerView.ViewHolder {
+
+        @BindView(R.id.lay_dateDisplay)
+        LinearLayout lay_dateDisplay;
+        @BindView(R.id.txt_endDate)
+        TextView txt_endDate;
+        @BindView(R.id.txt_activityname)
+        TextView txt_activityname;
+        @BindView(R.id.txt_workspace_name)
+        TextView txt_workspace_name;
+        @BindView(R.id.txt_current_assign)
+        TextView txt_current_assign;
+        @BindView(R.id.header)
+        LinearLayout header;
+
+
+        public ActivityHolder(View itemView) {
+            super(itemView);
+            ButterKnife.bind(this, itemView);
+        }
+    }
+
+    public static String formateDateFromstring(String inputFormat, String outputFormat, String inputDate) {
+
+        Date parsed = null;
+        String outputDate = "";
+
+        SimpleDateFormat df_input = new SimpleDateFormat(inputFormat, java.util.Locale.getDefault());
+        SimpleDateFormat df_output = new SimpleDateFormat(outputFormat, java.util.Locale.getDefault());
+
+        try {
+            parsed = df_input.parse(inputDate);
+            outputDate = df_output.format(parsed);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return outputDate;
+
+    }
+}

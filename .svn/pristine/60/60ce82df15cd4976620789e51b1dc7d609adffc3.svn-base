@@ -1,0 +1,217 @@
+package com.vritti.sales.beans;
+
+public class AllCatSubcatItems {
+    String CategoryId, CategoryName, SubCategoryName,
+            ItemName, ItemMasterId, SubCategoryId,ItemImgPath,
+            Merchant_name, Merchant_id, offers, Freeitemid, Freeitemname,
+            validfrom, validto, perDigit, sono, DoAck;
+
+    float Price, TotalAmount;
+    float minqnty, Freeitemqty;
+    private boolean selected = false;
+
+    int subcatcount;
+    int itemcount;
+    float EdtQty;
+    boolean isChecked;
+
+    public boolean getIsChecked() {
+        return this.isChecked;
+    }
+
+    public void setChecked(boolean ckecked) {
+        isChecked = ckecked;
+    }
+
+    public String getSono() {
+        return sono;
+    }
+
+    public void setSono(String sono) {
+        this.sono = sono;
+    }
+
+    public String getDoAck() {
+        return DoAck;
+    }
+
+    public void setDoAck(String doAck) {
+        DoAck = doAck;
+    }
+
+    public String getPerDigit(){
+        return perDigit;
+    }
+
+    public void setPerDigit(String perDigit) {
+        this.perDigit = perDigit;
+    }
+
+    public String getMerchant_id() {
+        return Merchant_id;
+    }
+
+    public void setMerchant_id(String merchant_id) {
+        Merchant_id = merchant_id;
+    }
+
+    public String getMerchant_name() {
+        return Merchant_name;
+    }
+
+    public void setMerchant_name(String merchant_name) {
+        Merchant_name = merchant_name;
+    }
+
+    public String getOffers() {
+        return offers;
+    }
+
+    public void setOffers(String offers) {
+        this.offers = offers;
+    }
+
+    public String getFreeitemid() {
+        return Freeitemid;
+    }
+
+    public void setFreeitemid(String freeitemid) {
+        Freeitemid = freeitemid;
+    }
+
+    public String getFreeitemname() {
+        return Freeitemname;
+    }
+
+    public void setFreeitemname(String freeitemname) {
+        Freeitemname = freeitemname;
+    }
+
+    public float getMinqnty() {
+        return minqnty;
+    }
+
+    public void setMinqnty(int minqnty) {
+        this.minqnty = minqnty;
+    }
+
+    public float getFreeitemqty() {
+        return Freeitemqty;
+    }
+
+    public void setFreeitemqty(float freeitemqty) {
+        Freeitemqty = freeitemqty;
+    }
+
+    public String getValidfrom() {
+        return validfrom;
+    }
+
+    public void setValidfrom(String validfrom) {
+        this.validfrom = validfrom;
+    }
+
+    public String getValidto() {
+        return validto;
+    }
+
+    public void setValidto(String validto) {
+        this.validto = validto;
+    }
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
+
+    public float getPrice(){ return Price; }
+
+    public void setPrice(float price){this.Price = price; }
+
+    public float getEdtQty(){ return EdtQty; }
+
+    public void setEdtQty(float edtQty){this.EdtQty = edtQty; }
+
+    public float getTotalAmount() {
+        return TotalAmount;
+    }
+
+    public void setTotalAmount(float totalAmount) {
+        TotalAmount = totalAmount;
+    }
+
+    public String getItemImgPath() {
+        return ItemImgPath;
+    }
+
+    public void setItemImgPath(String itemImgPath) {
+        ItemImgPath = itemImgPath;
+    }
+
+    public int getSubcatcount() {
+        return this.subcatcount;
+    }
+
+    public void setSubcatcount(int subcatcount) {
+        this.subcatcount = subcatcount;
+    }
+
+    public int getItemcount() {
+        return itemcount;
+    }
+
+    public void setItemcount(int itemcount) {
+        this.itemcount = itemcount;
+    }
+
+    public String getCategoryId() {
+        return CategoryId;
+    }
+
+    public String getSubCategoryId() {
+        return SubCategoryId;
+    }
+
+    public void setSubCategoryId(String subCategoryId) {
+        SubCategoryId = subCategoryId;
+    }
+
+    public void setCategoryId(String categoryId) {
+        this.CategoryId = categoryId;
+    }
+
+    public String getCategoryName() {
+        return CategoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        CategoryName = categoryName;
+    }
+
+    public String getSubCategoryName() {
+        return this.SubCategoryName;
+    }
+
+    public void setSubCategoryName(String subCategoryName) {
+        SubCategoryName = subCategoryName;
+    }
+
+    public String getItemName() {
+        return this.ItemName;
+    }
+
+    public void setItemName(String itemName) {
+        this.ItemName = itemName;
+    }
+
+    public String getItemMasterId() {
+        return this.ItemMasterId;
+    }
+
+    public void setItemMasterId(String itemMasterId) {
+        this.ItemMasterId = itemMasterId;
+    }
+}

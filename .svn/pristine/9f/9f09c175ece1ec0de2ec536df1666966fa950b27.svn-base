@@ -1,0 +1,59 @@
+package com.vritti.vwb.Beans;
+
+import com.google.gson.annotations.SerializedName;
+
+import java.util.ArrayList;
+
+public class SelectedKendraObj {
+
+    @SerializedName("year")
+    String year;
+    @SerializedName("FormId")
+    String FormId;
+    @SerializedName("FromDate")
+    String FromDate;
+    @SerializedName("ToDate")
+    String ToDate;
+    @SerializedName("SourceIdarr")
+    ArrayList<SelectedKendraBean> selectedKendraBeanArrayList;
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public String getFormId() {
+        return FormId;
+    }
+
+    public void setFormId(String formId) {
+        FormId = formId;
+    }
+
+    public String getFromDate() {
+        return FromDate;
+    }
+
+    public void setFromDate(String fromDate) {
+        FromDate = fromDate;
+    }
+
+    public String getToDate() {
+        return ToDate;
+    }
+
+    public void setToDate(String toDate) {
+        ToDate = toDate;
+    }
+
+    public ArrayList<SelectedKendraBean> getSelectedKendraBeanArrayList() {
+        return selectedKendraBeanArrayList;
+    }
+
+    public void setSelectedKendraBeanArrayList(ArrayList<SelectedKendraBean> selectedKendraBeanArrayList) {
+        this.selectedKendraBeanArrayList = selectedKendraBeanArrayList;
+    }
+}

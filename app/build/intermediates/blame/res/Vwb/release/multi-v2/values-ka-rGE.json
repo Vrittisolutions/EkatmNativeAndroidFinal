@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\incremental\\mergeVwbReleaseResources\\merged.dir\\values-ka-rGE\\values-ka-rGE.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Nilesh\\.gradle\\caches\\transforms-2\\files-2.1\\bcefe1a63aaad0e225ad14675b4e8bed\\datetimepicker-0.2.0\\res\\values-ka-rGE\\values-ka-rGE.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10,11,12,13,14",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "222,322,429,507,614,728,836,927,1014,1102,1185",
+                        "endColumns": "99,106,77,106,113,107,90,86,87,82,90",
+                        "endOffsets": "317,424,502,609,723,831,922,1009,1097,1180,1271"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,205,312,390,497,611,719,810,897,985,1068",
+                        "endColumns": "99,106,77,106,113,107,90,86,87,82,90",
+                        "endOffsets": "200,307,385,492,606,714,805,892,980,1063,1154"
+                    }
+                }
+            ]
+        }
+    ]
+}

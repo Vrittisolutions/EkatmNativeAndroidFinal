@@ -1,0 +1,355 @@
+package com.vritti.vwb.vworkbench;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
+
+import com.google.android.gms.games.GamesStatusCodes;
+import com.google.gson.Gson;
+import com.vritti.databaselib.data.DatabaseHandlers;
+import com.vritti.databaselib.other.Utility;
+import com.vritti.databaselib.other.WebUrlClass;
+import com.vritti.ekatm.R;
+import com.vritti.sessionlib.CallbackInterface;
+import com.vritti.sessionlib.StartSession;
+import com.vritti.vwb.Adapter.ActivityListMainAdapter_New;
+import com.vritti.vwb.Beans.ActivityBean;
+import com.vritti.vwb.Beans.CommonObject;
+import com.vritti.vwb.classes.CommonFunction;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.net.URLDecoder;
+import java.util.ArrayList;
+
+public class SaharaDisplayActivity extends AppCompatActivity {
+    RecyclerView lsactivity_list;
+    ArrayList<ActivityBean> activityBeanArrayList;
+    Context context;
+    String FinalJsonObject;
+    String PlantMasterId = "", LoginId = "", Password = "", CompanyURL = "", EnvMasterId = "",
+            UserMasterId = "", UserName = "", MobileNo = "";
+    Utility ut;
+    String type="";
+    CommonObject commonObgj;
+    CommonFunction cf;
+    DatabaseHandlers db;
+    SQLiteDatabase sql;
+    ActivityListMainAdapter_New activityListadapterNew;
+    Intent intent;
+    String Sourcetype="";
+    String fromSchool="";
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.display_activity_sahara);
+
+        Toolbar toolbar_action = (Toolbar) findViewById(R.id.toolbar);
+       // toolbar_action.setLogo(R.mipmap.ic_toolbar_logo_crm);
+        toolbar_action.setLogo(R.mipmap.ic_toolbar_logo_vwb);
+        toolbar_action.setTitle(R.string.app_name_toolbar_Vwb);
+        setSupportActionBar(toolbar_action);
+       // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        context = getApplicationContext();
+        ut = new Utility();
+        cf = new CommonFunction(context);
+        String settingKey = ut.getSharedPreference_SettingKey(context);
+        String dabasename = ut.getValue(context, WebUrlClass.GET_DATABASE_NAME_KEY, settingKey);
+        db = new DatabaseHandlers(context, dabasename);
+        CompanyURL = ut.getValue(context, WebUrlClass.GET_COMPANY_URL_KEY, settingKey);
+        EnvMasterId = ut.getValue(context, WebUrlClass.GET_EnvMasterID_KEY, settingKey);
+        PlantMasterId = ut.getValue(context, WebUrlClass.GET_PlantID_KEY, settingKey);
+        LoginId = ut.getValue(context, WebUrlClass.GET_LOGIN_KEY, settingKey);
+        Password = ut.getValue(context, WebUrlClass.GET_PSW_KEY, settingKey);
+        UserMasterId = ut.getValue(context, WebUrlClass.GET_USERMASTERID_KEY, settingKey);
+        UserName = ut.getValue(context, WebUrlClass.GET_USERNAME_KEY, settingKey);
+        sql = db.getWritableDatabase();
+
+        initView();
+
+        if(getIntent() != null){
+
+             FinalJsonObject = getIntent().getStringExtra("response");
+             fromSchool = getIntent().getStringExtra("forSchool");
+              Log.i("Intent Object===   ",FinalJsonObject);
+
+        }
+
+        updateList();
+
+    }
+
+    private void initView() {
+        lsactivity_list = findViewById(R.id.lsactivity_list);
+
+        activityBeanArrayList = new ArrayList<ActivityBean>();
+
+    }
+
+
+    public void updateList() {
+        activityBeanArrayList.clear();
+
+        Cursor cur = sql.rawQuery("SELECT * FROM " + db.TABLE_ACTIVITYMASTER, null);
+        int count = cur.getCount();
+        Log.i("cnt:",String.valueOf(cur.getCount()));
+
+        /*if(cur.getCount() < 1){
+            sql.delete(db.TABLE_ACTIVITYMASTER,null,null);
+            lsActivityList.clear();
+        }else if(cur.getCount() >11) {
+            lsActivityList.clear();
+
+        }else{
+
+        }*/
+
+       /* String query = "SELECT * FROM '" + db.TABLE_ACTIVITYMASTER + "'";
+        Cursor cur = sql.rawQuery(query, null);*/
+        int cnt = cur.getCount();
+        if (cur.getCount() > 0) {
+            cur.moveToFirst();
+            do {
+                ActivityBean bean = new ActivityBean();
+                /* bean.setrowNo(cur.getString(cur.getColumnIndex("ROWNo")));*/
+                bean.setIssuedToName(cur.getString(cur.getColumnIndex("IssuedToName")));
+                bean.setAssigned_By(cur.getString(cur.getColumnIndex("Assigned_By")));
+                bean.setActivityCode(cur.getString(cur.getColumnIndex("ActivityCode")));
+                bean.setConsigneeName(cur.getString(cur.getColumnIndex("ConsigneeName")));
+                bean.setContMob(cur.getString(cur.getColumnIndex("ContMob")));
+                bean.setSourceId(cur.getString(cur.getColumnIndex("SourceId")));
+                bean.setActivityName(cur.getString(cur.getColumnIndex("ActivityName")));
+                bean.setFormatEndDt(cur.getString(cur.getColumnIndex("FormatEndDt")));
+                bean.setFormatStDt(cur.getString(cur.getColumnIndex("FormatStDt")));
+                bean.setHoursRequired(cur.getString(cur.getColumnIndex("HoursRequired")));
+                bean.setPriorityIndex(cur.getString(cur.getColumnIndex("PriorityIndex")));
+                bean.setProjectName(cur.getString(cur.getColumnIndex("ProjectName")));
+                bean.setTotalHoursBooked(cur.getString(cur.getColumnIndex("TotalHoursBooked")));//PAllowUsrTimeSlotHrs
+                bean.setPAllowUsrTimeSlotHrs(cur.getString(cur.getColumnIndex("PAllowUsrTimeSlotHrs")));
+                bean.setEndDate(cur.getString(cur.getColumnIndex("EndDate")));
+                bean.setStartDate(cur.getString(cur.getColumnIndex("StartDate")));
+                // bean.setEndDateAct(cur.getString(cur.getColumnIndex("EndDateAct")));
+                bean.setSourceType(cur.getString(cur.getColumnIndex("SourceType")));
+                bean.setStatus(cur.getString(cur.getColumnIndex("Status")));
+                bean.setActivityId(cur.getString(cur.getColumnIndex("ActivityId")));
+                bean.setProjectID(cur.getString(cur.getColumnIndex("ProjectId")));
+
+
+                bean.setIsChargable(cur.getString(cur.getColumnIndex("IsChargable")));
+                bean.setAssignedById(cur.getString(cur.getColumnIndex("AssignedById")));
+                //  bean.setSubActCount(cur.getString(cur.getColumnIndex("SubActCount")));//SubActCount
+                //bean.setSubActStaus(cur.getString(cur.getColumnIndex("SubActStaus")));
+                bean.setExpectedCompleteDate(cur.getString(cur.getColumnIndex("ExpectedCompleteDate")));
+                bean.setExpectedComplete_Date(cur.getString(cur.getColumnIndex("ExpectedComplete_Date")));
+                bean.setModifiedBy(cur.getString(cur.getColumnIndex("ModifiedBy")));
+                bean.setModified_By(cur.getString(cur.getColumnIndex("Modified_By")));
+                bean.setStartDt(cur.getString(cur.getColumnIndex("StartDt")));
+                bean.setEndDt(cur.getString(cur.getColumnIndex("EndDt")));
+                bean.setIsActivityMandatory(cur.getString(cur.getColumnIndex("IsActivityMandatory")));
+                bean.setIsDelayedActivityAllowed(cur.getString(cur.getColumnIndex("IsDelayedActivityAllowed")));
+                bean.setCd(cur.getString(cur.getColumnIndex("Cd")));
+                bean.setUnitId(cur.getString(cur.getColumnIndex("UnitId")));
+                bean.setPKModuleMastId(cur.getString(cur.getColumnIndex("PKModuleMastId")));
+                bean.setPriorityName(cur.getString(cur.getColumnIndex("PriorityName")));
+                bean.setColour(cur.getString(cur.getColumnIndex("Colour")));
+                bean.setAddedDt(cur.getString(cur.getColumnIndex("AddedDt")));
+                bean.setUserMasterId(cur.getString(cur.getColumnIndex("UserMasterId")));
+                bean.setModifiedDt(cur.getString(cur.getColumnIndex("ModifiedDt")));
+                bean.setAssignedById1(cur.getString(cur.getColumnIndex("AssignedById1")));
+                bean.setIsDeleted(cur.getString(cur.getColumnIndex("IsDeleted")));
+                bean.setIsApproved(cur.getString(cur.getColumnIndex("IsApproved")));
+                /************************/
+                bean.setIsChargable1(cur.getString(cur.getColumnIndex("IsChargable1")));
+                bean.setActivityTypeId(cur.getString(cur.getColumnIndex("ActivityTypeId")));
+                bean.setIsApproval(cur.getString(cur.getColumnIndex("IsApproval")));
+                bean.setAttachmentName(cur.getString(cur.getColumnIndex("AttachmentName")));
+                /*************/
+                bean.setAttachmentContent(cur.getString(cur.getColumnIndex("AttachmentContent")));
+
+                /*****************/
+                bean.setModifiedDt1(cur.getString(cur.getColumnIndex("ModifiedDt1")));
+                bean.setUnitName(cur.getString(cur.getColumnIndex("UnitName")));
+                bean.setUnitDesc(cur.getString(cur.getColumnIndex("UnitDesc")));
+                bean.setModuleName(cur.getString(cur.getColumnIndex("ModuleName")));
+                bean.setActivityName1(cur.getString(cur.getColumnIndex("ActivityName1")));
+                bean.setRemarks(cur.getString(cur.getColumnIndex("Remarks")));
+                bean.setProjectCode(cur.getString(cur.getColumnIndex("ProjectCode")));
+                bean.setUserName(cur.getString(cur.getColumnIndex("UserName")));
+                bean.setExpectedComplete_Date1(cur.getString(cur.getColumnIndex("ExpectedComplete_Date1")));
+                bean.setDeptDesc(cur.getString(cur.getColumnIndex("DeptDesc")));
+                bean.setDeptMasterId(cur.getString(cur.getColumnIndex("DeptMasterId")));
+                bean.setCompletionIntimate(cur.getString(cur.getColumnIndex("CompletionIntimate")));
+                bean.setModifiedBy1(cur.getString(cur.getColumnIndex("ModifiedBy1")));
+                bean.setReassignedBy(cur.getString(cur.getColumnIndex("ReassignedBy")));
+                bean.setReassignedDt(cur.getString(cur.getColumnIndex("ReassignedDt")));
+                bean.setActualCompletionDate(cur.getString(cur.getColumnIndex("ActualCompletionDate")));
+                bean.setWarrantyCode(cur.getString(cur.getColumnIndex("WarrantyCode")));
+                bean.setTicketCategory(cur.getString(cur.getColumnIndex("TicketCategory")));
+                bean.setIsEndTime(cur.getString(cur.getColumnIndex("IsEndTime")));
+                bean.setIsCompActPresent(cur.getString(cur.getColumnIndex("IsCompActPresent")));
+                bean.setCompletionActId(cur.getString(cur.getColumnIndex("CompletionActId")));
+                bean.setTktCustReportedBy(cur.getString(cur.getColumnIndex("TktCustReportedBy")));
+                bean.setTktCustApprovedBy(cur.getString(cur.getColumnIndex("TktCustApprovedBy")));
+                bean.setIsSubActivity(cur.getString(cur.getColumnIndex("IsSubActivity")));
+                bean.setParentActId(cur.getString(cur.getColumnIndex("ParentActId")));
+                bean.setActivityTypeName(cur.getString(cur.getColumnIndex("ActivityTypeName")));
+                bean.setCompActName(cur.getString(cur.getColumnIndex("CompActName")));
+
+                activityBeanArrayList.add(bean);
+
+
+            } while (cur.moveToNext());
+            activityListadapterNew = new ActivityListMainAdapter_New(this, activityBeanArrayList,"fromDoc");
+            RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+            lsactivity_list.setLayoutManager(mLayoutManager);
+            lsactivity_list.setItemAnimator(new DefaultItemAnimator());
+            lsactivity_list.setAdapter(activityListadapterNew);
+            //activityListadapterNew.notifyDataSetChanged();
+            //filterTempList.clear();
+            //filterTempList.addAll(lsActivityList);
+
+
+        } else {
+
+
+        }
+    }
+
+
+    public void rowClick(final int position) {
+        String mode="fromDoc";
+
+            //  backToposition = parent.getPositionForView(view);
+
+
+            Sourcetype = activityBeanArrayList.get(position).getSourceType();
+
+            String ActivityName = activityBeanArrayList.get(position).getActivityName();
+
+            if (ActivityMain.Activity_AssignByMe && Sourcetype.equalsIgnoreCase("DocAppr")) {
+
+            } else {
+
+                String RRF = activityBeanArrayList.get(position).getActivityName();
+                if (RRF.contains("RRF")) {
+                    Toast.makeText(SaharaDisplayActivity.this, "This functionality not available in mobile application", Toast.LENGTH_SHORT).show();
+                } else if (RRF.contains("support")) {
+                    String assign = String.valueOf(ActivityMain.Activity_AssignByMe);
+                    String Unapprove = String.valueOf(ActivityMain.Activity_Unapprove);
+
+                    ActivityBean bean = activityBeanArrayList.get(position);
+                    ArrayList<ActivityBean> activityBeen = new ArrayList<ActivityBean>();
+                    activityBeen.add(bean);
+                    intent = new Intent(SaharaDisplayActivity.this, ActivityDetailsActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("actbean", bean);
+                    intent.putExtras(bundle);
+
+                    if (Unapprove.equalsIgnoreCase("true")) {
+                        intent.putExtra("unapprove", Unapprove);
+
+                    } else {
+                        intent.putExtra("unapprove", "");
+                    }
+                    if (assign.equalsIgnoreCase("true")) {
+                        intent.putExtra("checkassign", assign);
+                    } else {
+                        intent.putExtra("checkassign", "");
+                    }
+
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                     //finish();
+
+                } else {
+                    if(fromSchool != null ){
+                            String assign = String.valueOf(ActivityMain.Activity_AssignByMe);
+                            String Unapprove = String.valueOf(ActivityMain.Activity_Unapprove);
+
+                            ActivityBean bean = activityBeanArrayList.get(position);
+                            ArrayList<ActivityBean> activityBeen = new ArrayList<ActivityBean>();
+                            activityBeen.add(bean);
+                            intent = new Intent(SaharaDisplayActivity.this, ActivityDetailsActivity.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("actbean", bean);
+                            intent.putExtras(bundle);
+
+                            if (Unapprove.equalsIgnoreCase("true")) {
+                                intent.putExtra("unapprove", Unapprove);
+
+                            } else {
+                                intent.putExtra("unapprove", "");
+                            }
+                            if (assign.equalsIgnoreCase("true")) {
+                                intent.putExtra("checkassign", assign);
+                            } else {
+                                intent.putExtra("checkassign", "");
+                            }
+
+                            intent.putExtra("Flag_fromteam", 1);
+
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(intent);
+                            // finish();
+
+
+                    }else{
+
+                        String assign = String.valueOf(ActivityMain.Activity_AssignByMe);
+                        String Unapprove = String.valueOf(ActivityMain.Activity_Unapprove);
+
+                        ActivityBean bean = activityBeanArrayList.get(position);
+                        ArrayList<ActivityBean> activityBeen = new ArrayList<ActivityBean>();
+                        activityBeen.add(bean);
+                        intent = new Intent(SaharaDisplayActivity.this, ActivityDetailsActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("actbean", bean);
+                        intent.putExtras(bundle);
+
+                        if (Unapprove.equalsIgnoreCase("true")) {
+                            intent.putExtra("unapprove", Unapprove);
+
+                        } else {
+                            intent.putExtra("unapprove", "");
+                        }
+                        if (assign.equalsIgnoreCase("true")) {
+                            intent.putExtra("checkassign", assign);
+                        } else {
+                            intent.putExtra("checkassign", "");
+                        }
+
+                        intent.putExtra("Flag_fromteam", 2);
+
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                        // finish();
+
+
+                    }
+
+
+
+                }
+
+
+        }
+    }
+
+}

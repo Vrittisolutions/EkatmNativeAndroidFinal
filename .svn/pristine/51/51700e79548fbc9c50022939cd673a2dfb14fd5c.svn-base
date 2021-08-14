@@ -1,0 +1,1270 @@
+package com.vritti.inventory.MaterialRequisition.activity;
+
+import android.app.ProgressDialog;
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
+import com.vritti.databaselib.data.DatabaseHandlers;
+import com.vritti.databaselib.other.Utility;
+import com.vritti.databaselib.other.WebUrlClass;
+import com.vritti.ekatm.R;
+import com.vritti.inventory.MaterialRequisition.classes.Inventory_CommonFunction;
+import com.vritti.inventory.MaterialRequisition.model.MaterialOrder;
+import com.vritti.sessionlib.CallbackInterface;
+import com.vritti.sessionlib.StartSession;
+import com.vritti.vwb.Beans.DatasheetListObject;
+import com.vritti.vwb.classes.CommonFunction;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by sharvari on 07-Aug-17.
+ */
+
+
+public class ActivityMaterialOrder extends AppCompatActivity {
+
+    String PlantMasterId = "", LoginId = "", Password = "", CompanyURL = "", EnvMasterId = "", UserMasterId = "";
+    Utility ut;
+    DatabaseHandlers db;
+    Inventory_CommonFunction inven_cf;
+    Context context;
+    String UserName, MobileNo;
+    String IsChatApplicable, IsGPSLocation;
+
+    SharedPreferences sharedPreferences;
+    public static final String MYPREFERENCE = "Mypreference";
+    SharedPreferences.Editor editor;
+    Spinner spinner_wonumber, spinner_warehouse, spinner_location, spinner_item_code, spinner_item_description;
+    SQLiteDatabase sql;
+    List<String> lstWorkOrder = new ArrayList<String>();
+    List<String> lstWarehouse = new ArrayList<String>();
+    List<String> lstLocation = new ArrayList<String>();
+    List<String> lstItemcode = new ArrayList<String>();
+    List<String> lstItemDesc = new ArrayList<String>();
+    List<String> lstMaterialItemCode = new ArrayList<String>();
+    List<String> lstMaterialItemDesc = new ArrayList<String>();
+
+
+    String ItemPlantId, WareHouseMasterId, option, POHeaderId, Supplier_id, MODetailId, ComponentMasterId, ItemCode, ItemDesc;
+    LinearLayout len_balencequantity, len_routename, len_segmenttype, len_from, len_to, len_address, len_wonumber;
+    int check = 0;
+    TextView txt_uomdesc, txt_route_name, txt_segment_type, txt_from, txt_to, txt_stock_quantity, txt_balance_quantity;
+    EditText txt_requisition_quantity, edt_address, edt_remark, edt_requisition_quantity;
+    Button btnsave_changes;
+    String MRSDetailId = "", UOMDesc = "", UOMMasterId = "", lblhdn = "", RouteFrom_Id, RouteTo_Id, RouteName, Stockquantity, Balencequantity, Requisitionquantity, Address = "", Remark = "", SegmentType;
+    ArrayList<MaterialOrder> materialOrderArrayList = new ArrayList<>();
+    String Currentstock, ItemUOMMasterId;
+    String Mode = "";
+    int editpos;
+    String LocationMasterId = "", LocationMasterName = "", WareHouseMasterName = "";
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.inventory_lay_material_req_against_process_order);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        context = getApplicationContext();
+        ut = new Utility();
+        inven_cf = new Inventory_CommonFunction(context);
+        String settingKey = ut.getSharedPreference_SettingKey(context);
+        String dabasename = ut.getValue(context, WebUrlClass.GET_DATABASE_NAME_KEY, settingKey);
+        db = new DatabaseHandlers(context, dabasename);
+        CompanyURL = ut.getValue(context, WebUrlClass.GET_COMPANY_URL_KEY, settingKey);
+        EnvMasterId = ut.getValue(context, WebUrlClass.GET_EnvMasterID_KEY, settingKey);
+        PlantMasterId = ut.getValue(context, WebUrlClass.GET_PlantID_KEY, settingKey);
+        LoginId = ut.getValue(context, WebUrlClass.GET_LOGIN_KEY, settingKey);
+        Password = ut.getValue(context, WebUrlClass.GET_PSW_KEY, settingKey);
+        UserName = "";
+        MobileNo = ut.getValue(context, WebUrlClass.GET_MOBILE_KEY, settingKey);
+
+        UserMasterId = ut.getValue(context, WebUrlClass.GET_USERMASTERID_KEY, settingKey);
+        UserName = ut.getValue(context, WebUrlClass.GET_USERNAME_KEY, settingKey);
+        MobileNo = ut.getValue(context, WebUrlClass.GET_MOBILE_KEY, settingKey);
+        IsChatApplicable = ut.getValue(context, WebUrlClass.GET_ISCHATAPPLICABLE_KEY, settingKey);
+        IsGPSLocation = ut.getValue(context, WebUrlClass.GET_ISGPSLOCATION_KEY, settingKey);
+
+        option = ut.getValue(context, WebUrlClass.GET_Materials, settingKey);
+        sql = db.getWritableDatabase();
+        sharedPreferences = getSharedPreferences(WebUrlClass.USERINFO,
+                Context.MODE_PRIVATE);
+        // CompanyURL = sharedPreferences.getString("CompanyURL", null);
+
+
+        sharedPreferences = getSharedPreferences(MYPREFERENCE, MODE_PRIVATE);
+
+        initview();
+
+        if (inven_cf.getWorkOrdercount() > 0) {
+            getWorkorder();
+        }
+        if (db.getWarehousecount() > 0) {
+            getWarehouse();
+        }
+
+        if (getIntent() != null) {
+            materialOrderArrayList = new Gson().fromJson(getIntent().getStringExtra("editMaterialOrderList"), MaterialOrder.class).
+                    getMaterialOrderArrayList();
+            Mode = getIntent().getStringExtra("Mode");
+            editpos = getIntent().getIntExtra("position", 0);
+        }
+
+        if (Mode.equals("E")) {
+            int itemCodepos = -1;
+            for (int i = 0; i < lstMaterialItemCode.size(); i++) {
+                if (materialOrderArrayList.get(editpos).getItemCode().equals(lstMaterialItemCode.get(i))) {
+                    itemCodepos = i;
+                    break;
+                }
+            }
+            if (itemCodepos != -1) {
+                spinner_item_code.setSelection(itemCodepos);
+            } else {
+                spinner_item_code.setSelection(0);
+            }
+
+
+            int itemDescpos = -1;
+            for (int i = 0; i < lstMaterialItemDesc.size(); i++) {
+                if (materialOrderArrayList.get(editpos).getItemDesc().equals(lstMaterialItemDesc.get(i))) {
+                    itemDescpos = i;
+                }
+            }
+            if (itemDescpos != -1) {
+                spinner_item_description.setSelection(itemDescpos);
+            } else {
+                spinner_item_description.setSelection(itemDescpos);
+            }
+
+            Stockquantity = materialOrderArrayList.get(editpos).getStockQuantity();
+            txt_stock_quantity.setText(Stockquantity);
+            edt_remark.setText(materialOrderArrayList.get(editpos).getRemark());
+            edt_requisition_quantity.setText(materialOrderArrayList.get(editpos).getReqQty());
+            ComponentMasterId = materialOrderArrayList.get(editpos).getItemMasterId();
+
+
+
+            int warehousePos = -1;
+            if(materialOrderArrayList.get(editpos).getWarehouseMasterName() != null) {
+                if (lstWarehouse.size() != 0) {
+                    for (int i = 0; i < lstWarehouse.size(); i++) {
+                        if (materialOrderArrayList.get(editpos).getWarehouseMasterName().equals(lstWarehouse.get(i))) {
+                            warehousePos = i;
+                            break;
+                        }
+                    }
+
+                    if (warehousePos != -1) {
+                        spinner_warehouse.setSelection(warehousePos);
+                    } else {
+                        spinner_warehouse.setSelection(0);
+                    }
+                }
+                getLocationDatafromDatabase(lstWarehouse.get(warehousePos));
+            }
+
+
+
+
+        }
+
+
+    }
+
+    private void getLocationDatafromDatabase(String warehouseName) {
+
+        String query = "SELECT distinct WareHouseMasterId,WarehouseDescription" +
+                " FROM " + db.TABLE_WAREHOUSE +
+                " WHERE WarehouseDescription='" + warehouseName + "'";
+        Cursor cur = sql.rawQuery(query, null);
+
+        if (cur.getCount() > 0) {
+
+            cur.moveToFirst();
+            do {
+
+                WareHouseMasterId = cur.getString(cur.getColumnIndex("WareHouseMasterId"));
+                WareHouseMasterName = cur.getString(cur.getColumnIndex("WarehouseDescription"));
+                if (isnet()) {
+                    new StartSession(ActivityMaterialOrder.this, new CallbackInterface() {
+                        @Override
+                        public void callMethod() {
+                            new DownloadWorkorderData().execute(WareHouseMasterId);
+                        }
+
+                        @Override
+                        public void callfailMethod(String msg) {
+
+                        }
+                    });
+
+                }
+
+            } while (cur.moveToNext());
+
+        } else {
+            WareHouseMasterId = "";
+        }
+    }
+
+    private void initview() {
+
+        spinner_wonumber = (Spinner) findViewById(R.id.spinner_wonumber);
+        spinner_warehouse = (Spinner) findViewById(R.id.spinner_warehouse);
+        spinner_location = (Spinner) findViewById(R.id.spinner_location);
+        spinner_item_code = (Spinner) findViewById(R.id.item_code);
+        spinner_item_description = (Spinner) findViewById(R.id.item_description);
+        len_balencequantity = (LinearLayout) findViewById(R.id.len_balencequantity);
+        len_routename = (LinearLayout) findViewById(R.id.len_routename);
+        len_segmenttype = (LinearLayout) findViewById(R.id.len_segmenttype);
+        len_from = (LinearLayout) findViewById(R.id.len_from);
+        len_to = (LinearLayout) findViewById(R.id.len_to);
+        len_address = (LinearLayout) findViewById(R.id.len_address);
+        len_wonumber = (LinearLayout) findViewById(R.id.len_wonumber);
+        txt_route_name = (TextView) findViewById(R.id.txt_route_name);
+        txt_uomdesc = (TextView) findViewById(R.id.txt_uomdesc);
+        txt_segment_type = (TextView) findViewById(R.id.txt_segment_type);
+        txt_from = (TextView) findViewById(R.id.txt_from);
+        txt_to = (TextView) findViewById(R.id.txt_to);
+        txt_stock_quantity = (TextView) findViewById(R.id.txt_stock_quantity);
+        txt_balance_quantity = (TextView) findViewById(R.id.txt_balance_quantity);
+        txt_requisition_quantity = (EditText) findViewById(R.id.edt_requisition_quantity);
+        edt_address = (EditText) findViewById(R.id.edt_address);
+        edt_remark = (EditText) findViewById(R.id.edt_remark);
+        edt_requisition_quantity = (EditText) findViewById(R.id.edt_requisition_quantity);
+        btnsave_changes = (Button) findViewById(R.id.btnsave_changes);
+
+        //  option=sharedPreferences.getString("material","");
+        if (option.equals("MRSPO")) {
+            len_balencequantity.setVisibility(View.VISIBLE);
+            len_routename.setVisibility(View.VISIBLE);
+            len_segmenttype.setVisibility(View.VISIBLE);
+            len_from.setVisibility(View.VISIBLE);
+            len_to.setVisibility(View.VISIBLE);
+            len_address.setVisibility(View.VISIBLE);
+            len_wonumber.setVisibility(View.VISIBLE);
+
+        } else {
+            if (inven_cf.getMarerialListcount() > 0) {
+                getItemListDescdata();
+                getItemdataListCodedata();
+
+            }
+
+        }
+
+
+        setlistner();
+    }
+
+    private void setlistner() {
+
+        spinner_warehouse.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (++check > 1) {
+                    String query = "SELECT distinct WareHouseMasterId,WarehouseDescription" +
+                            " FROM " + db.TABLE_WAREHOUSE +
+                            " WHERE WarehouseDescription='" + spinner_warehouse.getSelectedItem().toString() + "'";
+                    Cursor cur = sql.rawQuery(query, null);
+
+                    if (cur.getCount() > 0) {
+
+                        cur.moveToFirst();
+                        do {
+
+                            WareHouseMasterId = cur.getString(cur.getColumnIndex("WareHouseMasterId"));
+                            WareHouseMasterName = cur.getString(cur.getColumnIndex("WarehouseDescription"));
+                            if (isnet()) {
+                                new StartSession(ActivityMaterialOrder.this, new CallbackInterface() {
+                                    @Override
+                                    public void callMethod() {
+                                        new DownloadWorkorderData().execute(WareHouseMasterId);
+                                    }
+
+                                    @Override
+                                    public void callfailMethod(String msg) {
+
+                                    }
+                                });
+
+                            }
+
+                        } while (cur.moveToNext());
+
+                    } else {
+                        WareHouseMasterId = "";
+                    }
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+        spinner_location.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (++check > 1) {
+                    String clickItem = spinner_location.getSelectedItem().toString();
+                    String query = "SELECT distinct LocationMasterId,LocationDesc" +
+                            " FROM " + db.TABLE_LOCATION +
+                            " WHERE LocationDesc='" + spinner_location.getSelectedItem().toString() + "'";
+                    Cursor cur = sql.rawQuery(query, null);
+
+                    if (cur.getCount() > 0) {
+
+                        cur.moveToFirst();
+                        do {
+
+
+                            LocationMasterId = cur.getString(cur.getColumnIndex("LocationMasterId"));
+                            LocationMasterName = cur.getString(cur.getColumnIndex("LocationDesc"));
+
+                        } while (cur.moveToNext());
+
+                    } else {
+                        LocationMasterId = "";
+                    }
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+        spinner_wonumber.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (++check > 1) {
+                    Supplier_id = sharedPreferences.getString("supplied_id", "");
+                    String query = "SELECT distinct POHeaderId,PONo" +
+                            " FROM " + db.TABLE_WORK_ORDER +
+                            " WHERE PONo='" + spinner_wonumber.getSelectedItem().toString() + "'";
+                    Cursor cur = sql.rawQuery(query, null);
+
+                    if (cur.getCount() > 0) {
+
+                        cur.moveToFirst();
+                        do {
+
+                            POHeaderId = cur.getString(cur.getColumnIndex("POHeaderId"));
+                            if (isnet()) {
+                                new StartSession(ActivityMaterialOrder.this, new CallbackInterface() {
+                                    @Override
+                                    public void callMethod() {
+                                        new DownloadPoDetailsData().execute(Supplier_id, POHeaderId);
+                                    }
+
+                                    @Override
+                                    public void callfailMethod(String msg) {
+
+                                    }
+                                });
+
+                            }
+
+                        } while (cur.moveToNext());
+
+                    } else {
+                        POHeaderId = "";
+                    }
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        spinner_item_code.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (++check > 1) {
+
+                    if (option.equals("MRSPO")) {
+
+                        String query = "SELECT distinct MODetailId,ItemCode,ItemDesc,ComponentMasterId" +
+                                " FROM " + db.TABLE_PODETAILS +
+                                " WHERE ItemCode='" + spinner_item_code.getSelectedItem().toString() + "'";
+                        Cursor cur = sql.rawQuery(query, null);
+
+                        if (cur.getCount() > 0) {
+
+                            cur.moveToFirst();
+                            do {
+
+                                MODetailId = cur.getString(cur.getColumnIndex("MODetailId"));
+                                ItemCode = cur.getString(cur.getColumnIndex("ItemCode"));
+                                ComponentMasterId = cur.getString(cur.getColumnIndex("ComponentMasterId"));
+                                // getItemDescdata();
+                                if (isnet()) {
+                                    new StartSession(ActivityMaterialOrder.this, new CallbackInterface() {
+                                        @Override
+                                        public void callMethod() {
+                                            new DownloadPoItemDetailsData().execute(MODetailId);
+                                        }
+
+                                        @Override
+                                        public void callfailMethod(String msg) {
+
+                                        }
+                                    });
+
+                                }
+
+                            } while (cur.moveToNext());
+
+                        } else {
+                            MODetailId = "";
+                        }
+
+                    } else {
+
+                        String query = "SELECT distinct ItemPlantId,ItemCode,ItemDesc" +
+                                " FROM " + db.TABLE_MaterialItemList +
+                                " WHERE ItemCode='" + spinner_item_code.getSelectedItem().toString() + "'";
+                        Cursor cur = sql.rawQuery(query, null);
+
+                        if (cur.getCount() > 0) {
+
+                            cur.moveToFirst();
+                            do {
+
+                                ComponentMasterId = cur.getString(cur.getColumnIndex("ItemPlantId"));
+                                ItemCode = cur.getString(cur.getColumnIndex("ItemCode"));
+
+                                if (isnet()) {
+                                    new StartSession(ActivityMaterialOrder.this, new CallbackInterface() {
+                                        @Override
+                                        public void callMethod() {
+                                            new DownloadItemDetailsValueData().execute(ComponentMasterId);
+                                        }
+
+                                        @Override
+                                        public void callfailMethod(String msg) {
+
+                                        }
+                                    });
+
+                                }
+
+                            } while (cur.moveToNext());
+
+                        } else {
+                            ItemPlantId = "";
+                        }
+                    }
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        spinner_item_description.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (++check > 1) {
+                    if (option.equals("MRSPO")) {
+
+                        String query = "SELECT distinct MODetailId,ItemCode,ItemDesc,ComponentMasterId" +
+                                " FROM " + db.TABLE_PODETAILS +
+                                " WHERE ItemDesc='" + spinner_item_description.getSelectedItem().toString() + "'";
+                        Cursor cur = sql.rawQuery(query, null);
+
+                        if (cur.getCount() > 0) {
+
+                            cur.moveToFirst();
+                            do {
+
+                                ComponentMasterId = cur.getString(cur.getColumnIndex("ComponentMasterId"));
+                                ItemDesc = cur.getString(cur.getColumnIndex("ItemDesc"));
+                                //getItemdataCodedata();
+                            } while (cur.moveToNext());
+
+                        } else {
+                            ComponentMasterId = "";
+                        }
+
+                    } else {
+                        String query = "SELECT distinct ItemPlantId,ItemCode,ItemDesc" +
+                                " FROM " + db.TABLE_MaterialItemList +
+                                " WHERE ItemDesc='" + spinner_item_description.getSelectedItem().toString() + "'";
+                        Cursor cur = sql.rawQuery(query, null);
+
+                        if (cur.getCount() > 0) {
+
+                            cur.moveToFirst();
+                            do {
+
+                                ItemPlantId = cur.getString(cur.getColumnIndex("ItemPlantId"));
+                                ItemDesc = cur.getString(cur.getColumnIndex("ItemDesc"));
+
+                                if (isnet()) {
+                                    new StartSession(ActivityMaterialOrder.this, new CallbackInterface() {
+                                        @Override
+                                        public void callMethod() {
+                                            new DownloadItemDetailsValueData().execute(ItemPlantId);
+                                        }
+
+                                        @Override
+                                        public void callfailMethod(String msg) {
+
+                                        }
+                                    });
+
+                                }
+
+                            } while (cur.moveToNext());
+
+                        } else {
+                            ItemPlantId = "";
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        btnsave_changes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Requisitionquantity = txt_requisition_quantity.getText().toString();
+                Balencequantity = txt_balance_quantity.getText().toString();
+                //MRSItem
+                try {
+
+                    // option=sharedPreferences.getString("material","");
+
+                    if (option.equals("MRSPO")) {
+                        double balance = Double.parseDouble(Balencequantity);
+                        double Requisition = Double.parseDouble(Requisitionquantity);
+
+                        if (Requisition >= balance) {
+                            Toast.makeText(ActivityMaterialOrder.this, "Requisition Quantity must be less than or equal to Balance Qty", Toast.LENGTH_SHORT).show();
+                        } else {
+                            MaterialOrder materialOrders = new MaterialOrder();
+                            Stockquantity = txt_stock_quantity.getText().toString();
+                            Requisitionquantity = txt_requisition_quantity.getText().toString();
+                            Address = edt_address.getText().toString();
+                            Remark = edt_remark.getText().toString();
+                            SegmentType = txt_segment_type.getText().toString();
+                            UOMDesc = txt_uomdesc.getText().toString();
+                            materialOrders.setMRSDetailId("");
+                            materialOrders.setItemMasterId(ComponentMasterId);
+                            materialOrders.setItemCode(ItemCode);
+                            materialOrders.setItemDesc(ItemDesc);
+                            materialOrders.setUOMDesc(UOMDesc);
+                            materialOrders.setUOMMasterId(UOMMasterId);
+                            materialOrders.setStockQuantity(Stockquantity);
+                            materialOrders.setReqQty(Requisitionquantity);
+                            materialOrders.setRemark(Remark);
+                            materialOrders.setlblhdn("");
+                            materialOrders.setMODetailId(MODetailId);
+                            materialOrders.setSupplierId(Supplier_id);
+                            materialOrders.setRouteName(RouteName);
+                            materialOrders.setSegmentType(SegmentType);
+                            materialOrders.setRouteFrom(RouteFrom_Id);
+                            materialOrders.setRouteTo(RouteTo_Id);
+                            materialOrders.setAddress(Address);
+                            materialOrders.setWarehouseMasterName(WareHouseMasterName);
+                            materialOrders.setLocationMasterName(LocationMasterName);
+                            if(Mode.equals("E")){
+                                inven_cf.UpdateMaterialOrders(materialOrders);
+                            }else {
+                                inven_cf.AddMaterialData(materialOrders);
+                            }
+                            materialOrderArrayList.add(materialOrders);
+                            onBackPressed();
+                        }
+                    } else {
+
+                        Stockquantity = txt_stock_quantity.getText().toString();
+
+
+                        if (Stockquantity.equals("0.0000")) {
+                            Toast.makeText(ActivityMaterialOrder.this, "Requisition Quantity must be less than or equal to Balance Qty", Toast.LENGTH_SHORT).show();
+                        } else {
+                            MaterialOrder materialOrders = new MaterialOrder();
+                            Stockquantity = txt_stock_quantity.getText().toString();
+                            Requisitionquantity = txt_requisition_quantity.getText().toString();
+                            Address = edt_address.getText().toString();
+                            Remark = edt_remark.getText().toString();
+                            SegmentType = txt_segment_type.getText().toString();
+                            UOMDesc = txt_uomdesc.getText().toString();
+                            ItemCode = spinner_item_code.getSelectedItem().toString();
+                            materialOrders.setMRSDetailId("");
+                            materialOrders.setMRSDetailId("");
+                            materialOrders.setItemMasterId(ComponentMasterId);
+                            materialOrders.setItemCode(ItemCode);
+                            materialOrders.setItemDesc(ItemDesc);
+                            materialOrders.setUOMDesc(UOMDesc);
+                            materialOrders.setUOMMasterId(UOMMasterId);
+                            materialOrders.setStockQuantity(Stockquantity);
+                            materialOrders.setReqQty(Requisitionquantity);
+                            materialOrders.setRemark(Remark);
+                            materialOrders.setlblhdn("");
+                            materialOrders.setMODetailId(MODetailId);
+                            materialOrders.setSupplierId(Supplier_id);
+                            materialOrders.setRouteName(RouteName);
+                            materialOrders.setSegmentType(SegmentType);
+                            materialOrders.setRouteFrom(RouteFrom_Id);
+                            materialOrders.setRouteTo(RouteTo_Id);
+                            materialOrders.setAddress(Address);
+                            materialOrders.setWarehouseMasterName(WareHouseMasterName);
+                            materialOrders.setLocationMasterName(LocationMasterName);
+                            if(Mode.equals("E")){
+                                inven_cf.UpdateMaterialOrders(materialOrders);
+                            }else {
+                                inven_cf.AddMaterialData(materialOrders);
+                            }
+                            materialOrderArrayList.add(materialOrders);
+                            onBackPressed();
+
+
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
+
+    }
+
+
+    private void getWorkorder() {
+//sReferenceType, sReference,sEntity,sConsignee;
+        lstWorkOrder.clear();
+        String query = "SELECT distinct POHeaderId,PONo" +
+                " FROM " + db.TABLE_WORK_ORDER;
+        Cursor cur = sql.rawQuery(query, null);
+        //   lstReferenceType.add("Select");
+        if (cur.getCount() > 0) {
+
+            cur.moveToFirst();
+            do {
+
+
+                lstWorkOrder.add(cur.getString(cur.getColumnIndex("PONo")));
+
+            } while (cur.moveToNext());
+
+        }
+
+        MySpinnerAdapter customDept = new MySpinnerAdapter(ActivityMaterialOrder.this,
+                R.layout.custom_spinner_txt, lstWorkOrder);
+        spinner_wonumber.setAdapter(customDept);
+        //   customDept.notifyDataSetChanged();
+        spinner_wonumber.setSelection(0);
+    }
+
+    private void getWarehouse() {
+//sReferenceType, sReference,sEntity,sConsignee;
+        lstWarehouse.clear();
+        String query = "SELECT distinct WareHouseMasterId,WarehouseDescription" +
+                " FROM " + db.TABLE_WAREHOUSE;
+        Cursor cur = sql.rawQuery(query, null);
+        //   lstReferenceType.add("Select");
+        if (cur.getCount() > 0) {
+
+            cur.moveToFirst();
+            do {
+
+
+                lstWarehouse.add(cur.getString(cur.getColumnIndex("WarehouseDescription")));
+
+            } while (cur.moveToNext());
+
+        }
+
+        MySpinnerAdapter customDept = new MySpinnerAdapter(ActivityMaterialOrder.this,
+                R.layout.custom_spinner_txt, lstWarehouse);
+        spinner_warehouse.setAdapter(customDept);
+        //   customDept.notifyDataSetChanged();
+        spinner_warehouse.setSelection(0);
+        WareHouseMasterName = lstWarehouse.get(0);
+    }
+
+    private static class MySpinnerAdapter extends ArrayAdapter<String> {
+        // Initialise custom font, for example:
+
+
+        private MySpinnerAdapter(Context context, int resource,
+                                 List<String> items) {
+            super(context, resource, items);
+        }
+
+        // Affects default (closed) state of the spinner
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            TextView view = (TextView) super.getView(position, convertView,
+                    parent);
+            //view.setTypeface(font);
+            return view;
+        }
+
+        // Affects opened state of the spinner
+        @Override
+        public View getDropDownView(int position, View convertView,
+                                    ViewGroup parent) {
+            TextView view = (TextView) super.getDropDownView(position,
+                    convertView, parent);
+            //  view.setTypeface(font);
+            return view;
+        }
+
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(ActivityMaterialOrder.this, InventoryShow.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+        }
+        return (super.onOptionsItemSelected(menuItem));
+    }
+
+    private boolean isnet() {
+        // TODO Auto-generated method stub
+        Context context = this.getApplicationContext();
+        ConnectivityManager cm = (ConnectivityManager) context
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        if (netInfo != null && netInfo.isConnectedOrConnecting()) {
+            return true;
+        } else {
+            Toast.makeText(context, "No internet connection", Toast.LENGTH_LONG).show();
+            return false;
+        }
+    }
+
+    class DownloadWorkorderData extends AsyncTask<String, Void, String> {
+        Object res;
+        String response;
+        ProgressDialog progressDialog;
+
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog = new ProgressDialog(ActivityMaterialOrder.this);
+            progressDialog.setMessage("Please wait data loading...");
+            progressDialog.show();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                String url = CompanyURL + WebUrlClass.api_GetLocationList + "?WarehouseId=" + params[0];
+                res = ut.OpenConnection(url);
+                //response = res.toString().replaceAll("\\\\", "");
+                if (res != null) {
+                    response = res.toString();
+                    // response = response.replaceAll("\\\\\\\\/", "");
+                    //response = response.substring(1, response.length() - 1);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                response = "error";
+            }
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(String integer) {
+            super.onPostExecute(integer);
+            progressDialog.dismiss();
+
+            try {
+                JSONArray jResults = null;
+                jResults = new JSONArray(response);
+                ContentValues values = new ContentValues();
+
+                sql.delete(db.TABLE_LOCATION, null,
+                        null);
+                Cursor c = sql.rawQuery("SELECT * FROM " + db.TABLE_LOCATION, null);
+                int count = c.getCount();
+                String columnName, columnValue;
+                for (int i = 0; i < jResults.length(); i++) {
+                    JSONObject jorder = jResults.getJSONObject(i);
+                    for (int j = 0; j < c.getColumnCount(); j++) {
+
+                        columnName = c.getColumnName(j);
+                        columnValue = jorder.getString(columnName);
+                        values.put(columnName, columnValue);
+
+                    }
+
+                    long a = sql.insert(db.TABLE_LOCATION, null, values);
+                    Log.e("log data", "" + a);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            getLocationdata();
+
+
+        }
+
+
+    }
+
+    private void getLocationdata() {
+//sReferenceType, sReference,sEntity,sConsignee;
+        lstLocation.clear();
+        String query = "SELECT distinct LocationMasterId,LocationDesc" +
+                " FROM " + db.TABLE_LOCATION;
+        Cursor cur = sql.rawQuery(query, null);
+        //   lstReferenceType.add("Select");
+        if (cur.getCount() > 0) {
+
+            cur.moveToFirst();
+            do {
+
+
+                lstLocation.add(cur.getString(cur.getColumnIndex("LocationDesc")));
+
+            } while (cur.moveToNext());
+
+        }
+
+        MySpinnerAdapter customDept = new MySpinnerAdapter(ActivityMaterialOrder.this,
+                R.layout.custom_spinner_txt, lstLocation);
+        spinner_location.setAdapter(customDept);
+        //   customDept.notifyDataSetChanged();
+        spinner_location.setSelection(0);
+        LocationMasterName = lstLocation.get(0);
+
+        if(Mode.equals("E")){
+            int locationpos = -1;
+            for(int i = 0 ; i<lstLocation.size() ; i++){
+                if(materialOrderArrayList.get(editpos).getLocationMasterName().equals(lstLocation.get(i))){
+                   locationpos = i;
+                   break;
+                }
+            }
+            if(locationpos != -1){
+                spinner_location.setSelection(locationpos);
+            }else{
+                spinner_location.setSelection(0);
+            }
+
+            LocationMasterName = lstLocation.get(locationpos);
+        }
+    }
+
+    class DownloadPoDetailsData extends AsyncTask<String, Void, String> {
+        Object res;
+        String response;
+        ProgressDialog progressDialog;
+
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog = new ProgressDialog(ActivityMaterialOrder.this);
+            progressDialog.setMessage("Please wait data loading...");
+            progressDialog.show();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                String url = CompanyURL + WebUrlClass.api_GetPODetails + "?Supplierid=" + params[0] + "&POHeaderId=" + params[1];
+                res = ut.OpenConnection(url);
+                if (res != null) {
+                    //response = res.toString().replaceAll("\\\\", "");
+                    response = res.toString();
+                    // response = response.replaceAll("\\\\\\\\/", "");
+                    //response = response.substring(1, response.length() - 1);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                response = "error";
+            }
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(String integer) {
+            super.onPostExecute(integer);
+            progressDialog.dismiss();
+
+            try {
+                JSONArray jResults = null;
+                jResults = new JSONArray(response);
+                ContentValues values = new ContentValues();
+
+                sql.delete(db.TABLE_PODETAILS, null,
+                        null);
+                Cursor c = sql.rawQuery("SELECT * FROM " + db.TABLE_PODETAILS, null);
+                int count = c.getCount();
+                String columnName, columnValue;
+                for (int i = 0; i < jResults.length(); i++) {
+                    JSONObject jorder = jResults.getJSONObject(i);
+                    for (int j = 0; j < c.getColumnCount(); j++) {
+
+                        columnName = c.getColumnName(j);
+                        columnValue = jorder.getString(columnName);
+                        values.put(columnName, columnValue);
+
+                    }
+
+                    long a = sql.insert(db.TABLE_PODETAILS, null, values);
+                    Log.e("log data", "" + a);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            getItemdataCodedata();
+            getItemDescdata();
+            getpodetailsfetch();
+
+
+        }
+
+
+    }
+
+    private void getItemdataCodedata() {
+        lstItemcode.clear();
+        String query = "SELECT distinct ItemCode,ItemDesc" +
+                " FROM " + db.TABLE_PODETAILS;
+        Cursor cur = sql.rawQuery(query, null);
+        //   lstReferenceType.add("Select");
+        if (cur.getCount() > 0) {
+
+            cur.moveToFirst();
+            do {
+
+
+                lstItemcode.add(cur.getString(cur.getColumnIndex("ItemCode")));
+
+            } while (cur.moveToNext());
+
+        }
+
+        MySpinnerAdapter customDept = new MySpinnerAdapter(ActivityMaterialOrder.this,
+                R.layout.custom_spinner_txt, lstItemcode);
+        spinner_item_code.setAdapter(customDept);
+        //   customDept.notifyDataSetChanged();
+        spinner_item_code.setSelection(0);
+        ItemCode = lstItemcode.get(0);
+        int spinnerPosition = customDept.getPosition(ItemDesc);
+        spinner_item_description.setSelection(spinnerPosition);
+
+    }
+
+    private void getItemDescdata() {
+        lstItemDesc.clear();
+        String query = "SELECT distinct ItemDesc,ItemCode" +
+                " FROM " + db.TABLE_PODETAILS;
+        Cursor cur = sql.rawQuery(query, null);
+        //   lstReferenceType.add("Select");
+        if (cur.getCount() > 0) {
+
+            cur.moveToFirst();
+            do {
+
+
+                lstItemDesc.add(cur.getString(cur.getColumnIndex("ItemDesc")));
+
+            } while (cur.moveToNext());
+
+        }
+
+        MySpinnerAdapter customDept = new MySpinnerAdapter(ActivityMaterialOrder.this,
+                R.layout.custom_spinner_txt, lstItemDesc);
+        spinner_item_description.setAdapter(customDept);
+        //   customDept.notifyDataSetChanged();
+        spinner_item_description.setSelection(0);
+        int spinnerPosition = customDept.getPosition(ItemCode);
+        spinner_item_code.setSelection(spinnerPosition);
+
+
+    }
+
+    private void getpodetailsfetch() {
+
+        String query = "SELECT * FROM " + db.TABLE_PODETAILS;
+        Cursor cur = sql.rawQuery(query, null);
+        if (cur.getCount() > 0) {
+            cur.moveToFirst();
+            do {
+
+                txt_route_name.setText(cur.getString(cur.getColumnIndex("RouteNameDesc")));
+                txt_segment_type.setText(cur.getString(cur.getColumnIndex("SegmentType")));
+                txt_from.setText(cur.getString(cur.getColumnIndex("RoutePointFrom")));
+                txt_to.setText(cur.getString(cur.getColumnIndex("RoutePointTo")));
+                RouteName = cur.getString(cur.getColumnIndex("RouteName"));
+                RouteFrom_Id = cur.getString(cur.getColumnIndex("RouteFrom"));
+                RouteTo_Id = cur.getString(cur.getColumnIndex("RouteTo"));
+
+
+            } while (cur.moveToNext());
+
+        }
+    }
+
+    class DownloadPoItemDetailsData extends AsyncTask<String, Void, String> {
+        Object res;
+        String response;
+        ProgressDialog progressDialog;
+
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog = new ProgressDialog(ActivityMaterialOrder.this);
+            progressDialog.setMessage("Please wait data loading...");
+            progressDialog.show();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                String url = CompanyURL + WebUrlClass.api_GetPOItemDetails + "?MODetailId=" + params[0];
+
+                res = ut.OpenConnection(url);
+                //response = res.toString().replaceAll("\\\\", "");
+                if (res != null) {
+                    response = res.toString();
+                    // response = response.replaceAll("\\\\\\\\/", "");
+                    //response = response.substring(1, response.length() - 1);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                response = "error";
+            }
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(String integer) {
+            super.onPostExecute(integer);
+            progressDialog.dismiss();
+
+            try {
+                JSONArray jResults = null;
+                jResults = new JSONArray(response);
+                ContentValues values = new ContentValues();
+
+                sql.delete(db.TABLE_PoitemDetails, null,
+                        null);
+                Cursor c = sql.rawQuery("SELECT * FROM " + db.TABLE_PoitemDetails, null);
+                int count = c.getCount();
+                String columnName, columnValue;
+                for (int i = 0; i < jResults.length(); i++) {
+                    JSONObject jorder = jResults.getJSONObject(i);
+                    for (int j = 0; j < c.getColumnCount(); j++) {
+
+                        columnName = c.getColumnName(j);
+                        columnValue = jorder.getString(columnName);
+                        values.put(columnName, columnValue);
+
+                    }
+
+                    long a = sql.insert(db.TABLE_PoitemDetails, null, values);
+                    Log.e("log data", "" + a);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            getpoitemdetailsfetch();
+        }
+    }
+
+    private void getpoitemdetailsfetch() {
+
+        String query = "SELECT * FROM " + db.TABLE_PoitemDetails;
+        Cursor cur = sql.rawQuery(query, null);
+        if (cur.getCount() > 0) {
+            cur.moveToFirst();
+            do {
+                txt_stock_quantity.setText(cur.getString(cur.getColumnIndex("ReqdQty")));
+                txt_balance_quantity.setText(cur.getString(cur.getColumnIndex("BalQty")));
+                txt_uomdesc.setText(cur.getString(cur.getColumnIndex("UOMDesc")));
+                UOMMasterId = cur.getString(cur.getColumnIndex("UOMMasterId"));
+            } while (cur.moveToNext());
+        }
+    }
+
+    private void getItemdataListCodedata() {
+        lstMaterialItemCode.clear();
+        String query = "SELECT distinct ItemCode,ItemDesc" +
+                " FROM " + db.TABLE_MaterialItemList;
+        Cursor cur = sql.rawQuery(query, null);
+        if (cur.getCount() > 0) {
+
+            cur.moveToFirst();
+            do {
+
+
+                lstMaterialItemCode.add(cur.getString(cur.getColumnIndex("ItemCode")));
+
+            } while (cur.moveToNext());
+
+        }
+
+        MySpinnerAdapter customDept = new MySpinnerAdapter(ActivityMaterialOrder.this,
+                R.layout.custom_spinner_txt, lstMaterialItemCode);
+        spinner_item_code.setAdapter(customDept);
+        //   customDept.notifyDataSetChanged();
+        spinner_item_code.setSelection(0);
+        int spinnerPosition = customDept.getPosition(ItemDesc);
+        spinner_item_description.setSelection(spinnerPosition);
+
+    }
+
+    private void getItemListDescdata() {
+        lstMaterialItemDesc.clear();
+        String query = "SELECT distinct ItemDesc,ItemCode" +
+                " FROM " + db.TABLE_MaterialItemList;
+        Cursor cur = sql.rawQuery(query, null);
+        //   lstReferenceType.add("Select");
+        if (cur.getCount() > 0) {
+
+            cur.moveToFirst();
+            do {
+
+
+                lstMaterialItemDesc.add(cur.getString(cur.getColumnIndex("ItemDesc")));
+
+            } while (cur.moveToNext());
+
+        }
+
+        MySpinnerAdapter customDept = new MySpinnerAdapter(ActivityMaterialOrder.this,
+                R.layout.custom_spinner_txt, lstMaterialItemDesc);
+        spinner_item_description.setAdapter(customDept);
+        //   customDept.notifyDataSetChanged();
+        spinner_item_description.setSelection(0);
+        int spinnerPosition = customDept.getPosition(ItemCode);
+        spinner_item_code.setSelection(spinnerPosition);
+
+
+    }
+
+    class DownloadItemDetailsValueData extends AsyncTask<String, Void, String> {
+        Object res;
+        String response;
+        ProgressDialog progressDialog;
+
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog = new ProgressDialog(ActivityMaterialOrder.this);
+            progressDialog.setMessage("Please wait data loading...");
+            progressDialog.show();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                String url = CompanyURL + WebUrlClass.api_GetSelectedItemDetails + "?Selectedvalue=" + params[0];
+                res = ut.OpenConnection(url);
+                //response = res.toString().replaceAll("\\\\", "");
+                if (res != null) {
+                    response = res.toString();
+                }
+                // response = response.replaceAll("\\\\\\\\/", "");
+                //response = response.substring(1, response.length() - 1);
+            } catch (Exception e) {
+                e.printStackTrace();
+                response = "error";
+            }
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(String integer) {
+            super.onPostExecute(integer);
+            progressDialog.dismiss();
+
+            try {
+                JSONArray jResults = null;
+                jResults = new JSONArray(response);
+                for (int i = 0; i < jResults.length(); i++) {
+                    JSONObject jorder = jResults.getJSONObject(i);
+                    Currentstock = jorder.getString("Currentstock");
+                    if (Currentstock.equals("0.0000")) {
+                        txt_stock_quantity.setText(Currentstock);
+                        Toast.makeText(ActivityMaterialOrder.this, "No stock avilable for item", Toast.LENGTH_SHORT).show();
+                    } else {
+                        txt_stock_quantity.setText(Currentstock);
+                    }
+                    ItemUOMMasterId = jorder.getString("UOMMasterId");
+                    UOMDesc = jorder.getString("UOMDesc");
+                    txt_uomdesc.setText(UOMDesc);
+
+
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+
+}

@@ -1,0 +1,1118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:background="#D3D3D3"
+
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:id="@+id/lay_link"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|left"
+            android:gravity="center|left"
+            android:visibility="gone"
+            android:layout_marginBottom="4dp"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <ImageView
+                android:id="@+id/img_link"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:tint="@color/blue"
+                android:src="@drawable/call_white" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.99"
+                android:padding="5dp"
+                android:text=" Unlink phone call"
+                android:textColor="@color/blue"
+                android:textSize="14sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tv_"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/unlink_lay"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="0"
+                android:textColor="@color/white" />
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#292E3E"></View>
+        <LinearLayout
+            android:id="@+id/lay_enquiry"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|left"
+            android:gravity="center|left"
+            android:visibility="visible"
+            android:layout_marginBottom="4dp"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <ImageView
+                android:id="@+id/img_enquiry"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:tint="@color/magneta"
+                android:src="@drawable/ic_opportunity" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.99"
+                android:padding="5dp"
+                android:text=" Enquiries"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tv_enquiry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/opp_border_text"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="0"
+                android:textColor="#fff" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#292E3E"></View>
+
+        <LinearLayout
+            android:id="@+id/lay_opportunity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|left"
+            android:gravity="center|left"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <ImageView
+                android:id="@+id/img_opportunity"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/ic_opportunity" />
+
+            <TextView
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.99"
+                android:padding="5dp"
+                android:text=" Opportunities"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_opportunities"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/app_border_text_green"
+                android:gravity="center|right"
+                android:layout_gravity="right|center"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="0"
+                android:textColor="#fff" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lay_new_opp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:paddingBottom="2dp"
+            android:visibility="gone"
+             android:paddingLeft="10dp"
+android:paddingTop="2dp">
+
+            <TextView
+                android:id="@+id/opportunity_new"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.99"
+                android:layout_marginLeft="25dp"
+                android:text="New"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_new_opp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:gravity="center|right"
+                android:layout_gravity="right|center"
+                android:layout_marginRight="5dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/lay_overdue_opp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:paddingBottom="2dp"
+            android:visibility="gone"
+            android:paddingLeft="10dp"
+android:paddingTop="2dp">
+
+            <TextView
+                android:id="@+id/opportunity_Overdue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.99"
+                android:layout_marginLeft="25dp"
+                android:text="Overdue"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_overdue_opp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center|right"
+                android:layout_gravity="right|center"
+                android:layout_marginRight="5dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="0"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/lay_yesterday_opp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:paddingBottom="2dp"
+             android:paddingLeft="10dp"
+            android:visibility="gone"
+
+            android:paddingTop="2dp">
+
+            <TextView
+                android:id="@+id/opportunity_yesterday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.99"
+                android:text="Yesterday"
+                android:layout_marginLeft="25dp"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_yesterday_opp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center|right"
+                android:layout_gravity="right|center"
+                android:layout_marginRight="5dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="0"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/lay_today_opp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:paddingBottom="2dp"
+            android:visibility="gone"
+            android:paddingLeft="10dp"
+android:paddingTop="2dp">
+
+            <TextView
+                android:id="@+id/opportunity_today"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.99"
+                android:text="Today"
+                android:layout_marginLeft="25dp"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_today_opp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center|right"
+                android:layout_gravity="right|center"
+                android:layout_marginRight="5dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="0"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lay_callagain_opp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:paddingBottom="2dp"
+            android:visibility="gone"
+             android:paddingLeft="10dp"
+android:paddingTop="2dp">
+
+            <TextView
+                android:id="@+id/opportunity_callagain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.99"
+                android:text="Call Again"
+                android:layout_marginLeft="25dp"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_callagain_opp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center|right"
+                android:layout_gravity="right|center"
+                android:layout_marginRight="5dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="0"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/lay_Tommorow_opp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:paddingBottom="2dp"
+            android:visibility="gone"
+            android:paddingLeft="10dp"
+android:paddingTop="2dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.99"
+                android:text="Tomorrow"
+                android:layout_marginLeft="25dp"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_tommorow_oppportunity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center|right"
+                android:layout_gravity="right|center"
+                android:layout_marginRight="5dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="0"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lay_this_week_opp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:paddingBottom="2dp"
+             android:paddingLeft="10dp"
+            android:visibility="gone"
+            android:paddingTop="2dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.99"
+                android:text="This Week"
+                android:layout_marginLeft="25dp"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_this_week_opp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center|right"
+                android:layout_gravity="right|center"
+                android:layout_marginRight="5dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="0"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/lay_revived_opp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:paddingBottom="2dp"
+             android:paddingLeft="10dp"
+            android:visibility="gone"
+            android:paddingTop="2dp">
+
+            <TextView
+                android:id="@+id/opportunity_revived"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.99"
+                android:text="Revived"
+                android:layout_marginLeft="25dp"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_revived_opp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center|right"
+                android:layout_gravity="right|center"
+                android:layout_marginRight="5dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="0"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#292E3E"></View>
+
+
+        <LinearLayout
+            android:id="@+id/lay_callrating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|left"
+            android:gravity="center|left"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/ic_rating" />
+
+            <TextView
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.99"
+                android:padding="5dp"
+                android:text=" Opportunity Rating"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_callrating_cnt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rating_border_text"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="0"
+                android:textColor="#fff" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/lay_hot_call"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:paddingBottom="2dp"
+            android:paddingLeft="10dp"
+            android:visibility="gone"
+            android:paddingTop="2dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Hot"
+                android:layout_marginLeft="25dp"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_hot_call"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|end"
+                android:layout_weight="0.2"
+                android:text="0"
+                android:visibility="gone"
+                android:textColor="@color/black" />
+
+
+            <TextView
+                android:id="@+id/tv_hot_call_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="5dp"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lay_warm_call"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:paddingBottom="2dp"
+            android:paddingLeft="10dp"
+            android:visibility="gone"
+            android:paddingTop="2dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Warm"
+                android:layout_marginLeft="25dp"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_warm_call"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|end"
+                android:layout_weight="0.2"
+                android:text="0"
+                android:visibility="gone"
+                android:textColor="#fff" />
+
+            <TextView
+                android:id="@+id/tv_warm_call_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="5dp"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#292E3E"></View>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|left"
+            android:gravity="center|left"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <ImageView
+                android:id="@+id/img_appointment"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:tint="#9084dd"
+                android:src="@drawable/appointment" />
+
+            <TextView
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.99"
+                android:padding="5dp"
+                android:text=" Appointments"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_appointments_cnt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/appointment_border_text"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="0"
+                android:textColor="#fff" />
+        </LinearLayout>
+
+
+        <ScrollView
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true">
+
+            <LinearLayout
+                android:id="@+id/ls_appointments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"></LinearLayout>
+        </ScrollView>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#292E3E"></View>
+        <LinearLayout
+            android:id="@+id/lay_collectionview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:id="@+id/lay_collection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/ic_collection" />
+
+                <TextView
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:text=" Collection"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_collection_cnt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/collection_border_text"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:paddingLeft="10dp"
+                    android:layout_marginRight="5dp"
+                    android:paddingRight="10dp"
+                    android:text="0/0.00 T(0)"
+                    android:textColor="#fff" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_new_collection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:orientation="horizontal"
+                android:paddingBottom="2dp"
+                android:paddingLeft="10dp"
+                android:visibility="gone"
+                android:paddingTop="2dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="New"
+                    android:layout_marginLeft="25dp"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tv_new_collection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="5dp"
+                    android:gravity="center"
+                    android:text="0/0.00 T(0)"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_overdue_collection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:orientation="horizontal"
+                android:paddingBottom="2dp"
+                android:paddingLeft="10dp"
+                android:visibility="gone"
+                android:paddingTop="2dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Overdue"
+                    android:layout_marginLeft="25dp"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tv_overdue_collection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="0/0.00 T(0)"
+                    android:layout_marginRight="5dp"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_today_overdue_collection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:orientation="horizontal"
+                android:paddingBottom="2dp"
+                android:paddingLeft="10dp"
+                android:visibility="gone"
+                android:paddingTop="2dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Today"
+                    android:layout_marginLeft="25dp"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tv_today_overdue_collection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="0/0.00 T(0)"
+                    android:layout_marginRight="5dp"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/lay_tomorrow_overdue_collection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:orientation="horizontal"
+                android:paddingBottom="2dp"
+                android:paddingLeft="10dp"
+                android:visibility="gone"
+                android:paddingTop="2dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Tomorrow"
+                    android:layout_marginLeft="25dp"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tv_tomrrow_overdue_collection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="0/0.00 T(0)"
+                    android:layout_marginRight="5dp"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_week_overdue_collection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:orientation="horizontal"
+                android:paddingBottom="2dp"
+                android:paddingLeft="10dp"
+                android:visibility="gone"
+                android:paddingTop="2dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="This Week"
+                    android:layout_marginLeft="25dp"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tv_week_overdue_collection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="0/0.00 T(0)"
+                    android:layout_marginRight="5dp"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#292E3E"></View>
+
+
+        <LinearLayout
+            android:id="@+id/lay_feedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|left"
+            android:gravity="center|left"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/ic_feedback" />
+
+            <TextView
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.99"
+                android:padding="5dp"
+                android:text=" Feedback"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_feedback_cnt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/feedback_border_text"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="0"
+                android:textColor="#fff" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/lay_new_feedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:paddingBottom="2dp"
+            android:paddingLeft="10dp"
+            android:visibility="gone"
+            android:paddingTop="2dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.99"
+                android:text="New"
+                android:layout_marginLeft="25dp"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_new_feedback"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center|right"
+                android:layout_gravity="right|center"
+                android:layout_marginRight="5dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="0"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lay_overdue_feedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:paddingBottom="2dp"
+            android:paddingLeft="10dp"
+            android:visibility="gone"
+            android:paddingTop="2dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.99"
+                android:text="Overdue"
+                android:layout_marginLeft="25dp"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_overdue_feedback"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center|right"
+                android:layout_gravity="right|center"
+                android:layout_marginRight="5dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="0"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lay_today_overdue_feedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:paddingBottom="2dp"
+            android:paddingLeft="10dp"
+            android:visibility="gone"
+            android:paddingTop="2dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.99"
+                android:text="Today"
+                android:layout_marginLeft="25dp"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_today_overdue_feedback"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center|right"
+                android:layout_gravity="right|center"
+                android:layout_marginRight="5dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="0"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lay_tomorrow_overdue_feedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:paddingBottom="2dp"
+            android:paddingLeft="10dp"
+            android:visibility="gone"
+            android:paddingTop="2dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.99"
+                android:text="Tomorrow"
+                android:layout_marginLeft="25dp"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_tomrrow_overdue_feedback"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center|right"
+                android:layout_gravity="right|center"
+                android:layout_marginRight="5dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="0"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lay_week_overdue_feedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:paddingBottom="2dp"
+            android:paddingLeft="10dp"
+            android:visibility="gone"
+            android:paddingTop="2dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.99"
+                android:text="This Week"
+                android:layout_marginLeft="25dp"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_week_overdue_feedback"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center|right"
+                android:layout_gravity="right|center"
+                android:layout_marginRight="5dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="0"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#292E3E"></View>
+
+        <LinearLayout
+            android:id="@+id/ly_team"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|left"
+            android:gravity="center|left"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:weightSum="1">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:tint="#f05050"
+                android:src="@drawable/ic_team" />
+
+            <TextView
+                android:id="@+id/txtteam"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.99"
+                android:padding="5dp"
+                android:text=" Team"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_team_mem_cnt"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/team_border_text"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="#fff" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:padding="2dp"
+                    android:src="@drawable/icon_plus"
+                    android:tint="@color/white"/>
+
+                <TextView
+                    android:id="@+id/tv_team_mem_cnt1"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/team_border_text"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="#fff" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <ListView
+            android:id="@+id/ls_Team"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="25dp"
+            android:clipToPadding="false"
+            android:divider="@android:color/transparent"
+            android:layout_height="wrap_content">
+
+        </ListView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#292E3E"></View>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/txt_target_achivment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Target Achievement"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="normal" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

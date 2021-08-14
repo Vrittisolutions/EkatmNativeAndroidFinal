@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\incremental\\mergeAlfaLavalDebugResources\\merged.dir\\values-kn-rIN\\values-kn-rIN.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Nilesh\\.gradle\\caches\\transforms-2\\files-2.1\\bcefe1a63aaad0e225ad14675b4e8bed\\datetimepicker-0.2.0\\res\\values-kn-rIN\\values-kn-rIN.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10,11,12,13,14",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "222,324,434,512,619,740,850,951,1043,1138,1228",
+                        "endColumns": "101,109,77,106,120,109,100,91,94,89,93",
+                        "endOffsets": "319,429,507,614,735,845,946,1038,1133,1223,1317"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,207,317,395,502,623,733,834,926,1021,1111",
+                        "endColumns": "101,109,77,106,120,109,100,91,94,89,93",
+                        "endOffsets": "202,312,390,497,618,728,829,921,1016,1106,1200"
+                    }
+                }
+            ]
+        }
+    ]
+}

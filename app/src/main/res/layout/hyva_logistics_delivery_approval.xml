@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fillViewport="true"
+    >
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:textStyle="bold"
+        android:layout_gravity="center|left"
+        android:gravity="left|center"
+        android:padding="12dp"
+        android:textColor="@color/white"
+        android:text="Domestic Inbound (AHMUN007)"
+        android:textSize="18dp"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="2dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:text="Viraj Industries to Hyva Jamshedpur"
+            android:textSize="16dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="2dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:text="through Ayush Transport 4.2 MT"
+            android:textSize="16dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="2dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:text="by 18 Apr 2020"
+            android:textSize="16dp"/>
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:background="@color/black"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textColor="@color/colorPrimary"
+        android:text="Spares Expedited Delivery"
+        android:textSize="18dp"/>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Details"
+        android:textAllCaps="false"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/white"
+        android:background="@drawable/button_green"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_gravity="center|left"
+        android:gravity="center|left"
+        android:background="@color/grey"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:text="Delivery Approval"
+        android:textSize="18dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="2dp"
+            android:textColor="@color/black"
+            android:text="Freight Amount : "
+            android:textSize="18dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|left"
+            android:gravity="center|left"
+            android:padding="8dp"
+            android:textStyle="bold"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:inputType="number"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/border_grey"
+            android:textSize="18dp"/>
+
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update Amount"
+        android:textAllCaps="false"
+        android:layout_gravity="center|right"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="145dp"
+        android:textSize="18dp"
+        android:textColor="@color/white"
+        android:background="@drawable/button_orange_border"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="vertical"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/grey"
+        android:visibility="visible"
+        android:layout_gravity="center"
+        android:gravity="center|bottom"
+        >
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="40dp"
+            android:src="@drawable/ic_download"
+
+
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="8dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:background="@color/colorPrimaryDark"
+            android:text="Freight Invoice"
+            android:textSize="18dp"/>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="vertical"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/grey"
+        android:layout_gravity="center"
+        android:visibility="visible"
+        android:gravity="center|bottom"
+        >
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="40dp"
+            android:src="@drawable/ic_download"
+
+
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="8dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:background="@color/colorPrimaryDark"
+            android:text="Contractual Agreement"
+            android:textSize="18dp"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="vertical"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/grey"
+        android:layout_gravity="center"
+        android:gravity="center|bottom"
+        >
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="40dp"
+            android:src="@drawable/ic_download"
+
+
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="8dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:background="@color/colorPrimaryDark"
+            android:text="LR Copy"
+            android:textSize="18dp"/>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/button_green"
+            android:textStyle="bold"
+            android:text="Approve"
+            android:textAllCaps="false"
+            android:textSize="16dp"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="2dp"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/button_border_red"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:text="Reject"
+            android:textSize="18dp"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="2dp"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:background="@drawable/button_orange_border"
+            android:textStyle="bold"
+            android:text="Cancel"
+            android:textAllCaps="false"
+            android:textSize="18dp"/>
+    </LinearLayout>
+
+</LinearLayout>
+
+</ScrollView>

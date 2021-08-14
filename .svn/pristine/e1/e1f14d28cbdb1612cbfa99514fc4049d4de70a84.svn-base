@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ededed">
+
+    <LinearLayout
+        android:id="@+id/layoutdialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+    <TextView
+        android:id="@+id/textMsg"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="18dp"
+        android:fontFamily="@string/ButtonFont"
+        android:gravity="center"
+        android:textColor="#111"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="TextView" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
+
+        <Button
+            android:id="@+id/btn_selectdate"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10sp"
+            android:textSize="15dp"
+            android:textAllCaps="false"
+            android:onClick="btnSubmitClick"
+            android:text="Select Date"
+            android:textColor="#ffffff"
+            android:fontFamily="@string/ButtonFont"
+            android:background="@drawable/tbuds_btn_pressed"/>
+
+        <Button
+            android:id="@+id/btnok_copy"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10sp"
+            android:textSize="15dp"
+            android:textAllCaps="false"
+            android:onClick="btnSubmitClick"
+            android:text="Proceed"
+            android:fontFamily="@string/ButtonFont"
+            android:textColor="#ffffff"
+            android:background="@drawable/tbuds_btn_pressed"/>
+
+    </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutlist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#89bd49"
+        android:orientation="vertical">
+        <!---->
+
+        <LinearLayout
+            android:id="@+id/headers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txt1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="5"
+                android:textColor="#111"
+                android:fontFamily="@string/ButtonFont"
+                android:gravity="center|left"
+                android:text="Order No."
+                android:visibility="gone"/>
+
+            <ImageView
+                android:id="@+id/img1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/tbuds_ordnum3"
+                android:layout_weight="5"
+                android:layout_gravity="center"
+                android:foregroundGravity="center"/>
+
+            <TextView
+                android:id="@+id/txt2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="5"
+                android:textColor="#111"
+                android:fontFamily="@string/ButtonFont"
+                android:gravity="center"
+                android:text="Time"
+                android:visibility="gone"/>
+
+            <ImageView
+                android:id="@+id/img2"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/tbuds_datetime3"
+                android:layout_weight="5"
+                android:layout_gravity="center"
+                android:foregroundGravity="center"/>
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/sonumbers_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"></ListView>
+
+    </LinearLayout>
+
+</LinearLayout>

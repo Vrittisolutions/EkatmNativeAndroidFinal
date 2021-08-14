@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txt_client_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:textStyle="bold"
+            android:text="Workspace Name"
+            android:textColor="#000"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!--assigned-->
+        <LinearLayout
+            android:id="@+id/lay_assigned"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:background="?android:selectableItemBackground"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="3dp"
+            android:paddingBottom="5dp">
+
+
+            <TextView
+                android:id="@+id/txt_assigned"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/vwb_border_purple_assigned"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="11"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!--overdue-->
+        <LinearLayout
+            android:id="@+id/lay_overdue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:background="?android:selectableItemBackground"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="3dp"
+            android:paddingBottom="5dp">
+
+
+            <TextView
+                android:id="@+id/txt_overdue"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/vwb_border_assigned"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="aa"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+        <!-- critical-->
+
+        <LinearLayout
+            android:id="@+id/lay_critical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:background="?android:selectableItemBackground"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="3dp"
+            android:paddingBottom="5dp">
+
+
+            <TextView
+                android:id="@+id/txt_critical"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/vwb_border_overdue"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="aa"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+        <!--Unapproved-->
+
+        <LinearLayout
+            android:id="@+id/lay_unapproved"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:background="?android:selectableItemBackground"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="3dp"
+            android:paddingBottom="5dp">
+
+
+            <TextView
+                android:id="@+id/txt_unapproved"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/vwb_border_critical"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="aa"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:textStyle="bold"
+
+                />
+
+        </LinearLayout>
+
+        <!--complete-->
+        <LinearLayout
+            android:id="@+id/lay_unbilled"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:background="?android:selectableItemBackground"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="3dp"
+            android:paddingBottom="5dp">
+
+
+            <TextView
+                android:id="@+id/txt_unbilled"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/vwb_border_complete"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="aa"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

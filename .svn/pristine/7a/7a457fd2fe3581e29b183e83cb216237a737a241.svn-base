@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "553470504074",
+    "firebase_url": "https://milkrun-94b47.firebaseio.com",
+    "project_id": "milkrun-94b47",
+    "storage_bucket": "milkrun-94b47.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:553470504074:android:9017fdc550512530ee9173",
+        "android_client_info": {
+          "package_name": "vworkbench7.vritti.com.milk.run"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "553470504074-ndl4l5lmo0q6j2cu5bsalm2a01an9qh8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCC5Es7De0kDx9HUJa4GiAVZHr8wd1Ee38"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "553470504074-ndl4l5lmo0q6j2cu5bsalm2a01an9qh8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "520864430437",
+    "firebase_url": "https://hyva-7037d.firebaseio.com",
+    "project_id": "hyva-7037d",
+    "storage_bucket": "hyva-7037d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:520864430437:android:f944d9a778b9936afd098c",
+        "android_client_info": {
+          "package_name": "com.vritti.hyva"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "520864430437-okceoc59i1qg9cdufshcfcjaj8pj78rt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjQ4MeUIvRinUtWsNp2J_oHM9CSPzraU0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "520864430437-okceoc59i1qg9cdufshcfcjaj8pj78rt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

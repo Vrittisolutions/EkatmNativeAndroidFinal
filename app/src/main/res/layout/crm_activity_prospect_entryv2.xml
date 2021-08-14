@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/toolbar_header"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:orientation="horizontal"
+        android:layout_gravity="right|center"
+        android:gravity="right"
+        android:layout_margin="5dp"
+        android:visibility="gone">
+
+        <TextView
+            style="@style/ToolbarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:visibility="gone"
+            android:layout_weight="0.3"
+            android:text="Contact Details"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
+
+       <!-- <Button
+            android:id="@+id/buttonAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:gravity="center"
+            android:layout_gravity="center|right"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/button_green"
+            android:text="Add"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:visibility="visible" />-->
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/sp_5"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/card_viewdetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                card_view:cardCornerRadius="8dp"
+                card_view:cardElevation="1dp"
+                card_view:cardUseCompatPadding="true"
+                card_view:cardMaxElevation="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/ln_contact"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <android.support.design.widget.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <EditText
+                                    android:id="@+id/edt_ContactName"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="Contact Name"
+                                    android:imeOptions="actionNext"
+                                    android:padding="10dp"
+                                    android:singleLine="true"
+                                    android:text=""
+                                    android:textColor="#111"
+                                    android:textSize="14dp"
+                                    android:visibility="visible" />
+                            </android.support.design.widget.TextInputLayout>
+
+                            <ImageView
+                                android:id="@+id/img_contact"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_gravity="center_vertical"
+                                android:src="@drawable/call_24"
+                                android:layout_marginRight="@dimen/sp_5"
+                                android:tint="@color/colorPrimary" />
+                            <ImageView
+                                android:id="@+id/buttonAdd"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_marginRight="@dimen/sp_5"
+                                android:layout_gravity="center_vertical"
+                                android:src="@drawable/icon_plus"
+                                android:tint="@color/colorPrimary" />
+                        </LinearLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <EditText
+                                android:id="@+id/edt_ContactDesignation1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawableLeft="@drawable/designation"
+                                android:drawablePadding="8dp"
+                                android:hint="Designation"
+                                android:imeOptions="actionNext"
+                                android:padding="10dp"
+                                android:singleLine="true"
+                                android:text=""
+                                android:textColor="#111"
+                                android:textSize="13sp"
+                                android:visibility="visible" />
+
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:id="@+id/tv_role"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <AutoCompleteTextView
+                                android:id="@+id/spinner_Departmentrole"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clickable="true"
+                                android:drawableLeft="@drawable/confirm"
+                                android:drawablePadding="8dp"
+                                android:drawableTint="@color/colorPrimary"
+                                android:editable="true"
+                                android:hint="Role"
+                                android:padding="10dp"
+                                android:textColor="#111"
+                                android:textSize="14dp" />
+
+                        </android.support.design.widget.TextInputLayout>
+
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <EditText
+                                android:id="@+id/edt_contactEmailid"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawableLeft="@drawable/email_24"
+                                android:drawablePadding="8dp"
+                                android:hint="Email"
+                                android:imeOptions="actionNext"
+                                android:inputType="textEmailAddress"
+                                android:padding="10dp"
+                                android:singleLine="true"
+                                android:text=""
+                                android:textColor="#111"
+                                android:textSize="14sp" />
+
+                        </android.support.design.widget.TextInputLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <android.support.design.widget.TextInputLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <EditText
+                                    android:id="@+id/edt_contactMobile"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:drawableLeft="@drawable/call_24"
+                                    android:drawablePadding="8dp"
+                                    android:hint="Mobile"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="number"
+                                    android:maxLength="10"
+                                    android:padding="10dp"
+                                    android:singleLine="true"
+                                    android:text=""
+                                    android:textColor="#111"
+                                    android:textSize="14dp" />
+
+                            </android.support.design.widget.TextInputLayout>
+
+                            <android.support.design.widget.TextInputLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <EditText
+                                    android:id="@+id/edt_contactwhatsapp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:drawableLeft="@drawable/mobile"
+                                    android:drawablePadding="8dp"
+                                    android:hint="WhatsApp"
+                                    android:inputType="number"
+                                    android:maxLength="10"
+                                    android:padding="10dp"
+                                    android:singleLine="true"
+                                    android:text=""
+                                    android:textColor="#111"
+                                    android:textSize="13sp" />
+                            </android.support.design.widget.TextInputLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <android.support.design.widget.TextInputLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <EditText
+                                    android:id="@+id/edt_ContactTele"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:drawableLeft="@drawable/call_24"
+                                    android:drawablePadding="8dp"
+                                    android:hint="Telephone"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="number"
+                                    android:maxLength="10"
+                                    android:padding="10dp"
+                                    android:singleLine="true"
+                                    android:text=""
+                                    android:textColor="#111"
+                                    android:textSize="14dp" />
+
+                            </android.support.design.widget.TextInputLayout>
+
+                            <android.support.design.widget.TextInputLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <EditText
+                                    android:id="@+id/edt_Contactskype"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:drawableLeft="@drawable/skype"
+                                    android:drawablePadding="8dp"
+                                    android:drawableTint="@color/colorPrimary"
+                                    android:hint="Skype"
+                                    android:inputType="number"
+                                    android:maxLength="10"
+                                    android:padding="10dp"
+                                    android:singleLine="true"
+                                    android:text=""
+                                    android:textColor="#111"
+                                    android:textSize="13sp" />
+                            </android.support.design.widget.TextInputLayout>
+                        </LinearLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <EditText
+                                android:id="@+id/edt_Birthdate"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clickable="false"
+                                android:cursorVisible="false"
+                                android:drawableLeft="@drawable/date"
+                                android:drawablePadding="8dp"
+                                android:focusable="false"
+                                android:focusableInTouchMode="false"
+                                android:hint="Date of Birth"
+                                android:padding="10dp"
+                                android:text=""
+                                android:textColor="#111"
+                                android:textSize="14dp" />
+
+                        </android.support.design.widget.TextInputLayout>
+                        <ImageView
+                            android:id="@+id/buttonSave_contact"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_margin="@dimen/sp_5"
+                            android:layout_marginRight="@dimen/sp_5"
+                            android:layout_gravity="right|center"
+                            android:src="@drawable/save_icon"
+                            android:tint="@color/colorPrimary" />
+                        <!--<Button
+                            android:id="@+id/buttonSave_contact"
+                            android:layout_width="100dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="right"
+                            android:layout_weight="1"
+                            android:background="@drawable/button_green"
+                            android:text="Save Contact"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white"
+                            android:textSize="13dp"
+                            android:layout_marginBottom="@dimen/sp_5"
+                            android:visibility="visible" />-->
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ln_contactlist"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/headerow"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:orientation="horizontal"
+                            android:visibility="visible">
+
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:background="#016A97">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:layout_centerVertical="true"
+                                    android:text="Name"
+                                    android:textColor="@color/white" />
+                            </RelativeLayout>
+
+                            <View
+                                android:layout_width="0.5dp"
+                                android:layout_height="match_parent"
+                                android:background="#CFDBE2" />
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:background="#016A97">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:layout_centerVertical="true"
+                                    android:text="Designation"
+                                    android:textColor="@color/white" />
+                            </RelativeLayout>
+                        </LinearLayout>
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/list_contactDetails"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="2dp"
+                            android:visibility="visible" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/sp_5"
+                android:orientation="horizontal">
+
+                <TableRow
+                    android:id="@+id/tableRow1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom">
+
+
+                    <Button
+                        android:id="@+id/buttonSave_prospect"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_orange"
+                        android:text="Next"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="13dp"
+                        android:visibility="gone" />
+
+                    <Button
+                        android:id="@+id/buttonback"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_green"
+                        android:text="Back"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="13dp"
+                        android:visibility="visible" />
+
+                    <Button
+                        android:id="@+id/buttonnext_prospect"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="@dimen/sp_5"
+                        android:background="@drawable/button_orange"
+                        android:text="Next"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="13dp"
+                        android:visibility="visible" />
+
+
+
+                </TableRow>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

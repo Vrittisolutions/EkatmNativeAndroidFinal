@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:visibility="gone"/>
+
+        <!--<LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            &lt;!&ndash;free delivery service&ndash;&gt;
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Free Delivery Service applicable on"
+                    android:textSize="14sp"
+                    android:textColor="@color/btncolordark"
+                    android:textStyle="bold"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:background="@drawable/edittext_border"
+                    android:padding="5dp"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:id="@+id/freedelaboveamt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Above 250 Rs."
+                        android:textSize="13sp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/freedelmaxdist"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" Upto 6 km."
+                        android:layout_marginLeft="15dp"
+                        android:textSize="13sp"
+                        android:textColor="@color/black"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            &lt;!&ndash;delivery charges&ndash;&gt;
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Delivery Service applicable only on"
+                    android:textSize="14sp"
+                    android:textColor="@color/btncolordark"
+                    android:textStyle="bold"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:background="@drawable/edittext_border"
+                    android:padding="5dp"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:id="@+id/mindelkg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Minimum 20 kg"
+                        android:textSize="13sp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/mindelkm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Upto 6 km"
+                        android:layout_marginLeft="15dp"
+                        android:textSize="13sp"
+                        android:textColor="@color/black"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            &lt;!&ndash;express delivery charges&ndash;&gt;
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Express Delivery Service"
+                    android:textSize="14sp"
+                    android:textColor="@color/btncolordark"
+                    android:textStyle="bold"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:background="@drawable/edittext_border"
+                    android:padding="5dp"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:id="@+id/exprminutes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Within next 30 minutes"
+                        android:textSize="13sp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/exprschrge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="80 Rs."
+                        android:layout_marginLeft="15dp"
+                        android:textSize="13sp"
+                        android:textColor="@color/black"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>-->
+
+        <!--charges-->
+        <LinearLayout
+            android:id="@+id/laydeldtldata"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <!--free delivery service-->
+            <LinearLayout
+                android:id="@+id/layfreedel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:padding="2dp">
+                <!--android:padding="5dp"-->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Free Delivery Service"
+                    android:textSize="10sp"
+                    android:textColor="@color/btncolordark"
+                    android:layout_gravity="center_horizontal|top"
+                    android:gravity="center_horizontal|top" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center_vertical|bottom"
+                    android:gravity="center_vertical|bottom"
+                    android:layout_marginTop="5dp">
+                    <!--android:background="@drawable/edittext_border"
+                    android:padding="5dp"-->
+
+                    <TextView
+                        android:id="@+id/freedelaboveamt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="10sp"
+                        android:textColor="@color/black"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center_horizontal" />
+
+                    <TextView
+                        android:id="@+id/freedelmaxdist"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="10sp"
+                        android:textColor="@color/black"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center_horizontal"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--delivery charges-->
+            <LinearLayout
+                android:id="@+id/delchrge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:padding="2dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Delivery Charges"
+                    android:textSize="10sp"
+                    android:textColor="@color/btncolordark"
+                    android:layout_gravity="center_horizontal|top"
+                    android:gravity="center_horizontal|top" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center_vertical|bottom"
+                    android:gravity="center_vertical|bottom"
+                    android:layout_marginTop="5dp">
+                    <!--  android:background="@drawable/edittext_border"
+                    android:padding="5dp"-->
+
+                    <TextView
+                        android:id="@+id/mindelkg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="10sp"
+                        android:textColor="@color/black"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center_horizontal"/>
+
+                    <TextView
+                        android:id="@+id/mindelkm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center_horizontal"
+                        android:textSize="10sp"
+                        android:textColor="@color/black"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--express delivery charges-->
+            <LinearLayout
+                android:id="@+id/layexprs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:padding="2dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Express Delivery Service"
+                    android:textSize="10sp"
+                    android:textColor="@color/btncolordark"
+                    android:layout_gravity="center_horizontal|top"
+                    android:gravity="center_horizontal|top" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center_vertical|bottom"
+                    android:gravity="center_vertical|bottom"
+                    android:layout_marginTop="5dp">
+                    <!--android:background="@drawable/edittext_border"
+                    android:padding="5dp"-->
+
+                    <TextView
+                        android:id="@+id/exprminutes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center_horizontal"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/exprschrge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center_horizontal"
+                        android:textSize="10sp"
+                        android:textColor="@color/black"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtsorrynote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sorrydelserv"
+            android:textSize="12sp"
+            android:textColor="@color/btncolordark"
+            android:textStyle="italic"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:layout_margin="5dp"
+            android:visibility="gone"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Your are 10km away from merchant"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:layout_margin="5dp"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:padding="5dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@color/colorPrimary"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Applied Delivery Charges :"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="5dp"/>
+
+            <TextView
+                android:id="@+id/appl_del_charge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100rs"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnok"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:background="@color/colorPrimary"
+        android:text="@string/ok"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:visibility="gone"/>
+
+</LinearLayout>

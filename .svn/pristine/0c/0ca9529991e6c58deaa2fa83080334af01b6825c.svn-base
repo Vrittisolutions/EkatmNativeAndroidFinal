@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<animation-list android:oneshot="false" xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:duration="200" android:drawable="@mipmap/ic_progress"/>
+
+    <item android:duration="200" android:drawable="@mipmap/ic_progress1"/>
+
+     <item android:duration="200" android:drawable="@mipmap/ic_progress2"/>
+
+    <item android:duration="200" android:drawable="@mipmap/ic_progress3"/>
+
+    <item android:duration="200" android:drawable="@mipmap/ic_progress4"/>
+
+    <item android:duration="200" android:drawable="@mipmap/ic_progress5"/>
+
+</animation-list>
+

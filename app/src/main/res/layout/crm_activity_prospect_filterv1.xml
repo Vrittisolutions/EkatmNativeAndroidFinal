@@ -1,0 +1,1240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/background_color"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+           >
+
+        <LinearLayout
+            android:id="@+id/ln_firmname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|left"
+            android:gravity="center|left"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/checkBoxfirmname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:layout_marginTop="3dp"
+                android:textSize="12sp" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edtfirm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:hint="Firm Name"
+                    android:visibility="visible"
+                    android:padding="9dp"
+                    android:textColor="#111"
+                    android:textColorHint="@color/black"
+                    android:textSize="14dp" />
+
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBoxfirmalias"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:layout_marginTop="3dp"
+                    android:textSize="12sp" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/edtalias"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:hint="Firm Alias"
+                        android:visibility="visible"
+                        android:padding="9dp"
+                        android:textColor="#111"
+                        android:textColorHint="@color/black"
+                        android:textSize="14dp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBoxProduct"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:layout_marginTop="3dp"
+                    android:textSize="12sp" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/spinner_product"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:hint="Product"
+                        android:visibility="visible"
+                        android:padding="9dp"
+                        android:textColor="#111"
+                        android:textColorHint="@color/black"
+                        android:textSize="14dp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBoxcontact_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:layout_marginTop="3dp"
+                    android:textSize="12sp" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/edtcontact_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:hint="Contact Name"
+                        android:visibility="visible"
+                        android:padding="9dp"
+                        android:textColor="#111"
+                        android:textColorHint="@color/black"
+                        android:textSize="14dp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBoxmobile_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:layout_marginTop="3dp"
+                    android:textSize="12sp" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/edtmobile_no"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:hint="Mobile No."
+                        android:visibility="visible"
+                        android:padding="9dp"
+                        android:textColor="#111"
+                        android:textColorHint="@color/black"
+                        android:textSize="14dp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBoxterritory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:layout_marginTop="3dp"
+                    android:textSize="12sp" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/edt_territory"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:hint="Territory"
+                        android:visibility="visible"
+                        android:padding="9dp"
+                        android:textColor="#111"
+                        android:textColorHint="@color/black"
+                        android:textSize="14dp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBoxsource"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:layout_marginTop="3dp"
+                    android:textSize="12sp" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/edtsource"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:hint="Source"
+                        android:visibility="visible"
+                        android:padding="9dp"
+                        android:textColor="#111"
+                        android:textColorHint="@color/black"
+                        android:textSize="14dp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBoxcountry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:layout_marginTop="3dp"
+                    android:textSize="12sp" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/edt_country"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:hint="Country"
+                        android:visibility="visible"
+                        android:padding="9dp"
+                        android:textColor="#111"
+                        android:textColorHint="@color/black"
+                        android:textSize="14dp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBoxstate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:layout_marginTop="3dp"
+                    android:textSize="12sp" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/edt_state"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:hint="State"
+                        android:visibility="visible"
+                        android:padding="9dp"
+                        android:textColor="#111"
+                        android:textColorHint="@color/black"
+                        android:textSize="14dp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBoxcity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:layout_marginTop="3dp"
+                    android:textSize="12sp" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/eAutoCity"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:hint="City"
+                        android:visibility="visible"
+                        android:padding="9dp"
+                        android:textColor="#111"
+                        android:textColorHint="@color/black"
+                        android:textSize="14dp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBox_added_by"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:layout_marginTop="3dp"
+                    android:textSize="12sp" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/spinner_added_by"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:hint="Added By"
+                        android:visibility="visible"
+                        android:padding="9dp"
+                        android:textColor="#111"
+                        android:textColorHint="@color/black"
+                        android:textSize="14dp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBoxAddedPeriod"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:layout_marginTop="3dp"
+                    android:textSize="12sp" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/sp_spinner_activity_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:hint="Added Period"
+                        android:visibility="visible"
+                        android:padding="9dp"
+                        android:textColor="#111"
+                        android:textColorHint="@color/black"
+                        android:textSize="14dp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="From Date:"
+                android:drawableLeft="@drawable/date"
+                android:textSize="14dp"
+                android:layout_marginLeft="25dp"
+                android:padding="5dp"
+                android:drawablePadding="8dp"/>
+
+                <TextView
+                    android:id="@+id/edt_FromDt_addedby"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="8th May"
+                    android:textSize="14dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:padding="5dp"
+                    android:drawablePadding="8dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="To Date:"
+                        android:textSize="14dp"
+                        android:layout_marginLeft="25dp"
+                        android:padding="5dp"
+                        android:drawablePadding="8dp"/>
+
+                    <TextView
+                        android:id="@+id/edt_ToDt_addedby"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="8th May"
+                        android:textSize="14dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:padding="5dp"
+                        android:drawablePadding="8dp"/>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBoxAddressContains"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:layout_marginTop="3dp"
+                    android:textSize="12sp" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/edt_AddressContains"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:hint="Address Contains"
+                        android:visibility="visible"
+                        android:padding="9dp"
+                        android:textColor="#111"
+                        android:textColorHint="@color/black"
+                        android:textSize="14dp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBoxSalesFamily"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:layout_marginTop="3dp"
+                    android:textSize="12sp"
+                    android:layout_width="wrap_content" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/edt_SalesFamily"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:hint="Sales Family"
+                        android:visibility="visible"
+                        android:padding="9dp"
+                        android:textColor="#111"
+                        android:textColorHint="@color/black"
+                        android:textSize="14dp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBoxReference"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:layout_marginTop="3dp"
+                    android:textSize="12sp" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/edt_Reference"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:hint="Reference"
+                        android:layout_weight="1"
+                        android:visibility="visible"
+                        android:padding="9dp"
+                        android:textColor="#111"
+                        android:textColorHint="@color/black"
+                        android:textSize="14dp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/edt_Reference2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:hint="Select Option"
+                        android:visibility="visible"
+                        android:padding="9dp"
+                        android:layout_weight="1"
+                        android:textColor="#111"
+                        android:textColorHint="@color/black"
+                        android:textSize="14dp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBoxBusinesssegment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:layout_marginTop="3dp" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/edt_Businesssegment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:hint="Business Segment"
+                        android:visibility="visible"
+                        android:padding="9dp"
+                        android:textColor="#111"
+                        android:textColorHint="@color/black"
+                        android:textSize="14dp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/title"
+                android:textColor="@color/white"
+                android:text="Search Prospect as"
+                android:layout_marginBottom="5dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"
+                style="@style/ToolbarStyle"
+                android:textSize="16dp"
+                android:padding="10dp"
+                />
+
+            <CheckBox
+                android:id="@+id/checkBoxViewcustomersonly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:paddingTop="5dp"
+                android:text="View customers only"
+                android:textSize="14dp" />
+
+            <CheckBox
+                android:id="@+id/checkBoxopencallsonly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:paddingTop="5dp"
+                android:text="View prospects with open calls only"
+                android:textSize="14dp" />
+
+            <CheckBox
+                android:id="@+id/checkBoxclosedcallsonly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:paddingTop="5dp"
+                android:text="View prospects with closed opportunity only"
+                android:textSize="14dp" />
+
+            <CheckBox
+                android:id="@+id/checkBoxwithnocalls"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:paddingTop="5dp"
+                android:text="View prospects with no opportunity"
+                android:textSize="14dp" />
+
+            <CheckBox
+                android:id="@+id/checkBoxnewprospectsonly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:paddingTop="5dp"
+                android:text="View new prospects only"
+                android:textSize="14dp" />
+
+             <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <CheckBox
+                            android:id="@+id/checkBoxViewResellersOnly"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="false"
+                            android:layout_marginTop="3dp" />
+
+                 <android.support.design.widget.TextInputLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content">
+
+                     <android.support.design.widget.TextInputEditText
+                         android:id="@+id/spinner_viewReseller"
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:layout_gravity="top"
+                         android:hint="View Sellers only"
+                         android:visibility="visible"
+                         android:padding="9dp"
+                         android:textColor="#111"
+                         android:textColorHint="@color/black"
+                         android:textSize="14dp" />
+
+                 </android.support.design.widget.TextInputLayout>
+             </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/title"
+                android:textColor="@color/white"
+                android:text="Search "
+                android:layout_marginBottom="5dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"
+                style="@style/ToolbarStyle"
+                android:textSize="16dp"
+                android:padding="10dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:layout_marginTop="3dp" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:hint="Survey Rating"
+                        android:visibility="visible"
+                        android:padding="9dp"
+                        android:textColor="#111"
+                        android:textColorHint="@color/black"
+                        android:textSize="14dp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:layout_marginTop="3dp" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:hint="Not Surveyed After"
+                        android:drawableRight="@drawable/date"
+                        android:visibility="visible"
+                        android:padding="9dp"
+                        android:textColor="#111"
+                        android:textColorHint="@color/black"
+                        android:textSize="14dp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:layout_marginTop="3dp"
+                    android:textSize="12sp" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:hint="Future Plan Date"
+                        android:visibility="visible"
+                        android:padding="9dp"
+                        android:textColor="#111"
+                        android:textColorHint="@color/black"
+                        android:textSize="14dp" />
+
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="From Date:"
+                    android:drawableLeft="@drawable/date"
+                    android:textSize="14dp"
+                    android:layout_marginLeft="25dp"
+                    android:padding="5dp"
+                    android:drawablePadding="8dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="8th May"
+                    android:textSize="14dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:padding="5dp"
+                    android:drawablePadding="8dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="To Date:"
+                        android:textSize="14dp"
+                        android:layout_marginLeft="25dp"
+                        android:padding="5dp"
+                        android:drawablePadding="8dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="8th May"
+                        android:textSize="14dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:padding="5dp"
+                        android:drawablePadding="8dp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:layout_marginTop="3dp"
+                    android:textSize="12sp" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:hint="Last SO Date"
+                        android:visibility="visible"
+                        android:padding="9dp"
+                        android:textColor="#111"
+                        android:textColorHint="@color/black"
+                        android:textSize="14dp" />
+
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="From Date:"
+                    android:drawableLeft="@drawable/date"
+                    android:textSize="14dp"
+                    android:layout_marginLeft="25dp"
+                    android:padding="5dp"
+                    android:drawablePadding="8dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="8th May"
+                    android:textSize="14dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:padding="5dp"
+                    android:drawablePadding="8dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="To Date:"
+                        android:textSize="14dp"
+                        android:layout_marginLeft="25dp"
+                        android:padding="5dp"
+                        android:drawablePadding="8dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="8th May"
+                        android:textSize="14dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:padding="5dp"
+                        android:drawablePadding="8dp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:layout_marginTop="3dp"
+                    android:textSize="12sp" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:hint="Future Plan Date"
+                        android:visibility="visible"
+                        android:padding="9dp"
+                        android:textColor="#111"
+                        android:textColorHint="@color/black"
+                        android:textSize="14dp" />
+
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="From Date:"
+                    android:drawableLeft="@drawable/date"
+                    android:textSize="14dp"
+                    android:layout_marginLeft="25dp"
+                    android:padding="5dp"
+                    android:drawablePadding="8dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="8th May"
+                    android:textSize="14dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:padding="5dp"
+                    android:drawablePadding="8dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="To Date:"
+                        android:textSize="14dp"
+                        android:layout_marginLeft="25dp"
+                        android:padding="5dp"
+                        android:drawablePadding="8dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="8th May"
+                        android:textSize="14dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:padding="5dp"
+                        android:drawablePadding="8dp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:layout_marginTop="3dp"
+                    android:textSize="12sp" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:hint="Future Plan Date"
+                        android:visibility="visible"
+                        android:padding="9dp"
+                        android:textColor="#111"
+                        android:textColorHint="@color/black"
+                        android:textSize="14dp" />
+
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="From Date:"
+                    android:drawableLeft="@drawable/date"
+                    android:textSize="14dp"
+                    android:layout_marginLeft="25dp"
+                    android:padding="5dp"
+                    android:drawablePadding="8dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="8th May"
+                    android:textSize="14dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:padding="5dp"
+                    android:drawablePadding="8dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="To Date:"
+                        android:textSize="14dp"
+                        android:layout_marginLeft="25dp"
+                        android:padding="5dp"
+                        android:drawablePadding="8dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="8th May"
+                        android:textSize="14dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:padding="5dp"
+                        android:drawablePadding="8dp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:layout_marginTop="3dp"
+                    android:textSize="12sp" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:hint="Future Plan Date"
+                        android:visibility="visible"
+                        android:padding="9dp"
+                        android:textColor="#111"
+                        android:textColorHint="@color/black"
+                        android:textSize="14dp" />
+
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="From Date:"
+                    android:drawableLeft="@drawable/date"
+                    android:textSize="14dp"
+                    android:layout_marginLeft="25dp"
+                    android:padding="5dp"
+                    android:drawablePadding="8dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="8th May"
+                    android:textSize="14dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:padding="5dp"
+                    android:drawablePadding="8dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="To Date:"
+                        android:textSize="14dp"
+                        android:layout_marginLeft="25dp"
+                        android:padding="5dp"
+                        android:drawablePadding="8dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="8th May"
+                        android:textSize="14dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:padding="5dp"
+                        android:drawablePadding="8dp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+        </LinearLayout>

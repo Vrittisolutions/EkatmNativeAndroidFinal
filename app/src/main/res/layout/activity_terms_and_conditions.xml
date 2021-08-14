@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.vritti.sales.activity.TermsAndConditionsActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme"
+        android:visibility="visible"
+        android:background="@color/colorPrimary1">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar1"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            app:popupTheme="@style/AppTheme">
+
+            <ProgressBar
+                android:id="@+id/toolbar_progress_Assgnwork"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="8dp"
+                android:indeterminateDrawable="@drawable/spinner"
+                android:visibility="gone" />
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:paddingLeft="0dp"
+                android:hint="Delivery Terms"
+                android:textSize="14sp"
+                android:layout_weight="0.35">
+
+                <AutoCompleteTextView
+                    android:id="@+id/edt_delivery_terms"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|left"
+                    android:gravity="center|left"
+                    android:textColor="#111"
+                    android:textSize="12sp"
+                    android:drawableRight="@drawable/tbuds_ic_expand"
+                    android:paddingLeft="10sp"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingLeft="0dp"
+                    android:hint="Mode of Dispatch"
+                    android:textSize="12sp"
+                    android:layout_weight="0.35">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_disp_mode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|left"
+                        android:gravity="center|left"
+                        android:textColor="#111"
+                        android:textSize="12sp"
+                        android:paddingLeft="10sp"
+                        android:drawableRight="@drawable/tbuds_ic_expand"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingLeft="0dp"
+                    android:hint="Freight"
+                    android:textSize="12sp"
+                    android:layout_weight="0.35">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_freight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|left"
+                        android:gravity="center|left"
+                        android:textColor="#111"
+                        android:textSize="12sp"
+                        android:paddingLeft="10sp"
+                        android:drawableRight="@drawable/tbuds_ic_expand"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingLeft="0dp"
+                    android:hint="Delivery By"
+                    android:textSize="12sp"
+                    android:layout_weight="0.35">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_del_by"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|left"
+                        android:gravity="center|left"
+                        android:textColor="#111"
+                        android:textSize="12sp"
+                        android:paddingLeft="10sp"
+                        android:drawableRight="@drawable/tbuds_ic_expand"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:paddingLeft="0dp"
+                android:hint="Payment Terms"
+                android:textSize="14sp"
+                android:layout_weight="0.35">
+
+                <AutoCompleteTextView
+                    android:id="@+id/edt_payterms"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|left"
+                    android:gravity="center|left"
+                    android:textColor="#111"
+                    android:textSize="12sp"
+                    android:editable="false"
+                    android:focusable="false"
+                    android:drawableRight="@drawable/places_ic_search"
+                    android:paddingLeft="10sp"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingLeft="0dp"
+                    android:hint="Performance Gurantee"
+                    android:textSize="12sp"
+                    android:layout_weight="0.35">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_perf_gurantee"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|left"
+                        android:gravity="center|left"
+                        android:textColor="#111"
+                        android:textSize="12sp"
+                        android:paddingLeft="10sp"
+                        android:drawableRight="@drawable/tbuds_ic_expand"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingLeft="0dp"
+                    android:hint="%"
+                    android:textSize="12sp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="0.5"><!--android:layout_weight="0.5"-->
+
+                    <EditText
+                        android:id="@+id/edt_perfmnce"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#111"
+                        android:textSize="12sp"
+                        android:editable="true"
+                        android:inputType="numberDecimal" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingLeft="0dp"
+                    android:hint="Road Permit"
+                    android:textSize="12sp"
+                    android:layout_weight="0.35">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_road_permit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|left"
+                        android:gravity="center|left"
+                        android:textColor="#111"
+                        android:textSize="12sp"
+                        android:paddingLeft="10sp"
+                        android:drawableRight="@drawable/tbuds_ic_expand"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:paddingLeft="0dp"
+                android:hint="Liquidated Damages"
+                android:textSize="14sp"
+                android:layout_weight="0.35">
+
+                <AutoCompleteTextView
+                    android:id="@+id/edt_liq_damages"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|left"
+                    android:gravity="center|left"
+                    android:textColor="#111"
+                    android:textSize="12sp"
+                    android:drawableRight="@drawable/tbuds_ic_expand"
+                    android:paddingLeft="10sp"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingLeft="0dp"
+                    android:hint="Pre-dispatch Inspection"
+                    android:textSize="12sp"
+                    android:layout_weight="0.35">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_pre_disp_inspection"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|left"
+                        android:gravity="center|left"
+                        android:textColor="#111"
+                        android:textSize="12sp"
+                        android:paddingLeft="10sp"
+                        android:drawableRight="@drawable/tbuds_ic_expand"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingLeft="0dp"
+                    android:hint="Inspection Charges"
+                    android:textSize="12sp"
+                    android:layout_weight="0.35">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_insp_charges"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|left"
+                        android:gravity="center|left"
+                        android:textColor="#111"
+                        android:textSize="12sp"
+                        android:paddingLeft="10sp"
+                        android:drawableRight="@drawable/tbuds_ic_expand"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingLeft="0dp"
+                    android:hint="Security Deposite"
+                    android:textSize="12sp"
+                    android:layout_weight="0.35">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_security_deposite"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|left"
+                        android:gravity="center|left"
+                        android:textColor="#111"
+                        android:textSize="12sp"
+                        android:paddingLeft="10sp"
+                        android:drawableRight="@drawable/tbuds_ic_expand"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingLeft="0dp"
+                    android:hint="Deposite"
+                    android:textSize="12sp"
+                    android:layout_weight="0.35">
+
+                    <EditText
+                        android:id="@+id/edt_sec_deposite"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="#111"
+                        android:textSize="12sp"
+                        android:editable="true"
+                        android:paddingLeft="10sp"
+                        android:inputType="numberDecimal" />
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Late delivery accept upto"
+                    android:textColor="#111"
+                    android:textSize="12sp"/>
+
+                <EditText
+                    android:id="@+id/edt_latebycnt"
+                    android:layout_width="35dp"
+                    android:layout_height="wrap_content"
+                    android:hint="0"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    android:padding="3dp"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#111"
+                    android:textSize="12sp"
+                    android:editable="true"
+                    android:inputType="number"
+                    android:background="@drawable/border"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" day(s)"
+                    android:textColor="#111"
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+
+            <!--buttons-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="5dp">
+
+                <Button
+                    android:id="@+id/btnsave"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:text="Save"
+                    android:textSize="14dp"
+                    android:textColor="#FFFFFF"
+                    android:background="@drawable/tbuds_btn_pressed_2"
+                    android:layout_weight="0.5"
+                    android:layout_margin="5dp"/>
+
+                <Button
+                    android:id="@+id/btn_cancel"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:text="Cancel"
+                    android:textSize="14dp"
+                    android:textColor="#FFFFFF"
+                    android:background="@drawable/tbuds_btn_pressed_2_orange"
+                    android:layout_weight="0.5"
+                    android:layout_margin="5dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

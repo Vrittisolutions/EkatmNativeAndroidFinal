@@ -1,0 +1,89 @@
+package com.vritti.crm.bean;
+
+import java.util.ArrayList;
+
+public class BankDetails {
+
+    String payeeName, IFSCCode, bankName, branch, bankAddress, accountNo, accountType, remittanceInstruction;
+    ArrayList<BankDetails> bankDetailsArrayList;
+
+    public BankDetails(ArrayList<BankDetails> bankDetailsArrayList) {
+        this.bankDetailsArrayList = bankDetailsArrayList;
+    }
+
+    public BankDetails() {
+
+    }
+
+    public ArrayList<BankDetails> getBankDetailsArrayList() {
+        return bankDetailsArrayList;
+    }
+
+    public void setBankDetailsArrayList(ArrayList<BankDetails> bankDetailsArrayList) {
+        this.bankDetailsArrayList = bankDetailsArrayList;
+    }
+
+    public String getPayeeName() {
+        return payeeName;
+    }
+
+    public void setPayeeName(String payeeName) {
+        this.payeeName = payeeName;
+    }
+
+    public String getIFSCCode() {
+        return IFSCCode;
+    }
+
+    public void setIFSCCode(String IFSCCode) {
+        this.IFSCCode = IFSCCode;
+    }
+
+    public String getBankName() {
+        return bankName;
+    }
+
+    public void setBankName(String bankName) {
+        this.bankName = bankName;
+    }
+
+    public String getBranch() {
+        return branch;
+    }
+
+    public void setBranch(String branch) {
+        this.branch = branch;
+    }
+
+    public String getBankAddress() {
+        return bankAddress;
+    }
+
+    public void setBankAddress(String bankAddress) {
+        this.bankAddress = bankAddress;
+    }
+
+    public String getAccountNo() {
+        return accountNo;
+    }
+
+    public void setAccountNo(String accountNo) {
+        this.accountNo = accountNo;
+    }
+
+    public String getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(String accountType) {
+        this.accountType = accountType;
+    }
+
+    public String getRemittanceInstruction() {
+        return remittanceInstruction;
+    }
+
+    public void setRemittanceInstruction(String remittanceInstruction) {
+        this.remittanceInstruction = remittanceInstruction;
+    }
+}

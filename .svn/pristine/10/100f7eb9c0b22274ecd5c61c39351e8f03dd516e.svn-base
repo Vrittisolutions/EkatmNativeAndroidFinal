@@ -1,0 +1,844 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/maincolors"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FCFFE5"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme">
+
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar1"
+            style="@style/MyToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay"
+            app:subtitleTextAppearance="@style/ToolbarTextAppearance.Subtitle"
+            app:titleTextAppearance="@style/ToolbarTextAppearance.Title" >
+
+
+
+            <ProgressBar
+                android:id="@+id/toolbar_progress_Assgnwork"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="8dp"
+                android:indeterminateDrawable="@drawable/spinner"
+                android:visibility="gone" />
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#6E6F72"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Create Task"
+            android:textColor="#fff"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <RadioGroup
+                android:id="@+id/radio_groupPriority"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radionorml"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="Normal" />
+
+                <RadioButton
+                    android:id="@+id/radioimportant"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Important" />
+
+                <RadioButton
+                    android:id="@+id/radiocritical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Critical" />
+            </RadioGroup>
+
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:text="Task description"
+                android:textColor="#000"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/ed_activity_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/edit_text"
+                android:hint="Enter text here..."
+                android:padding="8dp"
+                android:textColor="#000"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_Subactivity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:text="Sub task description"
+                android:textColor="#000"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/ed_sub_activity_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_text"
+                android:padding="5dp"
+                android:text=""
+                android:textColor="#000"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:text="Assigned to :"
+                android:textColor="#000"
+                android:textSize="14sp"
+                android:visibility="visible" />
+
+            <Spinner
+                android:id="@+id/sp_responsible"
+                style="@android:style/Widget.Holo.Light.Spinner"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:padding="5dp"
+                android:textColor="#000"
+                android:textSize="14sp"></Spinner>
+
+            <!--<Spinner
+                android:id="@+id/sp_issueto"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:padding="5dp"
+                android:textColor="#000"
+                android:textSize="14sp"
+
+                android:visibility="gone"></Spinner>
+-->
+
+            <com.vritti.vwb.vworkbench.CustomAutoCompleteView
+                android:id="@+id/sp_issueto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/edit_text"
+                android:completionThreshold="1"
+                android:hint="User name"
+                android:padding="8dp"
+                android:visibility="gone"
+                android:textColor="#000"
+                android:textSize="14sp"
+                android:windowSoftInputMode="adjustResize" />
+            <Spinner
+                android:id="@+id/spinner_all_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="8dp"
+                android:textColor="#000"
+                android:visibility="gone"
+                android:textSize="14sp"
+                android:windowSoftInputMode="adjustResize"
+                android:scrollbars="none"
+                style="@android:style/Widget.Holo.Light.Spinner"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="Starts on"
+                    android:textColor="#000" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="0.5"
+                    android:text="Ends on"
+                    android:textColor="#000" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <Button
+                    android:id="@+id/btn_start_date"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/edit_text"
+                    android:text="Starts on"
+                    android:textColor="#000" />
+
+                <Button
+                    android:id="@+id/btn_end_date"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/edit_text"
+                    android:text="Ends on"
+                    android:textColor="#000" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="0.2"
+                    android:text="Efforts"
+                    android:textColor="#000"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/ed_hours"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/edit_text"
+                    android:hint=""
+                    android:inputType="number"
+                    android:padding="6dp"
+                    android:textColor="#000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="18dp"
+                    android:layout_weight="0.3"
+                    android:background="#EDF1F2"
+                    android:gravity="center"
+                    android:padding="3dp"
+                    android:text="Hrs"
+                    android:textColor="#000"
+                    android:textSize="14sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ln_financialyear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center|left"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Financial Year "
+                    android:textColor="@color/black"
+                    android:textSize="14dp"/>
+                <LinearLayout
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/edit_text"
+                    android:padding="3dp"
+                    android:layout_marginLeft="5dp">
+
+                    <Spinner
+                        android:id="@+id/spinner_financial_year"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"></Spinner>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@color/header"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="0.2"
+                    android:padding="8dp"
+                    android:text="Task will be created in"
+
+                    android:textColor="#000"
+                    android:textSize="14sp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_chenge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border"
+                android:orientation="vertical"
+                android:padding="5dp"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.4"
+                        android:text="In Assignment"
+                        android:textColor="#000"
+                        android:textSize="14sp" />
+
+
+
+                    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                        android:id="@+id/sp_workspace"
+                        style="@android:style/Widget.Holo.Light.Spinner"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.6"
+                        android:textColor="#000"
+                        android:textSize="14sp"></com.toptoche.searchablespinnerlibrary.SearchableSpinner>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.4"
+                        android:text="In Audit"
+                        android:textColor="#000"
+                        android:textSize="14sp" />
+
+                    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                        android:id="@+id/sp_group"
+                        style="@android:style/Widget.Holo.Light.Spinner"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+
+                        android:layout_weight="0.6"
+                        android:textColor="#000"
+                        android:textSize="14sp"></com.toptoche.searchablespinnerlibrary.SearchableSpinner>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.4"
+                        android:text="In Process"
+                        android:textColor="#000"
+                        android:textSize="14sp" />
+
+                    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                        android:id="@+id/sp_subgroup"
+                        style="@android:style/Widget.Holo.Light.Spinner"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+
+                        android:layout_weight="0.6"
+                        android:textColor="#000"
+                        android:textSize="14sp"></com.toptoche.searchablespinnerlibrary.SearchableSpinner>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.4"
+                        android:text="Nature of task"
+                        android:textColor="#000"
+                        android:textSize="14sp" />
+
+                    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                        android:id="@+id/spinner_natureofwork"
+                        style="@android:style/Widget.Holo.Light.Spinner"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.6"
+                        android:textColor="#000"
+                        android:textSize="14sp"></com.toptoche.searchablespinnerlibrary.SearchableSpinner>
+                </LinearLayout>
+
+                <!--test UI-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+
+                        <LinearLayout
+                            android:id="@+id/laycontname"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/txtclientname"
+                                android:layout_width="wrap_content"
+                                android:layout_height="40dp"
+                                android:layout_gravity="center|left"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight="0.4"
+                                android:gravity="center|left"
+                                android:text="Client Name"
+                                android:textColor="#000"
+                                android:textSize="14sp" />
+
+                            <AutoCompleteTextView
+                                android:id="@+id/edit_clientname"
+                                android:layout_width="match_parent"
+                                android:layout_height="34dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/edit_text"
+                                android:hint="Enter customer name "
+                                android:padding="8dp"
+                                android:singleLine="true"
+                                android:textColor="#000"
+                                android:maxLines="3"
+                                android:textSize="14dp"
+
+                                />
+                            <!--android:layout_marginLeft="67dp"-->
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/laycntno"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/txtclientno"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center|left"
+                                    android:layout_weight="1"
+                                    android:gravity="center|left"
+                                    android:paddingLeft="5dp"
+                                    android:text="Contact No :"
+                                    android:textColor="#000"
+                                    android:textSize="14sp" />
+                                <!-- android:layout_weight="0.4"-->
+
+                                <Button
+                                    android:id="@+id/btn_savecontact"
+                                    android:layout_width="30dp"
+                                    android:layout_height="40dp"
+                                    android:layout_gravity="center|right"
+                                    android:layout_weight="1"
+                                    android:background="@color/backgroundSave"
+                                    android:text="add" />
+
+                            </LinearLayout>
+
+                            <Spinner
+                                android:id="@+id/spinner_contactno"
+                                android:layout_width="match_parent"
+                                android:layout_height="35dp"
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/edit_text"
+                                android:padding="8dp"
+                                android:textColor="#000"
+                                android:textSize="14sp">
+                            </Spinner>
+
+
+
+                        </LinearLayout>
+
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/ln_billable_client"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="5dp"
+                        >
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="3dp"
+                            android:text="Charge Amount"
+                            android:textColor="#000"
+                            android:textSize="14sp" />
+
+                        <!-- <EditText
+                             android:id="@+id/ed_billable_client"
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_marginTop="5dp"
+                             android:layout_marginLeft="5dp"
+                             android:text="0"
+                             android:background="@drawable/edit_text"
+                             android:hint="Enter amount"
+                             android:inputType="number"
+                             android:padding="8dp"
+                             android:textColor="#000"
+                             android:textSize="14sp" />-->
+                        <EditText
+                            android:id="@+id/ed_billable_client"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/edit_text"
+                            android:hint="Enter Amount "
+                            android:layout_marginLeft="5dp"
+                            android:inputType="number"
+                            android:padding="8dp"
+                            android:textColor="#000"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+
+
+
+                </LinearLayout>
+
+                <!--End test UI-->
+
+                <!--Previous Client name UI-->
+                <!--<LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/txtclientname"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.4"
+                        android:text="Client Name"
+                        android:textColor="#000"
+                        android:textSize="14sp" />
+
+                    &lt;!&ndash;<com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                        android:id="@+id/spinner_clientname"
+                        style="@android:style/Widget.Holo.Light.Spinner"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.6"
+                        android:textColor="#000"
+                        android:textSize="14sp">
+                    </com.toptoche.searchablespinnerlibrary.SearchableSpinner>&ndash;&gt;
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edit_clientname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000"
+                        android:textSize="14dp"
+                        android:padding="8dp"
+                        android:hint="Enter customer name "
+                        android:singleLine="true"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginLeft="67dp"
+                        android:layout_marginTop="5dp"
+                        />
+                </LinearLayout>-->
+
+                <!--end of Previous Client name UI-->
+
+
+                <!--Start of Previous Contact No-->
+                <!--<LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/txtclientno"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.4"
+                        android:text="Contact No"
+                        android:textColor="#000"
+                        android:textSize="14sp" />
+
+
+                    <EditText
+                        android:id="@+id/editcontactno"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="70dp"
+                        android:hint="Mobile No"
+                        android:inputType="number"
+                        android:padding="8dp"
+                        android:textColor="#000"
+                        android:textSize="14sp" />
+                    &lt;!&ndash;android:background="@drawable/edit_text"&ndash;&gt;
+
+                    &lt;!&ndash; <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                         android:id="@+id/editcontactno"
+                         style="@android:style/Widget.Holo.Light.Spinner"
+                         android:layout_width="0dp"
+                         android:layout_height="wrap_content"
+                         android:layout_weight="0.6"
+                         android:textColor="#000"
+                         android:textSize="14sp"></com.toptoche.searchablespinnerlibrary.SearchableSpinner>&ndash;&gt;
+                </LinearLayout>-->
+
+                <!--Ens of Previoous Contact No-->
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/lay_plan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_text"
+
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <CheckBox
+                            android:id="@+id/mail"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.1" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.3"
+                            android:gravity="center"
+                            android:text="Notify by mail"
+                            android:textColor="#000"
+                            android:textSize="14sp" />
+
+                        <CheckBox
+                            android:id="@+id/chk_openend"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.1" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.3"
+                            android:gravity="center"
+                            android:text="Notify completion"
+                            android:textColor="#000"
+                            android:textSize="14sp" />
+
+                        <CheckBox
+                            android:id="@+id/chk_plan"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.1" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.3"
+                            android:gravity="center"
+                            android:text="Approval required"
+                            android:textColor="#000"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <!--Previous Billable Client-->
+            <!--<LinearLayout
+                android:id="@+id/ln_billable_client"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                >
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text="Charge Amount"
+                    android:textColor="#000"
+                    android:textSize="14sp" />
+
+                &lt;!&ndash; <EditText
+                     android:id="@+id/ed_billable_client"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginTop="5dp"
+                     android:layout_marginLeft="5dp"
+                     android:text="0"
+                     android:background="@drawable/edit_text"
+                     android:hint="Enter amount"
+                     android:inputType="number"
+                     android:padding="8dp"
+                     android:textColor="#000"
+                     android:textSize="14sp" />&ndash;&gt;
+                <EditText
+                    android:id="@+id/ed_billable_client"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edit_text"
+                    android:hint="Enter Amount "
+                    android:layout_marginLeft="5dp"
+                    android:inputType="number"
+                    android:padding="8dp"
+                    android:textColor="#000"
+                    android:textSize="14sp" />
+            </LinearLayout>-->
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_cancel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/backshape_orange"
+                    android:text="Cancel"
+                    android:textColor="#fff" />
+
+                <Button
+                    android:id="@+id/btn_save"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/backshapegreen"
+                    android:text="Save"
+                    android:textColor="#fff" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

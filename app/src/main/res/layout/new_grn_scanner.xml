@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/txtLoc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Scan Location"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="32sp"
+        android:textStyle="bold" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center|left"
+    android:gravity="left|center"
+    android:layout_marginTop="30dp"
+    android:orientation="horizontal">
+    <EditText
+        android:id="@+id/locationId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtLoc"
+        android:background="@drawable/edittext_border"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="20dp"
+        android:padding="18dp"
+        android:layout_weight="1"
+        android:cursorVisible="true"
+        android:singleLine="true"
+        android:hint=""
+        android:gravity="center"/>
+
+    <ImageView
+        android:id="@+id/img_barcode"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginRight="5dp"
+        android:src="@drawable/barcode"/>
+</LinearLayout>
+    <TextView
+        android:id="@+id/txt_scan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        android:gravity="center"
+        android:text="Begin put away by scanning location.Then scan packets"
+        android:textColor="@color/colorPrimary"
+        android:textSize="15dp" />
+
+
+</LinearLayout>

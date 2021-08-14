@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardCornerRadius="5dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:padding="0dp"
+    card_view:cardElevation="0dp"
+    card_view:cardMaxElevation="0.5dp"
+    card_view:cardUseCompatPadding="true"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/laydata"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/txtcustname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Cust. Name"
+                android:textColor="#2c2c2c"
+                android:textSize="13dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtexpdeldate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:layout_weight="0.65"
+                android:gravity="center_vertical|right"
+                android:text="4 Jul"
+                android:textStyle="bold"
+                android:textColor="#FF4112"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/txtinvoiceno"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="PR19-20/046"
+                android:textSize="13dp"
+                android:textColor="#2c2c2c"
+                android:textStyle="bold"
+                android:layout_weight="0.55"
+                android:paddingRight="8dp"
+                android:layout_gravity="center_vertical|right"
+                android:gravity="center_vertical|right" />
+
+            <TextView
+                android:id="@+id/txtinvoicedate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1 Jul"
+                android:textSize="12dp"
+                android:textColor="#6CAD1C"
+                android:textStyle="bold"
+                android:layout_weight="0.65"
+                android:layout_gravity="center_vertical|right"
+                android:gravity="center_vertical|right"
+                android:paddingRight="0dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingTop="2dp"
+            android:layout_gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="18dp"
+                android:layout_marginTop="3dp"
+                android:layout_gravity="center_vertical|top"
+                android:src="@drawable/tbuds_home"/>
+
+            <TextView
+                android:id="@+id/txtaddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="5"
+                android:paddingLeft="5dp"
+                android:paddingRight="7dp"
+                android:paddingBottom="5dp"
+                android:textColor="#2c2c2c"
+                android:textSize="12dp"
+                android:layout_weight="1"
+                android:text="Wari Book cafe, KarveNagar, Pune \nWari Book cafe, KarveNagar, Pune"
+                android:layout_gravity="center_vertical|top|left"
+                android:gravity="center_vertical|left|top|left"/>
+
+            <ImageView
+                android:id="@+id/img_pdf"
+                android:layout_width="50dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="0dp"
+                android:layout_gravity="center_vertical|top"
+                android:src="@drawable/ic_pdf"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

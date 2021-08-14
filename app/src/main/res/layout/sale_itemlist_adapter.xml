@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtitem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Item Desc"
+                android:textStyle="bold"
+                android:textColor="#111"
+                android:textSize="12sp"
+                android:layout_weight="0.5"
+                android:visibility="visible"/>
+
+            <ImageView
+                android:id="@+id/imgedt"
+                android:layout_width="30dp"
+                android:layout_height="20dp"
+                android:src="@drawable/edit"
+                android:background="#dcdcdc"/>
+
+            <ImageView
+                android:id="@+id/imgdelete"
+                android:layout_width="30dp"
+                android:layout_height="20dp"
+                android:background="#ededed"
+                android:src="@drawable/tbuds_delete_row"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:orientation="horizontal">
+
+            <!--<TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Item Desc"
+                android:textColor="#111"
+                android:textSize="12sp"
+                android:layout_weight="0.5"/>-->
+
+            <EditText
+                android:id="@+id/txtqty"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Qty"
+                android:textColor="#111"
+                android:textSize="12sp"
+                android:layout_weight="0.53"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:paddingRight="3dp"
+                android:editable="true"
+                android:inputType="numberDecimal"
+                android:background="@drawable/border"/>
+
+            <TextView
+                android:id="@+id/txtuom"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="UOM"
+                android:textColor="#111"
+                android:textSize="10sp"
+                android:paddingTop="2dp"
+                android:layout_weight="0.52"
+                android:layout_gravity="right"
+                android:gravity="right"/>
+
+            <TextView
+                android:id="@+id/txtrate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Rate"
+                android:textColor="#111"
+                android:textSize="12sp"
+                android:layout_weight="0.52"
+                android:layout_gravity="right"
+                android:gravity="right"/>
+
+            <!--<View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#111"
+                android:layout_marginLeft="5dp"/>-->
+
+            <TextView
+                android:id="@+id/txtamt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Amt"
+                android:textColor="#111"
+                android:textSize="12sp"
+                android:layout_weight="0.5"
+                android:layout_gravity="right"
+                android:gravity="right"/>
+
+           <!-- <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#111"
+                android:layout_marginLeft="5dp"/>-->
+
+            <TextView
+                android:id="@+id/txtdiscamt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Disc. Amt"
+                android:textColor="#111"
+                android:textSize="12sp"
+                android:layout_weight="0.51"
+                android:layout_gravity="right"
+                android:gravity="right"/>
+
+            <!--<View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#111"
+                android:layout_marginLeft="5dp"/>-->
+
+            <TextView
+                android:id="@+id/txttaxamt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Tax Amt"
+                android:textColor="#111"
+                android:textSize="12sp"
+                android:layout_weight="0.51"
+                android:layout_gravity="right"
+                android:gravity="right"/>
+
+            <!--<View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#111"
+                android:layout_marginLeft="5dp"/>-->
+
+            <TextView
+                android:id="@+id/txtfinamt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Final Amt"
+                android:textColor="#111"
+                android:textSize="12sp"
+                android:layout_weight="0.49"
+                android:layout_gravity="right"
+                android:gravity="right"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <AutoCompleteTextView
+                android:id="@+id/txttaxcls"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Tax class"
+                android:textColor="#111"
+                android:textSize="12sp"
+                android:layout_weight="0.2"
+                android:paddingRight="5sp"
+                android:editable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:inputType="text"
+                android:drawableLeft="@drawable/places_ic_search"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:background="@drawable/border"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

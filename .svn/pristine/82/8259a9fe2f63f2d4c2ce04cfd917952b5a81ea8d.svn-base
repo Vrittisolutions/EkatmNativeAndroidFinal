@@ -1,0 +1,82 @@
+package com.vritti.vwb.Adapter;
+
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
+import android.telecom.Call;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.vritti.ekatm.R;
+import com.vritti.vwb.Beans.CallHistoryListBean;
+import com.vritti.vwb.vworkbench.ActivityIndentApprovalNew;
+
+import java.util.ArrayList;
+
+public class CallHistoryListAdapter extends RecyclerView.Adapter<CallHistoryListAdapter.CallListHolder> {
+    ArrayList<CallHistoryListBean> callHistoryListBeanArrayList;
+    Context context;
+
+    public CallHistoryListAdapter(Context context, ArrayList<CallHistoryListBean> callHistoryListBeanArrayList) {
+    this.callHistoryListBeanArrayList = callHistoryListBeanArrayList;
+    this.context = context;
+
+    }
+
+    @NonNull
+    @Override
+    public CallListHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
+
+        View view = LayoutInflater.from(viewGroup.getContext()).
+                inflate(R.layout.callaction_history_items_row, viewGroup, false);
+
+        return new CallListHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull CallListHolder holder, int position) {
+        try {
+            holder.txt_DateTime.setText(callHistoryListBeanArrayList.get(position).getModifiedDt());
+            holder.txt_follow_by.setText(callHistoryListBeanArrayList.get(position).getUserName());
+            holder.txt_follow_type.setText(callHistoryListBeanArrayList.get(position).getActionType());
+            holder.txt_withwhom.setText(callHistoryListBeanArrayList.get(position).getContact());
+            holder.txt_purpose.setText(callHistoryListBeanArrayList.get(position).getPurpose());
+            holder.txt_outcome.setText(callHistoryListBeanArrayList.get(position).getOutcome());
+            holder.txt_nxt_action.setText(callHistoryListBeanArrayList.get(position).getNextAction());
+            holder.txt_nxt_action_dt.setText(callHistoryListBeanArrayList.get(position).getNextActionDateTime());
+            holder.txt_remark.setText(callHistoryListBeanArrayList.get(position).getLatestRemark());
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return callHistoryListBeanArrayList.size();
+    }
+
+    public class CallListHolder extends RecyclerView.ViewHolder {
+        TextView txt_DateTime,txt_follow_by,
+                txt_follow_type,txt_withwhom
+                ,txt_purpose,txt_outcome,
+                txt_nxt_action,txt_nxt_action_dt,
+                txt_remark;
+
+        public CallListHolder(View itemView) {
+            super(itemView);
+            txt_DateTime = itemView.findViewById(R.id.txt_DateTime);
+            txt_follow_by = itemView.findViewById(R.id.txt_follow_by);
+            txt_follow_type = itemView.findViewById(R.id.txt_follow_type);
+            txt_withwhom = itemView.findViewById(R.id.txt_withwhom);
+            txt_purpose = itemView.findViewById(R.id.txt_purpose);
+            txt_outcome = itemView.findViewById(R.id.txt_outcome);
+            txt_nxt_action = itemView.findViewById(R.id.txt_nxt_action);
+            txt_nxt_action_dt = itemView.findViewById(R.id.txt_nxt_action_dt);
+            txt_remark = itemView.findViewById(R.id.txt_remark);
+
+        }
+    }
+}

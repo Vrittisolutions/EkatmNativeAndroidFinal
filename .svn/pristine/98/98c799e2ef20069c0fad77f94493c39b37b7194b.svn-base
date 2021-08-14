@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardBackgroundColor="@color/header"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:paddingTop="1dp"
+        android:paddingBottom="1dp"
+     >
+
+
+        <LinearLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="0.5dp"
+                android:background="@color/colorPrimary"/>
+
+            <LinearLayout
+                android:id="@+id/lay_dateDisplay"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="0.15"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/priority_index_red"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/img_calender"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_margin="5dp"
+                        android:src="@drawable/sahara_icon_25"
+                        android:textSize="14dp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/txt_endDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:padding="2dp"
+                    android:textColor="#fff"
+                    android:textSize="12dp"
+                    tools:text="4 jan" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="0.8"
+                android:layout_marginTop="1dp"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="2dp"
+                    android:paddingTop="0dp"
+                    android:paddingRight="2dp"
+                    android:paddingBottom="0dp">
+
+                    <TextView
+                        android:id="@+id/txt_activityname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#4C5051"
+                        android:textSize="13dp"
+                        android:textStyle="bold"
+                        android:typeface="serif"
+                        tools:text="Yearly Document List 18-19-Mobile App - Approve disappove testing by Extension and BEO login at 11.39 am-DEMO SCHOOL" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|top"
+                        android:layout_marginTop="1dp"
+                        android:gravity="center_vertical|top"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.3"
+                            android:paddingLeft="1dp"
+                            android:paddingTop="1dp"
+                            android:paddingRight="1dp"
+                            android:paddingBottom="1dp">
+
+                            <TextView
+                                android:id="@+id/txt_workspace_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical|left"
+                                android:gravity="center_vertical|left"
+                                android:textColor="#197ABB"
+                                android:textSize="11dp"
+                                android:typeface="serif"
+                                tools:text="Under Personal for BEO " />
+
+                        </LinearLayout>
+
+
+                        <TextView
+                            android:id="@+id/txt_current_assign"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.7"
+                            android:gravity="center_vertical"
+                            android:padding="1dp"
+                            android:textColor="#000"
+                            android:textSize="11dp"
+                            android:typeface="serif"
+                            tools:text="Currently assigned to Extension Officer" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

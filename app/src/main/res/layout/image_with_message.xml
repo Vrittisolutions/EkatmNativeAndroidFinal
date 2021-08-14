@@ -1,0 +1,38 @@
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/white">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/sdv_Image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        />
+    <EditText
+        android:id="@+id/img_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:hint="Enter Message"
+        android:padding="5dp"
+        android:maxLines="5"
+        android:ellipsize="end"
+        android:background="#40000000"
+        android:minHeight="60dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"/>
+
+
+    <ImageView
+        android:id="@+id/sendMessage"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:src="@drawable/send"
+        android:layout_marginBottom="-22dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:layout_above="@id/img_message"/>
+
+
+</RelativeLayout>

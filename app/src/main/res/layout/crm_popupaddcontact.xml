@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/popupelement"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="35sp"
+        android:background="#4374B2"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/popupHead"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_vertical"
+            android:paddingLeft="15sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="5dp"
+            android:text="Add Contact"
+            android:textColor="#ffffff" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5sp"
+        android:layout_marginRight="5sp"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/eContactName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Contact Name"
+            android:textColor="#000000"
+            android:paddingLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:textSize="13sp" />
+
+        <EditText
+            android:id="@+id/eContactDesignation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Designation"
+            android:paddingLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:textColor="#000000"
+            android:textSize="13sp" />
+
+        <Spinner
+            android:id="@+id/sDepartment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:paddingLeft="2dp"
+            android:layout_marginTop="10dp"
+            android:textSize="13sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/eBirthdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:hint="Birthdate"
+                android:layout_weight="0.9"
+                android:paddingLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:textColor="#000000"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:id="@+id/img_birth_calender_contact"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center|right"
+                android:src="@drawable/calender" />
+        </LinearLayout>
+
+
+
+        <EditText
+            android:id="@+id/econtactpEmailid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="EmailId"
+            android:inputType="textEmailAddress"
+            android:paddingLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:textColor="#000000"
+            android:textSize="13sp" />
+
+        <EditText
+            android:id="@+id/econtactpMobile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mobile no"
+            android:layout_marginTop="10dp"
+            android:inputType="number"
+            android:maxLength="10"
+            android:paddingLeft="5dp"
+            android:textColor="#000000"
+            android:textSize="13sp" />
+        <EditText
+            android:id="@+id/econtactwhatsapp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="WhatsApp"
+            android:inputType="number"
+            android:maxLength="10"
+            android:padding="10dp"
+            android:paddingLeft="5dp"
+            android:textColor="#000000"
+            android:textSize="13sp"
+            android:singleLine="true"
+            android:imeOptions="actionNext"/>
+
+        <EditText
+            android:id="@+id/eContactpTele"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Telephone"
+            android:paddingLeft="5dp"
+            android:maxLength="6"
+            android:inputType="number"
+            android:layout_marginTop="10dp"
+            android:textColor="#000000"
+            android:textSize="13sp" />
+
+        <EditText
+            android:id="@+id/eContactpFax"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Fax"
+            android:visibility="gone"
+            android:layout_marginTop="10dp"
+            android:textColor="#000000"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10sp"
+        android:layout_marginLeft="5sp"
+        android:layout_marginRight="5sp"
+        android:layout_marginTop="5sp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnpopupSaveContact"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3sp"
+
+            android:layout_marginRight="3sp"
+            android:background="@drawable/green_backgraound"
+            android:text="Save"
+            android:textColor="#ffffff"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/btnpopupCancelContact"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3sp"
+            android:layout_marginRight="3sp"
+            android:background="#ff902b"
+            android:text="Cancel"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    android:paddingBottom="4dp"
+    android:paddingLeft="18dp"
+    android:paddingRight="8dp"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <RelativeLayout
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="30dp">
+        <com.facebook.drawee.view.SimpleDraweeView
+
+            android:id="@+id/img_userpic"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:roundAsCircle="true"
+            app:roundingBorderWidth="2dp"
+            app:roundingBorderColor="@color/red"
+            app:placeholderImage="@drawable/userph"
+
+            />
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:tint="@color/white"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="5dp"
+            android:visibility="gone"
+            android:layout_marginRight="15dp"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:paddingTop="2dp"
+
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+    <TextView
+        android:id="@+id/tv_mailid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="2dp"
+        android:visibility="gone"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+
+</LinearLayout>

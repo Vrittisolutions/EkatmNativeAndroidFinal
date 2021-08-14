@@ -1,0 +1,196 @@
+package com.vritti.inventory.MaterialRequisition.adapter;
+
+import android.content.Context;
+import android.graphics.Color;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
+import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.vritti.ekatm.R;
+import com.vritti.inventory.MaterialRequisition.model.ShowAllLotDetails;
+
+import java.util.ArrayList;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+public class AllLotSelectionAdapter extends RecyclerView.Adapter<AllLotSelectionAdapter.ViewHolder>  {
+
+
+    Context context;
+    ArrayList<ShowAllLotDetails> showAllLotDetailsArrayList;
+    String destination="";
+    final double[] IssueQty = new double[1];
+    public AllLotSelectionAdapter(Context lotSelectionActivity, ArrayList<ShowAllLotDetails> showAllLotDetailsArrayList, String destination) {
+        this.context = lotSelectionActivity;
+        this.showAllLotDetailsArrayList = showAllLotDetailsArrayList;
+        this.destination = destination;
+    }
+
+    public AllLotSelectionAdapter() {
+
+    }
+
+    @NonNull
+    @Override
+    public AllLotSelectionAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.inventory_lotselection_adapter, parent, false);
+
+        return new ViewHolder(itemView);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull final AllLotSelectionAdapter.ViewHolder holder, final int position) {
+        if(destination.equals("PacketSelection")){
+            holder.ln_packetmain.setVisibility(View.VISIBLE);
+            String packetno = showAllLotDetailsArrayList.get(position).getPacketNo();
+            if(packetno != null){
+                holder.txt_packetNo.setText(packetno);
+            }
+        }
+
+        String batchNo = showAllLotDetailsArrayList.get(position).getBatchNo();
+        float balQty = showAllLotDetailsArrayList.get(position).getBalQty();
+        final float issueQty = showAllLotDetailsArrayList.get(position).getIssueQty();
+        String fiFo = showAllLotDetailsArrayList.get(position).getFiFo();
+        String locationName = showAllLotDetailsArrayList.get(position).getLocationCode();
+        String warehouseName = showAllLotDetailsArrayList.get(position).getWarehouseCode();
+
+        if (batchNo != null) {
+            holder.txt_LotNo.setText(batchNo);
+        }
+        if (fiFo != null) {
+            holder.txt_FIFO.setText(fiFo);
+        }
+        if (locationName != null) {
+            holder.txt_location.setText(locationName);
+        }
+        if (warehouseName != null) {
+            holder.txt_warehouse.setText(warehouseName);
+        }
+
+
+        if (showAllLotDetailsArrayList.get(position).getBalQty() == 0.0) {
+            holder.txt_balQty.setText(String.format("%.2f", Float.valueOf(String.valueOf(showAllLotDetailsArrayList.get(position).getBalQty()))));
+        } else {
+
+            holder.txt_balQty.setText(String.format("%.2f", Float.valueOf(String.valueOf(showAllLotDetailsArrayList.get(position).getBalQty()))));
+        }
+
+        if (showAllLotDetailsArrayList.get(position).getIssueQty() == 0.0) {
+            holder.txt_issueNo.setText(String.format("%.2f", Float.valueOf(String.valueOf(showAllLotDetailsArrayList.get(position).getIssueQty()))));
+        } else {
+
+            holder.txt_issueNo.setText(String.format("%.2f", Float.valueOf(String.valueOf(showAllLotDetailsArrayList.get(position).getIssueQty()))));
+        }
+
+
+
+        if (position % 2 == 0) {
+            holder.card_view.setBackgroundColor(Color.parseColor("#DBE8EA"));
+        } else {
+            holder.card_view.setBackgroundColor(Color.parseColor("#F1F6F7"));
+        }
+
+        holder.txt_issueNo.addTextChangedListener(new TextWatcher() {
+            String val = "";
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // oo.ooset text use this formatl
+
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (s.toString().equals("")) {
+                    IssueQty[0] = 0.0;
+                    showAllLotDetailsArrayList.get(position).setIssueQty(Float.parseFloat(String.valueOf(0.0)));
+                } else {
+
+
+                    IssueQty[0] = Double.parseDouble(String.valueOf(s));
+
+
+                    // holder.txt_MRPPrice.setText(String.valueOf(price));
+                    Log.i("amount::", String.valueOf(IssueQty[0]));
+                    Float.valueOf(String.valueOf(IssueQty[0]));
+                    showAllLotDetailsArrayList.get(position).setIssueQty((float) IssueQty[0]);
+                   // notifyDataSetChanged();
+                    //adt.updateList(editarrayList, position);
+                   /* holder.txt_issueNo.setText(String.format("%.2f", IssueQty[0]));*/
+                }
+
+            }
+
+
+
+        });
+
+
+
+
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return showAllLotDetailsArrayList.size();
+    }
+
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+
+        @BindView(R.id.txt_LotNo)
+        TextView txt_LotNo;
+
+        @BindView(R.id.txt_warehouse)
+        TextView txt_warehouse;
+
+        @BindView(R.id.txt_location)
+        TextView txt_location;
+
+        @BindView(R.id.txt_FIFO)
+        TextView txt_FIFO;
+
+        @BindView(R.id.txt_balQty)
+        TextView txt_balQty;
+
+        @BindView(R.id.card_view)
+        CardView card_view;
+
+        @BindView(R.id.txt_issueNo)
+        EditText txt_issueNo;
+
+        @BindView(R.id.txt_packetNo)
+        TextView txt_packetNo;
+        @BindView(R.id.ln_packetmain)
+        LinearLayout ln_packetmain;
+
+
+
+
+
+
+        public ViewHolder(View itemView) {
+            super(itemView);
+            ButterKnife.bind(this,itemView);
+        }
+    }
+}

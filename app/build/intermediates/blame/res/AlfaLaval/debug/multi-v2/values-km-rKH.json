@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\incremental\\mergeAlfaLavalDebugResources\\merged.dir\\values-km-rKH\\values-km-rKH.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Nilesh\\.gradle\\caches\\transforms-2\\files-2.1\\bcefe1a63aaad0e225ad14675b4e8bed\\datetimepicker-0.2.0\\res\\values-km-rKH\\values-km-rKH.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10,11,12,13,14",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "222,327,434,512,619,734,843,930,1012,1096,1178",
+                        "endColumns": "104,106,77,106,114,108,86,81,83,81,93",
+                        "endOffsets": "322,429,507,614,729,838,925,1007,1091,1173,1267"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,210,317,395,502,617,726,813,895,979,1061",
+                        "endColumns": "104,106,77,106,114,108,86,81,83,81,93",
+                        "endOffsets": "205,312,390,497,612,721,808,890,974,1056,1150"
+                    }
+                }
+            ]
+        }
+    ]
+}

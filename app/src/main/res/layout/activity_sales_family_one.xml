@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.vritti.sales.activity.SalesFamilyActivity_one">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme"
+        android:visibility="visible"
+        android:background="@color/colorPrimary1">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar1"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            app:popupTheme="@style/AppTheme">
+
+            <ProgressBar
+                android:id="@+id/toolbar_progress_Assgnwork"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="8dp"
+                android:indeterminateDrawable="@drawable/spinner"
+                android:visibility="gone" />
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <!--sales family-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#dcdcdc">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sales Family Selection"
+            android:textSize="15sp"
+            android:textColor="#111"
+            android:padding="5dp"/>
+
+    </LinearLayout>
+
+    <!--salesfamily-->
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Sales family"
+        android:layout_margin="5dp">
+
+        <AutoCompleteTextView
+            android:id="@+id/edtfamily"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#111"
+            android:textSize="15sp"
+            android:drawableLeft="@drawable/places_ic_search"
+            android:editable="true"
+            android:focusable="true"
+            android:enabled="true"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <!--mode size-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#dcdcdc">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mode/Size Selection"
+            android:textSize="15sp"
+            android:textColor="#111"
+            android:padding="5dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!--modelno-->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Model No."
+            android:layout_margin="5dp"
+            android:layout_weight="0.5">
+
+            <AutoCompleteTextView
+                android:id="@+id/edtmod_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#111"
+                android:textSize="15sp"
+                android:drawableLeft="@drawable/places_ic_search"
+                android:editable="true"
+                android:focusable="true"
+                android:enabled="true"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <!--modelsize-->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Model Size"
+            android:layout_margin="5dp"
+            android:layout_weight="0.5">
+
+            <AutoCompleteTextView
+                android:id="@+id/edtmod_size"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#111"
+                android:textSize="15sp"
+                android:drawableLeft="@drawable/places_ic_search"
+                android:editable="true"
+                android:focusable="true"
+                android:enabled="true"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnshow"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="Show Matched Items"
+        android:background="@drawable/tbuds_btn_pressed_2"
+        android:textColor="#FFFFFF"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
+
+</LinearLayout>

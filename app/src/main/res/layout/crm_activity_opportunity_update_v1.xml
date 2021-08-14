@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout
+    tools:context="com.vritti.crm.vcrm7.OpportunityUpdateActivity" xmlns:gpb="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/MyToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/colorPrimary"
+            app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay"
+            app:subtitleTextAppearance="@style/ToolbarTextAppearance.Subtitle"
+            app:contentInsetLeft="0dp"
+            app:contentInsetStart="0dp"
+            app:contentInsetStartWithNavigation="0dp"
+            app:titleTextAppearance="@style/ToolbarTextAppearance.Title" >
+            <ImageView
+                android:id="@+id/img_add"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="right"
+                android:layout_marginRight="@dimen/sp_10"
+                android:padding="2dp"
+                android:src="@drawable/icon_plus"
+                android:tint="@color/white"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/img_refresh"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="right"
+                android:layout_marginRight="@dimen/sp_10"
+                android:padding="2dp"
+                android:src="@drawable/refresh_icon"
+                android:tint="@color/white"
+                android:visibility="gone" />
+
+            <ProgressBar
+                android:id="@+id/progressbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="right"
+                android:visibility="gone" />
+            <ImageView
+                android:id="@+id/img_back"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="left"
+                android:layout_marginRight="5dp"
+                android:padding="2dp"
+                android:src="@drawable/crm_back_arrow"
+                android:tint="@color/white"
+                android:visibility="visible" />
+            <TextView
+                android:id="@+id/txt_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:focusable="true"
+                android:singleLine="true"
+                android:text="Contact List"
+                android:textColor="@color/white"
+                android:textColorHint="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:visibility="visible"></TextView>
+
+
+
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+        <ScrollView
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:fillViewport="true"
+            android:fitsSystemWindows="true"
+            android:layout_below="@+id/appbar"
+            android:layout_above="@+id/len"
+            android:background="@color/card_back"
+            android:id="@+id/scroll">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                >
+
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent">
+
+                    <include
+                        layout="@layout/crm_lay_header_v1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <include layout="@layout/crm_lay_footer_v1"
+                        android:visibility="visible"/>
+
+
+
+
+                </LinearLayout>
+            </RelativeLayout>
+
+        </ScrollView>
+
+    <ImageView
+        android:id="@+id/button_nextcontent"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/next_icon"
+        android:layout_alignParentRight="true"
+        android:tint="@color/colorPrimaryDark"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone"
+
+        />
+    <ImageView
+        android:id="@+id/button_previous"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:visibility="gone"
+        android:tint="@color/colorPrimaryDark"
+        android:src="@drawable/previous_icon"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        />
+
+    <LinearLayout
+        android:id="@+id/len"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="5dp"
+        android:visibility="gone"
+        android:orientation="horizontal">
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom">
+
+            <Button
+                android:layout_height="match_parent"
+                android:layout_width="40dp"
+                android:background="@drawable/button_orange"
+                android:layout_marginRight="5dp"
+                android:layout_gravity="right"
+                android:visibility="gone"
+                android:textSize="13dp"
+                android:textColor="@color/white"
+                android:text="Previous"
+                android:layout_weight="1"
+                android:textAllCaps="false"
+                android:textColorHint="@color/black"/>
+            <Button
+                android:layout_height="match_parent"
+                android:layout_width="40dp"
+                android:background="@drawable/button_green"
+                android:id="@+id/buttonSave_opportunity"
+                android:layout_marginRight="5dp"
+                android:layout_gravity="right"
+                android:visibility="gone"
+                android:textSize="13dp"
+                android:textColor="@color/white"
+                android:text="Save"
+                android:layout_weight="1"
+                android:textAllCaps="false"/>
+
+
+            <Button
+                android:layout_height="match_parent"
+                android:layout_width="40dp"
+                android:background="@drawable/button_orange"
+                android:id="@+id/button_cancelcontent"
+                android:layout_gravity="right"
+                android:visibility="gone"
+                android:textSize="13dp"
+                android:textColor="@color/white"
+                android:text="Cancel"
+                android:layout_weight="1"
+                android:textAllCaps="false"
+                android:textColorHint="@color/black"/>
+
+
+            <Button
+                android:layout_height="match_parent"
+                android:layout_width="40dp"
+                android:background="@drawable/button_green"
+                android:layout_gravity="right"
+                android:visibility="gone"
+                android:textSize="13dp"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/white"
+                android:text="Next"
+                android:layout_weight="1"
+                android:textAllCaps="false"/>
+
+        </TableRow>
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>

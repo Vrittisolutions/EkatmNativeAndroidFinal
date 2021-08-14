@@ -1,0 +1,43 @@
+compile >> implementation
+testcompile >> testImplementation
+testApi >>testImplementation
+
+
+  "Outcome": "Change Contract Reviewer",
+        "Code": "CCR",
+        "PKOutcomeId": "26",
+        "Outcome1": "Change Contract Reviewer",
+        "IsActivity": "N",
+        "IsEmail": "Y",
+        "Code1": "CCR",
+        "ActivityTypeId": "VSLPune-66",
+        "ActivityFunctionality": null,
+        "EmailFunctionality": null,
+        "OutcomeType": "Sales",
+        "ShowOthers": "N",
+        "MilestoneSeqNo": 0,
+        "LeadTime": 0,
+        "IsRequest": "N",
+        "IsApprover": null
+    },
+  {
+        "Outcome": "Transfer to target Environment",
+        "Code": "ET",
+        "PKOutcomeId": "59",
+        "Outcome1": "Transfer to target Environment",
+        "IsActivity": "Y",
+        "IsEmail": "Y",
+        "Code1": "ET",
+        "ActivityTypeId": "",
+        "ActivityFunctionality": false,
+        "EmailFunctionality": false,
+        "OutcomeType": "Sales",
+        "ShowOthers": "N",
+        "MilestoneSeqNo": 0,
+        "LeadTime": 0,
+        "IsRequest": "N",
+        "IsApprover": null
+    },
+
+
+]

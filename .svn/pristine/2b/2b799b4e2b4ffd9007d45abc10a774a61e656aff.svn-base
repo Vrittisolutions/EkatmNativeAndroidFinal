@@ -1,0 +1,31 @@
+package com.vritti.crm.bean;
+
+public class EntityClass {
+    String CodeId, CodeDesc;
+
+    public EntityClass(String codeId, String codeDesc) {
+        this.CodeDesc = codeDesc;
+        this.CodeId = codeId;
+    }
+
+    public String getCodeId() {
+        return CodeId;
+    }
+
+    public void setCodeId(String codeId) {
+        CodeId = codeId;
+    }
+
+    public String getCodeDesc() {
+        return CodeDesc;
+    }
+
+    public void setCodeDesc(String codeDesc) {
+        CodeDesc = codeDesc;
+    }
+
+    @Override
+    public String toString() {
+        return this.CodeDesc;
+    }
+}

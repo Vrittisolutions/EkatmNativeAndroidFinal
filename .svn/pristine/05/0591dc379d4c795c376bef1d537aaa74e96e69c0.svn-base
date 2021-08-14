@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/tbar"
+        layout="@layout/tbuds_common_toolbar"
+        android:visibility="visible" />
+
+    <!--<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Itemwise Sale Reports"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:textColor="#6CAD1C"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_gravity="center"
+        />-->
+
+    <!--<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Click here to select items and dates"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:textColor="#111"
+        android:textSize="16dp"
+        android:textStyle="bold"/>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp">
+
+    <LinearLayout
+        android:id="@+id/selecttxt"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:layout_gravity="left">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Selected Item :"
+            android:textSize="14dp"
+
+           />
+
+        <Button
+            android:id="@+id/buttonItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:text="Click here to select item"
+            android:textColor="#ff0000"
+            android:inputType="text"
+            android:textSize="16dp"
+           />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <LinearLayout
+            android:id="@+id/l1"
+            android:layout_width="match_parent"
+            android:layout_height="39dp"
+            android:layout_gravity="center|left"
+            android:layout_weight="0.55"
+            android:gravity="center|left"
+            android:padding="3dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select Date :"
+                android:textSize="14dp"
+
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/l2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:padding="3dp">
+
+            <Button
+                android:id="@+id/buttonFdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#6CAD1C"
+                android:text="From Date"
+                android:textColor="#fff"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/l3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:padding="3dp">
+
+            <Button
+                android:id="@+id/buttonTdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#6CAD1C"
+                android:text="To Date"
+                android:textColor="#fff"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose sale type you want to see"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="16dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:layout_marginTop="8dp">
+
+
+        <LinearLayout
+        android:id="@+id/l4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:padding="3dp">
+
+        <Button
+            android:id="@+id/buttonDailySale"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#6CAD1C"
+            android:text="Daily Sale"
+            android:textColor="#fff"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/l5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:padding="3dp">
+
+
+            <Button
+                android:id="@+id/buttonTotalSale"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#6CAD1C"
+                android:text="Total Sale"
+                android:textColor="#fff"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonCancel"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/tbuds_border_orange"
+        android:text="Cancel"
+        android:textColor="#fff"
+        android:gravity="center"
+        android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+</LinearLayout>

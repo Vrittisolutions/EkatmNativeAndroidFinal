@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "790603973305",
+    "firebase_url": "https://simplify-practice.firebaseio.com",
+    "project_id": "simplify-practice",
+    "storage_bucket": "simplify-practice.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:790603973305:android:bf2560d3d24a1b0b",
+        "android_client_info": {
+          "package_name": "practice.vritti.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "790603973305-259o9tq2artn7dn2pnqmlh2feeo92ktk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "practice.vritti.com",
+            "certificate_hash": "a3cf426525f3a00eed2da970b51d382ce563fff0"
+          }
+        },
+        {
+          "client_id": "790603973305-4dotpb9r9l0tuklnjia0lqijblv18n1f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhtLyYJvXEhYJPUYFerY-qme-HtAOiTQY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "790603973305-4dotpb9r9l0tuklnjia0lqijblv18n1f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

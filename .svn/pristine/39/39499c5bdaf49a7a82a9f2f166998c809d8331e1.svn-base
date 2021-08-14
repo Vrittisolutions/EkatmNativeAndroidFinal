@@ -1,0 +1,629 @@
+package com.vritti.vwb.vworkbench;
+
+import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
+import android.support.design.widget.BottomSheetDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.webkit.MimeTypeMap;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.vritti.SaharaModule.SaharaBeans.AttachmentBean;
+import com.vritti.databaselib.data.DatabaseHandlers;
+import com.vritti.databaselib.other.Utility;
+import com.vritti.databaselib.other.WebUrlClass;
+import com.vritti.ekatm.Constants;
+import com.vritti.ekatm.R;
+import com.vritti.sessionlib.CallbackInterface;
+import com.vritti.sessionlib.StartSession;
+import com.vritti.vwb.Adapter.DocReviewListAdapter;
+import com.vritti.vwb.Adapter.Sahara_AttachmentDetailsAdapter;
+import com.vritti.vwb.Beans.DocumentReviewListBean;
+import com.vritti.vwb.classes.CommonFunction;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+
+public class DocumentReviewList  extends AppCompatActivity {
+    RecyclerView list_docList;
+    String ActivityName="",ActivityId="",SourceId="",ProjectId="",Assigned_By="",AssignedById="";
+    TextView txt_activityName;
+
+    String PlantMasterId = "", LoginId = "", Password = "", CompanyURL = "", EnvMasterId = "",
+            UserMasterId = "", UserName = "", MobileNo = "";
+    Utility ut;
+    CommonFunction cf;
+    DatabaseHandlers db;
+    SQLiteDatabase sql;
+    Context context;
+    DocumentReviewListBean documentReviewListBean;
+    DocReviewListAdapter docReviewListAdapter;
+    ArrayList<DocumentReviewListBean> documentReviewLists;
+    Dialog dialog1;
+    public static ArrayList<AttachmentBean> attachmentList;
+    AttachmentBean attachmentBean;
+    Sahara_AttachmentDetailsAdapter sahara_attachmentDetailsAdapter;
+    int selectedPos = -1;
+    private ProgressDialog pDialog;
+    private BottomSheetDialog dialog;
+    private final int MEGABYTE = 1024 * 1024;
+    public static final int progress_bar_type = 0;
+
+
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.list_document_review);
+        Toolbar toolbar_action = (Toolbar) findViewById(R.id.toolbar);
+        toolbar_action.setLogo(R.mipmap.ic_toolbar_logo_vwb);
+        toolbar_action.setTitle(R.string.app_name_toolbar_Vwb);
+        setSupportActionBar(toolbar_action);
+      //  getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        context = getApplicationContext();
+        ut = new Utility();
+        cf = new CommonFunction(context);
+        String settingKey = ut.getSharedPreference_SettingKey(context);
+        String dabasename = ut.getValue(context, WebUrlClass.GET_DATABASE_NAME_KEY, settingKey);
+        db = new DatabaseHandlers(context, dabasename);
+        CompanyURL = ut.getValue(context, WebUrlClass.GET_COMPANY_URL_KEY, settingKey);
+        EnvMasterId = ut.getValue(context, WebUrlClass.GET_EnvMasterID_KEY, settingKey);
+        PlantMasterId = ut.getValue(context, WebUrlClass.GET_PlantID_KEY, settingKey);
+        LoginId = ut.getValue(context, WebUrlClass.GET_LOGIN_KEY, settingKey);
+        Password = ut.getValue(context, WebUrlClass.GET_PSW_KEY, settingKey);
+        UserMasterId = ut.getValue(context, WebUrlClass.GET_USERMASTERID_KEY, settingKey);
+        UserName = ut.getValue(context, WebUrlClass.GET_USERNAME_KEY, settingKey);
+        sql = db.getWritableDatabase();
+
+        dialog1 = new Dialog(DocumentReviewList.this);
+        pDialog = new ProgressDialog(DocumentReviewList.this);
+        initView();
+
+        if(getIntent() != null){
+            ActivityName = getIntent().getStringExtra("ActivityName");
+            ActivityId = getIntent().getStringExtra("ActivityId");
+            SourceId = getIntent().getStringExtra("SourceId");
+            ProjectId = getIntent().getStringExtra("ProjectId");
+            Assigned_By = getIntent().getStringExtra("Assigned_By");
+            AssignedById = getIntent().getStringExtra("AssignedById");
+
+            txt_activityName.setText(ActivityName);
+        }
+
+
+
+        if(ut.isNet(context)){
+            new StartSession(this, new CallbackInterface() {
+                @Override
+                public void callMethod() {
+                    new DownloadReviewList().execute(SourceId);
+                }
+
+                @Override
+                public void callfailMethod(String msg) {
+                    Toast.makeText(context, "No Internet Connection", Toast.LENGTH_SHORT).show();
+
+
+                }
+            });
+        }
+
+
+
+    }
+
+    public void getUploadedImage(final int adapterPosition) {
+
+        final String pkCssDetailsId = documentReviewLists.get(adapterPosition).getPKCssDtlsID();
+        if(!documentReviewLists.get(adapterPosition).getAttachmentCount().equals("0")){
+            if(ut.isNet(context)){
+                new StartSession(context, new CallbackInterface() {
+                    @Override
+                    public void callMethod() {
+                        //attachment count method call
+                        new downloadAttachmentDetails().execute(pkCssDetailsId,String.valueOf(adapterPosition));
+                    }
+
+                    @Override
+                    public void callfailMethod(String msg) {
+                        Toast.makeText(context, "Please Check Your Internet Connection", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+            }
+        }else {
+            Toast.makeText(context, "No Attachment Present", Toast.LENGTH_SHORT).show();
+        }
+        
+
+
+    }
+
+
+    public class downloadAttachmentDetails extends AsyncTask<String, Void, String> {
+
+        String res = "";
+        String pkCssDetailsId = "";
+        int pos;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+
+            pkCssDetailsId = params[0];
+            pos = Integer.parseInt(params[1]);
+            try {
+                String url = CompanyURL + WebUrlClass.api_getUploadedAttachment_Sahara + "?ActivityId=" + params[0] + "&SourceType=CSSDetail";
+                res = ut.OpenConnection(url, getApplicationContext());
+                if (res != null) {
+                    //res = res.substring(1, res.length() - 1);
+                    // res = res.replaceAll("\\\\", "");
+
+                }
+                String s = res;
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                res = "Error";
+            }
+
+
+            return res;
+        }
+
+        @Override
+        protected void onPostExecute(String res) {
+            super.onPostExecute(res);
+
+            if (res.contains("[]")) {
+               /* if(editDatasheetslist.get(pos).getFilePathName() != null){
+                    if(editDatasheetslist.get(pos).getFilePathName().size() != 0){
+                        attachmentDetailsDialog1(pos);
+                    }
+                }
+*/
+
+            } else {
+
+                try {
+
+                    JSONArray jResults = new JSONArray(res.toString());
+
+                    ContentValues values = new ContentValues();
+                    sql.delete(db.TABLE_ATTACHMENT_DETAILS, null, null);
+                    Cursor c = sql.rawQuery("SELECT * FROM " + db.TABLE_ATTACHMENT_DETAILS, null);
+                    int count = c.getCount();
+                    String columnName, columnValue;
+                    for (int index = 0; index < jResults.length(); index++) {
+                        JSONObject jorder = jResults.getJSONObject(index);
+                        for (int j = 0; j < c.getColumnCount(); j++) {
+                            columnName = c.getColumnName(j);
+                            columnValue = jorder.getString(columnName);
+                            values.put(columnName, columnValue);
+                        }
+                        long a = sql.insert(db.TABLE_ATTACHMENT_DETAILS, null, values);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Log.e("res", e.getMessage());
+                }
+
+                attachmentList = getAttachmentDetails();
+
+                attachmentDetailsDialog(pos);
+
+
+            }
+
+
+        }
+    }
+
+    private ArrayList<AttachmentBean> getAttachmentDetails() {
+        ArrayList<AttachmentBean> attachmentDetails = new ArrayList<AttachmentBean>();
+
+        Cursor c = sql.rawQuery("SELECT * from " + db.TABLE_ATTACHMENT_DETAILS, null);
+
+        if (c.getCount() > 0) {
+            c.moveToFirst();
+            do {
+
+                attachmentBean = new AttachmentBean();
+
+                attachmentBean.setPkAttachId(c.getString(c.getColumnIndex("PkAttachId")));
+                attachmentBean.setAttachGuid(c.getString(c.getColumnIndex("AttachGuid")));
+                attachmentBean.setAttachFilename(c.getString(c.getColumnIndex("AttachFilename")));
+                attachmentBean.setPath(c.getString(c.getColumnIndex("Path")));
+                attachmentBean.setActivityId(c.getString(c.getColumnIndex("ActivityId")));
+                attachmentBean.setAddedBy(c.getString(c.getColumnIndex("AddedBy")));
+                attachmentBean.setModifiedBy(c.getString(c.getColumnIndex("ModifiedBy")));
+                attachmentBean.setModifiedDt(c.getString(c.getColumnIndex("ModifiedDt")));
+                attachmentBean.setIsDeleted(c.getString(c.getColumnIndex("IsDeleted")));
+                attachmentBean.setSourcetype(c.getString(c.getColumnIndex("Sourcetype")));
+                attachmentBean.setGPSId(c.getString(c.getColumnIndex("GPSId")));
+                attachmentBean.setAttachmentType(c.getString(c.getColumnIndex("AttachmentType")));
+                attachmentBean.setLatitude(c.getString(c.getColumnIndex("Latitude")));
+                attachmentBean.setLongitude(c.getString(c.getColumnIndex("Longitude")));
+                attachmentBean.setAttachmentCode(c.getString(c.getColumnIndex("AttachmentCode")));
+                attachmentBean.setAttachmentDesc(c.getString(c.getColumnIndex("AttachmentDesc")));
+
+                attachmentDetails.add(attachmentBean);
+            } while (c.moveToNext());
+
+        } else {
+
+        }
+
+
+        return attachmentDetails;
+
+
+    }
+
+
+    private void attachmentDetailsDialog(int pos) {
+
+        dialog1.setContentView(R.layout.sahara_dialog_attachments);
+
+        list_docList = dialog1.findViewById(R.id.ls_attachname);
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        list_docList.setLayoutManager(layoutManager);
+        // = new Sahara_AttachmentDetailsAdapter(DocumentReviewList.this, attachmentList , true);
+
+
+        sahara_attachmentDetailsAdapter = new Sahara_AttachmentDetailsAdapter(DocumentReviewList.this, attachmentList , true,"FromDocReview");
+        list_docList.setAdapter(sahara_attachmentDetailsAdapter);
+      /*  sahara_attachmentDetailsAdapter = new Sahara_AttachmentDetailsAdapter(EditDatasheetActivityMain.this,attachmentList);
+        ls_attachname.setAdapter(sahara_attachmentDetailsAdapter);*/
+        //getFilename();
+        dialog1.show();
+        dialog1.setCanceledOnTouchOutside(true);
+
+
+    }
+
+    public class DownloadReviewList extends AsyncTask<String, Void, String> {
+        String response="",res="";
+
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            String pkCssHeaderId = params[0];
+
+            String url = null;
+            try{
+                url  = CompanyURL+WebUrlClass.api_DocReviewList_Sahara + "?PkCssHeaderId="+pkCssHeaderId;
+                res = ut.OpenConnection(url,DocumentReviewList.this);
+                response = res;
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+
+
+
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            if(response != null){
+                try {
+                    documentReviewLists.clear();
+
+                    JSONArray jsonArray = new JSONArray(response);
+                    for(int i=0;i<jsonArray.length();i++){
+                        JSONObject jsonObject =jsonArray.getJSONObject(i);
+
+
+                        documentReviewListBean = new DocumentReviewListBean();
+                      //  documentReviewListBean.setPKDocumentId(jsonObject.getString("PKDocumentId"));
+                      //  documentReviewListBean.setPKDocumentId(jsonObject.getString("ISApprDisAppr"));
+                        documentReviewListBean.setPKCssDtlsID(jsonObject.getString("PKCssDtlsID"));
+                        documentReviewListBean.setQuesText(jsonObject.getString("QuesText"));
+                        documentReviewListBean.setKendra(jsonObject.getString("Kendra"));
+                        documentReviewListBean.setExtension(jsonObject.getString("Extension"));
+                        documentReviewListBean.setBEO(jsonObject.getString("BEO"));
+                        documentReviewListBean.setSequenceNo(Integer.parseInt(jsonObject.getString("SequenceNo")));
+                        documentReviewListBean.setResponsebycustomer(jsonObject.getString("Responsebycustomer"));
+                        documentReviewListBean.setAttachmentCount(jsonObject.getString("AttachmentCount"));
+
+
+
+                        documentReviewLists.add(documentReviewListBean);
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                if(documentReviewLists.size() != 0){
+                    docReviewListAdapter.updateList(documentReviewLists);
+                }
+
+            }
+        }
+    }
+
+
+
+
+
+    public void downloadFile(int adapterPosition, boolean isDownload) {
+        selectedPos = adapterPosition;
+        if (isDownload) {
+            String attachmentName1 = attachmentList.get(adapterPosition).getAttachFilename();
+            String path = attachmentList.get(adapterPosition).getPath();
+
+            if (ut.isNet(context)) {
+                String path1 = Environment.getExternalStorageDirectory()
+                        .toString();
+                File file = new File(path1 + "/" + "Sahara" + "/" + "File");
+                if (file.exists()) {
+                    final File fileNew = new File(file + "/" + attachmentName1);
+                    if (fileNew.exists()) {
+                        Handler handler = new Handler(context.getMainLooper());
+                        handler.post(new Runnable() {
+                            public void run() {
+                                urlGetMimeType(fileNew.getAbsolutePath());
+                                Toast.makeText(context, "File Already downloaded", Toast.LENGTH_SHORT).show();
+
+
+                                MimeTypeMap myMime = MimeTypeMap.getSingleton();
+                                Intent newIntent = new Intent(Intent.ACTION_VIEW);
+                                String mimeType = myMime.getMimeTypeFromExtension(fileNew.getAbsolutePath());
+                                newIntent.setDataAndType(Uri.fromFile(fileNew), mimeType);
+                                newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                try {
+                                    context.startActivity(newIntent);
+                                } catch (ActivityNotFoundException e) {
+                                    Toast.makeText(context, "No handler for this type of file.", Toast.LENGTH_LONG).show();
+                                }
+                                //((NotificationActivity)context).sendResult(directory.getName());
+
+
+                            }
+                        });
+                    } else {
+                        cllDownloadApi(path, attachmentName1);
+                   }
+                } else {
+                    cllDownloadApi(path, attachmentName1);
+                }
+            }
+
+        } else {
+
+            dialog = new BottomSheetDialog(this);
+            dialog.setContentView(R.layout.confim_ui);
+
+            dialog.show();
+
+          /*  AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Are you sure to delete?")
+                    .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // FIRE ZE MISSILES!
+                        }
+                    })
+                    .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // User cancelled the dialog
+                        }
+                    });
+            // Create the AlertDialog object and return it
+            builder.create();*/
+
+            // Toast.makeText(context, "Under development !!!..", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void urlGetMimeType(String path) {
+        File file = new File(path);
+        MimeTypeMap map = MimeTypeMap.getSingleton();
+        String ext = MimeTypeMap.getFileExtensionFromUrl(file.getName());
+        String type = map.getMimeTypeFromExtension(ext);
+
+        if (type == null)
+            type = "*/*";
+
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        Uri data = Uri.fromFile(file);
+
+        intent.setDataAndType(data, type);
+
+        startActivity(intent);
+    }
+
+    private void cllDownloadApi(final String path, final String attachmentName1) {
+        new StartSession(context, new CallbackInterface() {
+            @Override
+            public void callMethod() {
+                new DownloadFileApi().execute(path, attachmentName1);
+            }
+
+            @Override
+            public void callfailMethod(String msg) {
+                // ((NotificationActivity)context).showPhhopUp(false);
+            }
+        });
+    }
+
+    private class DownloadFileApi extends AsyncTask<String, Void, String> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            showDialog(progress_bar_type);
+
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+
+            String pathName = strings[0];
+            final String fileName = strings[1];
+            int count;
+            File file = null;
+            String urlStr = CompanyURL + "/Downloads/" + EnvMasterId + "/" + fileName;
+            try {
+                final String path1 = Environment.getExternalStorageDirectory()
+                        .toString();
+
+                if (Constants.type == Constants.Type.Sahara) {
+                    file = new File(path1 + "/" + "Sahara" + "/" + "File");
+
+                } else {
+                    file = new File(path1 + "/" + "Ekatm" + "/" + "File");
+                }
+                if (!file.exists())
+                    file.mkdirs();
+                //   pdfFile = new File(file + "/" + fileName);
+                // file1 = String.valueOf(pdfFile);
+
+
+                try {
+                    //pdfFile = File.createTempFile(filename /* prefix */,prefix, pdfFile /* directory */);
+
+                    final File fileNew = new File(file + "/" + fileName);
+                    fileNew.createNewFile();
+                    //downloadFileInloacl(url , new File(file + "/" + fileNew));
+
+                    try {
+                        urlStr = urlStr.replaceAll(" ", "%20");
+                        //final File directory =  new File(file + "/" + fileNew);
+                        URL url = new URL(urlStr);
+
+                        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                        urlConnection.connect();
+                        int lenghtOfFile = urlConnection.getContentLength();
+                        long total = 0;
+
+
+                        FileOutputStream fileOutputStream = new FileOutputStream(fileNew);
+                        InputStream inputStream = urlConnection.getInputStream();
+                        int totalSize = urlConnection.getContentLength();
+                        int serverResponseCode = urlConnection.getResponseCode();
+                        String serverResponseMessage = urlConnection.getResponseMessage();
+                        byte[] buffer = new byte[MEGABYTE];
+                        int bufferLength = 0;
+                        while ((bufferLength = inputStream.read(buffer)) > 0) {
+                            total += bufferLength;
+                            fileOutputStream.write(buffer, 0, bufferLength);
+                            onProgressUpdate("" + (int) ((total * 100) / lenghtOfFile));
+                        }
+                        fileOutputStream.close();
+                        Handler handler = new Handler(context.getMainLooper());
+                        handler.post(new Runnable() {
+                            public void run() {
+                                urlGetMimeType(fileNew.getAbsolutePath());
+                              /*  MimeTypeMap myMime = MimeTypeMap.getSingleton();
+                                Intent newIntent = new Intent(Intent.ACTION_VIEW);
+                                String mimeType = myMime.getMimeTypeFromExtension(fileNew.getAbsolutePath());
+                                newIntent.setDataAndType(Uri.fromFile(fileNew), mimeType);
+                                newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                try {
+                                    context.startActivity(newIntent);
+                                } catch (ActivityNotFoundException e) {
+                                    Toast.makeText(context, "No handler for this type of file.", Toast.LENGTH_LONG).show();
+                                }*/
+
+                            }
+                        });
+
+
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                        //((NotificationActivity)context).showPopUp(false);
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                        // ((NotificationActivity)context).showPopUp(false);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        //((NotificationActivity)context).showPopUp(false);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        //((NotificationActivity)context).showPopUp(false);
+                    }
+                    //publishProgress(""+(int)((total*100)/lenghtOfFile));
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                // ((NotificationActivity)context).showPopUp(false);
+            }
+            return null;
+        }
+
+        protected void onProgressUpdate(String... progress) {
+            // setting progress percentage
+            pDialog.setProgress(Integer.parseInt(progress[0]));
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            dismissDialog(progress_bar_type);
+        }
+    }
+
+
+    private void initView() {
+        list_docList = findViewById(R.id.list_docList);
+        txt_activityName = findViewById(R.id.txt_activityName);
+        documentReviewLists = new ArrayList<>();
+
+
+        docReviewListAdapter = new DocReviewListAdapter(DocumentReviewList.this, documentReviewLists);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        list_docList.setLayoutManager(mLayoutManager);
+        list_docList.setAdapter(docReviewListAdapter);
+
+    }
+
+
+}

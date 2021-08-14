@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\incremental\\mergeAlfaLavalDebugResources\\merged.dir\\values-et-rEE\\values-et-rEE.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Nilesh\\.gradle\\caches\\transforms-2\\files-2.1\\bcefe1a63aaad0e225ad14675b4e8bed\\datetimepicker-0.2.0\\res\\values-et-rEE\\values-et-rEE.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10,11,12,13,14",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "222,326,439,515,623,739,850,938,1026,1117,1200",
+                        "endColumns": "103,112,75,107,115,110,87,87,90,82,95",
+                        "endOffsets": "321,434,510,618,734,845,933,1021,1112,1195,1291"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,209,322,398,506,622,733,821,909,1000,1083",
+                        "endColumns": "103,112,75,107,115,110,87,87,90,82,95",
+                        "endOffsets": "204,317,393,501,617,728,816,904,995,1078,1174"
+                    }
+                }
+            ]
+        }
+    ]
+}

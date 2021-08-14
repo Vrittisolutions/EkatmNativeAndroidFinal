@@ -1,0 +1,1753 @@
+-- Merging decision tree log ---
+provider#android.support.v4.content.FileProvider
+INJECTED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:431:9-439:20
+INJECTED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:567:9-575:20
+	android:authorities
+		INJECTED from D:\ICAI\PM\app\src\main\AndroidManifest.xml
+		INJECTED from D:\ICAI\PM\app\src\main\AndroidManifest.xml
+manifest
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:2:1-590:12
+INJECTED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:2:1-590:12
+INJECTED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:2:1-590:12
+INJECTED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:2:1-590:12
+MERGED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:2:1-590:12
+MERGED from [com.android.support:multidex:1.0.3] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\multidex-1.0.3.aar\602a2a878860a26ed5de7d07aef68f80\AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.firebase:firebase-core:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-core-11.4.0.aar\953a6d1e451e1e025e9b98e41547337d\AndroidManifest.xml:2:1-6:12
+MERGED from [:sessionlib] D:\ICAI\PM\sessionlib\build\intermediates\manifests\full\debug\AndroidManifest.xml:2:1-15:12
+MERGED from [:databaselib] D:\ICAI\PM\databaselib\build\intermediates\manifests\full\debug\AndroidManifest.xml:2:1-19:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\c7faef5a9bd820f7c2fba1bed9c3ebd5\AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:design:27.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\2a4762706393415c04fa065e59894d9a\AndroidManifest.xml:17:1-22:12
+MERGED from [com.github.hani-momanii:SuperNova-Emoji:1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\SuperNova-Emoji-1.1.aar\53e46f8ca5ef55fc7a0c6e6faf85f9ab\AndroidManifest.xml:2:1-10:12
+MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\5884a9e050e35099195b21c74cc8f9cd\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:cardview-v7:27.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.1.1.aar\8ce17d3cfa170d27a97ca4385f064cfe\AndroidManifest.xml:17:1-22:12
+MERGED from [com.yarolegovich:lovely-dialog:1.0.7] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\lovely-dialog-1.0.7.aar\5593b59aef996574df6163ec375f206e\AndroidManifest.xml:2:1-12:12
+MERGED from [life.knowledge4:k4l-video-trimmer:1.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\k4l-video-trimmer-1.0.aar\ce8e68a043d9a9ecfe0d4b111928de0c\AndroidManifest.xml:2:1-16:12
+MERGED from [com.google.android.gms:play-services:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-11.4.0.aar\a6a9a639e2185d6e956cf3fc27281bd7\AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.android.gms:play-services-cast-framework:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-cast-framework-11.4.0.aar\2b9cd841ea3269e9b451a9b832003909\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-cast:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-cast-11.4.0.aar\c4dcc4afd5bb24f766280f416e367a39\AndroidManifest.xml:16:1-19:12
+MERGED from [com.android.support:mediarouter-v7:25.2.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\mediarouter-v7-25.2.0.aar\83e83954abdb02f5f9d28b49dcc7cbe8\AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\f97f8d62f38123e53f27e5349b3785a0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.jakewharton:butterknife:8.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\butterknife-8.4.0.aar\fe2f9599dcaf051ace67ef0571ff51c4\AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.firebase:firebase-messaging:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-messaging-11.4.0.aar\aecef1ccdbd01b386c0946aca7d54fd5\AndroidManifest.xml:16:1-30:12
+MERGED from [com.jpardogo.googleprogressbar:library:1.2.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\library-1.2.0.aar\9e77e7b1f1f871f53cc4ab993ae0ee60\AndroidManifest.xml:2:1-14:12
+MERGED from [com.github.citux:datetimepicker:0.2.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\datetimepicker-0.2.0.aar\8906d3585d46b2715ac85166304b9464\AndroidManifest.xml:17:1-30:12
+MERGED from [com.toptoche.searchablespinner:searchablespinnerlibrary:1.3.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\searchablespinnerlibrary-1.3.1.aar\2d28aa3ab164e7547a8b7804f448e960\AndroidManifest.xml:2:1-17:12
+MERGED from [com.devs:acr:1.0.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\acr-1.0.1.aar\6be5fbade9ebf9429fb530dafa8ae864\AndroidManifest.xml:2:1-21:12
+MERGED from [de.hdodenhof:circleimageview:1.3.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\circleimageview-1.3.0.aar\aa6afd00987ee433d7620a33c79d1375\AndroidManifest.xml:2:1-11:12
+MERGED from [se.emilsjolander:stickylistheaders:2.3.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\stickylistheaders-2.3.0.aar\b1966bcfe38dd5e20506567fb269c362\AndroidManifest.xml:1:112-5:12
+MERGED from [jp.wasabeef:picasso-transformations:2.1.2] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\picasso-transformations-2.1.2.aar\8a14598fdbb5753846b4e3c94bd79548\AndroidManifest.xml:2:1-12:12
+MERGED from [jp.wasabeef:glide-transformations:3.0.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\glide-transformations-3.0.1.aar\a12880e667f82e04cd8e4e2fecf79ead\AndroidManifest.xml:2:1-12:12
+MERGED from [jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\gpuimage-library-1.4.1.aar\6895aa0d9e8e3a824f91401d010e1518\AndroidManifest.xml:2:1-12:12
+MERGED from [net.the4thdimension:audio-wife:1.0.3] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\audio-wife-1.0.3.aar\60c1b0aacad530e001aecade2ae2bb1e\AndroidManifest.xml:2:1-16:12
+MERGED from [com.github.rtoshiro.fullscreenvideoview:fullscreenvideoview:1.1.2] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\fullscreenvideoview-1.1.2.aar\4aacdf712e3d54b23c52389f91ec2cb7\AndroidManifest.xml:2:1-11:12
+MERGED from [me.leolin:ShortcutBadger:1.1.3] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\ShortcutBadger-1.1.3.aar\9fed57e13d32814717ea9467ba285c93\AndroidManifest.xml:2:1-35:12
+MERGED from [com.github.ozodrukh:CircularReveal:1.1.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\CircularReveal-1.1.0.aar\2e957d7d6894a1e2fa854287e71f56ae\AndroidManifest.xml:2:1-12:12
+MERGED from [com.google.firebase:firebase-crash:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-crash-11.4.0.aar\90c5f6978db22c1760e5917f2b9df401\AndroidManifest.xml:16:1-25:12
+MERGED from [com.google.android.gms:play-services-tagmanager:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-tagmanager-11.4.0.aar\557fddccc78fa36ba2f5b9d4360d4c79\AndroidManifest.xml:16:1-18:12
+MERGED from [com.google.android.gms:play-services-tagmanager-api:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-tagmanager-api-11.4.0.aar\ea2335ab0b095e8d532af30153bddd02\AndroidManifest.xml:16:1-34:12
+MERGED from [com.google.firebase:firebase-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.4.0.aar\ef2a7f546d06860665ca46342d066f81\AndroidManifest.xml:16:1-35:12
+MERGED from [com.android.support:transition:27.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\79fd5d029603fd2a969bc12eb38c9a94\AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.firebase:firebase-config:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-config-11.4.0.aar\ab39282399fa0066e94cddf77dcbec33\AndroidManifest.xml:16:1-19:12
+MERGED from [com.google.firebase:firebase-analytics-impl:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-11.4.0.aar\0b63c330d9c2d79b559848c860eabf95\AndroidManifest.xml:16:1-29:12
+MERGED from [com.google.firebase:firebase-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.4.0.aar\dc92b764d0da687f1158d58df0f3eaed\AndroidManifest.xml:16:1-50:12
+MERGED from [com.google.firebase:firebase-auth:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-auth-11.4.0.aar\28e973fb5338ff6fe49736de9be1f4a2\AndroidManifest.xml:16:1-21:12
+MERGED from [com.google.firebase:firebase-database:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-database-11.4.0.aar\e57be9c6a88a462724df351378837bea\AndroidManifest.xml:2:1-4:12
+MERGED from [com.google.firebase:firebase-database-connection:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-database-connection-11.4.0.aar\eda63fe2c377552a2e90ba12f572c18f\AndroidManifest.xml:2:1-4:12
+MERGED from [com.google.android.gms:play-services-appinvite:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-appinvite-11.4.0.aar\0e5b7874acdf8221e6d7df81d8c6eea7\AndroidManifest.xml:16:1-27:12
+MERGED from [com.google.firebase:firebase-dynamic-links:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-dynamic-links-11.4.0.aar\4fd785be5bb65b19ee59316b043fe262\AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.firebase:firebase-storage:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-storage-11.4.0.aar\9b6338633318f0bdea1a9942979d7e5b\AndroidManifest.xml:2:1-4:12
+MERGED from [com.google.firebase:firebase-appindexing:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-appindexing-11.4.0.aar\f1e4b806335aacfafe69988db158a3d7\AndroidManifest.xml:16:1-19:12
+MERGED from [com.google.firebase:firebase-common:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-common-11.4.0.aar\0f421b01b19090c2581eccea5bb7c645\AndroidManifest.xml:2:1-8:12
+MERGED from [com.google.android.gms:play-services-ads:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-ads-11.4.0.aar\221fcb5421463952bc1929d2b20f9611\AndroidManifest.xml:16:1-18:12
+MERGED from [com.google.android.gms:play-services-ads-lite:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-ads-lite-11.4.0.aar\da1f98b3ef3e65fd00cf752a40c947a2\AndroidManifest.xml:16:1-27:12
+MERGED from [com.google.android.gms:play-services-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-analytics-11.4.0.aar\0174c024ef34c89c7e0d256b3499209e\AndroidManifest.xml:16:1-33:12
+MERGED from [com.google.android.gms:play-services-tagmanager-v4-impl:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-tagmanager-v4-impl-11.4.0.aar\4bfc897d80e00d18a87d78eba123c5f5\AndroidManifest.xml:16:1-20:12
+MERGED from [com.google.android.gms:play-services-analytics-impl:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-analytics-impl-11.4.0.aar\a0e244426750cd7a0f1f9967b278857c\AndroidManifest.xml:16:1-27:12
+MERGED from [com.google.android.gms:play-services-auth:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-auth-11.4.0.aar\0cef4207726a2bff59a2238dce1c1322\AndroidManifest.xml:16:1-26:12
+MERGED from [com.google.android.gms:play-services-auth-api-phone:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-auth-api-phone-11.4.0.aar\e632352da63ece663eaf239c82a021a8\AndroidManifest.xml:2:1-4:12
+MERGED from [com.google.android.gms:play-services-auth-base:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-auth-base-11.4.0.aar\c29037ffb535d0e93f0242b2228cd679\AndroidManifest.xml:2:1-5:12
+MERGED from [com.google.android.gms:play-services-awareness:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-awareness-11.4.0.aar\ecd93646d5716f3d03a52b3d9813a85a\AndroidManifest.xml:16:1-19:12
+MERGED from [com.google.android.gms:play-services-games:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-games-11.4.0.aar\13d42c0fe27df5c4b2b22a83cc7024c7\AndroidManifest.xml:16:1-19:12
+MERGED from [com.google.android.gms:play-services-drive:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-drive-11.4.0.aar\7a768b88e7b47fb28add10274a07b8f8\AndroidManifest.xml:16:1-19:12
+MERGED from [com.google.android.gms:play-services-fido:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-fido-11.4.0.aar\733c529352e6321d53abd98a6a1178b3\AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-fitness:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-fitness-11.4.0.aar\ff12cab9d27b63faba3a76be5365eaeb\AndroidManifest.xml:16:1-19:12
+MERGED from [com.google.android.gms:play-services-gcm:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-gcm-11.4.0.aar\06cb1e10d02824ce08152b5f6cdc1a11\AndroidManifest.xml:16:1-24:12
+MERGED from [com.google.android.gms:play-services-wallet:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-wallet-11.4.0.aar\449d43424a619cb6619e1eec79fb442d\AndroidManifest.xml:16:1-20:12
+MERGED from [com.google.android.gms:play-services-identity:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-identity-11.4.0.aar\ada84b9215f4c2b0c6de7e6de8a8c409\AndroidManifest.xml:16:1-19:12
+MERGED from [com.google.android.gms:play-services-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-iid-11.4.0.aar\34a9e287b50c8c27d01e0b820f367bf2\AndroidManifest.xml:16:1-24:12
+MERGED from [com.google.android.gms:play-services-instantapps:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-instantapps-11.4.0.aar\dd5c541a28b81dcca958da91e6fa409b\AndroidManifest.xml:2:1-4:12
+MERGED from [com.google.android.gms:play-services-location:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-location-11.4.0.aar\700a7f95ab76a7eaf3356629a9b7cc41\AndroidManifest.xml:2:1-5:12
+MERGED from [com.google.android.gms:play-services-places:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-places-11.4.0.aar\9c60aaf505b6efc267b09f4bf5566d34\AndroidManifest.xml:16:1-19:12
+MERGED from [com.google.android.gms:play-services-maps:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-maps-11.4.0.aar\cdcbeb09598d972e93f8a243773f0bc6\AndroidManifest.xml:16:1-25:12
+MERGED from [com.google.android.gms:play-services-nearby:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-nearby-11.4.0.aar\5f54a278deb58dab47c6b34cd9d970ec\AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.android.gms:play-services-panorama:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-panorama-11.4.0.aar\6d9010319d5f029e2b695ce43def98a7\AndroidManifest.xml:16:1-19:12
+MERGED from [com.google.android.gms:play-services-plus:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-plus-11.4.0.aar\eeae1b0daef9ffb3826b73e5df3a0552\AndroidManifest.xml:16:1-19:12
+MERGED from [com.google.android.gms:play-services-safetynet:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-safetynet-11.4.0.aar\e3a043d1d50019d4dbb5645a76aa5d59\AndroidManifest.xml:16:1-19:12
+MERGED from [com.google.android.gms:play-services-vision:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-vision-11.4.0.aar\6286939674e180e1fddf6b9e0fd7bd77\AndroidManifest.xml:2:1-5:12
+MERGED from [com.google.android.gms:play-services-vision-common:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-vision-common-11.4.0.aar\41a1286fa45602e273eeec10279e27b1\AndroidManifest.xml:2:1-5:12
+MERGED from [com.google.android.gms:play-services-wearable:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-wearable-11.4.0.aar\b99ebeda1d105df66c1f9e0a33d5ebff\AndroidManifest.xml:16:1-19:12
+MERGED from [com.google.android.gms:play-services-base:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-base-11.4.0.aar\8dd36e9b80d851ee437d5fdf6e7eb9e4\AndroidManifest.xml:16:1-21:12
+MERGED from [com.google.firebase:firebase-storage-common:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-storage-common-11.4.0.aar\8e028ed3b2051de932a9176d29242d47\AndroidManifest.xml:2:1-4:12
+MERGED from [com.google.android.gms:play-services-gass:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-gass-11.4.0.aar\219cd8765258e7e1ec57362b6c1b4ed4\AndroidManifest.xml:2:1-5:12
+MERGED from [com.google.android.gms:play-services-tasks:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-tasks-11.4.0.aar\6c69619cb7640231d0b149cf3ba7913b\AndroidManifest.xml:2:1-5:12
+MERGED from [com.google.android.gms:play-services-basement:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-basement-11.4.0.aar\3b3df02da2c9457547effd7988efef67\AndroidManifest.xml:16:1-23:12
+MERGED from [com.android.support:support-v13:23.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\support-v13-23.1.1.aar\aef59a1725145bd168a440d624311ee6\AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:support-v4:27.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\bae2c046bcdb7a687ab3aadf44644cab\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\e79fe9660ad735a4a3580c6655c49cc8\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\4875ad5f28a4ab4024653ec57f84dcf1\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\26bc4ba642a94c053ed20bad4c30ac3f\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\185839ff4a334bc701c2f2777253c2b2\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\e84b199e7cbf2eaded57ac71a0a6757f\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:palette-v7:25.2.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\palette-v7-25.2.0.aar\f6e5f7741fde6e592e4466fd7a9ba6eb\AndroidManifest.xml:17:1-25:12
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\d2b351db6f8975c27e9398e74de11209\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\36558538b602a41a3f8b7493d79908f8\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\b91e0e59cfe5c41e009ad6b14afc0c56\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\d0a4aaafdfa75704b591a45ffe1d441c\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\e7223542a41c0c783dc8a77888b85693\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\9334930acf9a3e80c9dd912fe577c502\AndroidManifest.xml:17:1-22:12
+INJECTED from D:\ICAI\PM\app\src\PM\AndroidManifest.xml:2:1-39:12
+INJECTED from D:\ICAI\PM\app\src\PM\AndroidManifest.xml:2:1-39:12
+INJECTED from D:\ICAI\PM\app\src\PM\AndroidManifest.xml:2:1-39:12
+	package
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:3:5-31
+		INJECTED from D:\ICAI\PM\app\src\main\AndroidManifest.xml
+		INJECTED from D:\ICAI\PM\app\src\PM\AndroidManifest.xml
+	android:versionName
+		INJECTED from D:\ICAI\PM\app\src\main\AndroidManifest.xml
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:2:1-590:12
+		INJECTED from D:\ICAI\PM\app\src\PM\AndroidManifest.xml
+	xmlns:tools
+		ADDED from D:\ICAI\PM\app\src\PM\AndroidManifest.xml:3:5-51
+	android:versionCode
+		INJECTED from D:\ICAI\PM\app\src\main\AndroidManifest.xml
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:2:1-590:12
+		INJECTED from D:\ICAI\PM\app\src\PM\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:4:5-75
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:4:22-72
+uses-permission#android.permission.INTERNET
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:6:5-67
+MERGED from [:databaselib] D:\ICAI\PM\databaselib\build\intermediates\manifests\full\debug\AndroidManifest.xml:11:5-67
+MERGED from [:databaselib] D:\ICAI\PM\databaselib\build\intermediates\manifests\full\debug\AndroidManifest.xml:11:5-67
+MERGED from [com.google.firebase:firebase-crash:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-crash-11.4.0.aar\90c5f6978db22c1760e5917f2b9df401\AndroidManifest.xml:18:5-66
+MERGED from [com.google.firebase:firebase-crash:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-crash-11.4.0.aar\90c5f6978db22c1760e5917f2b9df401\AndroidManifest.xml:18:5-66
+MERGED from [com.google.android.gms:play-services-tagmanager-api:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-tagmanager-api-11.4.0.aar\ea2335ab0b095e8d532af30153bddd02\AndroidManifest.xml:20:5-66
+MERGED from [com.google.android.gms:play-services-tagmanager-api:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-tagmanager-api-11.4.0.aar\ea2335ab0b095e8d532af30153bddd02\AndroidManifest.xml:20:5-66
+MERGED from [com.google.firebase:firebase-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.4.0.aar\ef2a7f546d06860665ca46342d066f81\AndroidManifest.xml:20:5-66
+MERGED from [com.google.firebase:firebase-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.4.0.aar\ef2a7f546d06860665ca46342d066f81\AndroidManifest.xml:20:5-66
+MERGED from [com.google.firebase:firebase-analytics-impl:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-11.4.0.aar\0b63c330d9c2d79b559848c860eabf95\AndroidManifest.xml:20:5-66
+MERGED from [com.google.firebase:firebase-analytics-impl:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-11.4.0.aar\0b63c330d9c2d79b559848c860eabf95\AndroidManifest.xml:20:5-66
+MERGED from [com.google.firebase:firebase-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.4.0.aar\dc92b764d0da687f1158d58df0f3eaed\AndroidManifest.xml:20:5-66
+MERGED from [com.google.firebase:firebase-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.4.0.aar\dc92b764d0da687f1158d58df0f3eaed\AndroidManifest.xml:20:5-66
+MERGED from [com.google.android.gms:play-services-appinvite:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-appinvite-11.4.0.aar\0e5b7874acdf8221e6d7df81d8c6eea7\AndroidManifest.xml:18:5-66
+MERGED from [com.google.android.gms:play-services-appinvite:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-appinvite-11.4.0.aar\0e5b7874acdf8221e6d7df81d8c6eea7\AndroidManifest.xml:18:5-66
+MERGED from [com.google.android.gms:play-services-ads-lite:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-ads-lite-11.4.0.aar\da1f98b3ef3e65fd00cf752a40c947a2\AndroidManifest.xml:19:5-66
+MERGED from [com.google.android.gms:play-services-ads-lite:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-ads-lite-11.4.0.aar\da1f98b3ef3e65fd00cf752a40c947a2\AndroidManifest.xml:19:5-66
+MERGED from [com.google.android.gms:play-services-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-analytics-11.4.0.aar\0174c024ef34c89c7e0d256b3499209e\AndroidManifest.xml:20:5-66
+MERGED from [com.google.android.gms:play-services-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-analytics-11.4.0.aar\0174c024ef34c89c7e0d256b3499209e\AndroidManifest.xml:20:5-66
+MERGED from [com.google.android.gms:play-services-analytics-impl:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-analytics-impl-11.4.0.aar\a0e244426750cd7a0f1f9967b278857c\AndroidManifest.xml:20:5-66
+MERGED from [com.google.android.gms:play-services-analytics-impl:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-analytics-impl-11.4.0.aar\a0e244426750cd7a0f1f9967b278857c\AndroidManifest.xml:20:5-66
+MERGED from [com.google.android.gms:play-services-gcm:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-gcm-11.4.0.aar\06cb1e10d02824ce08152b5f6cdc1a11\AndroidManifest.xml:21:5-66
+MERGED from [com.google.android.gms:play-services-gcm:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-gcm-11.4.0.aar\06cb1e10d02824ce08152b5f6cdc1a11\AndroidManifest.xml:21:5-66
+MERGED from [com.google.android.gms:play-services-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-iid-11.4.0.aar\34a9e287b50c8c27d01e0b820f367bf2\AndroidManifest.xml:21:5-66
+MERGED from [com.google.android.gms:play-services-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-iid-11.4.0.aar\34a9e287b50c8c27d01e0b820f367bf2\AndroidManifest.xml:21:5-66
+MERGED from [com.google.android.gms:play-services-maps:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-maps-11.4.0.aar\cdcbeb09598d972e93f8a243773f0bc6\AndroidManifest.xml:20:5-66
+MERGED from [com.google.android.gms:play-services-maps:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-maps-11.4.0.aar\cdcbeb09598d972e93f8a243773f0bc6\AndroidManifest.xml:20:5-66
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:6:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:7:5-79
+MERGED from [:databaselib] D:\ICAI\PM\databaselib\build\intermediates\manifests\full\debug\AndroidManifest.xml:12:5-79
+MERGED from [:databaselib] D:\ICAI\PM\databaselib\build\intermediates\manifests\full\debug\AndroidManifest.xml:12:5-79
+MERGED from [com.google.android.gms:play-services-tagmanager-api:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-tagmanager-api-11.4.0.aar\ea2335ab0b095e8d532af30153bddd02\AndroidManifest.xml:21:5-78
+MERGED from [com.google.android.gms:play-services-tagmanager-api:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-tagmanager-api-11.4.0.aar\ea2335ab0b095e8d532af30153bddd02\AndroidManifest.xml:21:5-78
+MERGED from [com.google.firebase:firebase-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.4.0.aar\ef2a7f546d06860665ca46342d066f81\AndroidManifest.xml:21:5-78
+MERGED from [com.google.firebase:firebase-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.4.0.aar\ef2a7f546d06860665ca46342d066f81\AndroidManifest.xml:21:5-78
+MERGED from [com.google.firebase:firebase-analytics-impl:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-11.4.0.aar\0b63c330d9c2d79b559848c860eabf95\AndroidManifest.xml:21:5-78
+MERGED from [com.google.firebase:firebase-analytics-impl:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-11.4.0.aar\0b63c330d9c2d79b559848c860eabf95\AndroidManifest.xml:21:5-78
+MERGED from [com.google.firebase:firebase-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.4.0.aar\dc92b764d0da687f1158d58df0f3eaed\AndroidManifest.xml:19:5-78
+MERGED from [com.google.firebase:firebase-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.4.0.aar\dc92b764d0da687f1158d58df0f3eaed\AndroidManifest.xml:19:5-78
+MERGED from [com.google.android.gms:play-services-ads-lite:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-ads-lite-11.4.0.aar\da1f98b3ef3e65fd00cf752a40c947a2\AndroidManifest.xml:20:5-78
+MERGED from [com.google.android.gms:play-services-ads-lite:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-ads-lite-11.4.0.aar\da1f98b3ef3e65fd00cf752a40c947a2\AndroidManifest.xml:20:5-78
+MERGED from [com.google.android.gms:play-services-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-analytics-11.4.0.aar\0174c024ef34c89c7e0d256b3499209e\AndroidManifest.xml:21:5-78
+MERGED from [com.google.android.gms:play-services-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-analytics-11.4.0.aar\0174c024ef34c89c7e0d256b3499209e\AndroidManifest.xml:21:5-78
+MERGED from [com.google.android.gms:play-services-analytics-impl:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-analytics-impl-11.4.0.aar\a0e244426750cd7a0f1f9967b278857c\AndroidManifest.xml:21:5-78
+MERGED from [com.google.android.gms:play-services-analytics-impl:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-analytics-impl-11.4.0.aar\a0e244426750cd7a0f1f9967b278857c\AndroidManifest.xml:21:5-78
+MERGED from [com.google.android.gms:play-services-maps:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-maps-11.4.0.aar\cdcbeb09598d972e93f8a243773f0bc6\AndroidManifest.xml:19:5-78
+MERGED from [com.google.android.gms:play-services-maps:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-maps-11.4.0.aar\cdcbeb09598d972e93f8a243773f0bc6\AndroidManifest.xml:19:5-78
+MERGED from [com.google.android.gms:play-services-nearby:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-nearby-11.4.0.aar\5f54a278deb58dab47c6b34cd9d970ec\AndroidManifest.xml:4:5-78
+MERGED from [com.google.android.gms:play-services-nearby:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-nearby-11.4.0.aar\5f54a278deb58dab47c6b34cd9d970ec\AndroidManifest.xml:4:5-78
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:7:22-76
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:8:5-79
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:8:22-76
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:9:5-81
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:9:22-78
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:10:5-76
+MERGED from [:databaselib] D:\ICAI\PM\databaselib\build\intermediates\manifests\full\debug\AndroidManifest.xml:13:5-76
+MERGED from [:databaselib] D:\ICAI\PM\databaselib\build\intermediates\manifests\full\debug\AndroidManifest.xml:13:5-76
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:10:22-73
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:11:5-80
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:11:22-77
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:12:5-81
+MERGED from [life.knowledge4:k4l-video-trimmer:1.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\k4l-video-trimmer-1.0.aar\ce8e68a043d9a9ecfe0d4b111928de0c\AndroidManifest.xml:11:5-81
+MERGED from [life.knowledge4:k4l-video-trimmer:1.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\k4l-video-trimmer-1.0.aar\ce8e68a043d9a9ecfe0d4b111928de0c\AndroidManifest.xml:11:5-81
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:12:22-78
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:13:5-81
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:13:22-78
+uses-permission#android.permission.SYSTEM_ALERT_WINDOW
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:14:5-78
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:14:22-75
+uses-permission#android.permission.RECEIVE_SMS
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:15:5-70
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:15:22-67
+uses-permission#android.permission.READ_SMS
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:16:5-67
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:16:22-64
+uses-permission#android.permission.WRITE_SMS
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:17:5-68
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:17:22-65
+uses-permission#android.permission.SEND_SMS
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:18:5-67
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:18:22-64
+uses-feature#android.hardware.camera
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:19:5-59
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:19:19-57
+uses-feature#android.hardware.camera.autofocus
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:20:5-69
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:20:19-67
+uses-permission#android.permission.CAMERA
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:21:5-65
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:21:22-62
+uses-permission#android.permission.RECORD_AUDIO
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:22:5-70
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:22:22-68
+uses-permission#android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:23:5-24:81
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:24:9-79
+uses-permission#com.google.android.c2dm.permission.RECEIVE
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:25:5-82
+MERGED from [com.google.firebase:firebase-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.4.0.aar\dc92b764d0da687f1158d58df0f3eaed\AndroidManifest.xml:22:5-81
+MERGED from [com.google.firebase:firebase-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.4.0.aar\dc92b764d0da687f1158d58df0f3eaed\AndroidManifest.xml:22:5-81
+MERGED from [com.google.android.gms:play-services-gcm:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-gcm-11.4.0.aar\06cb1e10d02824ce08152b5f6cdc1a11\AndroidManifest.xml:20:5-81
+MERGED from [com.google.android.gms:play-services-gcm:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-gcm-11.4.0.aar\06cb1e10d02824ce08152b5f6cdc1a11\AndroidManifest.xml:20:5-81
+MERGED from [com.google.android.gms:play-services-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-iid-11.4.0.aar\34a9e287b50c8c27d01e0b820f367bf2\AndroidManifest.xml:20:5-81
+MERGED from [com.google.android.gms:play-services-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-iid-11.4.0.aar\34a9e287b50c8c27d01e0b820f367bf2\AndroidManifest.xml:20:5-81
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:25:22-79
+uses-permission#android.permission.WAKE_LOCK
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:26:5-68
+MERGED from [com.google.firebase:firebase-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.4.0.aar\ef2a7f546d06860665ca46342d066f81\AndroidManifest.xml:22:5-67
+MERGED from [com.google.firebase:firebase-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.4.0.aar\ef2a7f546d06860665ca46342d066f81\AndroidManifest.xml:22:5-67
+MERGED from [com.google.firebase:firebase-analytics-impl:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-11.4.0.aar\0b63c330d9c2d79b559848c860eabf95\AndroidManifest.xml:22:5-67
+MERGED from [com.google.firebase:firebase-analytics-impl:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-11.4.0.aar\0b63c330d9c2d79b559848c860eabf95\AndroidManifest.xml:22:5-67
+MERGED from [com.google.firebase:firebase-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.4.0.aar\dc92b764d0da687f1158d58df0f3eaed\AndroidManifest.xml:21:5-67
+MERGED from [com.google.firebase:firebase-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.4.0.aar\dc92b764d0da687f1158d58df0f3eaed\AndroidManifest.xml:21:5-67
+MERGED from [com.google.android.gms:play-services-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-analytics-11.4.0.aar\0174c024ef34c89c7e0d256b3499209e\AndroidManifest.xml:24:5-67
+MERGED from [com.google.android.gms:play-services-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-analytics-11.4.0.aar\0174c024ef34c89c7e0d256b3499209e\AndroidManifest.xml:24:5-67
+MERGED from [com.google.android.gms:play-services-analytics-impl:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-analytics-impl-11.4.0.aar\a0e244426750cd7a0f1f9967b278857c\AndroidManifest.xml:24:5-67
+MERGED from [com.google.android.gms:play-services-analytics-impl:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-analytics-impl-11.4.0.aar\a0e244426750cd7a0f1f9967b278857c\AndroidManifest.xml:24:5-67
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:26:22-65
+uses-permission#common.permission.MAPS_RECEIVE
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:27:5-29:47
+	android:protectionLevel
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:29:9-44
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:28:9-54
+uses-permission#com.javapapers.currentlocationinmap.permission.MAPS_RECEIVE
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:31:5-99
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:31:22-96
+supports-screens
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:33:5-39:40
+	android:largeScreens
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:35:9-36
+	android:smallScreens
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:38:9-36
+	android:normalScreens
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:36:9-37
+	android:xlargeScreens
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:39:9-37
+	android:resizeable
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:37:9-34
+	android:anyDensity
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:34:9-34
+application
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:41:5-588:19
+MERGED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:41:5-588:19
+MERGED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:41:5-588:19
+MERGED from [com.google.firebase:firebase-core:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-core-11.4.0.aar\953a6d1e451e1e025e9b98e41547337d\AndroidManifest.xml:5:5-20
+MERGED from [com.google.firebase:firebase-core:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-core-11.4.0.aar\953a6d1e451e1e025e9b98e41547337d\AndroidManifest.xml:5:5-20
+MERGED from [:sessionlib] D:\ICAI\PM\sessionlib\build\intermediates\manifests\full\debug\AndroidManifest.xml:11:5-13:19
+MERGED from [:sessionlib] D:\ICAI\PM\sessionlib\build\intermediates\manifests\full\debug\AndroidManifest.xml:11:5-13:19
+MERGED from [:databaselib] D:\ICAI\PM\databaselib\build\intermediates\manifests\full\debug\AndroidManifest.xml:15:5-17:19
+MERGED from [:databaselib] D:\ICAI\PM\databaselib\build\intermediates\manifests\full\debug\AndroidManifest.xml:15:5-17:19
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\c7faef5a9bd820f7c2fba1bed9c3ebd5\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\c7faef5a9bd820f7c2fba1bed9c3ebd5\AndroidManifest.xml:9:5-20
+MERGED from [life.knowledge4:k4l-video-trimmer:1.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\k4l-video-trimmer-1.0.aar\ce8e68a043d9a9ecfe0d4b111928de0c\AndroidManifest.xml:13:5-14:19
+MERGED from [life.knowledge4:k4l-video-trimmer:1.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\k4l-video-trimmer-1.0.aar\ce8e68a043d9a9ecfe0d4b111928de0c\AndroidManifest.xml:13:5-14:19
+MERGED from [com.google.android.gms:play-services:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-11.4.0.aar\a6a9a639e2185d6e956cf3fc27281bd7\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-11.4.0.aar\a6a9a639e2185d6e956cf3fc27281bd7\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-cast-framework:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-cast-framework-11.4.0.aar\2b9cd841ea3269e9b451a9b832003909\AndroidManifest.xml:4:5-8:19
+MERGED from [com.google.android.gms:play-services-cast-framework:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-cast-framework-11.4.0.aar\2b9cd841ea3269e9b451a9b832003909\AndroidManifest.xml:4:5-8:19
+MERGED from [com.google.android.gms:play-services-cast:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-cast-11.4.0.aar\c4dcc4afd5bb24f766280f416e367a39\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-cast:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-cast-11.4.0.aar\c4dcc4afd5bb24f766280f416e367a39\AndroidManifest.xml:18:5-19
+MERGED from [com.android.support:mediarouter-v7:25.2.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\mediarouter-v7-25.2.0.aar\83e83954abdb02f5f9d28b49dcc7cbe8\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:mediarouter-v7:25.2.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\mediarouter-v7-25.2.0.aar\83e83954abdb02f5f9d28b49dcc7cbe8\AndroidManifest.xml:22:5-20
+MERGED from [com.google.firebase:firebase-messaging:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-messaging-11.4.0.aar\aecef1ccdbd01b386c0946aca7d54fd5\AndroidManifest.xml:19:5-29:19
+MERGED from [com.google.firebase:firebase-messaging:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-messaging-11.4.0.aar\aecef1ccdbd01b386c0946aca7d54fd5\AndroidManifest.xml:19:5-29:19
+MERGED from [com.jpardogo.googleprogressbar:library:1.2.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\library-1.2.0.aar\9e77e7b1f1f871f53cc4ab993ae0ee60\AndroidManifest.xml:12:5-20
+MERGED from [com.jpardogo.googleprogressbar:library:1.2.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\library-1.2.0.aar\9e77e7b1f1f871f53cc4ab993ae0ee60\AndroidManifest.xml:12:5-20
+MERGED from [com.github.citux:datetimepicker:0.2.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\datetimepicker-0.2.0.aar\8906d3585d46b2715ac85166304b9464\AndroidManifest.xml:28:5-20
+MERGED from [com.github.citux:datetimepicker:0.2.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\datetimepicker-0.2.0.aar\8906d3585d46b2715ac85166304b9464\AndroidManifest.xml:28:5-20
+MERGED from [com.toptoche.searchablespinner:searchablespinnerlibrary:1.3.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\searchablespinnerlibrary-1.3.1.aar\2d28aa3ab164e7547a8b7804f448e960\AndroidManifest.xml:11:5-15:19
+MERGED from [com.toptoche.searchablespinner:searchablespinnerlibrary:1.3.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\searchablespinnerlibrary-1.3.1.aar\2d28aa3ab164e7547a8b7804f448e960\AndroidManifest.xml:11:5-15:19
+MERGED from [com.devs:acr:1.0.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\acr-1.0.1.aar\6be5fbade9ebf9429fb530dafa8ae864\AndroidManifest.xml:11:5-19:19
+MERGED from [com.devs:acr:1.0.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\acr-1.0.1.aar\6be5fbade9ebf9429fb530dafa8ae864\AndroidManifest.xml:11:5-19:19
+MERGED from [de.hdodenhof:circleimageview:1.3.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\circleimageview-1.3.0.aar\aa6afd00987ee433d7620a33c79d1375\AndroidManifest.xml:9:5-20
+MERGED from [de.hdodenhof:circleimageview:1.3.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\circleimageview-1.3.0.aar\aa6afd00987ee433d7620a33c79d1375\AndroidManifest.xml:9:5-20
+MERGED from [net.the4thdimension:audio-wife:1.0.3] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\audio-wife-1.0.3.aar\60c1b0aacad530e001aecade2ae2bb1e\AndroidManifest.xml:11:5-14:19
+MERGED from [net.the4thdimension:audio-wife:1.0.3] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\audio-wife-1.0.3.aar\60c1b0aacad530e001aecade2ae2bb1e\AndroidManifest.xml:11:5-14:19
+MERGED from [com.github.ozodrukh:CircularReveal:1.1.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\CircularReveal-1.1.0.aar\2e957d7d6894a1e2fa854287e71f56ae\AndroidManifest.xml:10:5-20
+MERGED from [com.github.ozodrukh:CircularReveal:1.1.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\CircularReveal-1.1.0.aar\2e957d7d6894a1e2fa854287e71f56ae\AndroidManifest.xml:10:5-20
+MERGED from [com.google.firebase:firebase-crash:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-crash-11.4.0.aar\90c5f6978db22c1760e5917f2b9df401\AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.firebase:firebase-crash:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-crash-11.4.0.aar\90c5f6978db22c1760e5917f2b9df401\AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.android.gms:play-services-tagmanager-api:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-tagmanager-api-11.4.0.aar\ea2335ab0b095e8d532af30153bddd02\AndroidManifest.xml:23:5-33:19
+MERGED from [com.google.android.gms:play-services-tagmanager-api:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-tagmanager-api-11.4.0.aar\ea2335ab0b095e8d532af30153bddd02\AndroidManifest.xml:23:5-33:19
+MERGED from [com.google.firebase:firebase-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.4.0.aar\ef2a7f546d06860665ca46342d066f81\AndroidManifest.xml:24:5-34:19
+MERGED from [com.google.firebase:firebase-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.4.0.aar\ef2a7f546d06860665ca46342d066f81\AndroidManifest.xml:24:5-34:19
+MERGED from [com.google.firebase:firebase-config:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-config-11.4.0.aar\ab39282399fa0066e94cddf77dcbec33\AndroidManifest.xml:18:5-19
+MERGED from [com.google.firebase:firebase-config:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-config-11.4.0.aar\ab39282399fa0066e94cddf77dcbec33\AndroidManifest.xml:18:5-19
+MERGED from [com.google.firebase:firebase-analytics-impl:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-11.4.0.aar\0b63c330d9c2d79b559848c860eabf95\AndroidManifest.xml:24:5-28:19
+MERGED from [com.google.firebase:firebase-analytics-impl:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-11.4.0.aar\0b63c330d9c2d79b559848c860eabf95\AndroidManifest.xml:24:5-28:19
+MERGED from [com.google.firebase:firebase-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.4.0.aar\dc92b764d0da687f1158d58df0f3eaed\AndroidManifest.xml:28:5-49:19
+MERGED from [com.google.firebase:firebase-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.4.0.aar\dc92b764d0da687f1158d58df0f3eaed\AndroidManifest.xml:28:5-49:19
+MERGED from [com.google.firebase:firebase-auth:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-auth-11.4.0.aar\28e973fb5338ff6fe49736de9be1f4a2\AndroidManifest.xml:19:5-20:19
+MERGED from [com.google.firebase:firebase-auth:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-auth-11.4.0.aar\28e973fb5338ff6fe49736de9be1f4a2\AndroidManifest.xml:19:5-20:19
+MERGED from [com.google.android.gms:play-services-appinvite:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-appinvite-11.4.0.aar\0e5b7874acdf8221e6d7df81d8c6eea7\AndroidManifest.xml:19:5-26:19
+MERGED from [com.google.android.gms:play-services-appinvite:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-appinvite-11.4.0.aar\0e5b7874acdf8221e6d7df81d8c6eea7\AndroidManifest.xml:19:5-26:19
+MERGED from [com.google.firebase:firebase-dynamic-links:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-dynamic-links-11.4.0.aar\4fd785be5bb65b19ee59316b043fe262\AndroidManifest.xml:5:3-17
+MERGED from [com.google.firebase:firebase-dynamic-links:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-dynamic-links-11.4.0.aar\4fd785be5bb65b19ee59316b043fe262\AndroidManifest.xml:5:3-17
+MERGED from [com.google.firebase:firebase-appindexing:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-appindexing-11.4.0.aar\f1e4b806335aacfafe69988db158a3d7\AndroidManifest.xml:18:5-19
+MERGED from [com.google.firebase:firebase-appindexing:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-appindexing-11.4.0.aar\f1e4b806335aacfafe69988db158a3d7\AndroidManifest.xml:18:5-19
+MERGED from [com.google.firebase:firebase-common:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-common-11.4.0.aar\0f421b01b19090c2581eccea5bb7c645\AndroidManifest.xml:4:5-7:19
+MERGED from [com.google.firebase:firebase-common:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-common-11.4.0.aar\0f421b01b19090c2581eccea5bb7c645\AndroidManifest.xml:4:5-7:19
+MERGED from [com.google.android.gms:play-services-ads-lite:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-ads-lite-11.4.0.aar\da1f98b3ef3e65fd00cf752a40c947a2\AndroidManifest.xml:23:5-26:19
+MERGED from [com.google.android.gms:play-services-ads-lite:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-ads-lite-11.4.0.aar\da1f98b3ef3e65fd00cf752a40c947a2\AndroidManifest.xml:23:5-26:19
+MERGED from [com.google.android.gms:play-services-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-analytics-11.4.0.aar\0174c024ef34c89c7e0d256b3499209e\AndroidManifest.xml:26:5-31:19
+MERGED from [com.google.android.gms:play-services-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-analytics-11.4.0.aar\0174c024ef34c89c7e0d256b3499209e\AndroidManifest.xml:26:5-31:19
+MERGED from [com.google.android.gms:play-services-tagmanager-v4-impl:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-tagmanager-v4-impl-11.4.0.aar\4bfc897d80e00d18a87d78eba123c5f5\AndroidManifest.xml:19:5-19
+MERGED from [com.google.android.gms:play-services-tagmanager-v4-impl:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-tagmanager-v4-impl-11.4.0.aar\4bfc897d80e00d18a87d78eba123c5f5\AndroidManifest.xml:19:5-19
+MERGED from [com.google.android.gms:play-services-analytics-impl:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-analytics-impl-11.4.0.aar\a0e244426750cd7a0f1f9967b278857c\AndroidManifest.xml:26:5-19
+MERGED from [com.google.android.gms:play-services-analytics-impl:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-analytics-impl-11.4.0.aar\a0e244426750cd7a0f1f9967b278857c\AndroidManifest.xml:26:5-19
+MERGED from [com.google.android.gms:play-services-auth:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-auth-11.4.0.aar\0cef4207726a2bff59a2238dce1c1322\AndroidManifest.xml:19:5-25:19
+MERGED from [com.google.android.gms:play-services-auth:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-auth-11.4.0.aar\0cef4207726a2bff59a2238dce1c1322\AndroidManifest.xml:19:5-25:19
+MERGED from [com.google.android.gms:play-services-awareness:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-awareness-11.4.0.aar\ecd93646d5716f3d03a52b3d9813a85a\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-awareness:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-awareness-11.4.0.aar\ecd93646d5716f3d03a52b3d9813a85a\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-games:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-games-11.4.0.aar\13d42c0fe27df5c4b2b22a83cc7024c7\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-games:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-games-11.4.0.aar\13d42c0fe27df5c4b2b22a83cc7024c7\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-drive:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-drive-11.4.0.aar\7a768b88e7b47fb28add10274a07b8f8\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-drive:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-drive-11.4.0.aar\7a768b88e7b47fb28add10274a07b8f8\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-fido:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-fido-11.4.0.aar\733c529352e6321d53abd98a6a1178b3\AndroidManifest.xml:5:3-6:17
+MERGED from [com.google.android.gms:play-services-fido:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-fido-11.4.0.aar\733c529352e6321d53abd98a6a1178b3\AndroidManifest.xml:5:3-6:17
+MERGED from [com.google.android.gms:play-services-fitness:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-fitness-11.4.0.aar\ff12cab9d27b63faba3a76be5365eaeb\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-fitness:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-fitness-11.4.0.aar\ff12cab9d27b63faba3a76be5365eaeb\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-gcm:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-gcm-11.4.0.aar\06cb1e10d02824ce08152b5f6cdc1a11\AndroidManifest.xml:23:5-19
+MERGED from [com.google.android.gms:play-services-gcm:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-gcm-11.4.0.aar\06cb1e10d02824ce08152b5f6cdc1a11\AndroidManifest.xml:23:5-19
+MERGED from [com.google.android.gms:play-services-identity:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-identity-11.4.0.aar\ada84b9215f4c2b0c6de7e6de8a8c409\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-identity:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-identity-11.4.0.aar\ada84b9215f4c2b0c6de7e6de8a8c409\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-iid-11.4.0.aar\34a9e287b50c8c27d01e0b820f367bf2\AndroidManifest.xml:23:5-19
+MERGED from [com.google.android.gms:play-services-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-iid-11.4.0.aar\34a9e287b50c8c27d01e0b820f367bf2\AndroidManifest.xml:23:5-19
+MERGED from [com.google.android.gms:play-services-location:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-location-11.4.0.aar\700a7f95ab76a7eaf3356629a9b7cc41\AndroidManifest.xml:4:5-19
+MERGED from [com.google.android.gms:play-services-location:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-location-11.4.0.aar\700a7f95ab76a7eaf3356629a9b7cc41\AndroidManifest.xml:4:5-19
+MERGED from [com.google.android.gms:play-services-places:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-places-11.4.0.aar\9c60aaf505b6efc267b09f4bf5566d34\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-places:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-places-11.4.0.aar\9c60aaf505b6efc267b09f4bf5566d34\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-maps:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-maps-11.4.0.aar\cdcbeb09598d972e93f8a243773f0bc6\AndroidManifest.xml:24:5-19
+MERGED from [com.google.android.gms:play-services-maps:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-maps-11.4.0.aar\cdcbeb09598d972e93f8a243773f0bc6\AndroidManifest.xml:24:5-19
+MERGED from [com.google.android.gms:play-services-nearby:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-nearby-11.4.0.aar\5f54a278deb58dab47c6b34cd9d970ec\AndroidManifest.xml:5:5-19
+MERGED from [com.google.android.gms:play-services-nearby:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-nearby-11.4.0.aar\5f54a278deb58dab47c6b34cd9d970ec\AndroidManifest.xml:5:5-19
+MERGED from [com.google.android.gms:play-services-panorama:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-panorama-11.4.0.aar\6d9010319d5f029e2b695ce43def98a7\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-panorama:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-panorama-11.4.0.aar\6d9010319d5f029e2b695ce43def98a7\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-plus:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-plus-11.4.0.aar\eeae1b0daef9ffb3826b73e5df3a0552\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-plus:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-plus-11.4.0.aar\eeae1b0daef9ffb3826b73e5df3a0552\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-safetynet:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-safetynet-11.4.0.aar\e3a043d1d50019d4dbb5645a76aa5d59\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-safetynet:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-safetynet-11.4.0.aar\e3a043d1d50019d4dbb5645a76aa5d59\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-vision:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-vision-11.4.0.aar\6286939674e180e1fddf6b9e0fd7bd77\AndroidManifest.xml:4:5-19
+MERGED from [com.google.android.gms:play-services-vision:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-vision-11.4.0.aar\6286939674e180e1fddf6b9e0fd7bd77\AndroidManifest.xml:4:5-19
+MERGED from [com.google.android.gms:play-services-vision-common:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-vision-common-11.4.0.aar\41a1286fa45602e273eeec10279e27b1\AndroidManifest.xml:4:5-19
+MERGED from [com.google.android.gms:play-services-vision-common:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-vision-common-11.4.0.aar\41a1286fa45602e273eeec10279e27b1\AndroidManifest.xml:4:5-19
+MERGED from [com.google.android.gms:play-services-wearable:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-wearable-11.4.0.aar\b99ebeda1d105df66c1f9e0a33d5ebff\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-wearable:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-wearable-11.4.0.aar\b99ebeda1d105df66c1f9e0a33d5ebff\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-base:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-base-11.4.0.aar\8dd36e9b80d851ee437d5fdf6e7eb9e4\AndroidManifest.xml:18:5-20:19
+MERGED from [com.google.android.gms:play-services-base:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-base-11.4.0.aar\8dd36e9b80d851ee437d5fdf6e7eb9e4\AndroidManifest.xml:18:5-20:19
+MERGED from [com.google.android.gms:play-services-gass:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-gass-11.4.0.aar\219cd8765258e7e1ec57362b6c1b4ed4\AndroidManifest.xml:4:5-19
+MERGED from [com.google.android.gms:play-services-gass:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-gass-11.4.0.aar\219cd8765258e7e1ec57362b6c1b4ed4\AndroidManifest.xml:4:5-19
+MERGED from [com.google.android.gms:play-services-tasks:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-tasks-11.4.0.aar\6c69619cb7640231d0b149cf3ba7913b\AndroidManifest.xml:4:5-19
+MERGED from [com.google.android.gms:play-services-tasks:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-tasks-11.4.0.aar\6c69619cb7640231d0b149cf3ba7913b\AndroidManifest.xml:4:5-19
+MERGED from [com.google.android.gms:play-services-basement:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-basement-11.4.0.aar\3b3df02da2c9457547effd7988efef67\AndroidManifest.xml:19:5-21:19
+MERGED from [com.google.android.gms:play-services-basement:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-basement-11.4.0.aar\3b3df02da2c9457547effd7988efef67\AndroidManifest.xml:19:5-21:19
+MERGED from [com.android.support:support-v13:23.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\support-v13-23.1.1.aar\aef59a1725145bd168a440d624311ee6\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v13:23.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\support-v13-23.1.1.aar\aef59a1725145bd168a440d624311ee6\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:palette-v7:25.2.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\palette-v7-25.2.0.aar\f6e5f7741fde6e592e4466fd7a9ba6eb\AndroidManifest.xml:22:5-23:19
+MERGED from [com.android.support:palette-v7:25.2.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\palette-v7-25.2.0.aar\f6e5f7741fde6e592e4466fd7a9ba6eb\AndroidManifest.xml:22:5-23:19
+	android:supportsRtl
+		ADDED from D:\ICAI\PM\app\src\PM\AndroidManifest.xml:10:9-35
+	android:label
+		ADDED from D:\ICAI\PM\app\src\PM\AndroidManifest.xml:9:9-41
+		REJECTED from [com.toptoche.searchablespinner:searchablespinnerlibrary:1.3.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\searchablespinnerlibrary-1.3.1.aar\2d28aa3ab164e7547a8b7804f448e960\AndroidManifest.xml:13:9-41
+		REJECTED from [com.devs:acr:1.0.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\acr-1.0.1.aar\6be5fbade9ebf9429fb530dafa8ae864\AndroidManifest.xml:13:9-41
+		REJECTED from [net.the4thdimension:audio-wife:1.0.3] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\audio-wife-1.0.3.aar\60c1b0aacad530e001aecade2ae2bb1e\AndroidManifest.xml:13:9-41
+	android:icon
+		ADDED from D:\ICAI\PM\app\src\PM\AndroidManifest.xml:8:9-43
+	android:allowBackup
+		ADDED from D:\ICAI\PM\app\src\PM\AndroidManifest.xml:7:9-35
+	android:theme
+		ADDED from D:\ICAI\PM\app\src\PM\AndroidManifest.xml:11:9-52
+	tools:replace
+		ADDED from D:\ICAI\PM\app\src\PM\AndroidManifest.xml:13:9-38
+activity#com.vritti.ekatm.activity.ActivityModuleSelection
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:46:9-48:59
+	android:theme
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:48:13-56
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:47:13-61
+activity#com.vritti.ekatm.MainActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:50:9-52:59
+	android:theme
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:52:13-56
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:51:13-41
+activity#com.vritti.ekatm.other.SharefunctionActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:54:9-70:20
+	android:screenOrientation
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:56:13-49
+	android:windowSoftInputMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:55:13-73
+	android:theme
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:57:13-44
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:54:19-78
+intent-filter#action:name:android.intent.action.SEND+category:name:android.intent.category.DEFAULT+data:mimeType:application/pdf+data:mimeType:audio/*+data:mimeType:image/*+data:mimeType:text/plain+data:mimeType:video/*
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:59:13-68:29
+action#android.intent.action.SEND
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:60:17-69
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:60:25-66
+category#android.intent.category.DEFAULT
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:61:17-76
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:61:27-73
+data
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:62:17-51
+	android:mimeType
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:62:23-49
+service#com.vritti.ekatm.services.SendTimeSheet
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:75:9-78:39
+	android:enabled
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:77:13-35
+	android:exported
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:78:13-36
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:76:13-67
+service#com.vritti.ekatm.services.DownloadWorkspaceData
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:79:9-82:39
+	android:enabled
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:81:13-35
+	android:exported
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:82:13-36
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:80:13-75
+service#com.vritti.ekatm.services.PaidLocationFusedLocationTracker1
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:85:9-89:43
+	android:enabled
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:87:13-35
+	android:exported
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:88:13-36
+	android:stopWithTask
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:89:13-41
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:86:13-87
+service#com.vritti.ekatm.services.MyFirebaseInstanceIDService
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:92:9-97:19
+	android:exported
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:93:13-37
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:92:18-86
+intent-filter#action:name:com.google.firebase.INSTANCE_ID_EVENT
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:94:13-96:29
+action#com.google.firebase.INSTANCE_ID_EVENT
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:95:17-80
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:95:25-77
+service#com.vritti.ekatm.services.MyFirebaseMessagingService
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:98:9-104:19
+	android:enabled
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:99:13-35
+	android:exported
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:100:13-37
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:98:18-85
+intent-filter#action:name:com.google.firebase.MESSAGING_EVENT
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:101:13-103:29
+action#com.google.firebase.MESSAGING_EVENT
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:102:17-78
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:102:25-75
+service#com.vritti.ekatm.services.SendOfflineData
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:106:9-109:39
+	android:enabled
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:108:13-35
+	android:exported
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:109:13-36
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:107:13-69
+service#com.vritti.ekatm.services.GpsDataLocalSendSevice
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:113:9-117:39
+	android:enabled
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:116:13-35
+	android:exported
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:117:13-36
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:115:13-76
+service#com.vritti.ekatm.services.GPSTracker
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:121:9-72
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:121:18-69
+service#com.vritti.ekatm.services.SendGPSData
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:123:9-73
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:123:18-70
+service#com.vritti.ekatm.services.SendGPSNotification
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:125:9-129:39
+	android:enabled
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:128:13-35
+	android:exported
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:129:13-36
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:127:13-73
+receiver#com.vritti.ekatm.receiver.AlarmManagerBroadcastReceiverGPS
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:135:9-143:20
+	android:enabled
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:137:13-35
+	android:exported
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:138:13-36
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:136:13-86
+intent-filter#action:name:android.intent.action.BOOT_COMPLETED+category:name:android.intent.category.DEFAULT
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:139:13-142:29
+action#android.intent.action.BOOT_COMPLETED
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:140:17-79
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:140:25-76
+receiver#com.vritti.ekatm.receiver.OfflineDataReceiver
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:145:9-155:20
+	android:enabled
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:147:13-35
+	android:exported
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:148:13-36
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:146:13-73
+intent-filter#action:name:android.intent.action.BOOT_COMPLETED+action:name:android.net.conn.CONNECTIVITY_CHANGE+action:name:android.net.wifi.STATE_CHANGE+action:name:android.net.wifi.WIFI_STATE_CHANGED
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:149:13-154:29
+action#android.net.conn.CONNECTIVITY_CHANGE
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:151:17-79
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:151:25-76
+action#android.net.wifi.WIFI_STATE_CHANGED
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:152:17-78
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:152:25-75
+action#android.net.wifi.STATE_CHANGE
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:153:17-72
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:153:25-69
+receiver#com.vritti.ekatm.receiver.IncomingSmsReceiver
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:156:9-163:20
+	android:enabled
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:158:13-35
+	android:exported
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:159:13-36
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:157:13-73
+intent-filter#action:name:android.provider.Telephony.SMS_RECEIVED
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:160:13-162:29
+action#android.provider.Telephony.SMS_RECEIVED
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:161:17-82
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:161:25-79
+receiver#com.vritti.ekatm.receiver.JobSchedulerReceiver
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:165:9-176:20
+	android:enabled
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:166:13-35
+	android:exported
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:167:13-36
+	android:permission
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:168:13-73
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:165:19-80
+intent-filter#action:name:android.intent.action.BOOT_COMPLETED+action:name:com.google.android.c2dm.intent.RECEIVE+action:name:com.hoanganhtuan95ptit.JobSchedulerReceiver
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:169:13-175:29
+	android:priority
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:170:17-39
+action#com.hoanganhtuan95ptit.JobSchedulerReceiver
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:172:17-86
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:172:25-83
+action#com.google.android.c2dm.intent.RECEIVE
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:173:17-81
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:173:25-78
+receiver#com.vritti.ekatm.receiver.CallReceiver
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:178:9-185:20
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:178:19-72
+intent-filter#action:name:android.intent.action.PHONE_STATE
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:179:13-181:29
+action#android.intent.action.PHONE_STATE
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:180:17-76
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:180:25-73
+intent-filter#action:name:android.intent.action.NEW_OUTGOING_CALL
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:182:13-184:29
+action#android.intent.action.NEW_OUTGOING_CALL
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:183:17-82
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:183:25-79
+receiver#com.vritti.ekatm.receiver.SendGPSNotificationBroadcastReceiver
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:189:9-197:20
+	android:enabled
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:191:13-35
+	android:exported
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:192:13-36
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:190:13-90
+intent-filter#action:name:android.intent.action.BOOT_COMPLETED+action:name:android.intent.action.MANAGE_NETWORK_USAGE
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:193:13-196:29
+action#android.intent.action.MANAGE_NETWORK_USAGE
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:195:17-85
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:195:25-82
+activity#com.vritti.chat.activity.AttachmentsActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:203:9-80
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:203:19-78
+activity#com.vritti.chat.activity.AddGroupActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:205:9-210:20
+	android:screenOrientation
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:208:13-49
+	android:windowSoftInputMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:206:13-70
+	android:theme
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:207:13-44
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:205:19-75
+activity#com.vritti.chat.activity.UserListDisplayActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:211:9-215:20
+	android:screenOrientation
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:214:13-49
+	android:windowSoftInputMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:212:13-70
+	android:theme
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:213:13-44
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:211:19-82
+activity#com.vritti.chat.activity.MultipleGroupActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:218:9-222:20
+	android:screenOrientation
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:221:13-49
+	android:windowSoftInputMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:219:13-70
+	android:theme
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:220:13-44
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:218:19-80
+activity#com.vritti.chat.activity.OpenChatroomActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:224:9-229:20
+	android:screenOrientation
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:228:13-49
+	android:label
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:225:13-39
+	android:windowSoftInputMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:226:13-70
+	android:theme
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:227:13-44
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:224:19-79
+activity#com.vritti.chat.activity.AddChatRoomActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:230:9-235:20
+	android:screenOrientation
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:233:13-49
+	android:label
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:231:13-38
+	android:windowSoftInputMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:232:13-73
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:230:19-78
+activity#com.vritti.chat.activity.GroupmemberShowActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:237:9-243:20
+	android:screenOrientation
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:241:13-49
+	android:label
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:238:13-38
+	android:windowSoftInputMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:239:13-70
+	android:theme
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:240:13-56
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:237:19-82
+activity#com.vritti.chat.activity.ImageFullScreenActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:245:9-84
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:245:19-82
+activity#com.vritti.vwb.vworkbench.ClaimNotificationActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:247:9-252:20
+	android:screenOrientation
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:249:13-49
+	android:windowSoftInputMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:248:13-73
+	android:theme
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:250:13-44
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:247:19-85
+activity#com.vritti.chat.activity.HistoryConversationActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:255:9-258:59
+	android:screenOrientation
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:257:13-49
+	android:theme
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:258:13-56
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:256:13-80
+service#com.vritti.chat.services.MessageRecieveBackground
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:263:9-265:38
+	android:enabled
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:265:13-35
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:264:13-77
+service#com.vritti.chat.services.ChattingDataSendBackground
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:267:9-268:81
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:268:13-79
+activity#com.vritti.vwb.vworkbench.TicketUpdateDEPLActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:293:9-296:63
+	android:launchMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:295:13-43
+	android:windowSoftInputMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:296:13-60
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:294:13-78
+activity#com.vritti.vwb.vworkbench.ActivityMain
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:297:9-299:46
+	android:launchMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:299:13-43
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:298:13-66
+activity#com.vritti.vwb.vworkbench.AssignActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:304:9-310:20
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:305:13-68
+activity#com.vritti.vwb.vworkbench.GPSTeamList
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:311:9-313:46
+	android:launchMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:313:13-43
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:312:13-65
+activity#com.vritti.vwb.vworkbench.ActivityDetailsActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:319:9-321:46
+	android:launchMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:321:13-43
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:320:13-77
+activity#com.vritti.vwb.vworkbench.AddTimesheetActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:322:9-324:46
+	android:launchMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:324:13-43
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:323:13-74
+activity#com.vritti.vwb.vworkbench.ReassignActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:325:9-327:46
+	android:launchMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:327:13-43
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:326:13-70
+activity#com.vritti.vwb.vworkbench.ClaimMainActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:328:9-330:46
+	android:launchMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:330:13-43
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:329:13-71
+activity#com.vritti.vwb.vworkbench.ClaimDetailActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:331:9-333:46
+	android:launchMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:333:13-43
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:332:13-73
+activity#com.vritti.vwb.vworkbench.ApplyLeaveMainActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:334:9-336:46
+	android:launchMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:336:13-43
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:335:13-76
+activity#com.vritti.vwb.vworkbench.DatasheetMainActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:337:9-339:46
+	android:launchMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:339:13-43
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:338:13-75
+activity#com.vritti.vwb.vworkbench.AddDatasheetActivityMain
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:340:9-342:46
+	android:launchMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:342:13-43
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:341:13-78
+activity#com.vritti.vwb.vworkbench.DatasheetAddDetailActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:343:9-345:46
+	android:launchMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:345:13-43
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:344:13-80
+activity#com.vritti.vwb.vworkbench.EditDatasheetActivityMain
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:346:9-348:46
+	android:launchMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:348:13-43
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:347:13-79
+activity#com.vritti.vwb.vworkbench.EditDatasheetDetailActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:349:9-351:46
+	android:launchMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:351:13-43
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:350:13-81
+activity#com.vritti.vwb.vworkbench.LoggingTimeActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:354:9-356:46
+	android:launchMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:356:13-43
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:355:13-73
+activity#com.vritti.vwb.vworkbench.BirthdayListAcyivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:357:9-359:46
+	android:launchMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:359:13-43
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:358:13-74
+activity#com.vritti.vwb.vworkbench.NotificationActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:360:9-362:46
+	android:launchMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:362:13-43
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:361:13-74
+activity#com.vritti.vwb.vworkbench.MeetingActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:363:9-365:46
+	android:launchMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:365:13-43
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:364:13-69
+activity#com.vritti.vwb.vworkbench.WorkspacewiseActCntActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:366:9-369:59
+	android:launchMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:368:13-43
+	android:theme
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:369:13-56
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:367:13-81
+activity#com.vritti.vwb.vworkbench.WorkspacewiseActDetailActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:370:9-372:46
+	android:launchMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:372:13-43
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:371:13-84
+activity#com.vritti.vwb.vworkbench.LeaveSummary
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:373:9-75
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:373:19-72
+activity#com.vritti.vwb.vworkbench.LeaveRecords
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:374:9-75
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:374:19-72
+activity#com.vritti.vwb.vworkbench.GPSMyOwnLocation
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:375:9-79
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:375:19-76
+activity#com.vritti.vwb.vworkbench.ActivitySetting
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:376:9-78
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:376:19-75
+activity#com.vritti.vwb.vworkbench.ActivityGPSLocalData
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:377:9-83
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:377:19-80
+activity#com.vritti.vwb.vworkbench.MyTeamActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:378:9-77
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:378:19-74
+activity#com.vritti.vwb.vworkbench.MyTeamMemberActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:379:9-83
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:379:19-80
+activity#com.vritti.vwb.vworkbench.MyTeamMemberTimesheetActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:380:9-92
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:380:19-89
+activity#com.vritti.vwb.vworkbench.ViewTicketMain
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:381:9-77
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:381:19-74
+activity#com.vritti.vwb.vworkbench.ActivityIndentApprovalNew
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:382:9-88
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:382:19-85
+activity#com.vritti.vwb.vworkbench.TicketRegisterActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:384:9-385:15
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:384:19-82
+activity#com.vritti.vwb.vworkbench.EmployeeAdvanceRequestActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:386:9-391:51
+	android:screenOrientation
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:391:13-49
+	android:launchMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:388:13-43
+	android:windowSoftInputMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:390:13-70
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:387:13-84
+activity#com.vritti.vwb.vworkbench.TimeSheetLogActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:394:9-395:15
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:394:19-80
+activity#com.vritti.vwb.vworkbench.ActivityTrailActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:396:9-397:15
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:396:19-81
+activity#com.vritti.vwb.vworkbench.ActivityOfflineData
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:399:9-82
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:399:19-79
+activity#com.vritti.vwb.vworkbench.ClaimRecordActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:402:9-82
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:402:19-79
+activity#com.vritti.vwb.vworkbench.ActivityTrailDetails
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:403:9-92
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:403:19-80
+activity#com.vritti.vwb.vworkbench.AssetTransferActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:406:9-84
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:406:19-81
+activity#com.vritti.vwb.vworkbench.AssetTransferListActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:407:9-88
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:407:19-85
+activity#com.vritti.crm.vcrm7.CallListActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:447:9-449:73
+	android:windowSoftInputMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:449:13-70
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:448:13-65
+activity#com.vritti.crm.vcrm7.CallListActionActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:450:9-80
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:450:19-77
+activity#com.vritti.crm.vcrm7.CallRatingActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:451:9-76
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:451:19-73
+activity#com.vritti.crm.vcrm7.ActivityOfflineData
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:453:9-77
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:453:19-74
+activity#com.vritti.crm.vcrm7.DatasheetMainActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:454:9-79
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:454:19-76
+activity#com.vritti.crm.vcrm7.DatasheetAddDetailActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:455:9-84
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:455:19-81
+activity#com.vritti.crm.vcrm7.AddDatasheetActivityMain
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:456:9-82
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:456:19-79
+activity#com.vritti.crm.vcrm7.EditDatasheetActivityMain
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:457:9-83
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:457:19-80
+activity#com.vritti.crm.vcrm7.EditDatasheetDetailActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:458:9-85
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:458:19-82
+activity#com.vritti.crm.vcrm7.TravelPlanAddActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:459:9-79
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:459:19-76
+activity#com.vritti.crm.vcrm7.TravelPlanShowActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:460:9-80
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:460:19-77
+activity#com.vritti.crm.vcrm7.TravelPlanDeleteActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:461:9-82
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:461:19-79
+activity#com.vritti.crm.vcrm7.OpportunityUpdateActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:462:9-464:55
+	android:windowSoftInputMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:464:13-52
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:463:13-74
+activity#com.vritti.crm.vcrm7.ProspectEnterpriseActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:465:9-468:58
+	android:screenOrientation
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:467:13-49
+	android:windowSoftInputMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:468:13-55
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:466:13-75
+activity#com.vritti.crm.vcrm7.ProspectFilterActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:469:9-80
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:469:19-77
+activity#com.vritti.crm.vcrm7.FilteredProspectListActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:470:9-86
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:470:19-83
+activity#com.vritti.crm.vcrm7.CreateOpportunityActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:471:9-473:59
+	android:theme
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:473:13-56
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:472:13-74
+activity#com.vritti.crm.vcrm7.ProductActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:474:9-73
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:474:19-70
+activity#com.vritti.crm.vcrm7.TeamMemberActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:475:9-76
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:475:19-73
+activity#com.vritti.crm.vcrm7.PromotionalFormSettingActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:476:9-88
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:476:19-85
+activity#com.vritti.crm.vcrm7.PromotionalFormActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:477:9-81
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:477:19-78
+activity#com.vritti.crm.vcrm7.EnquiryFormActivityNew
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:478:9-80
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:478:19-77
+activity#com.vritti.crm.vcrm7.TeamMemberOpportunityActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:479:9-87
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:479:19-84
+activity#com.vritti.crm.vcrm7.TeamsCallListActionActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:480:9-85
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:480:19-82
+activity#com.vritti.crm.vcrm7.ReassignCallsActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:481:9-79
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:481:19-76
+activity#com.vritti.crm.vcrm7.OpportunityActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:482:9-484:63
+	android:windowSoftInputMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:484:13-60
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:483:13-68
+activity#com.vritti.crm.vcrm7.TravelPlanShowFormActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:485:9-84
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:485:19-81
+activity#com.vritti.crm.vcrm7.CallDetailsHistoryActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:486:9-488:63
+	android:windowSoftInputMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:488:13-60
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:487:13-75
+activity#com.vritti.crm.vcrm7.BusinessProspectusActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:489:9-492:58
+	android:screenOrientation
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:491:13-49
+	android:windowSoftInputMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:492:13-55
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:490:13-75
+activity#com.vritti.crm.vcrm7.IndividualProspectusActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:493:9-496:76
+	android:screenOrientation
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:495:13-49
+	android:windowSoftInputMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:496:13-73
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:494:13-77
+activity#com.vritti.crm.vcrm7.CallsActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:497:9-501:63
+	android:screenOrientation
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:499:13-49
+	android:windowSoftInputMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:501:13-60
+	android:theme
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:500:13-44
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:498:13-62
+activity#com.vritti.crm.vcrm7.SubTeamMemberActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:502:9-504:63
+	android:windowSoftInputMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:504:13-60
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:503:13-70
+activity#com.vritti.crm.vcrm7.AdvanceProvisionalActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:505:9-509:76
+	android:screenOrientation
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:507:13-49
+	android:windowSoftInputMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:509:13-73
+	android:theme
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:508:13-44
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:506:13-75
+activity#com.vritti.crm.vcrm7.ProvisionalActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:510:9-514:76
+	android:screenOrientation
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:512:13-49
+	android:windowSoftInputMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:514:13-73
+	android:theme
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:513:13-44
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:511:13-68
+activity#com.vritti.crm.vcrm7.ContactActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:515:9-519:76
+	android:screenOrientation
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:517:13-49
+	android:windowSoftInputMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:519:13-73
+	android:theme
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:518:13-44
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:516:13-64
+activity#com.vritti.crm.vcrm7.AdvanceProvisionalReceiptDisplayActivity
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:520:9-524:76
+	android:screenOrientation
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:522:13-49
+	android:windowSoftInputMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:524:13-73
+	android:theme
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:523:13-44
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:521:13-89
+activity#com.vritti.crm.vcrm7.ActivityEnquiryList
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:527:9-530:59
+	android:label
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:529:13-64
+	android:theme
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:530:13-56
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:528:13-68
+activity#com.vritti.crm.vcrm7.ActvityEnquiryDetails
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:531:9-535:63
+	android:label
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:533:13-75
+	android:windowSoftInputMode
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:535:13-60
+	android:theme
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:534:13-56
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:532:13-70
+activity#com.vritti.crm.vcrm7.ActivityPromotionalFormRecord
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:536:9-539:59
+	android:label
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:538:13-75
+	android:theme
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:539:13-56
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:537:13-78
+activity#com.vritti.crm.vcrm7.ActivityPromotionalFormselection
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:540:9-543:59
+	android:label
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:542:13-77
+	android:theme
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:543:13-56
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:541:13-81
+activity#com.vritti.crm.vcrm7.ActivityServiceReportCustomerList
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:545:9-91
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:545:19-88
+activity#com.vritti.crm.vcrm7.ActivityServiceReport
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:546:9-79
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:546:19-76
+activity#com.vritti.crm.vcrm7.ActivityServiceReportDetail
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:547:9-85
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:547:19-82
+activity#com.vritti.crm.vcrm7.ActivityServiceReportDetail1
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:548:9-95
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:548:19-83
+activity#com.vritti.crm.vcrm7.AddEnquiry
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:549:9-68
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:549:19-65
+meta-data#com.google.android.geo.API_KEY
+ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:583:9-585:53
+	android:value
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:585:13-51
+	android:name
+		ADDED from D:\ICAI\PM\app\src\main\AndroidManifest.xml:584:13-58
+uses-sdk
+INJECTED from D:\ICAI\PM\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\ICAI\PM\app\src\main\AndroidManifest.xml
+INJECTED from D:\ICAI\PM\app\src\main\AndroidManifest.xml
+MERGED from [com.android.support:multidex:1.0.3] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\multidex-1.0.3.aar\602a2a878860a26ed5de7d07aef68f80\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:multidex:1.0.3] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\multidex-1.0.3.aar\602a2a878860a26ed5de7d07aef68f80\AndroidManifest.xml:20:5-43
+MERGED from [com.google.firebase:firebase-core:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-core-11.4.0.aar\953a6d1e451e1e025e9b98e41547337d\AndroidManifest.xml:4:5-43
+MERGED from [com.google.firebase:firebase-core:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-core-11.4.0.aar\953a6d1e451e1e025e9b98e41547337d\AndroidManifest.xml:4:5-43
+MERGED from [:sessionlib] D:\ICAI\PM\sessionlib\build\intermediates\manifests\full\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:sessionlib] D:\ICAI\PM\sessionlib\build\intermediates\manifests\full\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:databaselib] D:\ICAI\PM\databaselib\build\intermediates\manifests\full\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:databaselib] D:\ICAI\PM\databaselib\build\intermediates\manifests\full\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\c7faef5a9bd820f7c2fba1bed9c3ebd5\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\c7faef5a9bd820f7c2fba1bed9c3ebd5\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:design:27.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\2a4762706393415c04fa065e59894d9a\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:27.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\2a4762706393415c04fa065e59894d9a\AndroidManifest.xml:20:5-44
+MERGED from [com.github.hani-momanii:SuperNova-Emoji:1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\SuperNova-Emoji-1.1.aar\53e46f8ca5ef55fc7a0c6e6faf85f9ab\AndroidManifest.xml:6:5-8:41
+MERGED from [com.github.hani-momanii:SuperNova-Emoji:1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\SuperNova-Emoji-1.1.aar\53e46f8ca5ef55fc7a0c6e6faf85f9ab\AndroidManifest.xml:6:5-8:41
+MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\5884a9e050e35099195b21c74cc8f9cd\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\5884a9e050e35099195b21c74cc8f9cd\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:27.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.1.1.aar\8ce17d3cfa170d27a97ca4385f064cfe\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:27.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.1.1.aar\8ce17d3cfa170d27a97ca4385f064cfe\AndroidManifest.xml:20:5-44
+MERGED from [com.yarolegovich:lovely-dialog:1.0.7] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\lovely-dialog-1.0.7.aar\5593b59aef996574df6163ec375f206e\AndroidManifest.xml:8:5-10:41
+MERGED from [com.yarolegovich:lovely-dialog:1.0.7] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\lovely-dialog-1.0.7.aar\5593b59aef996574df6163ec375f206e\AndroidManifest.xml:8:5-10:41
+MERGED from [life.knowledge4:k4l-video-trimmer:1.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\k4l-video-trimmer-1.0.aar\ce8e68a043d9a9ecfe0d4b111928de0c\AndroidManifest.xml:7:5-9:41
+MERGED from [life.knowledge4:k4l-video-trimmer:1.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\k4l-video-trimmer-1.0.aar\ce8e68a043d9a9ecfe0d4b111928de0c\AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.android.gms:play-services:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-11.4.0.aar\a6a9a639e2185d6e956cf3fc27281bd7\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-11.4.0.aar\a6a9a639e2185d6e956cf3fc27281bd7\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-cast-framework:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-cast-framework-11.4.0.aar\2b9cd841ea3269e9b451a9b832003909\AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-cast-framework:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-cast-framework-11.4.0.aar\2b9cd841ea3269e9b451a9b832003909\AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-cast:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-cast-11.4.0.aar\c4dcc4afd5bb24f766280f416e367a39\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-cast:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-cast-11.4.0.aar\c4dcc4afd5bb24f766280f416e367a39\AndroidManifest.xml:17:5-43
+MERGED from [com.android.support:mediarouter-v7:25.2.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\mediarouter-v7-25.2.0.aar\83e83954abdb02f5f9d28b49dcc7cbe8\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:mediarouter-v7:25.2.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\mediarouter-v7-25.2.0.aar\83e83954abdb02f5f9d28b49dcc7cbe8\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\f97f8d62f38123e53f27e5349b3785a0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\f97f8d62f38123e53f27e5349b3785a0\AndroidManifest.xml:20:5-44
+MERGED from [com.jakewharton:butterknife:8.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\butterknife-8.4.0.aar\fe2f9599dcaf051ace67ef0571ff51c4\AndroidManifest.xml:5:5-43
+MERGED from [com.jakewharton:butterknife:8.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\butterknife-8.4.0.aar\fe2f9599dcaf051ace67ef0571ff51c4\AndroidManifest.xml:5:5-43
+MERGED from [com.google.firebase:firebase-messaging:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-messaging-11.4.0.aar\aecef1ccdbd01b386c0946aca7d54fd5\AndroidManifest.xml:17:5-43
+MERGED from [com.google.firebase:firebase-messaging:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-messaging-11.4.0.aar\aecef1ccdbd01b386c0946aca7d54fd5\AndroidManifest.xml:17:5-43
+MERGED from [com.jpardogo.googleprogressbar:library:1.2.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\library-1.2.0.aar\9e77e7b1f1f871f53cc4ab993ae0ee60\AndroidManifest.xml:8:5-10:41
+MERGED from [com.jpardogo.googleprogressbar:library:1.2.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\library-1.2.0.aar\9e77e7b1f1f871f53cc4ab993ae0ee60\AndroidManifest.xml:8:5-10:41
+MERGED from [com.github.citux:datetimepicker:0.2.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\datetimepicker-0.2.0.aar\8906d3585d46b2715ac85166304b9464\AndroidManifest.xml:22:5-24:41
+MERGED from [com.github.citux:datetimepicker:0.2.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\datetimepicker-0.2.0.aar\8906d3585d46b2715ac85166304b9464\AndroidManifest.xml:22:5-24:41
+MERGED from [com.toptoche.searchablespinner:searchablespinnerlibrary:1.3.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\searchablespinnerlibrary-1.3.1.aar\2d28aa3ab164e7547a8b7804f448e960\AndroidManifest.xml:7:5-9:41
+MERGED from [com.toptoche.searchablespinner:searchablespinnerlibrary:1.3.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\searchablespinnerlibrary-1.3.1.aar\2d28aa3ab164e7547a8b7804f448e960\AndroidManifest.xml:7:5-9:41
+MERGED from [com.devs:acr:1.0.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\acr-1.0.1.aar\6be5fbade9ebf9429fb530dafa8ae864\AndroidManifest.xml:7:5-9:41
+MERGED from [com.devs:acr:1.0.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\acr-1.0.1.aar\6be5fbade9ebf9429fb530dafa8ae864\AndroidManifest.xml:7:5-9:41
+MERGED from [de.hdodenhof:circleimageview:1.3.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\circleimageview-1.3.0.aar\aa6afd00987ee433d7620a33c79d1375\AndroidManifest.xml:5:5-7:41
+MERGED from [de.hdodenhof:circleimageview:1.3.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\circleimageview-1.3.0.aar\aa6afd00987ee433d7620a33c79d1375\AndroidManifest.xml:5:5-7:41
+MERGED from [se.emilsjolander:stickylistheaders:2.3.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\stickylistheaders-2.3.0.aar\b1966bcfe38dd5e20506567fb269c362\AndroidManifest.xml:3:5-72
+MERGED from [se.emilsjolander:stickylistheaders:2.3.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\stickylistheaders-2.3.0.aar\b1966bcfe38dd5e20506567fb269c362\AndroidManifest.xml:3:5-72
+MERGED from [jp.wasabeef:picasso-transformations:2.1.2] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\picasso-transformations-2.1.2.aar\8a14598fdbb5753846b4e3c94bd79548\AndroidManifest.xml:8:5-10:41
+MERGED from [jp.wasabeef:picasso-transformations:2.1.2] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\picasso-transformations-2.1.2.aar\8a14598fdbb5753846b4e3c94bd79548\AndroidManifest.xml:8:5-10:41
+MERGED from [jp.wasabeef:glide-transformations:3.0.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\glide-transformations-3.0.1.aar\a12880e667f82e04cd8e4e2fecf79ead\AndroidManifest.xml:8:5-10:41
+MERGED from [jp.wasabeef:glide-transformations:3.0.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\glide-transformations-3.0.1.aar\a12880e667f82e04cd8e4e2fecf79ead\AndroidManifest.xml:8:5-10:41
+MERGED from [jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\gpuimage-library-1.4.1.aar\6895aa0d9e8e3a824f91401d010e1518\AndroidManifest.xml:8:5-10:41
+MERGED from [jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\gpuimage-library-1.4.1.aar\6895aa0d9e8e3a824f91401d010e1518\AndroidManifest.xml:8:5-10:41
+MERGED from [net.the4thdimension:audio-wife:1.0.3] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\audio-wife-1.0.3.aar\60c1b0aacad530e001aecade2ae2bb1e\AndroidManifest.xml:7:5-9:41
+MERGED from [net.the4thdimension:audio-wife:1.0.3] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\audio-wife-1.0.3.aar\60c1b0aacad530e001aecade2ae2bb1e\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.rtoshiro.fullscreenvideoview:fullscreenvideoview:1.1.2] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\fullscreenvideoview-1.1.2.aar\4aacdf712e3d54b23c52389f91ec2cb7\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.rtoshiro.fullscreenvideoview:fullscreenvideoview:1.1.2] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\fullscreenvideoview-1.1.2.aar\4aacdf712e3d54b23c52389f91ec2cb7\AndroidManifest.xml:7:5-9:41
+MERGED from [me.leolin:ShortcutBadger:1.1.3] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\ShortcutBadger-1.1.3.aar\9fed57e13d32814717ea9467ba285c93\AndroidManifest.xml:7:5-9:41
+MERGED from [me.leolin:ShortcutBadger:1.1.3] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\ShortcutBadger-1.1.3.aar\9fed57e13d32814717ea9467ba285c93\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.ozodrukh:CircularReveal:1.1.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\CircularReveal-1.1.0.aar\2e957d7d6894a1e2fa854287e71f56ae\AndroidManifest.xml:6:5-8:41
+MERGED from [com.github.ozodrukh:CircularReveal:1.1.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\CircularReveal-1.1.0.aar\2e957d7d6894a1e2fa854287e71f56ae\AndroidManifest.xml:6:5-8:41
+MERGED from [com.google.firebase:firebase-crash:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-crash-11.4.0.aar\90c5f6978db22c1760e5917f2b9df401\AndroidManifest.xml:20:5-43
+MERGED from [com.google.firebase:firebase-crash:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-crash-11.4.0.aar\90c5f6978db22c1760e5917f2b9df401\AndroidManifest.xml:20:5-43
+MERGED from [com.google.android.gms:play-services-tagmanager:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-tagmanager-11.4.0.aar\557fddccc78fa36ba2f5b9d4360d4c79\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-tagmanager:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-tagmanager-11.4.0.aar\557fddccc78fa36ba2f5b9d4360d4c79\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-tagmanager-api:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-tagmanager-api-11.4.0.aar\ea2335ab0b095e8d532af30153bddd02\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-tagmanager-api:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-tagmanager-api-11.4.0.aar\ea2335ab0b095e8d532af30153bddd02\AndroidManifest.xml:17:5-43
+MERGED from [com.google.firebase:firebase-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.4.0.aar\ef2a7f546d06860665ca46342d066f81\AndroidManifest.xml:17:5-43
+MERGED from [com.google.firebase:firebase-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.4.0.aar\ef2a7f546d06860665ca46342d066f81\AndroidManifest.xml:17:5-43
+MERGED from [com.android.support:transition:27.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\79fd5d029603fd2a969bc12eb38c9a94\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\79fd5d029603fd2a969bc12eb38c9a94\AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-config:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-config-11.4.0.aar\ab39282399fa0066e94cddf77dcbec33\AndroidManifest.xml:17:5-43
+MERGED from [com.google.firebase:firebase-config:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-config-11.4.0.aar\ab39282399fa0066e94cddf77dcbec33\AndroidManifest.xml:17:5-43
+MERGED from [com.google.firebase:firebase-analytics-impl:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-11.4.0.aar\0b63c330d9c2d79b559848c860eabf95\AndroidManifest.xml:17:5-43
+MERGED from [com.google.firebase:firebase-analytics-impl:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-11.4.0.aar\0b63c330d9c2d79b559848c860eabf95\AndroidManifest.xml:17:5-43
+MERGED from [com.google.firebase:firebase-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.4.0.aar\dc92b764d0da687f1158d58df0f3eaed\AndroidManifest.xml:17:5-43
+MERGED from [com.google.firebase:firebase-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.4.0.aar\dc92b764d0da687f1158d58df0f3eaed\AndroidManifest.xml:17:5-43
+MERGED from [com.google.firebase:firebase-auth:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-auth-11.4.0.aar\28e973fb5338ff6fe49736de9be1f4a2\AndroidManifest.xml:17:5-43
+MERGED from [com.google.firebase:firebase-auth:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-auth-11.4.0.aar\28e973fb5338ff6fe49736de9be1f4a2\AndroidManifest.xml:17:5-43
+MERGED from [com.google.firebase:firebase-database:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-database-11.4.0.aar\e57be9c6a88a462724df351378837bea\AndroidManifest.xml:3:5-43
+MERGED from [com.google.firebase:firebase-database:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-database-11.4.0.aar\e57be9c6a88a462724df351378837bea\AndroidManifest.xml:3:5-43
+MERGED from [com.google.firebase:firebase-database-connection:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-database-connection-11.4.0.aar\eda63fe2c377552a2e90ba12f572c18f\AndroidManifest.xml:3:5-43
+MERGED from [com.google.firebase:firebase-database-connection:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-database-connection-11.4.0.aar\eda63fe2c377552a2e90ba12f572c18f\AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-appinvite:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-appinvite-11.4.0.aar\0e5b7874acdf8221e6d7df81d8c6eea7\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-appinvite:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-appinvite-11.4.0.aar\0e5b7874acdf8221e6d7df81d8c6eea7\AndroidManifest.xml:17:5-43
+MERGED from [com.google.firebase:firebase-dynamic-links:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-dynamic-links-11.4.0.aar\4fd785be5bb65b19ee59316b043fe262\AndroidManifest.xml:3:3-41
+MERGED from [com.google.firebase:firebase-dynamic-links:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-dynamic-links-11.4.0.aar\4fd785be5bb65b19ee59316b043fe262\AndroidManifest.xml:3:3-41
+MERGED from [com.google.firebase:firebase-storage:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-storage-11.4.0.aar\9b6338633318f0bdea1a9942979d7e5b\AndroidManifest.xml:3:5-43
+MERGED from [com.google.firebase:firebase-storage:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-storage-11.4.0.aar\9b6338633318f0bdea1a9942979d7e5b\AndroidManifest.xml:3:5-43
+MERGED from [com.google.firebase:firebase-appindexing:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-appindexing-11.4.0.aar\f1e4b806335aacfafe69988db158a3d7\AndroidManifest.xml:17:5-43
+MERGED from [com.google.firebase:firebase-appindexing:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-appindexing-11.4.0.aar\f1e4b806335aacfafe69988db158a3d7\AndroidManifest.xml:17:5-43
+MERGED from [com.google.firebase:firebase-common:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-common-11.4.0.aar\0f421b01b19090c2581eccea5bb7c645\AndroidManifest.xml:3:5-43
+MERGED from [com.google.firebase:firebase-common:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-common-11.4.0.aar\0f421b01b19090c2581eccea5bb7c645\AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-ads:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-ads-11.4.0.aar\221fcb5421463952bc1929d2b20f9611\AndroidManifest.xml:17:5-94
+MERGED from [com.google.android.gms:play-services-ads:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-ads-11.4.0.aar\221fcb5421463952bc1929d2b20f9611\AndroidManifest.xml:17:5-94
+MERGED from [com.google.android.gms:play-services-ads-lite:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-ads-lite-11.4.0.aar\da1f98b3ef3e65fd00cf752a40c947a2\AndroidManifest.xml:22:5-43
+MERGED from [com.google.android.gms:play-services-ads-lite:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-ads-lite-11.4.0.aar\da1f98b3ef3e65fd00cf752a40c947a2\AndroidManifest.xml:22:5-43
+MERGED from [com.google.android.gms:play-services-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-analytics-11.4.0.aar\0174c024ef34c89c7e0d256b3499209e\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-analytics-11.4.0.aar\0174c024ef34c89c7e0d256b3499209e\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-tagmanager-v4-impl:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-tagmanager-v4-impl-11.4.0.aar\4bfc897d80e00d18a87d78eba123c5f5\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-tagmanager-v4-impl:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-tagmanager-v4-impl-11.4.0.aar\4bfc897d80e00d18a87d78eba123c5f5\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-analytics-impl:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-analytics-impl-11.4.0.aar\a0e244426750cd7a0f1f9967b278857c\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-analytics-impl:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-analytics-impl-11.4.0.aar\a0e244426750cd7a0f1f9967b278857c\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-auth:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-auth-11.4.0.aar\0cef4207726a2bff59a2238dce1c1322\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-auth:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-auth-11.4.0.aar\0cef4207726a2bff59a2238dce1c1322\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-auth-api-phone:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-auth-api-phone-11.4.0.aar\e632352da63ece663eaf239c82a021a8\AndroidManifest.xml:3:3-41
+MERGED from [com.google.android.gms:play-services-auth-api-phone:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-auth-api-phone-11.4.0.aar\e632352da63ece663eaf239c82a021a8\AndroidManifest.xml:3:3-41
+MERGED from [com.google.android.gms:play-services-auth-base:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-auth-base-11.4.0.aar\c29037ffb535d0e93f0242b2228cd679\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-auth-base:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-auth-base-11.4.0.aar\c29037ffb535d0e93f0242b2228cd679\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-awareness:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-awareness-11.4.0.aar\ecd93646d5716f3d03a52b3d9813a85a\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-awareness:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-awareness-11.4.0.aar\ecd93646d5716f3d03a52b3d9813a85a\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-games:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-games-11.4.0.aar\13d42c0fe27df5c4b2b22a83cc7024c7\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-games:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-games-11.4.0.aar\13d42c0fe27df5c4b2b22a83cc7024c7\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-drive:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-drive-11.4.0.aar\7a768b88e7b47fb28add10274a07b8f8\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-drive:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-drive-11.4.0.aar\7a768b88e7b47fb28add10274a07b8f8\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-fido:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-fido-11.4.0.aar\733c529352e6321d53abd98a6a1178b3\AndroidManifest.xml:4:3-41
+MERGED from [com.google.android.gms:play-services-fido:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-fido-11.4.0.aar\733c529352e6321d53abd98a6a1178b3\AndroidManifest.xml:4:3-41
+MERGED from [com.google.android.gms:play-services-fitness:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-fitness-11.4.0.aar\ff12cab9d27b63faba3a76be5365eaeb\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-fitness:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-fitness-11.4.0.aar\ff12cab9d27b63faba3a76be5365eaeb\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-gcm:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-gcm-11.4.0.aar\06cb1e10d02824ce08152b5f6cdc1a11\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-gcm:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-gcm-11.4.0.aar\06cb1e10d02824ce08152b5f6cdc1a11\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-wallet:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-wallet-11.4.0.aar\449d43424a619cb6619e1eec79fb442d\AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-wallet:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-wallet-11.4.0.aar\449d43424a619cb6619e1eec79fb442d\AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-identity:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-identity-11.4.0.aar\ada84b9215f4c2b0c6de7e6de8a8c409\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-identity:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-identity-11.4.0.aar\ada84b9215f4c2b0c6de7e6de8a8c409\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-iid-11.4.0.aar\34a9e287b50c8c27d01e0b820f367bf2\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-iid-11.4.0.aar\34a9e287b50c8c27d01e0b820f367bf2\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-instantapps:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-instantapps-11.4.0.aar\dd5c541a28b81dcca958da91e6fa409b\AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-instantapps:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-instantapps-11.4.0.aar\dd5c541a28b81dcca958da91e6fa409b\AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-location:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-location-11.4.0.aar\700a7f95ab76a7eaf3356629a9b7cc41\AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-location:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-location-11.4.0.aar\700a7f95ab76a7eaf3356629a9b7cc41\AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-places:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-places-11.4.0.aar\9c60aaf505b6efc267b09f4bf5566d34\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-places:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-places-11.4.0.aar\9c60aaf505b6efc267b09f4bf5566d34\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-maps:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-maps-11.4.0.aar\cdcbeb09598d972e93f8a243773f0bc6\AndroidManifest.xml:23:5-43
+MERGED from [com.google.android.gms:play-services-maps:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-maps-11.4.0.aar\cdcbeb09598d972e93f8a243773f0bc6\AndroidManifest.xml:23:5-43
+MERGED from [com.google.android.gms:play-services-nearby:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-nearby-11.4.0.aar\5f54a278deb58dab47c6b34cd9d970ec\AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-nearby:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-nearby-11.4.0.aar\5f54a278deb58dab47c6b34cd9d970ec\AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-panorama:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-panorama-11.4.0.aar\6d9010319d5f029e2b695ce43def98a7\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-panorama:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-panorama-11.4.0.aar\6d9010319d5f029e2b695ce43def98a7\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-plus:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-plus-11.4.0.aar\eeae1b0daef9ffb3826b73e5df3a0552\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-plus:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-plus-11.4.0.aar\eeae1b0daef9ffb3826b73e5df3a0552\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-safetynet:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-safetynet-11.4.0.aar\e3a043d1d50019d4dbb5645a76aa5d59\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-safetynet:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-safetynet-11.4.0.aar\e3a043d1d50019d4dbb5645a76aa5d59\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-vision:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-vision-11.4.0.aar\6286939674e180e1fddf6b9e0fd7bd77\AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-vision:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-vision-11.4.0.aar\6286939674e180e1fddf6b9e0fd7bd77\AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-vision-common:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-vision-common-11.4.0.aar\41a1286fa45602e273eeec10279e27b1\AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-vision-common:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-vision-common-11.4.0.aar\41a1286fa45602e273eeec10279e27b1\AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-wearable:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-wearable-11.4.0.aar\b99ebeda1d105df66c1f9e0a33d5ebff\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-wearable:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-wearable-11.4.0.aar\b99ebeda1d105df66c1f9e0a33d5ebff\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-base:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-base-11.4.0.aar\8dd36e9b80d851ee437d5fdf6e7eb9e4\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-base:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-base-11.4.0.aar\8dd36e9b80d851ee437d5fdf6e7eb9e4\AndroidManifest.xml:17:5-43
+MERGED from [com.google.firebase:firebase-storage-common:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-storage-common-11.4.0.aar\8e028ed3b2051de932a9176d29242d47\AndroidManifest.xml:3:5-43
+MERGED from [com.google.firebase:firebase-storage-common:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-storage-common-11.4.0.aar\8e028ed3b2051de932a9176d29242d47\AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-gass:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-gass-11.4.0.aar\219cd8765258e7e1ec57362b6c1b4ed4\AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-gass:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-gass-11.4.0.aar\219cd8765258e7e1ec57362b6c1b4ed4\AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-tasks:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-tasks-11.4.0.aar\6c69619cb7640231d0b149cf3ba7913b\AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-tasks:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-tasks-11.4.0.aar\6c69619cb7640231d0b149cf3ba7913b\AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-basement:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-basement-11.4.0.aar\3b3df02da2c9457547effd7988efef67\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-basement:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-basement-11.4.0.aar\3b3df02da2c9457547effd7988efef67\AndroidManifest.xml:17:5-43
+MERGED from [com.android.support:support-v13:23.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\support-v13-23.1.1.aar\aef59a1725145bd168a440d624311ee6\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v13:23.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\support-v13-23.1.1.aar\aef59a1725145bd168a440d624311ee6\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\bae2c046bcdb7a687ab3aadf44644cab\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\bae2c046bcdb7a687ab3aadf44644cab\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\e79fe9660ad735a4a3580c6655c49cc8\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\e79fe9660ad735a4a3580c6655c49cc8\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\4875ad5f28a4ab4024653ec57f84dcf1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\4875ad5f28a4ab4024653ec57f84dcf1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\26bc4ba642a94c053ed20bad4c30ac3f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\26bc4ba642a94c053ed20bad4c30ac3f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\185839ff4a334bc701c2f2777253c2b2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\185839ff4a334bc701c2f2777253c2b2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\e84b199e7cbf2eaded57ac71a0a6757f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\e84b199e7cbf2eaded57ac71a0a6757f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:palette-v7:25.2.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\palette-v7-25.2.0.aar\f6e5f7741fde6e592e4466fd7a9ba6eb\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:palette-v7:25.2.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\palette-v7-25.2.0.aar\f6e5f7741fde6e592e4466fd7a9ba6eb\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\d2b351db6f8975c27e9398e74de11209\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\d2b351db6f8975c27e9398e74de11209\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\36558538b602a41a3f8b7493d79908f8\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\36558538b602a41a3f8b7493d79908f8\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\b91e0e59cfe5c41e009ad6b14afc0c56\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\b91e0e59cfe5c41e009ad6b14afc0c56\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\d0a4aaafdfa75704b591a45ffe1d441c\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\d0a4aaafdfa75704b591a45ffe1d441c\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\e7223542a41c0c783dc8a77888b85693\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\e7223542a41c0c783dc8a77888b85693\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\9334930acf9a3e80c9dd912fe577c502\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\9334930acf9a3e80c9dd912fe577c502\AndroidManifest.xml:20:5-44
+INJECTED from D:\ICAI\PM\app\src\PM\AndroidManifest.xml
+INJECTED from D:\ICAI\PM\app\src\PM\AndroidManifest.xml
+	tools:overrideLibrary
+		ADDED from [com.google.android.gms:play-services-ads:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-ads-11.4.0.aar\221fcb5421463952bc1929d2b20f9611\AndroidManifest.xml:17:42-92
+	android:targetSdkVersion
+		INJECTED from D:\ICAI\PM\app\src\main\AndroidManifest.xml
+		INJECTED from D:\ICAI\PM\app\src\PM\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\ICAI\PM\app\src\main\AndroidManifest.xml
+		INJECTED from D:\ICAI\PM\app\src\PM\AndroidManifest.xml
+activity#com.vritti.ekatm.ActivityFirst
+ADDED from D:\ICAI\PM\app\src\PM\AndroidManifest.xml:14:9-60
+	android:name
+		ADDED from D:\ICAI\PM\app\src\PM\AndroidManifest.xml:14:19-48
+activity#com.vritti.ekatm.activity.ActivityLogIn
+ADDED from D:\ICAI\PM\app\src\PM\AndroidManifest.xml:15:9-25:20
+	android:theme
+		ADDED from D:\ICAI\PM\app\src\PM\AndroidManifest.xml:17:13-56
+	android:name
+		ADDED from D:\ICAI\PM\app\src\PM\AndroidManifest.xml:16:13-51
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from D:\ICAI\PM\app\src\PM\AndroidManifest.xml:20:13-24:29
+action#android.intent.action.MAIN
+ADDED from D:\ICAI\PM\app\src\PM\AndroidManifest.xml:21:17-69
+	android:name
+		ADDED from D:\ICAI\PM\app\src\PM\AndroidManifest.xml:21:25-66
+category#android.intent.category.LAUNCHER
+ADDED from D:\ICAI\PM\app\src\PM\AndroidManifest.xml:23:17-77
+	android:name
+		ADDED from D:\ICAI\PM\app\src\PM\AndroidManifest.xml:23:27-74
+activity#com.vritti.ekatm.activity.ActivityPMDashboard
+ADDED from D:\ICAI\PM\app\src\PM\AndroidManifest.xml:26:9-29:68
+	android:label
+		ADDED from D:\ICAI\PM\app\src\PM\AndroidManifest.xml:28:13-63
+	android:theme
+		ADDED from D:\ICAI\PM\app\src\PM\AndroidManifest.xml:29:13-56
+	android:name
+		ADDED from D:\ICAI\PM\app\src\PM\AndroidManifest.xml:27:13-57
+activity#com.vritti.vwb.vworkbench.GoogleMapTeamActivity
+ADDED from D:\ICAI\PM\app\src\PM\AndroidManifest.xml:31:9-36:20
+	android:label
+		ADDED from D:\ICAI\PM\app\src\PM\AndroidManifest.xml:33:13-46
+	android:icon
+		ADDED from D:\ICAI\PM\app\src\PM\AndroidManifest.xml:34:13-47
+	android:theme
+		ADDED from D:\ICAI\PM\app\src\PM\AndroidManifest.xml:32:13-44
+	android:name
+		ADDED from D:\ICAI\PM\app\src\PM\AndroidManifest.xml:31:19-81
+activity#com.vritti.sessionlib.MainActivity
+ADDED from [:sessionlib] D:\ICAI\PM\sessionlib\build\intermediates\manifests\full\debug\AndroidManifest.xml:12:9-71
+	android:name
+		ADDED from [:sessionlib] D:\ICAI\PM\sessionlib\build\intermediates\manifests\full\debug\AndroidManifest.xml:12:19-68
+activity#com.vritti.databaselib.other.MainActivity
+ADDED from [:databaselib] D:\ICAI\PM\databaselib\build\intermediates\manifests\full\debug\AndroidManifest.xml:16:9-78
+	android:name
+		ADDED from [:databaselib] D:\ICAI\PM\databaselib\build\intermediates\manifests\full\debug\AndroidManifest.xml:16:19-75
+receiver#com.google.android.gms.cast.framework.media.MediaIntentReceiver
+ADDED from [com.google.android.gms:play-services-cast-framework:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-cast-framework-11.4.0.aar\2b9cd841ea3269e9b451a9b832003909\AndroidManifest.xml:5:9-99
+	android:name
+		ADDED from [com.google.android.gms:play-services-cast-framework:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-cast-framework-11.4.0.aar\2b9cd841ea3269e9b451a9b832003909\AndroidManifest.xml:5:19-97
+service#com.google.android.gms.cast.framework.media.MediaNotificationService
+ADDED from [com.google.android.gms:play-services-cast-framework:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-cast-framework-11.4.0.aar\2b9cd841ea3269e9b451a9b832003909\AndroidManifest.xml:6:9-103
+	android:name
+		ADDED from [com.google.android.gms:play-services-cast-framework:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-cast-framework-11.4.0.aar\2b9cd841ea3269e9b451a9b832003909\AndroidManifest.xml:6:18-101
+service#com.google.android.gms.cast.framework.ReconnectionService
+ADDED from [com.google.android.gms:play-services-cast-framework:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-cast-framework-11.4.0.aar\2b9cd841ea3269e9b451a9b832003909\AndroidManifest.xml:7:9-92
+	android:name
+		ADDED from [com.google.android.gms:play-services-cast-framework:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-cast-framework-11.4.0.aar\2b9cd841ea3269e9b451a9b832003909\AndroidManifest.xml:7:18-90
+service#com.google.firebase.messaging.FirebaseMessagingService
+ADDED from [com.google.firebase:firebase-messaging:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-messaging-11.4.0.aar\aecef1ccdbd01b386c0946aca7d54fd5\AndroidManifest.xml:23:9-27:19
+	android:exported
+		ADDED from [com.google.firebase:firebase-messaging:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-messaging-11.4.0.aar\aecef1ccdbd01b386c0946aca7d54fd5\AndroidManifest.xml:23:88-111
+	android:name
+		ADDED from [com.google.firebase:firebase-messaging:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-messaging-11.4.0.aar\aecef1ccdbd01b386c0946aca7d54fd5\AndroidManifest.xml:23:18-87
+uses-permission#android.permission.VIBRATE
+ADDED from [com.github.citux:datetimepicker:0.2.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\datetimepicker-0.2.0.aar\8906d3585d46b2715ac85166304b9464\AndroidManifest.xml:26:5-66
+	android:name
+		ADDED from [com.github.citux:datetimepicker:0.2.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\datetimepicker-0.2.0.aar\8906d3585d46b2715ac85166304b9464\AndroidManifest.xml:26:22-63
+activity#com.devs.acr.ErrorReporterActivity
+ADDED from [com.devs:acr:1.0.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\acr-1.0.1.aar\6be5fbade9ebf9429fb530dafa8ae864\AndroidManifest.xml:15:9-18:59
+	android:screenOrientation
+		ADDED from [com.devs:acr:1.0.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\acr-1.0.1.aar\6be5fbade9ebf9429fb530dafa8ae864\AndroidManifest.xml:17:13-49
+	android:theme
+		ADDED from [com.devs:acr:1.0.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\acr-1.0.1.aar\6be5fbade9ebf9429fb530dafa8ae864\AndroidManifest.xml:18:13-56
+	android:name
+		ADDED from [com.devs:acr:1.0.1] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\acr-1.0.1.aar\6be5fbade9ebf9429fb530dafa8ae864\AndroidManifest.xml:16:13-62
+uses-permission#com.sec.android.provider.badge.permission.READ
+ADDED from [me.leolin:ShortcutBadger:1.1.3] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\ShortcutBadger-1.1.3.aar\9fed57e13d32814717ea9467ba285c93\AndroidManifest.xml:19:5-86
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.3] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\ShortcutBadger-1.1.3.aar\9fed57e13d32814717ea9467ba285c93\AndroidManifest.xml:19:22-83
+uses-permission#com.sec.android.provider.badge.permission.WRITE
+ADDED from [me.leolin:ShortcutBadger:1.1.3] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\ShortcutBadger-1.1.3.aar\9fed57e13d32814717ea9467ba285c93\AndroidManifest.xml:20:5-87
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.3] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\ShortcutBadger-1.1.3.aar\9fed57e13d32814717ea9467ba285c93\AndroidManifest.xml:20:22-84
+uses-permission#com.htc.launcher.permission.READ_SETTINGS
+ADDED from [me.leolin:ShortcutBadger:1.1.3] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\ShortcutBadger-1.1.3.aar\9fed57e13d32814717ea9467ba285c93\AndroidManifest.xml:23:5-81
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.3] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\ShortcutBadger-1.1.3.aar\9fed57e13d32814717ea9467ba285c93\AndroidManifest.xml:23:22-78
+uses-permission#com.htc.launcher.permission.UPDATE_SHORTCUT
+ADDED from [me.leolin:ShortcutBadger:1.1.3] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\ShortcutBadger-1.1.3.aar\9fed57e13d32814717ea9467ba285c93\AndroidManifest.xml:24:5-83
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.3] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\ShortcutBadger-1.1.3.aar\9fed57e13d32814717ea9467ba285c93\AndroidManifest.xml:24:22-80
+uses-permission#com.sonyericsson.home.permission.BROADCAST_BADGE
+ADDED from [me.leolin:ShortcutBadger:1.1.3] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\ShortcutBadger-1.1.3.aar\9fed57e13d32814717ea9467ba285c93\AndroidManifest.xml:27:5-88
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.3] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\ShortcutBadger-1.1.3.aar\9fed57e13d32814717ea9467ba285c93\AndroidManifest.xml:27:22-85
+uses-permission#com.anddoes.launcher.permission.UPDATE_COUNT
+ADDED from [me.leolin:ShortcutBadger:1.1.3] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\ShortcutBadger-1.1.3.aar\9fed57e13d32814717ea9467ba285c93\AndroidManifest.xml:30:5-84
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.3] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\ShortcutBadger-1.1.3.aar\9fed57e13d32814717ea9467ba285c93\AndroidManifest.xml:30:22-81
+uses-permission#com.majeur.launcher.permission.UPDATE_BADGE
+ADDED from [me.leolin:ShortcutBadger:1.1.3] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\ShortcutBadger-1.1.3.aar\9fed57e13d32814717ea9467ba285c93\AndroidManifest.xml:33:5-83
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.3] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\ShortcutBadger-1.1.3.aar\9fed57e13d32814717ea9467ba285c93\AndroidManifest.xml:33:22-80
+service#com.google.android.gms.tagmanager.TagManagerService
+ADDED from [com.google.android.gms:play-services-tagmanager-api:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-tagmanager-api-11.4.0.aar\ea2335ab0b095e8d532af30153bddd02\AndroidManifest.xml:24:9-134
+	android:enabled
+		ADDED from [com.google.android.gms:play-services-tagmanager-api:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-tagmanager-api-11.4.0.aar\ea2335ab0b095e8d532af30153bddd02\AndroidManifest.xml:24:110-132
+	android:exported
+		ADDED from [com.google.android.gms:play-services-tagmanager-api:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-tagmanager-api-11.4.0.aar\ea2335ab0b095e8d532af30153bddd02\AndroidManifest.xml:24:85-109
+	android:name
+		ADDED from [com.google.android.gms:play-services-tagmanager-api:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-tagmanager-api-11.4.0.aar\ea2335ab0b095e8d532af30153bddd02\AndroidManifest.xml:24:18-84
+activity#com.google.android.gms.tagmanager.TagManagerPreviewActivity
+ADDED from [com.google.android.gms:play-services-tagmanager-api:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-tagmanager-api-11.4.0.aar\ea2335ab0b095e8d532af30153bddd02\AndroidManifest.xml:25:9-32:20
+	android:noHistory
+		ADDED from [com.google.android.gms:play-services-tagmanager-api:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-tagmanager-api-11.4.0.aar\ea2335ab0b095e8d532af30153bddd02\AndroidManifest.xml:25:118-142
+	android:exported
+		ADDED from [com.google.android.gms:play-services-tagmanager-api:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-tagmanager-api-11.4.0.aar\ea2335ab0b095e8d532af30153bddd02\AndroidManifest.xml:25:94-117
+	android:name
+		ADDED from [com.google.android.gms:play-services-tagmanager-api:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-tagmanager-api-11.4.0.aar\ea2335ab0b095e8d532af30153bddd02\AndroidManifest.xml:25:19-93
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:scheme:tagmanager.c.${applicationId}
+ADDED from [com.google.android.gms:play-services-tagmanager-api:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-tagmanager-api-11.4.0.aar\ea2335ab0b095e8d532af30153bddd02\AndroidManifest.xml:26:13-31:29
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:scheme:tagmanager.c.practice.vritti.com
+ADDED from [com.google.android.gms:play-services-tagmanager-api:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-tagmanager-api-11.4.0.aar\ea2335ab0b095e8d532af30153bddd02\AndroidManifest.xml:26:13-31:29
+action#android.intent.action.VIEW
+ADDED from [com.google.android.gms:play-services-tagmanager-api:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-tagmanager-api-11.4.0.aar\ea2335ab0b095e8d532af30153bddd02\AndroidManifest.xml:28:17-68
+	android:name
+		ADDED from [com.google.android.gms:play-services-tagmanager-api:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-tagmanager-api-11.4.0.aar\ea2335ab0b095e8d532af30153bddd02\AndroidManifest.xml:28:25-66
+category#android.intent.category.BROWSABLE
+ADDED from [com.google.android.gms:play-services-tagmanager-api:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-tagmanager-api-11.4.0.aar\ea2335ab0b095e8d532af30153bddd02\AndroidManifest.xml:30:17-77
+	android:name
+		ADDED from [com.google.android.gms:play-services-tagmanager-api:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-tagmanager-api-11.4.0.aar\ea2335ab0b095e8d532af30153bddd02\AndroidManifest.xml:30:27-75
+receiver#com.google.android.gms.measurement.AppMeasurementReceiver
+ADDED from [com.google.firebase:firebase-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.4.0.aar\ef2a7f546d06860665ca46342d066f81\AndroidManifest.xml:25:7-26:18
+MERGED from [com.google.firebase:firebase-analytics-impl:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-11.4.0.aar\0b63c330d9c2d79b559848c860eabf95\AndroidManifest.xml:25:7-26:18
+MERGED from [com.google.firebase:firebase-analytics-impl:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-11.4.0.aar\0b63c330d9c2d79b559848c860eabf95\AndroidManifest.xml:25:7-26:18
+	android:enabled
+		ADDED from [com.google.firebase:firebase-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.4.0.aar\ef2a7f546d06860665ca46342d066f81\AndroidManifest.xml:25:90-112
+	android:exported
+		ADDED from [com.google.firebase:firebase-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.4.0.aar\ef2a7f546d06860665ca46342d066f81\AndroidManifest.xml:25:113-137
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.4.0.aar\ef2a7f546d06860665ca46342d066f81\AndroidManifest.xml:25:17-89
+receiver#com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver
+ADDED from [com.google.firebase:firebase-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.4.0.aar\ef2a7f546d06860665ca46342d066f81\AndroidManifest.xml:27:7-31:18
+	android:enabled
+		ADDED from [com.google.firebase:firebase-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.4.0.aar\ef2a7f546d06860665ca46342d066f81\AndroidManifest.xml:27:162-184
+	android:exported
+		ADDED from [com.google.firebase:firebase-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.4.0.aar\ef2a7f546d06860665ca46342d066f81\AndroidManifest.xml:27:185-208
+	android:permission
+		ADDED from [com.google.firebase:firebase-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.4.0.aar\ef2a7f546d06860665ca46342d066f81\AndroidManifest.xml:27:105-161
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.4.0.aar\ef2a7f546d06860665ca46342d066f81\AndroidManifest.xml:27:17-104
+intent-filter#action:name:com.android.vending.INSTALL_REFERRER
+ADDED from [com.google.firebase:firebase-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.4.0.aar\ef2a7f546d06860665ca46342d066f81\AndroidManifest.xml:28:11-30:27
+action#com.android.vending.INSTALL_REFERRER
+ADDED from [com.google.firebase:firebase-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.4.0.aar\ef2a7f546d06860665ca46342d066f81\AndroidManifest.xml:29:15-76
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.4.0.aar\ef2a7f546d06860665ca46342d066f81\AndroidManifest.xml:29:23-74
+service#com.google.android.gms.measurement.AppMeasurementService
+ADDED from [com.google.firebase:firebase-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.4.0.aar\ef2a7f546d06860665ca46342d066f81\AndroidManifest.xml:32:7-137
+MERGED from [com.google.firebase:firebase-analytics-impl:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-11.4.0.aar\0b63c330d9c2d79b559848c860eabf95\AndroidManifest.xml:27:7-137
+MERGED from [com.google.firebase:firebase-analytics-impl:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-11.4.0.aar\0b63c330d9c2d79b559848c860eabf95\AndroidManifest.xml:27:7-137
+	android:enabled
+		ADDED from [com.google.firebase:firebase-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.4.0.aar\ef2a7f546d06860665ca46342d066f81\AndroidManifest.xml:32:88-110
+	android:exported
+		ADDED from [com.google.firebase:firebase-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.4.0.aar\ef2a7f546d06860665ca46342d066f81\AndroidManifest.xml:32:111-135
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.4.0.aar\ef2a7f546d06860665ca46342d066f81\AndroidManifest.xml:32:16-87
+service#com.google.android.gms.measurement.AppMeasurementJobService
+ADDED from [com.google.firebase:firebase-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.4.0.aar\ef2a7f546d06860665ca46342d066f81\AndroidManifest.xml:33:7-197
+	android:enabled
+		ADDED from [com.google.firebase:firebase-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.4.0.aar\ef2a7f546d06860665ca46342d066f81\AndroidManifest.xml:33:148-170
+	android:exported
+		ADDED from [com.google.firebase:firebase-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.4.0.aar\ef2a7f546d06860665ca46342d066f81\AndroidManifest.xml:33:171-195
+	android:permission
+		ADDED from [com.google.firebase:firebase-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.4.0.aar\ef2a7f546d06860665ca46342d066f81\AndroidManifest.xml:33:91-147
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.4.0.aar\ef2a7f546d06860665ca46342d066f81\AndroidManifest.xml:33:16-90
+permission#${applicationId}.permission.C2D_MESSAGE
+ADDED from [com.google.firebase:firebase-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.4.0.aar\dc92b764d0da687f1158d58df0f3eaed\AndroidManifest.xml:24:5-109
+	android:protectionLevel
+		ADDED from [com.google.firebase:firebase-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.4.0.aar\dc92b764d0da687f1158d58df0f3eaed\AndroidManifest.xml:24:72-107
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.4.0.aar\dc92b764d0da687f1158d58df0f3eaed\AndroidManifest.xml:24:17-71
+permission#practice.vritti.com.permission.C2D_MESSAGE
+ADDED from [com.google.firebase:firebase-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.4.0.aar\dc92b764d0da687f1158d58df0f3eaed\AndroidManifest.xml:24:5-109
+	android:protectionLevel
+		ADDED from [com.google.firebase:firebase-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.4.0.aar\dc92b764d0da687f1158d58df0f3eaed\AndroidManifest.xml:24:72-107
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.4.0.aar\dc92b764d0da687f1158d58df0f3eaed\AndroidManifest.xml:24:17-71
+uses-permission#${applicationId}.permission.C2D_MESSAGE
+ADDED from [com.google.firebase:firebase-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.4.0.aar\dc92b764d0da687f1158d58df0f3eaed\AndroidManifest.xml:26:5-78
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.4.0.aar\dc92b764d0da687f1158d58df0f3eaed\AndroidManifest.xml:26:22-76
+uses-permission#practice.vritti.com.permission.C2D_MESSAGE
+ADDED from [com.google.firebase:firebase-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.4.0.aar\dc92b764d0da687f1158d58df0f3eaed\AndroidManifest.xml:26:5-78
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.4.0.aar\dc92b764d0da687f1158d58df0f3eaed\AndroidManifest.xml:26:22-76
+receiver#com.google.firebase.iid.FirebaseInstanceIdReceiver
+ADDED from [com.google.firebase:firebase-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.4.0.aar\dc92b764d0da687f1158d58df0f3eaed\AndroidManifest.xml:30:9-35:20
+	android:exported
+		ADDED from [com.google.firebase:firebase-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.4.0.aar\dc92b764d0da687f1158d58df0f3eaed\AndroidManifest.xml:30:85-108
+	android:permission
+		ADDED from [com.google.firebase:firebase-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.4.0.aar\dc92b764d0da687f1158d58df0f3eaed\AndroidManifest.xml:30:109-169
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.4.0.aar\dc92b764d0da687f1158d58df0f3eaed\AndroidManifest.xml:30:19-84
+intent-filter#action:name:com.google.android.c2dm.intent.RECEIVE+category:name:${applicationId}
+ADDED from [com.google.firebase:firebase-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.4.0.aar\dc92b764d0da687f1158d58df0f3eaed\AndroidManifest.xml:31:13-34:29
+intent-filter#action:name:com.google.android.c2dm.intent.RECEIVE+category:name:practice.vritti.com
+ADDED from [com.google.firebase:firebase-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.4.0.aar\dc92b764d0da687f1158d58df0f3eaed\AndroidManifest.xml:31:13-34:29
+category#${applicationId}
+ADDED from [com.google.firebase:firebase-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.4.0.aar\dc92b764d0da687f1158d58df0f3eaed\AndroidManifest.xml:33:17-60
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.4.0.aar\dc92b764d0da687f1158d58df0f3eaed\AndroidManifest.xml:33:27-58
+category#practice.vritti.com
+ADDED from [com.google.firebase:firebase-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.4.0.aar\dc92b764d0da687f1158d58df0f3eaed\AndroidManifest.xml:33:17-60
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.4.0.aar\dc92b764d0da687f1158d58df0f3eaed\AndroidManifest.xml:33:27-58
+receiver#com.google.firebase.iid.FirebaseInstanceIdInternalReceiver
+ADDED from [com.google.firebase:firebase-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.4.0.aar\dc92b764d0da687f1158d58df0f3eaed\AndroidManifest.xml:39:9-119
+	android:exported
+		ADDED from [com.google.firebase:firebase-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.4.0.aar\dc92b764d0da687f1158d58df0f3eaed\AndroidManifest.xml:39:93-117
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.4.0.aar\dc92b764d0da687f1158d58df0f3eaed\AndroidManifest.xml:39:19-92
+service#com.google.firebase.iid.FirebaseInstanceIdService
+ADDED from [com.google.firebase:firebase-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.4.0.aar\dc92b764d0da687f1158d58df0f3eaed\AndroidManifest.xml:43:9-47:19
+	android:exported
+		ADDED from [com.google.firebase:firebase-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.4.0.aar\dc92b764d0da687f1158d58df0f3eaed\AndroidManifest.xml:43:83-106
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.4.0.aar\dc92b764d0da687f1158d58df0f3eaed\AndroidManifest.xml:43:18-82
+activity#com.google.android.gms.appinvite.PreviewActivity
+ADDED from [com.google.android.gms:play-services-appinvite:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-appinvite-11.4.0.aar\0e5b7874acdf8221e6d7df81d8c6eea7\AndroidManifest.xml:20:9-25:20
+	android:exported
+		ADDED from [com.google.android.gms:play-services-appinvite:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-appinvite-11.4.0.aar\0e5b7874acdf8221e6d7df81d8c6eea7\AndroidManifest.xml:20:51-74
+	android:theme
+		ADDED from [com.google.android.gms:play-services-appinvite:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-appinvite-11.4.0.aar\0e5b7874acdf8221e6d7df81d8c6eea7\AndroidManifest.xml:20:75-121
+	android:name
+		ADDED from [com.google.android.gms:play-services-appinvite:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-appinvite-11.4.0.aar\0e5b7874acdf8221e6d7df81d8c6eea7\AndroidManifest.xml:20:19-50
+intent-filter#action:name:com.google.android.gms.appinvite.ACTION_PREVIEW+category:name:android.intent.category.DEFAULT
+ADDED from [com.google.android.gms:play-services-appinvite:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-appinvite-11.4.0.aar\0e5b7874acdf8221e6d7df81d8c6eea7\AndroidManifest.xml:21:13-24:29
+action#com.google.android.gms.appinvite.ACTION_PREVIEW
+ADDED from [com.google.android.gms:play-services-appinvite:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-appinvite-11.4.0.aar\0e5b7874acdf8221e6d7df81d8c6eea7\AndroidManifest.xml:22:17-89
+	android:name
+		ADDED from [com.google.android.gms:play-services-appinvite:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-appinvite-11.4.0.aar\0e5b7874acdf8221e6d7df81d8c6eea7\AndroidManifest.xml:22:25-87
+provider#com.google.firebase.provider.FirebaseInitProvider
+ADDED from [com.google.firebase:firebase-common:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-common-11.4.0.aar\0f421b01b19090c2581eccea5bb7c645\AndroidManifest.xml:6:9-194
+	android:authorities
+		ADDED from [com.google.firebase:firebase-common:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-common-11.4.0.aar\0f421b01b19090c2581eccea5bb7c645\AndroidManifest.xml:6:19-78
+	android:exported
+		ADDED from [com.google.firebase:firebase-common:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-common-11.4.0.aar\0f421b01b19090c2581eccea5bb7c645\AndroidManifest.xml:6:144-168
+	android:initOrder
+		ADDED from [com.google.firebase:firebase-common:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-common-11.4.0.aar\0f421b01b19090c2581eccea5bb7c645\AndroidManifest.xml:6:169-192
+	android:name
+		ADDED from [com.google.firebase:firebase-common:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\firebase-common-11.4.0.aar\0f421b01b19090c2581eccea5bb7c645\AndroidManifest.xml:6:79-143
+activity#com.google.android.gms.ads.AdActivity
+ADDED from [com.google.android.gms:play-services-ads-lite:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-ads-lite-11.4.0.aar\da1f98b3ef3e65fd00cf752a40c947a2\AndroidManifest.xml:25:9-257
+	android:exported
+		ADDED from [com.google.android.gms:play-services-ads-lite:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-ads-lite-11.4.0.aar\da1f98b3ef3e65fd00cf752a40c947a2\AndroidManifest.xml:25:231-255
+	android:configChanges
+		ADDED from [com.google.android.gms:play-services-ads-lite:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-ads-lite-11.4.0.aar\da1f98b3ef3e65fd00cf752a40c947a2\AndroidManifest.xml:25:72-181
+	android:theme
+		ADDED from [com.google.android.gms:play-services-ads-lite:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-ads-lite-11.4.0.aar\da1f98b3ef3e65fd00cf752a40c947a2\AndroidManifest.xml:25:182-230
+	android:name
+		ADDED from [com.google.android.gms:play-services-ads-lite:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-ads-lite-11.4.0.aar\da1f98b3ef3e65fd00cf752a40c947a2\AndroidManifest.xml:25:19-71
+receiver#com.google.android.gms.analytics.AnalyticsReceiver
+ADDED from [com.google.android.gms:play-services-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-analytics-11.4.0.aar\0174c024ef34c89c7e0d256b3499209e\AndroidManifest.xml:27:9-28:20
+	android:enabled
+		ADDED from [com.google.android.gms:play-services-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-analytics-11.4.0.aar\0174c024ef34c89c7e0d256b3499209e\AndroidManifest.xml:27:85-107
+	android:exported
+		ADDED from [com.google.android.gms:play-services-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-analytics-11.4.0.aar\0174c024ef34c89c7e0d256b3499209e\AndroidManifest.xml:27:108-132
+	android:name
+		ADDED from [com.google.android.gms:play-services-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-analytics-11.4.0.aar\0174c024ef34c89c7e0d256b3499209e\AndroidManifest.xml:27:19-84
+service#com.google.android.gms.analytics.AnalyticsService
+ADDED from [com.google.android.gms:play-services-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-analytics-11.4.0.aar\0174c024ef34c89c7e0d256b3499209e\AndroidManifest.xml:29:9-132
+	android:enabled
+		ADDED from [com.google.android.gms:play-services-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-analytics-11.4.0.aar\0174c024ef34c89c7e0d256b3499209e\AndroidManifest.xml:29:83-105
+	android:exported
+		ADDED from [com.google.android.gms:play-services-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-analytics-11.4.0.aar\0174c024ef34c89c7e0d256b3499209e\AndroidManifest.xml:29:106-130
+	android:name
+		ADDED from [com.google.android.gms:play-services-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-analytics-11.4.0.aar\0174c024ef34c89c7e0d256b3499209e\AndroidManifest.xml:29:18-82
+service#com.google.android.gms.analytics.AnalyticsJobService
+ADDED from [com.google.android.gms:play-services-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-analytics-11.4.0.aar\0174c024ef34c89c7e0d256b3499209e\AndroidManifest.xml:30:9-192
+	android:enabled
+		ADDED from [com.google.android.gms:play-services-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-analytics-11.4.0.aar\0174c024ef34c89c7e0d256b3499209e\AndroidManifest.xml:30:143-165
+	android:exported
+		ADDED from [com.google.android.gms:play-services-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-analytics-11.4.0.aar\0174c024ef34c89c7e0d256b3499209e\AndroidManifest.xml:30:166-190
+	android:permission
+		ADDED from [com.google.android.gms:play-services-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-analytics-11.4.0.aar\0174c024ef34c89c7e0d256b3499209e\AndroidManifest.xml:30:86-142
+	android:name
+		ADDED from [com.google.android.gms:play-services-analytics:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-analytics-11.4.0.aar\0174c024ef34c89c7e0d256b3499209e\AndroidManifest.xml:30:18-85
+activity#com.google.android.gms.auth.api.signin.internal.SignInHubActivity
+ADDED from [com.google.android.gms:play-services-auth:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-auth-11.4.0.aar\0cef4207726a2bff59a2238dce1c1322\AndroidManifest.xml:20:9-189
+	android:excludeFromRecents
+		ADDED from [com.google.android.gms:play-services-auth:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-auth-11.4.0.aar\0cef4207726a2bff59a2238dce1c1322\AndroidManifest.xml:20:129-162
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-auth-11.4.0.aar\0cef4207726a2bff59a2238dce1c1322\AndroidManifest.xml:20:163-187
+	android:theme
+		ADDED from [com.google.android.gms:play-services-auth:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-auth-11.4.0.aar\0cef4207726a2bff59a2238dce1c1322\AndroidManifest.xml:20:69-128
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-auth-11.4.0.aar\0cef4207726a2bff59a2238dce1c1322\AndroidManifest.xml:20:19-68
+service#com.google.android.gms.auth.api.signin.RevocationBoundService
+ADDED from [com.google.android.gms:play-services-auth:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-auth-11.4.0.aar\0cef4207726a2bff59a2238dce1c1322\AndroidManifest.xml:24:9-184
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-auth-11.4.0.aar\0cef4207726a2bff59a2238dce1c1322\AndroidManifest.xml:24:64-87
+	android:permission
+		ADDED from [com.google.android.gms:play-services-auth:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-auth-11.4.0.aar\0cef4207726a2bff59a2238dce1c1322\AndroidManifest.xml:24:88-182
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-auth-11.4.0.aar\0cef4207726a2bff59a2238dce1c1322\AndroidManifest.xml:24:18-63
+uses-feature#0x00020000
+ADDED from [com.google.android.gms:play-services-maps:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-maps-11.4.0.aar\cdcbeb09598d972e93f8a243773f0bc6\AndroidManifest.xml:21:5-77
+	android:glEsVersion
+		ADDED from [com.google.android.gms:play-services-maps:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-maps-11.4.0.aar\cdcbeb09598d972e93f8a243773f0bc6\AndroidManifest.xml:21:19-51
+	android:required
+		ADDED from [com.google.android.gms:play-services-maps:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-maps-11.4.0.aar\cdcbeb09598d972e93f8a243773f0bc6\AndroidManifest.xml:21:52-75
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-base-11.4.0.aar\8dd36e9b80d851ee437d5fdf6e7eb9e4\AndroidManifest.xml:19:9-172
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-base-11.4.0.aar\8dd36e9b80d851ee437d5fdf6e7eb9e4\AndroidManifest.xml:19:146-170
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-base-11.4.0.aar\8dd36e9b80d851ee437d5fdf6e7eb9e4\AndroidManifest.xml:19:86-145
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-base-11.4.0.aar\8dd36e9b80d851ee437d5fdf6e7eb9e4\AndroidManifest.xml:19:19-85
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-basement-11.4.0.aar\3b3df02da2c9457547effd7988efef67\AndroidManifest.xml:20:9-121
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-basement-11.4.0.aar\3b3df02da2c9457547effd7988efef67\AndroidManifest.xml:20:66-119
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:11.4.0] C:\Users\pradnya\.gradle\caches\transforms-1\files-1.1\play-services-basement-11.4.0.aar\3b3df02da2c9457547effd7988efef67\AndroidManifest.xml:20:20-65

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "869485932850",
+    "firebase_url": "https://alfa-laval-e42e4.firebaseio.com",
+    "project_id": "alfa-laval-e42e4",
+    "storage_bucket": "alfa-laval-e42e4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:869485932850:android:c359a169f830ebaa40e72b",
+        "android_client_info": {
+          "package_name": "com.vritti.alfa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "869485932850-91geo47arl8863rp62g046o0mmhnlalp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9Hk1C0FGw1Y0c1RUAQ6CgXxOH1R2OSEc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "869485932850-91geo47arl8863rp62g046o0mmhnlalp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

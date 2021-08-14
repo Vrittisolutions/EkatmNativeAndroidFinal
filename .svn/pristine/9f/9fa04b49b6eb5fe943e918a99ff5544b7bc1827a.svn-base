@@ -1,0 +1,130 @@
+[
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\color\\done_text_color_dark.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\datetimepicker-0.2.0.aar\\8906d3585d46b2715ac85166304b9464\\res\\color\\done_text_color_dark.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\color\\wallet_primary_text_holo_light.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-wallet-11.4.0.aar\\449d43424a619cb6619e1eec79fb442d\\res\\color\\wallet_primary_text_holo_light.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\color\\abc_primary_text_material_light.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\color\\abc_primary_text_material_light.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\color\\abc_tint_edittext.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\color\\abc_tint_edittext.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\color\\abc_background_cache_hint_selector_material_light.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\color\\abc_background_cache_hint_selector_material_light.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\color\\abc_hint_foreground_material_dark.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\color\\abc_hint_foreground_material_dark.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\color\\switch_thumb_material_light.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\color\\switch_thumb_material_light.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\color\\abc_primary_text_disable_only_material_dark.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\color\\abc_primary_text_disable_only_material_dark.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\color\\abc_tint_spinner.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\color\\abc_tint_spinner.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\color\\design_tint_password_toggle.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\2a4762706393415c04fa065e59894d9a\\res\\color\\design_tint_password_toggle.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\color\\abc_btn_colored_text_material.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\color\\abc_btn_colored_text_material.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\color\\abc_primary_text_material_dark.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\color\\abc_primary_text_material_dark.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\color\\done_text_color.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\datetimepicker-0.2.0.aar\\8906d3585d46b2715ac85166304b9464\\res\\color\\done_text_color.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\color\\common_google_signin_btn_tint.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.4.0.aar\\8dd36e9b80d851ee437d5fdf6e7eb9e4\\res\\color\\common_google_signin_btn_tint.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\color\\design_error.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\2a4762706393415c04fa065e59894d9a\\res\\color\\design_error.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\color\\abc_search_url_text.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\color\\abc_search_url_text.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\color\\date_picker_selector.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\datetimepicker-0.2.0.aar\\8906d3585d46b2715ac85166304b9464\\res\\color\\date_picker_selector.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\color\\abc_tint_seek_thumb.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\color\\abc_tint_seek_thumb.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\color\\abc_secondary_text_material_light.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\color\\abc_secondary_text_material_light.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\color\\abc_secondary_text_material_dark.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\color\\abc_secondary_text_material_dark.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\color\\date_picker_year_selector.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\datetimepicker-0.2.0.aar\\8906d3585d46b2715ac85166304b9464\\res\\color\\date_picker_year_selector.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\color\\abc_hint_foreground_material_light.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\color\\abc_hint_foreground_material_light.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\color\\common_google_signin_btn_text_dark.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.4.0.aar\\8dd36e9b80d851ee437d5fdf6e7eb9e4\\res\\color\\common_google_signin_btn_text_dark.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\color\\abc_tint_default.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\color\\abc_tint_default.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\color\\common_google_signin_btn_text_light.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.4.0.aar\\8dd36e9b80d851ee437d5fdf6e7eb9e4\\res\\color\\common_google_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\color\\abc_tint_switch_track.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\color\\abc_tint_switch_track.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\color\\wallet_secondary_text_holo_dark.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-wallet-11.4.0.aar\\449d43424a619cb6619e1eec79fb442d\\res\\color\\wallet_secondary_text_holo_dark.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\color\\abc_background_cache_hint_selector_material_dark.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\color\\abc_background_cache_hint_selector_material_dark.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\color\\abc_btn_colored_borderless_text_material.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\color\\abc_btn_colored_borderless_text_material.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\color\\abc_tint_btn_checkable.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\color\\abc_tint_btn_checkable.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\color\\switch_thumb_material_dark.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\color\\switch_thumb_material_dark.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\color\\abc_primary_text_disable_only_material_light.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\color\\abc_primary_text_disable_only_material_light.xml"
+    }
+]

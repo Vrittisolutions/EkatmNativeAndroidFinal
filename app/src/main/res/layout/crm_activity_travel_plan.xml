@@ -1,0 +1,234 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:gpb="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true"
+    >
+
+    <include
+        layout="@layout/toolbar_header"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/card_back">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:cardCornerRadius="8dp"
+            card_view:cardElevation="1dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="2dp"
+            app:cardPreventCornerOverlap="false"
+            card_view:cardUseCompatPadding="true"
+            card_view:cardMaxElevation="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+                <LinearLayout
+                    android:id="@+id/lay_Date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txtdate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" Date"
+                        android:textSize="14dp"
+                        android:layout_marginLeft="5dp"
+                        android:drawableLeft="@drawable/date"
+                        android:padding="1dp"
+                        android:drawablePadding="8dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/editTextDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="9 Mar' 21"
+                        android:padding="5dp"
+                        android:textSize="16dp"
+                        android:layout_marginLeft="35dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/txtcurrentday"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" Today"
+                            android:layout_marginLeft="37dp"
+                            android:textSize="14dp"
+                            android:padding="1dp"
+                            android:layout_marginBottom="5dp"
+                            />
+                        <TextView
+                            android:id="@+id/txtweekdays"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Monday"
+                            android:textSize="14dp"
+                            android:visibility="gone"
+                            android:padding="1dp"
+                            android:layout_marginBottom="5dp"
+                            />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@color/stroke"/>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <com.vritti.crm.classes.CustomAutoCompleteView
+                        android:id="@+id/myautocomplete"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Select city "
+                        android:textSize="14dp"
+                        android:focusable="false"
+                        android:editable="false"
+                        android:drawableLeft="@drawable/ic_baseline_location_city_24"
+                        android:padding="13dp"
+                        android:drawableTint="@color/colorPrimary"
+                        android:backgroundTint="@color/stroke"
+                        android:drawablePadding="8dp"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+
+                    <EditText
+                        android:id="@+id/editTextNotes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter Notes"
+                        android:textSize="14dp"
+                        android:padding="13dp"
+                        android:drawablePadding="8dp"
+                        android:inputType="textMultiLine"
+                        android:drawableLeft="@drawable/notes"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/card_back"
+            android:fillViewport="true"
+            android:visibility="visible"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+            <LinearLayout
+                android:id="@+id/lay_travelplan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/callhistory_listview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/card_back"
+                    android:layout_below="@id/history"/>
+            </LinearLayout>
+
+        </ScrollView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:visibility="gone"
+            android:orientation="horizontal">
+
+            <TableRow
+                android:id="@+id/tableRow1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom">
+
+                <Button
+                    android:id="@+id/buttonSave_travelplan"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/button_green"
+                    android:text="Save"
+                    android:layout_weight="1"
+                    android:textSize="13dp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white" />
+
+                <Button
+                    android:id="@+id/buttonClose_travelplan"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/button_orange"
+                    android:text="Cancel"
+                    android:textColor="@color/white"
+                    android:layout_weight="1"
+                    android:textSize="13dp"
+                    android:textAllCaps="false" />
+            </TableRow>
+        </LinearLayout>
+        <ProgressBar
+            android:id="@+id/progressbar_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            />
+
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="5dp"
+    android:paddingRight="5dp"
+    android:paddingLeft="5dp"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="4sp"
+        android:paddingRight="5dp"
+        android:text="cggg"
+        android:layout_weight="0.4"
+        android:textColor="#000000"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/tvDesignation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8sp"
+        android:text="gvgvgv"
+        android:layout_weight="0.4"
+        android:textColor="#000000"
+        android:textSize="11sp" />
+
+    <Button
+        android:text="Edit"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:id="@+id/buttonEdit"
+        android:padding="5dp"
+        android:textColor="@color/white"
+        android:background="@color/orange"
+        android:layout_weight="0.2" />
+
+</LinearLayout>

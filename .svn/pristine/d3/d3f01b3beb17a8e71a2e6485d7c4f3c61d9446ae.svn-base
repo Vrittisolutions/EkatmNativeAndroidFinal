@@ -1,0 +1,77 @@
+package com.vritti.vwb.Beans;
+
+import com.google.gson.annotations.SerializedName;
+
+import java.util.ArrayList;
+
+public class ViewReportsDT {
+    @SerializedName("FeedbackDate")
+    String FeedbackDate;
+    @SerializedName("ClientName")
+    String ClientName;
+    @SerializedName("FeedbackBy")
+    String FeedbackBy;
+    @SerializedName("A13")
+    String A13;
+    @SerializedName("A14")
+    String A14;
+
+    @SerializedName("viewReports")
+    ArrayList<ViewReportsDT> viewReports;
+
+    public ViewReportsDT(ArrayList<ViewReportsDT> viewReportsDTS) {
+        this.viewReports = viewReportsDTS;
+    }
+
+    public ViewReportsDT() {
+
+    }
+
+    public String getFeedbackDate() {
+        return FeedbackDate;
+    }
+
+    public void setFeedbackDate(String feedbackDate) {
+        FeedbackDate = feedbackDate;
+    }
+
+    public String getClientName() {
+        return ClientName;
+    }
+
+    public void setClientName(String clientName) {
+        ClientName = clientName;
+    }
+
+    public String getFeedbackBy() {
+        return FeedbackBy;
+    }
+
+    public void setFeedbackBy(String feedbackBy) {
+        FeedbackBy = feedbackBy;
+    }
+
+    public String getA13() {
+        return A13;
+    }
+
+    public void setA13(String a13) {
+        A13 = a13;
+    }
+
+    public String getA14() {
+        return A14;
+    }
+
+    public void setA14(String a14) {
+        A14 = a14;
+    }
+
+    public ArrayList<ViewReportsDT> getViewReports() {
+        return viewReports;
+    }
+
+    public void setViewReports(ArrayList<ViewReportsDT> viewReports) {
+        this.viewReports = viewReports;
+    }
+}

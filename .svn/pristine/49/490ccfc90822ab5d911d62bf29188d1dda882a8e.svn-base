@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="planets_array">
+    <item>Mercury</item>
+    <item>Venus</item>
+    <item>Earth</item>
+    <item>Mars</item>
+    <item>Jupiter</item>
+    <item>Saturn</item>
+    <item>Uranus</item>
+    <item>Neptune</item>
+</string-array>
+    <string-array name="time_array">
+    <item>09:00</item>
+    <item>09:15</item>
+    <item>09:30</item>
+    <item>09:45</item>
+    <item>10:00</item>
+    <item>10:15</item>
+    <item>10:30</item>
+    <item>10:45</item>
+    <item>11:00</item>
+    <item>11:15</item>
+    <item>11:30</item>
+    <item>11:45</item>
+    <item>12:00</item>
+    <item>12:15</item>
+    <item>12:30</item>
+    <item>12:45</item>
+    <item>13:00</item>
+    <item>13:15</item>
+    <item>13:30</item>
+    <item>13:45</item>
+    <item>14:00</item>
+    <item>14:15</item>
+    <item>14:30</item>
+    <item>14:45</item>
+    <item>15:00</item>
+    <item>15:15</item>
+    <item>15:30</item>
+    <item>15:45</item>
+    <item>16:00</item>
+    <item>16:15</item>
+    <item>16:30</item>
+    <item>16:45</item>
+    <item>17:00</item>
+    <item>17:15</item>
+    <item>17:30</item>
+    <item>17:45</item>
+    <item>18:00</item>
+    <item>18:15</item>
+    <item>18:30</item>
+    <item>18:45</item>
+    <item>19:00</item>
+    <item>19:15</item>
+    <item>19:30</item>
+    <item>19:45</item>
+    <item>20:00</item>
+</string-array>
+    <color name="background">#777777</color>
+    <color name="backgroundBlue">#016A97</color>
+    <color name="backgroundCancel">#FF902B</color>
+    <color name="backgroundHeader">#6E6F72</color>
+    <color name="backgroundSave">#27C24C</color>
+    <color name="barDarkColor">#CECECE</color>
+    <color name="barLightColor">#F2F2F2</color>
+    <color name="barMeduimColor">#DFDEE0</color>
+    <color name="black">#000000</color>
+    <color name="blue">#3366FF</color>
+    <color name="btn">#376092</color>
+    <color name="btnNext">#27C24C</color>
+    <color name="btnPrv">#F05050</color>
+    <color name="chat_username_color">#FF0000</color>
+    <color name="colorAccent">#aaa2a2</color>
+    <color name="colorIndivateTab">#FFFFFF</color>
+    <color name="colorPrimary">#0A9BC5</color>
+    <color name="colorPrimaryDark">#016A97</color>
+    <color name="cyan">#33B5E5</color>
+    <color name="dark_grey">#808080</color>
+    <color name="dgrey">#080808</color>
+    <color name="divider">#3366FF</color>
+    <color name="green">#26C14B</color>
+    <color name="grey_200">#EEEEEE</color>
+    <color name="grey_500">#a4a4a4</color>
+    <color name="header">#CBDFE2</color>
+    <color name="listViewBg">#DADFEE</color>
+    <color name="red">#F05050</color>
+    <color name="sendDarkColor">#515F9F</color>
+    <color name="sendLightColor">#8897BF</color>
+    <color name="sendMeduimColor">#5D6CA5</color>
+    <color name="tabColor">#376092</color>
+    <color name="textColor">#FFF</color>
+    <color name="textFieldColor">#000</color>
+    <color name="textShadow">#FFF</color>
+    <color name="white">#ffffff</color>
+    <dimen name="activity_horizontal_margin">5dp</dimen>
+    <dimen name="activity_vertical_margin">5dp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+    <item name="glide_tag" type="id"/>
+    <string name="Env_code">Environment</string>
+    <string name="UpTicMat_Change_Setting">Change warehouse and location</string>
+    <string name="UpTicMat_Default_Setting">Default setting</string>
+    <string name="api_GetIsValidUser">.ekatm.com/api/LoginAPI/GetIsValidUser</string>
+    <string name="api_GetSessions">.ekatm.com/api/LoginAPI/GetSessions</string>
+    <string name="api_GetUserMasterId">.ekatm.com/api/TimesheetAPI/GetUserMasterId</string>
+    <string name="api_PostloadWorkData">.ekatm.com/api/TimesheetAPI/PostloadWorkData</string>
+    <string name="api_getEnv">c207.ekatm.com/api/LoginAPI/GetEnvis</string>
+    <string name="api_getPlants">.ekatm.com/api/LoginAPI/GetPlants</string>
+    <string name="app_name">vWorkbench</string>
+    <string name="drawer_close">Close</string>
+    <string name="drawer_open">Open</string>
+    <string name="google_map_key">AIzaSyD3ONS8gu5RY-Db5shmfI1Fc4NyygBGHSk</string>
+    <string name="otpmsg">Sit back and relax !\n while we verify your mobile number</string>
+    <string name="tick">\u2713\u2713</string>
+    <string name="type_your_message">Type Message here</string>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">#FF902B</item>
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+    </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:textColor">#a6abad</item>
+    </style>
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+    <style name="CollapsedAppBar" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">26sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">left</item>
+    </style>
+    <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">#fff</item>
+    </style>
+    <style name="MyActionBarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:textColorPrimary">#fff</item>
+    </style>
+    <style name="ProgressHUD" parent="@android:style/Theme.Dialog">
+
+        <item name="android:windowFrame">@null</item>
+
+        <item name="android:windowIsFloating">true</item>
+
+        <item name="android:windowContentOverlay">@null</item>
+
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+
+        <item name="android:windowBackground">@android:color/transparent</item>
+
+        <item name="android:windowNoTitle">true</item>
+
+    </style>
+    <style name="SpinnerTheme" parent="android:Widget.Spinner">
+        <item name="android:background">@drawable/bg_spinner</item>
+    </style>
+    <style name="ThemeSpinner">
+        <!-- Color when pressed -->
+        <item name="colorAccent">@color/colorPrimary</item>
+        <!-- Default color for the dropdown arrow and line -->
+        <item name="colorControlNormal">#707070</item>    </style>
+    <style name="chat_text_message_style">
+
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@android:color/black</item>
+
+    </style>
+    <style name="chat_timings">
+
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#a6abad</item>
+
+    </style>
+    <style name="mystyle" parent="@style/Base.TextAppearance.AppCompat.Title">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>

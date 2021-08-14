@@ -1,0 +1,316 @@
+package com.vritti.sales.beans;
+
+import android.support.annotation.NonNull;
+
+import java.util.ArrayList;
+
+/**
+ * Created by sharvari on 2/25/2016.
+ */
+public class OrderHistoryBean implements Comparable<OrderHistoryBean> {
+    String Address, City, ConsigneeName, CustomerMasterId, ItemMasterId, Mobile,SODate, SOHeaderId, ItemDesc, SODetailID, SOScheduleID;
+    String merchantid, merchantname, state, statusname, SalesHeaderId, DispatchNo, salesdtlno, Shipstatus ;
+    String DODisptch, DORcvd, status, DoAck, DObkd, DOrej, placeOrderDate, DOApprvd, SONo, DOShortClose, ShipToMasterId, prefDelFrmTime, prefDelToTime;;
+    float Qty, Rate, NetAmt, LineAmt, DispQty, RecvQty, Disp_lineamt, DispNetAmnt;
+    boolean isChecked;
+
+    public OrderHistoryBean(ArrayList<OrderHistoryBean> arrayList) {
+    }
+
+    public OrderHistoryBean(){
+
+    }
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
+    }
+
+    public String getShipstatus() {
+        return Shipstatus;
+    }
+
+    public void setShipstatus(String shipstatus) {
+        Shipstatus = shipstatus;
+    }
+
+    public String getSalesdtlno() {
+        return salesdtlno;
+    }
+
+    public void setSalesdtlno(String salesdtlno) {
+        this.salesdtlno = salesdtlno;
+    }
+
+    public String getDOShortClose() { return DOShortClose; }
+
+    public void setDOShortClose(String DOShortClose) { this.DOShortClose = DOShortClose; }
+
+    public String getSONo() {
+        return SONo;
+    }
+
+    public void setSONo(String SONo) {
+        this.SONo = SONo;
+    }
+
+    public float getDispNetAmnt() {
+        return DispNetAmnt;
+    }
+
+    public void setDispNetAmnt(float dispNetAmnt) {
+        DispNetAmnt = dispNetAmnt;
+    }
+
+    public String getDispatchNo() {
+        return DispatchNo;
+    }
+
+    public void setDispatchNo(String dispatchNo) {
+        DispatchNo = dispatchNo;
+    }
+
+    public String getSalesHeaderId() {
+        return SalesHeaderId;
+    }
+
+    public void setSalesHeaderId(String salesHeaderId) {
+        SalesHeaderId = salesHeaderId;
+    }
+
+    public float getDisp_lineamt(){ return Disp_lineamt; }
+
+    public void setDisp_lineamt(float disp_lineamt) { Disp_lineamt = disp_lineamt; }
+
+    public float getDispQty() { return DispQty; }
+
+    public void setDispQty(float dispQty) { DispQty = dispQty; }
+
+    public float getRecvQty() { return RecvQty; }
+
+    public void setRecvQty(float recvQty) { RecvQty = recvQty; }
+
+    public String getSOScheduleID() {
+        return SOScheduleID;
+    }
+
+    public void setSOScheduleID(String SOScheduleID) {
+        this.SOScheduleID = SOScheduleID;
+    }
+
+    public String getSODetailID() { return SODetailID; }
+
+    public void setSODetailID(String SODetailID) {
+        this.SODetailID = SODetailID;
+    }
+
+    public String getItemDesc() {
+        return ItemDesc;
+    }
+
+    public void setItemDesc(String itemDesc) {
+        ItemDesc = itemDesc;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getMerchantid() {
+        return merchantid;
+    }
+
+    public void setMerchantid(String merchantid) {
+        this.merchantid = merchantid;
+    }
+
+    public String getMerchantname() {
+        return merchantname;
+    }
+
+    public void setMerchantname(String merchantname) {
+        this.merchantname = merchantname;
+    }
+
+    public float getNetAmt() {
+        return NetAmt;
+    }
+
+    public void setNetAmt(float netAmt) {
+        NetAmt = netAmt;
+    }
+
+    public float getLineAmt() {
+        return LineAmt;
+    }
+
+    public void setLineAmt(float lineAmt) {
+        LineAmt = lineAmt;
+    }
+
+    public String getDObkd() {
+        return DObkd;
+    }
+
+    public void setDObkd(String DObkd) {
+        this.DObkd = DObkd;
+    }
+
+    public String getDOrej() {
+        return DOrej;
+    }
+
+    public void setDOrej(String DOrej) {
+        this.DOrej = DOrej;
+    }
+
+    public String getPlaceOrderDate() {
+        return placeOrderDate;
+    }
+
+    public String getDOApprvd() { return DOApprvd;  }
+
+    public void setDOApprvd(String DOApprvd) { this.DOApprvd = DOApprvd; }
+
+    public void setPlaceOrderDate(String placeOrderDate) {
+        this.placeOrderDate = placeOrderDate;
+    }
+
+    public String getDODisptch() {
+        return DODisptch;
+    }
+
+    public void setDODisptch(String DODisptch) {
+        this.DODisptch = DODisptch;
+    }
+
+    public String getDORcvd() {
+        return DORcvd;
+    }
+
+    public void setDORcvd(String DORcvd) {
+        this.DORcvd = DORcvd;
+    }
+
+    public String getStatusname() { return statusname;  }
+
+    public void setStatusname(String statusname) { this.statusname = statusname;   }
+
+    public String getStatus() {   return status; }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getDoAck() {  return DoAck;  }
+
+    public void setDoAck(String doAck) {
+        DoAck = doAck;
+    }
+
+    public String getSOHeaderId() {
+        return SOHeaderId;
+    }
+
+    public void setSOHeaderId(String SOHeaderId) {
+        this.SOHeaderId = SOHeaderId;
+    }
+
+    public String getCity() {
+        return City;
+    }
+
+    public void setCity(String city) {
+        City = city;
+    }
+
+    public String getConsigneeName() {
+        return ConsigneeName;
+    }
+
+    public void setConsigneeName(String consigneeName) {
+        ConsigneeName = consigneeName;
+    }
+
+    public String getCustomerMasterId() {
+        return CustomerMasterId;
+    }
+
+    public void setCustomerMasterId(String customerMasterId) {
+        CustomerMasterId = customerMasterId;
+    }
+
+    public String getItemMasterId() {
+        return ItemMasterId;
+    }
+
+    public void setItemMasterId(String itemMasterId) {
+        ItemMasterId = itemMasterId;
+    }
+
+    public String getMobile() {
+        return Mobile;
+    }
+
+    public void setMobile(String mobile) {
+        Mobile = mobile;
+    }
+
+    public float getQty() {
+        return Qty;
+    }
+
+    public void setQty(float qty) {
+        Qty = qty;
+    }
+
+    public float getRate() {
+        return Rate;
+    }
+
+    public void setRate(float rate) {
+        Rate = rate;
+    }
+
+    public String getSODate() {
+        return SODate;
+    }
+
+    public void setSODate(String SODate) {
+        this.SODate = SODate;
+    }
+
+    public String getAddress() {
+        return Address;
+    }
+
+    public void setAddress(String address) {
+        Address = address;
+    }
+
+    public String getShipToMasterId() {
+        return ShipToMasterId;
+    }
+
+    public void setShipToMasterId(String shipToMasterId) {   ShipToMasterId = shipToMasterId;  }
+
+    public String getPrefDelFrmTime() {  return prefDelFrmTime;   }
+
+    public void setPrefDelFrmTime(String prefDelFrmTime) {   this.prefDelFrmTime = prefDelFrmTime;   }
+
+    public String getPrefDelToTime() {  return prefDelToTime;  }
+
+    public void setPrefDelToTime(String prefDelToTime) {   this.prefDelToTime = prefDelToTime;  }
+
+    @Override
+    public int compareTo(@NonNull OrderHistoryBean o) {
+        return 0;
+    }
+}

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/details_linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/txtMerchantname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.45"
+            android:paddingLeft="10dp"
+            android:text="@string/merchname"
+            android:textStyle="bold"
+            android:fontFamily="@string/ButtonFont"
+            android:textColor="@color/btncolordark"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/txtsono"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="0.55"
+            android:paddingLeft="10dp"
+            android:text="@string/ordno"
+            android:textStyle="bold"
+            android:fontFamily="@string/ButtonFont"
+            android:textColor="@color/btncolordark"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/txtorderid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="10dp"
+            android:layout_weight="0"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            android:text="Order Id"
+            android:fontFamily="@string/ButtonFont"
+            android:textColor="@color/btncolordark"
+            android:textSize="13dp"
+            android:visibility="gone"/>
+
+        <!-- <TextView
+            android:id="@+id/txtorderdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.3"
+            android:maxLines="3"
+            android:paddingLeft="10dp"
+            android:textSize="14dp" />-->
+
+
+        <TextView
+            android:id="@+id/amt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.55"
+            android:gravity="right"
+            android:paddingRight="10dp"
+            android:text="@string/amt"
+            android:textStyle="bold"
+            android:fontFamily="@string/ButtonFont"
+            android:textColor="@color/btncolordark"
+            android:textSize="13dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtnoordnote"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/sorry_no_ord_aval"
+        android:textStyle="italic|bold"
+        android:textSize="18sp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:padding="5dp"
+        android:visibility="gone"/>
+
+    <ListView
+        android:id="@+id/listview_my_orders_history"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:dividerHeight="0dp"
+        android:divider="@null"
+        android:choiceMode="singleChoice"
+        android:listSelector="@color/selctrcolor"/>
+
+
+
+</LinearLayout>

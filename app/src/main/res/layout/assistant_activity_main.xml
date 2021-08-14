@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".MainActivity">
+	<android.support.v7.widget.Toolbar
+		android:id="@+id/toolbar"
+		style="@style/MyToolbar"
+		android:layout_width="match_parent"
+		android:layout_height="?android:attr/actionBarSize"
+		android:background="@color/colorPrimary"
+		android:minHeight="?android:attr/actionBarSize"
+		app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay"
+		app:subtitleTextAppearance="@style/ToolbarTextAppearance.Subtitle"
+		app:titleTextAppearance="@style/ToolbarTextAppearance.Title" >
+<LinearLayout
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:orientation="horizontal"
+	android:gravity="center|left">
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textColor="@color/white"
+		android:textSize="16dp"
+		android:visibility="gone"
+		android:textStyle="bold"
+
+		android:text="@string/app_name"/>
+		<com.skyfishjy.library.RippleBackground
+			android:id="@+id/content"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			app:rb_color="@color/colorPrimaryDark"
+			app:rb_duration="3000"
+			app:rb_radius="50dp"
+			app:rb_rippleAmount="6"
+			android:gravity="right"
+			android:layout_weight="1"
+			app:rb_scale="6">
+
+			<ImageView
+				android:id="@+id/centerImage"
+				android:layout_width="64dp"
+				android:layout_height="64dp"
+				android:src="@mipmap/ic_micro"
+				android:padding="6dp"
+				android:layout_alignParentTop="true"
+				android:layout_alignParentStart="true"
+				android:layout_marginStart="244dp" />
+
+			<ImageView
+				android:id="@+id/foundDevice"
+				android:layout_width="64dp"
+				android:layout_height="64dp"
+				android:layout_above="@id/centerImage"
+				android:layout_marginBottom="32dp"
+				android:layout_marginRight="6dp"
+				android:layout_toLeftOf="@id/centerImage"
+				android:src="@drawable/phone2"
+				android:visibility="invisible" />
+		</com.skyfishjy.library.RippleBackground> />
+</LinearLayout>
+	</android.support.v7.widget.Toolbar>
+	<TextView
+		android:id="@+id/txt_msg"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:textSize="16dp"
+		android:padding="2dp"
+		android:gravity="center"
+		android:textColor="@color/black"
+		android:visibility="gone"
+		android:layout_below="@+id/toolbar" />
+	<android.support.v7.widget.RecyclerView
+		android:id="@+id/assitant_response"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_above="@+id/len"
+        android:layout_below="@+id/txt_msg" />
+
+	<LinearLayout
+		android:id="@+id/len"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:layout_alignParentBottom="true"
+		android:layout_alignParentStart="true">
+
+		<Button
+		android:id="@+id/speak_button"
+		android:layout_width="match_parent"
+		android:layout_height="60dp"
+		android:drawableLeft="@android:drawable/ic_btn_speak_now"
+		android:text="@string/speak_button"
+		android:textAlignment="center"
+		android:gravity="center"
+		android:visibility="gone"
+		android:layout_gravity="center"
+		android:textSize="14dp"
+		android:textStyle="bold"
+		android:layout_alignParentBottom="true"
+		android:layout_alignParentStart="true"
+		android:layout_weight="1"/>
+
+
+
+		<Button
+			android:id="@+id/btn_save"
+			android:layout_width="match_parent"
+			android:layout_height="60dp"
+			android:text="SAVE"
+			android:textAlignment="center"
+			android:textSize="14dp"
+			android:textStyle="bold"
+			android:layout_weight="1"
+			android:gravity="center"
+			android:layout_gravity="center"
+			android:layout_alignParentBottom="true"
+			android:layout_alignParentStart="true" />
+
+	</LinearLayout>
+
+</RelativeLayout>

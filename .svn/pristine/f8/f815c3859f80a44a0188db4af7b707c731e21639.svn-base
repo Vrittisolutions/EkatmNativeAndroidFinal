@@ -1,0 +1,228 @@
+package com.vritti.crm.bean;
+
+import java.util.ArrayList;
+
+public class EntityShiptoDetailsBean {
+
+    String consigneename,address,cityName,mobileNo,gstnno,countryName,stateName,cityname,territoryName,countryId,stateId,cityId,territoryId,pincode,contactmobile,email,skype,
+    gstn,tanBasedGSTIN,tanName,tan,pan,addharNo,ESICNo,PfNo;
+
+    ArrayList<EntityShiptoDetailsBean> entityShiptoDetailsBeanArrayList;
+
+    public EntityShiptoDetailsBean(ArrayList<EntityShiptoDetailsBean> entityShiptoDetailsBeanArrayList) {
+        this.entityShiptoDetailsBeanArrayList = entityShiptoDetailsBeanArrayList;
+    }
+
+    public EntityShiptoDetailsBean() {
+
+    }
+
+    public ArrayList<EntityShiptoDetailsBean> getEntityShiptoDetailsBeanArrayList() {
+        return entityShiptoDetailsBeanArrayList;
+    }
+
+    public void setEntityShiptoDetailsBeanArrayList(ArrayList<EntityShiptoDetailsBean> entityShiptoDetailsBeanArrayList) {
+        this.entityShiptoDetailsBeanArrayList = entityShiptoDetailsBeanArrayList;
+    }
+
+    public String getConsigneename() {
+        return consigneename;
+    }
+
+    public void setConsigneename(String consigneename) {
+        this.consigneename = consigneename;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
+
+    public String getMobileNo() {
+        return mobileNo;
+    }
+
+    public void setMobileNo(String mobileNo) {
+        this.mobileNo = mobileNo;
+    }
+
+    public String getGstnno() {
+        return gstnno;
+    }
+
+    public void setGstnno(String gstnno) {
+        this.gstnno = gstnno;
+    }
+
+    public String getCountryName() {
+        return countryName;
+    }
+
+    public void setCountryName(String countryName) {
+        this.countryName = countryName;
+    }
+
+    public String getStateName() {
+        return stateName;
+    }
+
+    public void setStateName(String stateName) {
+        this.stateName = stateName;
+    }
+
+    public String getCityname() {
+        return cityname;
+    }
+
+    public void setCityname(String cityname) {
+        this.cityname = cityname;
+    }
+
+    public String getTerritoryName() {
+        return territoryName;
+    }
+
+    public void setTerritoryName(String territoryName) {
+        this.territoryName = territoryName;
+    }
+
+
+    public String getCountryId() {
+        return countryId;
+    }
+
+    public void setCountryId(String countryId) {
+        this.countryId = countryId;
+    }
+
+    public String getStateId() {
+        return stateId;
+    }
+
+    public void setStateId(String stateId) {
+        this.stateId = stateId;
+    }
+
+    public String getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(String cityId) {
+        this.cityId = cityId;
+    }
+
+    public String getTerritoryId() {
+        return territoryId;
+    }
+
+    public void setTerritoryId(String territoryId) {
+        this.territoryId = territoryId;
+    }
+
+    public String getPincode() {
+        return pincode;
+    }
+
+    public void setPincode(String pincode) {
+        this.pincode = pincode;
+    }
+
+    public String getContactmobile() {
+        return contactmobile;
+    }
+
+    public void setContactmobile(String contactmobile) {
+        this.contactmobile = contactmobile;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSkype() {
+        return skype;
+    }
+
+    public void setSkype(String skype) {
+        this.skype = skype;
+    }
+
+    public String getGstn() {
+        return gstn;
+    }
+
+    public void setGstn(String gstn) {
+        this.gstn = gstn;
+    }
+
+    public String getTanBasedGSTIN() {
+        return tanBasedGSTIN;
+    }
+
+    public void setTanBasedGSTIN(String tanBasedGSTIN) {
+        this.tanBasedGSTIN = tanBasedGSTIN;
+    }
+
+    public String getTanName() {
+        return tanName;
+    }
+
+    public void setTanName(String tanName) {
+        this.tanName = tanName;
+    }
+
+    public String getTan() {
+        return tan;
+    }
+
+    public void setTan(String tan) {
+        this.tan = tan;
+    }
+
+    public String getPan() {
+        return pan;
+    }
+
+    public void setPan(String pan) {
+        this.pan = pan;
+    }
+
+    public String getAddharNo() {
+        return addharNo;
+    }
+
+    public void setAddharNo(String addharNo) {
+        this.addharNo = addharNo;
+    }
+
+    public String getESICNo() {
+        return ESICNo;
+    }
+
+    public void setESICNo(String ESICNo) {
+        this.ESICNo = ESICNo;
+    }
+
+    public String getPfNo() {
+        return PfNo;
+    }
+
+    public void setPfNo(String pfNo) {
+        PfNo = pfNo;
+    }
+}

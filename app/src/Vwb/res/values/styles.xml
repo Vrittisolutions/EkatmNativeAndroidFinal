@@ -1,0 +1,271 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+    </style>
+
+    <!-- &lt;!&ndash; Base application theme. &ndash;&gt;
+     <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+         &lt;!&ndash; Customize your theme here. &ndash;&gt;
+         <item name="colorPrimary">@color/colorPrimary</item>
+         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+         <item name="colorAccent">@color/colorAccent</item>
+     </style>-->
+
+    <style name="AppTheme_tbuds" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#FF4112</item>
+        <item name="colorPrimaryDark">#FF4112</item>
+        <item name="colorAccent">#FF4112</item>
+        <!--<item name="android:textViewStyle">@style/RobotoTextViewStyle</item>-->
+        <item name="android:statusBarColor" tools:ignore="NewApi">@color/colorPrimary</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">#fff</item>
+    </style>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AppTheme.NoActionBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+
+    <style name="ProgressHUD" parent="@android:style/Theme.Dialog">
+
+        <item name="android:windowFrame">@null</item>
+
+        <item name="android:windowIsFloating">true</item>
+
+        <item name="android:windowContentOverlay">@null</item>
+
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+
+        <item name="android:windowBackground">@android:color/transparent</item>
+
+        <item name="android:windowNoTitle">true</item>
+
+    </style>
+
+    <style name="AppTheme.NoActionBar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+
+    <style name="ToolbarStyle" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+        <!-- Customize color of navigation drawer icon and back arrow -->
+        <item name="colorControlNormal">@color/white</item>
+    </style>
+
+    <style name="SpinnerTheme" parent="android:Widget.Spinner">
+        <item name="android:background">@drawable/bg_spinner</item>
+    </style>
+
+    <style name="EditTextTintTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorPrimaryDark">#0288D1</item>
+    </style>
+
+    <style name="chat_text_message_style">
+
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@android:color/black</item>
+
+    </style>
+
+
+
+    <style name="chat_timings">
+
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#a6abad</item>
+
+    </style>
+
+
+
+    <style name="Animation">
+
+        <item name="android:windowEnterAnimation">@anim/popup_start</item>
+
+        <item name="android:windowExitAnimation">@anim/popup_disappear</item>
+
+    </style>
+
+    <!-- <style name="CollapsedAppBar" parent="@android:style/TextAppearance.Medium">
+         <item name="android:textSize">24sp</item>
+         <item name="android:textColor">@color/white</item>
+         <item name="android:textStyle">normal</item>
+     </style>-->
+
+
+    <style name="ToolbarTextAppearance">
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">2</item>
+        <!--<item name="android:shadowColor">@color/colorAccent</item>-->
+    </style>
+
+    <style name="ToolbarTextAppearance.Title">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="ToolbarTextAppearance.Subtitle">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="MyToolbar">
+        <item name="theme">@style/ThemeOverlay.AppCompat.Dark</item>
+        <item name="android:background">@color/colorPrimary</item>
+
+    </style>
+
+    <!-- <item name="android:elevation">4dp</item>-->
+
+    <!-- <item name="android:elevation">4dp</item>-->
+
+    <!--  Base application theme.
+ -->
+
+
+
+    <style name="MyActionBarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:textColorPrimary">#fff</item>
+    </style>
+
+
+    <style name="ThemeSpinner">
+        <!--  Color when pressed
+     -->
+        <item name="colorAccent">@color/colorPrimary</item>
+        <!--  Default color for the dropdown arrow and line
+     -->
+        <item name="colorControlNormal">#707070</item>
+    </style>
+
+    <!--  <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+     <item name="android:textColor">#a6abad</item>
+ </style>-->
+
+    <style name="mystyle" parent="@style/Base.TextAppearance.AppCompat.Title">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="CollapsedAppBar" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">26sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">left</item>
+    </style>
+
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/btncolordark</item>
+        <item name="colorControlActivated">@color/btncolordark</item>
+    </style>
+
+
+
+
+
+
+
+    <!--/////////////////////////////vwb///////////////////-->
+
+    <!--  &lt;!&ndash; Base application theme. &ndash;&gt;
+      <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+          &lt;!&ndash; Customize your theme here. &ndash;&gt;
+          <item name="colorPrimary">@color/colorPrimary</item>
+          <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+          <item name="colorAccent">#FF902B</item>
+          <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+      </style>
+      <style name="AppTheme.NoActionBar">
+          <item name="windowActionBar">false</item>
+          <item name="windowNoTitle">true</item>
+      </style>
+      <style parent="ThemeOverlay.AppCompat.Light" name="AppTheme.PopupOverlay"/>
+      <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+          <item name="color">#fff</item>
+      </style>
+      <style name="MyActionBarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+          <item name="android:textColorPrimary">#fff</item>
+      </style>
+      <style name="ProgressHUD" parent="@android:style/Theme.Dialog">
+
+          <item name="android:windowFrame">@null</item>
+
+          <item name="android:windowIsFloating">true</item>
+
+          <item name="android:windowContentOverlay">@null</item>
+
+          <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+
+          <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+
+          <item name="android:windowBackground">@android:color/transparent</item>
+
+          <item name="android:windowNoTitle">true</item>
+
+      </style>
+      <style name="SpinnerTheme" parent="android:Widget.Spinner">
+          <item name="android:background">@drawable/bg_spinner</item>
+      </style>
+
+      <style name="ThemeSpinner" >
+          &lt;!&ndash; Color when pressed &ndash;&gt;
+          <item name="colorAccent">@color/colorPrimary</item>
+          &lt;!&ndash; Default color for the dropdown arrow and line &ndash;&gt;
+          <item name="colorControlNormal">#707070</item>    </style>
+
+
+      <style name="chat_text_message_style">
+
+          <item name="android:layout_width">wrap_content</item>
+          <item name="android:layout_height">wrap_content</item>
+          <item name="android:textSize">14sp</item>
+          <item name="android:textColor">@android:color/black</item>
+
+      </style>
+      <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" >
+          <item name="android:textColor">#a6abad</item>
+      </style>
+
+      <style name="chat_timings">
+
+          <item name="android:layout_width">wrap_content</item>
+          <item name="android:layout_height">wrap_content</item>
+          <item name="android:textSize">12sp</item>
+          <item name="android:textColor">#a6abad</item>
+
+      </style>
+      <style name="mystyle" parent="@style/Base.TextAppearance.AppCompat.Title">
+          <item name="android:textSize">16dp</item>
+          <item name="android:textColor">@color/white</item>
+          <item name="android:textStyle">bold</item>
+      </style>
+      <style name="CollapsedAppBar" parent="@android:style/TextAppearance.Medium">
+          <item name="android:textSize">26sp</item>
+          <item name="android:textColor">@color/white</item>
+          <item name="android:textStyle">bold</item>
+          <item name="android:gravity">left</item>
+      </style>-->
+
+</resources>

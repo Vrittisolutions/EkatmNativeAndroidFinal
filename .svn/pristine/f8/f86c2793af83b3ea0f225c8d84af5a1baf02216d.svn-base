@@ -1,0 +1,90 @@
+{
+    "logs": [
+        {
+            "outputFile": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\values-v11\\values-v11.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-appinvite-11.4.0.aar\\0e5b7874acdf8221e6d7df81d8c6eea7\\res\\values-v11\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "172",
+                        "endLines": "5",
+                        "endColumns": "8",
+                        "endOffsets": "293"
+                    },
+                    "to": {
+                        "startLines": "5",
+                        "startColumns": "4",
+                        "startOffsets": "192",
+                        "endLines": "6",
+                        "endColumns": "8",
+                        "endOffsets": "313"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\datetimepicker-0.2.0.aar\\8906d3585d46b2715ac85166304b9464\\res\\values-v11\\values-v11.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "4",
+                        "startOffsets": "168",
+                        "endLines": "6",
+                        "endColumns": "12",
+                        "endOffsets": "300"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "4",
+                        "endColumns": "12",
+                        "endOffsets": "187"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "D:\\ICAI\\PM\\app\\build\\intermediates\\incremental\\mergePMDebugResources\\merged.dir\\values-v11\\values-v11.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-appinvite-11.4.0.aar\\0e5b7874acdf8221e6d7df81d8c6eea7\\res\\values-v11\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "172",
+                        "endLines": "5",
+                        "endColumns": "8",
+                        "endOffsets": "293"
+                    },
+                    "to": {
+                        "startLines": "5",
+                        "startColumns": "4",
+                        "startOffsets": "192",
+                        "endLines": "6",
+                        "endColumns": "8",
+                        "endOffsets": "313"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\datetimepicker-0.2.0.aar\\8906d3585d46b2715ac85166304b9464\\res\\values-v11\\values-v11.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "4",
+                        "startOffsets": "168",
+                        "endLines": "6",
+                        "endColumns": "12",
+                        "endOffsets": "300"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "4",
+                        "endColumns": "12",
+                        "endOffsets": "187"
+                    }
+                }
+            ]
+        }
+    ]
+}

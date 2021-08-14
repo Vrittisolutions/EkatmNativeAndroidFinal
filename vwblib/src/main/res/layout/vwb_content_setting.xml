@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="?attr/actionBarSize"
+    android:orientation="vertical"
+    tools:showIn="@layout/vwb_setting">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="#6E6F72"
+        android:padding="8dp"
+        android:text="Setting"
+        android:textColor="#fff"
+        android:textSize="16dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:background="@drawable/bg"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/showtime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="15 min"
+            android:textColor="@color/blue"
+            android:layout_marginRight="19dp"
+            android:layout_gravity="end"
+            android:gravity="end"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20sp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="match_parent"
+                android:layout_height="35sp"
+                android:alpha=".7"
+                android:background="@drawable/capsuleshape"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:onClick="setRefresh"
+                android:textAllCaps="false"
+                android:text="Set Refresh Time" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="35sp"
+                android:alpha=".7"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/capsuleshape"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:onClick="Offlinedata"
+                android:textAllCaps="false"
+                android:text="Offline Data" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="35sp"
+                android:alpha=".7"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/capsuleshape"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:onClick="Useddata"
+                android:textAllCaps="false"
+                android:text="Show data usage" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="35sp"
+                android:alpha=".7"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/capsuleshape"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:onClick="ServerSettingRefresh"
+                android:textAllCaps="false"
+                android:text="Refresh Server Setting" />
+            <Button
+                android:id="@+id/btn_clear_data"
+                android:layout_width="match_parent"
+                android:layout_height="35sp"
+                android:alpha=".7"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/capsuleshape"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:textAllCaps="false"
+                android:visibility="gone"
+                android:text="Clear data" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

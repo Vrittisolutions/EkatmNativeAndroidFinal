@@ -1,0 +1,786 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <include
+        android:id="@+id/topBar"
+        layout="@layout/vwb_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/topBar">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/dtlslay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="#ffffff"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <RelativeLayout
+                        android:id="@+id/invoiceLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp">
+
+                        <TextView
+                            android:id="@+id/t1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Invoice No. :"
+                            android:textColor="#000"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/InvoiveNumber"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_below="@id/t1"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/border_delivery"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:text=""
+                            android:textSize="16sp" />
+
+                        <!--<android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:theme="@style/EditTextHint">
+
+                            <android.support.design.widget.TextInputEditText
+                                android:id="@+id/InvoiveNumber"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:clickable="false"
+                                android:focusable="false"
+                                android:textSize="16sp"
+                                android:hint="Invoice No. :"
+                                android:text="UserName" />
+
+                        </android.support.design.widget.TextInputLayout>-->
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/nameLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp">
+
+
+                        <TextView
+                            android:id="@+id/t2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Name :"
+                            android:textColor="#000"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/customerName"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_below="@id/t2"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/border_delivery"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:text=""
+                            android:textSize="16sp" />
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/addressLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp">
+
+                        <TextView
+                            android:id="@+id/t3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Address : "
+                            android:textColor="#000"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/addressName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/t3"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/border_delivery"
+                            android:gravity="center_vertical"
+                            android:minHeight="30dp"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:text=""
+                            android:textSize="16sp" />
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/phoneLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp">
+
+                        <TextView
+                            android:id="@+id/t4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Mobile No. :"
+                            android:textColor="#000"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/phoneNumber"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_below="@id/t4"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/border_delivery"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:text=""
+                            android:textSize="16sp" />
+
+                        <ImageView
+                            android:id="@+id/phoneNumber1"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_below="@id/t4"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:paddingTop="3dp"
+                            android:src="@drawable/call" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/waereHouseLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp">
+
+                        <TextView
+                            android:id="@+id/t7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Warehouse Address :"
+                            android:textColor="#000"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/wareHouseAddressTxt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/t7"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/border_delivery"
+                            android:gravity="center_vertical"
+                            android:minHeight="30dp"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:text=""
+                            android:textSize="16sp" />
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/ammountlayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp">
+
+                        <TextView
+                            android:id="@+id/t5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Amount :"
+                            android:textColor="#000"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/price"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_below="@id/t5"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/border_delivery"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:text=""
+                            android:textSize="16sp" />
+
+                        <!--  <android.support.design.widget.TextInputLayout
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:theme="@style/EditTextHint">
+
+                              <android.support.design.widget.TextInputEditText
+                                  android:id="@+id/price"
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:background="@android:color/transparent"
+                                  android:clickable="false"
+                                  android:focusable="false"
+                                  android:textSize="16sp"
+                                  android:hint="Amount : "
+                                  android:text="UserName" />
+
+                          </android.support.design.widget.TextInputLayout>-->
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/datelayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/addressLayout"
+                        android:layout_marginTop="5dp">
+
+                        <TextView
+                            android:id="@+id/t6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Date : "
+                            android:textColor="#000"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/date"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_below="@id/t6"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/border_delivery"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="5dp"
+                            android:text=""
+                            android:textSize="16sp" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/timelayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/addressLayout"
+                        android:layout_marginTop="5dp">
+
+                        <TextView
+                            android:id="@+id/t8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Time : "
+                            android:textColor="#000"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/time"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_below="@id/t8"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/border_delivery"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="5dp"
+                            android:text=""
+                            android:textSize="16sp" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/expectedTimeLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/addressLayout"
+                        android:layout_marginTop="5dp">
+
+                        <TextView
+                            android:id="@+id/t9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ETA : "
+                            android:textColor="#000"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/expectedTime"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_below="@id/t9"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/border_delivery"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="5dp"
+                            android:text=""
+                            android:textSize="16sp" />
+
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/dtlslay"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="120dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="120dp"
+                android:layout_marginBottom="10dp"
+                android:visibility="gone"
+
+                >
+
+
+                <Button
+                    android:id="@+id/resheduleBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/unselected_btn"
+                    android:text="Reschedule"
+                    android:textColor="#70899B"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/pickupBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/green_backgraound"
+                    android:text="pick"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/paymentTypeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_below="@+id/ll">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".3"
+                    android:gravity="center">
+
+                    <RadioButton
+                        android:id="@+id/rbCash"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="Cash" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".4"
+                    android:gravity="center">
+
+                    <RadioButton
+                        android:id="@+id/rbOnline"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="Online payment" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".3"
+                    android:gravity="center">
+
+                    <RadioButton
+                        android:id="@+id/rbPaid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="Paid" />
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/pickUpLayout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@id/paymentTypeLayout"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="50dp"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true">
+
+                <RelativeLayout
+                    android:id="@+id/arraiveBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/blue_border">
+
+                    <Button
+                        android:id="@+id/arraiveBtn_next"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:background="@drawable/dark_blue_border"
+                        android:text="Delivery"
+                        android:textColor="@color/white" />
+
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+            <RelativeLayout
+                android:id="@+id/resheduleLayout"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_below="@id/paymentTypeLayout"
+                android:layout_marginTop="40dp"
+                android:background="#fff">
+                <!-- android:background="#4986C3"-->
+
+
+                <TextView
+                    android:id="@+id/resheduleTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="30dp"
+                    android:padding="4dp"
+                    android:text="Reschedule"
+                    android:textColor="#4986C3" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/dtlslay"
+                android:layout_marginTop="60dp"
+                android:layout_marginBottom="10dp"
+                android:visibility="gone">
+
+
+                <RelativeLayout
+                    android:id="@+id/spinnerLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:background="@drawable/border_black">
+
+                    <Spinner
+                        android:id="@+id/spinnerStatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:prompt="@string/app_name" />
+                </RelativeLayout>
+
+                <Button
+                    android:id="@+id/changeStatusBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:layout_below="@id/spinnerLayout"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/button_green"
+                    android:padding="5dp"
+                    android:text="Change Status"
+                    android:textColor="@color/white" />
+
+
+                <LinearLayout
+                    android:id="@+id/otpLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <EditText
+                        android:id="@+id/etOtp"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginRight="40dp"
+                        android:background="@drawable/edit_text"
+                        android:hint="Customer OTP"
+                        android:inputType="number"
+                        android:maxLength="6"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:singleLine="true" />
+
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/otpLayout_new"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent_black"
+        android:clickable="true"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="80dp"
+            android:background="@drawable/chat_popup_back"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Please Enter OTP"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <EditText
+                    android:id="@+id/editTextone"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:nextFocusRight="@+id/editText_two">
+
+                    <requestFocus />
+                </EditText>
+
+                <EditText
+                    android:id="@+id/editTexttwo"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:inputType="number"
+                    android:maxLength="1" />
+
+                <EditText
+                    android:id="@+id/editTextthree"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:inputType="number"
+                    android:maxLength="1" />
+
+                <EditText
+                    android:id="@+id/editTextfour"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:inputType="number"
+                    android:maxLength="1" />
+
+                <EditText
+                    android:id="@+id/editTextFive"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:inputType="number"
+                    android:maxLength="1" />
+
+                <EditText
+                    android:id="@+id/editTextSix"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:inputType="number"
+                    android:maxLength="1" />
+
+            </LinearLayout>
+
+            <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@id/ll"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="60dp"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true">
+
+                <RelativeLayout
+                    android:id="@+id/otpBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/green_border">
+
+                    <Button
+                        android:id="@+id/otpBtn_new"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:background="@drawable/green_backgraound"
+                        android:text="Validate"
+                        android:textColor="@color/white" />
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+            <TextView
+                android:id="@+id/resendOtp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center_horizontal"
+                android:padding="3dp"
+                android:text="Resend OTP"
+                android:textColor="@color/blue"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/cashAmmount"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent_black"
+        android:clickable="true"
+        android:visibility="gone"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="120dp"
+            android:background="@drawable/chat_popup_back"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Please enter collected amount"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <EditText
+                    android:id="@+id/editTexCash"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:hint="Cash"
+                    android:inputType="number"
+                   >
+
+                    <requestFocus />
+                </EditText>
+
+
+            </LinearLayout>
+
+            <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@id/ll"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="60dp"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true">
+
+                <RelativeLayout
+                    android:id="@+id/CashBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/green_border">
+
+                    <Button
+                        android:id="@+id/cashBtn_new"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:background="@drawable/green_backgraound"
+                        android:text="Send Otp"
+                        android:textColor="@color/white" />
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

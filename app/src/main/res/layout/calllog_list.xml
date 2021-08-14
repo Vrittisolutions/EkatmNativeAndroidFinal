@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginRight="2dp"
+        android:layout_marginLeft="2dp"
+        >
+        <android.support.v7.widget.CardView
+            android:id="@+id/card_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:cardCornerRadius="8dp"
+            card_view:cardUseCompatPadding="true"
+            card_view:cardElevation="1dp"
+            card_view:cardPreventCornerOverlap="false"
+            card_view:cardMaxElevation="1dp">
+
+        <LinearLayout
+            android:id="@+id/ln_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_background"
+
+            >
+
+
+            <RelativeLayout
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/img"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:padding="2dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/txt_calltypename"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Not Linked"
+                        android:textSize="12dp"
+                        android:visibility="visible"
+                        android:layout_marginTop="1dp"
+                        android:textColor="@color/black"
+                        android:layout_gravity="center"
+                        android:gravity="center"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="1.5dp"
+                android:layout_height="70dp"
+                android:background="#CFDBE2"
+                android:layout_gravity="center_vertical" />
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/txt_firmname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:visibility="gone" />
+                    <TextView
+                        android:id="@+id/txt_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Mobile No or Name"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/txt_mobile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:gravity="center_vertical"
+                        android:drawablePadding="5dp"
+                        android:textSize="12sp"
+                        android:visibility="gone"
+                        android:textColor="#696969"/>
+                    <TextView
+                        android:id="@+id/txt_durationdetails"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+                        android:gravity="center_vertical"
+                        android:text="8-Jun at 9.30 for 2m 13s"
+                        android:textColor="#696969"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/txt_call_state"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/txt_customerName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/sp_5"
+                        android:text="Customer Name"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        android:visibility="invisible" />
+
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+
+
+
+    </android.support.v7.widget.CardView>
+    </LinearLayout>
+</LinearLayout>
+
+

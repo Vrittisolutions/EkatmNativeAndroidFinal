@@ -1,0 +1,3037 @@
+package com.vritti.sales.CounterBilling;
+
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.Dialog;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.AsyncTask;
+import android.os.Build;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.SpannableString;
+import android.text.TextWatcher;
+import android.text.style.RelativeSizeSpan;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.EditText;
+import android.widget.GridView;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.Spinner;
+import android.widget.Switch;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
+import com.vritti.databaselib.data.DatabaseHandlers;
+import com.vritti.databaselib.other.Utility;
+import com.vritti.databaselib.other.WebUrlClass;
+import com.vritti.ekatm.R;
+import com.vritti.sales.adapters.AdapterCBillingList;
+import com.vritti.sales.beans.AllCatSubcatItems;
+import com.vritti.sales.beans.BillNoClass;
+import com.vritti.sales.beans.Connectiondetector;
+import com.vritti.sales.beans.CounterbillingBean;
+import com.vritti.sales.beans.MyCartBean;
+import com.vritti.sales.beans.Tbuds_commonFunctions;
+import com.vritti.sales.data.AnyMartData;
+import com.vritti.sales.service.MarchantService;
+import com.vritti.sessionlib.CallbackInterface;
+import com.vritti.sessionlib.StartSession;
+import com.vritti.vwb.CommonClass.AppCommon;
+import com.zj.btsdk.BluetoothService;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+
+/**
+ * Created by sharvari on 4/21/2016.
+ */
+public class ItemListCB extends AppCompatActivity {
+    private Context parent;
+    public static ArrayList<AllCatSubcatItems> arrayList;
+    boolean isInternetPresent;
+    private AllCatSubcatItems bean;
+    private String json;
+    private GridView listview;
+
+    Connectiondetector cd;
+    EditText edRate;
+    Button SaveAndPrint, savebill;
+    ImageButton whatsapp;
+    MenuItem m, refresh;
+    ArrayAdapter<AllCatSubcatItems> myAdapter;
+    public String restoredText;
+
+    SharedPreferences sharedpreferences;
+    private CoordinatorLayout coordinatorLayout;
+    public static String Mobilenumber;
+    String Subcatid, userId;
+    SharedPreferences sharedpreferencesUserId;
+    CustomAutoCompleteView myAutoComplete;
+    MyCartBean myCartBean;
+    ArrayList<MyCartBean> myCartBeanArrayList;
+    private LinearLayout containerLayout_one;
+    ImageButton btn_ok, btn_cancel;
+    EditText edAmt, edQnty, edDiscount, edttxtTotalDiscount, edttxtRemaining, edttxtReceived;
+    Spinner spinnerunit;
+    TextView txtTotal, custMobno, custname, txtFinalTotal, txtbaseamount, txtcgstamt, txtsgstamt;
+    String custName, custMob, FirmName, FirmMobile;
+    public String p_id;
+    String txtBill = null;
+    float amt = 0, FinalTotal = 0, dis_amt = 0, remaining = 0, TotInclTax = 0, DiscOnNetAmt = 0;
+    Dialog dialog;
+    BluetoothService mService = null;
+    BluetoothDevice con_dev = null;
+    private boolean deviceConnected = false;
+    public String xml1, xml2;
+    private StringBuilder sb;
+    boolean flag_selection = false;
+    boolean flag_Amount = false;
+    boolean flag_Qnty = false;
+    String mrp = "", unit = "";
+    float qnty = 0;
+    float subtotal_dialog = 0;
+
+    static Tbuds_commonFunctions tcf;
+    Utility ut;
+    static SQLiteDatabase sql_db;
+    DatabaseHandlers dbhandler;
+    ProgressBar mprogress;
+    String PlantMasterId = "", LoginId = "", Password = "", CompanyURL = "", EnvMasterId = "",
+            UserMasterId = "", UserName = "", MobileNo = "", Sourcetype = "";
+    Toolbar toolbar;
+    Button btnAdd;
+    ImageView imgadditem;
+    ListView listdtls;
+    ArrayList<CounterbillingBean> cbillList;
+    ArrayList<String> addressLines;
+    BillNoClass billNoClass;
+
+    TextView txtsubtotal, Totalincltax, txtNetAmt, txtbalamt, txtpaybleamt;
+    EditText edttaxtotal;
+    Switch swtchdisc;
+    AdapterCBillingList cBillAdapter;
+    float final_subtotal = 0.0F, final_discountedTotal = 0.0F, final_taxinRupsTotal = 0.0F, discount_on_NetAmt = 0.0F;
+    int BILLNO  = 0;
+    float CGST_TOTAL = 0.0F, SGST_TOTAL = 0.0F, IGST_TOTAL = 0.0F;
+    String Cid = "", Cname = "", Address = "";
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.tbuds_activity_item_list_cb_new);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Counter Billing");
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+
+            //  activity.getWindow().setStatusBarColor(darkenColor(ContextCompat.getColor(activity, color)));
+            this.getWindow().setStatusBarColor(Color.parseColor("#ff4112"));
+        }
+
+        initialize();
+
+        sb = new StringBuilder();
+        cd = new Connectiondetector(ItemListCB.this);
+        isInternetPresent = cd.isConnectingToInternet();
+
+        //   databaseHandler = new DatabaseHandler(ItemListCB.this);
+        sharedpreferencesUserId = getSharedPreferences(WebUrlClass.MyPREFERENCES, Context.MODE_PRIVATE);
+        sharedpreferences = getSharedPreferences(WebUrlClass.MyPREFERENCES, Context.MODE_PRIVATE);
+        userId = sharedpreferences.getString("userid", null);
+
+        restoredText = sharedpreferences.getString("Mobileno", null);
+
+        final Intent intent = getIntent();
+        custName = ""/*intent.getStringExtra("CustomerName")*/;
+        custMob = ""/*intent.getStringExtra("CustomerMobno")*/;
+        custname.setText(custName);
+        custMobno.setText(custMob);
+
+        if (restoredText != null) {
+            Mobilenumber = restoredText;
+            //   AnyMartData.MOBILE = restoredText;
+        }
+
+        //Add items in list for billing. and display in listview. add bill in local table
+        //getItmsListDataForBilling();
+        if (AppCommon.getInstance(this).getBillingObject().equals("")) {
+
+        } else {
+            billNoClass = new Gson().fromJson(AppCommon.getInstance(this).getBillingObject(), BillNoClass.class);
+            cbillList = billNoClass.getCbillList();
+            cBillAdapter = new AdapterCBillingList(this, billNoClass.getCbillList());
+            listdtls.setAdapter(cBillAdapter);
+            setData(cbillList);
+        }
+
+        String getBillNo = "SELECT BillPrintNo FROM " + dbhandler.TABLE_BILL_CB /*+ " WHERE isPrinted='No'"*/;
+        Cursor c = sql_db.rawQuery(getBillNo, null);
+        if (c.getCount() > 0) {
+            c.moveToLast();
+            String billNo = c.getString(c.getColumnIndex("BillPrintNo"));
+        }
+
+        String getprintcnt = "SELECT BillPrintNo FROM " + dbhandler.TABLE_BILL_CB + " WHERE isPrinted='Yes'";
+        Cursor c1 = sql_db.rawQuery(getBillNo, null);
+        if (c1.getCount() > 0) {
+            c1.moveToLast();
+            String billNo = c1.getString(c1.getColumnIndex("BillPrintNo"));
+        }
+
+        //get company details
+        if(tcf.getCompanyDtlscount() > 0){
+            getCompanyDetailsData();
+        }else {
+            if (isnet()) {
+                new StartSession(parent, new CallbackInterface() {
+                    @Override
+                    public void callMethod() {
+                        new DownloadCompanyDetailsJSON().execute();
+                    }
+                    @Override
+                    public void callfailMethod(String msg) {
+                    }
+                });
+            }
+        }
+
+        edtxtchnglistener();
+
+        listdtls.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                String itemcode = cbillList.get(position).getItemCode();
+                String itemdesc = cbillList.get(position).getItemDesc();
+                String qty = cbillList.get(position).getQty();
+                String mrp = String.valueOf(cbillList.get(position).getMRP());
+                String lineamt = String.valueOf(cbillList.get(position).getLineamt());
+                float discount = cbillList.get(position).getDiscount();
+                String taxclass = cbillList.get(position).getTaxclass();
+                String taxamtinrps = cbillList.get(position).getTax_inRups();
+                String totinctax = String.valueOf(cbillList.get(position).getTotAmt_incltax_lineamt());
+                boolean discinrups = cbillList.get(position).isDiscinrupees();
+                String discamt = String.valueOf(cbillList.get(position).getDiscamt());
+
+                Float totline_disc = Float.parseFloat(lineamt) - Float.parseFloat(discamt);
+
+                if(tcf.getcount_tempTable() == 0){
+                    //add data in table
+                    insertDataInTempTable();
+                }else {
+
+                }
+
+                Intent intent1 = new Intent(ItemListCB.this, AddEditItemForCBilling.class);
+                intent1.putExtra("CallFrom", "Edit");
+                intent1.putExtra("itemcode", itemcode);
+                intent1.putExtra("itemdesc", itemdesc);
+                intent1.putExtra("qty", qty);
+                intent1.putExtra("mrp", mrp);
+                intent1.putExtra("lineamt", lineamt);
+                intent1.putExtra("discount", String.valueOf(discount));
+                intent1.putExtra("taxclass", taxclass);
+                intent1.putExtra("taxamtinrps", taxamtinrps);
+                intent1.putExtra("totinctax", totinctax);
+                intent1.putExtra("discinrups", discinrups);
+                intent1.putExtra("discamt", discamt);
+                startActivity(intent1);
+
+            }
+        });
+
+        swtchdisc.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // do something, the isChecked will be
+                // true if the switch is in the On position
+                if (swtchdisc.isChecked()) {
+                    swtchdisc.setText("Discount on Total % :   ");
+                    edttxtTotalDiscount.setText("0.00");
+                    //    edtxtchnglistener();
+                } else {
+                    swtchdisc.setText("Discount on Total ₹ :   ");
+                    edttxtTotalDiscount.setText("0.00");
+                    //   edtxtchnglistener();
+                }
+            }
+        });
+
+        SaveAndPrint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String igstType = "", sgstType = "", cgstType = "",ugstType = "",vatType = "",
+                        sgstVal = "0", cgstVal = "0", igstVal = "0", ugstVal = "0", vatVal = "0", tax_class = "";
+
+                connectDevice();
+                // dailog
+                dialog = new Dialog(parent);
+                dialog.setContentView(R.layout.tbuds_dialog_message);
+                TextView txtMsg = (TextView) dialog.findViewById(R.id.textMsg);
+                Button btnyes = (Button) dialog.findViewById(R.id.btn_yes);
+                //Button btnno = (Button) dialog.findViewById(R.id.btn_no);
+
+                String get_BillNo = "SELECT BillPrintNo FROM " + dbhandler.TABLE_BILL_CB /*+ " WHERE isPrinted='No'"*/;
+                Cursor _c = sql_db.rawQuery(get_BillNo, null);
+                if (_c.getCount() > 0) {
+                    _c.moveToLast();
+                    BILLNO = Integer.parseInt(_c.getString(_c.getColumnIndex("BillPrintNo")));
+                    // billNoClass.setBillNo(String.valueOf(BILLNO));
+                    // String billingObj = new Gson().toJson(billNoClass);
+                    // AppCommon.getInstance(ItemListCB.this).setBillingObject(billingObj);
+                }
+
+                if (billNoClass.getBillNo().equals("")) {
+            //        if (validate()) {
+                        if (cbillList.isEmpty()) {
+                            Toast.makeText(parent, "No items in list", Toast.LENGTH_SHORT).show();
+                        } else {
+
+                            for (int i = 0; i < cbillList.size(); i++) {
+
+                                tax_class = cbillList.get(i).getTaxclass();
+                                String[] taxes = checkTaxTyep(tax_class);
+
+                                if (taxes[0].equals("")) {
+                                    igstType = "";
+                                    igstVal = "0.0";
+
+                                    if (!(taxes[2].equals(""))) {
+                                        cgstType = taxes[2];
+                                        cgstVal = taxes[3];
+                                        if (!cgstVal.contains(".")) {
+                                            cgstVal = cgstVal + ".0";
+                                        }
+                                    } else {
+                                        cgstType = "";
+                                        cgstVal = "0.0";
+                                    }
+
+                                    if (!(taxes[4].equals(""))) {
+                                        sgstType = taxes[4];
+                                        sgstVal = taxes[5];
+
+                                        if (!sgstVal.contains(".")) {
+                                            sgstVal = sgstVal + ".0";
+                                        }
+                                    } else {
+                                        sgstType = "";
+                                        sgstVal = "0.0";
+                                    }
+
+                                    if (!(taxes[6].equals(""))) {
+                                        ugstType = taxes[6];
+                                        ugstVal = taxes[7];
+                                        if (!ugstVal.contains(".")) {
+                                            ugstVal = ugstVal + ".0";
+                                        }
+                                    } else {
+                                        ugstType = "";
+                                        ugstVal = "0.0";
+                                    }
+
+                                    if (!(taxes[8].equals(""))) {
+                                        vatType = taxes[8];
+                                        vatVal = taxes[9];
+                                        if (!vatVal.contains(".")) {
+                                            vatVal = vatVal + ".0";
+                                        }
+                                    } else {
+                                        vatType = "";
+                                        vatVal = "0.0";
+                                    }
+
+                                } else {
+                                    igstType = taxes[0];
+                                    igstVal = taxes[1];
+
+                                    if (!igstVal.contains(".")) {
+                                        igstVal = igstVal + ".0";
+                                    }
+                                }
+
+                                tcf.addBill_two(String.valueOf(BILLNO +1),cbillList.get(i).getItemDesc(),
+                                        cbillList.get(i).getItemCode(),
+                                        String.valueOf(cbillList.get(i).getMRP()),
+                                        String.valueOf(cbillList.get(i).getQty()),
+                                        cbillList.get(i).getTaxclass(), cgstVal, sgstVal,
+                                        String.valueOf(cbillList.get(i).getDiscamt()),
+                                        cbillList.get(i).getDiscount(),
+                                        Float.valueOf(cbillList.get(i).getTotAmt_incltax_lineamt()),
+                                        txtsubtotal.getText().toString().trim(),
+                                        edttxtTotalDiscount.getText().toString().trim(),
+                                        String.valueOf(discount_on_NetAmt),
+                                        txtNetAmt.getText().toString().trim(),
+                                        edttxtReceived.getText().toString().trim(),
+                                        txtbalamt.getText().toString().trim()
+                                        , custName, custMob, String.valueOf(final_discountedTotal), String.valueOf(final_taxinRupsTotal),
+                                        String.valueOf(CGST_TOTAL), String.valueOf(SGST_TOTAL), "", txtpaybleamt.getText().toString().trim(),
+                                        "No", "No", getCurrentDate());
+
+                            }
+
+                            String getBillNo = "SELECT BillPrintNo FROM " + dbhandler.TABLE_BILL_CB /*+ " WHERE isPrinted='No'"*/;
+                            Cursor c = sql_db.rawQuery(getBillNo, null);
+                            if (c.getCount() > 0) {
+                                c.moveToLast();
+                                //String billNo = c.getString(c.getColumnIndex("BillId"));
+                                String billNo = c.getString(c.getColumnIndex("BillPrintNo"));
+                                billNoClass.setBillNo(billNo);
+                                String billingObj = new Gson().toJson(billNoClass);
+                                AppCommon.getInstance(ItemListCB.this).setBillingObject(billingObj);
+
+                            }
+
+                            Toast.makeText(parent, "Bill saved successfully.", Toast.LENGTH_SHORT).show();
+                        }
+                    /*}else {
+                        Toast.makeText(ItemListCB.this, "Fill all data", Toast.LENGTH_LONG).show();
+                    }*/
+                }else {
+            //        if (validate()) {
+                        if (cbillList.isEmpty()) {
+                            Toast.makeText(parent, "No items in list", Toast.LENGTH_SHORT).show();
+                        } else {
+
+                            for (int i = 0; i < cbillList.size(); i++) {
+
+                                tax_class = cbillList.get(i).getTaxclass();
+                                String[] taxes = checkTaxTyep(tax_class);
+
+                                if (taxes[0].equals("")) {
+                                    igstType = "";
+                                    igstVal = "0.0";
+
+                                    if (!(taxes[2].equals(""))) {
+                                        cgstType = taxes[2];
+                                        cgstVal = taxes[3];
+                                        if (!cgstVal.contains(".")) {
+                                            cgstVal = cgstVal + ".0";
+                                        }
+                                    } else {
+                                        cgstType = "";
+                                        cgstVal = "0.0";
+                                    }
+
+                                    if (!(taxes[4].equals(""))) {
+                                        sgstType = taxes[4];
+                                        sgstVal = taxes[5];
+
+                                        if (!sgstVal.contains(".")) {
+                                            sgstVal = sgstVal + ".0";
+                                        }
+                                    } else {
+                                        sgstType = "";
+                                        sgstVal = "0.0";
+                                    }
+
+                                    if (!(taxes[6].equals(""))) {
+                                        ugstType = taxes[6];
+                                        ugstVal = taxes[7];
+                                        if (!ugstVal.contains(".")) {
+                                            ugstVal = ugstVal + ".0";
+                                        }
+                                    } else {
+                                        ugstType = "";
+                                        ugstVal = "0.0";
+                                    }
+
+                                    if (!(taxes[8].equals(""))) {
+                                        vatType = taxes[8];
+                                        vatVal = taxes[9];
+                                        if (!vatVal.contains(".")) {
+                                            vatVal = vatVal + ".0";
+                                        }
+                                    } else {
+                                        vatType = "";
+                                        vatVal = "0.0";
+                                    }
+
+                                } else {
+                                    igstType = taxes[0];
+                                    igstVal = taxes[1];
+
+                                    if (!igstVal.contains(".")) {
+                                        igstVal = cgstVal + ".0";
+                                    }
+                                }
+
+                                tcf.updateBill_two(cbillList.get(i).getItemDesc(),
+                                        cbillList.get(i).getItemCode(),
+                                        String.valueOf(cbillList.get(i).getMRP()),
+                                        String.valueOf(cbillList.get(i).getQty()),
+                                        cbillList.get(i).getTaxclass(),cgstVal, sgstVal,
+                                        String.valueOf(cbillList.get(i).getDiscamt()),
+                                        cbillList.get(i).getDiscount(),
+                                        Float.valueOf(cbillList.get(i).getTotAmt_incltax_lineamt()),
+                                        txtsubtotal.getText().toString().trim(),
+                                        edttxtTotalDiscount.getText().toString().trim(),
+                                        String.valueOf(discount_on_NetAmt),
+                                        txtNetAmt.getText().toString().trim(),
+                                        edttxtReceived.getText().toString().trim(),
+                                        txtbalamt.getText().toString().trim()
+                                        , custName, custMob, String.valueOf(final_discountedTotal), String.valueOf(final_taxinRupsTotal),
+                                        "", "", "", txtpaybleamt.getText().toString().trim(),
+                                        "No", "No", getCurrentDate(), billNoClass.getBillNo());
+                            }
+
+                            Toast.makeText(parent, "Bill upated successfully.", Toast.LENGTH_SHORT).show();
+                        }
+                   /* }else {
+                        Toast.makeText(ItemListCB.this, "Fill all data", Toast.LENGTH_LONG).show();
+                    }*/
+                }
+
+                if (deviceConnected) {
+                    txtMsg.setText("Your device is connected to printer.");
+                    Toast.makeText(parent, "Device connected to printer", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    txtMsg.setText("Your device is not connected to printer, do you want to try again?");
+                //    createXml();
+                    Toast.makeText(parent, "Device not connected to printer. Please try agin!", Toast.LENGTH_SHORT).show();
+                    //   startService(new Intent(ItemListCB.this, MarchantService.class));
+                }
+
+                   btnyes.setOnClickListener(new View.OnClickListener() {
+
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            Toast.makeText(parent, "Connecting to device...", Toast.LENGTH_SHORT).show();
+                            if(cbillList.isEmpty()){
+                                Toast.makeText(parent,"No data to print", Toast.LENGTH_SHORT).show();
+                            }else {
+                                createXml();
+                                print_CGST_SGST(cbillList);
+                                dialog.dismiss();
+                            }
+                            //new SaveBillDetails().execute();  //send bill details to server...
+                            //startService(new Intent(ItemListCB.this, MarchantService.class));
+                        }
+                    });
+                    dialog.show();
+            }
+        });
+
+        savebill.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String igstType = "", sgstType = "", cgstType = "",ugstType = "",vatType = "",
+                        sgstVal = "0", cgstVal = "0", igstVal = "0", ugstVal = "0", vatVal = "0", tax_class = "";
+
+                String a = edttxtReceived.getText().toString();
+
+                String get_BillNo = "SELECT BillPrintNo FROM " + dbhandler.TABLE_BILL_CB /*+ " WHERE isPrinted='No'"*/;
+                Cursor _c = sql_db.rawQuery(get_BillNo, null);
+                if (_c.getCount() > 0) {
+                    _c.moveToLast();
+                    BILLNO = Integer.parseInt(_c.getString(_c.getColumnIndex("BillPrintNo")));
+                   // billNoClass.setBillNo(String.valueOf(BILLNO));
+                   // String billingObj = new Gson().toJson(billNoClass);
+                   // AppCommon.getInstance(ItemListCB.this).setBillingObject(billingObj);
+                }
+
+       //         if (validate()) {
+
+                    if (cbillList.isEmpty()) {
+                        Toast.makeText(parent, "No items in list", Toast.LENGTH_SHORT).show();
+                    } else {
+
+                        if (billNoClass.getBillNo().equals("")) {
+                            for (int i = 0; i < cbillList.size(); i++) {
+
+                                tax_class = cbillList.get(i).getTaxclass();
+                                String[] taxes = checkTaxTyep(tax_class);
+
+                                if (taxes[0].equals("")) {
+                                    igstType = "";
+                                    igstVal = "0.0";
+
+                                    if (!(taxes[2].equals(""))) {
+                                        cgstType = taxes[2];
+                                        cgstVal = taxes[3];
+                                        if (!cgstVal.contains(".")) {
+                                            cgstVal = cgstVal + ".0";
+                                        }
+                                    } else {
+                                        cgstType = "";
+                                        cgstVal = "0.0";
+                                    }
+
+                                    if (!(taxes[4].equals(""))) {
+                                        sgstType = taxes[4];
+                                        sgstVal = taxes[5];
+
+                                        if (!sgstVal.contains(".")) {
+                                            sgstVal = sgstVal + ".0";
+                                        }
+                                    } else {
+                                        sgstType = "";
+                                        sgstVal = "0.0";
+                                    }
+
+                                    if (!(taxes[6].equals(""))) {
+                                        ugstType = taxes[6];
+                                        ugstVal = taxes[7];
+                                        if (!ugstVal.contains(".")) {
+                                            ugstVal = ugstVal + ".0";
+                                        }
+                                    } else {
+                                        ugstType = "";
+                                        ugstVal = "0.0";
+                                    }
+
+                                    if (!(taxes[8].equals(""))) {
+                                        vatType = taxes[8];
+                                        vatVal = taxes[9];
+                                        if (!vatVal.contains(".")) {
+                                            vatVal = vatVal + ".0";
+                                        }
+                                    } else {
+                                        vatType = "";
+                                        vatVal = "0.0";
+                                    }
+
+                                } else {
+                                    igstType = taxes[0];
+                                    igstVal = taxes[1];
+
+                                    if (!igstVal.contains(".")) {
+                                        igstVal = cgstVal + ".0";
+                                    }
+                                }
+
+                                tcf.addBill_two(String.valueOf(BILLNO +1),cbillList.get(i).getItemDesc(),
+                                        cbillList.get(i).getItemCode(),
+                                        String.valueOf(cbillList.get(i).getMRP()),
+                                        String.valueOf(cbillList.get(i).getQty()),
+                                        cbillList.get(i).getTaxclass(),cgstVal,sgstVal,
+                                        String.valueOf(cbillList.get(i).getDiscamt()),
+                                        cbillList.get(i).getDiscount(),
+                                        Float.valueOf(cbillList.get(i).getTotAmt_incltax_lineamt()),
+                                        txtsubtotal.getText().toString().trim(),
+                                        edttxtTotalDiscount.getText().toString().trim(),
+                                        String.valueOf(discount_on_NetAmt),
+                                        txtNetAmt.getText().toString().trim(),
+                                        edttxtReceived.getText().toString().trim(),
+                                        txtbalamt.getText().toString().trim(), custName, custMob,
+                                        String.valueOf(final_discountedTotal), String.valueOf(final_taxinRupsTotal),
+                                        String.valueOf(CGST_TOTAL), String.valueOf(SGST_TOTAL),"", txtpaybleamt.getText().toString().trim(),
+                                        "No", "No", getCurrentDate());
+                            }
+
+                            String getBillNo = "SELECT BillPrintNo FROM " + dbhandler.TABLE_BILL_CB /*+ " WHERE isPrinted='No'"*/;
+                            Cursor c = sql_db.rawQuery(getBillNo, null);
+                            if (c.getCount() > 0) {
+                                c.moveToLast();
+                                String billNo = c.getString(c.getColumnIndex("BillPrintNo"));
+                                billNoClass.setBillNo(billNo);
+                                String billingObj = new Gson().toJson(billNoClass);
+                                AppCommon.getInstance(ItemListCB.this).setBillingObject(billingObj);
+
+                            }else {
+
+                            }
+                        } else {
+                            String bill_No = billNoClass.getBillNo();
+
+                            for (int i = 0; i < cbillList.size(); i++) {
+
+
+                                tax_class = cbillList.get(i).getTaxclass();
+                                String[] taxes = checkTaxTyep(tax_class);
+
+                                if (taxes[0].equals("")) {
+                                    igstType = "";
+                                    igstVal = "0.0";
+
+                                    if (!(taxes[2].equals(""))) {
+                                        cgstType = taxes[2];
+                                        cgstVal = taxes[3];
+                                        if (!cgstVal.contains(".")) {
+                                            cgstVal = cgstVal + ".0";
+                                        }
+                                    } else {
+                                        cgstType = "";
+                                        cgstVal = "0.0";
+                                    }
+
+                                    if (!(taxes[4].equals(""))) {
+                                        sgstType = taxes[4];
+                                        sgstVal = taxes[5];
+
+                                        if (!sgstVal.contains(".")) {
+                                            sgstVal = sgstVal + ".0";
+                                        }
+                                    } else {
+                                        sgstType = "";
+                                        sgstVal = "0.0";
+                                    }
+
+                                    if (!(taxes[6].equals(""))) {
+                                        ugstType = taxes[6];
+                                        ugstVal = taxes[7];
+                                        if (!ugstVal.contains(".")) {
+                                            ugstVal = ugstVal + ".0";
+                                        }
+                                    } else {
+                                        ugstType = "";
+                                        ugstVal = "0.0";
+                                    }
+
+                                    if (!(taxes[8].equals(""))) {
+                                        vatType = taxes[8];
+                                        vatVal = taxes[9];
+                                        if (!vatVal.contains(".")) {
+                                            vatVal = vatVal + ".0";
+                                        }
+                                    } else {
+                                        vatType = "";
+                                        vatVal = "0.0";
+                                    }
+                                } else {
+                                    igstType = taxes[0];
+                                    igstVal = taxes[1];
+
+                                    if (!igstVal.contains(".")) {
+                                        igstVal = cgstVal + ".0";
+                                    }
+                                }
+
+                                tcf.updateBill_two(cbillList.get(i).getItemDesc(),
+                                        cbillList.get(i).getItemCode(),
+                                        String.valueOf(cbillList.get(i).getMRP()),
+                                        String.valueOf(cbillList.get(i).getQty()),
+                                        cbillList.get(i).getTaxclass(),cgstVal, sgstVal,
+                                        String.valueOf(cbillList.get(i).getDiscamt()),
+                                        cbillList.get(i).getDiscount(),
+                                        Float.valueOf(cbillList.get(i).getTotAmt_incltax_lineamt()),
+                                        txtsubtotal.getText().toString().trim(),
+                                        edttxtTotalDiscount.getText().toString().trim(),
+                                        String.valueOf(discount_on_NetAmt),
+                                        txtNetAmt.getText().toString().trim(),
+                                        edttxtReceived.getText().toString().trim(),
+                                        txtbalamt.getText().toString().trim()
+                                        , custName, custMob, String.valueOf(final_discountedTotal), String.valueOf(final_taxinRupsTotal),
+                                        "", "", "", txtpaybleamt.getText().toString().trim(),
+                                        "No", "No", getCurrentDate(), bill_No);
+                            }
+
+                        }
+                        Toast.makeText(parent, "Bill saved successfully.", Toast.LENGTH_SHORT).show();
+
+                        createXml();
+
+                        cbillList.clear();
+                        tcf.clearTable(parent, dbhandler.TABLE_ADD_ITMDTLS_FORBILL);
+                        AppCommon.getInstance(parent).setBillingObject("");
+                        finish();
+                        //    startService(new Intent(ItemListCB.this, MarchantService.class));
+                    }
+        //        }
+            }
+        });
+
+        whatsapp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                wapp(cbillList);
+                if (!(txtBill == null)) {
+                    Toast.makeText(ItemListCB.this, "", Toast.LENGTH_LONG).show();
+                } else {
+                    Intent whatsappIntent = new Intent(Intent.ACTION_SEND);
+                    whatsappIntent.setType("text/plain");
+                    whatsappIntent.setPackage("com.whatsapp");
+                    whatsappIntent.putExtra(Intent.EXTRA_TEXT, txtBill);
+                    try {
+                        startActivity(whatsappIntent);
+                    } catch (android.content.ActivityNotFoundException ex) {
+                        Toast.makeText(ItemListCB.this, "Whatsapp have not been installed.", Toast.LENGTH_LONG).show();
+                    }
+                }
+                // scanBluetooth();
+            }
+        });
+
+        imgadditem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(parent, AddEditItemForCBilling.class);
+                i.putExtra("CallFrom", "AddNew");
+                startActivity(i);
+                // finish();
+            }
+        });
+
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(parent, AddEditItemForCBilling.class);
+                i.putExtra("CallFrom", "AddNew");
+                startActivity(i);
+                // finish();
+            }
+        });
+    }
+
+    private void createXml() {
+
+        xml1 = "<Header>";
+        xml1 += "<CompanyName>" + "Vritti Solutions Ltd." + "</CompanyName>";
+        xml1 += "<BillNo>" + billNoClass.getBillNo() + "</BillNo>";
+        xml1 += "<Date>" + getCurrentDate() + "</Date>";
+        xml1 += "<Mobile>" + MobileNo + "</Mobile>";
+        xml1 += "<TotalIncTax>" + txtsubtotal.getText().toString().trim() + "</TotalIncTax>";
+        xml1 += "<BaseAmt>" + txtbaseamount.getText().toString().trim() + "</BaseAmt>";
+        xml1 += "<CGST>" + txtcgstamt.getText().toString().trim() + "</CGST>";
+        xml1 += "<SGST>" + txtsgstamt.getText().toString().trim() + "</SGST>";
+        xml1 += "<NetAmt>" + txtNetAmt.getText().toString().trim() + "</NetAmt>";
+        xml1 += "<DiscOnNetAmt>" + edttxtTotalDiscount.getText().toString().trim() + "</DiscOnNetAmt>";
+        xml1 += "<PayableAmt>" + txtpaybleamt.getText().toString().trim() + "</PayableAmt>";
+        xml1 += "</Header>";
+
+        sb.setLength(0);
+        sb.append("<Detail>");
+        int i;
+        for (i = 0; i < cbillList.size(); i++) {
+
+            float taxinrupsTotal = Float.parseFloat(cbillList.get(i).getTax_inRups());
+            String taxinrups = String.valueOf(taxinrupsTotal);
+
+            sb.append("<Table>");
+            sb.append("<Itemid>" + cbillList.get(i).getItemCode() + "</Itemid>");
+            sb.append("<Itemname>" + cbillList.get(i).getItemDesc() + "</Itemname>");
+            sb.append("<Qty>" + cbillList.get(i).getQty() + "</Qty>");
+            sb.append("<DiscAmount>" + cbillList.get(i).getDiscamt()+ "</DiscAmount>");
+            sb.append("<TotalAmount>" + cbillList.get(i).getTotAmt_incltax_lineamt()+"</TotalAmount>");
+            sb.append("<Rate>" + String.format("%.02f", cbillList.get(i).getMRP())+"</Rate>");
+            sb.append("<TaxAmount>" + String.format("%.02f",taxinrupsTotal)+ "</TaxAmount>");
+            sb.append("</Table>");
+        }
+        sb.append("</Detail>");
+        xml2 = sb.toString();
+
+       /* String BILL_xml = "";
+        String xmlbillNo = "SELECT BillId FROM "+dbhandler.TABLE_BILL_DETAILS;// + " WHERE BillId='"+billNoClass.getBillNo()+"'";
+        Cursor c = sql_db.rawQuery(xmlbillNo,null);
+        if(c.getCount() > 0){
+            c.moveToLast();
+            BILL_xml = c.getString(c.getColumnIndex("BillId"));
+        }
+
+        if(billNoClass.getBillNo().equals(BILL_xml)){
+            //do not add in table
+        }else {
+            tcf.addBillXml(billNoClass.getBillNo(),xml1, xml2, "No",getCurrentDate());
+        }*/
+
+    }
+
+    public void edtxtchnglistener() {
+
+        edttxtReceived.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before,
+                                      int count) {
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if (edttxtTotalDiscount.getText().toString() == "" || edttxtTotalDiscount.getText().toString() == "0"
+                        || edttxtTotalDiscount.getText().toString() == null) {
+                    FinalTotal = Float.parseFloat(txtNetAmt.getText().toString());
+
+                    txtbalamt.setText(String.format("%.02f", FinalTotal));
+
+                } else {
+
+                    //   FinalTotal = Float.parseFloat(txtFinalTotal.getText().toString());
+
+                    // txtNetAmt.setText("541.50");
+                    FinalTotal = Float.parseFloat(txtNetAmt.getText().toString());
+
+                    if (((s.toString().trim() == "") || (s.toString() == null) || (s
+                            .toString().length() == 0) || (s.toString().trim() == " "))) {
+                        edttxtRemaining.setText(String.format("%.02f", FinalTotal) + "");
+
+                        //  txtbalamt.setText(FinalTotal + "");
+                        txtbalamt.setText(String.format("%.02f", FinalTotal));
+                    } else {
+
+                        remaining = FinalTotal - Float.parseFloat(s.toString().trim());
+                        edttxtRemaining.setText(String.format("%.02f", remaining) + "");
+
+                        remaining = FinalTotal - Float.parseFloat(s.toString().trim());
+                        //txtbalamt.setText( "- " + remaining + "");
+                        txtbalamt.setText(String.format("%.02f", remaining));
+                    }
+                }
+            }
+        });
+
+        edttxtTotalDiscount.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before,
+                                      int count) {
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                //        if (amt != 0 && amt > 0) {
+
+                if (((s.toString().trim() == "") || (s.toString() == null) || (s
+                        .toString().length() == 0) || (s.toString().trim() == " "))) {
+                    FinalTotal = amt;
+                    // txtFinalTotal.setText("" + String.format("%.02f",TotInclTax));
+
+                    // TotInclTax = Float.parseFloat(Totalincltax.getText().toString().trim());
+                    // txtNetAmt.setText(new DecimalFormat("##.##").format(TotInclTax));
+                    // txtNetAmt.setText(String.format("%.02f",TotInclTax));
+
+                    TotInclTax = Float.parseFloat(Totalincltax.getText().toString().trim());
+                    txtpaybleamt.setText(String.format("%.02f", TotInclTax));
+
+                } else {
+
+                    //      dis_amt = (amt * Float.parseFloat(s.toString()) / 100);
+                    //amt = Float.parseFloat(Totalincltax.getText().toString().trim());
+
+                    amt = Float.parseFloat(txtNetAmt.getText().toString().trim());          //discount on NetAmt
+                    if (amt > Float.parseFloat(s.toString())) {
+
+                        if (swtchdisc.isChecked()) {
+                            swtchdisc.setText("Discount on Total % :   ");
+                           /*// float discamt = (amt * Float.parseFloat(s.toString()))/100;
+                            float discamt = (Float.parseFloat(Totalincltax.getText().toString().trim()) * Float.parseFloat(s.toString()))/100;
+                           // FinalTotal = amt - discamt;
+                            FinalTotal = (Float.parseFloat(Totalincltax.getText().toString().trim()) - discamt);*/
+
+                            float discamt = (Float.parseFloat(txtNetAmt.getText().toString().trim()) * Float.parseFloat(s.toString())) / 100;
+                            discount_on_NetAmt = discamt;
+                            FinalTotal = (Float.parseFloat(txtNetAmt.getText().toString().trim()) - discamt);
+
+                            //discount on NetAmount
+                        } else {
+                            swtchdisc.setText("Discount on Total ₹ :   ");
+                            discount_on_NetAmt = Float.parseFloat(s.toString());
+
+                            //  FinalTotal = (amt - Float.parseFloat(s.toString()));
+                            // FinalTotal = (Float.parseFloat(Totalincltax.getText().toString().trim()) - Float.parseFloat(s.toString()));
+
+                            FinalTotal = (Float.parseFloat(txtNetAmt.getText().toString().trim()) - Float.parseFloat(s.toString()));
+                        }
+
+                        txtFinalTotal.setText("" + String.format("%.02f", FinalTotal));
+
+                        //  Totalincltax.setText(String.format("%.02f",FinalTotal));
+                        //  txtNetAmt.setText(String.format("%.02f",FinalTotal));
+                        txtpaybleamt.setText(String.format("%.02f", FinalTotal));
+                        txtbalamt.setText(String.format("%.02f", FinalTotal));
+
+                    } else {
+                        Toast.makeText(ItemListCB.this, "Discount amount should be less then total amount", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                //        }
+            }
+        });
+
+        edttaxtotal.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before,
+                                      int count) {
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if (((s.toString().trim() == "") || (s.toString() == null) || (s
+                        .toString().length() == 0) || (s.toString().trim() == " "))) {
+
+                    Totalincltax.setText(txtsubtotal.getText().toString().trim());
+                    txtNetAmt.setText(txtsubtotal.getText().toString().trim());
+
+                } else {
+                    float subtotal = Float.parseFloat(txtsubtotal.getText().toString().trim());
+                    float taxontot = Float.parseFloat(s.toString());
+                    TotInclTax = ((subtotal * taxontot) / 100) + subtotal;
+
+                    Totalincltax.setText(String.format("%.02f", TotInclTax));
+                    txtNetAmt.setText(String.format("%.02f", TotInclTax));
+                    txtbalamt.setText(String.format("%.02f", TotInclTax));
+                }
+            }
+        });
+
+    }
+
+    private void scanBluetooth() {
+
+        startActivityForResult(new Intent(parent, DeviceListActivity.class),
+                AnyMartData.REQUEST_CONNECT_DEVICE);
+    }
+
+    private boolean validate() {
+        // TODO Auto-generated method stub
+
+        if (txtsubtotal.getText().toString().equalsIgnoreCase("0.00")) {
+            Toast.makeText(ItemListCB.this, "Fill all amount", Toast.LENGTH_LONG).show();
+            edttxtReceived.setEnabled(false);
+            return false;
+        } else if ((edttxtReceived.getText().toString().equalsIgnoreCase("") ||
+                edttxtReceived.getText().toString().equalsIgnoreCase(" ") ||
+                edttxtReceived.getText().toString().equalsIgnoreCase(null))) {
+            Toast.makeText(ItemListCB.this, "Fill received amount", Toast.LENGTH_LONG).show();
+
+            return false;
+        } else if (edttxtTotalDiscount.getText().toString().trim().equalsIgnoreCase("")) {
+            edttxtTotalDiscount.setText("0.00");
+            return true;
+        } else {
+            return true;
+        }
+    }
+
+    @SuppressLint("WrongViewCast")
+    private void addView(int i) {
+        final int pos = i;
+        LayoutInflater layoutInflater = (LayoutInflater) parent.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final View baseView = layoutInflater.inflate(R.layout.tbuds_custom_item_list_cb, null);
+
+        myAutoComplete = (CustomAutoCompleteView) baseView.findViewById(R.id.myautocomplete);
+        edRate = (EditText) baseView.findViewById(R.id.edRate);
+        btn_ok = (ImageButton) baseView.findViewById(R.id.btn_ok);
+        edAmt = (EditText) baseView.findViewById(R.id.edAmt);
+        edQnty = (EditText) baseView.findViewById(R.id.edQnty);
+        btn_cancel = (ImageButton) baseView.findViewById(R.id.btn_cancel);
+        spinnerunit = (Spinner) baseView.findViewById(R.id.spinnerunit);
+        edDiscount = (EditText) baseView.findViewById(R.id.edDiscount);
+        myAutoComplete.addTextChangedListener(new CustomAutoCompleteTextChangedListener(this));
+
+        //   edQnty.setText("" + 0);
+        // edAmt.setText("" + 0);
+        AllCatSubcatItems myObject = null;
+        AllCatSubcatItems[] ObjectItemData = new AllCatSubcatItems[1];
+        myObject = new AllCatSubcatItems();
+        ObjectItemData[0] = myObject;
+
+        myAdapter = new AutocompleteCustomArrayAdapter(this, R.layout.tbuds_list_view_row_item, ObjectItemData);
+        myAutoComplete.setAdapter(myAdapter);
+
+        int textLength = edQnty.getText().length();
+        edQnty.setSelection(textLength, textLength);
+
+        int textLength1 = myAutoComplete.getText().length();
+        myAutoComplete.setSelection(textLength1, textLength1);
+        myAutoComplete.setFocusable(true);
+
+        if (tcf.getCartItems_AgainstCustomer(custName, custMob) > 0
+                && i < tcf.getCartItems_AgainstCustomer(custName, custMob)) {
+            getDataFromDataBase();
+            if (i < myCartBeanArrayList.size()) {
+                myAutoComplete.setText("" + myCartBeanArrayList.get(i).getProduct_name());
+                myAutoComplete.setFocusable(false);
+                myAutoComplete.setClickable(false);
+                myAutoComplete.setEnabled(false);
+
+                edRate.setText("" + myCartBeanArrayList.get(i).getPrice());
+                edRate.setFocusable(false);
+                edRate.setClickable(false);
+                edRate.setEnabled(false);
+
+                edAmt.setText("" + myCartBeanArrayList.get(i).getAmount());
+                edAmt.setFocusable(false);
+                edAmt.setClickable(false);
+                edAmt.setEnabled(false);
+
+                edQnty.setText("" + myCartBeanArrayList.get(i).getQnty());
+                edQnty.setFocusable(false);
+               /* edQnty.setFocusable(false);
+                edQnty.setClickable(false);
+                edQnty.setEnabled(false);*/
+
+                edDiscount.setText("" + myCartBeanArrayList.get(i).getDISCOUNT());
+                edDiscount.setFocusable(false);
+                edDiscount.setClickable(false);
+                edDiscount.setEnabled(false);
+
+                int spinner_pos = 0;
+                if (myCartBeanArrayList.get(i).getUNIT().equalsIgnoreCase("gm")) {
+                    spinner_pos = 1;
+                } else if (myCartBeanArrayList.get(i).getUNIT().equalsIgnoreCase("kg")) {
+                    spinner_pos = 2;
+                } else if (myCartBeanArrayList.get(i).getUNIT().equalsIgnoreCase("item")) {
+                    spinner_pos = 3;
+                }
+                spinnerunit.setSelection(spinner_pos);
+                btn_cancel.setVisibility(View.VISIBLE);
+            }
+        }
+        setListeners(i);
+
+        //  containerLayout_one.addView(baseView);
+    }
+
+    public static String getCurrentDate() {
+        Calendar c = Calendar.getInstance();
+        System.out.println("Current time => " + c.getTime());
+
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm a");
+        String formattedDate = df.format(c.getTime());
+        return formattedDate;
+    }
+
+    private void getDataFromDataBase() {
+        // TODO Auto-generated method stub
+        myCartBeanArrayList.clear();
+        //  DatabaseHandler db1 = new DatabaseHandler(parent);
+        //   SQLiteDatabase db = db1.getWritableDatabase();
+        amt = 0;
+
+        Cursor c11 = sql_db.rawQuery("Select distinct Cust_mob,Cust_Name,qnty,minqnty," +
+                "offers,price," +
+                "Product_name,Amount,Product_id,Freeitemqty , Freeitemname, " +
+                "validfrom,validto,DISCOUNT ,UNIT ,UNITV from "
+                + dbhandler.TABLE_CART_ITEM_CB +
+                "  where Cust_Name ='" + custName + "' and " +
+                " Cust_mob ='" + custMob + "'", null);
+        if (c11.getCount() > 0) {
+            c11.moveToFirst();
+            do {
+                String Cust_Name = c11.getString(c11.getColumnIndex("Cust_Name"));
+                String Cust_mob = c11.getString(c11.getColumnIndex("Cust_mob"));
+                String qnty = c11.getString(c11.getColumnIndex("qnty"));
+                String offers = c11.getString(c11.getColumnIndex("offers"));
+                String price = c11.getString(c11.getColumnIndex("price"));
+                String Product_name = c11.getString(c11.getColumnIndex("Product_name"));
+                String Amount = c11.getString(c11.getColumnIndex("Amount"));
+                String Product_id = c11.getString(c11.getColumnIndex("Product_id"));
+                String DISCOUNT = c11.getString(c11.getColumnIndex("DISCOUNT"));
+                String UNIT = c11.getString(c11.getColumnIndex("UNIT"));
+
+                amt = amt + Float.parseFloat(Amount);
+
+                myCartBean = new MyCartBean();
+                myCartBean.setCustMobno(Cust_mob);
+                myCartBean.setCustomerName(Cust_Name);
+                myCartBean.setQnty(Float.valueOf(qnty));
+                myCartBean.setMinqnty(c11.getString(c11.getColumnIndex("minqnty")));
+                myCartBean.setOffers(offers);
+                myCartBean.setPrice(Float.valueOf(price));
+                myCartBean.setProduct_name(Product_name);
+                myCartBean.setAmount(Float.valueOf(Amount));
+                myCartBean.setProduct_id(Product_id);
+                myCartBean.setFree_item_name_trade(c11.getString(c11.getColumnIndex("Freeitemname")));
+                myCartBean.setFree_item_qnty_trade(c11.getString(c11.getColumnIndex("Freeitemqty")));
+                myCartBean.setValidfrom_trade(c11.getString(c11.getColumnIndex("validfrom")));
+                myCartBean.setValidto_trade(c11.getString(c11.getColumnIndex("validto")));
+                if (DISCOUNT.equalsIgnoreCase("")) {
+                    myCartBean.setDISCOUNT("0");
+                } else {
+                    myCartBean.setDISCOUNT(DISCOUNT);
+                }
+
+                myCartBean.setUNIT(UNIT);
+                myCartBean.setUnit_V(c11.getString(c11.getColumnIndex("UNITV")));
+                myCartBeanArrayList.add(myCartBean);
+            } while (c11.moveToNext());
+        }
+
+        txtTotal.setText("" + Math.round(amt));
+        txtFinalTotal.setText("" + Math.round(amt));
+
+    }
+
+    private void print_CGST_SGST(ArrayList<CounterbillingBean> cbillList) {
+
+        final byte[] ALIGN_LEFT = {0x1B, 0x61, 0};
+        final byte[] ALIGN_CENTER = {0x1B, 0x61, 1};
+        final byte[] ALIGN_RIGHT = {0x1B, 0x61, 2};
+
+        String total = "";
+        String finalbill = "", received = "", balance = "", subTotal = "", taxInPer = "", totInclTax = "", discAmt_item = "", tax_class = "",
+                discTotal = "0", taxInRupsTotal = "0", disconNet = "0", payablAmt = "0";
+        String dis_amt = "";
+        String datetime = getCurrentDate();
+        String billNo = "";
+        int billId = 0;
+        String itemNameToPrint, itemQtyToPrint, itemRateToPrint, itemAmountToPrint, itemDiscToPrint;
+
+        String igstType = "", sgstType = "", cgstType = "",ugstType = "",vatType = "",
+                sgstVal = "0", cgstVal = "0", igstVal = "0", ugstVal = "0", vatVal = "0";
+        float cgst = 0.0F;
+        String CGST = "0", SGST = "0", IGST = "0";
+
+        subTotal = txtsubtotal.getText().toString().trim();
+        taxInPer = edttaxtotal.getText().toString().trim();
+        totInclTax = Totalincltax.getText().toString().trim();
+        dis_amt = edttxtTotalDiscount.getText().toString().trim();
+        finalbill = txtNetAmt.getText().toString().trim();
+        received = edttxtReceived.getText().toString().trim();
+        balance = txtbalamt.getText().toString().trim();
+        discTotal = String.format("%.02f", final_discountedTotal);
+        taxInRupsTotal = String.format("%.02f", final_taxinRupsTotal);
+        disconNet = String.format("%.02f", discount_on_NetAmt);
+        payablAmt = txtpaybleamt.getText().toString().trim();
+
+        String getBillNo = "SELECT BillPrintNo FROM " + dbhandler.TABLE_BILL_CB /*+ " WHERE isPrinted='No'"*/;
+        Cursor c = sql_db.rawQuery(getBillNo, null);
+        if (c.getCount() > 0) {
+            c.moveToLast();
+            billNo = c.getString(c.getColumnIndex("BillPrintNo"));
+        }
+
+        String bill = billNoClass.getBillNo();
+        try{
+            billId = Integer.parseInt(bill);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        String msg = null, company = "";
+        //company = "\n" + "      Vritti Solutions Ltd      " +"\n\n";
+        //SpannableString ss1=  new SpannableString(company);
+        // ss1.setSpan(new RelativeSizeSpan(2f), 0,5, 0);
+
+        Cname = "Meeshna Masale";
+        //Address = "7, Second floor, Krishna Ganga Apartment, Parijat Corner, Gulmohar Road, Savedi,";
+
+        String cNAME = Cname;
+        int cnamelength = Cname.length();
+
+        splitAddressInLines(Address);
+
+        //msg = "\n" + "      Vritti Solutions Ltd      " + "\n\n";
+        msg = "\n         "+Cname+"         \n";
+
+        String addrLine = "", printmsg = "";
+        for(int i=0; i<addressLines.size(); i++){
+            addrLine = addressLines.get(i).toString();
+
+            if (addrLine.length() >= 24) {
+                addrLine = addrLine.substring(0, 24);
+                printmsg = "   "+addrLine+"   ";
+                msg += printmsg;
+            } else if (addrLine.length() < 24) {
+                int diff = 24 - addrLine.length();  //24-8 = 16 16/2 = 8
+                //        for (int j = 0; j < diff; i++) {
+                printmsg = "    "+addrLine+"    ";
+                msg += printmsg + "\n\n";
+                //        }
+            }
+        }
+
+        msg += "Bill No.: " + billId + "\n";
+        msg += "Date    : " + datetime + "\n";
+        msg += "Mobile  : " + FirmMobile + "\n";
+        msg += "--------------------------------\n";    //32
+        msg += "ITEM       QTY  DIS.AMT  NET.AMT\n";    //32
+        msg += "RATE     CGST%    SGST%         \n";    //32
+        msg += "================================\n";
+        try {
+
+            for (int j = 0; j < cbillList.size(); j++) {
+
+                itemNameToPrint = cbillList.get(j).getItemDesc();
+                if (itemNameToPrint.length() > 10) {
+                    itemNameToPrint = itemNameToPrint.substring(0, 10);
+                } else if (itemNameToPrint.length() <= 10) {
+                    int diff = 10 - itemNameToPrint.length();
+                    for (int i = 0; i < diff; i++) {
+                        itemNameToPrint += " ";
+                    }
+                }
+
+                itemQtyToPrint = cbillList.get(j).getQty();
+                itemQtyToPrint = itemQtyToPrint.replaceFirst("^0+(?!$)", "");
+                if (itemQtyToPrint.contains(".")) {
+                    {
+                        itemQtyToPrint += "000";
+                        itemQtyToPrint = itemQtyToPrint.substring(0, itemQtyToPrint.lastIndexOf(".") + 3);
+                    }
+                } else {
+                    // itemQtyToPrint += ".00";
+                }
+
+                if (itemQtyToPrint.length() <= 3) {
+                    int diff = 3 - itemQtyToPrint.length();
+                    if (diff > 0) {
+                        for (int i = 0; i < diff; i++) {
+                            itemQtyToPrint = " " + itemQtyToPrint;
+                        }
+                    }
+                }
+
+                tax_class = cbillList.get(j).getTaxclass();
+                String[] taxes = checkTaxTyep(tax_class);
+
+                if (taxes[0].equals("")) {
+                    igstType = "";
+                    igstVal = "0.0";
+
+                    if (!(taxes[2].equals(""))) {
+                        cgstType = taxes[2];
+                        cgstVal = taxes[3];
+                        if (!cgstVal.contains(".")) {
+                            cgstVal = cgstVal + ".0";
+                        }
+                    } else {
+                        cgstType = "";
+                        cgstVal = "0.0";
+                    }
+
+                    if (!(taxes[4].equals(""))) {
+                        sgstType = taxes[4];
+                        sgstVal = taxes[5];
+
+                        if (!sgstVal.contains(".")) {
+                            sgstVal = sgstVal + ".0";
+                        }
+                    } else {
+                        sgstType = "";
+                        sgstVal = "0.0";
+                    }
+
+                    if (!(taxes[6].equals(""))) {
+                        ugstType = taxes[6];
+                        ugstVal = taxes[7];
+                        if (!ugstVal.contains(".")) {
+                            ugstVal = ugstVal + ".0";
+                        }
+                    } else {
+                        ugstType = "";
+                        ugstVal = "0.0";
+                    }
+
+                    if (!(taxes[8].equals(""))) {
+                        vatType = taxes[8];
+                        vatVal = taxes[9];
+                        if (!vatVal.contains(".")) {
+                            vatVal = vatVal + ".0";
+                        }
+                    } else {
+                        vatType = "";
+                        vatVal = "0.0";
+                    }
+
+                } else {
+                    igstType = taxes[0];
+                    igstVal = taxes[1];
+
+                    if (!igstVal.contains(".")) {
+                        igstVal = cgstVal + ".0";
+                    }
+                }
+
+                if (cgstVal.length() <= 3) {
+                    int diff = 3 - cgstVal.length();
+                    if (diff > 0) {
+                        for (int i = 0; i < diff; i++) {
+                            cgstVal = " " + cgstVal;
+                        }
+                    }
+                }
+
+                if (sgstVal.length() <= 7) {
+                    int diff = 7 - sgstVal.length();
+                    if (diff > 0) {
+                        for (int i = 0; i < diff; i++) {
+                            sgstVal = " " + sgstVal;
+                        }
+                    }
+                }
+
+                itemRateToPrint = String.format("%.02f", cbillList.get(j).getMRP());
+                itemRateToPrint = itemRateToPrint.replaceFirst("^0+(?!$)", "");
+                if (itemRateToPrint.contains(".")) {
+                    itemRateToPrint += "000";
+                    itemRateToPrint = itemRateToPrint.substring(0, itemRateToPrint.lastIndexOf(".") + 3);
+                } else {
+                    itemRateToPrint += ".00";
+                }
+
+                if (itemRateToPrint.length() <= 10) {
+                    int diff = 10 - itemRateToPrint.length();
+                    if (diff > 0) {
+                        for (int i = 0; i < diff; i++) {
+                            itemRateToPrint += " "; /*+ itemRateToPrint*/
+                            ;
+                        }
+                    }
+                }
+
+                discAmt_item = String.format("%.02f", cbillList.get(j).getDiscamt());
+
+                if (discAmt_item.equals("0.0") || discAmt_item.equals("0.00")) {
+                    discAmt_item = "0.00";
+                } else {
+                    discAmt_item = discAmt_item.replaceFirst("^0+(?!$)", "");
+                    if (discAmt_item.contains(".")) {
+                        discAmt_item += "000";
+                        discAmt_item = discAmt_item.substring(0, discAmt_item.lastIndexOf(".") + 3);
+                    } else {
+                        discAmt_item += "0.00";
+                    }
+                }
+
+                if (discAmt_item.length() <= 7) {
+                    int diff = 7 - discAmt_item.length();
+                    if (diff > 0) {
+                        for (int i = 0; i < diff; i++) {
+                            discAmt_item = " " + discAmt_item;
+                        }
+                    }
+                }
+
+                itemAmountToPrint = String.format("%.02f", cbillList.get(j).getTotAmt_incltax_lineamt());
+                itemAmountToPrint = itemAmountToPrint.replaceFirst("^0+(?!$)", "");
+
+                if (itemAmountToPrint.contains(".")) {
+                    itemAmountToPrint += "000";
+                    itemAmountToPrint = itemAmountToPrint.substring(0, itemAmountToPrint.lastIndexOf(".") + 3);
+                } else {
+                    itemAmountToPrint += ".00";
+                }
+
+                if (itemAmountToPrint.length() <= 7) {
+                    int diff = 7 - itemAmountToPrint.length();
+                    if (diff > 0) {
+                        for (int i = 0; i < diff; i++) {
+                            itemAmountToPrint = " " + itemAmountToPrint;
+                        }
+                    }
+                }
+
+                msg += itemNameToPrint + "  " + itemQtyToPrint + " " + discAmt_item + "  " + itemAmountToPrint + "\n";
+                msg += itemRateToPrint + "  " + cgstVal + " " + sgstVal + "\n";
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        subTotal = subTotal.replaceFirst("^0+(?!$)", "");
+        subTotal = callCheckLenght(subTotal);
+        taxInPer = callCheckLenght(taxInPer);
+        totInclTax = callCheckLenght(totInclTax);
+        dis_amt = callCheckLenght(dis_amt);
+        finalbill = callCheckLenght(finalbill);
+        received = callCheckLenght(received);
+        balance = callCheckLenght(balance);
+        discTotal = callCheckLenght(discTotal);
+        taxInRupsTotal = callCheckLenght(taxInRupsTotal);
+        cgst = Float.parseFloat(taxInRupsTotal);
+        CGST = String.format("%.02f", cgst / 2);
+        SGST = String.format("%.02f", cgst / 2);
+        CGST = callCheckLenght(CGST);
+        SGST = callCheckLenght(SGST);
+        disconNet = callCheckLenght(disconNet);
+        payablAmt = callCheckLenght(payablAmt);
+
+        msg += "================================\n";
+        //    msg += "          SubTotal:"+subTotal+"\n";
+        //    msg += "             Tax %:"+ taxInPer+"\n";
+        msg += " Total (Incl. tax):" + totInclTax + "\n";
+        msg += "        ________________________\n";
+        msg += "       Base Amount:" + discTotal + "\n";
+        //    msg += "          Discount:"+dis_amt+"\n";
+        msg += "              CGST:" + CGST + "\n";
+        msg += "              SGST:" + SGST + "\n";
+        msg += "        Net Amount:" + finalbill + "\n";
+        msg += "        ________________________\n";
+        //    msg += "          Received:"+received+"\n";
+        //    msg += "           Balance:"+balance+"\n";
+        msg += "          Discount:" + disconNet + "\n";
+        msg += "    Payable Amount:" + payablAmt + "\n";
+        msg += "--------------------------------\n";
+        msg += "     Thank You! Visit Again.    \n";
+        msg += "--------------------------------\n";
+
+
+        if (msg.length() > 0) {
+            mService.sendMessage(msg + "\n", "GBK");
+        }
+
+    //    for(int i =0; i<cbillList.size();i++){
+            ContentValues values = new ContentValues();
+            values.put("isUploaded", "No");
+            values.put("isPrinted", "Yes");
+            sql_db.update(dbhandler.TABLE_BILL_CB,values,"BillPrintNo=?",new String[]{billNoClass.getBillNo()});
+    //    }
+
+            cbillList.clear();
+            tcf.clearTable(parent, dbhandler.TABLE_ADD_ITMDTLS_FORBILL);
+            AppCommon.getInstance(this).setBillingObject("");
+
+            finish();
+
+    }
+
+    private String callCheckLenght(String value) {
+        if (value.length() <= 13) {
+            int diff = 13 - value.length();
+            if (diff > 0) {
+                for (int i = 0; i < diff; i++) {
+                    value = " " + value;
+                }
+            }
+        }
+        return value;
+    }
+
+    private void wapp(ArrayList<CounterbillingBean> cbillList) {
+
+        final byte[] ALIGN_LEFT = {0x1B, 0x61, 0};
+        final byte[] ALIGN_CENTER = {0x1B, 0x61, 1};
+        final byte[] ALIGN_RIGHT = {0x1B, 0x61, 2};
+
+        String total = "";
+        String finalbill = "", received = "", balance = "", subTotal = "", taxInPer = "", totInclTax = "", discAmt_item = "", tax_class = "",
+                discTotal = "0", taxInRupsTotal = "0", disconNet = "0", payablAmt = "0";
+        String dis_amt = "";
+        String datetime = getCurrentDate();
+        String billNo = "";
+        int billId = 0;
+        String itemNameToPrint, itemQtyToPrint, itemRateToPrint, itemAmountToPrint, itemDiscToPrint;
+
+        String igstType = "", sgstType = "", cgstType = "",ugstType = "",vatType = "",
+                sgstVal = "0", cgstVal = "0", igstVal = "0", ugstVal = "0", vatVal = "0";
+        float cgst = 0.0F;
+        String CGST = "0", SGST = "0", IGST = "0";
+
+        subTotal = txtsubtotal.getText().toString().trim();
+        taxInPer = edttaxtotal.getText().toString().trim();
+        totInclTax = Totalincltax.getText().toString().trim();
+        dis_amt = edttxtTotalDiscount.getText().toString().trim();
+        finalbill = txtNetAmt.getText().toString().trim();
+        received = edttxtReceived.getText().toString().trim();
+        balance = txtbalamt.getText().toString().trim();
+        discTotal = String.format("%.02f", final_discountedTotal);
+        taxInRupsTotal = String.format("%.02f", final_taxinRupsTotal);
+        disconNet = String.format("%.02f", discount_on_NetAmt);
+        payablAmt = txtpaybleamt.getText().toString().trim();
+
+        String getBillNo = "SELECT BillId FROM " + dbhandler.TABLE_BILL_CB /*+ " WHERE isPrinted='No'"*/;
+        Cursor c = sql_db.rawQuery(getBillNo, null);
+        if (c.getCount() > 0) {
+            c.moveToLast();
+            billNo = c.getString(c.getColumnIndex("BillId"));
+        }
+
+        billId = Integer.parseInt(billNo) + 1;
+
+        String msg = null, company = "";
+        //company = "\n" + "      Vritti Solutions Ltd      " +"\n\n";
+        //SpannableString ss1=  new SpannableString(company);
+        // ss1.setSpan(new RelativeSizeSpan(2f), 0,5, 0);
+        msg = "\n" + "      Vritti Solutions Ltd      " + "\n\n";
+        msg += "Bill No.: " + billNo + "\n";
+        msg += "Date    : " + datetime + "\n";
+        msg += "Mobile  : " + FirmMobile + "\n";
+        msg += "--------------------------------\n";    //32
+        msg += "ITEM       QTY  DIS.AMT  NET.AMT\n";    //32
+        msg += "RATE     CGST%    SGST%         \n";    //32
+        msg += "================================\n";
+        try {
+
+            for (int j = 0; j < cbillList.size(); j++) {
+
+                itemNameToPrint = cbillList.get(j).getItemDesc();
+                if (itemNameToPrint.length() > 10) {
+                    itemNameToPrint = itemNameToPrint.substring(0, 10);
+                } else if (itemNameToPrint.length() <= 10) {
+                    int diff = 10 - itemNameToPrint.length();
+                    for (int i = 0; i < diff; i++) {
+                        itemNameToPrint += " ";
+                    }
+                }
+
+                itemQtyToPrint = cbillList.get(j).getQty();
+                itemQtyToPrint = itemQtyToPrint.replaceFirst("^0+(?!$)", "");
+                if (itemQtyToPrint.contains(".")) {
+                    {
+                        itemQtyToPrint += "000";
+                        itemQtyToPrint = itemQtyToPrint.substring(0, itemQtyToPrint.lastIndexOf(".") + 3);
+                    }
+                } else {
+                    // itemQtyToPrint += ".00";
+                }
+
+                if (itemQtyToPrint.length() <= 3) {
+                    int diff = 3 - itemQtyToPrint.length();
+                    if (diff > 0) {
+                        for (int i = 0; i < diff; i++) {
+                            itemQtyToPrint = " " + itemQtyToPrint;
+                        }
+                    }
+                }
+
+                tax_class = cbillList.get(j).getTaxclass();
+                String[] taxes = checkTaxTyep(tax_class);
+
+                if (taxes[0].equals("")) {
+                    igstType = "";
+                    igstVal = "0.0";
+
+                    if (!(taxes[2].equals(""))) {
+                        cgstType = taxes[2];
+                        cgstVal = taxes[3];
+                        if (!cgstVal.contains(".")) {
+                            cgstVal = cgstVal + ".0";
+                        }
+                    } else {
+                        cgstType = "";
+                        cgstVal = "0.0";
+                    }
+
+                    if (!(taxes[4].equals(""))) {
+                        sgstType = taxes[4];
+                        sgstVal = taxes[5];
+
+                        if (!sgstVal.contains(".")) {
+                            sgstVal = sgstVal + ".0";
+                        }
+                    } else {
+                        sgstType = "";
+                        sgstVal = "0.0";
+                    }
+
+                    if (!(taxes[6].equals(""))) {
+                        ugstType = taxes[6];
+                        ugstVal = taxes[7];
+                        if (!ugstVal.contains(".")) {
+                            ugstVal = ugstVal + ".0";
+                        }
+                    } else {
+                        ugstType = "";
+                        ugstVal = "0.0";
+                    }
+
+                    if (!(taxes[8].equals(""))) {
+                        vatType = taxes[8];
+                        vatVal = taxes[9];
+                        if (!vatVal.contains(".")) {
+                            vatVal = vatVal + ".0";
+                        }
+                    } else {
+                        vatType = "";
+                        vatVal = "0.0";
+                    }
+
+                } else {
+                    igstType = taxes[0];
+                    igstVal = taxes[1];
+
+                    if (!igstVal.contains(".")) {
+                        igstVal = cgstVal + ".0";
+                    }
+                }
+
+                if (cgstVal.length() <= 3) {
+                    int diff = 3 - cgstVal.length();
+                    if (diff > 0) {
+                        for (int i = 0; i < diff; i++) {
+                            cgstVal = " " + cgstVal;
+                        }
+                    }
+                }
+
+                if (sgstVal.length() <= 7) {
+                    int diff = 7 - sgstVal.length();
+                    if (diff > 0) {
+                        for (int i = 0; i < diff; i++) {
+                            sgstVal = " " + sgstVal;
+                        }
+                    }
+                }
+
+                itemRateToPrint = String.format("%.02f", cbillList.get(j).getMRP());
+                itemRateToPrint = itemRateToPrint.replaceFirst("^0+(?!$)", "");
+                if (itemRateToPrint.contains(".")) {
+                    itemRateToPrint += "000";
+                    itemRateToPrint = itemRateToPrint.substring(0, itemRateToPrint.lastIndexOf(".") + 3);
+                } else {
+                    itemRateToPrint += ".00";
+                }
+
+                if (itemRateToPrint.length() <= 10) {
+                    int diff = 10 - itemRateToPrint.length();
+                    if (diff > 0) {
+                        for (int i = 0; i < diff; i++) {
+                            itemRateToPrint += " "; /*+ itemRateToPrint*/
+                            ;
+                        }
+                    }
+                }
+
+                discAmt_item = String.format("%.02f", cbillList.get(j).getDiscamt());
+
+                if (discAmt_item.equals("0.0") || discAmt_item.equals("0.00")) {
+                    discAmt_item = "0.00";
+                } else {
+                    discAmt_item = discAmt_item.replaceFirst("^0+(?!$)", "");
+                    if (discAmt_item.contains(".")) {
+                        discAmt_item += "000";
+                        discAmt_item = discAmt_item.substring(0, discAmt_item.lastIndexOf(".") + 3);
+                    } else {
+                        discAmt_item += "0.00";
+                    }
+                }
+
+                if (discAmt_item.length() <= 7) {
+                    int diff = 7 - discAmt_item.length();
+                    if (diff > 0) {
+                        for (int i = 0; i < diff; i++) {
+                            discAmt_item = " " + discAmt_item;
+                        }
+                    }
+                }
+
+                itemAmountToPrint = String.format("%.02f", cbillList.get(j).getTotAmt_incltax_lineamt());
+                itemAmountToPrint = itemAmountToPrint.replaceFirst("^0+(?!$)", "");
+
+                if (itemAmountToPrint.contains(".")) {
+                    itemAmountToPrint += "000";
+                    itemAmountToPrint = itemAmountToPrint.substring(0, itemAmountToPrint.lastIndexOf(".") + 3);
+                } else {
+                    itemAmountToPrint += ".00";
+                }
+
+                if (itemAmountToPrint.length() <= 7) {
+                    int diff = 7 - itemAmountToPrint.length();
+                    if (diff > 0) {
+                        for (int i = 0; i < diff; i++) {
+                            itemAmountToPrint = " " + itemAmountToPrint;
+                        }
+                    }
+                }
+
+                msg += itemNameToPrint + "  " + itemQtyToPrint + " " + discAmt_item + "  " + itemAmountToPrint + "\n";
+                msg += itemRateToPrint + "  " + cgstVal + " " + sgstVal + "\n";
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        subTotal = subTotal.replaceFirst("^0+(?!$)", "");
+        subTotal = callCheckLenght(subTotal);
+        taxInPer = callCheckLenght(taxInPer);
+        totInclTax = callCheckLenght(totInclTax);
+        dis_amt = callCheckLenght(dis_amt);
+        finalbill = callCheckLenght(finalbill);
+        received = callCheckLenght(received);
+        balance = callCheckLenght(balance);
+        discTotal = callCheckLenght(discTotal);
+        taxInRupsTotal = callCheckLenght(taxInRupsTotal);
+        cgst = Float.parseFloat(taxInRupsTotal);
+        CGST = String.format("%.02f", cgst / 2);
+        SGST = String.format("%.02f", cgst / 2);
+        CGST = callCheckLenght(CGST);
+        SGST = callCheckLenght(SGST);
+        disconNet = callCheckLenght(disconNet);
+        payablAmt = callCheckLenght(payablAmt);
+
+        msg += "================================\n";
+        //    msg += "          SubTotal:"+subTotal+"\n";
+        //    msg += "             Tax %:"+ taxInPer+"\n";
+        msg += " Total (Incl. tax):" + totInclTax + "\n";
+        msg += "        ________________________\n";
+        msg += "       Base Amount:" + discTotal + "\n";
+        //    msg += "          Discount:"+dis_amt+"\n";
+        msg += "              CGST:" + CGST + "\n";
+        msg += "              SGST:" + SGST + "\n";
+        msg += "        Net Amount:" + finalbill + "\n";
+        msg += "        ________________________\n";
+        //    msg += "          Received:"+received+"\n";
+        //    msg += "           Balance:"+balance+"\n";
+        msg += "          Discount:" + disconNet + "\n";
+        msg += "    Payable Amount:" + payablAmt + "\n";
+        msg += "--------------------------------\n";
+        msg += "     Thank You! Visit Again.    \n";
+        msg += "--------------------------------\n";
+
+        txtBill = msg;
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case android.R.id.home:
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void initialize() {
+        parent = ItemListCB.this;
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar1);
+        // toolbar.setLogo(R.mipmap.ic_toolbar_logo_vwb);  //attach sales logo
+        toolbar.setTitle("Counter Billing");
+        toolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(toolbar);
+
+        mprogress = (ProgressBar) findViewById(R.id.toolbar_progress_Assgnwork);
+
+        coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
+
+        btnAdd = (Button) findViewById(R.id.btnAdd);
+        imgadditem = (ImageView) findViewById(R.id.imgadditem);
+        listdtls = (ListView) findViewById(R.id.listdtls);
+        swtchdisc = (Switch) findViewById(R.id.swtchdisc);
+
+        txtsubtotal = findViewById(R.id.txtsubtotal);
+        edttaxtotal = findViewById(R.id.edttaxtotal);
+        Totalincltax = findViewById(R.id.txtTotalincltax);
+        txtNetAmt = findViewById(R.id.txtNetAmt);
+        txtbalamt = findViewById(R.id.txtbalamt);
+        txtpaybleamt = findViewById(R.id.txtpaybleamt);
+
+        containerLayout_one = (LinearLayout) findViewById(R.id.containerLayout_one);
+        savebill = (Button) findViewById(R.id.savebill);
+        myCartBeanArrayList = new ArrayList<MyCartBean>();
+        txtTotal = (TextView) findViewById(R.id.txtTotal);
+        custMobno = (TextView) findViewById(R.id.custMob);
+        custname = (TextView) findViewById(R.id.custname);
+        edttxtTotalDiscount = (EditText) findViewById(R.id.edttxtTotalDiscount);
+        txtFinalTotal = (TextView) findViewById(R.id.txtFinalTotal);
+        txtbaseamount = (TextView) findViewById(R.id.txtbaseamount);
+        txtcgstamt = (TextView) findViewById(R.id.txtcgstamt);
+        txtsgstamt = (TextView) findViewById(R.id.txtsgstamt);
+        SaveAndPrint = (Button) findViewById(R.id.SaveAndPrint);
+        edttxtReceived = (EditText) findViewById(R.id.edttxtReceived);
+        edttxtRemaining = (EditText) findViewById(R.id.edttxtRemaining);
+        whatsapp = (ImageButton) findViewById(R.id.whatsapp);
+        whatsapp.setClickable(true);
+        mService = new BluetoothService(parent, mHandler);
+
+        if (mService.isAvailable() == false) {
+            Toast.makeText(parent, "Bluetooth is not available",
+                    Toast.LENGTH_LONG).show();
+        }
+
+        ut = new Utility();
+        tcf = new Tbuds_commonFunctions(ItemListCB.this);
+        String settingKey = ut.getSharedPreference_SettingKey(this);
+        String dabasename = ut.getValue(this, WebUrlClass.GET_DATABASE_NAME_KEY, settingKey);
+        dbhandler = new DatabaseHandlers(this, dabasename);
+        sql_db = dbhandler.getWritableDatabase();
+        CompanyURL = ut.getValue(this, WebUrlClass.GET_COMPANY_URL_KEY, settingKey);
+        EnvMasterId = ut.getValue(this, WebUrlClass.GET_EnvMasterID_KEY, settingKey);
+        PlantMasterId = ut.getValue(this, WebUrlClass.GET_PlantID_KEY, settingKey);
+        LoginId = ut.getValue(this, WebUrlClass.GET_LOGIN_KEY, settingKey);
+        Password = ut.getValue(this, WebUrlClass.GET_PSW_KEY, settingKey);
+        UserMasterId = ut.getValue(this, WebUrlClass.GET_USERMASTERID_KEY, settingKey);
+        UserName = ut.getValue(this, WebUrlClass.GET_USERNAME_KEY, settingKey);
+        FirmMobile = ut.getValue(this, WebUrlClass.GET_MOBILE_KEY, settingKey).trim();
+        // mprogress=findViewById(R.id.toolbar_progress_App_bar);
+
+        cbillList = new ArrayList<CounterbillingBean>();
+        addressLines = new ArrayList<String>();
+
+        billNoClass = new BillNoClass();
+        billNoClass.setBillNo("");
+        billNoClass.setCbillList(cbillList);
+    }
+
+    private void setListeners(final int i) {
+
+        edQnty.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast.makeText(ItemListCB.this, "long click", Toast.LENGTH_LONG).show();
+                final int pos = i;
+                //  float subtotal_dialog=0;
+                final EditText edt_qnty;
+                Button btnok;
+                if (pos < myCartBeanArrayList.size()) {
+                    final Dialog dialog = new Dialog(ItemListCB.this);
+
+                    dialog.setContentView(R.layout.tbuds_dialog_edt_qnty_cb);
+                    dialog.setTitle("Update Quantity");
+                    edt_qnty = (EditText) dialog.findViewById(R.id.editText_qnty);
+                    btnok = (Button) dialog.findViewById(R.id.buttonok);
+                    btnok.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if (((edt_qnty.getText().toString().trim() == "")
+                                    || (edt_qnty.getText().toString() == null) || (edt_qnty.getText()
+                                    .toString().length() == 0) || (edt_qnty.getText().toString().trim() == " "))) {
+                                // edAmt.setText("0");
+                                Toast.makeText(ItemListCB.this,
+                                        "Enter quantity", Toast.LENGTH_LONG).show();
+
+                            } else {
+
+                                if (!myCartBeanArrayList.get(pos).getUNIT().equals("Select unit")) {
+                                    if (myCartBeanArrayList.get(pos).getUnit_V().equalsIgnoreCase("kg")) {
+                                        if (myCartBeanArrayList.get(pos).getUNIT().equals("kg")) {
+                                            subtotal_dialog = (Float.parseFloat(edt_qnty.getText().toString().trim()))
+                                                    * Float.parseFloat((myCartBeanArrayList.get(pos).getPrice()));
+
+                                            //}
+                                        } else if (myCartBeanArrayList.get(pos).getUNIT().equals("gm")) {
+
+                                            subtotal_dialog = (Float.parseFloat(edt_qnty.getText().toString().trim())
+                                                    * Float.parseFloat(myCartBeanArrayList.get(pos).getPrice())) / (1000 * qnty);
+
+
+                                        } else {
+                                            subtotal_dialog = 0;
+
+                                            Toast.makeText(ItemListCB.this, "item unit not applicable", Toast.LENGTH_LONG).show();
+
+                                            // }
+                                        }
+                                    } else if (myCartBeanArrayList.get(pos).getUnit_V().equalsIgnoreCase("gm")) {
+
+
+                                        if (myCartBeanArrayList.get(pos).getUNIT().equals("kg")) {
+                                            subtotal_dialog = qnty * 1000 * Float.parseFloat(myCartBeanArrayList.get(pos).getPrice())
+                                                    / (Float.parseFloat(edt_qnty.getText().toString().trim()));
+
+
+                                        } else if (myCartBeanArrayList.get(pos).getUNIT().equals("gm")) {
+                                            subtotal_dialog = (Float.parseFloat(edt_qnty.getText().toString().trim())
+                                                    * Float.parseFloat(myCartBeanArrayList.get(pos).getPrice()));
+
+
+                                        } else {
+                                            subtotal_dialog = 0;
+
+                                            Toast.makeText(ItemListCB.this, "item unit not applicable", Toast.LENGTH_LONG).show();
+                                            //}
+                                        }
+
+                                    } else if (myCartBeanArrayList.get(pos).getUnit_V().equalsIgnoreCase("item")) {
+                                        if (myCartBeanArrayList.get(pos).getUNIT().equals("kg")) {
+                                            subtotal_dialog = 0;
+
+                                            Toast.makeText(ItemListCB.this, "kg unit not applicable", Toast.LENGTH_LONG).show();
+                                            //  }
+                                        } else if (myCartBeanArrayList.get(pos).getUNIT().equals("gm")) {
+                                            subtotal_dialog = 0;
+
+                                            Toast.makeText(ItemListCB.this, "gm unit not applicable", Toast.LENGTH_LONG).show();
+                                            //  }
+
+                                        } else {
+                                            subtotal_dialog = (Float.parseFloat(edt_qnty.getText().toString().trim())
+                                                    * Float.parseFloat(myCartBeanArrayList.get(pos).getPrice()));
+                                        }
+                                    }
+                                }
+
+                                //       SQLiteDatabase db = databaseHandler.getWritableDatabase();
+                                ContentValues cv = new ContentValues();
+
+                                cv.put("qnty", edt_qnty.getText().toString().trim());
+                                cv.put("Amount", subtotal_dialog);
+
+
+                                // cv.put("DISCOUNT", DISCOUNT);
+                                // cv.put("UNIT", UNIT);
+                                long q = sql_db.update(dbhandler.TABLE_CART_ITEM_CB, cv, "Product_id=?",
+                                        new String[]{myCartBeanArrayList.get(pos).getProduct_id()});
+
+                                dialog.dismiss();
+
+                                containerLayout_one.removeAllViews();
+                                for (int i = 0; i < tcf.getCartItems_AgainstCustomer(custName, custMob) + 1;
+                                     i++) {
+                                    addView(i);
+                                }
+                            }
+                        }
+                    });
+                    dialog.show();
+                }
+                return false;
+            }
+        });
+
+        myAutoComplete.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View arg1, int pos, long id) {
+                flag_Amount = false;
+                flag_selection = false;
+                flag_Qnty = false;
+                //    SQLiteDatabase db = databaseHandler.getWritableDatabase();
+                RelativeLayout rl = (RelativeLayout) arg1;
+                TextView tv = (TextView) rl.getChildAt(0);
+                myAutoComplete.setText(tv.getText().toString());
+                String que = "SELECT price,Product_id,unit,qnty  FROM " + dbhandler.TABLE_PRODUCT_CB +
+                        " WHERE Product_name='" + myAutoComplete.getText().toString() + "'";
+                Cursor cur = sql_db.rawQuery(que, null);
+                if (cur.getCount() > 0) {
+                    cur.moveToFirst();
+                    mrp = cur.getString(cur.getColumnIndex("price"));
+                    p_id = cur.getString(cur.getColumnIndex("Product_id"));
+                    unit = cur.getString(cur.getColumnIndex("unit"));
+                    qnty = cur.getFloat(cur.getColumnIndex("qnty"));
+                    edRate.setText(mrp);
+                }
+            }
+
+        });
+        spinnerunit.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                                  @Override
+                                                  public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                                                      if (!(edQnty.getText().toString().trim().equalsIgnoreCase("0"))
+                                                              && !(edQnty.getText().toString().trim().equalsIgnoreCase(" "))
+                                                              && !(edQnty.getText().toString().trim().equalsIgnoreCase(null))
+                                                              && !(edQnty.getText().toString().trim().equalsIgnoreCase(""))) {
+                                                          if (unit.equalsIgnoreCase("kg")) {
+                                                              if (spinnerunit.getSelectedItem().equals("kg")) {
+                                                                  if (flag_Amount == true) {
+
+                                                                  } else {
+                                                                      flag_selection = true;
+                                                                      float subtotal = (Float.parseFloat(edQnty.getText().toString().trim()))
+                                                                              * Float.parseFloat(edRate.getText().toString().trim());
+                                                                      edAmt.setText(Math.round(subtotal) + "");//₹
+                                                                  }
+                                                              } else if (spinnerunit.getSelectedItem().equals("gm")) {
+                                                                  if (flag_Amount == true) {
+
+                                                                  } else {
+                                                                      flag_selection = true;
+                                                                      // float kg_to_gm = 1000 * Float.parseFloat(edRate.getText().toString().trim());
+                                                                      float subtotal = (Float.parseFloat(edQnty.getText().toString().trim())
+                                                                              * Float.parseFloat(edRate.getText().toString().trim())) / (1000 * qnty);
+                                                                      edAmt.setText(Math.round(subtotal) + "");//₹
+                                                                  }
+
+                                                              } else {
+                                                                  if (flag_Amount == true) {
+
+                                                                  } else {
+                                                                      flag_selection = true;
+                                                                      edAmt.setText("0");
+                                                                      Toast.makeText(ItemListCB.this, "item unit not applicable", Toast.LENGTH_LONG).show();
+
+                                                                  }
+                                                              }
+                                                          } else if (unit.equalsIgnoreCase("gm")) {
+
+
+                                                              if (spinnerunit.getSelectedItem().equals("kg")) {
+                                                                  if (flag_Amount == true) {
+
+                                                                  } else {
+                                                                      flag_selection = true;
+                                                                      float subtotal = qnty * 1000 * Float.parseFloat(edRate.getText().toString().trim())
+                                                                              / (Float.parseFloat(edQnty.getText().toString().trim()));
+                                                                      edAmt.setText(Math.round(subtotal) + "");//₹
+                                                                  }
+
+                                                              } else if (spinnerunit.getSelectedItem().equals("gm")) {
+                                                                  if (flag_Amount == true) {
+
+                                                                  } else {
+                                                                      flag_selection = true;
+
+                                                                      float subtotal = (Float.parseFloat(edQnty.getText().toString().trim())
+                                                                              * Float.parseFloat(edRate.getText().toString().trim()));
+                                                                      edAmt.setText(Math.round(subtotal) + "");//₹
+                                                                  }
+
+                                                              } else {
+                                                                  if (flag_Amount == true) {
+
+                                                                  } else {
+                                                                      flag_selection = true;
+                                                                      edAmt.setText("0");
+                                                                      Toast.makeText(ItemListCB.this, "item unit not applicable", Toast.LENGTH_LONG).show();
+                                                                  }
+                                                              }
+
+                                                          } else if (unit.equalsIgnoreCase("item")) {
+                                                              if (spinnerunit.getSelectedItem().equals("kg")) {
+                                                                  if (flag_Amount == true) {
+
+                                                                  } else {
+                                                                      flag_selection = true;
+                                                                      edAmt.setText("0");
+                                                                      Toast.makeText(ItemListCB.this, "kg unit not applicable", Toast.LENGTH_LONG).show();
+                                                                  }
+                                                              } else if (spinnerunit.getSelectedItem().equals("gm")) {
+                                                                  if (flag_Amount == true) {
+
+                                                                  } else {
+                                                                      flag_selection = true;
+                                                                      edAmt.setText("0");
+                                                                      Toast.makeText(ItemListCB.this, "gm unit not applicable", Toast.LENGTH_LONG).show();
+                                                                  }
+
+                                                              } else {
+                                                                  if (flag_Amount == true) {
+
+                                                                  } else {
+                                                                      flag_selection = true;
+                                                                      float subtotal = (Float.parseFloat(edQnty.getText().toString().trim())
+                                                                              * Float.parseFloat(edRate.getText().toString().trim()));
+                                                                      edAmt.setText(Math.round(subtotal) + "");//₹
+                                                                  }
+                                                              }
+                                                          }
+                                                      }
+                                                  }
+
+                                                  @Override
+                                                  public void onNothingSelected(AdapterView<?> parent) {
+
+                                                  }
+                                              }
+        );
+
+        edAmt.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before,
+                                      int count) {
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+
+                int pos = i;
+                if (((s.toString().trim() == "") || (s.toString() == null) || (s
+                        .toString().length() == 0) || (s.toString().trim() == " "))) {
+                    edAmt.setText("0");
+                } else {
+                    if (flag_selection == true) {
+
+                    } else {
+                        flag_Amount = true;
+
+                        edQnty.setText("");
+                        spinnerunit.setSelection(0);
+                        float subtotal = ((Float.parseFloat(s.toString()) * qnty)
+                                / Float.parseFloat(mrp));
+                        edQnty.setText("" + subtotal);
+                        flag_Qnty = true;
+                        if (unit.equalsIgnoreCase("kg")) {
+                            spinnerunit.setSelection(2);
+                        } else if (unit.equalsIgnoreCase("gm")) {
+                            spinnerunit.setSelection(1);
+                        } else if (unit.equalsIgnoreCase("item")) {
+                            spinnerunit.setSelection(3);
+                        }
+                    }
+                }
+            }
+        });
+
+        int textLength = edQnty.getText().length();
+        edQnty.setSelection(textLength, textLength);
+        edQnty.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before,
+                                      int count) {
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                int pos = i;
+                if (((s.toString().trim() == "") || (s.toString() == null) || (s
+                        .toString().length() == 0) || (s.toString().trim() == " "))) {
+                    //  edAmt.setText("0");
+                } else {
+                    if (pos >= myCartBeanArrayList.size() + 1) {
+
+                    } else {
+                        if (flag_Qnty == false) {
+                            if (!spinnerunit.getSelectedItem().equals("Select unit")) {
+                                if (unit.equalsIgnoreCase("kg")) {
+                                    if (spinnerunit.getSelectedItem().equals("kg")) {
+                              /*  if (flag_Amount == true) {
+
+                                } else {*/
+                                        // flag_selection = true;
+                                        float subtotal = (Float.parseFloat(edQnty.getText().toString().trim()))
+                                                * Float.parseFloat(edRate.getText().toString().trim());
+                                        edAmt.setText(Math.round(subtotal) + "");//₹
+                                        //}
+                                    } else if (spinnerunit.getSelectedItem().equals("gm")) {
+                               /* if (flag_Amount == true) {
+
+                                } else {*/
+                                        //   flag_selection = true;
+                                        // float kg_to_gm = 1000 * Float.parseFloat(edRate.getText().toString().trim());
+                                        float subtotal = (Float.parseFloat(edQnty.getText().toString().trim())
+                                                * Float.parseFloat(edRate.getText().toString().trim())) / (1000 * qnty);
+                                        edAmt.setText(Math.round(subtotal) + "");//₹
+                                        //  }
+
+                                    } else {
+                                /*if (flag_Amount == true) {
+
+                                } else {*/
+                                        //   flag_selection = true;
+                                        edAmt.setText("0");
+                                        Toast.makeText(ItemListCB.this, "item unit not applicable", Toast.LENGTH_LONG).show();
+
+                                        // }
+                                    }
+                                } else if (unit.equalsIgnoreCase("gm")) {
+
+
+                                    if (spinnerunit.getSelectedItem().equals("kg")) {
+                               /* if (flag_Amount == true) {
+
+                                } else {*/
+                                        //   flag_selection = true;
+                                        float subtotal = qnty * 1000 * Float.parseFloat(edRate.getText().toString().trim())
+                                                / (Float.parseFloat(edQnty.getText().toString().trim()));
+                                        edAmt.setText(Math.round(subtotal) + "");//₹
+                                        //   }
+
+                                    } else if (spinnerunit.getSelectedItem().equals("gm")) {
+                               /* if (flag_Amount == true) {
+
+                                } else {*/
+                                        //   flag_selection = true;
+
+                                        float subtotal = (Float.parseFloat(edQnty.getText().toString().trim())
+                                                * Float.parseFloat(edRate.getText().toString().trim()));
+                                        edAmt.setText(Math.round(subtotal) + "");//₹
+                                        //  }
+
+                                    } else {
+                              /*  if (flag_Amount == true) {
+
+                                } else {*/
+                                        //  flag_selection = true;
+                                        edAmt.setText("0");
+                                        Toast.makeText(ItemListCB.this, "item unit not applicable", Toast.LENGTH_LONG).show();
+                                        //}
+                                    }
+
+                                } else if (unit.equalsIgnoreCase("item")) {
+                                    if (spinnerunit.getSelectedItem().equals("kg")) {
+                              /*  if (flag_Amount == true) {
+
+                                } else {*/
+                                        //    flag_selection = true;
+                                        edAmt.setText("0");
+                                        Toast.makeText(ItemListCB.this, "kg unit not applicable", Toast.LENGTH_LONG).show();
+                                        //  }
+                                    } else if (spinnerunit.getSelectedItem().equals("gm")) {
+                              /*  if (flag_Amount == true) {
+
+                                } else {*/
+                                        //    flag_selection = true;
+                                        edAmt.setText("0");
+                                        Toast.makeText(ItemListCB.this, "gm unit not applicable", Toast.LENGTH_LONG).show();
+                                        //  }
+
+                                    } else {
+                              /*  if (flag_Amount == true) {
+
+                                } else {*/
+                                        //    flag_selection = true;
+                                        float subtotal = (Float.parseFloat(edQnty.getText().toString().trim())
+                                                * Float.parseFloat(edRate.getText().toString().trim()));
+                                        edAmt.setText(Math.round(subtotal) + "");//₹
+                                        //   }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        int textLength1 = edDiscount.getText().length();
+        edDiscount.setSelection(textLength1, textLength1);
+
+        edDiscount.addTextChangedListener(new TextWatcher() {
+
+                                              @Override
+                                              public void onTextChanged(CharSequence s, int start, int before,
+                                                                        int count) {
+                                              }
+
+                                              @Override
+                                              public void beforeTextChanged(CharSequence s, int start, int count,
+                                                                            int after) {
+                                              }
+
+                                              @Override
+                                              public void afterTextChanged(Editable s) {
+
+
+                                                  int pos = i;
+                                                  if (((s.toString().trim() == "") || (s.toString() == null) || (s
+                                                          .toString().length() == 0) || (s.toString().trim() == " "))) {
+
+                                                  } else {
+
+                                                      if (Integer.parseInt(s.toString()) > 0 && Integer.parseInt(s.toString()) <= 10) {
+                                                          float subtotal = (Float.parseFloat(edQnty.getText().toString().trim())
+                                                                  * Float.parseFloat(edRate.getText().toString().trim()));
+                                                          edAmt.setText(Math.round(subtotal) + "");//₹
+                   /* amt = amt + subtotal;
+                    txtTotal.setText("" + amt);*/
+                                                          float dis_amt = (subtotal * Float.parseFloat(s.toString()) / 100);
+
+                                                          edAmt.setText(Math.round(subtotal - dis_amt) + "");//₹
+                                                          // txtTotal.setText("" + (amt - (subtotal - dis_amt)));
+                                                      } else {
+                                                          Toast.makeText(parent, "Discount range should be 0 to 10 ",
+                                                                  Toast.LENGTH_LONG).show();
+                                                      }
+                                                  }
+                                              }
+                                          }
+        );
+
+        btn_ok.setOnClickListener(new View.OnClickListener() {
+                                      @Override
+                                      public void onClick(View v) {
+
+                                          if (tcf.getItems_AgainstCustomer(custName, custMob, p_id) == 0) {
+                                              txtTotal.setText("" + amt);
+                                              if (edQnty.getText().toString().trim().length() > 0
+                                                      && !(edQnty.getText().toString().trim().equalsIgnoreCase("0"))
+                                                      && myAutoComplete.getText().toString().length() > 0) {
+                                                  Toast.makeText(ItemListCB.this, "Item added", Toast.LENGTH_LONG).show();
+
+                                                  tcf.addCartItems(custMob, custName, edQnty.getText().toString().trim(), "",
+                                                          "", edRate.getText().toString().trim(), myAutoComplete.getText().toString(), edAmt.getText().toString(),
+                                                          p_id, "", "", "", "", "",
+                                                          edDiscount.getText().toString().trim()/*,spinnerunit.getSelectedItem().toString(),unit*/);
+
+                                                  containerLayout_one.removeAllViews();
+                                                  for (int i = 0; i < tcf.getCartItems_AgainstCustomer(custName, custMob) + 1;
+                                                       i++) {
+                                                      addView(i);
+                                                  }
+
+                                                  amt = 0;
+                                                  if (myCartBeanArrayList.size() > 0) {
+                                                      for (int j = 0; j < myCartBeanArrayList.size(); j++) {
+                                                          amt = amt + Float.parseFloat(String.valueOf(myCartBeanArrayList.get(j).getAmount()));
+
+                                                      }
+                                                  }
+                                                  txtTotal.setText("" + Math.round(amt));
+
+                                              } else {
+                                                  Toast.makeText(ItemListCB.this, "Enter valid details", Toast.LENGTH_LONG).show();
+                                              }
+
+                                          } else {
+                                              Toast.makeText(ItemListCB.this, "Item already added", Toast.LENGTH_LONG).show();
+                                          }
+                                      }
+                                  }
+        );
+
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int pos = i;
+                Float q = Float.valueOf(edQnty.getText().toString());
+                if (pos <= myCartBeanArrayList.size()) {
+                    if (!(myCartBeanArrayList.get(pos).getQnty().equals("0"))
+                            && !(myCartBeanArrayList.get(pos).getQnty().equals(" "))) {
+                        Toast.makeText(ItemListCB.this, "Item deleted", Toast.LENGTH_LONG).show();
+
+                        //  SQLiteDatabase db = databaseHandler.getWritableDatabase();
+                        sql_db.execSQL("DELETE FROM " + dbhandler.TABLE_CART_ITEM_CB +
+                                " WHERE Cust_Name='" + custName +
+                                "' and Product_name='" + myCartBeanArrayList.get(pos).getProduct_name() + "'");
+                        sql_db.close();
+                        containerLayout_one.removeAllViews();
+                        for (int i = 0; i < tcf.getCartItems_AgainstCustomer(custName, custMob) + 1; i++) {
+                            addView(i);
+                        }
+                    } else {
+                        Toast.makeText(ItemListCB.this, "Enter Item details", Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    Toast.makeText(ItemListCB.this, "Enter Item details", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (mService != null)
+            mService.stop();
+        mService = null;
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // count = 0;
+
+        if (mService.isBTopen() == false) {
+            Intent enableIntent = new Intent(
+                    BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            startActivityForResult(enableIntent,
+                    AnyMartData.REQUEST_ENABLE_BT);
+        }
+    }
+
+    private void connectDevice() {
+        // TODO
+        String address = getBluetoothAddress(parent);
+        if (address != null) {
+            con_dev = mService.getDevByMac(address);
+            mService.connect(con_dev);
+            Log.e("Auto connected", "state : " + mService.getState());
+        } else {
+            scanBluetooth();
+        }
+    }
+
+    @SuppressLint("HandlerLeak")
+    private final Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg1) {
+            switch (msg1.what) {
+                case BluetoothService.MESSAGE_STATE_CHANGE:
+                    switch (msg1.arg1) {
+                        case BluetoothService.STATE_CONNECTED: // ÒÑÁ¬½Ó
+                            Toast.makeText(parent, "Connect successful",
+                                    Toast.LENGTH_SHORT).show();
+                            deviceConnected = true;
+                            break;
+                        case BluetoothService.STATE_CONNECTING: // ÕýÔÚÁ¬½Ó
+                            Log.d("À¶ÑÀµ÷ÊÔ", "ÕýÔÚÁ¬½Ó.....");
+                            break;
+                        case BluetoothService.STATE_LISTEN: // ¼àÌýÁ¬½ÓµÄµ½À´
+                        case BluetoothService.STATE_NONE:
+                            Log.d("À¶ÑÀµ÷ÊÔ", "µÈ´ýÁ¬½Ó.....");
+                            break;
+                    }
+                    break;
+                case BluetoothService.MESSAGE_CONNECTION_LOST: // À¶ÑÀÒÑ¶Ï¿ªÁ¬½Ó
+                    Toast.makeText(parent, "Device connection was lost",
+                            Toast.LENGTH_SHORT).show();
+                    deviceConnected = false;
+                    break;
+                case BluetoothService.MESSAGE_UNABLE_CONNECT: // ÎÞ·¨Á¬½ÓÉè±¸
+                    Toast.makeText(parent, "Unable to connect device",
+                            Toast.LENGTH_SHORT).show();
+                    deviceConnected = false;
+                    break;
+            }
+        }
+    };
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case AnyMartData.REQUEST_ENABLE_BT:
+                if (resultCode == Activity.RESULT_OK) {
+                    Toast.makeText(parent, "Bluetooth open successful",
+                            Toast.LENGTH_LONG).show();
+                } else {
+                    // finish();
+                }
+                break;
+            case AnyMartData.REQUEST_CONNECT_DEVICE:
+                if (resultCode == Activity.RESULT_OK) {
+                    String address = data.getExtras().getString(
+                            DeviceListActivity.EXTRA_DEVICE_ADDRESS);
+                    clearTable(parent, "Bluetooth_Address");
+                    tcf.AddBluetooth(address);
+                    con_dev = mService.getDevByMac(address);
+                    mService.connect(con_dev);
+                    Log.e("bluetooth state", "state : " + mService.getState());
+                }
+                break;
+        }
+    }
+
+    public static void clearTable(Context parent, String tablename) {
+        //   DatabaseHandler db = new DatabaseHandler(parent);
+        //   SQLiteDatabase sql = db.getWritableDatabase();
+        sql_db.delete(tablename, null, null);
+
+        /*sql.close();
+        db.close();*/
+    }
+
+    public static String getBluetoothAddress(Context parent) {
+        //  DatabaseHandler db1 = new DatabaseHandler(parent);
+        //  SQLiteDatabase sql = db1.getWritableDatabase();
+        Cursor cursor = sql_db.rawQuery("Select * from Bluetooth_Address", null);
+
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            String str = cursor.getString(0);
+            /*cursor.close();
+            sql.close();
+            db1.close();*/
+            return str;
+
+        } else {
+
+            /*cursor.close();
+            sql.close();
+            db1.close();*/
+            return null;
+        }
+    }
+
+    public void getItmsListDataForBilling() {
+        cbillList.clear();
+        final_subtotal = 0.0F;
+        final_discountedTotal = 0.0F;
+        final_taxinRupsTotal = 0.0F;
+
+        String query = "Select * from " + dbhandler.TABLE_ADD_ITMDTLS_FORBILL + " WHERE isbilluploaded='N'";
+        Cursor c = sql_db.rawQuery(query, null);
+
+        if (c.getCount() > 0) {
+            c.moveToFirst();
+
+            do {
+                try {
+                    CounterbillingBean cbean = new CounterbillingBean();
+                    cbean.setItemCode(c.getString(c.getColumnIndex("itmcode")));
+                    cbean.setItemDesc(c.getString(c.getColumnIndex("itmdesc")));
+                    cbean.setQty(c.getString(c.getColumnIndex("qnty")));
+                    cbean.setMRP(Float.parseFloat(c.getString(c.getColumnIndex("mrp"))));
+                    cbean.setLineamt(Float.parseFloat(c.getString(c.getColumnIndex("lineamt"))));
+                    cbean.setDiscount(Float.parseFloat(c.getString(c.getColumnIndex("discount"))));
+                    cbean.setTaxclass(c.getString(c.getColumnIndex("taxclass")));
+                    cbean.setTax_inRups(c.getString(c.getColumnIndex("taxamtinrups")));
+                    cbean.setDiscinrupees(Boolean.parseBoolean(c.getString(c.getColumnIndex("isdiscinrupees"))));
+                    cbean.setTotAmt_incltax_lineamt(Float.parseFloat(c.getString(c.getColumnIndex("total_incl_taxanddisc"))));
+                    cbean.setDiscamt(Float.parseFloat(c.getString(c.getColumnIndex("discamt"))));
+                    cbean.setDicountedTotal(Float.parseFloat(c.getString(c.getColumnIndex("totwithdisc"))));
+
+                    cbillList.add(cbean);
+
+                    float sbtot = Float.parseFloat(c.getString(c.getColumnIndex("total_incl_taxanddisc")));
+                    final_subtotal = final_subtotal + sbtot;
+
+                    float discountedTotal = Float.parseFloat(c.getString(c.getColumnIndex("totwithdisc")));
+                    final_discountedTotal = final_discountedTotal + discountedTotal;
+
+                    float taxinrupsTotal = Float.parseFloat(c.getString(c.getColumnIndex("taxamtinrups")));
+                    final_taxinRupsTotal = final_taxinRupsTotal + taxinrupsTotal;
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            } while (c.moveToNext());
+
+            cBillAdapter = new AdapterCBillingList(this, cbillList);
+            listdtls.setAdapter(cBillAdapter);
+            billNoClass.setCbillList(cbillList);
+
+            String billingObj = new Gson().toJson(billNoClass);
+            AppCommon.getInstance(this).setBillingObject(billingObj);
+
+            float cgst = 0.0F, CGST = 0.0F, SGST = 0.0F;
+            cgst = final_taxinRupsTotal;
+            CGST = Float.parseFloat(String.format("%.02f", cgst / 2));
+            SGST = Float.parseFloat(String.format("%.02f", cgst / 2));
+
+            txtbaseamount.setText(String.format("%.02f", final_discountedTotal));
+            txtcgstamt.setText(String.format("%.02f", CGST));
+            txtsgstamt.setText(String.format("%.02f", SGST));
+
+        } else {
+            if(!cbillList.isEmpty()){
+                cBillAdapter.notifyDataSetChanged();
+            }
+
+            final_subtotal = 0.00F;
+            txtsubtotal.setText("0.00");
+            Totalincltax.setText("0.00");
+            txtNetAmt.setText("0.00");
+            edttxtTotalDiscount.setText("0.00");
+            txtpaybleamt.setText("0.00");
+            txtbalamt.setText("0.00");
+            txtcgstamt.setText("0.00");
+            txtsgstamt.setText("0.00");
+        }
+
+        txtsubtotal.setText(String.format("%.02f", final_subtotal));  //get total from listview
+        Totalincltax.setText(txtsubtotal.getText().toString().trim());
+        txtNetAmt.setText(Totalincltax.getText().toString().trim());
+        txtbalamt.setText(Totalincltax.getText().toString().trim());
+        txtpaybleamt.setText(txtNetAmt.getText().toString().trim());
+    }
+
+    private void setData(ArrayList<CounterbillingBean> cbillList) {
+        final_subtotal = 0.0F;
+        final_discountedTotal = 0.0F;
+        final_taxinRupsTotal = 0.0F;
+        for (CounterbillingBean counterbillingBean : cbillList) {
+            float sbtot = counterbillingBean.getTotAmt_incltax_lineamt();
+            final_subtotal = final_subtotal + sbtot;
+
+            float discountedTotal = counterbillingBean.getDicountedTotal();
+            final_discountedTotal = final_discountedTotal + discountedTotal;
+
+            float taxinrupsTotal = Float.parseFloat(counterbillingBean.getTax_inRups());
+            final_taxinRupsTotal = final_taxinRupsTotal + taxinrupsTotal;
+        }
+        float cgst = 0.0F, CGST = 0.0F, SGST = 0.0F;
+        cgst = final_taxinRupsTotal;
+        CGST = Float.parseFloat(String.format("%.02f", cgst / 2));
+        SGST = Float.parseFloat(String.format("%.02f", cgst / 2));
+
+        txtbaseamount.setText(String.format("%.02f", final_discountedTotal));
+        txtcgstamt.setText(String.format("%.02f", CGST));
+        txtsgstamt.setText(String.format("%.02f", SGST));
+
+        CGST_TOTAL = CGST;
+        SGST_TOTAL = SGST;
+
+        txtsubtotal.setText(String.format("%.02f", final_subtotal));  //get total from listview
+        Totalincltax.setText(txtsubtotal.getText().toString().trim());
+        txtNetAmt.setText(Totalincltax.getText().toString().trim());
+        txtbalamt.setText(Totalincltax.getText().toString().trim());
+        txtpaybleamt.setText(txtNetAmt.getText().toString().trim());
+
+    }
+
+    public String[] checkTaxTyep(String taxClass) {
+        String igstType = "", sgstType = "", cgstType = "",ugstType = "", vatType = "",
+                sgstVal = "0", cgstVal = "0", igstVal = "0",ugstVal = "0", vatVal = "0";
+
+        if (taxClass.contains("IGST")) {
+            String[] data;
+            if(taxClass.contains(".")){
+                data = taxClass.split(" ");       //data[0] = CGST data[1] = 9% OUTPUT
+            }else {
+                data = taxClass.split("(?<=\\D)(?=\\d)");       //data[0] = CGST data[1] = 9% OUTPUT
+            }
+           //String[] data = taxClass.split("(?<=\\D)(?=\\d)");
+            int sizeData = data.length;
+
+            for (int i = 0; i < sizeData; i++) {
+                String datanew = data[i];
+
+                if (data[i].contains("%")) {
+                    String[] pcgval = data[i].split("%");
+                    System.out.println(pcgval[0]);
+
+                    igstVal = pcgval[0];
+
+                    float IGST = Float.parseFloat(igstVal);
+
+                    float i1 = IGST / 2;
+
+                    cgstType = "CGST";
+                    cgstVal = String.valueOf(i1);
+
+                    sgstType = "SGST";
+                    sgstVal = String.valueOf(i1);
+
+                }
+
+            }
+
+        } else if (taxClass.contains("CGST") && taxClass.contains("SGST")) {
+
+            String[] taxtypes = taxClass.split("\\+");         // types[0] = SGST 9% , types[1] =CGST 9% OUTPUT
+
+            System.out.println(taxtypes[0]);       //CGST 9 % OUTPUT
+            // System.out.println(types[1]);       //SGST 9 % OUTPUT
+
+            for (int i = 0; i < taxtypes.length; i++) {
+                String TYPE = "";
+
+                String[] data;
+                if(taxClass.contains(".")){
+                    data = taxClass.split(" ");       //data[0] = CGST data[1] = 9% OUTPUT
+                }else {
+                    data = taxClass.split("(?<=\\D)(?=\\d)");       //data[0] = CGST data[1] = 9% OUTPUT
+                }
+
+            //   String[] data = taxtypes[i].split("(?<=\\D)(?=\\d)");       //data[0] = CGST data[1] = 9% OUTPUT
+
+                if (taxtypes[i].contains("CGST")) {
+                    cgstType = "CGST";
+                    TYPE = cgstType;
+
+                } else if (taxtypes[i].contains("SGST")) {
+                    sgstType = "SGST";
+                    TYPE = sgstType;
+                }
+
+                for (int j = 0; j < data.length; j++) {
+                    String[] pcgval = new String[0];
+
+                    String taxTYPE = data[j];
+                    System.out.println(taxTYPE);        //CGST, 9 % OUTPUT
+
+                    if (data[j].contains("%")) {
+                        pcgval = data[j].split("%");
+                        System.out.println(pcgval[0]);
+
+                        if (TYPE.equalsIgnoreCase("CGST")) {
+                            cgstVal = String.valueOf(pcgval[0]);
+                        } else if (TYPE.equalsIgnoreCase("SGST")) {
+                            sgstVal = String.valueOf(pcgval[0]);
+                        }
+                    }
+                }
+            }
+
+        }else if(taxClass.contains("SGST") || taxClass.contains("CGST") || taxClass.contains("UGST") || taxClass.contains("VAT")){
+
+            String[] data;
+            if(taxClass.contains(".")){
+                data = taxClass.split(" ");       //data[0] = CGST data[1] = 9% OUTPUT
+            }else {
+                data = taxClass.split("(?<=\\D)(?=\\d)");       //data[0] = CGST data[1] = 9% OUTPUT
+            }
+
+            //String[] data = taxClass.split("(?<=\\D)(?=\\d)");
+            int sizeData = data.length;
+
+            for (int i = 0; i < sizeData; i++) {
+                String datanew = data[i];
+
+                if (data[i].contains("%")) {
+                    String[] pcgval = data[i].split("%");
+                    System.out.println(pcgval[0]);
+
+                    if(taxClass.contains("SGST")){
+                        sgstVal = pcgval[0];
+                        sgstType = "SGST";
+                    }else if(taxClass.contains("CGST")){
+                        cgstVal = pcgval[0];
+                        cgstType = "CGST";
+                    }else if(taxClass.contains("UGST")){
+                        ugstVal = pcgval[0];
+                        ugstType = "UGST";
+                    }else if(taxClass.contains("VAT")){
+                        vatVal = pcgval[0];
+                        vatType = "VAT";
+                    }
+                }
+            }
+
+        }else if(taxClass.contains("SGCT/CGST/IGST INCLUSIV")) {
+
+        }
+
+        String[] taxes = {igstType, igstVal, cgstType, cgstVal, sgstType, sgstVal, ugstType, ugstVal, vatType, vatVal};
+
+        return taxes;
+    }
+
+    public void insertDataInTempTable(){
+
+        for(int position=0; position< cbillList.size(); position++){
+            String itemcode = cbillList.get(position).getItemCode();
+            String itemdesc = cbillList.get(position).getItemDesc();
+            String qty = cbillList.get(position).getQty();
+            String mrp = String.valueOf(cbillList.get(position).getMRP());
+            String lineamt = String.valueOf(cbillList.get(position).getLineamt());
+            float discount = cbillList.get(position).getDiscount();
+            String taxclass = cbillList.get(position).getTaxclass();
+            String taxamtinrps = cbillList.get(position).getTax_inRups();
+            String totinctax = String.valueOf(cbillList.get(position).getTotAmt_incltax_lineamt());
+            boolean discinrups = cbillList.get(position).isDiscinrupees();
+            String discamt = String.valueOf(cbillList.get(position).getDiscamt());
+
+            Float totline_disc = Float.parseFloat(lineamt) - Float.parseFloat(discamt);
+
+            tcf.additmforbilling(itemcode, itemdesc, qty, String.valueOf(mrp), String.valueOf(lineamt),String.valueOf(discount),
+                    String.valueOf(taxclass), String.valueOf(taxamtinrps),String.valueOf(totinctax),"",
+                    String.valueOf(totline_disc),"N",String.valueOf(discinrups), String.valueOf(discamt));  //taxType IGST SGST CGST
+        }
+
+    }
+
+    public void getCompanyDetailsData(){
+
+        String query = "Select Cid, Cname, Address from "+ dbhandler.TABLE_COMPANY_DETAILS;
+        Cursor c = sql_db.rawQuery(query,null);
+        if(c.getCount() != 0){
+            c.moveToFirst();
+            do{
+                Cid = c.getString(c.getColumnIndex("Cid"));
+                Cname = c.getString(c.getColumnIndex("Cname"));
+                Address = c.getString(c.getColumnIndex("Address"));
+
+            }while (c.moveToNext());
+
+        }else {
+
+        }
+    }
+
+    private boolean isnet() {
+        // TODO Auto-generated method stub
+        Context context = this.getApplicationContext();
+        ConnectivityManager cm = (ConnectivityManager) context
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        if (netInfo != null && netInfo.isConnectedOrConnecting()) {
+            return true;
+        } else {
+            Toast.makeText(context, "No internet connection", Toast.LENGTH_LONG).show();
+            return false;
+        }
+    }
+
+    class DownloadCompanyDetailsJSON extends AsyncTask<String, Void, String> {
+        Object res;
+        String response;
+        JSONArray jResults;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            mprogress.setVisibility(View.VISIBLE);
+            Toast.makeText(parent,"Downloading company details", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                String url = CompanyURL + WebUrlClass.api_getCompanyDetails + "?CompanyName="+EnvMasterId+"&PlantMasterId="+PlantMasterId;
+
+                res = ut.OpenConnection(url);
+
+                if (res != null) {
+                    response = res.toString().replaceAll("\\\\", "");
+                    response = response.substring(1, response.length() - 1);
+                    ContentValues values = new ContentValues();
+                    jResults = new JSONArray(response);
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(String integer) {
+            super.onPostExecute(integer);
+            mprogress.setVisibility(View.GONE);
+
+            try{
+                if(jResults != null){
+                    tcf.clearTable(parent, DatabaseHandlers.TABLE_COMPANY_DETAILS);
+
+                    String Cid = "", Cname = "", Address = "";
+
+                    for(int i=0; i < jResults.length(); i++){
+                        try{
+                            JSONObject jsonObject = jResults.getJSONObject(i);
+                            Cid = jsonObject.getString("Cid");
+                            Cname = jsonObject.getString("Cname");
+                            Address = jsonObject.getString("Address");
+
+                            tcf.insertCompanyDetails(Cid, Cname, Address);
+
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+                    }
+
+                }else {
+                }
+
+                getCompanyDetailsData();
+
+            }catch (Exception e){
+
+            }
+        }
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
+        getItmsListDataForBilling();
+    }
+
+    public void splitAddressInLines(String name){
+        addressLines.clear();
+
+        float diff = 0.0F, cnt = 0.0F, left = 0.0F, right = 0.0F, space = 0.0F;
+        //name = "7, Second floor, Krishna Ganga Apartment, Parijat Corner, Gulmohar Road, Savedi,";
+        //String name = "Vritti Solutions Limited";
+        float length = name.length();
+        float tab = 4;
+        left = length/2;
+        right = length - left;
+
+        System.out.println("length = "+length);
+
+        if(length <= 32){
+            diff = 32 - length;
+            cnt = length/tab;
+            left = diff/2;
+            right = diff - left;
+
+            System.out.println("diff =32-length = "+diff);
+            String format = "%" + left + "c%-" + right + "c";
+            System.out.println(format);
+            System.out.println("*"+"\t"+name+"\t"+"*");
+
+        }else if(length > 32){
+            String[] arr;
+            diff = length;
+            diff = diff - 24;
+            System.out.println("diff = length - 24 = "+diff);
+            diff = diff - 24;
+            System.out.println("diff = diff - 24; = "+diff);
+            diff = diff - 24;
+            System.out.println("diff = diff - 24; = "+diff);
+
+            System.out.println("*"+"\t"+name+"\t"+"*");
+
+            char[] data = name.toCharArray();
+            System.out.println(data.length);
+            String printline = "", print = "";
+
+            int linecnt = data.length/24;
+            System.out.println(linecnt);
+            int reminder = data.length - (linecnt*24);
+            System.out.println(reminder);
+            int start=0, end =24;
+            name.substring(start, end);
+
+            int a = linecnt + 1;
+
+            for(int j =0; j<a; j++){
+
+                print = name.substring(start, end);
+
+                if(length >= 24){
+
+                    if(end < data.length){
+                        start = start + 24;
+                        if(end +24 <= data.length){
+                            end = end +24;
+                        }else{
+                            end = end +reminder;
+                        }
+
+                    }else{
+                        start = start + reminder;
+                        end = end + reminder;
+                    }
+
+                    length = length - 24;
+                }else if(length < 23){
+                    start = start + reminder;
+                    end = end + reminder;
+                }
+
+                System.out.println("*\t"+print+"\t*");
+                addressLines.add(print);
+            }
+        }
+    }
+}

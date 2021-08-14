@@ -1,0 +1,1001 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme"
+        android:visibility="visible"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/MyToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/colorPrimary"
+            android:visibility="visible"
+            app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay"
+            app:subtitleTextAppearance="@style/ToolbarTextAppearance.Subtitle"
+            app:titleTextAppearance="@style/ToolbarTextAppearance.Title">
+            <!-- android:layout_height="?android:attr/actionBarSize"-->
+
+            <ProgressBar
+                android:id="@+id/toolbar_progress_App_bar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="8dp"
+                android:indeterminateDrawable="@drawable/spinner"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btn_prev_tag"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/white"
+                android:gravity="center"
+                android:layout_gravity="center|right"
+                android:text="Previous TAG"
+                android:textColor="#111111"
+                android:textSize="12sp"/>
+
+            <!--<TextView
+                android:id="@+id/txt_runtag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|right"
+                android:layout_weight="0.5"
+                android:gravity="center|right"
+                android:paddingRight="10dp"
+                android:text=""
+                android:textColor="#ffffff"
+                android:textSize="16dp"
+                android:textStyle="bold"/>-->
+
+        </android.support.v7.widget.Toolbar>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/backgroundHeader"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Physical Inventory"
+                android:textColor="#fff"
+                android:textSize="16dp"
+                android:layout_weight="0.5"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/txtbatchno"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="#fff"
+                android:textSize="16dp"
+                android:layout_weight="0.5"/>
+
+            <TextView
+                android:id="@+id/txtwarehouse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="#fff"
+                android:textSize="16dp"
+                android:layout_weight="0.5"/>
+
+            <TextView
+                android:id="@+id/txt_runtag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|right"
+                android:layout_weight="0.5"
+                android:gravity="center|right"
+                android:paddingRight="10dp"
+                android:text=""
+                android:textColor="#ffffff"
+                android:textSize="16dp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/appbar"
+        android:fillViewport="true"><!--  android:layout_below="@id/appbar"-->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/dtlslay"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="2dp"
+                android:background="#ffffff"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:padding="5dp">
+
+                    <!--pi batch view-->
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PI Number:"
+                        android:padding="5dp"
+                        android:textSize="16sp"
+                        android:visibility="gone"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center|left"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:background="@drawable/edit_text"
+                            android:padding="2dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1">
+
+                            <Spinner
+                                android:id="@+id/spinner_pinumber"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:spinnerMode="dialog">
+
+                            </Spinner>
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/txt_release"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Release"
+                            android:padding="5dp"
+                            android:textSize="16dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"
+                            android:background="@drawable/button_blue_border"></TextView>
+                    </LinearLayout>
+
+                    <!---->
+
+                    <LinearLayout
+                        android:id="@+id/invoiceLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="5dp">
+
+                        <TextView
+                            android:id="@+id/t1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Part Number:"
+                            android:padding="5dp"
+                            android:textSize="11sp"
+                            android:layout_weight="0.8"
+                            android:visibility="visible"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_weight="0.25">
+
+                            <TextView
+                                android:id="@+id/edt_itemcode"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/t1"
+                                android:layout_marginTop="5dp"
+                                android:hint="Select part number"
+                                android:background="@drawable/border_delivery"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="8dp"
+                                android:paddingRight="8dp"
+                                android:padding="6dp"
+                                android:editable="false"
+                                android:text=""
+                                android:textSize="14sp"
+                                android:layout_weight="1">
+                                <requestFocus />
+                            </TextView>
+
+                            <ImageView
+                                android:id="@+id/img_barcode"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_below="@id/t1"
+                                android:layout_toRightOf="@+id/edt_itemcode"
+                                android:gravity="center_vertical"
+                                android:src="@drawable/barcode"
+                                android:text=""
+                                android:textSize="16sp"
+                                android:layout_marginLeft="10dp"
+                                android:visibility="gone" />
+
+                        </LinearLayout>
+
+                        <!--<android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:theme="@style/EditTextHint">
+
+                            <android.support.design.widget.TextInputEditText
+                                android:id="@+id/InvoiveNumber"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:clickable="false"
+                                android:focusable="false"
+                                android:textSize="16sp"
+                                android:hint="Invoice No. :"
+                                android:text="UserName" />
+
+                        </android.support.design.widget.TextInputLayout>-->
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/nameLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="5dp">
+
+                        <TextView
+                            android:id="@+id/t2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Part Description :"
+                            android:textSize="11sp"
+                            android:padding="5dp"
+                            android:layout_weight="0.68"
+                            android:visibility="visible"/>
+
+                        <TextView
+                            android:id="@+id/edt_description"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/t2"
+                            android:layout_marginTop="0dp"
+                            android:hint="Select part description"
+                            android:background="@drawable/border_delivery"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:padding="6dp"
+                            android:editable="false"
+                            android:text=""
+                            android:textSize="14sp"
+                            android:layout_weight="0.22">
+
+                            <requestFocus />
+                        </TextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/locationLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:alpha="1">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Location : "
+                            android:padding="5dp"
+                            android:layout_weight="0.8"
+                            android:textSize="11sp"
+                            android:visibility="visible"/>
+
+                        <!-- <LinearLayout
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:orientation="horizontal"
+                             android:layout_weight="1">
+
+
+
+                         </LinearLayout>-->
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="2dp"
+                            android:layout_marginRight="0dp"
+                            android:layout_weight="0.25">
+                            <!--android:background="@drawable/edit_text"-->
+
+                            <!--<Spinner
+                                android:id="@+id/spinner_location"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:spinnerMode="dialog">
+
+                            </Spinner>-->
+
+                            <TextView
+                                android:id="@+id/edt_location"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/t1"
+                                android:layout_marginTop="0dp"
+                                android:hint="Select location"
+                                android:background="@drawable/border_delivery"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="8dp"
+                                android:paddingRight="8dp"
+                                android:padding="6dp"
+                                android:editable="false"
+                                android:text=""
+                                android:textSize="14sp"
+                                android:layout_weight="1">
+                                <requestFocus />
+                            </TextView>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/locationarea"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="5dp"
+                        android:alpha="1"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Area : "
+                                android:padding="5dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_weight="7"
+                                android:textSize="16sp" />
+
+                            <EditText
+                                android:id="@+id/edt_area"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/t3"
+                                android:hint="Enter area"
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/border_delivery"
+                                android:gravity="center_vertical"
+                                android:minHeight="30dp"
+                                android:paddingLeft="8dp"
+                                android:paddingRight="8dp"
+                                android:padding="10dp"
+                                android:editable="true"
+                                android:text=""
+                                android:textSize="16sp"
+                                android:layout_weight="3"/>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <!--  <EditText
+                                  android:id="@+id/edt_area"
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:layout_below="@id/t3"
+                                  android:hint="Enter location"
+                                  android:layout_marginTop="5dp"
+                                  android:background="@drawable/border_delivery"
+                                  android:gravity="center_vertical"
+                                  android:minHeight="30dp"
+                                  android:paddingLeft="8dp"
+                                  android:paddingRight="8dp"
+                                  android:padding="10dp"
+                                  android:editable="true"
+                                  android:text=""
+                                  android:textSize="16sp" />-->
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!--<LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clipToPadding="false"
+                            android:paddingLeft="0dp"
+                            android:textSize="14sp"
+                            android:layout_weight="0.5">
+
+                            <EditText
+                                android:id="@+id/txt_weight"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/t3"
+                                android:layout_marginTop="5dp"
+                                android:layout_weight="3"
+                                android:gravity="center_vertical"
+                                android:hint="Enter weight"
+                                android:inputType="number"
+                                android:minHeight="30dp"
+                                android:padding="10dp"
+                                android:paddingLeft="8dp"
+                                android:paddingRight="8dp"
+                                android:text=""
+                                android:textSize="16sp" />
+
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clipToPadding="false"
+                            android:paddingLeft="0dp"
+                            android:textSize="14sp"
+                            android:layout_weight="0.5">
+
+                            <EditText
+                                android:id="@+id/edt_qty"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/t4"
+                                android:layout_marginTop="5dp"
+                                android:hint="Enter quantity"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="8dp"
+                                android:paddingRight="8dp"
+                                android:padding="10dp"
+                                android:inputType="number"
+                                android:editable="true"
+                                android:layout_weight="3"
+                                android:text=""
+                                android:textSize="16sp" />
+
+                        </android.support.design.widget.TextInputLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clipToPadding="false"
+                            android:paddingLeft="0dp"
+                            android:textSize="14sp"
+                            android:layout_weight="0.5">
+
+                            <EditText
+                                android:id="@+id/edt_countedby"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/t3"
+                                android:hint="Enter counted by"
+                                android:layout_marginTop="5dp"
+                                android:gravity="center_vertical"
+                                android:minHeight="30dp"
+                                android:paddingLeft="8dp"
+                                android:paddingRight="8dp"
+                                android:padding="10dp"
+                                android:layout_weight="3"
+                                android:editable="true"
+                                android:text=""
+                                android:textSize="16sp" />
+
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clipToPadding="false"
+                            android:paddingLeft="0dp"
+                            android:textSize="14sp"
+                            android:layout_weight="0.5">
+
+                            <EditText
+                                android:id="@+id/edt_verifyby"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/t3"
+                                android:hint="Enter verified by"
+                                android:layout_marginTop="5dp"
+                                android:gravity="center_vertical"
+                                android:minHeight="30dp"
+                                android:paddingLeft="8dp"
+                                android:paddingRight="8dp"
+                                android:padding="10dp"
+                                android:layout_weight="3"
+                                android:editable="true"
+                                android:text=""
+                                android:textSize="16sp" />
+
+                        </android.support.design.widget.TextInputLayout>
+
+                    </LinearLayout>-->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <!--weight-->
+                        <LinearLayout
+                            android:id="@+id/addressLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="5dp"
+                            android:alpha="1"
+                            android:layout_weight="0.55"
+                            android:layout_marginRight="5dp"
+                            android:visibility="visible"
+                            android:layout_marginLeft="0dp">
+
+                            <!-- <LinearLayout
+                                 android:layout_width="match_parent"
+                                 android:layout_height="wrap_content"
+                                 android:orientation="horizontal"
+                                 android:layout_weight="1">-->
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:layout_weight="0.61"
+                                android:padding="5dp"
+                                android:text="Wgt :"
+                                android:textSize="11sp"
+                                android:visibility="visible" />
+
+                            <EditText
+                                android:id="@+id/txt_weight"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/t3"
+                                android:hint="Enter weight"
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/border_delivery"
+                                android:gravity="center_vertical"
+                                android:minHeight="30dp"
+                                android:paddingLeft="8dp"
+                                android:paddingRight="8dp"
+                                android:inputType="numberDecimal"
+                                android:padding="6dp"
+                                android:layout_weight="0.3"
+                                android:text=""
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Kg"
+                                android:textSize="11sp"
+                                android:textColor="#111"
+                                android:textStyle="bold"
+                                android:layout_marginTop="4sp"
+                                android:paddingLeft="4sp"
+                                android:gravity="center_vertical|left"
+                                android:layout_gravity="center_vertical|left"
+                                android:layout_weight="0.7"/>
+
+                            <!--</LinearLayout>-->
+
+                            <!--<LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                &lt;!&ndash; <EditText
+                                     android:id="@+id/txt_weight"
+                                     android:layout_width="200dp"
+                                     android:layout_height="wrap_content"
+                                     android:layout_below="@id/t3"
+                                     android:hint="Enter weight"
+                                     android:layout_marginTop="5dp"
+                                     android:background="@drawable/border_delivery"
+                                     android:gravity="center_vertical"
+                                     android:minHeight="30dp"
+                                     android:paddingLeft="8dp"
+                                     android:paddingRight="8dp"
+                                     android:layout_marginRight="10dp"
+                                     android:padding="10dp"
+                                     android:text=""
+                                     android:textSize="16sp" />&ndash;&gt;
+
+                            </LinearLayout>-->
+
+                        </LinearLayout>
+
+                        <!--qty-->
+                        <LinearLayout
+                            android:id="@+id/phoneLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="0.45"
+                            android:layout_marginLeft="0dp"
+                            android:visibility="visible">
+
+                            <TextView
+                                android:id="@+id/t4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Qty :"
+                                android:layout_weight="0.65"
+                                android:layout_marginTop="5dp"
+                                android:textSize="11sp"
+                                android:padding="5dp"
+                                android:visibility="visible"/>
+
+                            <EditText
+                                android:id="@+id/edt_qty"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/t4"
+                                android:layout_marginTop="5dp"
+                                android:hint="Enter quantity"
+                                android:background="@drawable/border_delivery"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="8dp"
+                                android:paddingRight="8dp"
+                                android:padding="6dp"
+                                android:inputType="numberDecimal"
+                                android:editable="true"
+                                android:layout_weight="0.35"
+                                android:text=""
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/txtuom"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text=""
+                                android:textSize="13sp"
+                                android:textColor="#111"
+                                android:textStyle="bold"
+                                android:paddingLeft="5sp"
+                                android:layout_marginTop="4sp"
+                                android:gravity="center_vertical|left"
+                                android:layout_gravity="center_vertical|left"
+                                android:layout_weight="0.7"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <!--counted-->
+                        <LinearLayout
+                            android:id="@+id/countedbyayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="0dp"
+                            android:alpha="1"
+                            android:visibility="visible"
+                            android:layout_weight="0.5">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_weight="1">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Counted By : "
+                                    android:padding="5dp"
+                                    android:layout_weight="0.8"
+                                    android:layout_marginTop="5dp"
+                                    android:textSize="11sp"
+                                    android:visibility="visible"/>
+
+                                <EditText
+                                    android:id="@+id/edt_countedby"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/t3"
+                                    android:hint="Enter counted by"
+                                    android:layout_marginTop="5dp"
+                                    android:background="@drawable/border_delivery"
+                                    android:gravity="center_vertical"
+                                    android:minHeight="30dp"
+                                    android:paddingLeft="8dp"
+                                    android:paddingRight="8dp"
+                                    android:padding="6dp"
+                                    android:layout_weight="0.25"
+                                    android:editable="true"
+                                    android:text=""
+                                    android:textSize="14sp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <!-- <EditText
+                                     android:id="@+id/txt_weight"
+                                     android:layout_width="200dp"
+                                     android:layout_height="wrap_content"
+                                     android:layout_below="@id/t3"
+                                     android:hint="Enter counted by"
+                                     android:layout_marginTop="5dp"
+                                     android:background="@drawable/border_delivery"
+                                     android:gravity="center_vertical"
+                                     android:minHeight="30dp"
+                                     android:paddingLeft="8dp"
+                                     android:paddingRight="8dp"
+                                     android:layout_marginRight="10dp"
+                                     android:padding="10dp"
+                                     android:text=""
+                                     android:textSize="16sp" />-->
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <!--verify-->
+                        <LinearLayout
+                            android:id="@+id/verifybylayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginLeft="0dp"
+                            android:alpha="1"
+                            android:visibility="visible"
+                            android:layout_weight="0.5">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_weight="1">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Verified By : "
+                                    android:padding="5dp"
+                                    android:layout_weight="0.8"
+                                    android:layout_marginTop="5dp"
+                                    android:textSize="11sp"
+                                    android:visibility="visible"/>
+
+                                <EditText
+                                    android:id="@+id/edt_verifyby"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/t3"
+                                    android:hint="Enter verified by"
+                                    android:layout_marginTop="5dp"
+                                    android:background="@drawable/border_delivery"
+                                    android:gravity="center_vertical"
+                                    android:minHeight="30dp"
+                                    android:paddingLeft="8dp"
+                                    android:paddingRight="8dp"
+                                    android:padding="6dp"
+                                    android:layout_weight="0.25"
+                                    android:editable="true"
+                                    android:text=""
+                                    android:textSize="14sp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <!-- <EditText
+                                     android:id="@+id/txt_weight"
+                                     android:layout_width="200dp"
+                                     android:layout_height="wrap_content"
+                                     android:layout_below="@id/t3"
+                                     android:hint="Enter counted by"
+                                     android:layout_marginTop="5dp"
+                                     android:background="@drawable/border_delivery"
+                                     android:gravity="center_vertical"
+                                     android:minHeight="30dp"
+                                     android:paddingLeft="8dp"
+                                     android:paddingRight="8dp"
+                                     android:layout_marginRight="10dp"
+                                     android:padding="10dp"
+                                     android:text=""
+                                     android:textSize="16sp" />-->
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingRight="0dp"
+                        android:paddingLeft="0dp"
+                        android:layout_marginTop="10dp">
+
+                        <EditText
+                            android:id="@+id/edt_tag_desc"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Enter tag description"
+                            android:background="@drawable/border_delivery"
+                            android:layout_weight="1"
+                            android:textColor="#111111"
+                            android:textSize="15dp"
+                            android:paddingLeft="5dp"
+                            android:padding="6dp"
+                            android:maxLines="10" />
+
+                        <!-- <android.support.design.widget.TextInputLayout
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:clipToPadding="false"
+                             android:paddingLeft="0dp"
+                             android:textSize="14sp">
+
+                             <EditText
+                                 android:id="@+id/edt_tag_desc"
+                                 android:layout_width="match_parent"
+                                 android:layout_height="wrap_content"
+                                 android:hint="Enter tag description"
+                                 android:layout_weight="1"
+                                 android:textColor="#111111"
+                                 android:textSize="15dp"
+                                 android:paddingLeft="5dp"
+                                 android:maxLines="10" />
+
+                         </android.support.design.widget.TextInputLayout>-->
+
+                        <!--  <TextView
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:text="TAG Description : " />-->
+
+                        <!-- <EditText
+                             android:id="@+id/edt_tag_desc"
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:hint="Enter tag description"
+                             android:layout_weight="1"
+                             android:textColor="#111111"
+                             android:textSize="12dp"
+                             android:paddingLeft="5dp"
+                             android:maxLines="4"/>-->
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="20dp">
+
+                        <Button
+                            android:id="@+id/btnprint"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:background="@drawable/button_blue_border"
+                            android:text="PRINT"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            android:layout_weight="1"
+                            android:layout_marginRight="5dp"
+                            android:textSize="16dp"
+                            android:alpha="1"/>
+
+                        <Button
+                            android:id="@+id/btncancel"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:background="@drawable/button_orange"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="5dp"
+                            android:textSize="16dp"
+                            android:layout_weight="1"
+                            android:text="CANCEL"/>
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/showdialog"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/inprogress_dialog"
+            android:layout_margin="10dp"
+            android:layout_gravity="center" />
+
+    </LinearLayout>
+
+</RelativeLayout>

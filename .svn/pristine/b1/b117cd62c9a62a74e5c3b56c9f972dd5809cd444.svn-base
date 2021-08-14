@@ -1,0 +1,151 @@
+package com.vritti.crm.adapter;
+
+import android.content.Context;
+import android.graphics.Color;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.vritti.SaharaModule.SaharaBeans.AttachmentBean;
+import com.vritti.crm.bean.EditDatasheetNew;
+import com.vritti.crm.vcrm7.EditDatasheetActivityMainNew;
+import com.vritti.ekatm.R;
+
+import java.util.ArrayList;
+
+public class EditDatasheetAdapterNew extends RecyclerView.Adapter<EditDatasheetAdapterNew.ActivityHolder> {
+    Context context;
+    ArrayList<EditDatasheetNew> editDatasheetAdapterNewArrayList;
+
+    public EditDatasheetAdapterNew(Context editDatasheetActivityMainNew, ArrayList<EditDatasheetNew> editDatasheetslist) {
+        this.context = editDatasheetActivityMainNew;
+        this.editDatasheetAdapterNewArrayList = editDatasheetslist;
+    }
+
+    @NonNull
+    @Override
+    public ActivityHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.vwb_editdatasheet_common, parent, false);
+        return new ActivityHolder(itemView);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ActivityHolder holder, int position) {
+
+        String ques = editDatasheetAdapterNewArrayList.get(position).getQuesText();
+        if(ques.contains("\n")){
+            ques.replaceAll("\n","");
+            holder.txtQuestion.setText(ques);
+        }else{
+            holder.txtQuestion.setText(ques);
+        }
+        String ans = editDatasheetAdapterNewArrayList.get(position).getResponsebycustomer();
+        if(ans != null){
+            holder.txtAnswer.setText(ans);
+        }
+
+        String attachmentcnt = editDatasheetAdapterNewArrayList.get(position).getAttachmentCount();
+
+        if(attachmentcnt != null){
+            //holder.rel_attachment.setVisibility(View.VISIBLE);
+            holder.attachment_count.setText(attachmentcnt);
+        }else {
+            holder.attachment_count.setText("0");
+        }
+
+
+
+
+
+        if (position % 2 == 1) {
+            holder.ln_View.setBackgroundColor(Color.parseColor("#DBE8EA"));
+        } else {
+            holder.ln_View.setBackgroundColor(Color.parseColor("#F1F6F7"));
+
+        }
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return editDatasheetAdapterNewArrayList.size();
+    }
+
+    public void update(ArrayList<EditDatasheetNew> editDatasheetslist) {
+        this.editDatasheetAdapterNewArrayList = editDatasheetslist;
+        notifyDataSetChanged();
+    }
+
+    public void deleteChange(ArrayList<EditDatasheetNew> editDatasheetslist) {
+        this.editDatasheetAdapterNewArrayList = editDatasheetslist;
+        notifyDataSetChanged();
+    }
+
+  /*  public void updateCount(int selectedPos, int size, int attachPos) {
+        editDatasheetAdapterNewArrayList.get(selectedPos).setAttachmentCount(String.valueOf(size));
+        if (editDatasheetAdapterNewArrayList.get(selectedPos).getFilePathName() != null
+                && editDatasheetAdapterNewArrayList.get(selectedPos).getFilePathName().size() != 0) {
+            editDatasheetAdapterNewArrayList.get(selectedPos).getFilePathName().remove(attachPos);
+        }
+        notifyDataSetChanged();
+    } */
+
+    public void updateCount(int selectedPos, int size, int attachPos) {
+        editDatasheetAdapterNewArrayList.get(selectedPos).setAttachmentCount(String.valueOf(size));
+        if (editDatasheetAdapterNewArrayList.get(selectedPos).getFilePathName() != null
+        || editDatasheetAdapterNewArrayList.get(selectedPos).getFilePathName().size() != 0) {
+            editDatasheetAdapterNewArrayList.get(selectedPos).getFilePathName().remove(attachPos);
+        }
+        notifyDataSetChanged();
+    }
+
+    public void updateCount(ArrayList<AttachmentBean> attachmentList) {
+
+    }
+
+    public class ActivityHolder extends RecyclerView.ViewHolder {
+
+        RelativeLayout rel_statusimg, rel_appr, rel_attachment;
+        TextView txtremark, txt_remarkstatus;
+        ImageView img_attachment, img_appr;
+        TextView attachment_count;
+        TextView txtQuestion, txtAnswer;
+        LinearLayout ln_View;
+        public ActivityHolder(View view) {
+            super(view);
+            txtQuestion = (TextView) view.findViewById(R.id.txtquestion);
+            txtAnswer = (TextView) view.findViewById(R.id.txtanswer);
+            txtremark = (TextView) view.findViewById(R.id.txtremark);
+            txt_remarkstatus = (TextView) view.findViewById(R.id.txt_remarkstatus);
+            rel_statusimg = view.findViewById(R.id.rel_statusimg);
+            img_attachment = view.findViewById(R.id.img_attachment);
+            attachment_count = view.findViewById(R.id.attachment_count);
+            ln_View = view.findViewById(R.id.cView);
+            img_appr = view.findViewById(R.id.img_appr);
+            rel_appr = view.findViewById(R.id.rel_appr);
+            rel_attachment = view.findViewById(R.id.rel_attachment);
+
+            ln_View.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ((EditDatasheetActivityMainNew)context).rowClick(getAdapterPosition(),editDatasheetAdapterNewArrayList);
+                }
+            });
+
+            img_attachment.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ((EditDatasheetActivityMainNew)context).displayAttachementFiles(getAdapterPosition(),editDatasheetAdapterNewArrayList);
+                }
+            });
+
+        }
+    }
+}

@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/llscroll"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    tools:context="com.vritti.inventory.physicalInventory.activity.PrintScreenWIFI">
+
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="130dp"
+        android:layout_height="90dp"
+        android:background="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#FFFFFF">
+
+    <LinearLayout
+        android:id="@+id/laytag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:paddingTop="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Physical Inventory Tag"
+            android:textSize="8sp"
+            android:textStyle="bold"
+            android:textColor="#111"
+            android:layout_gravity="center"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:padding="1dp">
+
+        <TextView
+            android:id="@+id/txtplantno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Plant No.    : 1"
+            android:textSize="6dp"
+            android:textColor="#111"
+            android:paddingLeft="5dp"
+            android:layout_weight="3"/>
+
+        <TextView
+            android:id="@+id/txtseqno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0001"
+            android:textSize="6dp"
+            android:textColor="#111"
+            android:textStyle="bold"
+            android:layout_gravity="center_vertical|right"
+            android:gravity="center_vertical|right"
+            android:paddingRight="15dp"
+            android:layout_weight="7"/>
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="0dp"
+            android:padding="1dp">
+
+            <TextView
+                android:id="@+id/txtpartcode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Part No.      :  HSP0004"
+                android:textSize="6dp"
+                android:textColor="#111"
+                android:paddingLeft="5dp"
+                android:layout_weight="3"/>
+
+            <!-- <TextView
+
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:text="Item Code   :HSP0004"
+                 android:textSize="6dp"
+                 android:textColor="#111"
+                 android:layout_gravity="center_vertical|left"
+                 android:gravity="center_vertical|left"
+                 android:paddingRight="5dp"
+                 android:layout_weight="7"/>-->
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="0dp"
+        android:padding="1dp">
+
+        <TextView
+            android:id="@+id/txtitemcode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Part Name :  Pencil"
+            android:textSize="6dp"
+            android:textColor="#111"
+            android:paddingLeft="5dp"
+            android:layout_weight="3"/>
+
+       <!-- <TextView
+            android:id="@+id/txtpartcode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="HSP0004"
+            android:textSize="6dp"
+            android:textColor="#111"
+            android:layout_gravity="center_vertical|right"
+            android:gravity="center_vertical|right"
+            android:paddingRight="5dp"
+            android:layout_weight="7"/>-->
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="1dp">
+
+        <LinearLayout
+            android:id="@+id/lay1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/txtwt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Weight    :  60 kg"
+                android:textSize="6dp"
+                android:textColor="#111"
+                android:paddingLeft="4dp"
+                android:layout_weight="3"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lay2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingRight="0dp"
+            android:layout_weight="1">
+            <!--     android:padding="3dp"-->
+
+            <TextView
+                android:id="@+id/txtqty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Qty     :    600.00"
+                android:textSize="6dp"
+                android:textColor="#111"
+                android:paddingLeft="1dp"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:layout_weight="3"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="1dp">
+
+        <LinearLayout
+            android:id="@+id/lay3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/txtarea"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Area        :  AreaNo1"
+                android:textSize="5.5dp"
+                android:textColor="#111"
+                android:paddingLeft="5dp"
+                android:layout_weight="3"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lay4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingRight="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/txtlocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Location :  LocNo2"
+                android:textSize="5.5dp"
+                android:textColor="#111"
+                android:paddingLeft="1dp"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:layout_weight="3"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="0dp"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/txtcntby"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="2.5"
+            android:gravity="center|left"
+            android:paddingLeft="6dp"
+            android:text="Person1"
+            android:textColor="#111"
+            android:textSize="5dp" />
+
+        <TextView
+            android:id="@+id/txtverfyby"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Person2"
+            android:textSize="5dp"
+            android:textColor="#111"
+            android:paddingLeft="10dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="2.5"/>
+
+        <TextView
+            android:id="@+id/txtdatetime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="13-11-2019 06:43 PM"
+            android:textSize="5dp"
+            android:textColor="#111"
+            android:paddingLeft="5dp"
+            android:layout_gravity="center|left"
+            android:gravity="center|left"
+            android:layout_weight="2"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="0dp"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:padding="1dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Counted By"
+                android:textSize="5dp"
+                android:paddingLeft="5dp"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:layout_weight="2.5"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Verified By"
+                android:textSize="5dp"
+                android:paddingLeft="10dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="2.5"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Date Time"
+            android:textSize="5dp"
+            android:paddingLeft="7dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="2"/>
+
+    </LinearLayout>
+
+    </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:text="Click"
+        android:textColor="#FFFFFF"
+        android:visibility="gone"></Button>
+
+</LinearLayout>

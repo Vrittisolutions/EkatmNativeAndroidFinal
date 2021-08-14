@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@color/white">
+
+    <Button
+        android:id="@+id/txt_chat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        android:text="Chat"
+        android:padding="20dp"
+        android:background="@drawable/share_rounded"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"/>
+    <Button
+        android:id="@+id/txt_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="New Activity"
+        android:textSize="16dp"
+        android:background="@drawable/share_rounded"
+        android:textStyle="bold"
+        android:padding="20dp"
+        android:gravity="center"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        />
+    <Button
+        android:id="@+id/txt_existing_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="Existing Activity"
+        android:background="@drawable/share_rounded"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:padding="20dp"
+        android:gravity="center"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        />
+
+</LinearLayout>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:fillViewport="true"
+        android:measureAllChildren="false"
+        android:scrollbars="none"
+        android:background="#fff">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:orientation="horizontal"
+        android:weightSum="10.5">
+
+        <com.vritti.orderbilling.CounterBilling.CustomAutoCompleteView
+            android:id="@+id/myautocomplete_purchace"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="3.4"
+            android:completionThreshold="1"
+            android:hint="Item"
+            android:imeOptions="flagNoExtractUi"
+            android:textColor="#000"
+            android:textSize="16dp" />
+
+        <EditText
+            android:id="@+id/edQnty_purchace"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            android:layout_weight="1.3"
+            android:gravity="center"
+            android:hint="Qty"
+            android:background="@drawable/tbuds_border_orenge"
+            android:imeOptions="flagNoExtractUi"
+            android:inputType="numberDecimal"
+            android:maxLength="4"
+            android:textColor="#000"
+            android:textSize="16dp" />
+
+        <Spinner
+            android:id="@+id/spinnerunit_purchace"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|right"
+            android:gravity="center|right"
+            android:layout_weight="1.4"
+            android:entries="@array/unit" />
+
+        <EditText
+            android:id="@+id/edAmt_purchace"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center|right"
+            android:layout_weight="1.7"
+            android:inputType="number"
+            android:gravity="center"
+            android:imeOptions="flagNoExtractUi"
+            android:hint="Amount"
+            android:textColor="#6CAD1C"
+            android:textSize="16dp" />
+
+        <EditText
+            android:id="@+id/edRate_purchace"
+            android:layout_width="0dp"
+            android:imeOptions="flagNoExtractUi"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center|right"
+
+            android:layout_weight="1.7"
+            android:gravity="center"
+            android:hint="Rate"
+            android:inputType="numberDecimal"
+            android:textColor="#111"
+            android:textSize="16dp" />
+
+        <!-- android:editable="false"
+            android:clickable="false"
+            android:focusable="false"-->
+
+
+        <ImageButton
+            android:id="@+id/btn_ok_purchace"
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_weight="0.5"
+            android:background="@drawable/tbuds_correct"
+            android:gravity="center" />
+
+        <ImageButton
+            android:id="@+id/btn_cancel_purchace"
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="3dp"
+            android:layout_weight="0.5"
+            android:background="@drawable/tbuds_delete_row"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

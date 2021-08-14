@@ -1,0 +1,56 @@
+uniform highp mat4 matProj;
+uniform highp mat4 TexCoordsSizeMultMap;
+uniform highp mat4 matWorldView;
+uniform highp vec4 PenThickness;
+attribute highp vec2 vPosition;
+attribute highp vec2 vTexCoord0;
+attribute highp vec4 vColor;
+attribute highp vec4 vTexCoord1;
+varying highp vec4 xlv_TEXCOORD0;
+varying highp vec4 xlv_COLOR0;
+varying highp vec2 xlv_TEXCOORD1;
+void main ()
+{
+  highp vec4 tmpvar_1;
+  highp vec4 tmpvar_2;
+  highp vec2 tmpvar_3;
+  tmpvar_3 = (vTexCoord0 - vPosition);
+  highp int tmpvar_4;
+  tmpvar_4 = int(vTexCoord1.x);
+  highp vec4 v_5;
+  v_5.x = TexCoordsSizeMultMap[0][tmpvar_4];
+  v_5.y = TexCoordsSizeMultMap[1][tmpvar_4];
+  v_5.z = TexCoordsSizeMultMap[2][tmpvar_4];
+  v_5.w = TexCoordsSizeMultMap[3][tmpvar_4];
+  highp vec4 v_6;
+  v_6.x = TexCoordsSizeMultMap[0][tmpvar_4];
+  v_6.y = TexCoordsSizeMultMap[1][tmpvar_4];
+  v_6.z = TexCoordsSizeMultMap[2][tmpvar_4];
+  v_6.w = TexCoordsSizeMultMap[3][tmpvar_4];
+  highp vec2 tmpvar_7;
+  tmpvar_7 = (v_6.xy * tmpvar_3);
+  highp vec4 tmpvar_8;
+  tmpvar_8.zw = vec2(0.0, 1.0);
+  tmpvar_8.xy = (vPosition + ((tmpvar_7.x * vec2(1.0, 0.0)) + (tmpvar_7.y * vec2(0.0, 1.0))));
+  highp vec2 tmpvar_9;
+  tmpvar_9.x = v_5.x;
+  tmpvar_9.y = (1.0 - v_5.y);
+  highp vec2 tmpvar_10;
+  tmpvar_10.x = (0.25 / tmpvar_3.x);
+  tmpvar_10.y = (3.141592 * tmpvar_3.x);
+  highp vec4 tmpvar_11;
+  tmpvar_11.zw = vec2(0.0, 1.0);
+  tmpvar_11.xy = tmpvar_8.xy;
+  tmpvar_1 = (tmpvar_11 * (matWorldView * matProj));
+  tmpvar_2.zw = vec2(0.0, 0.0);
+  tmpvar_2.xy = tmpvar_9;
+  tmpvar_1.y = -(tmpvar_1.y);
+  highp vec2 tmpvar_12;
+  tmpvar_12.x = PenThickness.x;
+  tmpvar_12.y = (1.0/(PenThickness.y));
+  gl_Position = tmpvar_1;
+  xlv_TEXCOORD0 = tmpvar_2;
+  xlv_COLOR0 = vColor;
+  xlv_TEXCOORD1 = (tmpvar_10 * tmpvar_12);
+}
+

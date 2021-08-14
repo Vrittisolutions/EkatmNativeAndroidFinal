@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingRight="1dp"
+    android:paddingLeft="1dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view"
+        android:orientation="horizontal"
+        android:weightSum="3.5"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="5dp"
+        android:visibility="gone">
+
+        <com.vritti.sales.CounterBilling.CustomAutoCompleteView
+            android:id="@+id/myautocomplete"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.7"
+            android:completionThreshold="1"
+            android:hint="Items"
+            android:textSize="14dp"
+            android:textColor="#000" />
+
+        <EditText
+            android:id="@+id/edQnty"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            android:layout_weight="0.4"
+            android:gravity="center"
+            android:hint="Qty"
+            android:textColor="#000"
+            android:inputType="numberDecimal"
+            android:maxLength="4"
+            android:textSize="14dp" />
+
+        <Spinner
+            android:id="@+id/spinnerunit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:entries="@array/unit"
+            android:layout_gravity="center_vertical|right"
+            android:gravity="center_vertical|right"
+            android:layout_weight="0.5" />
+
+        <EditText
+            android:id="@+id/edRate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            android:layout_weight="0.5"
+            android:textColor="#000"
+            android:gravity="center"
+            android:inputType="numberDecimal"
+            android:hint="Rate"
+            android:textSize="14dp" />
+
+        <EditText
+            android:id="@+id/edDiscount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:hint="Disc."
+            android:textColor="#000"
+            android:textSize="14dp"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/edAmt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            android:layout_weight="0.5"
+            android:editable="true"
+            android:inputType="numberDecimal"
+            android:gravity="center"
+            android:hint="Amt."
+            android:textColor="#000"
+            android:textSize="14dp" />
+
+        <ImageButton
+            android:id="@+id/btn_ok"
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="3dp"
+            android:layout_weight="0.2"
+            android:background="@drawable/tbuds_correct"
+            android:gravity="center"
+            android:visibility="gone"/>
+
+        <ImageButton
+            android:id="@+id/btn_cancel"
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="3dp"
+            android:layout_weight="0.2"
+            android:background="@drawable/tbuds_delete_row"
+            android:gravity="center"
+            android:visibility="gone"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="2dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="1dp">
+
+        <TextView
+            android:id="@+id/txtdesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|left"
+            android:layout_weight="0.6"
+            android:gravity="center_vertical|left"
+            android:paddingLeft="2dp"
+            android:maxLines="3"
+            android:text="Alu mutter puff"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/txtrate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|right"
+            android:layout_weight="0.7"
+            android:gravity="center_vertical|right"
+            android:paddingRight="5dp"
+            android:text="9.33"
+            android:textSize="13dp" />
+
+        <!--inclusive of tax-->
+        <TextView
+            android:id="@+id/txtMRP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|right"
+            android:layout_weight="0.7"
+            android:gravity="center_vertical|right"
+            android:paddingRight="5dp"
+            android:text="10.00"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/txtqty"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:layout_gravity="center_vertical|right"
+            android:layout_weight="0.75"
+            android:gravity="center_vertical|right"
+            android:paddingRight="5dp"
+            android:text="100"
+            android:textColor="#111"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/txtamt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1000.00"
+            android:textSize="13dp"
+            android:layout_weight="0.66"
+            android:paddingRight="3dp"
+            android:textColor="#111"
+            android:layout_gravity="center_vertical|right"
+            android:gravity="center_vertical|right" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="2dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="1dp"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical|left"
+            android:layout_weight="0.6"
+            android:gravity="center_vertical|left"
+            android:paddingLeft="2dp"
+            android:text="Alu mutter puff"
+            android:textSize="13dp" />
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:layout_gravity="center_vertical|right"
+            android:layout_weight="0.75"
+            android:gravity="center_vertical|right"
+            android:paddingRight="5dp"
+            android:text="1"
+            android:textColor="#111"
+            android:textSize="13dp" />
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|right"
+            android:layout_weight="0.7"
+            android:gravity="center_vertical|right"
+            android:paddingRight="5dp"
+            android:text="100.00"
+            android:textSize="13dp" />
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="100.00"
+            android:textSize="13dp"
+            android:layout_weight="0.66"
+            android:paddingRight="3dp"
+            android:textColor="#111"
+            android:layout_gravity="center_vertical|right"
+            android:gravity="center_vertical|right" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="2dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="1dp"
+        android:visibility="gone">
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical|left"
+            android:layout_weight="0.6"
+            android:gravity="center_vertical|left"
+            android:paddingLeft="2dp"
+            android:text="Alu mutter puff"
+            android:textSize="13dp" />
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:layout_gravity="center_vertical|right"
+            android:layout_weight="0.75"
+            android:gravity="center_vertical|right"
+            android:paddingRight="5dp"
+            android:text="1000"
+            android:textColor="#111"
+            android:textSize="13dp" />
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|right"
+            android:layout_weight="0.7"
+            android:gravity="center_vertical|right"
+            android:paddingRight="5dp"
+            android:text="10.00"
+            android:textSize="13dp" />
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="10000.00"
+            android:textSize="13dp"
+            android:layout_weight="0.66"
+            android:paddingRight="3dp"
+            android:textColor="#111"
+            android:layout_gravity="center_vertical|right"
+            android:gravity="center_vertical|right" />
+
+    </LinearLayout>
+
+</LinearLayout>

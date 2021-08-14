@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="small">12sp</dimen>
+    <dimen name="mediam">16sp</dimen>
+    <dimen name="large">20sp</dimen>
+
+    <!--Sales added by Chetana-->
+    <dimen name="actionbar_height">40dp</dimen>
+</resources>

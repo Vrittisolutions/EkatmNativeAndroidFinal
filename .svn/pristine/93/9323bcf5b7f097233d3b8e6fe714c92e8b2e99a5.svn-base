@@ -1,0 +1,66 @@
+package com.vritti.crm.bean;
+
+public class EntityPaymentTerms {
+
+    String TermsCode, TermsDescription, PymtSettTermMasterId,
+            IsDeleted, CreditDays,BaseDate;
+
+    public EntityPaymentTerms(String termsCode, String termsDescription, String pymtSettTermMasterId) {
+        this.TermsCode = termsCode;
+        this.TermsDescription = termsDescription;
+        this.PymtSettTermMasterId = pymtSettTermMasterId;
+    }
+
+    public String getTermsCode() {
+        return TermsCode;
+    }
+
+    public void setTermsCode(String termsCode) {
+        TermsCode = termsCode;
+    }
+
+    public String getTermsDescription() {
+        return TermsDescription;
+    }
+
+    public void setTermsDescription(String termsDescription) {
+        TermsDescription = termsDescription;
+    }
+
+    public String getPymtSettTermMasterId() {
+        return PymtSettTermMasterId;
+    }
+
+    public void setPymtSettTermMasterId(String pymtSettTermMasterId) {
+        PymtSettTermMasterId = pymtSettTermMasterId;
+    }
+
+    public String getIsDeleted() {
+        return IsDeleted;
+    }
+
+    public void setIsDeleted(String isDeleted) {
+        IsDeleted = isDeleted;
+    }
+
+    public String getCreditDays() {
+        return CreditDays;
+    }
+
+    public void setCreditDays(String creditDays) {
+        CreditDays = creditDays;
+    }
+
+    public String getBaseDate() {
+        return BaseDate;
+    }
+
+    public void setBaseDate(String baseDate) {
+        BaseDate = baseDate;
+    }
+
+    @Override
+    public String toString() {
+        return this.TermsDescription;
+    }
+}

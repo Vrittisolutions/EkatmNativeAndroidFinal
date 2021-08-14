@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <Button
+            android:id="@+id/btn_reschedule"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/border"
+            android:padding="5dp"
+            android:text="12/22/2015"
+            android:textColor="#000" />
+        <EditText
+            android:id="@+id/edt_remark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Remark"
+            android:textSize="16dp"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+            android:background="@drawable/edit_text"
+            android:textColorHint="@color/dark_grey"
+            android:textColor="@color/black"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_rescheduleOk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/backshapegreen"
+            android:padding="5dp"
+            android:text="Save"
+            android:textColor="#fff"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:id="@+id/btn_rescheduleCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/backshape_red"
+            android:padding="5dp"
+            android:text="Cancel"
+            android:textColor="#fff"
+            android:layout_marginBottom="10dp"/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,607 @@
+package com.vritti.crm.vcrm7;
+
+import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.location.Address;
+import android.location.Geocoder;
+import android.os.AsyncTask;
+import android.os.Build;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.location.places.AutocompleteFilter;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.PlaceBuffer;
+import com.google.android.gms.location.places.Places;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.gson.Gson;
+import com.vritti.crm.bean.EntityShiptoDetailsBean;
+import com.vritti.crm.classes.CommonFunctionCrm;
+import com.vritti.databaselib.data.DatabaseHandlers;
+import com.vritti.databaselib.other.Utility;
+import com.vritti.databaselib.other.WebUrlClass;
+import com.vritti.ekatm.R;
+import com.vritti.ekatm.services.GPSTracker;
+import com.vritti.sales.PlaceClasses.PlaceArrayAdapter;
+import com.vritti.sales.PlaceClasses.PlacePredictions;
+import com.vritti.sales.activity.LocateOnMapActivity;
+import com.vritti.sales.beans.Tbuds_commonFunctions;
+import com.vritti.sales.data.AnyMartData;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
+import javax.net.ssl.HttpsURLConnection;
+
+public class EntityMasterLocateOnMapActivity  extends FragmentActivity implements
+        GoogleApiClient.OnConnectionFailedListener, GoogleApiClient.ConnectionCallbacks, OnMapReadyCallback {
+
+    private Context parent;
+
+    AutoCompleteTextView edt_mainaddress;
+    TextView txtline_mainaddr, txtline_subaddr, txtline_state_city_pincode;
+    Button btnsave, btnclear, btnshow,btnnextToPurchase;
+
+    private GoogleMap mMap;
+    Double lng, lat;
+
+    String main_address, subaddress, latitude = "", longitude = "", city_state_area, finalAddress, searchAddress = "";
+    String _ConsigneeName = "",_City ="", _Country ="", _State ="", _Mobile ="", _ShipToMasterId ="", _EmailId ="",
+            _TANNo ="",_TAN_GSTIN_Number = "", CustomerId = "", username = "";
+
+    static Tbuds_commonFunctions tcf;
+    Utility ut;
+    static DatabaseHandlers dbhandler;
+    static Tbuds_commonFunctions cf;
+    CommonFunctionCrm crmf;
+    static String settingKey = "";
+    String PlantMasterId = "", LoginId = "", Password = "", CompanyURL = "", EnvMasterId = "",
+            UserMasterId = "", UserName = "", MobileNo = "", Sourcetype = "";
+    String usertype = "";
+    String IsChatApplicable, IsGPSLocation;
+    public static SQLiteDatabase sql_db;
+    SharedPreferences sharedpreferences;
+
+    //////////////////////New latlong
+    PlacePredictions placePredictions = new PlacePredictions();
+    Bundle extras;
+    private GoogleApiClient mGoogleApiClient;
+    private static final LatLngBounds BOUNDS_MOUNTAIN_VIEW = null;
+    PlaceArrayAdapter mPlaceArrayAdapter;
+    private int GOOGLE_API_CLIENT_ID = 2258;
+    String locationStr = "", latn = "", lngn = "";
+    AutocompleteFilter typeFilter;
+    GPSTracker gps;
+    String northLat = "", southLatValue = "", northLng = "", southLngValue = "", currentAddres;
+    String prfDel_timefrm = "", prfDel_timeto = "", delAddress_latitude = "", delAddress_longitude = "";
+
+    String InsCountry1 = "", InsSeg1 = "", LendCountry1 = "", LendSeg1 = "", CallId = "", CustVendorCode = "", RegistrationFormNo = "",
+            CustVendorName = "", ContactTitle = "", ContactName = "", Address = "", ShortName = "", City = "", Phone = "", Mobile = "",
+            Email = "", Pin = "", State = "", Country = "", District = "", Taluka = "", Website = "", PriceListId = "", vendorCode = "",
+            ENRect = "", ENInv = "", ENPndPO = "",EnterpriseType = "", CustVendor = "", IsWLForCRMRef = "", Active = "", IsActive = "",
+            CountryId = "", ENGRN = "", ENPymt = "", CreditLimit = "", CreditDays = "", Currency = "", PaymentTerms = "", DeliveryTerms = "",
+            TaxClass = "", SlCatId = "",ResellerName = "",CreditTerms = "", PayeeName = "", BankName = "", Branch = "", BankAddress = "",
+            AccountNo = "", AccountType = "", IFSCode = "", RemittanceInstruction = "", EvaluationDt = "", ValidFrom = "",ValidTo = "",
+            SystemUserId = "", IsApproved = "", IsContractReqd = "",CurrencyMasterID = "", EntityGroupMasterId = "", EntityClass = "",
+            CustVendorType = "", Typeofservices = "", ServClId = "", PANNO = "", GSTNO = "", TAN_GSTIN_Number = "", TANNO = "",CSTNo = "",
+            MSTNo = "", ECCNo = "", ServiceTaxNo = "", ExDivi = "", ExRange = "", CAT = "", AccountId = "", EsicNo = "", AadharNo = "",
+            PFNo = "", CIN = "", EntityRestDate = "", ClientDetails = "", ShipToDetails = "", SalesFamily = "", LenderDetails = "",
+            InsuranceDetails = "", BankPayeeName = "", ExpertiseDetails = "",Latitude = "", Longitude = "",VendorMasterID = "",
+            TenorYear = "", IndIndemnity = "";
+
+    String CustVendorMasterId = "", Fax="", CommPer="",CommFrom="",CommTo = "", InspectionBody="",CreationLevel="", UserLevel = "",
+            IsDeleted = "", AddedBy = "", AddedDt = "", ModifiedBy = "", ModifiedDt = "", OMS = "", IsForeign = "", CommRate = "", IsSalesEngr = "",
+            CopyofCustVendorName = "", ReslName = "", FKBusiSegmentId = "",CRMCode = "", GroupId = "", ExtnlSysRef1 = "", ExtnlSysRef2 = "",
+            ExtnlSysRef3 = "";
+
+    JSONObject jMain = null;
+    String finalData = "";
+    ArrayList<EntityShiptoDetailsBean> entityShiptoDetailsBeanArrayList;
+
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_entity_master_locate_on_map);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+
+            this.getWindow().setStatusBarColor(Color.parseColor("#ff4112"));
+        }
+
+        init();
+        setListner();
+
+        /*    Google API address    */
+        convertLatLngintoAddress();
+        new GetLocationOnMapAsynchTask().execute();
+
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.googleMap);
+        mapFragment.getMapAsync(EntityMasterLocateOnMapActivity.this);
+
+
+
+
+
+
+    }
+
+    private void setListner() {
+
+        btnnextToPurchase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(EntityMasterLocateOnMapActivity.this,EntityMasterPurchaseActivity.class));
+
+            }
+        });
+
+        btnshow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                latitude = ""; longitude = "";
+                finalAddress = edt_mainaddress.getText().toString().trim();
+                onMapReady(mMap);
+            }
+        });
+
+    }
+
+    public void init(){
+
+        parent = EntityMasterLocateOnMapActivity.this;
+
+        edt_mainaddress = (AutoCompleteTextView) findViewById(R.id.edt_mainaddress);
+        txtline_mainaddr = (TextView)findViewById(R.id.txtline_mainaddr);
+        txtline_subaddr = (TextView)findViewById(R.id.txtline_subaddr);
+        txtline_state_city_pincode= (TextView)findViewById(R.id.txtline_state_city_pincode);
+        btnsave = (Button)findViewById(R.id.btnsaveaddress);
+        btnclear = (Button)findViewById(R.id.btnclear);
+        btnshow = (Button)findViewById(R.id.btnshow);
+        btnnextToPurchase = (Button)findViewById(R.id.btnnextToPurchase);
+
+        entityShiptoDetailsBeanArrayList = new ArrayList<>();
+
+        Intent intent = getIntent();
+        main_address = intent.getStringExtra("address_line_main");
+        subaddress = intent.getStringExtra("address_line_two");
+        latitude = intent.getStringExtra("latitude");
+        longitude = intent.getStringExtra("longitude");
+        city_state_area = intent.getStringExtra("city_state_area");
+        finalAddress = intent.getStringExtra("CompleteAddress");
+        _ConsigneeName = intent.getStringExtra("ConsigneeName");
+        _City = intent.getStringExtra("City");
+        _Country = intent.getStringExtra("Country");
+        _State = intent.getStringExtra("State");
+        _Mobile = intent.getStringExtra("Mobile");
+        _ShipToMasterId = intent.getStringExtra("ShipToMasterId");
+        _EmailId = intent.getStringExtra("EmailId");
+        _TANNo = intent.getStringExtra("TANNo");
+        _TAN_GSTIN_Number = intent.getStringExtra("TAN_GSTIN_Number");
+        CustomerId = intent.getStringExtra("CustVendorMasterId");
+        username = intent.getStringExtra("username");
+        entityShiptoDetailsBeanArrayList = new Gson().fromJson(getIntent().getStringExtra("ArrList"),EntityShiptoDetailsBean.class).
+                getEntityShiptoDetailsBeanArrayList();
+
+        txtline_mainaddr.setText(main_address);
+        //txtline_subaddr.setText(subaddress);
+        txtline_state_city_pincode.setText(city_state_area);
+
+        edt_mainaddress.setText(finalAddress);
+
+        ut = new Utility();
+        tcf = new Tbuds_commonFunctions(EntityMasterLocateOnMapActivity.this);
+        cf = new Tbuds_commonFunctions(EntityMasterLocateOnMapActivity.this);
+        crmf = new CommonFunctionCrm(EntityMasterLocateOnMapActivity.this);
+        String settingKey = ut.getSharedPreference_SettingKey(parent);
+        String dabasename = ut.getValue(parent, WebUrlClass.GET_DATABASE_NAME_KEY, settingKey);
+        dbhandler = new DatabaseHandlers(parent, dabasename);
+        sql_db = dbhandler.getWritableDatabase();
+        CompanyURL = ut.getValue(parent, WebUrlClass.GET_COMPANY_URL_KEY, settingKey);
+        EnvMasterId = ut.getValue(parent, WebUrlClass.GET_EnvMasterID_KEY, settingKey);
+        PlantMasterId = ut.getValue(parent, WebUrlClass.GET_PlantID_KEY, settingKey);
+        LoginId = ut.getValue(parent, WebUrlClass.GET_LOGIN_KEY, settingKey);
+        Password = ut.getValue(parent, WebUrlClass.GET_PSW_KEY, settingKey);
+        UserMasterId = ut.getValue(parent, WebUrlClass.GET_USERMASTERID_KEY, settingKey);
+        UserName = ut.getValue(parent, WebUrlClass.GET_USERNAME_KEY, settingKey);
+        MobileNo = ut.getValue(parent, WebUrlClass.GET_MOBILE_KEY, settingKey);
+
+        AnyMartData.MODULE = "ORDERBILLING";
+        AnyMartData.MOBILE = MobileNo/*"7057411246"*/;  //customer's mobile number.
+        usertype = "C";
+
+        sharedpreferences = getSharedPreferences(WebUrlClass.MyPREFERENCES, MODE_PRIVATE);
+        AnyMartData.MAIN_URL = CompanyURL + "/api/OrderBillingAPI/";
+
+    }
+
+    private void convertLatLngintoAddress() {
+        GPSTracker gpsTracker = new GPSTracker(this);
+        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+        // latString = String.valueOf(lat);
+        // lngString = String.valueOf(lng);
+
+        double curentLat = gpsTracker.getLatitude();
+        double curentLng = gpsTracker.getLongitude();
+
+        try {
+            List<android.location.Address> addressList = geocoder.getFromLocation(curentLat, curentLng, 5);
+            if (addressList.size() != 0) {
+                String area = addressList.get(0).getAdminArea();
+                String cName = addressList.get(0).getCountryName();
+                String cityName = addressList.get(0).getLocality();
+                currentAddres = cityName + "," + area + "," + cName;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+        Toast.makeText(gps, "GooglePlaceAPI connection failed with error code: "+connectionResult.getErrorCode(),
+                Toast.LENGTH_SHORT).show();
+
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+
+        mMap = googleMap;
+
+        searchAddress = finalAddress;
+
+        try {
+            final String[] loc = new String[1] ;
+            final Thread t = new Thread() {
+
+                @SuppressLint("MissingPermission")
+                public void run() {
+
+                    if(latitude.equals("") || longitude.equals("")){
+                        Geocoder geocoder = new Geocoder(parent);
+                        try {
+                            List<Address> addressesList = geocoder.getFromLocationName(searchAddress.trim(), 5);
+                            lat = addressesList.get(0).getLatitude();
+                            lng = addressesList.get(0).getLongitude();
+
+                            AnyMartData.LATITUDE = String.valueOf(lat);
+                            AnyMartData.LONGITUDE = String.valueOf(lng);
+
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+                   /* try {
+                        String url = "https://maps.google.com/maps/api/geocode/json?address=" + searchAddress.trim() + "&key=" + "AIzaSyD3ONS8gu5RY-Db5shmfI1Fc4NyygBGHSk";
+                        // String url = "https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyD3ONS8gu5RY-Db5shmfI1Fc4NyygBGHSk&latlng=" + lat + "," + lang + "&sensor=true";
+                        Object res = Utility.OpenConnection_ekatm(url, getApplicationContext());
+                        if (res == null) {
+
+                        } else {
+                            String response = res.toString();
+                            JSONObject jsonObj = null;
+                            jsonObj = new JSONObject(response);
+
+                            // LatLng Source = getLatLng(jsonObj);
+
+                            lng = new Double(0);
+                            lat = new Double(0);
+
+                            try {
+
+                                lng = ((JSONArray)jsonObj.get("results")).getJSONObject(0)
+                                        .getJSONObject("geometry").getJSONObject("location")
+                                        .getDouble("lng");
+
+
+                                lat = ((JSONArray)jsonObj.get("results")).getJSONObject(0)
+                                        .getJSONObject("geometry").getJSONObject("location")
+                                        .getDouble("lat");
+
+                                Log.e("LatitudeAndLong  : ","longitude"+lng.toString()+":"+"latitude:"+lat.toString());
+
+                            } catch (JSONException e) {
+                                // TODO Auto-generated catch block
+                                e.printStackTrace();
+                                Log.e("Exception : ",e.getMessage());
+                                Toast.makeText(parent,"No address found", Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
+                    } catch (JSONException e1) {
+                        e1.printStackTrace();
+                        Log.e("Exception : ",e1.getMessage());
+                    }*/
+
+                    }else {
+                        lat = Double.valueOf(latitude);
+                        lng = Double.valueOf(longitude);
+                        AnyMartData.LATITUDE = String.valueOf(lat);
+                        AnyMartData.LONGITUDE = String.valueOf(lng);
+                    }
+                }
+            };
+            t.start();
+
+            t.join();
+
+            if(lat != 0.0 && lng != 0.0){
+
+                LatLng address_latlng = new LatLng(lat, lng);
+                mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                // mMap.addMarker(new MarkerOptions().position(address_latlng).title(main_address));
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(address_latlng));
+                // mMap.addMarker(new MarkerOptions().position(address_latlng));
+                mMap.animateCamera(CameraUpdateFactory.zoomTo(17));
+                mMap.setOnCameraChangeListener(new GoogleMap.OnCameraChangeListener() {
+                    @Override
+                    public void onCameraChange(CameraPosition cameraPosition) {
+                        Log.i("lat:" + cameraPosition.target.latitude, "Long:" + cameraPosition.target.longitude);
+                        Toast.makeText(parent, "Latitude :  "+cameraPosition.target.latitude +
+                                " Longitude : "+cameraPosition.target.longitude, Toast.LENGTH_LONG).show();
+
+                        AnyMartData.LATITUDE = String.valueOf(cameraPosition.target.latitude);
+                        AnyMartData.LONGITUDE = String.valueOf(cameraPosition.target.longitude);
+                        // convertLatLngintoAddress(cameraPosition.target.latitude, cameraPosition.target.longitude);
+                    }
+                });
+
+                mMap.setOnCameraIdleListener(new GoogleMap.OnCameraIdleListener() {
+                    @Override
+                    public void onCameraIdle() {
+                        lat = mMap.getCameraPosition().target.latitude;
+                        lng = mMap.getCameraPosition().target.longitude;
+                        Toast.makeText(parent, "Latitude :  "+lat +
+                                " Longitude : "+lng, Toast.LENGTH_LONG).show();
+
+                        AnyMartData.LATITUDE = String.valueOf(lat);
+                        AnyMartData.LONGITUDE = String.valueOf(lng);
+                        // convertLatLngintoAddress(mMap.getCameraPosition().target.latitude, mMap.getCameraPosition().target.longitude);
+                    }
+                });
+
+            }else {
+                searchAddress = city_state_area;
+                onMapReady(mMap);
+            }
+
+        } catch (Exception e1) {
+            e1.printStackTrace();
+            Log.i("mapError::" , e1.getMessage());
+        }
+
+
+    }
+
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+        mPlaceArrayAdapter.setGoogleApiClient(mGoogleApiClient);
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+        mPlaceArrayAdapter.setGoogleApiClient(null);
+
+    }
+
+    private class GetLocationOnMapAsynchTask extends AsyncTask<String, Void, String[]> {
+        ProgressDialog dialog = new ProgressDialog(EntityMasterLocateOnMapActivity.this);
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            dialog.setMessage("Please wait...");
+            dialog.setCanceledOnTouchOutside(false);
+            dialog.show();
+        }
+
+        @Override
+        protected String[] doInBackground(String... params) {
+            String response;
+
+            try {
+                response = getLatLongByURL("https://maps.google.com/maps/api/geocode/json?address="
+                        + currentAddres + "&key=" + "AIzaSyD3ONS8gu5RY-Db5shmfI1Fc4NyygBGHSk");
+                Log.d("response", "" + response);
+
+                return new String[]{response};
+            } catch (Exception e) {
+                getLocation();
+                return new String[]{"error"};
+
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String... result) {
+            try {
+                JSONObject jsonObject = new JSONObject(result[0]);
+
+                double lng = ((JSONArray) jsonObject.get("results")).getJSONObject(0)
+                        .getJSONObject("geometry").getJSONObject("location")
+                        .getDouble("lng");
+                // north  long
+                double nothLng = 0.0d;
+                nothLng = ((JSONArray) jsonObject.get("results")).getJSONObject(0)
+                        .getJSONObject("geometry").getJSONObject("bounds").getJSONObject("northeast")
+                        .getDouble("lng");
+
+                if (nothLng != 0.0d)
+                    northLng = String.valueOf(nothLng);
+                double nothLat = ((JSONArray) jsonObject.get("results")).getJSONObject(0)
+                        .getJSONObject("geometry").getJSONObject("bounds").getJSONObject("northeast")
+                        .getDouble("lat");
+
+                if (nothLat != 0.0d)
+                    northLat = String.valueOf(nothLat);
+                // south  long
+                double southLng = ((JSONArray) jsonObject.get("results")).getJSONObject(0)
+                        .getJSONObject("geometry").getJSONObject("bounds").getJSONObject("southwest")
+                        .getDouble("lng");
+
+                if (southLng != 0.0d)
+                    southLngValue = String.valueOf(southLng);
+
+                double southLat = ((JSONArray) jsonObject.get("results")).getJSONObject(0)
+                        .getJSONObject("geometry").getJSONObject("bounds").getJSONObject("southwest")
+                        .getDouble("lat");
+
+                if (southLat != 0.0d)
+                    southLatValue = String.valueOf(southLat);
+                getLocation();
+                ///////////////////////////////////
+
+                double lat = ((JSONArray) jsonObject.get("results")).getJSONObject(0)
+                        .getJSONObject("geometry").getJSONObject("location")
+                        .getDouble("lat");
+
+                Log.d("latitude", "" + lat);
+                Log.d("longitude", "" + lng);
+
+                delAddress_latitude = String.valueOf(lat);
+                delAddress_longitude = String.valueOf(lng);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+                getLocation();
+            }
+            if (dialog.isShowing()) {
+                dialog.dismiss();
+            }
+        }
+    }
+    public String getLatLongByURL(String requestURL) {
+        URL url;
+        String response = "";
+        try {
+            url = new URL(requestURL);
+
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setReadTimeout(15000);
+            conn.setConnectTimeout(15000);
+            conn.setRequestMethod("GET");
+            conn.setDoInput(true);
+            conn.setRequestProperty("Content-Type",
+                    "application/x-www-form-urlencoded");
+            conn.setDoOutput(true);
+            int responseCode = conn.getResponseCode();
+
+            if (responseCode == HttpsURLConnection.HTTP_OK) {
+                String line;
+                BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                while ((line = br.readLine()) != null) {
+                    response += line;
+                }
+            } else {
+                response = "";
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return response;
+    }
+
+    private void getLocation() {
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addApi(Places.GEO_DATA_API)
+                .enableAutoManage(this, GOOGLE_API_CLIENT_ID,EntityMasterLocateOnMapActivity.this)
+                .addConnectionCallbacks(this)
+                .build();
+
+        double minLat = 0.0d, minLong = 0.0d, maxLat = 0.0d, maxLong = 0.0d;
+        if (!(northLat.equals("") || northLat.equals("0.0d")))
+            maxLat = Double.parseDouble(northLat);
+
+        if (!(northLng.equals("") || northLng.equals("0.0d")))
+            maxLong = Double.parseDouble(northLng);
+
+        if (!(southLatValue.equals("") || southLatValue.equals("0.0d")))
+            minLat = Double.parseDouble(southLatValue);
+
+        if (!(southLngValue.equals("") || southLngValue.equals("0.0d")))
+            minLong = Double.parseDouble(southLngValue);
+
+        mPlaceArrayAdapter = new PlaceArrayAdapter(this, android.R.layout.simple_list_item_1,
+                new LatLngBounds(new LatLng(minLat, minLong), new LatLng(maxLat, maxLong)), typeFilter);
+
+        edt_mainaddress.setThreshold(1);
+        edt_mainaddress.setOnItemClickListener(mAutocompleteClickListener);
+        edt_mainaddress.setAdapter(mPlaceArrayAdapter);
+
+    }
+
+    private AdapterView.OnItemClickListener mAutocompleteClickListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            final PlaceArrayAdapter.PlaceAutocomplete item = mPlaceArrayAdapter.getItem(position);
+            final String placeId = String.valueOf(item.placeId);
+            //  Log.i(LOG_TAG, "Selected: " + item.description);
+            PendingResult<PlaceBuffer> placeResult = Places.GeoDataApi.getPlaceById(mGoogleApiClient, placeId);
+            placeResult.setResultCallback(mUpdatePlaceDetailsCallback);
+        }
+    };
+
+    private ResultCallback<PlaceBuffer> mUpdatePlaceDetailsCallback = new ResultCallback<PlaceBuffer>() {
+        @Override
+        public void onResult(PlaceBuffer places) {
+            if (!places.getStatus().isSuccess()) {
+                //    Log.e(LOG_TAG, "Place query did not complete. Error: " +
+                places.getStatus().toString();
+                return;
+            }
+            // Selecting the first object buffer.
+            final Place place = places.get(0);
+            CharSequence attributions = places.getAttributions();
+
+            locationStr = String.valueOf(place.getAddress());
+            placePredictions.strSourceLatitude = String.valueOf(place.getLatLng().latitude);
+            placePredictions.strSourceLongitude = String.valueOf(place.getLatLng().longitude);
+            placePredictions.strSourceLatLng = String.valueOf(place.getLatLng());
+
+            LatLng sydney = new LatLng(place.getLatLng().latitude, place.getLatLng().longitude);
+        }
+    };
+
+}

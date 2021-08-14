@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:layout_margin="5dp"
+    android:background="@drawable/reciver_reply_bg"
+    >
+    <!-- android:background="#1a000000"-->
+    <View
+        android:id="@+id/view"
+        android:layout_width="2dp"
+        android:layout_height="match_parent"
+        android:background="#6CEAA3"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center|left"
+        android:orientation="vertical"
+        android:paddingLeft="10dp">
+
+        <TextView
+            android:id="@+id/userNameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You"
+            android:textSize="12sp"
+            android:textColor="#266091" />
+
+        <TextView
+            android:id="@+id/replyText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:lines="1"
+            android:textSize="13sp"
+            android:text="You"
+            android:textColor="#000" />
+
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/closeImg"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:src="@drawable/error"
+        android:tint="#6CEAA3"
+        />
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/replyImage"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_toLeftOf="@id/closeImg"
+        android:layout_toStartOf="@id/closeImg"
+        android:visibility="gone"
+
+        />
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/replyImage1"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_alignParentRight="true"
+
+        android:visibility="gone"
+        />
+
+</RelativeLayout>

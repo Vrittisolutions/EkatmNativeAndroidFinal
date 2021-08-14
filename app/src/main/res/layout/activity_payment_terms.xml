@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.vritti.sales.activity.PaymentTermsActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme"
+        android:visibility="visible"
+        android:background="@color/colorPrimary1">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar1"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            app:popupTheme="@style/AppTheme">
+
+            <ImageView
+                android:id="@+id/imgrefresh"
+                android:layout_width="30dp"
+                android:layout_height="35dp"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/ic_refresh"
+                android:layout_gravity="center|right"
+                android:visibility="visible"/>
+
+            <ProgressBar
+                android:id="@+id/toolbar_progress_Assgnwork"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="8dp"
+                android:indeterminateDrawable="@drawable/spinner"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/imgsearch"
+                android:layout_width="30dp"
+                android:layout_height="35dp"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/tbuds_ic_search"
+                android:layout_gravity="center|right"
+                android:visibility="gone"/>
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <include
+        android:id="@+id/tbar"
+        layout="@layout/tbuds_common_toolbar"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_boder">
+
+        <EditText
+            android:id="@+id/edtsearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Search text here..."
+            android:textColor="#111"
+            android:textSize="14sp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:paddingLeft="10dp"
+            android:visibility="visible"/>
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listpayterms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:dividerHeight="1dp"></ListView>
+
+</LinearLayout>

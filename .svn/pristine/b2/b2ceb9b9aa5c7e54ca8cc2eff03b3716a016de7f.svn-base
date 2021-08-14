@@ -1,0 +1,708 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.vritti.ekatm">
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!-- <uses-permission android:name="android.permission.RECEIVE_SMS" />
+     <uses-permission android:name="android.permission.READ_SMS" />
+     <uses-permission android:name="android.permission.WRITE_SMS" />
+     <uses-permission android:name="android.permission.SEND_SMS" />
+     <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />-->
+
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false"></uses-feature>
+
+    <uses-permission
+        android:name="common.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="com.javapapers.currentlocationinmap.permission.MAPS_RECEIVE" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
+
+    <application
+        android:hardwareAccelerated="false"
+        android:usesCleartextTraffic="true"
+        android:largeHeap="true">
+        <activity android:name="com.vritti.sales.CounterBilling.PrintedBillDetailsActivity"></activity>
+        <activity android:name="com.vritti.sales.CounterBilling.BillsHistory" />
+        <activity android:name="com.vritti.sales.activity.AddNewEntity_Customer" />
+        <activity android:name="com.vritti.sales.activity.LocateOnMapActivity" />
+        <activity android:name="com.vritti.sales.activity.AddNewAddressActivity" />
+        <activity android:name="com.vritti.sales.activity.TransitShipmentActivity" />
+        <activity android:name="com.vritti.sales.activity.ShipToAddressActivity" />
+        <activity android:name="com.vritti.sales.activity.CustomersListSelection_Activity" />
+        <activity android:name="com.vritti.sales.activity.PendingDeliveries" />
+        <activity android:name="com.vritti.sales.activity.ShipmentAndInvoicing" />
+        <activity android:name="com.vritti.sales.activity.DeliveryAgentSelection" />
+        <activity
+            android:name="com.vritti.sales.activity.ShipmentEntryActivity"
+            android:theme="@style/AppTheme_tbuds" />
+        <activity android:name="com.vritti.sales.activity.CustomersListActivity" />
+        <activity android:name="com.vritti.sales.activity.AddNewCustProspect" />
+        <activity android:name="com.vritti.sales.activity.ProspectSettingsActivity_tbuds" />
+        <activity
+            android:name="com.vritti.sales.CounterBilling.AddEditItemForCBilling"
+            android:windowSoftInputMode="adjustPan" />
+        <!-- ************************    Manifest Sales module activities     ****************************** -->
+        <activity android:name="com.vritti.sales.activity.Sales_OrderTypeSelectionActivity" />
+        <activity android:name="com.vritti.sales.activity.Sales_HomeSActivity" /> <!-- Manifest Activity  common -->
+        <activity
+            android:name="com.vritti.sales.activity.ProductListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme_tbuds"
+            android:windowSoftInputMode="stateVisible" />
+        <activity
+            android:name="com.vritti.sales.activity.CartActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme_tbuds"
+            android:windowSoftInputMode="adjustPan|stateVisible" />
+        <activity
+            android:name="com.vritti.sales.activity.CategorySearchActivity"
+            android:theme="@style/AppTheme_tbuds" />
+        <activity
+            android:name="com.vritti.sales.activity.CheckoutActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme_tbuds" />
+        <activity
+            android:name="com.vritti.sales.activity.ItemListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme_tbuds"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
+        <activity
+            android:name="com.vritti.sales.activity.MainActivity"
+            android:theme="@style/AppTheme_tbuds" />
+        <activity
+            android:name="com.vritti.sales.activity.ProductList_TabActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme_tbuds"
+            android:windowSoftInputMode="stateVisible" />
+        <activity
+            android:name="com.vritti.sales.activity.SubCategoryActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme_tbuds"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.sales.activity.SubCategorySearchActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme_tbuds" /> <!-- android:theme="@style/AppTheme.NoActionBar" -->
+        <activity
+            android:name="com.vritti.sales.activity.GetAddressActivity"
+            android:theme="@style/AppTheme_tbuds" />
+        <activity
+            android:name="com.vritti.sales.activity.ThankyouActivity"
+            android:theme="@style/AppTheme_tbuds" />
+        <!--
+<activity
+            android:name="com.vritti.sales.P"
+            android:theme="@style/AppTheme_tbuds" /> &lt;!&ndash; Counter billing &ndash;&gt;
+        -->
+        <!-- Counter billing -->
+        <activity
+            android:name="com.vritti.sales.CounterBilling.CounterBillingMainActivity"
+            android:theme="@style/AppTheme_tbuds" />
+        <activity
+            android:name="com.vritti.sales.CounterBilling.TotalSaleActivity"
+            android:theme="@style/AppTheme_tbuds" />
+        <activity
+            android:name="com.vritti.sales.CounterBilling.ReportsMainActivity"
+            android:theme="@style/AppTheme_tbuds" />
+        <activity
+            android:name="com.vritti.sales.CounterBilling.ReportActivity"
+            android:theme="@style/AppTheme_tbuds" />
+        <activity
+            android:name="com.vritti.sales.CounterBilling.PurchaceActivity"
+            android:theme="@style/AppTheme_tbuds" />
+        <activity
+            android:name="com.vritti.sales.CounterBilling.ItemListCB"
+            android:theme="@style/AppTheme_tbuds"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
+        <activity
+            android:name="com.vritti.sales.CounterBilling.DeviceListActivity"
+            android:theme="@style/AppTheme_tbuds" />
+        <activity
+            android:name="com.vritti.sales.CounterBilling.CustomerPendingBalanceActivity"
+            android:theme="@style/AppTheme_tbuds" />
+        <activity
+            android:name="com.vritti.sales.CounterBilling.ItemListActivity_report"
+            android:theme="@style/AppTheme_tbuds" />
+        <activity
+            android:name="com.vritti.sales.CounterBilling.CustomerwiseReportActivity"
+            android:theme="@style/AppTheme_tbuds" />
+        <activity
+            android:name="com.vritti.sales.CounterBilling.DailySaleActivity"
+            android:theme="@style/AppTheme_tbuds" />
+        <!-- *********************************************************************************************** -->
+
+        <!-- Manifest Activity  common -->
+
+        <activity
+            android:name="com.vritti.ekatm.other.ScannerActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+        <activity
+            android:name="com.vritti.ekatm.activity.ActivityModuleSelection"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.vritti.ekatm.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+
+        <!-- Manifest services  common -->
+
+        <service
+            android:name="com.vritti.ekatm.services.SendTimeSheet"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name="com.vritti.ekatm.services.DownloadWorkspaceData"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name="com.vritti.ekatm.services.PaidLocationFusedLocationTracker1"
+            android:enabled="true"
+            android:exported="true"
+            android:stopWithTask="false" />
+        <service
+            android:name="com.vritti.ekatm.services.MyFirebaseInstanceIDService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name="com.vritti.ekatm.services.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.vritti.ekatm.services.SendOfflineData"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name="com.vritti.ekatm.services.GpsDataLocalSendSevice"
+            android:enabled="true"
+            android:exported="true" />
+        <service android:name=".services.GPSTracker" />
+        <service android:name=".services.SendGPSData" />
+        <service
+            android:name="com.vritti.ekatm.services.SendGPSNotification"
+            android:enabled="true"
+            android:exported="true" />
+        <service android:name="com.vritti.sales.service.PlaceOrderService" />
+        <service android:name="com.vritti.sales.service.MarchantService" />
+
+        <!-- Manifest receiver  common -->
+
+        <receiver
+            android:name="com.vritti.ekatm.receiver.AlarmManagerBroadcastReceiverGPS"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REPLACED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.vritti.ekatm.receiver.OfflineDataReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+                <action android:name="android.net.wifi.STATE_CHANGE" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.vritti.ekatm.receiver.IncomingSmsReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+        <!--<receiver android:name=".receiver.CallReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PHONE_STATE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.NEW_OUTGOING_CALL" />
+            </intent-filter>
+        </receiver>-->
+        <receiver
+            android:name="com.vritti.ekatm.receiver.SendGPSNotificationBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MANAGE_NETWORK_USAGE" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".receiver.ConnectivityReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Manifest Activity  Chat -->
+
+        <activity
+            android:name="com.vritti.chat.activity.PrivateChatActvity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+
+<activity
+            android:name="com.vritti.DliveryModule.DeliveryDetailPage"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+
+
+
+        <activity android:name="com.vritti.chat.activity.AttachmentsActivity" />
+
+        <activity
+            android:name="com.vritti.chat.activity.SharefunctionActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="image/*" />
+                <data android:mimeType="audio/*" />
+                <data android:mimeType="video/*" />
+                <data android:mimeType="text/plain" />
+                <data android:mimeType="application/pdf" />
+                <data android:mimeType="application/msword" />
+                <data android:mimeType="application/vnd.ms-excel" />
+                <data android:mimeType="application/mspowerpoint" />
+                <data android:mimeType="application/vnd.android.package-archive" />
+                <data android:mimeType="application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+                <data android:mimeType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
+                <data android:mimeType="application/vnd.ms-powerpoint" />
+                <data android:mimeType="application/vnd.openxmlformats-officedocument.presentationml.presentation" />
+                <data android:mimeType="application/vnd.ms-powerpoint" />
+                <data android:mimeType="text/html" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.vritti.chat.activity.AddGroupActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+        <activity
+            android:name="com.vritti.chat.activity.UserListDisplayActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+        <activity
+            android:name="com.vritti.chat.activity.MultipleGroupActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+
+
+        <activity
+            android:name="com.vritti.chat.activity.OpenChatroomActivity"
+            android:label="vWorkbench"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+        <activity
+            android:name="com.vritti.vwb.vworkbench.HolidayActivity"
+            android:label="vWorkbench"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+        <activity android:name="com.vritti.chat.activity.ChatRoomLiveLocationActivity"
+            android:theme="@style/AppTheme"/>
+
+        <activity
+            android:name="com.vritti.chat.activity.AddChatRoomActivity"
+            android:label="Chat Room"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+        <activity
+            android:name="com.vritti.chat.activity.GroupmemberShowActivity"
+            android:label="Chat Room"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+        <activity
+            android:name="com.vritti.chat.activity.ImageFullScreenActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name="com.vritti.vwb.vworkbench.ClaimNotificationActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+        <activity
+            android:name="com.vritti.chat.activity.HistoryConversationActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name="com.vritti.vwb.vworkbench.TicketActivityServiceReportCustomerList" />
+        <activity android:name="com.vritti.vwb.vworkbench.TicketActivityServiceReport" />
+        <activity android:name="com.vritti.vwb.vworkbench.TicketActivityServiceReportDetail" />
+        <activity android:name="com.vritti.vwb.vworkbench.ActvityNotificationTypeActivity" />
+        <activity
+            android:name="com.vritti.crm.vcrm7.DatasheetDisplayList"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+
+        <!-- Manifest services  Chat -->
+
+        <service
+            android:name="com.vritti.chat.services.MessageRecieveBackground"
+            android:enabled="true" />
+        <service android:name="com.vritti.chat.services.ChattingDataSendBackground" />
+
+        <!-- Manifest receiver  Chat -->
+
+
+        <!--
+        <receiver
+            android:name="com.vritti.chat.services.NetworkReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+        -->
+
+
+        <!-- Manifest Activity  vwb -->
+
+        <activity
+            android:name="com.vritti.vwb.vworkbench.TicketUpdateDEPLActivity"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="com.vritti.vwb.vworkbench.ActivityMain"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="stateHidden"
+            />
+        <activity android:name="com.vritti.vwb.vworkbench.AssignActivity" />
+        <activity
+            android:name="com.vritti.vwb.vworkbench.GPSTeamList"
+            android:launchMode="singleTop" />
+        <!--
+            <activity
+            android:name=".vworkbench.ReportingPersonsGPSLocationActivity"
+            android:launchMode="singleTop" />
+        -->
+        <activity
+            android:name="com.vritti.vwb.vworkbench.ActivityDetailsActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name="com.vritti.vwb.vworkbench.AddTimesheetActivity"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.vwb.vworkbench.ReassignActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name="com.vritti.vwb.vworkbench.ClaimMainActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name="com.vritti.vwb.vworkbench.ClaimDetailActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name="com.vritti.vwb.vworkbench.ApplyLeaveMainActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name="com.vritti.vwb.vworkbench.DatasheetMainActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name="com.vritti.vwb.vworkbench.AddDatasheetActivityMain"
+            android:launchMode="singleTop" />
+        <activity
+            android:name="com.vritti.vwb.vworkbench.DatasheetAddDetailActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name="com.vritti.vwb.vworkbench.EditDatasheetActivityMain"
+            android:launchMode="singleTop" />
+        <activity
+            android:name="com.vritti.vwb.vworkbench.EditDatasheetDetailActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name="com.vritti.vwb.vworkbench.LoggingTimeActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name="com.vritti.vwb.vworkbench.BirthdayListAcyivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name="com.vritti.vwb.vworkbench.NotificationActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name="com.vritti.vwb.vworkbench.MeetingActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name="com.vritti.vwb.vworkbench.WorkspacewiseActCntActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.vritti.vwb.vworkbench.WorkspacewiseActDetailActivity"
+            android:launchMode="singleTop" />
+        <activity android:name="com.vritti.vwb.vworkbench.LeaveSummary" />
+        <activity android:name="com.vritti.vwb.vworkbench.LeaveRecords" />
+        <activity android:name="com.vritti.vwb.vworkbench.GPSMyOwnLocation" />
+        <activity android:name="com.vritti.vwb.vworkbench.ActivitySetting" />
+        <activity android:name="com.vritti.vwb.vworkbench.ActivityGPSLocalData" />
+        <activity android:name="com.vritti.vwb.vworkbench.MyTeamActivity" />
+        <activity android:name="com.vritti.vwb.vworkbench.MySubTeamActivity" />
+        <activity android:name="com.vritti.vwb.vworkbench.Nested_SubTeam" />
+        <activity android:name="com.vritti.vwb.vworkbench.MyTeamMemberActivity" />
+        <activity android:name="com.vritti.vwb.vworkbench.MyTeamMemberTimesheetActivity" />
+        <activity android:name="com.vritti.vwb.vworkbench.ViewTicketMain" />
+        <activity android:name="com.vritti.vwb.vworkbench.ActivityIndentApprovalNew" />
+        <activity android:name="com.vritti.vwb.vworkbench.TicketRegisterActivity" />
+        <activity
+            android:name="com.vritti.vwb.vworkbench.EmployeeAdvanceRequestActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
+        <activity android:name="com.vritti.vwb.vworkbench.TimeSheetLogActivity" />
+        <activity android:name="com.vritti.vwb.vworkbench.ActivityTrailActivity" />
+        <activity android:name="com.vritti.vwb.vworkbench.ActivityOfflineData" />
+        <activity android:name="com.vritti.vwb.vworkbench.ClaimRecordActivity" />
+        <activity android:name="com.vritti.vwb.vworkbench.ActivityTrailDetails" />
+        <activity android:name="com.vritti.vwb.vworkbench.AssetTransferActivity" />
+        <activity android:name="com.vritti.vwb.vworkbench.AssetTransferListActivity" />
+
+        <!--
+        <activity android:name="com.vritti.vwb.vworkbench.GoogleMapTeamActivity"
+            android:theme="@style/AppTheme"
+            android:label="Team Location">
+
+        </activity>
+        -->
+
+
+        <!-- Manifest services  vwb -->
+
+
+        <!-- Manifest receiver  vwb -->
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <!-- Manifest Activity  crm -->
+
+        <activity
+            android:name="com.vritti.crm.vcrm7.CallListActivity"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+        <activity android:name="com.vritti.crm.vcrm7.CallListActionActivity" />
+        <activity android:name="com.vritti.crm.vcrm7.CallRatingActivity" />
+        <activity android:name="com.vritti.crm.vcrm7.ActivityOfflineData" />
+        <activity android:name="com.vritti.crm.vcrm7.DatasheetMainActivity" />
+        <activity android:name="com.vritti.crm.vcrm7.DatasheetAddDetailActivity" />
+        <activity android:name="com.vritti.crm.vcrm7.AddDatasheetActivityMain" />
+        <activity android:name="com.vritti.crm.vcrm7.EditDatasheetActivityMain" />
+        <activity android:name="com.vritti.crm.vcrm7.EditDatasheetDetailActivity" />
+        <activity android:name="com.vritti.crm.vcrm7.TravelPlanAddActivity" />
+        <activity android:name="com.vritti.crm.vcrm7.TravelPlanShowActivity" />
+        <activity android:name="com.vritti.crm.vcrm7.TravelPlanDeleteActivity" />
+        <activity
+            android:name="com.vritti.crm.vcrm7.OpportunityUpdateActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.vritti.crm.vcrm7.ProspectEnterpriseActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name="com.vritti.crm.vcrm7.ProspectFilterActivity" />
+        <activity android:name="com.vritti.crm.vcrm7.FilteredProspectListActivity" />
+
+        <activity android:name="com.vritti.crm.vcrm7.ProductActivity" />
+        <activity android:name="com.vritti.crm.vcrm7.TeamMemberActivity" />
+        <activity android:name="com.vritti.crm.vcrm7.PromotionalFormSettingActivity" />
+        <activity android:name="com.vritti.crm.vcrm7.PromotionalFormActivity" />
+        <activity android:name="com.vritti.crm.vcrm7.EnquiryFormActivityNew" />
+        <activity android:name="com.vritti.crm.vcrm7.TeamMemberOpportunityActivity" />
+        <activity android:name="com.vritti.crm.vcrm7.TeamsCallListActionActivity" />
+        <activity android:name="com.vritti.crm.vcrm7.ReassignCallsActivity" />
+        <activity
+            android:name="com.vritti.crm.vcrm7.OpportunityActivity"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="com.vritti.crm.vcrm7.CreateOpportunityActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity
+            android:name="com.vritti.crm.vcrm7.CreateNewOppActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:name="com.vritti.crm.vcrm7.TravelPlanShowFormActivity" />
+        <activity
+            android:name="com.vritti.crm.vcrm7.CallDetailsHistoryActivity"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="com.vritti.crm.vcrm7.BusinessProspectusActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.vritti.crm.vcrm7.IndividualProspectusActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+        <activity
+            android:name="com.vritti.crm.vcrm7.CallsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="com.vritti.crm.vcrm7.SubTeamMemberActivity"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="com.vritti.crm.vcrm7.AdvanceProvisionalActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+        <activity
+            android:name="com.vritti.crm.vcrm7.ProvisionalActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+        <activity
+            android:name="com.vritti.crm.vcrm7.ContactActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+        <activity
+            android:name="com.vritti.crm.vcrm7.AdvanceProvisionalReceiptDisplayActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+        <activity
+            android:name="com.vritti.crm.vcrm7.ActivityEnquiryList"
+            android:label="@string/title_activity_enquiry_list"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.vritti.crm.vcrm7.ActvityEnquiryDetails"
+            android:label="@string/title_activity_actvity_enquiry_details"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="com.vritti.crm.vcrm7.ActivityPromotionalFormRecord"
+            android:label="@string/title_activity_promotional_form_record"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.vritti.crm.vcrm7.ActivityPromotionalFormselection"
+            android:label="@string/title_activity_promotional_formselection"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name="com.vritti.crm.vcrm7.ActivityServiceReportCustomerList" />
+        <activity android:name="com.vritti.crm.vcrm7.ActivityServiceReport" />
+        <activity android:name="com.vritti.crm.vcrm7.ActivityServiceReportDetail" />
+        <activity android:name="com.vritti.crm.vcrm7.ActivityServiceReportDetail1" />
+        <activity android:name="com.vritti.crm.vcrm7.AddEnquiry" />
+
+        <!-- Manifest services  crm -->
+
+
+        <!-- Manifest receiver  crm -->
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <!-- &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; -->
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_map_key" />
+
+        <activity android:name="com.vritti.vwb.vworkbench.EnoSamplingScreen1" />
+        <activity android:name="com.vritti.vwb.vworkbench.EnoSamplingScreen2" />
+        <activity android:name="com.vritti.vwb.vworkbench.EnoSamplingScreen3" />
+        <activity android:name="com.vritti.vwb.ImageWithLocation.EnoSamplingHomePage" />
+        <activity android:name="com.vritti.vwb.ImageWithLocation.ImageWithLoactionActivity" />
+        <activity android:name="com.vritti.vwb.ImageWithLocation.EnoSampleSubmitClass" />
+        <activity android:name="com.vritti.vwb.vworkbench.SupportStaffMaster"></activity>
+        <activity android:name="com.vritti.chat.activity.VideoPlayerClass"/>
+        <activity android:name="com.vritti.inventory.activity.SelectModuleActivity"
+            />
+        <activity android:name="com.vritti.inventory.activity.VendorRegistrationForm"
+            />
+
+        <service
+            android:name=".services.DownloadJobService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".services.EnoJobService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".services.ConnectivityJob"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:name=".receiver.NotificationReceiver"
+            android:enabled="true"
+            android:exported="false"></receiver>
+    </application>
+
+</manifest> <!-- For Search --><!-- Manifest Activity  common --><!-- Manifest services  common --><!-- Manifest receiver  common --><!-- Manifest Activity  Chat --><!-- Manifest services  Chat --><!-- Manifest receiver  Chat --><!-- Manifest Activity  vwb --><!-- Manifest services  vwb --><!-- Manifest receiver  vwb --><!-- Manifest Activity  crm --><!-- Manifest services  crm --><!-- Manifest receiver  crm -->

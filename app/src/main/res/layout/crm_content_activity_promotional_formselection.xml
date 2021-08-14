@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:layout_marginTop="48dp"
+    tools:showIn="@layout/crm_activity_promotional_formselection">
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="10dp"
+        android:layout_margin="3dp"
+        app:cardMaxElevation="10dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/lay1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#6E6F72"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:padding="5dp">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="5dp"
+            android:text=" Promoter list"
+            android:textColor="#ffffff"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dip"
+            android:weightSum="1">
+
+            <!-- Text Label -->
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dip"
+                android:layout_weight=".5"
+                android:text="Select Promoter"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:textStyle="normal" />
+
+            <!-- Spinner Element -->
+            <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+
+                android:id="@+id/spinner"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                 />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:textStyle="normal"
+            android:padding="5dip"
+
+            android:weightSum="1">
+
+            <!-- Text Label -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dip"
+                android:layout_weight=".5"
+                android:text="Select Date"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/txtselectdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dip"
+                android:padding="10dp"
+                android:textColor="#000000"
+                android:layout_weight=".5"
+                android:background="@drawable/edittext_boder"
+                android:hint="Click here" />
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnproceed"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:text="Proceed"
+            android:textSize="14dp"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:background="@drawable/button_green"
+            android:textAllCaps="false"/>
+
+        <LinearLayout
+            android:id="@+id/lay2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="5dp"
+                android:background="@color/colorPrimary"
+
+                android:text=" My Records"
+                android:textColor="#ffffff"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:textStyle="normal"
+                android:layout_margin="5dp"
+                android:padding="5dip"
+                android:weightSum="1">
+
+                <!-- Text Label -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dip"
+                    android:layout_weight=".5"
+                    android:text="Select Date"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/txtmyselectdate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dip"
+                    android:padding="10dp"
+                    android:textColor="#000000"
+                    android:layout_weight=".5"
+                    android:background="@drawable/edittext_boder"
+                    android:hint="Click here" />
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnmyproceed"
+                android:layout_width="200dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_height="40dp"
+                android:text="Proceed"
+                android:textSize="14dp"
+                android:textColor="@color/white"
+                android:background="@drawable/button_green"
+                android:textAllCaps="false"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+
+</LinearLayout>

@@ -1,0 +1,674 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/cardview_shadow_end_color"
+    android:orientation="vertical"
+    tools:context="com.vritti.vwb.vworkbench.SupportStaffMaster">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/MyToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay"
+            app:subtitleTextAppearance="@style/ToolbarTextAppearance.Subtitle"
+            app:titleTextAppearance="@style/ToolbarTextAppearance.Title">
+
+            <ProgressBar
+                android:id="@+id/toolbar_progress_staff"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="8dp"
+                android:indeterminateDrawable="@drawable/spinner"
+                android:visibility="gone" />
+        </android.support.v7.widget.Toolbar>
+
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#707070"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/txt_header"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Support Staff Master"
+            android:textColor="#fff"
+            android:textSize="16dp"
+            android:typeface="normal" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+
+        <ScrollView
+
+            android:layout_width="match_parent"
+            android:layout_above="@+id/bbase"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/lin_login"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center|left"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".8"
+                        android:gravity="left"
+                        android:text="Login ID"
+                        android:textColor="#000"
+                        android:textSize="14sp"
+                        android:typeface="normal" />
+
+                    <EditText
+                        android:id="@+id/edt_login"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight=".2"
+                        android:background="@drawable/edit_text"
+                        android:cursorVisible="true"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:padding="10dp"
+                        android:singleLine="true"
+                        android:textSize="14dp">
+
+                        <requestFocus />
+                    </EditText>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lin_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center|left"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".8"
+                        android:gravity="left"
+                        android:text="Name"
+                        android:textColor="#000"
+                        android:textSize="14sp"
+                        android:typeface="normal" />
+
+                    <EditText
+                        android:id="@+id/edt_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight=".2"
+                        android:inputType="textCapSentences"
+                        android:background="@drawable/edit_text"
+                        android:cursorVisible="true"
+                        android:imeOptions="actionNext"
+                        android:padding="10dp"
+                        android:singleLine="true"
+                        android:textSize="14dp">
+
+
+                    </EditText>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lin_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center|left"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".8"
+                        android:gravity="left"
+                        android:text="Adress"
+                        android:textColor="#000"
+                        android:textSize="14sp"
+                        android:typeface="normal" />
+
+                    <EditText
+                        android:id="@+id/edt_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight=".2"
+                        android:background="@drawable/edit_text"
+                        android:cursorVisible="true"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapSentences|textMultiLine"
+                        android:padding="10dp"
+                        android:singleLine="false"
+                        android:textSize="14dp">
+
+
+                    </EditText>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lin_mobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center|left"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".8"
+                        android:gravity="left"
+                        android:text="Mobile"
+                        android:textColor="#000"
+                        android:textSize="14sp"
+                        android:typeface="normal" />
+
+                    <EditText
+                        android:id="@+id/edt_mobile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight=".2"
+                        android:background="@drawable/edit_text"
+                        android:cursorVisible="true"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:padding="10dp"
+                        android:singleLine="true"
+                        android:textSize="14dp">
+
+
+                    </EditText>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lin_mailid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center|left"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".8"
+                        android:gravity="left"
+                        android:text="Email ID"
+                        android:textColor="#000"
+                        android:textSize="14sp"
+                        android:typeface="normal" />
+
+                    <EditText
+                        android:id="@+id/edt_mailid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight=".2"
+                        android:background="@drawable/edit_text"
+                        android:cursorVisible="true"
+                        android:imeOptions="actionNext"
+                        android:padding="10dp"
+                        android:singleLine="true"
+                        android:textSize="14dp">
+
+                    </EditText>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lin_ifsc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".4"
+                        android:text="IFSC"
+                        android:textColor="#000"
+                        android:textSize="14sp"
+                        android:typeface="normal" />
+
+                    <EditText
+                        android:id="@+id/edt_ifsc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight=".3"
+                        android:inputType="textCapCharacters"
+                        android:background="@drawable/edit_text"
+                        android:cursorVisible="true"
+                        android:padding="10dp"
+                        android:singleLine="true"
+                        android:textSize="14dp">
+
+                    </EditText>
+
+
+                    <Button
+                        android:id="@+id/btn_ifsc_code"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_weight=".3"
+                        android:background="@drawable/backshape_normal"
+                        android:imeOptions="actionNext"
+                        android:padding="15dp"
+                        android:text="Verify"
+                        android:textAllCaps="false"
+                        android:textColor="#ffffff"
+                        android:textSize="14dp">
+
+                    </Button>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lin_Bankname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center|left"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".8"
+                        android:gravity="left"
+                        android:text="Bank Name"
+                        android:textColor="#000"
+                        android:textSize="14sp"
+                        android:typeface="normal" />
+
+                    <TextView
+                        android:id="@+id/edt_bankname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight=".2"
+                        android:background="@drawable/edit_text"
+                        android:cursorVisible="false"
+                        android:imeOptions="actionNext"
+                        android:padding="10dp"
+                        android:inputType="textCapSentences"
+                        android:enabled="true"
+                        android:singleLine="true"
+                        android:textSize="14dp">
+
+                    </TextView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lin_Branchname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center|left"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".8"
+                        android:gravity="left"
+                        android:text="Branch Name"
+                        android:textColor="#000"
+                        android:textSize="14sp"
+                        android:typeface="normal" />
+
+                    <TextView
+                        android:id="@+id/edt_Branchname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight=".2"
+                        android:background="@drawable/edit_text"
+                        android:cursorVisible="false"
+                        android:enabled="true"
+                        android:inputType="textCapSentences"
+
+                        android:imeOptions="actionNext"
+                        android:padding="10dp"
+                        android:singleLine="true"
+                        android:textSize="14dp">
+
+                    </TextView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lin_AccountName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center|left"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".8"
+                        android:gravity="left"
+                        android:text="Account Number"
+                        android:textColor="#000"
+                        android:textSize="14sp"
+                        android:typeface="normal" />
+
+                    <EditText
+                        android:id="@+id/edt_accountname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight=".2"
+                        android:background="@drawable/edit_text"
+                        android:cursorVisible="true"
+                        android:imeOptions="actionNext"
+                        android:padding="10dp"
+                        android:inputType="textCapSentences"
+                        android:singleLine="true"
+                        android:textSize="14dp">
+
+                    </EditText>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lin_AadharNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center|left"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".8"
+                        android:gravity="left"
+                        android:text="Aadhar Number"
+                        android:textColor="#000"
+                        android:textSize="14sp"
+                        android:typeface="normal" />
+
+                    <EditText
+                        android:id="@+id/edt_aadharnumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight=".2"
+                        android:background="@drawable/edit_text"
+                        android:cursorVisible="true"
+                        android:imeOptions="actionNext"
+                        android:padding="10dp"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:textSize="14dp">
+
+                    </EditText>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lin_pan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center|left"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".8"
+                        android:gravity="left"
+                        android:text="PAN"
+                        android:textColor="#000"
+                        android:textSize="14sp"
+                        android:typeface="normal" />
+
+                    <EditText
+                        android:id="@+id/edt_pan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight=".2"
+                        android:inputType="textCapCharacters"
+                        android:background="@drawable/edit_text"
+                        android:cursorVisible="true"
+                        android:padding="10dp"
+                        android:singleLine="true"
+                        android:textSize="14dp">
+
+                    </EditText>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lin_throughven"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center|left"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".8"
+                        android:text="Through Vender"
+                        android:textColor="#000"
+                        android:textSize="14sp"
+                        android:typeface="normal" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".2"
+                        android:background="@drawable/edit_text"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <CheckBox
+                            android:id="@+id/checkBox1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@+id/button"
+                            android:layout_centerHorizontal="true"
+                            android:layout_weight="0.8" />
+
+                        <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                            android:id="@+id/spinner_throughven"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight=".2"
+                            android:padding="10dp"
+                            android:singleLine="true"
+                            android:textSize="14dp">
+
+                        </com.toptoche.searchablespinnerlibrary.SearchableSpinner>
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lin_plantaccess"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center|left"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".8"
+                        android:gravity="left"
+                        android:text="Plant Access"
+                        android:textColor="#000"
+                        android:textSize="14sp"
+                        android:typeface="normal" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".2"
+                        android:background="@drawable/edit_text">
+
+
+                        <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                            android:id="@+id/spinner_plantAccess"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:imeOptions="actionNext"
+                            android:padding="10dp"
+                            android:singleLine="true"
+                            android:textSize="14dp">
+
+                        </com.toptoche.searchablespinnerlibrary.SearchableSpinner>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/bbase"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center|right"
+            android:layout_marginTop="10dp"
+            android:background="@color/header"
+            android:gravity="center|right">
+
+            <Button
+                android:id="@+id/btn_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/backshapegreen"
+                android:padding="10dp"
+                android:text="Save"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/btn_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/backshape_orange"
+                android:padding="10dp"
+                android:text="Cancel"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

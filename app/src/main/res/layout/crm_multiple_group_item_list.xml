@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+    <RelativeLayout
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|left"
+            android:gravity="center|left"
+            android:padding="5dp"
+            android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/len_closed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|left"
+        android:gravity="center|left"
+        android:orientation="horizontal">
+
+        <ImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/profile_image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/group_2"
+            android:padding="8dp"
+            android:background="@drawable/circle"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="5dp"
+            >
+        <TextView
+            android:id="@+id/txt_chatroom_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:maxLines="2"
+            android:textColor="@color/black"
+            android:padding="2dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center|left"
+                android:gravity="center|left">
+         <TextView
+             android:id="@+id/txt_created"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:padding="2dp"
+             android:textSize="14dp"
+             android:layout_marginLeft="2dp"
+             android:layout_marginRight="2dp"
+             android:layout_weight="1"
+             android:textColor="@color/dark_grey"
+             />
+                <TextView
+                    android:id="@+id/text_cartcount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:background="@drawable/circle_text"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center"
+                    android:layout_gravity="right"/>
+                </LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.2dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="10dp"
+                android:background="@color/black"
+                android:padding="5dp"
+                />
+
+
+        </LinearLayout>
+</RelativeLayout>
+
+    <TextView
+        android:id="@+id/text_not_found"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Data not found"
+        android:visibility="gone"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+       />
+</RelativeLayout>

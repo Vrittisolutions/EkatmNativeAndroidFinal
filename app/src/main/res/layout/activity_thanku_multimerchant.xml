@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:ignore="MissingDefaultResource"
+    android:background="#ffffff">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:background="@color/colorPrimary1"
+        android:paddingBottom="5dp"
+        android:orientation="vertical">
+        <!--?attr/actionBarSize-->
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar1"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_below="@+id/tbar">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:elevation="5dp"
+                        android:gravity="center_vertical|top"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="10dp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="70dp"
+                                android:elevation="10dp"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:id="@+id/lay1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="150dp"
+                                    android:background="@drawable/shape_curve_blue"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:padding="5dp">
+
+                                    <TextView
+                                        android:id="@+id/txtThanku"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="5dp"
+                                        android:fontFamily="@string/ButtonFont"
+                                        android:gravity="center"
+                                        android:text="@string/thankyou"
+                                        android:textColor="@color/white"
+                                        android:textSize="16dp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/textView"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="5dp"
+                                        android:fontFamily="@string/ButtonFont"
+                                        android:gravity="center"
+                                        android:text="@string/ordplacemsg"
+                                        android:textColor="@color/white"
+                                        android:textSize="15dp"
+                                        android:textStyle="bold" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/lay2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="140dp"
+                                    android:layout_below="@+id/lay1"
+                                    android:background="@drawable/shape_curve_grey"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:padding="5dp">
+
+                                    <TextView
+                                        android:id="@+id/textyoupay"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="15dp"
+                                        android:gravity="center"
+                                        android:text="@string/amount"
+                                        android:textSize="18dp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/text_totalamtpay"
+                                        android:layout_width="150dp"
+                                        android:layout_height="45dp"
+                                        android:layout_marginTop="10dp"
+                                        android:background="@drawable/border_white"
+                                        android:elevation="5dp"
+                                        android:gravity="center"
+                                        android:text="0.00 ₹"
+                                        android:textColor="@color/backgroundcolor"
+                                        android:textSize="17dp"
+                                        android:textStyle="bold" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="70dp"
+                                    android:layout_height="70dp"
+                                    android:layout_centerInParent="true"
+                                    android:background="@drawable/shape_cart_count"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <ImageView
+                                        android:layout_width="50dp"
+                                        android:layout_height="40dp"
+                                        android:layout_centerInParent="true"
+                                        android:layout_gravity="center"
+                                        android:src="@drawable/verify1" />
+
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:layout_width="120dp"
+                                android:layout_height="120dp"
+                                android:layout_alignParentTop="true"
+                                android:layout_centerHorizontal="true"
+                                android:background="@drawable/border_white_2"
+                                android:elevation="10dp"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:id="@+id/imglogo"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="113dp"
+                                    android:layout_alignParentTop="true"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/freshmart_logo" />
+
+                            </LinearLayout>
+
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginRight="10dp"
+                            android:elevation="10dp"
+                            android:orientation="vertical">
+                            <!--android:padding="10dp"-->
+                            <!--android:background="@color/btncolordark"
+                            android:background="@drawable/border_bottlegreen"-->
+
+                            <TextView
+                                android:id="@+id/txtdeliveryaddress"
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center_vertical"
+                                android:background="@drawable/shape_curve_blue"
+                                android:fontFamily="@string/ButtonFont"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="10dp"
+                                android:text="@string/delvto"
+                                android:textColor="@color/white" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/shape_curve_grey"
+                                android:orientation="vertical"
+                                android:padding="5dp">
+
+                                <TextView
+                                    android:id="@+id/txtdelivery_address"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@string/ButtonFont"
+                                    android:maxLines="6"
+                                    android:padding="5dp"
+                                    android:text="vritti solution ltd,karve road,Pune , Maharashtra"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/txtdate"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@string/ButtonFont"
+                                    android:gravity="center|left|top"
+                                    android:padding="5dp"
+                                    android:text="door step"
+                                    android:textColor="@color/btncolordark" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="10dp"
+                                android:orientation="horizontal"
+                                android:visibility="gone">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@string/ButtonFont"
+                                        android:text="@string/frmtime"
+                                        android:textColor="#006400" />
+
+                                    <TextView
+                                        android:id="@+id/txttime_frm"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="10dp"
+                                        android:fontFamily="@string/ButtonFont"
+                                        android:text="09:00 AM"
+                                        android:textColor="@color/btncolordark" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:orientation="horizontal"
+                                    android:visibility="gone">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@string/ButtonFont"
+                                        android:text="@string/totime"
+                                        android:textColor="#006400" />
+
+                                    <TextView
+                                        android:id="@+id/txttime_to"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="10dp"
+                                        android:fontFamily="@string/ButtonFont"
+                                        android:text="06:00 PM"
+                                        android:textColor="@color/btncolordark" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <ListView
+                    android:id="@+id/list_ord_summary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:dividerHeight="0dp"
+                    android:divider="@null"
+                    android:visibility="gone"></ListView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearlayout_cart_bottom_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:gravity="fill_vertical"
+                android:orientation="horizontal">
+
+
+                <Button
+                    android:id="@+id/button_shop_more"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="0dp"
+                    android:background="@color/btncolordark"
+                    android:text="Shop More...."
+                    android:textColor="@color/white"
+                    android:textSize="17dp"
+                    android:fontFamily="@string/ButtonFont"
+                    android:textAllCaps="false"
+                    android:visibility="gone"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

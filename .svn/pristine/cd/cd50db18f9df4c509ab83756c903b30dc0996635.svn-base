@@ -1,0 +1,93 @@
+package com.vritti.crm.adapter;
+
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.vritti.crm.bean.EntityShiptoDetailsBean;
+import com.vritti.crm.vcrm7.EntityMasterShipToActivity;
+import com.vritti.ekatm.R;
+
+import java.util.ArrayList;
+
+public class EntityShiptToAdapter extends RecyclerView.Adapter<EntityShiptToAdapter.ShipToHolder> {
+
+    ArrayList<EntityShiptoDetailsBean> entityShiptoDetailsBeanArrayList;
+    Context context;
+
+    public EntityShiptToAdapter(Context context, ArrayList<EntityShiptoDetailsBean> entityShiptoDetailsBeanArrayList) {
+
+        this.context = context;
+        this.entityShiptoDetailsBeanArrayList = entityShiptoDetailsBeanArrayList;
+    }
+
+    @NonNull
+    @Override
+    public ShipToHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.entity_ship_to_row,
+                parent, false);
+
+        return new ShipToHolder(itemView);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ShipToHolder holder, int position) {
+
+        try {
+
+            holder.txt_consigneeName.setText(entityShiptoDetailsBeanArrayList.get(position).getConsigneename());
+            holder.txt_address.setText(entityShiptoDetailsBeanArrayList.get(position).getAddress());
+            holder.txt_cityName.setText(entityShiptoDetailsBeanArrayList.get(position).getCityName());
+            holder.txt_mobileNo.setText(entityShiptoDetailsBeanArrayList.get(position).getMobileNo());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public int getItemCount() {
+
+        return entityShiptoDetailsBeanArrayList.size();
+    }
+
+    public class ShipToHolder extends RecyclerView.ViewHolder {
+
+        TextView txt_consigneeName, txt_address, txt_cityName, txt_mobileNo;
+        ImageView btn_editchrge,btn_deletechrge;
+
+
+        public ShipToHolder(View itemView) {
+
+            super(itemView);
+            txt_consigneeName = itemView.findViewById(R.id.txt_consigneeName);
+            txt_address = itemView.findViewById(R.id.txt_address);
+            txt_cityName = itemView.findViewById(R.id.txt_cityName);
+            txt_mobileNo = itemView.findViewById(R.id.txt_mobileNo);
+            btn_editchrge = itemView.findViewById(R.id.btn_editchrge);
+            btn_deletechrge = itemView.findViewById(R.id.btn_deletechrge);
+
+            btn_editchrge.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ((EntityMasterShipToActivity)context).EditDetails(getAdapterPosition(),entityShiptoDetailsBeanArrayList);
+                }
+            });
+
+            btn_deletechrge.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ((EntityMasterShipToActivity)context).DeleteDetails(getAdapterPosition(),entityShiptoDetailsBeanArrayList);
+
+                }
+            });
+
+        }
+    }
+}

@@ -1,0 +1,685 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fillViewport="true"
+    >
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:textStyle="bold"
+            android:layout_gravity="center|left"
+            android:gravity="left|center"
+            android:padding="12dp"
+            android:textColor="@color/white"
+            android:text="Domestic Inbound (AHMUN007)"
+            android:textSize="16dp"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="2dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:text="Viraj Industries to Hyva Jamshedpur"
+                android:textSize="16dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="2dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:text="through Ayush Transport 4.2 MT"
+                android:textSize="16dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="2dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:text="by 18 Apr 2020"
+                android:textSize="16dp"/>
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:background="@color/black"/>
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Details"
+            android:textAllCaps="false"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="16dp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/white"
+            android:background="@drawable/button_green"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_gravity="center|left"
+            android:gravity="center|left"
+            android:background="@color/grey"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            android:text="Vehicle Details"
+            android:textSize="16dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Transporter Name : "
+                android:textSize="16sp"
+                android:paddingLeft="10sp"
+                android:textColor="@color/black"
+                android:layout_weight="0.6"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:textColor="@color/white"
+                android:layout_weight="0.4"
+                android:padding="10dp"
+                android:hint=""
+                android:singleLine="true"
+                android:background="@drawable/border_grey"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:visibility="visible"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Vehicle No : "
+                android:textSize="16sp"
+                android:paddingLeft="10sp"
+                android:textColor="@color/black"
+                android:layout_weight="0.6"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:textColor="@color/white"
+                android:layout_weight="0.4"
+                android:padding="10dp"
+                android:hint=""
+                android:singleLine="true"
+                android:background="@drawable/button_border_black"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:visibility="visible"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="LR No : "
+                android:textSize="16sp"
+                android:paddingLeft="10sp"
+                android:textColor="@color/black"
+                android:layout_weight="0.6"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:textColor="@color/white"
+                android:layout_weight="0.4"
+                android:padding="10dp"
+                android:hint=""
+                android:singleLine="true"
+                android:background="@drawable/button_border_black"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:visibility="visible"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Babu Name : "
+                android:textSize="16sp"
+                android:paddingLeft="10sp"
+                android:textColor="@color/black"
+                android:layout_weight="0.6"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:textColor="@color/white"
+                android:layout_weight="0.4"
+                android:padding="10dp"
+                android:hint=""
+                android:singleLine="true"
+                android:background="@drawable/button_border_black"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:visibility="visible"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Babe Contact No : "
+                android:textSize="16sp"
+                android:paddingLeft="10sp"
+                android:textColor="@color/black"
+                android:layout_weight="0.6"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:textColor="@color/white"
+                android:layout_weight="0.4"
+                android:padding="10dp"
+                android:hint=""
+                android:singleLine="true"
+                android:background="@drawable/button_border_black"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:visibility="visible"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Destination : "
+                android:textSize="16sp"
+                android:paddingLeft="10sp"
+                android:textColor="@color/black"
+                android:layout_weight="0.6"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:textColor="@color/white"
+                android:layout_weight="0.4"
+                android:padding="10dp"
+                android:hint=""
+                android:singleLine="true"
+                android:background="@drawable/button_border_black"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:visibility="visible"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Delivery Date : "
+                android:textSize="16sp"
+                android:paddingLeft="10sp"
+                android:textColor="@color/black"
+                android:layout_weight="0.6"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:textColor="@color/white"
+                android:layout_weight="0.4"
+                android:padding="10dp"
+                android:hint=""
+                android:singleLine="true"
+                android:background="@drawable/button_border_black"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:visibility="visible"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Driver Name : "
+                android:textSize="16sp"
+                android:paddingLeft="10sp"
+                android:textColor="@color/black"
+                android:layout_weight="0.6"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:textColor="@color/white"
+                android:layout_weight="0.4"
+                android:padding="10dp"
+                android:hint=""
+                android:singleLine="true"
+                android:background="@drawable/button_border_black"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Driver Contact No : "
+                android:textSize="16sp"
+                android:paddingLeft="10sp"
+                android:textColor="@color/black"
+                android:layout_weight="0.6"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:textColor="@color/white"
+                android:layout_weight="0.4"
+                android:padding="10dp"
+                android:hint=""
+                android:singleLine="true"
+                android:background="@drawable/button_border_black"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Remarks : "
+                android:textSize="16sp"
+                android:paddingLeft="10sp"
+                android:textColor="@color/black"
+                android:layout_weight="0.6"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:textColor="@color/white"
+                android:layout_weight="0.4"
+                android:minLines="3"
+                android:maxLines="3"
+                android:layout_gravity="left|center|top"
+                android:gravity="top|center|left"
+                android:padding="10dp"
+                android:hint=""
+                android:background="@drawable/button_border_black"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_border_black"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                android:layout_gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Delivery No : "
+                    android:textSize="16sp"
+                    android:paddingLeft="10sp"
+                    android:textColor="@color/black"
+                    android:layout_weight="0.6"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:textColor="@color/white"
+                    android:layout_weight="0.4"
+                    android:padding="10dp"
+                    android:hint=""
+                    android:singleLine="true"
+                    android:background="@drawable/border_grey"/>
+
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:background="@color/grey"
+                android:padding="10dp"
+                android:visibility="visible"
+                android:textColor="@color/black"
+                android:text="Hyva's Vehicle Requirement "
+                android:textSize="16dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                android:visibility="visible"
+                android:layout_gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Source  : "
+                    android:textSize="16sp"
+                    android:paddingLeft="10sp"
+                    android:textColor="@color/black"
+                    android:layout_weight="0.6"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:textColor="@color/white"
+                    android:layout_weight="0.4"
+                    android:padding="10dp"
+                    android:hint=""
+                    android:singleLine="true"
+                    android:background="@drawable/border_grey"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                android:visibility="visible"
+                android:layout_gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Dispatch Date  : "
+                    android:textSize="16sp"
+                    android:paddingLeft="10sp"
+                    android:textColor="@color/black"
+                    android:layout_weight="0.6"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:textColor="@color/white"
+                    android:layout_weight="0.4"
+                    android:padding="10dp"
+                    android:hint=""
+                    android:singleLine="true"
+                    android:background="@drawable/border_grey"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                android:layout_gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Destination  : "
+                    android:textSize="16sp"
+                    android:paddingLeft="10sp"
+                    android:textColor="@color/black"
+                    android:layout_weight="0.6"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:textColor="@color/white"
+                    android:layout_weight="0.4"
+                    android:padding="10dp"
+                    android:hint=""
+                    android:singleLine="true"
+                    android:background="@drawable/border_grey"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                android:visibility="visible"
+                android:layout_gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="156dp"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10sp"
+                    android:text="Tonnage  : "
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:textColor="@color/white"
+                    android:padding="10dp"
+                    android:hint=""
+                    android:layout_gravity="center|left"
+                    android:gravity="left|center"
+                    android:singleLine="true"
+                    android:background="@drawable/border_grey"/>
+                <EditText
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:textColor="@color/black"
+                    android:padding="10dp"
+                    android:hint=""
+                    android:editable="false"
+                    android:text="MT"
+                    android:singleLine="true"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:background="@drawable/border_grey"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_marginLeft="15dp"
+                    android:gravity="center|left"
+                    android:layout_weight="0.2"
+                    android:text="Expected Delivery Date : "
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+
+                <LinearLayout
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:gravity="center|left"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/button_border_black"
+                    android:orientation="horizontal">
+                    <EditText
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|left"
+                        android:gravity="center|left"
+                        android:padding="8dp"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:text="17 Apr"
+                        android:background="@drawable/button_border_black"
+                        android:layout_marginRight="5dp"
+                        android:textSize="18dp"/>
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/calender"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Notes by Hyva  : "
+                    android:textSize="16sp"
+                    android:paddingLeft="10sp"
+                    android:textColor="@color/black"
+                    android:layout_weight="0.6"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:textColor="@color/white"
+                    android:layout_weight="0.4"
+                    android:padding="10dp"
+                    android:hint=""
+                    android:singleLine="true"
+                    android:background="@drawable/border_grey"/>
+
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/button_green"
+                android:textStyle="bold"
+                android:text="Accept Confirm Vehicle"
+                android:textAllCaps="false"
+                android:textSize="16dp"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/button_border_red"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:text="Reject Vehicle Not Available"
+                android:textSize="16dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

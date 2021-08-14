@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.vritti.sales.activity.ShipmentAndInvoicing">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme"
+        android:visibility="visible"
+        android:background="@color/colorPrimary1">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar1"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="@color/colorPrimary1"
+            app:popupTheme="@style/AppTheme">
+
+            <ProgressBar
+                android:id="@+id/toolbar_progress_Assgnwork"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="8dp"
+                android:indeterminateDrawable="@drawable/spinner"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/imgrefresh"
+                android:layout_width="30dp"
+                android:layout_height="35dp"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/ic_refresh"
+                android:layout_gravity="center|right"
+                android:visibility="visible"/>
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <include
+        android:id="@+id/tbar"
+        layout="@layout/tbuds_common_toolbar"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/recentorderlistlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:numColumns="1"
+
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:orientation="vertical"
+        android:visibility="visible">
+        <!--android:weightSum="1"-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            android:layout_marginTop="3dp"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="0.30">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginRight="15dp">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/checkedfilled" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="3dp"
+                        android:text="@string/acpt"
+                        android:textSize="10dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="14dp"
+                        android:src="@drawable/approved_new" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Approved"
+                        android:textSize="10dp"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="0.5">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="14dp"
+                        android:src="@drawable/tbuds_half_dispatch" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/partpckgd"
+                        android:textSize="10dp"
+                        android:layout_marginLeft="3dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Packaging and Invoicing"
+                android:textColor="#8B4513"
+                android:fontFamily="@string/ButtonFont"
+                android:textSize="18dp"
+                android:layout_weight="0.60"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/pending_ordrcnt"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_weight="0.10"
+                android:textColor="#751205"
+                android:text="100"
+                android:fontFamily="@string/ButtonFont"
+                android:gravity="center"
+                android:textSize="15dp"
+                android:layout_gravity="center"
+                android:background="@drawable/spherecnt"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtnoordnote"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/sorry_no_ord_aval"
+            android:textStyle="italic|bold"
+            android:textSize="18sp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="5dp"
+            android:visibility="gone"/>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            android:visibility="visible"
+            android:layout_weight="0.9">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="3.5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#ededed"
+                    android:visibility="gone">
+                    <!-- android:layout_gravity="center|vertical"-->
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:gravity="left"
+                        android:maxLines="4"
+                        android:text="@string/ordno"
+                        android:textColor="#006400"
+                        android:textSize="12dp"
+                        android:layout_weight="0.45"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/addt"
+                        android:textColor="#006400"
+                        android:textSize="11dp"
+                        android:layout_gravity="center|right|top"
+                        android:gravity="center|right|top"
+                        android:layout_weight="0.5"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txtamt"
+                        android:layout_gravity="center|right|top"
+                        android:layout_weight="0.5"
+                        android:gravity="center|right|top"
+                        android:text="@string/expdldt"
+                        android:textColor="#006400"
+                        android:textSize="11dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|right|top"
+                        android:gravity="center"
+                        android:text="@string/status"
+                        android:textColor="#006400"
+                        android:textSize="11dp"
+                        android:layout_weight="0.5"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/consignee"
+                        android:layout_gravity="right"
+                        android:gravity="right"
+                        android:textColor="#006400"
+                        android:textSize="11dp"
+                        android:layout_weight="0.5"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txtamt"
+                        android:gravity="right"
+                        android:layout_gravity="right"
+                        android:text="@string/amt"
+                        android:textColor="#006400"
+                        android:textSize="12dp"
+                        android:layout_weight="0.5"/>
+
+                </LinearLayout>
+
+                <GridView
+                    android:id="@+id/listview_recent_ordered_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:numColumns="2"
+                    android:divider="@null"
+                    android:dividerHeight="0dp"
+                    android:visibility="visible"
+                    android:layout_weight="0.09" />
+
+                <TextView
+                    android:id="@+id/txt_showmore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/showmore"
+                    android:layout_marginRight="10dp"
+                    android:textStyle="italic|bold"
+                    android:textSize="15dp"
+                    android:fontFamily="@string/TextFont"
+                    android:textColor="#fe920b"
+                    android:elevation="10dp"
+                    android:layout_gravity="center|right"
+                    android:visibility="gone"/>
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+    </LinearLayout>
+
+</LinearLayout>

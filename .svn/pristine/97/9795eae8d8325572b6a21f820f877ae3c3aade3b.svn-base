@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout-watch-v20\\abc_alert_dialog_title_material.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\layout-watch-v20\\abc_alert_dialog_title_material.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout-watch-v20\\abc_alert_dialog_button_bar_material.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\layout-watch-v20\\abc_alert_dialog_button_bar_material.xml"
+    }
+]

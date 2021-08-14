@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center|top">
+
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+       >
+
+        <android.support.v7.widget.AppCompatRadioButton
+            android:id="@+id/radio_online"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Online"
+            android:padding="5dp"
+            android:layout_weight="1"
+            android:checked="true"
+            android:textSize="20dp"
+            android:buttonTint="@color/colorPrimary"
+            android:textColor="@color/black"/>
+
+
+        <android.support.v7.widget.AppCompatRadioButton
+            android:id="@+id/radio_ofline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Offline"
+            android:padding="5dp"
+            android:textSize="20dp"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:buttonTint="@color/colorPrimary"
+            />
+
+
+
+    </RadioGroup>
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:background="@color/white"
+        android:layout_marginTop="20dp">
+
+        <android.support.v7.widget.AppCompatRadioButton
+            android:id="@+id/radio_counter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Counter"
+            android:padding="5dp"
+            android:checked="true"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:buttonTint="@color/colorPrimary"
+            android:textColor="@color/black"/>
+
+
+        <android.support.v7.widget.AppCompatRadioButton
+            android:id="@+id/radio_auditor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Auditor"
+            android:padding="5dp"
+            android:textSize="20dp"
+            android:buttonTint="@color/colorPrimary"
+            android:layout_weight="1"
+            android:textColor="@color/black"/>
+
+
+
+    </RadioGroup>
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:background="@color/white"
+        android:layout_marginTop="20dp">
+
+        <android.support.v7.widget.AppCompatRadioButton
+            android:id="@+id/radio_immediate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Immediate"
+            android:padding="5dp"
+            android:checked="true"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:buttonTint="@color/colorPrimary"
+            />
+
+
+        <android.support.v7.widget.AppCompatRadioButton
+            android:id="@+id/radio_batch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Batch"
+            android:padding="5dp"
+            android:textSize="20dp"
+            android:layout_weight="1"
+            android:buttonTint="@color/colorPrimary"
+            android:textColor="@color/black"/>
+
+
+
+
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/white"
+        android:background="@drawable/button_blue_border"
+        />
+</LinearLayout>

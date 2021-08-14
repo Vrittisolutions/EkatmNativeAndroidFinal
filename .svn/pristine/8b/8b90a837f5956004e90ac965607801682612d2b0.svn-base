@@ -1,0 +1,1702 @@
+[
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\abc_screen_content_include.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\layout\\abc_screen_content_include.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\navigation_drawer_menu.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\PM\\res\\layout\\navigation_drawer_menu.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_calllist.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_calllist.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_team_member.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_team_member.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_activity_add_datasheet_main.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_activity_add_datasheet_main.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\place_autocomplete_item_powered_by_google.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-places-11.4.0.aar\\9c60aaf505b6efc267b09f4bf5566d34\\res\\layout\\place_autocomplete_item_powered_by_google.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_custom_datasheet.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_custom_datasheet.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\abc_action_mode_close_item_material.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\layout\\abc_action_mode_close_item_material.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_dialog_custom_offline_check.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_dialog_custom_offline_check.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_travel_plan_show_form.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_travel_plan_show_form.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_custom_workspace_act_cnt.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_custom_workspace_act_cnt.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_content_main_calllist.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_content_main_calllist.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_claim_details.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_claim_details.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_custom_meeting.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_custom_meeting.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_user_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_user_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_custom_notification_list.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_custom_notification_list.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\mr_chooser_list_item.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\layout\\mr_chooser_list_item.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\design_menu_item_action_area.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\2a4762706393415c04fa065e59894d9a\\res\\layout\\design_menu_item_action_area.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_histore_conversation_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_histore_conversation_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_content_activity_promotional_formselection.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_content_activity_promotional_formselection.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_call_rating.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_call_rating.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\mr_volume_control.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\layout\\mr_volume_control.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_open_close_chat_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_open_close_chat_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\wallet_test_layout.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-wallet-11.4.0.aar\\449d43424a619cb6619e1eec79fb442d\\res\\layout\\wallet_test_layout.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_content_exit.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_content_exit.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_chat_user1_item.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_chat_user1_item.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_pop_up_window.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_pop_up_window.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\place_autocomplete_item_prediction.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-places-11.4.0.aar\\9c60aaf505b6efc267b09f4bf5566d34\\res\\layout\\place_autocomplete_item_prediction.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_view_ticket_main.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_view_ticket_main.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_dilog_refresh.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_dilog_refresh.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\time_picker_dialog.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\datetimepicker-0.2.0.aar\\8906d3585d46b2715ac85166304b9464\\res\\layout\\time_picker_dialog.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_filter_item_list.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_filter_item_list.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\item_spinner_custom.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\item_spinner_custom.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_booked_timesheet.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_booked_timesheet.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_spinner_text.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_spinner_text.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_claim_details_item.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_claim_details_item.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_notification.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_notification.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\abc_list_menu_item_icon.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\layout\\abc_list_menu_item_icon.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_approve_periodic_billing.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_approve_periodic_billing.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\abc_tooltip.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\layout\\abc_tooltip.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_team_map.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_team_map.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\abc_dialog_title_material.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\layout\\abc_dialog_title_material.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_activity_add_group.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_activity_add_group.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_item_cust_detail.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_item_cust_detail.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_trail_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_trail_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\abc_expanded_menu_layout.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\layout\\abc_expanded_menu_layout.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\abc_alert_dialog_material.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\layout\\abc_alert_dialog_material.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_lay_footer.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_lay_footer.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\activity_module_selection.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\activity_module_selection.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_image_fullscreen_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_image_fullscreen_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_content_leavesummary.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_content_leavesummary.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_listformatedreassign.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_listformatedreassign.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\abc_activity_chooser_view.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\layout\\abc_activity_chooser_view.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_custom_myteam.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_custom_myteam.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\abc_action_bar_up_container.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\layout\\abc_action_bar_up_container.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_prospect_filter.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_prospect_filter.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_dialog_next_approver.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_dialog_next_approver.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_advance_provisional_receipt_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_advance_provisional_receipt_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_custom_cliam_details.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_custom_cliam_details.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_list_view_row_item.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_list_view_row_item.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_dialog_prospectindividual_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_dialog_prospectindividual_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\select_dialog_multichoice_material.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\layout\\select_dialog_multichoice_material.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_custom_teammember.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_custom_teammember.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_custom_record_list.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_custom_record_list.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_dilog_custom_offline.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_dilog_custom_offline.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\design_navigation_item_separator.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\2a4762706393415c04fa065e59894d9a\\res\\layout\\design_navigation_item_separator.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_offline_data.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_offline_data.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_attachment_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_attachment_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\abc_screen_simple.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\layout\\abc_screen_simple.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\nav_header_main.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\PM\\res\\layout\\nav_header_main.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\dialog_progress.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\lovely-dialog-1.0.7.aar\\5593b59aef996574df6163ec375f206e\\res\\layout\\dialog_progress.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\design_text_input_password_icon.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\2a4762706393415c04fa065e59894d9a\\res\\layout\\design_text_input_password_icon.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_lay_show_contact.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_lay_show_contact.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\date_picker_selected_date.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\datetimepicker-0.2.0.aar\\8906d3585d46b2715ac85166304b9464\\res\\layout\\date_picker_selected_date.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_nav_header_dra.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_nav_header_dra.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_collection_callslist_partial_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_collection_callslist_partial_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_birthday_main.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_birthday_main.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_multiple_group_item_list.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_multiple_group_item_list.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_content_opportunity_update.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_content_opportunity_update.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_ticket_register_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_ticket_register_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_dialog_prospect_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_dialog_prospect_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_add_user_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_add_user_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_custom_meeting.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_custom_meeting.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_bar.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_bar.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_dialog_claim_delete.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_dialog_claim_delete.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\dialog_choice.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\lovely-dialog-1.0.7.aar\\5593b59aef996574df6163ec375f206e\\res\\layout\\dialog_choice.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_custom_offlinedata.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_custom_offlinedata.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\time_header_label.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\datetimepicker-0.2.0.aar\\8906d3585d46b2715ac85166304b9464\\res\\layout\\time_header_label.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\dialog_custom.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\lovely-dialog-1.0.7.aar\\5593b59aef996574df6163ec375f206e\\res\\layout\\dialog_custom.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\abc_action_menu_item_layout.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\layout\\abc_action_menu_item_layout.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_activity_meeting.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_activity_meeting.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_travel_plan_show.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_travel_plan_show.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_custom_datasheet.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_custom_datasheet.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_opencalllist_item_list_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_opencalllist_item_list_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\app_bar_main.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\PM\\res\\layout\\app_bar_main.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_image_fliper.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_image_fliper.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_item_gps_records.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_item_gps_records.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_sharefunction_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_sharefunction_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_provisional_item_lay_list.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_provisional_item_lay_list.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_custom_birthday_list.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_custom_birthday_list.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_ticket_material_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_ticket_material_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_view_custom_marker.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_view_custom_marker.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_fragment_claim_details.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_fragment_claim_details.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_group_member_listview_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_group_member_listview_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_content__my_team_member_timesheet.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_content__my_team_member_timesheet.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_resolve_lay_update.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_resolve_lay_update.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_progress_login.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_progress_login.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_offline_data.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_offline_data.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_discount_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_discount_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_reassign_calls.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_reassign_calls.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\abc_alert_dialog_button_bar_material.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\pm_content_activity_pmdashboard.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\PM\\res\\layout\\pm_content_activity_pmdashboard.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_multiplae_listview_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_multiplae_listview_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_assign_activitiy.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_assign_activitiy.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_list_acivity.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_list_acivity.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_birthday_main.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_birthday_main.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\aw_player.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\audio-wife-1.0.3.aar\\60c1b0aacad530e001aecade2ae2bb1e\\res\\layout\\aw_player.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\abc_alert_dialog_title_material.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\layout\\abc_alert_dialog_title_material.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_user_list_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_user_list_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\app_bar_activity_module_selection.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\app_bar_activity_module_selection.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_navigation_drawer_menu.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_navigation_drawer_menu.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_content_trail_details.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_content_trail_details.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_product.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_product.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\design_navigation_menu_item.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\2a4762706393415c04fa065e59894d9a\\res\\layout\\design_navigation_menu_item.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_custom_my_teamdata.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_custom_my_teamdata.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_chat_activity_main.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_chat_activity_main.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_progress_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_progress_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_app_bar1.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_app_bar1.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\dialog_info.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\lovely-dialog-1.0.7.aar\\5593b59aef996574df6163ec375f206e\\res\\layout\\dialog_info.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_spinner_item.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_spinner_item.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_attachnmet_count.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_attachnmet_count.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\notification_template_part_time.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\36558538b602a41a3f8b7493d79908f8\\res\\layout\\notification_template_part_time.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\activity_log_in.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\PM\\res\\layout\\activity_log_in.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\cast_help_text.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\layout\\cast_help_text.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\support_simple_spinner_dropdown_item.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\layout\\support_simple_spinner_dropdown_item.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_listheader.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_listheader.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\notification_template_big_media.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-27.1.1.aar\\e84b199e7cbf2eaded57ac71a0a6757f\\res\\layout\\notification_template_big_media.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_open_close_con_item_list.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_open_close_con_item_list.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_content_managment.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_content_managment.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\list_item_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\list_item_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_change_activity_status.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_change_activity_status.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\pm_nav_header_activity_pmdashboard.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\PM\\res\\layout\\pm_nav_header_activity_pmdashboard.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_my_team_member.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_my_team_member.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_claim_location_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_claim_location_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\notification_template_part_chronometer.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\36558538b602a41a3f8b7493d79908f8\\res\\layout\\notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_claim_record.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_claim_record.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_custom_gpslocation.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_custom_gpslocation.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_fragment_claim_header.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_fragment_claim_header.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\date_picker_done_button.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\datetimepicker-0.2.0.aar\\8906d3585d46b2715ac85166304b9464\\res\\layout\\date_picker_done_button.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_updated_call_history_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_updated_call_history_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\notification_media_action.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-27.1.1.aar\\e84b199e7cbf2eaded57ac71a0a6757f\\res\\layout\\notification_media_action.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_edit_datasheet_main.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_edit_datasheet_main.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\view_videocontrols.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\fullscreenvideoview-1.1.2.aar\\4aacdf712e3d54b23c52389f91ec2cb7\\res\\layout\\view_videocontrols.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_drop_down_list_row.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_drop_down_list_row.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\content_main_activitylist.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\PM\\res\\layout\\content_main_activitylist.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\view_title_and_message.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\lovely-dialog-1.0.7.aar\\5593b59aef996574df6163ec375f206e\\res\\layout\\view_title_and_message.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\abc_popup_menu_header_item_layout.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\layout\\abc_popup_menu_header_item_layout.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_prospect_entry.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_prospect_entry.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\36558538b602a41a3f8b7493d79908f8\\res\\layout\\notification_template_icon_group.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_chat_room_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_chat_room_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_calllist_details_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_calllist_details_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_timesheet_log_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_timesheet_log_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\abc_action_menu_layout.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\layout\\abc_action_menu_layout.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_calls_listview_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_calls_listview_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_list_submenu.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_list_submenu.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_promotional_formselection.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_promotional_formselection.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\abc_list_menu_item_radio.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\layout\\abc_list_menu_item_radio.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_fragment_claim_summary.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_fragment_claim_summary.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_content_my_team_member.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_content_my_team_member.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_asset_transfer_list.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_asset_transfer_list.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_calllist_action.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_calllist_action.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_customenquiryitem.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_customenquiryitem.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_company_url.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_company_url.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_notification_list.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_notification_list.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_item_add_material.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_item_add_material.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_content_main.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_content_main.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_provisional_receipt_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_provisional_receipt_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_leave_records.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_leave_records.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_chat_data_menu.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_chat_data_menu.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\notification_template_media.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-27.1.1.aar\\e84b199e7cbf2eaded57ac71a0a6757f\\res\\layout\\notification_template_media.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_cal_item.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_cal_item.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_splash.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_splash.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\layout\\abc_activity_chooser_view_list_item.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\pm_app_bar_activity_pmdashboard.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\PM\\res\\layout\\pm_app_bar_activity_pmdashboard.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\activity_erroe_reporter.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\acr-1.0.1.aar\\6be5fbade9ebf9429fb530dafa8ae864\\res\\layout\\activity_erroe_reporter.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_lay_opportunity_dialog.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_lay_opportunity_dialog.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\design_navigation_menu.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\2a4762706393415c04fa065e59894d9a\\res\\layout\\design_navigation_menu.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_setting.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_setting.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\activity_assign_activitiy.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\PM\\res\\layout\\activity_assign_activitiy.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_team_member_opportunity.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_team_member_opportunity.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\cast_mini_controller.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\layout\\cast_mini_controller.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_gps_location_reportinglist.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_gps_location_reportinglist.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\date_picker_dialog.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\datetimepicker-0.2.0.aar\\8906d3585d46b2715ac85166304b9464\\res\\layout\\date_picker_dialog.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_group_member_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_group_member_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_individual_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_individual_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_multiplae_listview_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_multiplae_listview_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_row_contactitem.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_row_contactitem.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_chat_data_menu.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_chat_data_menu.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_opportunity.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_opportunity.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\notification_template_big_media_narrow_custom.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-27.1.1.aar\\e84b199e7cbf2eaded57ac71a0a6757f\\res\\layout\\notification_template_big_media_narrow_custom.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_dialog_upateticket_material.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_dialog_upateticket_material.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_settings.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_settings.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\searchable_list_dialog.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\searchablespinnerlibrary-1.3.1.aar\\2d28aa3ab164e7547a8b7804f448e960\\res\\layout\\searchable_list_dialog.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_service_report2.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_service_report2.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_reporting_person_gps_location.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_reporting_person_gps_location.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_contact_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_contact_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_fragment_group.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_fragment_group.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_promotional_form_record.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_promotional_form_record.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_employee_information.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_employee_information.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\item_footer_confirm.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\lovely-dialog-1.0.7.aar\\5593b59aef996574df6163ec375f206e\\res\\layout\\item_footer_confirm.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\abc_select_dialog_material.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\layout\\abc_select_dialog_material.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\activity_first.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\PM\\res\\layout\\activity_first.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_content_calllist.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_content_calllist.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_main.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_main.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_fragment_claims.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_fragment_claims.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_claimnotification_listvview_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_claimnotification_listvview_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\dialog_change_workspace.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\PM\\res\\layout\\dialog_change_workspace.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_chat_activity_main.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_chat_activity_main.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_content_scrolling.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_content_scrolling.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\activity_main.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\notification_action.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\36558538b602a41a3f8b7493d79908f8\\res\\layout\\notification_action.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_add_datasheet_main.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_add_datasheet_main.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\menu_dot.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\menu_dot.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_edit_datasheet_main.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_edit_datasheet_main.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_service_report_detail1.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_service_report_detail1.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_claimcontentrecord.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_claimcontentrecord.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_fragment_prospect_entry.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_fragment_prospect_entry.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_ticket_details_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_ticket_details_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_multiple_group_item_list.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_multiple_group_item_list.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_business_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_business_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_activity_activity_details.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_activity_activity_details.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\design_bottom_navigation_item.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\2a4762706393415c04fa065e59894d9a\\res\\layout\\design_bottom_navigation_item.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_activity_approval.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_activity_approval.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\select_dialog_item_material.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\layout\\select_dialog_item_material.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_item_cust_list.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_item_cust_list.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_progress.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_progress.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\notification_template_big_media_narrow.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-27.1.1.aar\\e84b199e7cbf2eaded57ac71a0a6757f\\res\\layout\\notification_template_big_media_narrow.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_fragment_people.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_fragment_people.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_group_item_list.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_group_item_list.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\item_simple_text_multichoice.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\lovely-dialog-1.0.7.aar\\5593b59aef996574df6163ec375f206e\\res\\layout\\item_simple_text_multichoice.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_claim_notification_item_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_claim_notification_item_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_itempromotionalrecord.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_itempromotionalrecord.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_content_actvity_enquiry_details.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_content_actvity_enquiry_details.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\design_navigation_item_header.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\2a4762706393415c04fa065e59894d9a\\res\\layout\\design_navigation_item_header.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\cast_tracks_chooser_dialog_row_layout.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\layout\\cast_tracks_chooser_dialog_row_layout.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_editdatasheet.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_editdatasheet.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_content_birthday.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_content_birthday.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_affected_customer_listview.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_affected_customer_listview.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_custom_summary_list.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_custom_summary_list.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_option_list.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_option_list.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_assettransfer_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_assettransfer_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_list_view_row_item.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_list_view_row_item.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_otp_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_otp_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_workspacewise_activity.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_workspacewise_activity.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_content_employee_information.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_content_employee_information.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_fragment_individual_prospect.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_fragment_individual_prospect.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_main2.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_main2.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\design_layout_tab_text.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\2a4762706393415c04fa065e59894d9a\\res\\layout\\design_layout_tab_text.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_app_bar_main.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_app_bar_main.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_leave_summary.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_leave_summary.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\mr_controller_volume_item.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\layout\\mr_controller_volume_item.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_custom_appointments.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_custom_appointments.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_activity_apply_claim.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_activity_apply_claim.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_popupaddcontact.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_popupaddcontact.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\acitivity_reassign_activity.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\PM\\res\\layout\\acitivity_reassign_activity.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\view_time_line.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\k4l-video-trimmer-1.0.aar\\ce8e68a043d9a9ecfe0d4b111928de0c\\res\\layout\\view_time_line.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_custom_notification_list.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_custom_notification_list.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_trail_details_item_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_trail_details_item_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\abc_list_menu_item_layout.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\layout\\abc_list_menu_item_layout.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\emojicon_item.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\SuperNova-Emoji-1.1.aar\\53e46f8ca5ef55fc7a0c6e6faf85f9ab\\res\\layout\\emojicon_item.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\dialog_standard.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\lovely-dialog-1.0.7.aar\\5593b59aef996574df6163ec375f206e\\res\\layout\\dialog_standard.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_approver_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_approver_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_custom_product_recycler.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_custom_product_recycler.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_feedback_callslist_partial_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_feedback_callslist_partial_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_teams_call_list_action.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_teams_call_list_action.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_view_spinner_item.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_view_spinner_item.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_fragment_business_prospect_entry.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_fragment_business_prospect_entry.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\abc_action_bar_title_item.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\layout\\abc_action_bar_title_item.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\notification_template_media_custom.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-27.1.1.aar\\e84b199e7cbf2eaded57ac71a0a6757f\\res\\layout\\notification_template_media_custom.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_notification.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_notification.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\design_bottom_sheet_dialog.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\2a4762706393415c04fa065e59894d9a\\res\\layout\\design_bottom_sheet_dialog.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_dialog_reschedule.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_dialog_reschedule.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_dialog_usage.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_dialog_usage.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\year_label_text_view.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\datetimepicker-0.2.0.aar\\8906d3585d46b2715ac85166304b9464\\res\\layout\\year_label_text_view.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_editdatasheet.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_editdatasheet.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_add_user_show_item_list_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_add_user_show_item_list_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_crm.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_crm.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\dialog_text_input.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\lovely-dialog-1.0.7.aar\\5593b59aef996574df6163ec375f206e\\res\\layout\\dialog_text_input.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_scrolling.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_scrolling.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_prospect_filter_list.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_prospect_filter_list.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_custom_travel_plan_show.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_custom_travel_plan_show.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_gpsmy_own_location.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_gpsmy_own_location.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_splash.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_splash.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\place_autocomplete_progress.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-places-11.4.0.aar\\9c60aaf505b6efc267b09f4bf5566d34\\res\\layout\\place_autocomplete_progress.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\abc_search_view.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\layout\\abc_search_view.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_content_setting.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_content_setting.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\cast_expanded_controller_activity.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\layout\\cast_expanded_controller_activity.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\select_dialog_singlechoice_material.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\layout\\select_dialog_singlechoice_material.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\emojicon_grid.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\SuperNova-Emoji-1.1.aar\\53e46f8ca5ef55fc7a0c6e6faf85f9ab\\res\\layout\\emojicon_grid.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_progress_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_progress_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_itemlevel.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_itemlevel.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_create_opportunity.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_create_opportunity.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_custom_opportunitylist_tm.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_custom_opportunitylist_tm.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_delete_travel_plan.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_delete_travel_plan.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_content_leaverecord.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_content_leaverecord.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_content_offlinedata.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_content_offlinedata.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_custom_myworkspace.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_custom_myworkspace.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_content_my_team.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_content_my_team.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_custom_birthday_list.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_custom_birthday_list.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_timesheet_log_item_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_timesheet_log_item_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_custom_calllist_partial.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_custom_calllist_partial.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_enquiry_form_setting.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_enquiry_form_setting.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\mr_playback_control.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\layout\\mr_playback_control.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_chat_user2_item.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_chat_user2_item.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_custom_spinner_txt_1.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_custom_spinner_txt_1.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_trail_details.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_trail_details.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_prospect_entry_2.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_prospect_entry_2.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_nav_header_main.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_nav_header_main.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\view_custom_marker.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\view_custom_marker.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\pm_activity_pmdashboard.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\PM\\res\\layout\\pm_activity_pmdashboard.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_attachments_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_attachments_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\abc_action_mode_bar.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\layout\\abc_action_mode_bar.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_callslist_partial_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_callslist_partial_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_custom_gps_reporting_to_item.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_custom_gps_reporting_to_item.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_group_member_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_group_member_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_chat_user2_item.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_chat_user2_item.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_lay_menu.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_lay_menu.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\content_activity_module_selection.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\content_activity_module_selection.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_close_history_conversation_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_close_history_conversation_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\design_layout_tab_icon.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\2a4762706393415c04fa065e59894d9a\\res\\layout\\design_layout_tab_icon.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_my_team_member_timesheet.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_my_team_member_timesheet.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_custom_spinner_txt.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_custom_spinner_txt.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_custom_filtered_prospect.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_custom_filtered_prospect.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_app_bar.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_app_bar.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\emojicons.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\SuperNova-Emoji-1.1.aar\\53e46f8ca5ef55fc7a0c6e6faf85f9ab\\res\\layout\\emojicons.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_provisional_list.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_provisional_list.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_custom_datasheet_que_item.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_custom_datasheet_que_item.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_dialog_prospectbussiness_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_dialog_prospectbussiness_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_workspacewise_act_cnt.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_workspacewise_act_cnt.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_add_enquiry.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_add_enquiry.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\place_autocomplete_fragment.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-places-11.4.0.aar\\9c60aaf505b6efc267b09f4bf5566d34\\res\\layout\\place_autocomplete_fragment.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_user_item_list.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_user_item_list.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_content_view_ticket_main.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_content_view_ticket_main.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_ticket_button_lay_adjust.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_ticket_button_lay_adjust.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_advance_pro_list_display.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_advance_pro_list_display.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\date_picker_view_animator.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\datetimepicker-0.2.0.aar\\8906d3585d46b2715ac85166304b9464\\res\\layout\\date_picker_view_animator.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_service_report_detail.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_service_report_detail.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_custom_myteam.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_custom_myteam.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_content_scrolling.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_content_scrolling.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_service_report.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_service_report.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_start_time_logging_fragment.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_start_time_logging_fragment.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_header_list_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_header_list_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\notification_media_cancel_action.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-27.1.1.aar\\e84b199e7cbf2eaded57ac71a0a6757f\\res\\layout\\notification_media_cancel_action.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_item_loading.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_item_loading.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_travel_plan.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_travel_plan.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_open_chat__listview_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_open_chat__listview_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_actvity_enquiry_details.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_actvity_enquiry_details.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_content_activity_enquiry_list.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_content_activity_enquiry_list.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_custom_dialog_add_product.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_custom_dialog_add_product.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_progress_hud.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_progress_hud.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_call_lay_history.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_call_lay_history.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_dialog_message_dialog.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_dialog_message_dialog.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_user_list_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_user_list_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_opportunity_update.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_opportunity_update.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_list_item.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_list_item.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\abc_screen_toolbar.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\layout\\abc_screen_toolbar.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_content_activity_promotional_form_record.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_content_activity_promotional_form_record.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_filtered_prospect_list.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_filtered_prospect_list.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\cast_tracks_chooser_dialog_layout.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\layout\\cast_tracks_chooser_dialog_layout.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\abc_popup_menu_item_layout.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\layout\\abc_popup_menu_item_layout.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_otp_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_otp_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_activity_my_team.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_activity_my_team.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\design_layout_snackbar.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\2a4762706393415c04fa065e59894d9a\\res\\layout\\design_layout_snackbar.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\view_color_area.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\lovely-dialog-1.0.7.aar\\5593b59aef996574df6163ec375f206e\\res\\layout\\view_color_area.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_enquiry_list.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_enquiry_list.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_chat_start_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_chat_start_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\listview_with_text_image.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\listview_with_text_image.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\date_picker_header_view.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\datetimepicker-0.2.0.aar\\8906d3585d46b2715ac85166304b9464\\res\\layout\\date_picker_header_view.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_fragment_view_ticket_main.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_fragment_view_ticket_main.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_chat_content_main.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_chat_content_main.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_content_offlinedata.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_content_offlinedata.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_custom_datasheet_que_item.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_custom_datasheet_que_item.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_dialog_action.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_dialog_action.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_user_item_list.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_user_item_list.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\notification_template_big_media_custom.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-27.1.1.aar\\e84b199e7cbf2eaded57ac71a0a6757f\\res\\layout\\notification_template_big_media_custom.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\design_layout_snackbar_include.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\2a4762706393415c04fa065e59894d9a\\res\\layout\\design_layout_snackbar_include.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_open_chat__listview_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_open_chat__listview_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_timesheet_entry.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_timesheet_entry.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\item_simple_text.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\lovely-dialog-1.0.7.aar\\5593b59aef996574df6163ec375f206e\\res\\layout\\item_simple_text.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\abc_list_menu_item_checkbox.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\layout\\abc_list_menu_item_checkbox.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_asset_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_asset_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\36558538b602a41a3f8b7493d79908f8\\res\\layout\\notification_action_tombstone.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\mr_controller_material_dialog_b.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\layout\\mr_controller_material_dialog_b.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_enquiry_form.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_enquiry_form.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_activity_main.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_activity_main.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_custom_spinner_txt.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_custom_spinner_txt.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_group_item_list.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_group_item_list.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_custom_subteammember.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_custom_subteammember.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_meeting.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_meeting.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_lay_header.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_lay_header.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_chat_start_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_chat_start_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_add_group.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_add_group.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\design_navigation_item_subheader.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\2a4762706393415c04fa065e59894d9a\\res\\layout\\design_navigation_item_subheader.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\mr_chooser_dialog.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-25.2.0.aar\\83e83954abdb02f5f9d28b49dcc7cbe8\\res\\layout\\mr_chooser_dialog.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\cast_intro_overlay.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-cast-framework-11.4.0.aar\\2b9cd841ea3269e9b451a9b832003909\\res\\layout\\cast_intro_overlay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\notification_template_lines_media.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-27.1.1.aar\\e84b199e7cbf2eaded57ac71a0a6757f\\res\\layout\\notification_template_lines_media.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_activity_managment.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_activity_managment.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_activity_scrolling.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_activity_scrolling.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_emloyee_advance_req.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_emloyee_advance_req.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_progress_hud.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_progress_hud.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_chat_user1_item.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_chat_user1_item.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_len_rating_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_len_rating_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_main_claim.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_main_claim.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_affected_customer_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_affected_customer_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_fragment_claim_attachment.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_fragment_claim_attachment.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_activity_apply_leave.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_activity_apply_leave.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_custom_offlinedata.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_custom_offlinedata.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_notification_layout.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_notification_layout.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\design_navigation_item.xml",
+        "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\2a4762706393415c04fa065e59894d9a\\res\\layout\\design_navigation_item.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_chatroom_list_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_chatroom_list_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\crm_header_list_lay.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\crm_header_list_lay.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\vwb_custom_activity_list.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\vwb_custom_activity_list.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\layout\\nav_header_activity_module_selection.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\layout\\nav_header_activity_module_selection.xml"
+    }
+]

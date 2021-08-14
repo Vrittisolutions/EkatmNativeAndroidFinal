@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\incremental\\mergeVwbDebugResources\\merged.dir\\values-ms-rMY\\values-ms-rMY.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Nilesh\\.gradle\\caches\\transforms-2\\files-2.1\\bcefe1a63aaad0e225ad14675b4e8bed\\datetimepicker-0.2.0\\res\\values-ms-rMY\\values-ms-rMY.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10,11,12,13,14",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "222,319,429,506,614,727,839,929,1010,1095,1177",
+                        "endColumns": "96,109,76,107,112,111,89,80,84,81,95",
+                        "endOffsets": "314,424,501,609,722,834,924,1005,1090,1172,1268"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,202,312,389,497,610,722,812,893,978,1060",
+                        "endColumns": "96,109,76,107,112,111,89,80,84,81,95",
+                        "endOffsets": "197,307,384,492,605,717,807,888,973,1055,1151"
+                    }
+                }
+            ]
+        }
+    ]
+}

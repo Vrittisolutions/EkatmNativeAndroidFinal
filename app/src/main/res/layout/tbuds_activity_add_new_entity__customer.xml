@@ -1,0 +1,892 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    tools:context="com.vritti.sales.activity.AddNewEntity_Customer">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme"
+        android:background="@color/colorPrimary1"
+        android:visibility="visible">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar1"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="@color/colorPrimary1"
+            app:popupTheme="@style/AppTheme">
+
+            <ProgressBar
+                android:id="@+id/toolbar_progress_Assgnwork"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="8dp"
+                android:indeterminateDrawable="@drawable/spinner"
+                android:visibility="gone" />
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="#6E6F72"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|left"
+            android:text="Add New Customer"
+            android:textColor="#fff"
+            android:textSize="16sp"
+            android:layout_weight="0.6"/>
+
+        <ImageView
+            android:id="@+id/btnnewcust"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/tbuds_add_custmr"
+            android:layout_gravity="center|right"
+            android:layout_weight="0.4"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/btnprospsetting"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/tbuds_settings"
+            android:layout_gravity="center|right"
+            android:layout_weight="0.4"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+    <include
+        android:id="@+id/tbar"
+        layout="@layout/tbuds_common_toolbar"
+        android:visibility="gone" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!--name-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingLeft="0dp"
+                    android:hint="Enter Name"
+                    android:textSize="14sp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="0.15">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="0dp"
+                        android:paddingLeft="7dp"
+                        android:hint=""
+                        android:inputType="text"
+                        android:textSize="14sp"
+                        android:textColor="#111"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <!--entity type code-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!--entity type-->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="0dp"
+                    android:hint="Enter Entity Type"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorPrimary1"
+                    android:layout_marginTop="0dp"
+                    android:layout_weight="0.32">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_entitytype"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="0dp"
+                        android:paddingLeft="7dp"
+                        android:hint=""
+                        android:drawableRight="@drawable/tbuds_ic_expand"
+                        android:inputType="text"
+                        android:textSize="13sp"
+                        android:textColor="#111"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <!--code-->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="0dp"
+                    android:hint="Enter Code"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorPrimary1"
+                    android:layout_marginTop="0dp"
+                    android:orientation="horizontal"
+                    android:layout_weight="0.32">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_entitycode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="0dp"
+                        android:paddingLeft="7dp"
+                        android:hint=""
+                        android:inputType="text"
+                        android:textSize="13sp"
+                        android:textColor="#111"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <!--address-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="0dp"
+                    android:hint="Enter Address"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorPrimary1"
+                    android:layout_marginTop="0dp"
+                    android:layout_weight="0.15">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_mainaddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="0dp"
+                        android:paddingLeft="7dp"
+                        android:hint=""
+                        android:drawableRight="@drawable/tbuds_home"
+                        android:maxLines="5"
+                        android:inputType="text|textMultiLine"
+                        android:textSize="14sp"
+                        android:textColor="#111"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <Button
+                    android:id="@+id/btnclear"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:text="Clear"
+                    android:layout_weight="0.85"
+                    android:textColor="#ffffff"
+                    android:textSize="13sp"
+                    android:visibility="gone"
+                    android:layout_marginRight="5dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/btn_pressed_2"/>
+
+            </LinearLayout>
+
+            <!--subaddress-->
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="7dp"
+                android:hint="Enter flat/house no."
+                android:textSize="14sp"
+                android:textColor="@color/colorPrimary1"
+                android:layout_marginTop="10dp"
+                android:visibility="gone">
+
+                <AutoCompleteTextView
+                    android:id="@+id/edt_subaddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:paddingLeft="7dp"
+                    android:hint=""
+                    android:textSize="14sp"
+                    android:textColor="#111"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <!--country-state-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!--country-->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="0dp"
+                    android:hint="Country"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorPrimary1"
+                    android:layout_marginTop="0dp"
+                    android:orientation="horizontal"
+                    android:layout_weight="0.5">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_country"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="0dp"
+                        android:paddingLeft="7dp"
+                        android:hint=""
+                        android:ellipsize="end"
+                        android:drawableRight="@drawable/tbuds_ic_expand"
+                        android:inputType="text"
+                        android:textSize="13sp"
+                        android:textColor="#111"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <!--state-->
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/lay_state"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="0dp"
+                    android:hint="State"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorPrimary1"
+                    android:layout_marginTop="0dp"
+                    android:layout_weight="0.5">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_state"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="0dp"
+                        android:paddingLeft="7dp"
+                        android:hint=""
+                        android:ellipsize="end"
+                        android:drawableRight="@drawable/tbuds_ic_expand"
+                        android:inputType="text"
+                        android:textSize="13sp"
+                        android:textColor="#111"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+
+            </LinearLayout>
+
+            <!--district-taluka-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!--district-->
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/lay_district"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="0dp"
+                    android:hint="District"
+                    android:textColor="@color/colorPrimary1"
+                    android:textSize="14sp"
+                    android:layout_marginTop="0dp"
+                    android:orientation="horizontal"
+                    android:layout_weight="0.5">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_district"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="0dp"
+                        android:paddingLeft="7dp"
+                        android:hint=""
+                        android:ellipsize="end"
+                        android:drawableRight="@drawable/tbuds_ic_expand"
+                        android:inputType="text"
+                        android:textSize="13sp"
+                        android:textColor="#111"/>
+                    <!-- -->
+
+                </android.support.design.widget.TextInputLayout>
+
+                <!--taluka-->
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/lay_taluka"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="0dp"
+                    android:hint="Taluka"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorPrimary1"
+                    android:layout_marginTop="0dp"
+                    android:layout_weight="0.5">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_taluka"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="0dp"
+                        android:paddingLeft="7dp"
+                        android:hint=""
+                        android:ellipsize="end"
+                        android:drawableRight="@drawable/tbuds_ic_expand"
+                        android:inputType="text"
+                        android:textSize="13sp"
+                        android:textColor="#111"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+
+            </LinearLayout>
+
+            <!--city-pin-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!--city-->
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/lay_city"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="0dp"
+                    android:hint="City"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorPrimary1"
+                    android:layout_marginTop="0dp"
+                    android:orientation="horizontal"
+                    android:layout_weight="0.5">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_city"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="0dp"
+                        android:paddingLeft="7dp"
+                        android:hint=""
+                        android:ellipsize="end"
+                        android:drawableRight="@drawable/tbuds_ic_expand"
+                        android:inputType="text"
+                        android:textSize="13sp"
+                        android:textColor="#111" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <!--postalcode-->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="0dp"
+                    android:hint="Enter Pincode"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorPrimary1"
+                    android:layout_marginTop="0dp"
+                    android:orientation="horizontal"
+                    android:layout_weight="0.5">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_pincode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="0dp"
+                        android:paddingLeft="7dp"
+                        android:hint=""
+                        android:inputType="number"
+                        android:maxLength="6"
+                        android:textSize="13sp"
+                        android:textColor="#111"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+
+            </LinearLayout>
+
+            <!--mobile-landline-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!--mobile-->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="0dp"
+                    android:hint="Enter Mobile"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorPrimary1"
+                    android:layout_marginTop="0dp"
+                    android:layout_weight="0.5">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_mobile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="0dp"
+                        android:paddingLeft="7dp"
+                        android:hint=""
+                        android:drawableRight="@drawable/tbuds_call_phone"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:textSize="14sp"
+                        android:textColor="#111"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <!--landline-->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="0dp"
+                    android:hint="Enter Landline"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorPrimary1"
+                    android:layout_marginTop="0dp"
+                    android:layout_weight="0.5">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_landline"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="0dp"
+                        android:paddingLeft="7dp"
+                        android:hint=""
+                        android:drawableRight="@drawable/tbuds_landline"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:textSize="14sp"
+                        android:textColor="#111"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <!--email-->
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="0dp"
+                android:hint="Enter Email"
+                android:textSize="14sp"
+                android:textColor="@color/colorPrimary1"
+                android:layout_marginTop="0dp"
+                android:orientation="horizontal">
+
+                <AutoCompleteTextView
+                    android:id="@+id/edt_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="0dp"
+                    android:drawableRight="@drawable/tbuds_email"
+                    android:hint=""
+                    android:inputType="textEmailAddress|textMultiLine"
+                    android:maxLines="2"
+                    android:paddingLeft="7dp"
+                    android:textColor="#111"
+                    android:textSize="12.5sp" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <!--website, currency-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!--website-->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="0dp"
+                    android:hint="Enter Website"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorPrimary1"
+                    android:layout_marginTop="0dp"
+                    android:orientation="horizontal"
+                    android:layout_weight="0.35">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_website"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="0dp"
+                        android:paddingLeft="7dp"
+                        android:hint=""
+                        android:drawableRight="@drawable/tbuds_website"
+                        android:maxLines="2"
+                        android:inputType="textWebEmailAddress|textMultiLine"
+                        android:textSize="12.5sp"
+                        android:textColor="#111"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <!--currency-->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="0dp"
+                    android:hint="Select Currency"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorPrimary1"
+                    android:layout_marginTop="0dp"
+                    android:layout_weight="0.65">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_currency"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="0dp"
+                        android:paddingLeft="7dp"
+                        android:hint=""
+                        android:drawableRight="@drawable/tbuds_ic_expand"
+                        android:inputType="text"
+                        android:maxLength="10"
+                        android:textSize="14sp"
+                        android:textColor="#111"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <!--contact details-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#dcdcdc"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Contact Details"
+                    android:paddingLeft="5dp"
+                    android:textColor="#111"/>
+            </LinearLayout>
+
+            <!--name-designation-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!--name-designation-->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="0dp"
+                    android:hint="Enter Name"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorPrimary1"
+                    android:layout_marginTop="0dp"
+                    android:layout_weight="0.32">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_condtls_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="0dp"
+                        android:paddingLeft="7dp"
+                        android:hint=""
+                        android:inputType="text|textMultiLine"
+                        android:textSize="13sp"
+                        android:textColor="#111"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <!--Designation-->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="0dp"
+                    android:hint="Enter Designation"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorPrimary1"
+                    android:layout_marginTop="0dp"
+                    android:orientation="horizontal"
+                    android:layout_weight="0.32">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_designation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="0dp"
+                        android:paddingLeft="7dp"
+                        android:hint=""
+                        android:inputType="text|textMultiLine"
+                        android:textSize="13sp"
+                        android:textColor="#111"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <!--mobile-landline-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!--mobile-->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="0dp"
+                    android:hint="Enter Mobile"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorPrimary1"
+                    android:layout_marginTop="0dp"
+                    android:layout_weight="0.65">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_condtls_mobile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="0dp"
+                        android:paddingLeft="7dp"
+                        android:hint=""
+                        android:drawableRight="@drawable/tbuds_call_phone"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:textSize="14sp"
+                        android:textColor="#111"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <!--landline-->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="0dp"
+                    android:hint="Enter Email"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorPrimary1"
+                    android:layout_marginTop="0dp"
+                    android:layout_weight="0.35">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_condtls_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="0dp"
+                        android:paddingLeft="7dp"
+                        android:hint=""
+                        android:drawableRight="@drawable/tbuds_email"
+                        android:inputType="textEmailAddress|textMultiLine"
+                        android:textSize="13sp"
+                        android:textColor="#111"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <!--influence, default, systemaccess-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!--influence-->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="0dp"
+                    android:hint="Influence Level"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorPrimary1"
+                    android:layout_marginTop="0dp"
+                    android:layout_weight="0.5">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/sel_influence"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="0dp"
+                        android:paddingLeft="7dp"
+                        android:hint=""
+                        android:drawableRight="@drawable/tbuds_ic_expand"
+                        android:inputType="text"
+                        android:textSize="14sp"
+                        android:textColor="#111"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <!--sales price list-->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="0dp"
+                    android:hint="Select Price List"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorPrimary1"
+                    android:layout_marginTop="0dp"
+                    android:layout_weight="0.5">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/sel_pricelist"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="0dp"
+                        android:paddingLeft="7dp"
+                        android:hint=""
+                        android:drawableRight="@drawable/tbuds_ic_expand"
+                        android:inputType="text"
+                        android:textSize="14sp"
+                        android:textColor="#111"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <!--contact required, price list-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/chkdefault"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="0dp"
+                    android:text="Default"
+                    android:textSize="12sp"
+                    android:textColor="#2c2c2c"
+                    android:layout_weight="0.33"/>
+
+                <CheckBox
+                    android:id="@+id/chkekatm_access"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="0dp"
+                    android:text="Ekatm Access"
+                    android:textSize="12sp"
+                    android:textColor="#2c2c2c"
+                    android:layout_weight="0.33"/>
+
+                <CheckBox
+                    android:id="@+id/chkcontract_required"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="0dp"
+                    android:text="Contract Required"
+                    android:textSize="12sp"
+                    android:textColor="#2c2c2c"
+                    android:layout_weight="0.33"/>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnsave_entity"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@color/btncolordark"
+                android:layout_marginTop="10dp"
+                android:text="Save"
+                android:textColor="#ffffff"
+                android:textSize="14sp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/linearLayout8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:weightSum="1" >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_weight="0.15"
+            android:gravity="center"
+            android:text="BillNo"
+            android:id="@+id/BillNo"
+            android:textColor="#000"
+            android:textSize="16dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_weight="0.20"
+            android:gravity="center"
+            android:text="Date"
+            android:id="@+id/Date"
+            android:textColor="#000"
+            android:textSize="16dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_weight="0.10"
+            android:gravity="right"
+            android:id="@+id/TotalAmt"
+            android:text="Total Amt"
+
+            android:textColor="#000"
+            android:textSize="16dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_weight="0.12"
+            android:gravity="right"
+            android:id="@+id/PaidAmt"
+            android:text="Paid Amt"
+
+            android:textColor="#000"
+            android:textSize="16dp" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_weight="0.15"
+            android:gravity="right"
+            android:id="@+id/Remainingamt"
+            android:text="Remaining amt"
+            android:textColor="#000"
+            android:textSize="16dp" />
+
+    </LinearLayout>
+</LinearLayout>

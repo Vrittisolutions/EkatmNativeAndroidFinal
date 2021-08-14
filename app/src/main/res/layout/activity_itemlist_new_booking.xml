@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbarlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:background="@color/colorPrimary1"
+        android:paddingBottom="5dp">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar1"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+            <!--?attr/actionBarSize-->
+
+            <RelativeLayout
+                android:id="@+id/layyellow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|right"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginTop="2dp">
+                <!-- android:layout_weight="0.8"-->
+                <!-- android:padding="5dp"
+                android:layout_marginTop="@dimen/actionbar_height"-->
+
+                <ImageView
+                    android:id="@+id/imgcart"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:src="@drawable/cart2"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center_vertical|right" />
+
+                <TextView
+                    android:id="@+id/textview_cart"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/shape_cart_count"
+                    android:layout_marginLeft="25dp"
+                    android:text="0"
+                    android:textColor="#111"
+                    android:gravity="center"
+                    android:textSize="10sp"
+                    android:textStyle="bold"/>
+
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/btnchangemode"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:text="Change Shop by mode"
+                android:textSize="9sp"
+                android:textColor="#111"
+                android:textAllCaps="false"
+                android:background="@drawable/border_white"
+                android:layout_marginLeft="50dp"
+                android:visibility="gone"/>
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:id="@+id/headerList"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="horizontal"
+        android:weightSum="10"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="5.25">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:text="Products"
+                android:textColor="@color/btncolordark"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:titleCondensed="@string/ButtonFont" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1.25">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Price"
+                android:textColor="@color/btncolordark"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:titleCondensed="@string/ButtonFont"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1.5">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Qty"
+                android:textColor="@color/btncolordark"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:titleCondensed="@string/ButtonFont" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center|right"
+            android:layout_weight="2">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center|right"
+                android:layout_marginRight="10dp"
+                android:text="Total"
+                android:textColor="@color/btncolordark"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:titleCondensed="@string/ButtonFont" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/edtsearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/srch_prodbrand"
+        android:textSize="13sp"
+        android:paddingLeft="5sp"
+        android:layout_below="@+id/appbarlayout"
+        android:visibility="gone"/>
+
+    <ListView
+        android:id="@+id/listview_item_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/layy"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:layout_below="@+id/edtsearch" />
+
+    <LinearLayout
+        android:id="@+id/imgzoomview_lay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/border_white"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="60dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:elevation="5dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/imgzoomview"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:visibility="visible"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"
+            android:elevation="5dp"/>
+
+        <TextView
+            android:id="@+id/txtiname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Item Name"
+            android:textSize="16sp"
+            android:textColor="#111"
+            android:textStyle="bold"
+            android:paddingLeft="10sp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtbname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="By Brand"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:paddingLeft="10sp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                android:visibility="visible"
+                android:textColor="@color/violet_dark"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Content+UOM"
+                android:textSize="14sp"
+                android:textColor="#111"
+                android:textStyle="bold"
+                android:paddingRight="10sp"
+                android:layout_gravity="left"
+                android:gravity="left"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/button_continue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary1"
+            android:layout_alignParentBottom="true"
+            android:text="@string/contnue"
+            android:titleCondensed="@string/ButtonFont"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:textSize="17dp"
+            android:layout_weight="0.5" />
+
+        <Button
+            android:id="@+id/button_chkproceed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_pressed"
+            android:layout_alignParentBottom="true"
+            android:text="@string/addtocart"
+            android:titleCondensed="@string/ButtonFont"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:textSize="17dp"
+            android:layout_weight="0.5"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

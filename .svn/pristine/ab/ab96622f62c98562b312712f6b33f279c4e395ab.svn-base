@@ -1,0 +1,1167 @@
+package com.vritti.ekatm.activity;
+
+import android.Manifest;
+import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
+import android.bluetooth.BluetoothDevice;
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.content.res.Resources;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.pdf.PdfDocument;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.wifi.ScanResult;
+import android.net.wifi.WifiConfiguration;
+import android.net.wifi.WifiManager;
+import android.os.AsyncTask;
+import android.os.Build;
+import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
+import android.print.PrintJob;
+import android.print.PrintJobInfo;
+import android.print.PrintManager;
+import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+import com.vritti.chat.adapter.AddUserAdapter;
+import com.vritti.chat.bean.ChatUser;
+import com.vritti.databaselib.data.DatabaseHandlers;
+import com.vritti.databaselib.other.Utility;
+import com.vritti.databaselib.other.WebUrlClass;
+import com.vritti.ekatm.Interface.PrintCompleteService;
+import com.vritti.ekatm.R;
+import com.vritti.ekatm.adapter.PrintServicesAdapter;
+import com.vritti.ekatm.bean.BluetoothClass;
+import com.vritti.ekatm.bean.Constants_wifi;
+import com.vritti.ekatm.bean.Util_Wifi_print;
+import com.vritti.ekatm.bean.Utils_print;
+import com.vritti.ekatm.bean.WifiScanner;
+import com.vritti.sales.CounterBilling.DeviceListActivity;
+import com.vritti.sales.adapters.AdapterCBillingList;
+import com.vritti.sales.beans.BillNoClass;
+import com.vritti.sessionlib.CallbackInterface;
+import com.vritti.sessionlib.StartSession;
+import com.vritti.vwb.CommonClass.AppCommon;
+import com.vritti.vwb.classes.CommonFunction;
+import com.zj.btsdk.BluetoothService;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import java.util.Locale;
+
+import static org.apache.commons.lang3.time.DateUtils.round;
+
+/**
+ * Created by sharvari on 03-Oct-19.
+ */
+
+public class PrintingActivity extends AppCompatActivity implements PrintCompleteService {
+    ImageView img_barcode;
+    Button btnprint, btncancel;
+    LinearLayout addressLayout;
+    private static final int REQUEST_WRITE_PERMISSION = 786;
+    SharedPreferences.Editor editor;
+    String PlantMasterId ="", LoginId="", Password="", CompanyURL="", EnvMasterId="",
+            UserMasterId="",UserName = "", MobileNo = "",Indentamount;
+    DatabaseHandlers db;
+    CommonFunction cf;
+    Utility ut;
+    SQLiteDatabase sql;
+    EditText edt_qty, edt_weight, edt_countedby, edt_area;
+    AutoCompleteTextView edt_location;
+    TextView edt_itemcode, edt_description;
+    ArrayList<String> ItemCodelist;
+    ArrayList<String> ItemDesclist;
+
+    BluetoothService mService = null;
+    BluetoothDevice con_dev = null;
+    private boolean deviceConnected = false;
+    public static final int REQUEST_ENABLE_BT = 4;
+    public static final int REQUEST_CONNECT_DEVICE = 6;
+    public static final int REQ_PARTCODE = 7;
+    public static final int REQ_PARTNAME = 8;
+
+    public static String today, todaysDate;
+    public static String date = null;
+    public static String time = null;
+    String DATE = "", TIME = "";
+    DatePickerDialog datePickerDialog;
+    static int year, month, day;
+    BillNoClass billNoClass;
+    double CONV_factor = 1;
+    String billnumber = "0000";
+
+    /********************************************************************************************************/
+    private WifiConfiguration mPrinterConfiguration, mOldWifiConfiguration;
+    private WifiManager mWifiManager;
+    private List<ScanResult> mScanResults = new ArrayList<ScanResult>();
+    private WifiScanner mWifiScanner;
+
+    private PrintManager mPrintManager;
+    private List<PrintJob> mPrintJobs;
+    private PrintJob mCurrentPrintJob;
+
+    private File pdfFile;
+    private String externalStorageDirectory;
+
+    private Handler mPrintStartHandler = new Handler();
+    private Handler mPrintCompleteHandler = new Handler();
+    private String connectionInfo;
+
+    private boolean isMobileDataConnection = false;
+    
+    @SuppressLint("WifiManagerLeak")
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.item_lay);
+
+        ut = new Utility();
+        cf = new CommonFunction(PrintingActivity.this);
+        String settingKey = ut.getSharedPreference_SettingKey(PrintingActivity.this);
+        String dabasename = ut.getValue(PrintingActivity.this, WebUrlClass.GET_DATABASE_NAME_KEY, settingKey);
+        db = new DatabaseHandlers(PrintingActivity.this, dabasename);
+        CompanyURL = ut.getValue(PrintingActivity.this, WebUrlClass.GET_COMPANY_URL_KEY, settingKey);
+        EnvMasterId = ut.getValue(PrintingActivity.this, WebUrlClass.GET_EnvMasterID_KEY, settingKey);
+        PlantMasterId = ut.getValue(PrintingActivity.this, WebUrlClass.GET_PlantID_KEY, settingKey);
+        LoginId = ut.getValue(PrintingActivity.this, WebUrlClass.GET_LOGIN_KEY, settingKey);
+        Password =ut.getValue(PrintingActivity.this, WebUrlClass.GET_PSW_KEY, settingKey);
+        UserMasterId = ut.getValue(PrintingActivity.this, WebUrlClass.GET_USERMASTERID_KEY, settingKey);
+        UserName = ut.getValue(PrintingActivity.this, WebUrlClass.GET_USERNAME_KEY, settingKey);
+        sql = db.getWritableDatabase();
+
+        img_barcode=findViewById(R.id.img_barcode);
+        edt_itemcode=findViewById(R.id.edt_itemcode);
+        edt_description=findViewById(R.id.edt_description);
+        edt_qty=findViewById(R.id.edt_qty);
+        edt_weight = findViewById(R.id.txt_weight);
+        edt_location = findViewById(R.id.edt_location);
+        edt_countedby = findViewById(R.id.edt_countedby);
+        edt_area = findViewById(R.id.edt_area);
+        /*edt_weight.setEnabled(true);
+        edt_weight.setFocusable(true);
+        edt_weight.setClickable(true);*/
+
+        btnprint = findViewById(R.id.btnprint);
+        btncancel = findViewById(R.id.btncancel);
+        addressLayout = findViewById(R.id.addressLayout);
+
+        mService = new BluetoothService(PrintingActivity.this, mHandler);
+
+        /*********************************** Wifi ****************************************************/
+
+        mWifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+
+        mWifiScanner = new WifiScanner();
+        /***************************************************************************************/
+
+        ItemCodelist = new ArrayList<String>();
+        ItemDesclist = new ArrayList<String>();
+        billNoClass = new BillNoClass();
+
+        if (AppCommon.getInstance(this).getBillNo_print().equals("")) {
+
+        } else {
+            billNoClass = new Gson().fromJson(AppCommon.getInstance(this).getBillNo_print(), BillNoClass.class);
+        }
+
+        if (mService.isAvailable() == false) {
+            Toast.makeText(PrintingActivity.this, "Bluetooth is not available", Toast.LENGTH_LONG).show();
+        }
+
+        if (cf.getGetItemcount()>0){
+          //  displayProduct();
+        }else {
+            if (isnet()) {
+                new StartSession(PrintingActivity.this, new CallbackInterface() {
+                    @Override
+                    public void callMethod() {
+                        new DownloadGetItemlistJSON().execute();
+                    }
+
+                    @Override
+                    public void callfailMethod(String msg) {
+
+                    }
+                });
+            }
+        }
+
+        img_barcode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IntentIntegrator integrator = new IntentIntegrator(PrintingActivity.this);
+                integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
+                integrator.setPrompt("Scan");
+                integrator.setCameraId(0);
+                integrator.setOrientationLocked(true);
+                integrator.setBeepEnabled(true);
+                integrator.setBarcodeImageEnabled(false);
+                integrator.initiateScan();
+
+            }
+        });
+
+        edt_itemcode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PrintingActivity.this, PartCodeActivity.class);
+                startActivityForResult(intent,REQ_PARTCODE);
+            }
+        });
+
+        /*edt_itemcode.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                *//*String code = edt_itemcode.getText().toString();
+                GetItemCode(code);*//*
+
+            }
+        });*/
+
+        edt_description.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PrintingActivity.this, PartNameActivity.class);
+                startActivityForResult(intent,REQ_PARTNAME);
+            }
+        });
+
+        /*edt_description.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                String desc=edt_description.getText().toString();
+                GetItemDesc(desc);
+            }
+        });*/
+
+        edt_weight.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String edt = s.toString();
+
+                if( edt.equals("")){
+
+                }else {
+
+                    if(CONV_factor == 1){
+                        edt_qty.setText(String.valueOf(CONV_factor));
+                    }else if(CONV_factor > 1) {
+                        double wt = 0, qty = 0;
+                        if(edt_weight.getText().toString().trim() == ""){
+                            wt = 0;
+                        }else {
+                            wt = Double.parseDouble(edt_weight.getText().toString().trim());
+                        }
+                        qty = wt * CONV_factor;
+                        edt_qty.setText(String.valueOf(qty));
+                    }
+                }
+            }
+        });
+
+        btnprint.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                //take print out
+
+                    if(validate()){
+                    if(BluetoothClass.isPrinterConnected(getApplicationContext(), PrintingActivity.this)) {
+                        mService = BluetoothClass.getServiceInstance();
+
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                            printReceipt();
+                        }
+
+                    }else {
+                        BluetoothClass.connectPrinter(getApplicationContext(),PrintingActivity.this);
+                    }
+
+                      /*  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                            printReceipt();
+                        }*/
+
+                        /*Intent intent = new Intent(PrintingActivity.this,PrintScreenWIFI.class);
+                        intent.putExtra("Seqnumber",billnumber);
+                        intent.putExtra("itemdesc",edt_description.getText().toString().trim());
+                        intent.putExtra("partcode", edt_itemcode.getText().toString().trim());
+                        intent.putExtra("weight", edt_weight.getText().toString().trim());
+                        intent.putExtra("quantity", edt_qty.getText().toString().trim());
+                        intent.putExtra("area", edt_area.getText().toString().trim());
+                        intent.putExtra("location", edt_location.getText().toString().trim());
+                        intent.putExtra("countedby", edt_countedby.getText().toString().trim());
+                        intent.putExtra("verifiedby", edt_countedby.getText().toString().trim());
+                        intent.putExtra("datetime",);
+                        startActivity(intent);*/
+
+                        /*******************************************************************************************/
+
+                    /*connectionInfo = Util_Wifi_print.connectionInfo(PrintingActivity.this);
+
+                    if (connectionInfo.equalsIgnoreCase(Constants_wifi.CONTROLLER_MOBILE)) {
+                        isMobileDataConnection = true;
+                        if (mWifiManager.isWifiEnabled() == false) {
+                            Toast.makeText(getApplicationContext(), "Enabling WiFi..", Toast.LENGTH_LONG).show();
+                            mWifiManager.setWifiEnabled(true);
+                        }
+                        mWifiManager.startScan();
+                        printerConfiguration();
+
+                    } else if (connectionInfo.equalsIgnoreCase(Constants_wifi.CONTROLLER_WIFI)) {
+                        Util_Wifi_print.storeCurrentWiFiConfiguration(PrintingActivity.this);
+
+                        printerConfiguration();
+
+                    } else {
+                        Toast.makeText(PrintingActivity.this, "Please connect to Internet", Toast.LENGTH_SHORT).show();
+                    }*/
+
+                    }else {
+
+                    }
+            }
+        });
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (requestCode == REQUEST_WRITE_PERMISSION && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+        }
+    }
+
+    private void requestPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_WRITE_PERMISSION);
+        } else {
+
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if(result != null) {
+            if(result.getContents() == null) {
+                Log.e("Scan*******", "Cancelled scan");
+
+            } else {
+                Log.e("Scan", "Scanned");
+
+                edt_itemcode.setText(result.getContents());
+                GetItemCode(result.getContents());
+                //Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+                }
+        } else {
+            // This is important, otherwise the result will not be passed to the fragment
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+
+        if (requestCode == REQUEST_ENABLE_BT && resultCode == RESULT_OK) {
+            BluetoothClass.pairPrinter(getApplicationContext(),PrintingActivity.this);
+        }else if (requestCode == REQUEST_CONNECT_DEVICE && resultCode == RESULT_OK) {
+            String address = data.getExtras().getString(DeviceListActivity.EXTRA_DEVICE_ADDRESS);
+            BluetoothClass.pairedPrinterAddress(getApplicationContext(),PrintingActivity.this,address);
+        }else if (requestCode == Constants_wifi.REQUEST_CODE_PRINTER && resultCode == Constants_wifi.RESULT_CODE_PRINTER) {
+            mPrinterConfiguration = Util_Wifi_print.getWifiConfiguration(PrintingActivity.this, Constants_wifi.CONTROLLER_PRINTER);
+            doPrint();
+        }else if(requestCode == REQ_PARTCODE && resultCode == REQ_PARTCODE){
+            edt_itemcode.setText(data.getStringExtra("PartCode"));
+            edt_description.setText(data.getStringExtra("PartName"));
+            CONV_factor = Double.parseDouble(data.getStringExtra("ConvFactor"));
+           //Toast.makeText(this, "getting back frm ocr",Toast.LENGTH_SHORT).show();
+
+             if(CONV_factor == 1){
+
+                        edt_qty.setEnabled(true);
+                        edt_qty.setClickable(true);
+                        addressLayout.setVisibility(View.GONE);
+                        addressLayout.setAlpha((float) 0.3);
+                        edt_weight.setEnabled(false);
+                        edt_weight.setFocusable(false);
+                        edt_weight.setClickable(false);
+
+                    }else if(CONV_factor > 1) {
+                        edt_qty.setEnabled(false);
+                        addressLayout.setVisibility(View.VISIBLE);
+                        addressLayout.setAlpha(1);
+                        edt_weight.setEnabled(true);
+                        edt_weight.setFocusable(true);
+                        edt_weight.setClickable(true);
+                    }else {
+
+                        edt_qty.setEnabled(true);
+                        edt_qty.setClickable(true);
+                        addressLayout.setVisibility(View.GONE);
+                    }
+
+        }else if(requestCode == REQ_PARTNAME && resultCode == REQ_PARTNAME){
+            edt_itemcode.setText(data.getStringExtra("PartCode"));
+            edt_description.setText(data.getStringExtra("PartName"));
+            CONV_factor = Double.parseDouble(data.getStringExtra("ConvFactor"));
+
+            if(CONV_factor == 1){
+                edt_qty.setEnabled(true);
+                edt_qty.setClickable(true);
+                addressLayout.setVisibility(View.GONE);
+                edt_weight.setEnabled(false);
+                edt_weight.setFocusable(false);
+                edt_weight.setClickable(false);
+            }else if(CONV_factor > 1) {
+                edt_qty.setEnabled(false);
+                addressLayout.setVisibility(View.VISIBLE);
+                edt_weight.setEnabled(true);
+                edt_weight.setFocusable(true);
+                edt_weight.setClickable(true);
+            }
+        }
+    }
+
+    @Override
+    public void onMessage(int status) {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            mPrintJobs = mPrintManager.getPrintJobs();
+        }
+
+        mPrintCompleteHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                mPrintCompleteHandler.postDelayed(this, 2000);
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                    if (mCurrentPrintJob.getInfo().getState() == PrintJobInfo.STATE_COMPLETED) {
+
+                        for (int i = 0; i < mPrintJobs.size(); i++) {
+                            if (mPrintJobs.get(i).getId() == mCurrentPrintJob.getId()) {
+                                mPrintJobs.remove(i);
+                            }
+                        }
+
+                       // switchConnection();
+
+                        mPrintCompleteHandler.removeCallbacksAndMessages(null);
+                    } else if (mCurrentPrintJob.getInfo().getState() == PrintJobInfo.STATE_FAILED) {
+                        Toast.makeText(PrintingActivity.this, "Print Failed!", Toast.LENGTH_LONG).show();
+                        mPrintCompleteHandler.removeCallbacksAndMessages(null);
+                    } else if (mCurrentPrintJob.getInfo().getState() == PrintJobInfo.STATE_CANCELED) {
+                        Toast.makeText(PrintingActivity.this, "Print Cancelled!", Toast.LENGTH_LONG).show();
+                        mPrintCompleteHandler.removeCallbacksAndMessages(null);
+                    }
+                }
+
+            }
+        }, 2000);
+    }
+
+    class DownloadGetItemlistJSON extends AsyncTask<String, Void, String> {
+        Object res;
+        String response;
+        ProgressDialog progressDialog;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            
+ try {
+                if (progressDialog == null) {
+                    progressDialog = new ProgressDialog(PrintingActivity.this);
+                    progressDialog.setMessage("Loading Please wait...");
+                    progressDialog.setIndeterminate(false);
+                    //  progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    //  progressDialog.setContentView(R.layout.vwb_progress_lay);
+                    progressDialog.setCancelable(false);
+
+                }
+                progressDialog.show();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            String url = CompanyURL + WebUrlClass.api_ItemList;
+
+            try {
+                res = ut.OpenConnection(url,PrintingActivity.this);
+                if (res!=null) {
+                    response = res.toString();
+
+                   /* response = res.toString().replaceAll("\\\\", "");
+                    response = response.replaceAll("\\\\\\\\/", "");
+                    response = response.substring(1, response.length() - 1);
+                   */
+
+                    ContentValues values = new ContentValues();
+                    JSONArray jResults = new JSONArray(response);
+
+                    sql.delete(db.TABLE_GetItemList, null,
+                            null);
+                    Cursor c = sql.rawQuery("SELECT * FROM " + db.TABLE_GetItemList, null);
+                    int count = c.getCount();
+                    String columnName, columnValue;
+
+                    for (int i = 0; i < jResults.length(); i++) {
+                        JSONObject jorder = jResults.getJSONObject(i);
+                        for (int j = 0; j < c.getColumnCount(); j++) {
+                            columnName = c.getColumnName(j);
+                            columnValue = jorder.getString(columnName);
+                            values.put(columnName, columnValue);
+                        }
+
+                        long a = sql.insert(db.TABLE_GetItemList, null, values);
+
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String integer) {
+            super.onPostExecute(integer);
+            progressDialog.dismiss();
+            // dismissProgressDialog();
+            if (response.contains("")) {
+
+            }else {
+              //  displayProduct();
+            }
+        }
+    }
+
+    private boolean isnet() {
+        // TODO Auto-generated method stub
+        Context context = this.getApplicationContext();
+        ConnectivityManager cm = (ConnectivityManager) context
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        if (netInfo != null && netInfo.isConnectedOrConnecting()) {
+            return true;
+        } else {
+            Toast.makeText(context, "No internet connection", Toast.LENGTH_LONG).show();
+            return false;
+        }
+    }
+
+    private void displayProduct() {
+
+        ItemCodelist.clear();
+        ItemDesclist.clear();
+
+        String query = "SELECT distinct ItemCode,ItemMasterId,ItemDesc" +
+                " FROM " + db.TABLE_GetItemList;
+        Cursor cur = sql.rawQuery(query, null);
+        //   lstReferenceType.add("Select");
+        if (cur.getCount() > 0) {
+
+            cur.moveToFirst();
+            do {
+                ItemCodelist.add(cur.getString(cur.getColumnIndex("ItemCode")));
+                ItemDesclist.add(cur.getString(cur.getColumnIndex("ItemDesc")));
+
+            } while (cur.moveToNext());
+
+        }
+        //Collections.sort(Productionitems,String.CASE_INSENSITIVE_ORDER);
+        ArrayAdapter<String> customDept = new ArrayAdapter<String>(PrintingActivity.this,
+                R.layout.crm_custom_spinner_txt,ItemCodelist);
+       // edt_itemcode.setAdapter(customDept);//SF0006_ADATSOFT
+
+        ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<String>(PrintingActivity.this,
+                R.layout.crm_custom_spinner_txt,ItemDesclist);
+       // edt_description.setAdapter(stringArrayAdapter);//SF0006
+
+        //Collections.sort(Productionitems, String.CASE_INSENSITIVE_ORDER);
+
+        // Collections.sort(Productionitems, String.CASE_INSENSITIVE_ORDER);
+    }
+
+    private void GetItemCode(String itemcode) {
+        String query = "SELECT * FROM " + db.TABLE_GetItemList + " WHERE  ItemCode like '%" + itemcode + "%'";
+        Cursor cur = sql.rawQuery(query, null);
+        if (cur.getCount() > 0) {
+            cur.moveToFirst();
+            do {
+                edt_weight.setText("");
+                edt_qty.setText("");
+
+                String itemcode1=cur.getString(cur.getColumnIndex("ItemDesc"));
+
+                edt_description.setText(itemcode1);
+                try{
+                    String cnv = cur.getString(cur.getColumnIndex("ConvFactor"));
+                    if(cnv.equalsIgnoreCase("null")){
+                        CONV_factor = 0;
+                    }else {
+                        CONV_factor = Double.parseDouble(cnv);
+                    }
+
+                    if(CONV_factor == 1){
+                        edt_qty.setEnabled(true);
+                        edt_qty.setClickable(true);
+                        addressLayout.setVisibility(View.GONE);
+                        /*addressLayout.setAlpha((float) 0.3);
+                        edt_weight.setEnabled(false);
+                        edt_weight.setFocusable(false);
+                        edt_weight.setClickable(false);*/
+                    }else if(CONV_factor > 1) {
+                        edt_qty.setEnabled(false);
+                        addressLayout.setVisibility(View.VISIBLE);
+                       /* addressLayout.setAlpha(1);
+                        edt_weight.setEnabled(true);
+                        edt_weight.setFocusable(true);
+                        edt_weight.setClickable(true);*/
+                    }else {
+                        edt_qty.setEnabled(true);
+                        edt_qty.setClickable(true);
+                        addressLayout.setVisibility(View.GONE);
+                    }
+
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
+            } while (cur.moveToNext());
+        }
+    }
+
+    private void GetItemDesc(String itemdesc) {
+        String query = "SELECT * FROM "  + db.TABLE_GetItemList + " WHERE  ItemDesc like '%" + itemdesc + "%'";
+        Cursor cur = sql.rawQuery(query, null);
+        if (cur.getCount() > 0) {
+            cur.moveToFirst();
+            do {
+                edt_weight.setText("");
+                edt_qty.setText("");
+
+                String itemdesc1=cur.getString(cur.getColumnIndex("ItemCode"));
+                edt_itemcode.setText(itemdesc1);
+                try{
+                    CONV_factor = Double.parseDouble(cur.getString(cur.getColumnIndex("ConvFactor")));
+                    if(CONV_factor == 1){
+                        edt_qty.setEnabled(true);
+                        edt_qty.setClickable(true);
+                        addressLayout.setVisibility(View.GONE);
+                        /*addressLayout.setAlpha((float) 0.3);
+                        edt_weight.setEnabled(false);
+                        edt_weight.setFocusable(false);
+                        edt_weight.setClickable(false);*/
+                    }else if(CONV_factor > 1) {
+                        edt_qty.setEnabled(false);
+                        addressLayout.setVisibility(View.VISIBLE);
+                       /* addressLayout.setAlpha(1);
+                        edt_weight.setEnabled(true);
+                        edt_weight.setFocusable(true);
+                        edt_weight.setClickable(true);*/
+                    }
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
+            } while (cur.moveToNext());
+
+
+        }
+    }
+
+    @SuppressLint("HandlerLeak")
+    private final Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg1) {
+            switch (msg1.what) {
+                case BluetoothService.MESSAGE_STATE_CHANGE:
+                    switch (msg1.arg1) {
+                        case BluetoothService.STATE_CONNECTED: // ÒÑÁ¬½Ó
+                            Toast.makeText(PrintingActivity.this, "Connect successful",
+                                    Toast.LENGTH_SHORT).show();
+                            deviceConnected = true;
+                            break;
+                        case BluetoothService.STATE_CONNECTING: // ÕýÔÚÁ¬½Ó
+                            Log.d("À¶ÑÀµ÷ÊÔ", "ÕýÔÚÁ¬½Ó.....");
+                            break;
+                        case BluetoothService.STATE_LISTEN: // ¼àÌýÁ¬½ÓµÄµ½À´
+                        case BluetoothService.STATE_NONE:
+                            Log.d("À¶ÑÀµ÷ÊÔ", "µÈ´ýÁ¬½Ó.....");
+                            break;
+                    }
+                    break;
+                case BluetoothService.MESSAGE_CONNECTION_LOST: // À¶ÑÀÒÑ¶Ï¿ªÁ¬½Ó
+                    Toast.makeText(PrintingActivity.this, "Device connection was lost",
+                            Toast.LENGTH_SHORT).show();
+                    deviceConnected = false;
+                    break;
+                case BluetoothService.MESSAGE_UNABLE_CONNECT: // ÎÞ·¨Á¬½ÓÉè±¸
+                    Toast.makeText(PrintingActivity.this, "Unable to connect device",
+                            Toast.LENGTH_SHORT).show();
+                    deviceConnected = false;
+                    break;
+            }
+        }
+    };
+
+    private String callCheckLenght(String value) {
+        if (value.length() <= 14) {
+            int diff = 14 - value.length();
+            if (diff > 0) {
+                for (int i = 0; i < diff; i++) {
+                    value = " " + value;
+                }
+            }
+        }
+        return value;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public void printReceipt(){
+
+      //  displayProduct();
+        int BILL_NO = 0;
+        try{
+            BILL_NO =  billNoClass.getBill_no();
+        }catch (Exception e){
+            e.printStackTrace();
+            BILL_NO = 0;
+        }
+
+        int billNO = BILL_NO + 1;
+
+        billnumber = "0000"+String.valueOf(billNO);
+        //StringUtils.leftPad("129018", 10, "0");   //padding
+        if(billnumber.length() == 4){
+            billnumber = billnumber.substring(billnumber.length()-4,4);
+        }else if(billnumber.length() == 5){
+            billnumber = billnumber.substring(billnumber.length()-4,5);
+        }else if(billnumber.length() == 6){
+            billnumber = billnumber.substring(billnumber.length()-4,6);
+        }else if(billnumber.length() == 7){
+            billnumber = billnumber.substring(billnumber.length()-4,7);
+        }
+
+        final byte[] ALIGN_LEFT = {0x1B, 0x61, 0};
+        final byte[] ALIGN_CENTER = {0x1B, 0x61, 1};
+        final byte[] ALIGN_RIGHT = {0x1B, 0x61, 2};
+        final byte[] SMALLFONT = {0x1b,0x21,0x01}; //small font
+        final byte[] DEFAULT = {0x1b,0x21,0x00};
+        final byte[] NORMAL = new byte[]{0x1B,0x21,0x00};  // 0- normal size text
+
+        byte[] format = { 27, 33, 0 };
+        byte[] arrayOfByte1 = { 27, 33, 0 };
+        // Small
+        format[2] = ((byte)(0x1 | arrayOfByte1[2]));
+
+        String msg = null, company = "";
+        String itemcode = "", itemdesc = "", qty = "", dateTime = "", username = "", location = "", countedby = "", area = "";
+        double weight = 0;
+
+        final Calendar c = Calendar.getInstance();
+        year = c.get(Calendar.YEAR);
+        month = c.get(Calendar.MONTH);
+        day = c.get(Calendar.DAY_OF_MONTH);
+
+        date = day + "-"+ String.format("%02d", (month + 1))+ "-" + year;
+        DATE = date;
+
+        Calendar mcurrentTime = Calendar.getInstance();
+        int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+        int minute = mcurrentTime.get(Calendar.MINUTE);
+
+        time = updateTime(hour, minute);
+        TIME = time;
+
+        itemcode = edt_itemcode.getText().toString().trim();
+        itemdesc = edt_description.getText().toString().trim();
+        location = edt_location.getText().toString().trim();
+        countedby = edt_countedby.getText().toString().trim();
+        area = edt_area.getText().toString().trim();
+
+        if(CONV_factor == 1 ){
+            weight = 0;
+        }else if(CONV_factor > 1) {
+            weight = Double.parseDouble(edt_weight.getText().toString().trim());
+        }else {
+            weight = 0;
+        }
+
+        int quantity = 0;
+        if(CONV_factor == 1){
+            qty = edt_qty.getText().toString().trim();
+
+        }else if(CONV_factor > 1) {
+            qty = String.valueOf(weight * CONV_factor);
+        }else {
+            qty = edt_qty.getText().toString().trim();
+        }
+
+        msg  = "--------------------------------\n";    //width : 32 for normal, 42 for small font
+        msg += "       No. : "+billnumber+"        \n";
+        msg += "--------------------------------\n";
+       // msg += "Item Code   : "+itemcode+"\n";
+        msg += ""+itemcode+"\n";
+        //msg += "Descriprion : "+itemdesc+"\n";
+        msg += ""+itemdesc+"\n";
+        msg += "Location : "+location+"\n";
+        msg += "Area     : "+area+"\n";
+
+        if(CONV_factor == 1){
+           //do not show weight
+        }else if(CONV_factor > 1){
+            msg += "Weight    : "+String.format("%.2f",weight)+" kg\n";
+        }else {
+
+        }
+
+        msg += "Qty       : "+qty+"\n";
+        msg += "Date Time : "+date+" "+time+"\n";
+        msg += "User      : "+UserName+"\n";
+        msg += "Verified By: "+countedby+"\n";
+
+        if (msg.length() > 0) {
+            mService.write(ALIGN_LEFT);
+            mService.sendMessage(msg + "\n","GBK");
+        }
+
+        /*Intent intent = new Intent(PrintingActivity.this,PrintScreenWIFI.class);
+        intent.putExtra("Seqnumber",billnumber);
+        intent.putExtra("itemdesc",edt_description.getText().toString().trim());
+        intent.putExtra("partcode", edt_itemcode.getText().toString().trim());
+        intent.putExtra("weight", String.format("%.2f",weight));
+        intent.putExtra("quantity", qty);
+        intent.putExtra("area", edt_area.getText().toString().trim());
+        intent.putExtra("location", edt_location.getText().toString().trim());+
+        intent.putExtra("countedby", edt_countedby.getText().toString().trim());
+        intent.putExtra("verifiedby", edt_countedby.getText().toString().trim());
+        intent.putExtra("datetime",date+" "+time);
+        startActivity(intent);*/
+
+        /*//createPdf1(new File(msg));
+
+        try {
+            externalStorageDirectory = Environment.getExternalStorageDirectory().toString();
+            File folder = new File(externalStorageDirectory);
+            pdfFile = new File(folder, createPdf1(new File(msg)));
+
+            printDocument(pdfFile);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
+
+        try{
+            billNoClass.setBill_no(billNO);
+            String billingObj = new Gson().toJson(billNoClass);
+            AppCommon.getInstance(this).setBillNo_print(billingObj);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        addressLayout.setVisibility(View.VISIBLE);
+        edt_weight.setText("");
+        edt_weight.setEnabled(true);
+        edt_weight.setClickable(true);
+        edt_weight.setFocusable(true);
+
+        edt_qty.setText("");
+        edt_itemcode.setText("");
+        edt_description.setText("");
+        edt_location.setText("");
+        edt_countedby.setText("");
+        edt_area.setText("");
+    }
+
+    public boolean chkDuplicate(){
+        boolean val = false;
+        if(edt_itemcode.getText().toString().equalsIgnoreCase(edt_location.getText().toString()) /*||
+            edt_itemcode.getText().toString().equalsIgnoreCase(edt_qty.getText().toString()) ||
+            edt_location.getText().toString().equalsIgnoreCase(edt_qty.getText().toString())*/){
+            val = false;
+            return val;
+        }else {
+            val = true;
+            return val;
+        }
+    }
+
+    public boolean validate(){
+        boolean val = false;
+
+        if(edt_itemcode.getText().toString().equalsIgnoreCase("")
+                && edt_description.getText().toString().equalsIgnoreCase("")
+                && edt_location.getText().toString().equalsIgnoreCase("")
+                && edt_area.getText().toString().equalsIgnoreCase("")
+                && edt_weight.getText().toString().equalsIgnoreCase("")
+                && edt_qty.getText().toString().equalsIgnoreCase("")
+                && edt_countedby.getText().toString().equalsIgnoreCase("")){
+            Toast.makeText(PrintingActivity.this,"Please fill all details",Toast.LENGTH_SHORT).show();
+            val = false;
+            return val;
+        }else if(CONV_factor > 1){
+            if(edt_weight.getText().toString().equalsIgnoreCase("") ||
+                    edt_weight.getText().toString().equalsIgnoreCase(null)){
+                Toast.makeText(PrintingActivity.this,"Please enter weight",Toast.LENGTH_SHORT).show();
+                val = false;
+                return val;
+            }else if(edt_qty.getText().toString().equalsIgnoreCase("") ||
+                    edt_qty.getText().toString().equalsIgnoreCase(null)){
+                Toast.makeText(PrintingActivity.this,"Please enter quantity",Toast.LENGTH_SHORT).show();
+                val = false;
+                return val;
+            }else if(edt_itemcode.getText().toString().equalsIgnoreCase(edt_location.getText().toString())){
+                Toast.makeText(PrintingActivity.this,"Part code and location should not be same.",Toast.LENGTH_SHORT).show();
+                val = false;
+                return val;
+            } else {
+                val = true;
+                return val;
+            }
+        }else if(CONV_factor == 1){
+            if(edt_qty.getText().toString().equalsIgnoreCase("") ||
+                    edt_qty.getText().toString().equalsIgnoreCase(null)){
+                Toast.makeText(PrintingActivity.this,"Please enter quantity",Toast.LENGTH_SHORT).show();
+                val = false;
+                return val;
+            }else if(edt_itemcode.getText().toString().equalsIgnoreCase(edt_location.getText().toString())){
+                Toast.makeText(PrintingActivity.this,"Part code and location should not be same.",Toast.LENGTH_SHORT).show();
+                val = false;
+                return val;
+            } else {
+                val = true;
+                return val;
+            }
+        }else {
+            if(edt_qty.getText().toString().equalsIgnoreCase("") ||
+                    edt_qty.getText().toString().equalsIgnoreCase(null)){
+                Toast.makeText(PrintingActivity.this,"Please enter quantity",Toast.LENGTH_SHORT).show();
+                val = false;
+                return val;
+            }else if(edt_itemcode.getText().toString().equalsIgnoreCase(edt_location.getText().toString())){
+                Toast.makeText(PrintingActivity.this,"Part code and location should not be same.",Toast.LENGTH_SHORT).show();
+                val = false;
+                return val;
+            } else {
+                val = true;
+                return val;
+            }
+        }
+    }
+
+    public static String updateTime(int hours, int mins) {
+        String timeSet = "";
+        if (hours > 12) {
+            hours -= 12;
+            timeSet = "PM";
+        } else if (hours == 0) {
+            hours += 12;
+            timeSet = "AM";
+        } else if (hours == 12)
+            timeSet = "PM";
+        else
+            timeSet = "AM";
+
+        String minutes = "";
+        if (mins < 10)
+            minutes = "0" + mins;
+        else
+            minutes = String.valueOf(mins);
+
+        // Append in a StringBuilder
+        String aTime = new StringBuilder().append(hours).append(':')
+                .append(minutes).append(" ").append(timeSet).toString();
+
+        return aTime;
+    }
+
+    private void printerConfiguration() {
+
+        mPrinterConfiguration = Util_Wifi_print.getWifiConfiguration(PrintingActivity.this, Constants_wifi.CONTROLLER_PRINTER);
+
+        if (mPrinterConfiguration == null) {
+            showWifiListActivity(Constants_wifi.REQUEST_CODE_PRINTER);
+
+        } else {
+
+            boolean isPrinterAvailable = false;
+
+            mWifiManager.startScan();
+
+            for (int i = 0; i < mScanResults.size(); i++) {
+                if (mPrinterConfiguration.SSID.equals("\"" + mScanResults.get(i).SSID + "\"")) {
+                    isPrinterAvailable = true;
+                    break;
+                }
+            }
+
+            if (isPrinterAvailable) {
+
+                connectToWifi(mPrinterConfiguration);
+
+                doPrint();
+
+            } else {
+                showWifiListActivity(Constants_wifi.REQUEST_CODE_PRINTER);
+            }
+
+        }
+    }
+
+    private void connectToWifi(WifiConfiguration mWifiConfiguration) {
+        mWifiManager.enableNetwork(mWifiConfiguration.networkId, true);
+    }
+
+    private void showWifiListActivity(int requestCode) {
+        Intent iWifi = new Intent(this, WifiListActivity.class);
+        startActivityForResult(iWifi, requestCode);
+    }
+
+    public void doPrint() {
+        mPrintStartHandler.postDelayed(new Runnable() {
+            @SuppressLint("LongLogTag")
+            @Override
+            public void run() {
+
+                Log.d("PrinterConnection Status", "" + mPrinterConfiguration.status);
+
+                mPrintStartHandler.postDelayed(this, 3000);
+
+                if (mPrinterConfiguration.status == WifiConfiguration.Status.CURRENT) {
+                   /* if (Util_Wifi_print.computePDFPageCount(pdfFile) > 0) {
+                        printDocument(pdfFile);
+                       // printReceipt();
+                    } else {
+                        Toast.makeText(PrintingActivity.this, "Can't print, Page count is zero.", Toast.LENGTH_LONG).show();
+                    }*/
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                        printReceipt();
+                    }
+
+                    // printDocument();
+
+                    mPrintStartHandler.removeCallbacksAndMessages(null);
+                } else if (mPrinterConfiguration.status == WifiConfiguration.Status.DISABLED) {
+                    Toast.makeText(PrintingActivity.this, "Failed to connect to printer!.", Toast.LENGTH_LONG).show();
+                    mPrintStartHandler.removeCallbacksAndMessages(null);
+                }
+            }
+        }, 3000);
+    }
+
+    public void printDocument(File pdfFile) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            mPrintManager = (PrintManager) getSystemService(Context.PRINT_SERVICE);
+        }
+
+        String jobName = getString(R.string.app_name) + " Document";
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            mCurrentPrintJob = mPrintManager.print(jobName, new PrintServicesAdapter(PrintingActivity.this, pdfFile), null);
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    private String createPdf1(File sometext){
+        // create a new document
+        PdfDocument document = new PdfDocument();
+        // crate a page description
+        PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(300, 600, 1).create();
+        // start a page
+        PdfDocument.Page page = document.startPage(pageInfo);
+        Canvas canvas = page.getCanvas();
+        Paint paint = new Paint();
+        paint.setColor(Color.RED);
+        canvas.drawCircle(50, 50, 30, paint);
+        paint.setColor(Color.BLACK);
+        canvas.drawText(String.valueOf(sometext), 80, 50, paint);
+        //canvas.drawt
+        // finish the page
+        document.finishPage(page);
+// draw text on the graphics object of the page
+        // Create Page 2
+        pageInfo = new PdfDocument.PageInfo.Builder(300, 600, 2).create();
+        page = document.startPage(pageInfo);
+        canvas = page.getCanvas();
+        paint = new Paint();
+        paint.setColor(Color.BLUE);
+        canvas.drawCircle(100, 100, 100, paint);
+        document.finishPage(page);
+        // write the document content
+        String directory_path = Environment.getExternalStorageDirectory().getPath() + "/mypdf/";
+        File file = new File(directory_path);
+        if (!file.exists()) {
+            file.mkdirs();
+        }
+        String targetPdf = directory_path+"test-2.pdf";
+        File filePath = new File(targetPdf);
+        try {
+            document.writeTo(new FileOutputStream(filePath));
+            Toast.makeText(this, "Done", Toast.LENGTH_LONG).show();
+        } catch (IOException e) {
+            Log.e("main", "error "+e.toString());
+            Toast.makeText(this, "Something wrong: " + e.toString(),  Toast.LENGTH_LONG).show();
+        }
+        // close the document
+        document.close();
+
+        return String.valueOf(filePath);
+    }
+
+}

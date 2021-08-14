@@ -1,0 +1,32 @@
+package com.vritti.crm.bean;
+
+public class EntityTerms {
+
+    String ConfigurationDetailId,Configuration;
+
+    public EntityTerms(String configurationDetailId, String configuration) {
+        this.ConfigurationDetailId = configurationDetailId;
+        this.Configuration = configuration;
+    }
+
+    public String getConfigurationDetailId() {
+        return ConfigurationDetailId;
+    }
+
+    public void setConfigurationDetailId(String configurationDetailId) {
+        ConfigurationDetailId = configurationDetailId;
+    }
+
+    public String getConfiguration() {
+        return Configuration;
+    }
+
+    public void setConfiguration(String configuration) {
+        Configuration = configuration;
+    }
+
+    @Override
+    public String toString() {
+        return this.Configuration;
+    }
+}

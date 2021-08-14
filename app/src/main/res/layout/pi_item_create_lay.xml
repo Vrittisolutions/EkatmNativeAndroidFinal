@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center|top"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/txtLoc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center|left"
+        android:text="Create Batch"
+        android:layout_marginLeft="5dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp"
+        android:visibility="gone"
+        android:layout_marginTop="5dp"
+        android:padding="5dp"
+        android:textStyle="bold" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Code :"
+            android:textSize="18dp"
+            android:layout_marginLeft="10dp"
+            android:padding="5dp"
+            android:textColor="@color/black"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1989"
+            android:textSize="18dp"
+            android:layout_marginLeft="5dp"
+            android:padding="5dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Item Code :"
+            android:textSize="16dp"
+            android:layout_marginLeft="10dp"
+            android:padding="5dp"
+            android:textColor="@color/black"/>
+
+
+            <AutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:completionThreshold="1"
+                android:id="@+id/spinner_item"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enter LOT No :"
+            android:textSize="14dp"
+            android:layout_marginLeft="10dp"
+            android:padding="5dp"
+            android:textColor="@color/black"/>
+        <EditText
+            android:id="@+id/edt_lot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:background="@drawable/edit_text"
+            android:textSize="14dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:padding="8dp"
+            android:textColor="@color/black"/>
+
+    </LinearLayout>
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@drawable/button_blue_border"
+        android:text="Save"
+        android:textAllCaps="false"
+        android:layout_alignParentBottom="true"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        />
+</LinearLayout>

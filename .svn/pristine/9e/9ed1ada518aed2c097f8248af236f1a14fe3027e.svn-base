@@ -1,0 +1,61 @@
+package com.vritti.vwb.Beans;
+
+import com.google.gson.annotations.SerializedName;
+
+import java.util.ArrayList;
+
+public class SendBackForwardBean {
+
+    @SerializedName("ActivityName")
+    String ActivityName;
+    @SerializedName("EndDate")
+    String EndDate;
+    @SerializedName("UserName")
+    String UserName;
+    @SerializedName("ProjectName")
+    String ProjectName;
+
+    public boolean isPresent() {
+        return IsPresent;
+    }
+
+    public void setPresent(boolean present) {
+        IsPresent = present;
+    }
+
+    @SerializedName("IsPresent")
+    boolean IsPresent;
+
+
+    public String getActivityName() {
+        return ActivityName;
+    }
+
+    public void setActivityName(String activityName) {
+        ActivityName = activityName;
+    }
+
+    public String getEndDate() {
+        return EndDate;
+    }
+
+    public void setEndDate(String endDate) {
+        EndDate = endDate;
+    }
+
+    public String getUserName() {
+        return UserName;
+    }
+
+    public void setUserName(String userName) {
+        UserName = userName;
+    }
+
+    public String getProjectName() {
+        return ProjectName;
+    }
+
+    public void setProjectName(String projectName) {
+        ProjectName = projectName;
+    }
+}

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">869485932850-91geo47arl8863rp62g046o0mmhnlalp.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://alfa-laval-e42e4.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">869485932850</string>
+    <string name="google_api_key" translatable="false">AIzaSyC9Hk1C0FGw1Y0c1RUAQ6CgXxOH1R2OSEc</string>
+    <string name="google_app_id" translatable="false">1:869485932850:android:c359a169f830ebaa40e72b</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyC9Hk1C0FGw1Y0c1RUAQ6CgXxOH1R2OSEc</string>
+    <string name="google_storage_bucket" translatable="false">alfa-laval-e42e4.appspot.com</string>
+</resources>

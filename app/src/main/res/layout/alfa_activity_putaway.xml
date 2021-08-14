@@ -1,0 +1,123 @@
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/putaway"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        >
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            >
+            <EditText
+                android:id="@+id/s_search"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:textColor="#000"
+                android:textSize="15dp"
+                android:padding="5dp"
+                android:singleLine="true"
+                android:imeOptions="actionSearch"
+                android:hint="Enter GRN No.or scan " />
+            <!--    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@+id/s_search"
+        android:id="@+id/my_recycler_view_picklist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        />
+    </RelativeLayou-->
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/my_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_below="@id/s_search"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/bgTransParent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#cc000000"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="20dp"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/grnText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="GRN NO:.dlkm dlkmdl kmf" />
+
+                <TextView
+                    android:id="@+id/poNumberText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="PONo:" />
+
+                <TextView
+                    android:id="@+id/poDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="PO Date : " />
+
+                <TextView
+                    android:id="@+id/currentDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/blue"
+                    tools:text="Current date " />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="5dp">
+
+                    <Button
+                        android:id="@+id/cancelBtn"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="2.5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_blue_border"
+                        android:text="Cancel"
+                        android:textColor="@color/white" />
+
+                    <Button
+                        android:id="@+id/cfmBtn"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="2.5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_blue_border"
+                        android:text="Confirm"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

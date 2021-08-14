@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/button_add"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_border"
+        android:text="Add"
+        android:padding="10dp"
+        android:gravity="center"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/white"
+        android:textSize="16dp"/>
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/list_material_item"
+        android:layout_marginTop="10dp"
+        android:divider="@android:color/transparent"
+        android:layout_below="@+id/button_add">
+    </ListView>
+</RelativeLayout>

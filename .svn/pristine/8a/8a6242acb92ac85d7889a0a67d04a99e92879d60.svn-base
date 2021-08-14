@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="5dp" >
+
+    <RelativeLayout
+        android:id="@+id/rel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:id="@+id/relative"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:id="@+id/profile_image"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:padding="2dp"
+                android:background="@drawable/circle_round"
+
+                />
+
+
+            <TextView
+                android:id="@+id/reporteesname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="user name"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/profile_image"/>
+
+            <TextView
+                android:id="@+id/reporteeAssignrd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/reporteesname"
+                android:layout_marginTop="2dp"
+                android:text="00"
+                android:textColor="#3366ff"
+                android:textSize="16sp"
+                android:layout_toRightOf="@+id/profile_image"
+                android:layout_marginLeft="8dp"
+                />
+
+            <TextView
+                android:id="@+id/reporteeoverdue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/reporteesname"
+                android:layout_marginLeft="60dp"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="2dp"
+                android:layout_toEndOf="@+id/profile_image"
+                android:layout_toRightOf="@+id/profile_image"
+                android:text="00"
+                android:textColor="#ff6600"
+                android:textSize="16sp" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relative">
+            <TextView
+                android:id="@+id/txt_location_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="3"
+                android:text="Pushpashanti Tower, Milan Society Rd, Mayur Colony, Kothrud, Pune, Maharashtra 411058, India , Pune , Maharashtra"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="5dp"/>
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

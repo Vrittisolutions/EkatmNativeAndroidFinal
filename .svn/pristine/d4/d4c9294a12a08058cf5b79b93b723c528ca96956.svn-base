@@ -1,0 +1,49 @@
+package com.vritti.vwb.Beans;
+
+public class FormNameSahara {
+
+
+        String PKCssFormsId,CSSFormsCode,CSSFormsDesc;
+
+    public FormNameSahara(String PKCssFormsId, String CSSFormsCode, String CSSFormsDesc) {
+
+        this.PKCssFormsId = PKCssFormsId;
+        this.CSSFormsCode=CSSFormsCode;
+        this.CSSFormsDesc = CSSFormsDesc;
+    }
+
+    public FormNameSahara() {
+
+    }
+
+    public String getPKCssFormsId() {
+        return PKCssFormsId;
+    }
+
+    public void setPKCssFormsId(String PKCssFormsId) {
+        this.PKCssFormsId = PKCssFormsId;
+    }
+
+    public String getCSSFormsCode() {
+        return CSSFormsCode;
+    }
+
+    public void setCSSFormsCode(String CSSFormsCode) {
+        this.CSSFormsCode = CSSFormsCode;
+    }
+
+    public String getCSSFormsDesc() {
+        return CSSFormsDesc;
+    }
+
+    public void setCSSFormsDesc(String CSSFormsDesc) {
+        this.CSSFormsDesc = CSSFormsDesc;
+    }
+
+
+    @Override
+    public String toString() {
+        // return super.toString();
+        return this.CSSFormsDesc;
+    }
+}

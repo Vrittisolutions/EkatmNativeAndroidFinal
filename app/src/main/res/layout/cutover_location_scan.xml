@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center|top"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/txtLoc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Scan Location"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="32sp"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|left"
+        android:gravity="left|center"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/locationId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtLoc"
+            android:background="@drawable/edittext_border"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="10dp"
+            android:padding="18dp"
+            android:layout_weight="1"
+            android:cursorVisible="true"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:hint=""
+            android:gravity="center"/>
+
+        <ImageView
+            android:id="@+id/img_barcode"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/barcode"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lot No :"
+        android:textSize="18dp"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/black"/>
+
+    <EditText
+        android:id="@+id/edt_lot_no"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_border"
+        android:padding="10dp"
+        android:layout_marginLeft="5dp"
+        android:cursorVisible="true"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:singleLine="true"
+        android:hint="Enter Lot "
+        android:gravity="center|left"/>
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FIFO Date :"
+            android:textSize="18dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/txt_date"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_border"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:textSize="14dp"
+            android:layout_marginLeft="5dp"
+            android:cursorVisible="true"
+            android:singleLine="true"
+            android:hint="Select Date"
+            android:gravity="center|left"/>
+    </LinearLayout>
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="Next"
+        android:layout_marginTop="40dp"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:background="@drawable/button_blue_border"
+        android:textColor="@color/white"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        android:visibility="gone"
+        android:gravity="center"
+        android:text="Begin put away by scanning location.Then scan packets"
+        android:textColor="@color/colorPrimary"
+        android:textSize="15dp" />
+
+
+</LinearLayout>

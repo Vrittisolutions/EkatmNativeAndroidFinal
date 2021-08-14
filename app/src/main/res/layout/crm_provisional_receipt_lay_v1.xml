@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+   >
+    <include
+        layout="@layout/toolbar_header"
+        />
+    <LinearLayout
+        android:id="@+id/len"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       android:layout_marginTop="?android:attr/actionBarSize"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/lsCall_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:background="@color/white"
+            android:orientation="vertical"/>
+
+</LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/len"
+
+        >
+
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:cardCornerRadius="8dp"
+            card_view:cardUseCompatPadding="true"
+            card_view:cardElevation="1dp"
+            card_view:cardMaxElevation="1dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+                <ProgressBar
+                    android:id="@+id/progressbar_1"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:visibility="gone"
+                    />
+
+                <LinearLayout
+                    android:id="@+id/lay_Date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/edt_amount"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Amount"
+                            android:textSize="14dp"
+                            android:drawableLeft="@drawable/account_balance_24"
+                            android:padding="10dp"
+                            android:inputType="number"
+                            android:backgroundTint="@color/stroke"
+                            android:drawablePadding="8dp"/>
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/edt_instrument_no"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Instrument No."
+                            android:textSize="14dp"
+                            android:drawableTint="@color/colorPrimary"
+                            android:drawableLeft="@drawable/gstn"
+                            android:padding="10dp"
+                            android:inputType="number"
+                            android:backgroundTint="@color/stroke"
+                            android:drawablePadding="8dp"/>
+
+                    </android.support.design.widget.TextInputLayout>
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/edt_bankname"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Drawn Bank"
+                            android:textSize="14dp"
+                            android:drawableLeft="@drawable/office"
+                            android:padding="10dp"
+                            android:backgroundTint="@color/stroke"
+                            android:drawablePadding="8dp"/>
+
+                    </android.support.design.widget.TextInputLayout>
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/edt_tds_amount"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="TDS Amount"
+                            android:textSize="14dp"
+                            android:inputType="numberDecimal"
+                            android:drawableLeft="@drawable/account_balance_24"
+                            android:drawableTint="@color/colorPrimary"
+                            android:padding="10dp"
+                            android:backgroundTint="@color/stroke"
+                            android:drawablePadding="8dp"/>
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/spinner_bankname"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Deposited Bank"
+                            android:textSize="14dp"
+                            android:drawableLeft="@drawable/office"
+                            android:padding="10dp"
+                            android:editable="false"
+                            android:focusable="false"
+                            android:clickable="true"
+                            android:backgroundTint="@color/stroke"
+                            android:drawablePadding="8dp"/>
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Deposited Date"
+                        android:textSize="14dp"
+                        android:layout_marginLeft="@dimen/sp_10"
+                        android:layout_marginTop="5dp"
+                        android:drawableLeft="@drawable/date"
+                        android:drawablePadding="8dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/edt_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:padding="2dp"
+                        android:textSize="16dp"
+                        android:layout_marginLeft="40dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        />
+
+                    <View
+                        android:id="@+id/view"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@color/stroke"/>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/view">
+
+
+                        <EditText
+                            android:id="@+id/edt_narration"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Narration"
+                            android:textSize="14dp"
+                            android:padding="10dp"
+                            android:drawablePadding="8dp"
+                            android:inputType="textMultiLine"
+                            android:drawableLeft="@drawable/notes"/>
+
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+
+
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+    </RelativeLayout>
+        <!--<LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:visibility="gone"
+            android:orientation="horizontal">
+
+            <TableRow
+                android:id="@+id/tableRow1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom">
+
+                <Button
+                    android:id="@+id/buttonSave"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/button_green"
+                    android:text="Save"
+                    android:layout_weight="1"
+                    android:textSize="13dp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white" />
+
+                <Button
+                    android:id="@+id/buttonClose"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/button_orange"
+                    android:text="Close"
+                    android:textColor="@color/white"
+                    android:layout_weight="1"
+                    android:textSize="13dp"
+                    android:textAllCaps="false" />
+            </TableRow>
+        </LinearLayout>
+-->
+
+
+
+</RelativeLayout>

@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">Milk Run</string>
+
+    <string name="app_name_toolbar_CRM">CRM</string>
+    <string name="app_name_toolbar_Vwb">Milk Run</string>
+    <string name="app_name_toolbar_Ekatm">   Milk Run</string>
+    <string name="app_name_toolbar_service"> Service Desk</string>
+
+    <string name="error_code_company">Please Enter Company URL</string>
+
+    <string name="error_code_company_valid">Please Enter Register Company URL</string>
+    <string name="instruction_Spinner_Change_Company">--Change company URL--</string>
+
+    <string name="assign_act_string_from_all">Assign From All</string>
+    <string name="assign_act_string_from_participants">Assign From Workspace Participants</string>
+    <string name="assign_act_string_from_group">Assign From Group</string>
+
+    <string name="Trail_workspace">Workspace :</string>
+    <string name="Trail_subgroup">Sub group :</string>
+    <string name="Trail_maingroup">Main group :</string>
+
+    <string name="Location_service_running_status">Ekatm is running</string>
+
+    <string name="Detail_activity_Subordinate_work">Subordinate Work</string>
+    <string name="Detail_activity_change_workspace">Change Workspace</string>
+
+    <string-array name="Arr_AssignFrom">
+        <item>Assign From All</item>
+        <item>Assign From Workspace Participants</item>
+        <item>Assign From Group</item>
+
+
+
+
+    </string-array>
+
+    <string name="empty_directory">Empty Directory</string>
+    <string name="storage_removed">Storage was removed or unmounted.</string>
+    <string name="choose_file">Select a file</string>
+    <string name="error_selecting_file">Error selecting File</string>
+    <string name="internal_storage">Internal storage</string>
+
+    <string-array name="menu">
+        <item>Copy</item>
+        <item>Delete</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,199 @@
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:gpb="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true"
+
+    tools:context="vcrm7.vritti.com.vcrm7.TravelPlanAddActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.NoActionBar.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/lay1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#6E6F72"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Travel Plan"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:padding="5dp"
+                android:textSize="18dp" />
+        </LinearLayout>
+    <LinearLayout
+        android:id="@+id/lay_Date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_gravity="center|left"
+        android:gravity="center|left"
+        android:orientation="horizontal">
+
+        <TextView
+
+            android:id="@+id/txtDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:textSize="16dp"
+            android:text="Date:"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/editTextDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:singleLine="true"
+            android:textSize="14dp"
+            android:layout_weight="1"
+            android:focusable="false"
+            android:imeOptions="actionNext"
+            android:padding="10dp" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="25dp"
+            android:layout_marginRight="40dp"
+            android:layout_height="25dp"
+            android:src="@drawable/calender" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lay_city"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:paddingTop="5dp"
+            android:text="City :"
+            android:textSize="16dp"
+            android:textColor="@color/black" />
+
+        <classes.CustomAutoCompleteView
+            android:id="@+id/myautocomplete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:completionThreshold="1"
+            android:hint=""
+            android:singleLine="true"
+            android:imeOptions="actionNext"
+            android:textSize="18dp"
+            android:textColor="#000" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lay_Notes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:paddingTop="5dp"
+            android:layout_marginRight="16dp"
+            android:text="Notes :"
+            android:textSize="16dp"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/editTextNotes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:maxLines="5"
+            android:singleLine="true"
+            android:textSize="14dp"
+            android:inputType="textMultiLine"
+            android:padding="5dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:background="#E4EAEB"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <Button
+            android:id="@+id/buttonSave_travelplan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/btnsave"
+            android:text="save"
+            android:layout_weight="1"
+            android:textSize="18dp"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/buttonClose_travelplan"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:background="@color/white"
+            android:text="close"
+            android:layout_weight="1"
+            android:textSize="18dp"/>
+    </LinearLayout>
+        <ProgressBar
+            android:id="@+id/progressbar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateDrawable="@drawable/spinner"
+            android:visibility="gone"
+            android:layout_gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            />
+</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:weightSum="1">
+    <TextView
+        android:id="@+id/textname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:textSize="13sp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="15dp"
+        android:textStyle="bold"
+        android:layout_weight="1"/>
+
+
+        <ImageView
+            android:id="@+id/img_team"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:padding="5dp"
+            android:src="@drawable/team_final"
+            android:visibility="visible"
+           />
+
+
+
+    </LinearLayout>
+   <!-- <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:text="Assigned"
+            android:gravity="center"
+            android:textColor="@color/divider" />
+
+        <TextView
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:text="Overdue"
+            android:textColor="@color/divider" />
+
+        <TextView
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:text="Today"
+            android:textColor="@color/divider"
+            android:id="@+id/textView3" />
+
+        <TextView
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:text="Collection(Cnt/Value)"
+            android:textColor="@color/divider" />
+
+        <TextView
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:text="Hot(Cnt/Value)"
+            android:textColor="@color/divider" />
+    </LinearLayout>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:padding="1dp">
+
+        <TextView
+            android:id="@+id/textassigned"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.08"
+            android:gravity="center"
+            android:background="@drawable/crm_border_assigned"
+            android:text="23"
+            android:textSize="12dp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+        <!--#8B008B-->
+
+        <TextView
+            android:id="@+id/textoverdue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.08"
+            android:gravity="center"
+            android:layout_marginLeft="1dp"
+            android:text="45"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:background="@drawable/vwb_border_overdue"
+            android:textSize="12dp"
+            />
+
+        <TextView
+            android:id="@+id/texttoday"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.08"
+            android:layout_marginLeft="1dp"
+            android:gravity="center"
+            android:text="12"
+            android:background="@drawable/vwb_border_today"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="12dp"
+            />
+        <TextView
+            android:id="@+id/texttomorrow"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.08"
+            android:gravity="center"
+            android:layout_marginLeft="1dp"
+            android:text="56"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:background="@drawable/vwb_border_today"
+            android:textSize="12dp"
+            />
+
+        <TextView
+            android:id="@+id/textcollection"
+            android:layout_width="15dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="1dp"
+            android:layout_weight="0.1"
+            android:background="@drawable/crm_border_collection"
+            android:gravity="center"
+            android:maxLength="9"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/texthot"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.12"
+            android:gravity="center"
+            android:text=""
+            android:layout_marginLeft="1dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:maxLength="9"
+            android:background="@drawable/vwb_border_critical"
+            android:textSize="12dp"
+            />
+    </LinearLayout>
+</LinearLayout>

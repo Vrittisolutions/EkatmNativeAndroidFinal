@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardUseCompatPadding="true"
+        app:cardElevation="2dp"
+        app:cardCornerRadius="2dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="5dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MRSNO :"
+        android:textColor="@color/grey_border"
+        android:textSize="14dp"
+        android:layout_marginLeft="5dp"/>
+
+        <TextView
+            android:id="@+id/txt_mrsno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MRS/13-14/0072"
+            android:textColor="@color/black"
+            android:layout_weight="1"
+            android:textSize="14dp"
+            android:layout_marginLeft="5dp"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MRSDate :"
+            android:textColor="@color/grey_border"
+            android:textSize="14dp"
+            android:layout_marginLeft="5dp"/>
+
+        <TextView
+            android:id="@+id/txt_mrsdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="01/15/2015"
+            android:textColor="@color/black"
+            android:layout_weight="1"
+            android:textSize="14dp"
+            android:layout_marginLeft="5dp"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Department Name :"
+            android:textColor="@color/grey_border"
+            android:textSize="14dp"
+            android:layout_marginLeft="5dp"/>
+
+        <TextView
+            android:id="@+id/txt_department"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Support-Retail Product"
+            android:textColor="@color/black"
+            android:layout_weight="1"
+            android:textSize="14dp"
+          />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Requisition Name :"
+            android:textColor="@color/grey_border"
+            android:textSize="14dp"
+            android:layout_marginLeft="5dp"/>
+
+        <TextView
+            android:id="@+id/txt_requisition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ram Chakrupe"
+            android:textColor="@color/black"
+            android:layout_weight="1"
+            android:textSize="14dp"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:visibility="gone"
+        android:layout_marginBottom="5dp">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Status :"
+        android:textColor="@color/grey_border"
+        android:textSize="14dp"
+        android:layout_marginLeft="5dp"/>
+
+    <TextView
+        android:id="@+id/txt_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Created"
+        android:textColor="@color/black"
+        android:layout_weight="1"
+        android:textSize="14dp"
+        />
+
+</LinearLayout>
+</LinearLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>

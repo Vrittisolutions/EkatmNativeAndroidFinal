@@ -1,0 +1,531 @@
+package com.vritti.vwb.vworkbench;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.View;
+import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.vritti.databaselib.data.DatabaseHandlers;
+import com.vritti.databaselib.other.Utility;
+import com.vritti.databaselib.other.WebUrlClass;
+import com.vritti.ekatm.Constants;
+import com.vritti.ekatm.R;
+import com.vritti.sessionlib.CallbackInterface;
+import com.vritti.sessionlib.StartSession;
+import com.vritti.vwb.Adapter.ActivityListMainAdapter;
+import com.vritti.vwb.Adapter.ActivityListMainAdapter_New;
+import com.vritti.vwb.Beans.ActivityBean;
+import com.vritti.vwb.classes.CommonFunction;
+import com.vritti.vwb.classes.commonObjectProperties;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.net.URLDecoder;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+
+public class ClientDetailsCntActivity extends AppCompatActivity {
+
+    String PlantMasterId = "", LoginId = "", Password = "", CompanyURL = "", EnvMasterId = "",
+            UserMasterId = "", UserName = "", MobileNo = "";
+    Utility ut;
+    DatabaseHandlers db;
+    CommonFunction cf;
+    Context context;
+    SQLiteDatabase sql;
+    TextView ed_Title;
+    RecyclerView lsactivity_list;
+    ArrayList<ActivityBean> lsActivityList;
+    Toolbar toolbar;
+    ActivityListMainAdapter activityListadapter;
+    ActivityListMainAdapter_New activityListMainAdapter_new;
+    ProgressBar progressBar;
+
+
+    public static String Mode = "", shipToMasterId = "", consigneeName = "", current_date = "", FinalObj = "";
+    commonObjectProperties commonObj;
+    int rowStart = 0;
+    int rowEnd = 9;
+    int startPos=-1;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.vwb_clientwise_activity);
+
+        InitView();
+        context = getApplicationContext();
+        ut = new Utility();
+        cf = new CommonFunction(context);
+        String settingKey = ut.getSharedPreference_SettingKey(context);
+        String dabasename = ut.getValue(context, WebUrlClass.GET_DATABASE_NAME_KEY, settingKey);
+        db = new DatabaseHandlers(context, dabasename);
+        CompanyURL = ut.getValue(context, WebUrlClass.GET_COMPANY_URL_KEY, settingKey);
+        EnvMasterId = ut.getValue(context, WebUrlClass.GET_EnvMasterID_KEY, settingKey);
+        PlantMasterId = ut.getValue(context, WebUrlClass.GET_PlantID_KEY, settingKey);
+        LoginId = ut.getValue(context, WebUrlClass.GET_LOGIN_KEY, settingKey);
+        Password = ut.getValue(context, WebUrlClass.GET_PSW_KEY, settingKey);
+        UserMasterId = ut.getValue(context, WebUrlClass.GET_USERMASTERID_KEY, settingKey);
+        UserName = ut.getValue(context, WebUrlClass.GET_USERNAME_KEY, settingKey);
+        sql = db.getWritableDatabase();
+
+        Date c = Calendar.getInstance().getTime();
+        System.out.println("Current time => " + c);
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        current_date = df.format(c);
+
+
+        if (getIntent().hasExtra("Mode")) {
+            Mode = getIntent().getStringExtra("Mode");
+            shipToMasterId = getIntent().getStringExtra("ShipToMasterId");
+            consigneeName = getIntent().getStringExtra("ConsigneeName");//"
+            if (Mode.equalsIgnoreCase("C")) {
+                ed_Title.setText(consigneeName + " : Critical Activities");
+            } else if (Mode.equalsIgnoreCase("Comp")) {
+                ed_Title.setText(consigneeName + " : Completed Activities");
+
+            } else if (Mode.equalsIgnoreCase("A")) {
+                ed_Title.setText(consigneeName + " : Assigned Activities");
+
+            } else if (Mode.equalsIgnoreCase("Appr")) {//O
+                ed_Title.setText(consigneeName + " : Unapproved Activities");
+            } else if (Mode.equalsIgnoreCase("O")) {//O
+                ed_Title.setText(consigneeName + " : Overdue Activities");
+            }
+            ClientJsonObject(Mode);
+        }
+
+
+        activityListMainAdapter_new = new ActivityListMainAdapter_New(ClientDetailsCntActivity.this, lsActivityList, "fromleftPanelClient");
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        lsactivity_list.setLayoutManager(mLayoutManager);
+        lsactivity_list.setItemAnimator(new DefaultItemAnimator());
+        lsactivity_list.setAdapter(activityListMainAdapter_new);
+
+
+    }
+
+    public void loadNextActivity(String reQuery) {
+        rowStart = rowEnd + 1;
+        rowEnd = rowStart + 9;
+
+        ClientJsonObject(Mode);
+
+    }
+
+    private void InitView() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar1);
+        toolbar.setLogo(R.mipmap.ic_toolbar_logo_vwb);
+        toolbar.setTitle(R.string.app_name_toolbar_Vwb);
+        setSupportActionBar(toolbar);
+        toolbar.setTitleTextColor(Color.WHITE);
+        ed_Title = (TextView) findViewById(R.id.titlee);
+        //  mProgress = (ProgressBar) findViewById(R.id.toolbar_progress_App_bar);
+        lsactivity_list = findViewById(R.id.lsactivity_list);
+        progressBar = findViewById(R.id.progressBar);
+        lsActivityList = new ArrayList<ActivityBean>();
+    }
+
+    public void ClientJsonObject(String status) {
+        commonObj = new commonObjectProperties();
+        JSONObject jsoncommonObj = commonObj.WorkDataObj();
+        JSONObject jsonObj;
+        try {
+            if (status.equals("A")) {
+                jsonObj = jsoncommonObj.getJSONObject("Status");
+                jsonObj.put("IsSet", true);
+                jsonObj.put("Operator", "<>");
+                jsonObj.put("value1", "('15','12')");
+
+            } else if (status.equals("O")) {
+                jsonObj = jsoncommonObj.getJSONObject("Status");
+                jsonObj.put("IsSet", true);
+                jsonObj.put("Operator", "<>");
+                jsonObj.put("value1", "('15','12')");
+
+                jsonObj = jsoncommonObj.getJSONObject("ToDt");
+                jsonObj.put("IsSet", true);
+                jsonObj.put("Operator", "<");
+                jsonObj.put("value1", current_date);
+
+            } else if (status.equals("Appr")) {
+                jsonObj = jsoncommonObj.getJSONObject("Status");
+                jsonObj.put("IsSet", true);
+                jsonObj.put("Operator", "eq");
+                jsonObj.put("value1", "('12')");
+                jsonObj = jsoncommonObj.getJSONObject("Await");
+                jsonObj.put("IsSet", true);
+
+            } else if (status.equals("C")) {
+                jsonObj = jsoncommonObj.getJSONObject("Status");
+                jsonObj.put("IsSet", true);
+                jsonObj.put("Operator", "<>");
+                jsonObj.put("value1", "('15','12')");
+                jsonObj = jsoncommonObj.getJSONObject("PriorityIndex");
+                jsonObj.put("IsSet", true);
+            }
+
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("name", "ClientId");
+            jsonObject.put("IsSet", true);
+            jsonObject.put("Operator", "eq");
+            jsonObject.put("value1", shipToMasterId);
+            jsonObject.put("value2", "");
+
+            jsoncommonObj.put("ClientId", jsonObject);
+            jsoncommonObj.put("ReQuery", "Y");
+            jsoncommonObj.put("RowEnd", rowEnd);
+            jsoncommonObj.put("RowStart", rowStart);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        FinalObj = jsoncommonObj.toString();
+        FinalObj = FinalObj.replaceAll("\\\\", "");
+
+        //new DownloadCommanDataURLJSON().execute();
+        new DownloaPostWorkLoadPaging().execute(FinalObj);
+      /*  try {
+            jsonObj = jsoncommonObj.getJSONObject("assignBy");
+            jsonObj.put("IsSet", true);
+            jsonObj.put("value1", UserMasterId);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        try {
+            jsonObj = jsoncommonObj.getJSONObject("Status");
+            jsonObj.put("Operator", "<>");
+            jsonObj.put("IsSet", true);
+            jsonObj.put("value1", "('12,'15')");
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            //dismissProgressDialog();
+        }
+        try {
+      *//*  JSONObject jsonObject = new JSONObject();
+        jsonObject.put()*//*
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("name", "ClientId");
+            jsonObject.put("IsSet", false);
+            jsonObject.put("Operator", "eq");
+            jsonObject.put("value1", "");
+            jsonObject.put("value2", "");
+
+            jsoncommonObj.put("ClientId", jsonObject);
+
+            jsoncommonObj.put("ReQuery", "Y");
+            jsoncommonObj.put("RowEnd", 10);
+            jsoncommonObj.put("RowStart", 0);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }*/
+
+    }
+
+    class DownloaPostWorkLoadPaging extends AsyncTask<String, Void, String> {
+        Object res;
+        String response;
+
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressBar.setVisibility(View.VISIBLE);
+
+        }
+
+
+        @Override
+        protected String doInBackground(String... params) {
+            String json = params[0];
+
+
+            String url = CompanyURL + WebUrlClass.api_PostAssignByMeData_Paging;
+            try {
+                res = ut.OpenPostConnection(url, json, ClientDetailsCntActivity.this);
+                response = res.toString().replaceAll("\\\\\\\\\\\"", "");
+                response = response.replaceAll("\\\\", "");
+                response = response.replaceAll("u0026", "&");
+                response = response.replaceAll("%", "per.");
+                response = response.substring(1, response.length() - 1);
+
+
+
+                //lsActivityList.clear();
+                if(response.equals("[]")){
+
+                }else{
+                    ContentValues values = new ContentValues();
+                    JSONArray jResults = new JSONArray(response);
+                    String msg = "";
+                    if(startPos == -1) {
+                        sql.delete(db.TABLE_ACTIVITYMASTER_PAGING_CLIENTPAGE, null,
+                                null);
+                    }
+                    Cursor c = sql.rawQuery("SELECT * FROM " + db.TABLE_ACTIVITYMASTER_PAGING_CLIENTPAGE, null);
+                    int count = c.getCount();
+                    String columnName, columnValue;
+                    for (int i = 0; i < jResults.length(); i++) {
+                        JSONObject jorder = jResults.getJSONObject(i);
+                        for (int j = 0; j < c.getColumnCount(); j++) {
+
+                            columnName = c.getColumnName(j);
+                            columnValue = jorder.getString(columnName);
+                            if (columnName.equalsIgnoreCase("ActivityName")) {
+                                columnValue = jorder.getString(columnName);
+                                columnValue = URLDecoder.decode(columnValue, "UTF-8");
+                            }
+                            values.put(columnName, columnValue);
+                        }
+                        long a = sql.insert(db.TABLE_ACTIVITYMASTER_PAGING_CLIENTPAGE, null, values);
+                        Log.e("", "" + a);
+                    }
+
+                    startPos = 1;
+
+                  /*  ContentValues values = new ContentValues();
+                    JSONArray jResults = new JSONArray(response);
+
+                    for (int i = 0; i < jResults.length(); i++) {
+                        JSONObject jorder = jResults.getJSONObject(i);
+                        ActivityBean bean = new ActivityBean();
+                        bean.setIsChargable(jorder.getString("IsChargable"));
+                        bean.setActivityName(jorder.getString("ActivityName"));
+                        bean.setAssignedById(jorder.getString("AssignedById"));
+                        bean.setAssigned_By(jorder.getString("Assigned_By"));
+                        bean.setIssuedToName(jorder.getString("IssuedToName"));
+                        bean.setUserMasterId(jorder.getString("UserMasterId"));
+                        bean.setReportingTo(jorder.getString("ReportingTo"));
+                        bean.setSubActCount(jorder.getString("SubActCount"));
+                        bean.setSubActStaus(jorder.getString("SubActStaus"));
+                        bean.setActivityId(jorder.getString("ActivityId"));
+                        bean.setEndDate(jorder.getString("EndDate"));
+                        bean.setStartDate(jorder.getString("StartDate"));
+                        bean.setExpectedCompleteDate(jorder.getString("ExpectedCompleteDate"));
+                        bean.setModifiedBy(jorder.getString("ModifiedBy"));
+                        bean.setModified_By(jorder.getString("Modified_By"));
+                        bean.setFormatEndDt(jorder.getString("FormatEndDt"));
+                        bean.setFormatStDt(jorder.getString("FormatStDt"));
+                        bean.setStatus(jorder.getString("Status"));
+                        bean.setProjectID(jorder.getString("ProjectId"));
+                        bean.setPAllowUsrTimeSlotHrs(jorder.getString("PAllowUsrTimeSlotHrs"));
+                        bean.setIsDelayedActivityAllowed(jorder.getString("IsDelayedActivityAllowed"));
+                        bean.setCd(jorder.getString("Cd"));
+                        bean.setUnitId(jorder.getString("UnitId"));
+                        bean.setPKModuleMastId(jorder.getString("PKModuleMastId"));
+                        bean.setPriorityName(jorder.getString("PriorityName"));
+                        bean.setColour(jorder.getString("Colour"));
+                        bean.setPriorityIndex(jorder.getString("PriorityIndex"));
+                        bean.setTotalHoursBooked(jorder.getString("TotalHoursBooked"));//PAllowUsrTimeSlotHrs
+                        bean.setAddedDt(jorder.getString("AddedDt"));
+                        bean.setModifiedDt(jorder.getString("ModifiedDt"));
+                        bean.setAssignedById1(jorder.getString("AssignedById1"));
+                        bean.setIsDeleted(jorder.getString("IsDeleted"));
+                        bean.setIsApproved(jorder.getString("IsApproved"));
+                        bean.setIsChargable1(jorder.getString("IsChargable1"));
+                        bean.setActivityTypeId(jorder.getString("ActivityTypeId"));
+                        bean.setIsApproval(jorder.getString("IsApproval"));
+                        bean.setHoursRequired(jorder.getString("HoursRequired"));
+                        bean.setAttachmentName(jorder.getString("AttachmentName"));
+                        bean.setAttachmentContent(jorder.getString("AttachmentContent"));
+                        bean.setModifiedDt1(jorder.getString("ModifiedDt1"));
+                        bean.setSourceType(jorder.getString("SourceType"));
+                        bean.setSourceId(jorder.getString("SourceId"));
+                        bean.setUnitName(jorder.getString("UnitName"));
+                        bean.setUnitDesc(jorder.getString("UnitDesc"));
+                        bean.setModuleName(jorder.getString("ModuleName"));
+                        bean.setActivityName1(jorder.getString("ActivityName1"));
+                        bean.setRemarks(jorder.getString("Remarks"));
+                        bean.setProjectCode(jorder.getString("ProjectCode"));
+                        bean.setProjectName(jorder.getString("ProjectName"));
+                        bean.setUserName(jorder.getString("UserName"));
+                        bean.setExpectedComplete_Date(jorder.getString("ExpectedComplete_Date"));
+                        bean.setDeptDesc(jorder.getString("DeptDesc"));
+                        bean.setDeptMasterId(jorder.getString("DeptMasterId"));
+                        bean.setCompletionIntimate(jorder.getString("CompletionIntimate"));
+                        bean.setActivityCode(jorder.getString("ActivityCode"));
+                        bean.setModifiedBy1(jorder.getString("ModifiedBy1"));
+                        bean.setReassignedBy(jorder.getString("ReassignedBy"));
+                        bean.setReassignedDt(jorder.getString("ReassignedDt"));
+                        bean.setActualCompletionDate(jorder.getString("ActualCompletionDate"));
+                        bean.setWarrantyCode(jorder.getString("WarrantyCode"));
+                        bean.setTicketCategory(jorder.getString("TicketCategory"));
+                        bean.setIsEndTime(jorder.getString("IsEndTime"));
+                        bean.setIsCompActPresent(jorder.getString("IsCompActPresent"));
+                        bean.setCompletionActId(jorder.getString("CompletionActId"));
+                        bean.setTktCustReportedBy(jorder.getString("TktCustReportedBy"));
+                        bean.setTktCustApprovedBy(jorder.getString("TktCustApprovedBy"));
+                        bean.setIsSubActivity(jorder.getString("IsSubActivity"));
+                        bean.setParentActId(jorder.getString("ParentActId"));
+                        bean.setConsigneeName(jorder.getString("ConsigneeName"));
+                        bean.setContMob(jorder.getString("ContMob"));
+                        bean.setActivityTypeName(jorder.getString("ActivityTypeName"));
+                        *//******//*
+                        bean.setFYCode(jorder.getString("FYCode"));
+                        bean.setTotalCount(jorder.getString("TotalCount"));
+
+                        lsActivityList.add(bean);
+                    }*/
+                }
+
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                response = WebUrlClass.Errormsg;
+            }
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(String res) {
+            super.onPostExecute(res);
+            progressBar.setVisibility(View.GONE);
+            if (!(response == null || response.equals("[]"))) {
+                Overdue_Paging();
+
+
+                /*activityListadapter = new ActivityListMainAdapter(ClientDetailsCntActivity.this, lsActivityList);
+                lsactivity_list.setAdapter(activityListadapter);*/
+            }
+
+
+            //  getActivity_Paging();
+            //getTicketActivity_Paging();
+            // updateList();
+
+        }
+
+    }
+
+    private void Overdue_Paging() {
+        progressBar.setVisibility(View.VISIBLE);
+        lsActivityList.clear();
+
+        Cursor cur = sql.rawQuery("SELECT * FROM " + db.TABLE_ACTIVITYMASTER_PAGING_CLIENTPAGE, null);
+        int count = cur.getCount();
+        Log.i("cnt:", String.valueOf(cur.getCount()));
+
+        int cnt = cur.getCount();
+        if (cur.getCount() > 0) {
+            cur.moveToFirst();
+            do {
+                ActivityBean bean = new ActivityBean();
+                //   bean.setRowNo(cur.getString(cur.getColumnIndex("ROWNo")));
+                //values.put("ROWNo",bean.getrowNo());
+                bean.setIsChargable(cur.getString(cur.getColumnIndex("IsChargable")));
+                bean.setActivityName(cur.getString(cur.getColumnIndex("ActivityName")));
+                bean.setAssignedById(cur.getString(cur.getColumnIndex("AssignedById")));
+                bean.setAssigned_By(cur.getString(cur.getColumnIndex("Assigned_By")));
+                bean.setIssuedToName(cur.getString(cur.getColumnIndex("IssuedToName")));
+                bean.setUserMasterId(cur.getString(cur.getColumnIndex("UserMasterId")));
+                bean.setReportingTo(cur.getString(cur.getColumnIndex("ReportingTo")));
+                bean.setSubActCount(cur.getString(cur.getColumnIndex("SubActCount")));
+                bean.setSubActStaus(cur.getString(cur.getColumnIndex("SubActStaus")));
+                bean.setActivityId(cur.getString(cur.getColumnIndex("ActivityId")));
+                bean.setEndDate(cur.getString(cur.getColumnIndex("EndDate")));
+                bean.setStartDate(cur.getString(cur.getColumnIndex("StartDate")));
+                bean.setExpectedCompleteDate(cur.getString(cur.getColumnIndex("ExpectedCompleteDate")));
+                bean.setModifiedBy(cur.getString(cur.getColumnIndex("ModifiedBy")));
+                bean.setModified_By(cur.getString(cur.getColumnIndex("Modified_By")));
+                bean.setFormatEndDt(cur.getString(cur.getColumnIndex("FormatEndDt")));
+                bean.setFormatStDt(cur.getString(cur.getColumnIndex("FormatStDt")));
+                bean.setStatus(cur.getString(cur.getColumnIndex("Status")));
+                bean.setProjectID(cur.getString(cur.getColumnIndex("ProjectId")));
+                bean.setPAllowUsrTimeSlotHrs(cur.getString(cur.getColumnIndex("PAllowUsrTimeSlotHrs")));
+                bean.setIsDelayedActivityAllowed(cur.getString(cur.getColumnIndex("IsDelayedActivityAllowed")));
+                bean.setCd(cur.getString(cur.getColumnIndex("Cd")));
+                bean.setUnitId(cur.getString(cur.getColumnIndex("UnitId")));
+                bean.setPKModuleMastId(cur.getString(cur.getColumnIndex("PKModuleMastId")));
+                bean.setPriorityName(cur.getString(cur.getColumnIndex("PriorityName")));
+                bean.setColour(cur.getString(cur.getColumnIndex("Colour")));
+                bean.setPriorityIndex(cur.getString(cur.getColumnIndex("PriorityIndex")));
+                bean.setTotalHoursBooked(cur.getString(cur.getColumnIndex("TotalHoursBooked")));//PAllowUsrTimeSlotHrs
+                bean.setAddedDt(cur.getString(cur.getColumnIndex("AddedDt")));
+                bean.setModifiedDt(cur.getString(cur.getColumnIndex("ModifiedDt")));
+                bean.setAssignedById1(cur.getString(cur.getColumnIndex("AssignedById1")));
+//                bean.setIsDeleted(cur.getString(cur.getColumnIndex("IsDeleted")));
+                bean.setIsApproved(cur.getString(cur.getColumnIndex("IsApproved")));
+                bean.setIsChargable1(cur.getString(cur.getColumnIndex("IsChargable1")));
+                bean.setActivityTypeId(cur.getString(cur.getColumnIndex("ActivityTypeId")));
+                bean.setIsApproval(cur.getString(cur.getColumnIndex("IsApproval")));
+                bean.setHoursRequired(cur.getString(cur.getColumnIndex("HoursRequired")));
+                bean.setAttachmentName(cur.getString(cur.getColumnIndex("AttachmentName")));
+                bean.setAttachmentContent(cur.getString(cur.getColumnIndex("AttachmentContent")));
+                bean.setModifiedDt1(cur.getString(cur.getColumnIndex("ModifiedDt1")));
+                bean.setSourceType(cur.getString(cur.getColumnIndex("SourceType")));
+                bean.setSourceId(cur.getString(cur.getColumnIndex("SourceId")));
+                bean.setUnitName(cur.getString(cur.getColumnIndex("UnitName")));
+                bean.setUnitDesc(cur.getString(cur.getColumnIndex("UnitDesc")));
+                bean.setModuleName(cur.getString(cur.getColumnIndex("ModuleName")));
+                bean.setActivityName1(cur.getString(cur.getColumnIndex("ActivityName1")));
+                bean.setRemarks(cur.getString(cur.getColumnIndex("Remarks")));
+                bean.setProjectCode(cur.getString(cur.getColumnIndex("ProjectCode")));
+                bean.setProjectName(cur.getString(cur.getColumnIndex("ProjectName")));
+                bean.setUserName(cur.getString(cur.getColumnIndex("UserName")));
+                bean.setExpectedComplete_Date(cur.getString(cur.getColumnIndex("ExpectedComplete_Date")));
+                bean.setDeptDesc(cur.getString(cur.getColumnIndex("DeptDesc")));
+                bean.setDeptMasterId(cur.getString(cur.getColumnIndex("DeptMasterId")));
+                bean.setCompletionIntimate(cur.getString(cur.getColumnIndex("CompletionIntimate")));
+                bean.setActivityCode(cur.getString(cur.getColumnIndex("ActivityCode")));
+                bean.setModifiedBy1(cur.getString(cur.getColumnIndex("ModifiedBy1")));
+                bean.setReassignedBy(cur.getString(cur.getColumnIndex("ReassignedBy")));
+                bean.setReassignedDt(cur.getString(cur.getColumnIndex("ReassignedDt")));
+                bean.setActualCompletionDate(cur.getString(cur.getColumnIndex("ActualCompletionDate")));
+                bean.setWarrantyCode(cur.getString(cur.getColumnIndex("WarrantyCode")));
+                bean.setTicketCategory(cur.getString(cur.getColumnIndex("TicketCategory")));
+                bean.setIsEndTime(cur.getString(cur.getColumnIndex("IsEndTime")));
+                bean.setIsCompActPresent(cur.getString(cur.getColumnIndex("IsCompActPresent")));
+                bean.setCompletionActId(cur.getString(cur.getColumnIndex("CompletionActId")));
+                bean.setTktCustReportedBy(cur.getString(cur.getColumnIndex("TktCustReportedBy")));
+                bean.setTktCustApprovedBy(cur.getString(cur.getColumnIndex("TktCustApprovedBy")));
+                bean.setIsSubActivity(cur.getString(cur.getColumnIndex("IsSubActivity")));
+                bean.setParentActId(cur.getString(cur.getColumnIndex("ParentActId")));
+                bean.setConsigneeName(cur.getString(cur.getColumnIndex("ConsigneeName")));
+                bean.setContMob(cur.getString(cur.getColumnIndex("ContMob")));
+                bean.setActivityTypeName(cur.getString(cur.getColumnIndex("ActivityTypeName")));
+                        //******//*
+                bean.setFYCode(cur.getString(cur.getColumnIndex("FYCode")));
+                bean.setTotalCount(cur.getString(cur.getColumnIndex("TotalCount")));
+
+                lsActivityList.add(bean);
+
+
+            } while (cur.moveToNext());
+
+
+            // activityListadapterNew.notifyDataSetChanged();
+            //   activityListadapterNew.notifyItemRangeChanged(0, activityListadapterNew.getItemCount());
+
+           activityListMainAdapter_new.notifyDataSetChanged();
+
+            progressBar.setVisibility(View.GONE);
+        }
+
+    }
+}

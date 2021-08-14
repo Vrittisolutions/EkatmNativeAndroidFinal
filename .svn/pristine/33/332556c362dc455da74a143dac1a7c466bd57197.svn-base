@@ -1,0 +1,47 @@
+package com.vritti.vwb.Beans;
+
+import com.google.gson.annotations.SerializedName;
+
+import java.util.ArrayList;
+
+public class ReportsTotalCount {
+
+    @SerializedName("ColumnName")
+    String ColumnName;
+    @SerializedName("Sum")
+    String Sum;
+    @SerializedName("TotalCount")
+    ArrayList<ReportsTotalCount> TotalCount;
+
+    public ReportsTotalCount() {
+    }
+
+    public ReportsTotalCount(ArrayList<ReportsTotalCount> stringArrayList) {
+        this.TotalCount = stringArrayList;
+    }
+
+    public ArrayList<ReportsTotalCount> getTotalCount() {
+        return TotalCount;
+    }
+
+    public void setTotalCount(ArrayList<ReportsTotalCount> totalCount) {
+        TotalCount = totalCount;
+    }
+
+
+    public String getColumnName() {
+        return ColumnName;
+    }
+
+    public void setColumnName(String columnName) {
+        ColumnName = columnName;
+    }
+
+    public String getSum() {
+        return Sum;
+    }
+
+    public void setSum(String sum) {
+        Sum = sum;
+    }
+}

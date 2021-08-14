@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorIndivateTab"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:id="@+id/len_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="5dp"
+        android:background="@color/white"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/e1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/dark_grey"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:text="Save chat room name"
+            android:textColor="@color/white"
+            android:textColorHint="@color/dark_grey"
+            android:textSize="14dp"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/profile_image"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            android:src="@drawable/group_user_icon"
+
+
+            />
+
+        <TextView
+            android:id="@+id/icon_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/e1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/rounded_textview"
+            android:gravity="center"
+            android:text="C"
+            android:textColor="@android:color/white"
+            android:textSize="30sp"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/editGroupName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/e1"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/profile_image"
+            android:background="@android:color/transparent"
+            android:cursorVisible="true"
+            android:focusable="true"
+            android:hint="Type chat room name"
+            android:padding="10dp"
+            android:singleLine="false">
+
+            <requestFocus />
+        </EditText>
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editGroupName"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/backshape_blue"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Create Chat Room"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/txt_create_room"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/editGroupName"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginRight="18dp"
+            android:gravity="center"
+            android:src="@drawable/right"
+            android:text=""
+            android:textColor="@android:color/white" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@+id/len_group"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/dark_gray"
+
+        />
+
+    <RelativeLayout
+        android:id="@+id/len_add_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view"
+        android:orientation="vertical"
+        android:visibility="gone"
+        >
+
+        <TextView
+            android:id="@+id/e"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@color/dark_grey"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:text="Add participants"
+            android:textColor="@color/white"
+            android:textColorHint="@color/dark_grey"
+            android:textSize="14dp">
+
+        </TextView>
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/e"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:gravity="center|left"
+            android:orientation="horizontal">
+
+            <EditText
+
+                android:id="@+id/edt_search_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/edit_text"
+                android:hint="Search name"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textColorHint="@color/dark_grey"
+                android:textSize="14dp">
+
+            </EditText>
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                style="@android:style/Widget.ProgressBar.Small"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:indeterminateDrawable="@drawable/spinner"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/listview_user"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/img_adduser"
+             />
+
+        <ImageView
+            android:id="@+id/img_adduser"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/linearLayout"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/right"
+            android:text=""
+            android:textColor="@android:color/white"
+            android:textSize="30sp" />
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,830 @@
+package com.vritti.ekatm.activity;
+
+import android.app.Activity;
+import android.app.ActivityManager;
+import android.content.BroadcastReceiver;
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.IntentSender;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.os.Build;
+import android.os.Bundle;
+import android.os.PowerManager;
+import android.provider.Settings;
+import android.provider.SyncStateContract;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.CardView;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+
+import com.firebase.jobdispatcher.Constraint;
+import com.firebase.jobdispatcher.FirebaseJobDispatcher;
+import com.firebase.jobdispatcher.GooglePlayDriver;
+import com.firebase.jobdispatcher.Job;
+import com.firebase.jobdispatcher.Lifetime;
+import com.firebase.jobdispatcher.RetryStrategy;
+import com.firebase.jobdispatcher.Trigger;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResult;
+import com.google.android.gms.location.LocationSettingsStates;
+import com.google.android.gms.location.LocationSettingsStatusCodes;
+import com.vritti.chat.activity.OpenChatroomActivity;
+import com.vritti.crm.vcrm7.ActivityEnquiryList;
+import com.vritti.crm.vcrm7.CallListActivity;
+import com.vritti.databaselib.data.DatabaseHandlers;
+import com.vritti.databaselib.other.Utility;
+import com.vritti.databaselib.other.WebUrlClass;
+
+import com.vritti.ekatm.Constants;
+import com.vritti.ekatm.R;
+import com.vritti.ekatm.adapter.AdapterMultipleLogInList;
+import com.vritti.ekatm.adapter.CustomAdapter;
+import com.vritti.ekatm.bean.BeanLogInsetting;
+import com.vritti.ekatm.bean.ItemObject;
+import com.vritti.ekatm.receiver.ConnectivityReceiver;
+import com.vritti.ekatm.services.DownloadJobService;
+import com.vritti.ekatm.services.PaidLocationFusedLocationTracker1;
+import com.vritti.inventory.activity.SelectModuleActivity;
+import com.vritti.sales.activity.Sales_HomeSActivity;
+import com.vritti.sessionlib.CallbackInterface;
+import com.vritti.sessionlib.StartSession;
+import com.vritti.vwb.CommonClass.AppCommon;
+import com.vritti.vwb.classes.CommonFunction;
+import com.vritti.vwb.vworkbench.ActivityMain;
+import com.vritti.vwb.vworkbench.TicketRegisterActivity;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.vritti.vwb.vworkbench.ActivitySetting.REQUEST_CODE;
+
+public class ActivityModuleSelection extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+
+    private DrawerLayout mDrawerLayout;
+    private DrawerLayout mDrawerLayout1;
+
+    private ListView mDrawerList;
+    //CardView card_vwb, card_crm, card_pm, card_service;
+    ImageView card_vwb, card_crm, card_pm, card_service, card_pm_crm, card_inventory, chat_module ,card_sales, card_print;
+
+    String[] titles = {"Nigeria", "Ghana", "Senegal", "Togo"};
+    private CharSequence mTitle;
+    private CharSequence mDrawerTitle;
+    private ActionBarDrawerToggle mDrawerToggle;
+    private Toolbar topToolBar;
+    ArrayList<BeanLogInsetting> beanLogInsettingArrayList;
+    private DatabaseHandlers db;
+    Utility ut;
+    String PlantMasterId = "", LoginId = "", Password = "", CompanyURL = "", EnvMasterId = "",
+            UserMasterId = "", UserName = "", MobileNo = "";
+    static String settingKey = "";
+    private TextView txtUserLoginID, txtMobile, txtcompcode, txt_vwb, txt_crm, txt_pm, txt_service;
+    private ImageView img_userprofile, img_adduser;
+    String IsCRMUser = "";
+    public static FirebaseJobDispatcher dispatcher;
+    public static Job myJob = null;
+    private GoogleApiClient googleApiClient = null;
+    private static int REQUEST_CODE = 12;
+    private int IGNORE_BATTERY_OPTIMIZATION_REQUEST = 1002;
+    private BroadcastReceiver mNetworkReceiver;
+    LinearLayout len_pm, len_vwb;
+    TextView chatCount;
+    String IsChatApplicable;
+    Context context;
+    SQLiteDatabase sql;
+    RelativeLayout conversation;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_module_selection);
+        // isServiceRunning();
+
+        topToolBar = (Toolbar) findViewById(R.id.toolbar);
+        topToolBar.setTitle(R.string.app_name_toolbar_Ekatm);
+        if(Constants.type == Constants.Type.MilkRun)
+        topToolBar.setLogo(R.mipmap.vsm_image);
+        if(Constants.type == Constants.Type.Sahara)
+        topToolBar.setLogo(R.mipmap.ic_toolbar_logo_vwb);
+        else
+        topToolBar.setLogo(R.mipmap.ic_toolbar_logo_vwb);
+        topToolBar.setTitleTextColor(Color.WHITE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
+        }
+
+
+
+        context = ActivityModuleSelection.this;
+        ut = new Utility();
+        settingKey = ut.getSharedPreference_SettingKey(context);
+        String dabasename = ut.getValue(context, WebUrlClass.GET_DATABASE_NAME_KEY, settingKey);
+        db = new DatabaseHandlers(context, dabasename);
+        sql = db.getWritableDatabase();
+        CompanyURL = ut.getValue(context, WebUrlClass.GET_COMPANY_URL_KEY, settingKey);
+        EnvMasterId = ut.getValue(context, WebUrlClass.GET_EnvMasterID_KEY, settingKey);
+        PlantMasterId = ut.getValue(context, WebUrlClass.GET_PlantID_KEY, settingKey);
+          LoginId = ut.getValue(context, WebUrlClass.GET_LOGIN_KEY, settingKey);
+        Password = ut.getValue(context, WebUrlClass.GET_PSW_KEY, settingKey);
+        UserMasterId = ut.getValue(context, WebUrlClass.GET_USERMASTERID_KEY, settingKey);
+        IsChatApplicable = ut.getValue(context, WebUrlClass.GET_ISCHATAPPLICABLE_KEY, settingKey);
+      /*  txt_vwb = (TextView) findViewById(R.id.txt_vwb);
+        txt_crm = (TextView) findViewById(R.id.txt_crm);
+        txt_pm = (TextView) findViewById(R.id.txt_pm);
+        txt_service = (TextView) findViewById(R.id.txt_service);*/
+
+        card_vwb = (ImageView) findViewById(R.id.card_vwb);
+        chat_module = (ImageView) findViewById(R.id.chat_module);
+        card_crm = (ImageView) findViewById(R.id.card_crm);
+        card_pm = (ImageView) findViewById(R.id.card_pm);
+        card_service = (ImageView) findViewById(R.id.card_service);
+        len_pm = (LinearLayout) findViewById(R.id.len_pm);
+        len_vwb = (LinearLayout) findViewById(R.id.len_vwb);
+        card_pm_crm = (ImageView) findViewById(R.id.card_pm_crm);
+        card_inventory = (ImageView) findViewById(R.id.card_inventory);
+        card_sales = (ImageView)findViewById(R.id.card_sales);
+        card_print = findViewById(R.id.card_print);
+        chatCount = findViewById(R.id.chatCount);
+        conversation = findViewById(R.id.conversation);
+
+
+        if (Constants.type == Constants.Type.CRM) {
+
+            //  txt_crm.setText(WebUrlClass.app_name_moduleselection_CRM);
+            card_pm.setVisibility(View.GONE);
+            card_vwb.setVisibility(View.VISIBLE);
+            card_crm.setVisibility(View.VISIBLE);
+            card_service.setVisibility(View.VISIBLE);
+
+        } else if (Constants.type == Constants.Type.Vwb) {
+
+            // txt_vwb.setText(WebUrlClass.app_name_moduleselection_Vwb);
+            len_vwb.setVisibility(View.VISIBLE);
+            card_vwb.setVisibility(View.VISIBLE);
+            card_crm.setVisibility(View.VISIBLE);
+            card_service.setVisibility(View.VISIBLE);
+
+
+        } else if (Constants.type == Constants.Type.PM) {
+
+            // card_pm.setVisibility(View.VISIBLE);
+            len_vwb.setVisibility(View.GONE);
+            len_pm.setVisibility(View.VISIBLE);
+            card_vwb.setVisibility(View.GONE);
+            card_pm_crm.setVisibility(View.VISIBLE);
+            card_service.setVisibility(View.GONE);
+
+        } else if (Constants.type == Constants.Type.Delivery) {
+
+            Intent intent = new Intent(ActivityModuleSelection.this, ActivityMain.class);
+            startActivity(intent);
+            finishAffinity();
+        }else if(Constants.type == Constants.Type.MilkRun || Constants.type == Constants.Type.Sahara){
+            card_crm.setVisibility(View.INVISIBLE);
+            card_service.setVisibility(View.GONE);
+            card_inventory.setVisibility(View.GONE);
+            conversation.setVisibility(View.GONE);
+            card_sales.setVisibility(View.GONE);
+            card_vwb.setVisibility(View.VISIBLE);
+        }
+
+
+        setSupportActionBar(topToolBar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        getSupportActionBar().setHomeButtonEnabled(false);
+
+
+        beanLogInsettingArrayList = new ArrayList<>();
+        db = new DatabaseHandlers(ActivityModuleSelection.this);
+        ut = new Utility();
+
+        if (googleApiClient == null) {
+            if (ut.isNet(ActivityModuleSelection.this)) {
+                boolean gpsEnable = true;
+                if (Constants.type == Constants.Type.PM) {
+                   gpsEnable = AppCommon.getInstance(context).IsGpsLocationEnable();
+                }
+                if (gpsEnable)
+                    EnableGPSAutoMatically();
+            } else {
+                ut.displayToast(this, "No Internet Connection");
+            }
+        }
+
+        setJobShedulder();
+        mNetworkReceiver = new ConnectivityReceiver();
+        registerNetworkBroadcastForNougat();
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerList = (ListView) findViewById(R.id.left_drawer);
+
+
+        LayoutInflater inflater = getLayoutInflater();
+        View listHeaderView = inflater.inflate(R.layout.nav_header_activity_module_selection, null, false);
+        txtUserLoginID = (TextView) listHeaderView.findViewById(R.id.txt_userLoginID);
+        txtMobile = (TextView) listHeaderView.findViewById(R.id.txt_mobile);
+        txtcompcode = (TextView) listHeaderView.findViewById(R.id.txt_compcode);
+        img_adduser = (ImageView) listHeaderView.findViewById(R.id.img_adduser);
+        img_userprofile = (ImageView) listHeaderView.findViewById(R.id.img_profile);
+        mDrawerList.addHeaderView(listHeaderView);
+
+        /*getLogindata();
+        SharedPreferences sharedpreferences = getSharedPreferences(WebUrlClass.MyPREFERENCES, MODE_PRIVATE);
+        String setKey = sharedpreferences.getString(WebUrlClass.MyPREFERENCES_SETTING_KEY, "");
+        setLogindata(setKey);*/
+
+
+        mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // mSpinner.getSelectedItem().toString();
+                settingKey = beanLogInsettingArrayList.get(position - 1).getLogInKey();
+                String User = beanLogInsettingArrayList.get(position - 1).getUserLogInId();
+                SharedPreferences sharedpreferences = getSharedPreferences(WebUrlClass.MyPREFERENCES, MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+                editor.putString(WebUrlClass.MyPREFERENCES_SETTING_KEY, settingKey);
+                editor.putInt(WebUrlClass.MyPREFERENCES_SETTING_POSITION_KEY, position);
+                editor.commit();
+                Toast.makeText(getApplicationContext(), "Selected user " + User, Toast.LENGTH_LONG).show();
+                setLogindata(settingKey);
+                IsCRMUser = ut.getValue(getApplicationContext(), WebUrlClass.GET_ISCRMUSER_KEY, settingKey);
+
+                SharedPreferences AtendanceSheredPreferance = getSharedPreferences(WebUrlClass.ATTENDANCE_PREFERENCES, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor1 = AtendanceSheredPreferance
+                        .edit();
+                editor1.putString(WebUrlClass.ATTENDANCE_PREFERENCES_ACTIVITY_KEY, null);
+                editor1.putString(WebUrlClass.ATTENDANCE_PREFERENCES_ACTSTART_KEY, null);
+                editor1.commit();
+
+                mDrawerLayout.closeDrawers();
+
+            }
+        });
+
+        img_adduser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), ActivityLogIn.class);
+                i.putExtra(WebUrlClass.INTENT_LOGIN_SCREEN_BACKFLAG, WebUrlClass.VALUE_LOGIN_SCREEN_BACKFLAG);
+                startActivity(i);
+            }
+        });
+
+        card_vwb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivityModuleSelection.this, ActivityMain.class);
+                startActivity(intent);
+            }
+        });
+        chat_module.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (IsChatApplicable.equalsIgnoreCase("true")) {
+                    Intent intent5 = new Intent(ActivityModuleSelection.this, OpenChatroomActivity.class);
+                    intent5.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent5);
+                } else {
+                    Toast.makeText(ActivityModuleSelection.this, "Chat module is not installed", Toast.LENGTH_SHORT).show();
+
+                }
+                //AppCommon.getInstance(ActivityMain.this).setChatPostion(0);
+            }
+        });
+
+        card_crm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (IsCRMUser.equalsIgnoreCase("false")) {
+                    Intent intent = new Intent(ActivityModuleSelection.this, CallListActivity.class);
+                    startActivity(intent);
+                } else {
+                    ut.displayToast(getApplicationContext(), "You are not CRM user");
+                }
+
+            }
+        });
+        card_pm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivityModuleSelection.this, ActivityMain.class);
+                startActivity(intent);
+            }
+        });
+        card_service.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent ticket = new Intent(ActivityModuleSelection.this, TicketRegisterActivity.class);//LeaveSummary
+                startActivity(ticket);
+
+            }
+        });
+        card_pm_crm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (IsCRMUser.equalsIgnoreCase("false")) {
+                    Intent intent = new Intent(ActivityModuleSelection.this, CallListActivity.class);
+                    startActivity(intent);
+                } else {
+                    ut.displayToast(getApplicationContext(), "You are not CRM user");
+                }
+
+            }
+        });
+        card_inventory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent ticket = new Intent(ActivityModuleSelection.this, SelectModuleActivity.class);//LeaveSummary
+                startActivity(ticket);
+                //ut.displayToast(getApplicationContext(),"Comming soon");
+
+
+            }
+        });
+        card_sales.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (IsCRMUser.equalsIgnoreCase("false")) {
+                    Intent intent = new Intent(ActivityModuleSelection.this, Sales_HomeSActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }else {
+                    ut.displayToast(getApplicationContext(),"You are not Sales user");
+                }
+            }
+        });
+
+        card_print.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivityModuleSelection.this, PrintingActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        getIsDeliveryBoy();
+       /* if(ut.IsChangePassword(context)){
+            startActivity(new Intent(this , ActivityLogIn.class));
+            finishAffinity();
+        }*/
+    }
+
+    private void getIsDeliveryBoy() {
+        if (isnet()) {
+            new StartSession(this, new CallbackInterface() {
+                @Override
+                public void callMethod() {
+                    //ShowProgress();
+                    new FindIsUserDeliveryBoy().execute();
+
+                }
+
+                @Override
+                public void callfailMethod(String msg) {
+                    Toast.makeText(ActivityModuleSelection.this, msg, Toast.LENGTH_LONG).show();
+                    // HideProgress();
+                }
+            });
+
+        }
+
+
+    }
+
+    private boolean isnet() {
+        // TODO Auto-generated method stub
+        Context context = this.getApplicationContext();
+        ConnectivityManager cm = (ConnectivityManager) context
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        if (netInfo != null && netInfo.isConnectedOrConnecting()) {
+            return true;
+        } else {
+            Toast.makeText(context, "No internet connection", Toast.LENGTH_LONG).show();
+            return false;
+        }
+    }
+
+    private void registerNetworkBroadcastForNougat() {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            registerReceiver(mNetworkReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            registerReceiver(mNetworkReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        }
+    }
+
+    private void setJobShedulder() {
+
+        // checkBatteryOptimized();
+        if (myJob == null) {
+            dispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(ActivityModuleSelection.this));
+            callJobDispacher();
+        } else {
+            if (!AppCommon.getInstance(this).isServiceIsStart()) {
+                dispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(ActivityModuleSelection.this));
+                callJobDispacher();
+            } else {
+                dispatcher.cancelAll();
+                dispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(ActivityModuleSelection.this));
+                myJob = null;
+                callJobDispacher();
+            }
+        }
+
+    }
+
+    private void checkBatteryOptimized() {
+        PowerManager pm = (PowerManager) getSystemService(POWER_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (pm != null && !pm.isIgnoringBatteryOptimizations(getPackageName())) {
+                askIgnoreOptimization();
+            } else {
+                // accepted;
+            }
+        } else {
+            // accepted;
+        }
+    }
+
+    private void askIgnoreOptimization() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            Intent intent = new Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS);
+            intent.setData(Uri.parse("package:" + getPackageName()));
+            startActivityForResult(intent, IGNORE_BATTERY_OPTIMIZATION_REQUEST);
+        } else {
+            //  openNextActivity();
+        }
+    }
+
+    private void callJobDispacher() {
+        myJob = dispatcher.newJobBuilder()
+                // the JobService that will be called
+                .setService(DownloadJobService.class)
+                // uniquely identifies the job
+                .setTag("test")
+                // one-off job
+                .setRecurring(true)
+                // don't persist past a device reboot
+                .setLifetime(Lifetime.FOREVER)
+
+                // start between 0 and 60 seconds from now
+                .setTrigger(Trigger.executionWindow(180, 240))
+                // don't overwrite an existing job with the same tag
+                .setReplaceCurrent(true)
+                // retry with exponential backoff
+                .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
+                // constraints that need to be satisfied for the job to run
+                .setConstraints(
+
+                        // only run on an unmetered network
+                        Constraint.ON_ANY_NETWORK,
+                        // only run when the device is charging
+                        Constraint.DEVICE_IDLE
+                )
+                .build();
+
+        dispatcher.mustSchedule(myJob);
+        AppCommon.getInstance(this).setServiceStarted(true);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getLogindata();
+        SharedPreferences sharedpreferences = getSharedPreferences(WebUrlClass.MyPREFERENCES, MODE_PRIVATE);
+        String setKey = sharedpreferences.getString(WebUrlClass.MyPREFERENCES_SETTING_KEY, "");
+        setLogindata(setKey);
+        IsCRMUser = ut.getValue(getApplicationContext(), WebUrlClass.GET_ISCRMUSER_KEY, setKey);
+        Log.e("data", "user" + IsCRMUser);
+
+        int notiCount = AppCommon.getInstance(this).getNotificationCount();
+        String Msgcount = String.valueOf(notiCount);
+        if (notiCount != 0) {
+            chatCount.setVisibility(View.VISIBLE);
+        } else
+            chatCount.setVisibility(View.GONE);
+        chatCount.setText(Msgcount);
+
+
+    }
+
+    private void getLogindata() {
+        beanLogInsettingArrayList.clear();
+        SQLiteDatabase Sql = db.getWritableDatabase();
+        Cursor c = Sql.rawQuery("Select * from " + db.TABLE_LOGIN_SETTING, null);
+        int Count = c.getCount();
+        if (Count > 0) {
+            c.moveToFirst();
+            do {
+                BeanLogInsetting Bean = new BeanLogInsetting();
+                Bean.setLogInKey(c.getString(c.getColumnIndex("LogInKey")));
+                Bean.setCompanyURL(c.getString(c.getColumnIndex("CompanyURL")));
+                Bean.setEnvId(c.getString(c.getColumnIndex("EnvId")));
+                Bean.setPlantID(c.getString(c.getColumnIndex("PlantID")));
+                Bean.setPlantName(c.getString(c.getColumnIndex("PlantName")));
+                Bean.setUserLogInId(c.getString(c.getColumnIndex("UserLogInId")));
+                Bean.setUserMasterId(c.getString(c.getColumnIndex("UserMasterId")));
+                Bean.setPassword(c.getString(c.getColumnIndex("Password")));
+                Bean.setMobile(c.getString(c.getColumnIndex("Mobile")));
+                Bean.setDatabaseName(c.getString(c.getColumnIndex("DatabaseName")));
+                beanLogInsettingArrayList.add(Bean);
+
+            } while (c.moveToNext());
+
+            mDrawerList.setAdapter(new CustomAdapter(this, beanLogInsettingArrayList));
+
+            //  c.close();
+            //Sql.close();
+        }
+
+        // return data;
+    }
+
+    private void setLogindata(String settingKey) {
+        //   beanLogInsettingArrayList.clear();
+        SQLiteDatabase Sql = db.getWritableDatabase();
+        Cursor c = Sql.rawQuery("Select * from " + db.TABLE_LOGIN_SETTING + " where LogInKey='" + settingKey + "'", null);
+        int Count = c.getCount();
+        if (Count > 0) {
+            c.moveToFirst();
+            do {
+                String loginId = c.getString(c.getColumnIndex("UserLogInId"));
+                String companyURL = c.getString(c.getColumnIndex("CompanyURL"));
+                String mobile = c.getString(c.getColumnIndex("Mobile"));
+                String envId = c.getString(c.getColumnIndex("EnvId"));
+                txtUserLoginID.setText(loginId);
+                txtMobile.setText(mobile);
+                txtcompcode.setText(companyURL);
+
+                if (Constants.type == Constants.Type.CRM) {
+                    txtcompcode.setText(companyURL);
+
+                } else if (Constants.type == Constants.Type.Vwb) {
+                    txtcompcode.setText(companyURL);
+
+                } else if (Constants.type == Constants.Type.PM) {
+
+                    txtcompcode.setText(envId);
+                }
+
+            } while (c.moveToNext());
+        }
+
+    }
+
+
+   /* @Override
+    public void setTitle(CharSequence title) {
+        mTitle = title;
+        getSupportActionBar().setTitle(mTitle);
+    }*/
+
+
+    private boolean isServiceRunning() {
+        ActivityManager manager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if ("com.vritti.ekatm.services.PaidLocationFusedLocationTracker1".equals(service.service.getClassName())) {
+                //  Toast.makeText(ActivityMain.this,"Yes",Toast.LENGTH_SHORT).show();
+
+                return true;
+            }
+        }
+        Intent serviceIntent = new Intent(ActivityModuleSelection.this, PaidLocationFusedLocationTracker1.class);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+
+            ContextCompat.startForegroundService(this, serviceIntent);
+        } else {
+            ActivityModuleSelection.this.startService(serviceIntent);
+        }
+
+        //  Toast.makeText(ActivityMain.this,"False",Toast.LENGTH_SHORT).show();
+
+        return false;
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        // Sync the toggle state after onRestoreInstanceState has occurred.
+        //   mDrawerToggle.syncState();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        //   mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        // If the nav drawer is open, hide action items related to the content view
+        boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+       /* if (mdrawertoggle.onoptionsitemselected(item)) {
+            return true;
+        }*/
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void EnableGPSAutoMatically() {
+        // GoogleApiClient googleApiClient = null;
+        if (googleApiClient == null) {
+            googleApiClient = new GoogleApiClient.Builder(ActivityModuleSelection.this)
+                    .addApi(LocationServices.API).addConnectionCallbacks((GoogleApiClient.ConnectionCallbacks) ActivityModuleSelection.this)
+                    .addOnConnectionFailedListener((GoogleApiClient.OnConnectionFailedListener) ActivityModuleSelection.this).build();
+            googleApiClient.connect();
+            LocationRequest locationRequest = LocationRequest.create();
+            locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+            locationRequest.setInterval(30 * 1000);
+            locationRequest.setFastestInterval(5 * 1000);
+            LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder()
+                    .addLocationRequest(locationRequest);
+
+            // **************************
+            builder.setAlwaysShow(true); // this is the key ingredient
+            // **************************
+
+            PendingResult<LocationSettingsResult> result = LocationServices.SettingsApi
+                    .checkLocationSettings(googleApiClient, builder.build());
+            result.setResultCallback(new ResultCallback<LocationSettingsResult>() {
+                @Override
+                public void onResult(LocationSettingsResult result) {
+                    final Status status = result.getStatus();
+                    final LocationSettingsStates state = result
+                            .getLocationSettingsStates();
+                    switch (status.getStatusCode()) {
+                        case LocationSettingsStatusCodes.SUCCESS:
+                           /* Intent intent = new Intent(ActivityModuleSelection.this, ActivityMain.class);
+                            startActivity(intent);*/
+
+                            break;
+                        case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
+                            //  toast("GPS is not on");
+                            // Location settings are not satisfied. But could be
+                            // fixed by showing the user
+                            // a dialog.
+
+                            try {
+                                // Show the dialog by calling
+                                // startResolutionForResult(),
+                                // and check the result in onActivityResult().
+                                status.startResolutionForResult(ActivityModuleSelection.this, REQUEST_CODE);
+
+                            } catch (IntentSender.SendIntentException e) {
+                                // Ignore the error.
+                            }
+                            break;
+                        case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
+                            //  toast("Setting change not allowed");
+                            // Location settings are not satisfied. However, we have
+                            // no way to fix the
+                            // settings so we won't show the dialog.
+                            break;
+                    }
+                }
+            });
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == REQUEST_CODE) {
+            if (resultCode == Activity.RESULT_OK) {
+                String result = data.getStringExtra("result");
+                System.out.println("Resultdata" + result);
+                // splash();
+
+               /* Intent i = getIntent();
+
+                Intent intent = new Intent(ActivityModuleSelection.this, ActivityMain.class);
+                startActivity(intent);
+                finish();*/
+
+            }
+            if (resultCode == Activity.RESULT_CANCELED) {
+                //Write your code if there's no result
+                ActivityModuleSelection.this.finish();
+            }
+        }
+    }
+
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
+
+    private class FindIsUserDeliveryBoy extends AsyncTask<String, Void, String> {
+        String response = "";
+        List<String> EnvName = new ArrayList<String>();
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            String url = CompanyURL + WebUrlClass.api_Get_IsDelieveryBoy + "=" + UserMasterId;
+            try {
+
+                response = ut.OpenConnection(url, getApplicationContext());
+                response = response.toString().replaceAll("\\\\", "");
+                response = response.replaceAll("\\\\\\\\/", "");
+                response = response.replaceAll("u0026", "&");
+                response = response.substring(1, response.length() - 1);
+
+                Log.i("data: ", response.toString());
+                JSONObject jsonObject = new JSONObject(response);
+
+                String isDeliveryBoy = String.valueOf(jsonObject.get("IsDeliveryAgent"));
+                if (isDeliveryBoy != null) {
+                    AppCommon.getInstance(context).setDeliveryBoy(isDeliveryBoy);
+                } else {
+                    AppCommon.getInstance(context).setDeliveryBoy("false");
+                }
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                response = "error";
+            }
+            return "";
+        }
+
+        @Override
+        protected void onPostExecute(String integer) {
+            super.onPostExecute(integer);
+
+
+        }
+    }
+}

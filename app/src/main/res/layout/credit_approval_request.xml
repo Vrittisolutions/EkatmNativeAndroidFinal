@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rel_prosbusi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/MyToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay"
+            app:subtitleTextAppearance="@style/ToolbarTextAppearance.Subtitle"
+            app:titleTextAppearance="@style/ToolbarTextAppearance.Title"
+            app:contentInsetLeft="0dp"
+            app:contentInsetStart="0dp"
+            app:contentInsetStartWithNavigation="0dp">
+
+
+            <ProgressBar
+                android:id="@+id/progressbar_business"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="right"
+                android:indeterminateDrawable="@drawable/spinner"
+                android:visibility="gone" />
+
+        </android.support.v7.widget.Toolbar>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/lay1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rel_prosbusi"
+        android:background="#6E6F72"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="5dp"
+            android:text="Dealer Credit Sanction"
+            android:textColor="#ffffff"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+        <ImageView
+            android:id="@+id/img_DatasheetForms"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center_vertical|right"
+            android:layout_weight="0.2"
+            android:layout_marginRight="5dp"
+            android:visibility="gone"
+            android:src="@drawable/document" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:layout_above="@+id/lay2"
+        android:layout_below="@+id/lay1"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical">
+
+            <!--prospect name-->
+            <LinearLayout
+                android:id="@+id/ln_dealer_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Dealer Code">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_dealercode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:textColor="#111"
+                        android:textSize="12sp">
+                        <requestFocus />
+
+                    </AutoCompleteTextView>
+                </android.support.design.widget.TextInputLayout>
+
+
+
+                <ProgressBar
+                    android:id="@+id/progress_bar"
+                    style="@android:style/Widget.ProgressBar.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:padding="7dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ln_dealer_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Dealer Name">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_dealername"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:textColor="#111"
+                        android:textSize="12sp">
+                        <requestFocus />
+
+                    </AutoCompleteTextView>
+                </android.support.design.widget.TextInputLayout>
+
+
+
+                <ProgressBar
+                    android:id="@+id/progress_bar_1"
+                    style="@android:style/Widget.ProgressBar.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:padding="7dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+            <!--address-->
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Dealer Territory">
+
+                <EditText
+                    android:id="@+id/edt_dealer_territory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:singleLine="true"
+                    android:editable="false"
+                    android:focusable="false"
+                    android:textColorHint="@color/hint"
+                    android:textColor="#111"
+                    android:textSize="12sp" />
+            </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                android:hint="Transport Type">
+
+                <AutoCompleteTextView
+                    android:id="@+id/edt_trans_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:singleLine="true"
+                    android:textColorHint="@color/hint"
+                    android:textColor="#111"
+                    android:textSize="12sp"
+                    />
+
+            </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+            <!--mobileno-->
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Accounts Remark">
+
+                <EditText
+                    android:id="@+id/edt_account_remark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:textColorHint="@color/hint"
+                    android:textColor="#111"
+                    android:textSize="12sp"
+                    />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!--whatappno-->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Security Cheque"
+                    android:layout_weight="1">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_security_cheque"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:textColorHint="@color/hint"
+                        android:textColor="#111"
+                        android:textSize="12sp"
+                      />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <!--telephoneno-->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="MOU"
+                    android:layout_weight="1">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_mou"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:textColorHint="@color/hint"
+                        android:textColor="#111"
+                        android:textSize="12sp"
+                        />
+
+                </android.support.design.widget.TextInputLayout>
+
+
+            </LinearLayout>
+
+            <!--countrystate-->
+            <LinearLayout
+                android:id="@+id/ln_country"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+
+                <!--country-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+
+                    android:layout_weight="1">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Agreement Status"
+                        android:id="@+id/tv_country">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/edt_agreement"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:imeOptions="actionNext"
+                            android:singleLine="false"
+                            android:textColor="#111"
+                            android:textColorHint="@color/hint"
+                            android:textSize="12dp"
+                            android:clickable="true"
+                            android:editable="false"
+                            android:focusable="false">
+
+                        </AutoCompleteTextView>
+
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+                <!--state-->
+                <LinearLayout
+                    android:id="@+id/ln_state"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:gravity="center|left"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/tv_state"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Total NC Holding">
+
+                        <EditText
+                            android:id="@+id/edt_nc_holding"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:imeOptions="actionNext"
+                            android:singleLine="false"
+                            android:textColor="#111"
+                            android:textColorHint="@color/hint"
+                            android:textSize="12dp"
+                            android:clickable="true"
+                            android:editable="false"
+                            android:focusable="false">
+
+                        </EditText>
+                    </android.support.design.widget.TextInputLayout>
+
+
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <!--city/terriotory-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!--city-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Order Qty"
+                      >
+
+                        <EditText
+                            android:id="@+id/edt_order_qty"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:imeOptions="actionNext"
+                            android:singleLine="false"
+                            android:textColor="#111"
+                            android:textColorHint="@color/hint"
+                            android:textSize="12dp"
+                         >
+
+                        </EditText>
+
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+                <!--terriotory-->
+                <LinearLayout
+                    android:id="@+id/ln_territory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:gravity="center|left"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/tv_territory"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Credit Approval Amt">
+
+                        <EditText
+                            android:id="@+id/edt_approval_amt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:imeOptions="actionNext"
+                            android:singleLine="false"
+                            android:textColor="#111"
+                            android:textColorHint="@color/hint"
+                            android:textSize="12dp"
+                          >
+
+                        </EditText>
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center"
+                android:gravity="center|left"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Commitment Before"
+                    >
+
+                    <EditText
+                        android:id="@+id/edt_commitment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:hint=""
+                        android:text=""
+                        android:editable="false"
+                        android:imeOptions="actionNext"
+                        android:textColor="#111"
+                        android:textSize="13sp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <ImageView
+                    android:id="@+id/img_comm_calender"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/calender" />
+            </LinearLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Approver">
+
+                <AutoCompleteTextView
+                    android:id="@+id/edt_approver"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:singleLine="true"
+                    android:textColor="#111"
+                    android:editable="false"
+                    android:focusable="false"
+                    android:textSize="12sp">
+                    <requestFocus />
+
+                </AutoCompleteTextView>
+            </android.support.design.widget.TextInputLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center"
+                android:gravity="center|left"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Last Approval Date"
+                    android:layout_weight="1"
+                    >
+
+                    <EditText
+                        android:id="@+id/edt_last_appr_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="#111"
+                        android:imeOptions="actionNext"
+                        android:editable="false"
+                        android:focusable="false"
+                        android:textSize="13sp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Current Ledger Amt"
+                    android:layout_weight="1"
+                    >
+
+                    <EditText
+                        android:id="@+id/edt_current_ledger_amt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:editable="false"
+                        android:focusable="false"
+                        android:imeOptions="actionNext"
+                        android:textColor="#111"
+                        android:textSize="13sp" />
+
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Reason for Approval"
+                android:layout_marginBottom="10dp"
+
+                android:layout_weight="1">
+
+                <EditText
+                    android:id="@+id/edt_reason_approval"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:textSize="12sp"/>
+            </android.support.design.widget.TextInputLayout>
+
+
+        </LinearLayout>
+
+
+
+
+
+
+    </ScrollView>
+    <LinearLayout
+        android:id="@+id/lay2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center|bottom"
+        android:layout_margin="5dp"
+        android:gravity="center|bottom"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <Button
+            android:id="@+id/button_s"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:textSize="13sp"
+            android:background="@drawable/green_backgraound"
+            android:text="Save"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+           />
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_weight="1"
+            android:textSize="13sp"
+            android:background="@drawable/button_orange"
+            android:text="Cancel"
+            android:textColor="@color/white"
+            android:textAllCaps="false" />
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardCornerRadius="5dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:padding="0dp"
+    card_view:cardElevation="0dp"
+    card_view:cardMaxElevation="0.5dp"
+    card_view:cardUseCompatPadding="true"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+
+    <!--testing purpose-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center|top"
+        android:gravity="center|top"
+        android:layout_marginTop="0.5dp"
+        android:paddingRight="3dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="1dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical">
+
+            <!--<CheckBox
+                android:id="@+id/chkbox"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_weight="0.63"
+                android:textColor="#111"
+                android:layout_gravity="center|top"
+                android:gravity="center|left"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/txtsono"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SOHW19-20/077"
+                android:textSize="12dp"
+                android:textColor="#111"
+                android:textStyle="bold"
+                android:layout_weight="0.45"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:visibility="gone"/>-->
+
+            <TextView
+                android:id="@+id/txtitmcode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:layout_weight="0.4"
+                android:gravity="center|left"
+                android:paddingLeft="5dp"
+                android:text="RK0005"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/txtschdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="27 Jun"
+                android:textSize="12dp"
+                android:textColor="#006600"
+                android:layout_weight="0.7"
+                android:textStyle="bold"
+                android:layout_gravity="center|right"
+                android:gravity="center|right"/>
+
+            <TextView
+                android:id="@+id/txtshipmentqty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="10"
+                android:textSize="12dp"
+                android:textColor="#FF4112"
+                android:layout_weight="0.7"
+                android:paddingRight="0dp"
+                android:layout_gravity="center|right"
+                android:gravity="center|right"/>
+
+            <EditText
+                android:id="@+id/edt_qty"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:hint="Qty"
+                android:textSize="12dp"
+                android:textColor="#111"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="0.7"
+                android:inputType="number"
+                android:background="@drawable/edit_text"
+                android:layout_gravity="center"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!--<TextView
+                android:id="@+id/txtitmcode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:layout_weight="0.63"
+                android:gravity="center|left"
+                android:paddingLeft="5dp"
+                android:text="RK0005"
+                android:textSize="12dp"
+                android:visibility="gone"/>-->
+
+            <TextView
+                android:id="@+id/txtitmdesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Brown bread kg."
+                android:textSize="12dp"
+                android:textColor="#111"
+                android:layout_weight="0.4"
+                android:paddingLeft="5dp"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"/>
+
+            <TextView
+                android:id="@+id/txtaddeddt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7"
+                android:text="20 Jun"
+                android:textSize="12dp"
+                android:layout_gravity="center|right"
+                android:gravity="center|right"/>
+
+           <!-- <TextView
+                android:id="@+id/txtschdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="27 Jun"
+                android:textSize="12dp"
+                android:textColor="#006600"
+                android:layout_weight="0.49"
+                android:layout_gravity="center"
+                android:gravity="center"/>-->
+
+            <TextView
+                android:id="@+id/txtschqty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="20"
+                android:textSize="12dp"
+                android:layout_weight="0.7"
+                android:layout_gravity="center|right"
+                android:gravity="center|right"/>
+
+          <!--  <TextView
+                android:id="@+id/txtshpqty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:textSize="12dp"
+                android:layout_weight="0.5"
+                android:paddingRight="5dp"
+                android:layout_gravity="center|right"
+                android:gravity="center|right"/>-->
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:hint="Qty"
+                android:textSize="12dp"
+                android:textColor="#111"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="0.7"
+                android:inputType="number"
+                android:background="@drawable/edit_text"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:visibility="invisible"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\incremental\\mergeVwbReleaseResources\\merged.dir\\values-w270dp-h560dp-v13\\values-w270dp-h560dp-v13.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Nilesh\\.gradle\\caches\\transforms-2\\files-2.1\\bcefe1a63aaad0e225ad14675b4e8bed\\datetimepicker-0.2.0\\res\\values-w270dp-h560dp\\values-w270dp-h560dp.xml",
+                    "from": {
+                        "startLines": "4,5,6,7",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "178,242,297,353",
+                        "endColumns": "63,54,55,54",
+                        "endOffsets": "237,292,348,403"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,119,174,230",
+                        "endColumns": "63,54,55,54",
+                        "endOffsets": "114,169,225,280"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">PM</string>
+    <string name="app_name_notification">PM</string>
+    <string name="title_activity_pmdashboard">ActivityPMDashboard</string>
+
+    <string name="app_name_toolbar_CRM">Simplify Practice</string>
+    <string name="app_name_toolbar_Vwb">Simplify Practice</string>
+    <string name="app_name_toolbar_Ekatm">Simplify Practice</string>""
+
+    <string name="error_code_company">Please Enter Company Code</string>
+    <string name="error_code_company_valid">Please Enter Register Company Code</string>
+
+    <string name="instruction_Spinner_Change_Company">--Change company code--</string>
+
+    <string name="assign_act_string_from_all">Assign From All</string>
+    <string name="assign_act_string_from_participants">Assign From Assignment Participants</string>
+    <string name="assign_act_string_from_group">Assign From Group</string>
+
+
+    <string name="Location_service_running_status">PM is running</string>
+
+    <string name="Detail_activity_Subordinate_work">Subordinate task</string>
+    <string name="Detail_activity_change_workspace">Change assignment</string>
+
+
+    <string name="Trail_workspace">Assignment :</string>
+    <string name="Trail_subgroup">Process :</string>
+    <string name="Trail_maingroup">Audit :</string>
+    <string-array name="Arr_AssignFrom">
+        <item>Assign From All</item>
+        <item>Assign From Assignment Participants</item>
+        <item>Assign From Group</item>
+    </string-array>
+</resources>

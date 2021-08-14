@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/card_back">
+
+    <include
+            layout="@layout/toolbar_header"
+            />
+
+        <LinearLayout
+            android:id="@+id/lay1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:background="#6E6F72"
+            android:visibility="gone"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text=" Customer List"
+                android:padding="5dp"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:textSize="16dp" />
+        </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/len_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_below="@+id/rel_indi"
+        android:background="@drawable/white"
+        android:gravity="left">
+
+        <TextView
+            android:id="@+id/icon_group"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:visibility="gone"
+            android:background="@drawable/crm_logo_2"
+            android:gravity="center|center_vertical"
+            />
+
+        <EditText
+            android:id="@+id/searchcust"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/icon_group"
+            android:layout_toStartOf="@+id/img_add_cust"
+            android:cursorVisible="true"
+            android:background="@android:color/transparent"
+            android:hint="Search Customer Name"
+            android:padding="10dp"
+            android:textSize="16dp"
+            android:singleLine="true">
+            <requestFocus></requestFocus>
+        </EditText>
+
+
+        <Button
+            android:id="@+id/img_add_cust"
+            android:layout_width="89dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:drawableRight="@android:drawable/ic_menu_search"
+            android:gravity="center"
+            android:padding="3dp"
+            android:visibility="gone"
+            android:background="@drawable/backshape"
+            android:text="Server search"
+            android:textAllCaps="false"
+            android:textColor="#ffffff"
+
+            android:textSize="12sp" />
+    </RelativeLayout>
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/header"
+        android:layout_below="@+id/len_group"
+
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/view"
+        android:visibility="visible">
+
+        <ListView
+            android:id="@+id/listview_cust"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@android:color/transparent"
+            />
+    </RelativeLayout>
+
+
+</RelativeLayout>

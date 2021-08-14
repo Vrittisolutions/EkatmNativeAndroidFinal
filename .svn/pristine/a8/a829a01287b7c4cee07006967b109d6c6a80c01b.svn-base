@@ -1,0 +1,332 @@
+package com.vritti.vwb.Beans;
+
+import com.google.gson.annotations.SerializedName;
+import com.vritti.vwb.vworkbench.CommonObjSchool;
+
+public class CommonObject extends Object {
+    @SerializedName("actDesc")
+    CommonSubObject actDesc;
+
+    @SerializedName("issuedTo")
+    CommonSubObject issuedTo;
+
+    @SerializedName("assignBy")
+    CommonSubObject assignBy;
+
+    @SerializedName("ProjId")
+    CommonSubObject ProjId;
+
+    @SerializedName("MainGrpId")
+    CommonSubObject MainGrpId;
+
+    @SerializedName("UnitId")
+    CommonSubObject UnitId;
+
+    @SerializedName("FromDt")
+    CommonSubObject FromDt;
+
+    @SerializedName("ToDt")
+    CommonSubObject ToDt;
+
+    @SerializedName("ExpCompltnDt")
+    CommonSubObject ExpCompltnDt;
+
+    @SerializedName("SourceType")
+    CommonSubObject SourceType;
+
+    @SerializedName("SourceId")
+    CommonSubObject SourceId;
+
+    @SerializedName("Status")
+    CommonSubObject Status;
+
+    @SerializedName("PriorityId")
+    CommonSubObject PriorityId;
+
+    @SerializedName("HoursRequired")
+    CommonSubObject HoursRequired;
+
+    @SerializedName("comFromDt")
+    CommonSubObject comFromDt;
+
+    @SerializedName("comToDt")
+    CommonSubObject comToDt;
+
+    @SerializedName("activityCode")
+    CommonSubObject activityCode;
+
+    @SerializedName("IsUnplanned")
+    CommonSubObject IsUnplanned;
+
+    @SerializedName("IsSystemGenerated")
+    CommonSubObject IsSystemGenerated;
+
+    @SerializedName("perform")
+    CommonSubObject perform;
+
+    @SerializedName("PriorityIndex")
+    CommonSubObject PriorityIndex;
+
+    @SerializedName("Await")
+    CommonSubObject Await;
+
+    @SerializedName("ParentActId")
+    CommonSubObject ParentActId;
+
+    @SerializedName("year")
+    CommonSubObject year;
+
+    @SerializedName("FormId")
+    CommonSubObject FormId;
+
+    @SerializedName("DocumentType")
+    CommonSubObject DocumentType;
+
+    @SerializedName("SchholId")
+    CommonSubObject SchholId;
+
+
+    @SerializedName("DatasheetStatus")
+    CommonSubObject DatasheetStatus;
+
+
+    @SerializedName("ModifiedDt")
+        CommonSubObject ModifiedDt;
+
+
+    public CommonSubObject getModifiedDt() {
+        return ModifiedDt;
+    }
+
+    public void setModifiedDt(CommonSubObject modifiedDt) {
+        ModifiedDt = modifiedDt;
+    }
+
+    public CommonSubObject getActDesc() {
+        return actDesc;
+    }
+
+    public void setActDesc(CommonSubObject actDesc) {
+        this.actDesc = actDesc;
+    }
+
+    public CommonSubObject getIssuedTo() {
+        return issuedTo;
+    }
+
+    public void setIssuedTo(CommonSubObject issuedTo) {
+        this.issuedTo = issuedTo;
+    }
+
+    public CommonSubObject getAssignBy() {
+        return assignBy;
+    }
+
+    public void setAssignBy(CommonSubObject assignBy) {
+        this.assignBy = assignBy;
+    }
+
+    public CommonSubObject getProjId() {
+        return ProjId;
+    }
+
+    public void setProjId(CommonSubObject projId) {
+        ProjId = projId;
+    }
+
+    public CommonSubObject getMainGrpId() {
+        return MainGrpId;
+    }
+
+    public void setMainGrpId(CommonSubObject mainGrpId) {
+        MainGrpId = mainGrpId;
+    }
+
+    public CommonSubObject getUnitId() {
+        return UnitId;
+    }
+
+    public void setUnitId(CommonSubObject unitId) {
+        UnitId = unitId;
+    }
+
+    public CommonSubObject getFromDt() {
+        return FromDt;
+    }
+
+    public void setFromDt(CommonSubObject fromDt) {
+        FromDt = fromDt;
+    }
+
+    public CommonSubObject getToDt() {
+        return ToDt;
+    }
+
+    public void setToDt(CommonSubObject toDt) {
+        ToDt = toDt;
+    }
+
+    public CommonSubObject getExpCompltnDt() {
+        return ExpCompltnDt;
+    }
+
+    public void setExpCompltnDt(CommonSubObject expCompltnDt) {
+        ExpCompltnDt = expCompltnDt;
+    }
+
+    public CommonSubObject getSourceType() {
+        return SourceType;
+    }
+
+    public void setSourceType(CommonSubObject sourceType) {
+        SourceType = sourceType;
+    }
+
+    public CommonSubObject getSourceId() {
+        return SourceId;
+    }
+
+    public void setSourceId(CommonSubObject sourceId) {
+        SourceId = sourceId;
+    }
+
+    public CommonSubObject getStatus() {
+        return Status;
+    }
+
+    public void setStatus(CommonSubObject status) {
+        Status = status;
+    }
+
+    public CommonSubObject getPriorityId() {
+        return PriorityId;
+    }
+
+    public void setPriorityId(CommonSubObject priorityId) {
+        PriorityId = priorityId;
+    }
+
+    public CommonSubObject getHoursRequired() {
+        return HoursRequired;
+    }
+
+    public void setHoursRequired(CommonSubObject hoursRequired) {
+        HoursRequired = hoursRequired;
+    }
+
+    public CommonSubObject getComFromDt() {
+        return comFromDt;
+    }
+
+    public void setComFromDt(CommonSubObject comFromDt) {
+        this.comFromDt = comFromDt;
+    }
+
+    public CommonSubObject getComToDt() {
+        return comToDt;
+    }
+
+    public void setComToDt(CommonSubObject comToDt) {
+        this.comToDt = comToDt;
+    }
+
+    public CommonSubObject getActivityCode() {
+        return activityCode;
+    }
+
+    public void setActivityCode(CommonSubObject activityCode) {
+        this.activityCode = activityCode;
+    }
+
+    public CommonSubObject getIsUnplanned() {
+        return IsUnplanned;
+    }
+
+    public void setIsUnplanned(CommonSubObject isUnplanned) {
+        IsUnplanned = isUnplanned;
+    }
+
+    public CommonSubObject getIsSystemGenerated() {
+        return IsSystemGenerated;
+    }
+
+    public void setIsSystemGenerated(CommonSubObject isSystemGenerated) {
+        IsSystemGenerated = isSystemGenerated;
+    }
+
+    public CommonSubObject getPerform() {
+        return perform;
+    }
+
+    public void setPerform(CommonSubObject perform) {
+        this.perform = perform;
+    }
+
+    public CommonSubObject getPriorityIndex() {
+        return PriorityIndex;
+    }
+
+    public void setPriorityIndex(CommonSubObject priorityIndex) {
+        PriorityIndex = priorityIndex;
+    }
+
+    public CommonSubObject getAwait() {
+        return Await;
+    }
+
+    public void setAwait(CommonSubObject await) {
+        Await = await;
+    }
+
+    public CommonSubObject getParentActId() {
+        return ParentActId;
+    }
+
+    public void setParentActId(CommonSubObject parentActId) {
+        ParentActId = parentActId;
+    }
+
+    public CommonSubObject getYear() {
+        return year;
+    }
+
+    public void setYear(CommonSubObject year) {
+        this.year = year;
+    }
+
+    public CommonSubObject getFormId() {
+        return FormId;
+    }
+
+    public void setFormId(CommonSubObject formId) {
+        FormId = formId;
+    }
+
+    public CommonSubObject getDocumentType() {
+        return DocumentType;
+    }
+
+    public void setDocumentType(CommonSubObject documentType) {
+        DocumentType = documentType;
+    }
+
+    public CommonSubObject getSchholId() {
+        return SchholId;
+    }
+
+    public void setSchholId(CommonSubObject schholId) {
+        SchholId = schholId;
+    }
+
+
+
+    public CommonSubObject getDatasheetStatus() {
+        return DatasheetStatus;
+    }
+
+    public void setDatasheetStatus(CommonSubObject datasheetStatus) {
+        DatasheetStatus = datasheetStatus;
+    }
+
+
+}

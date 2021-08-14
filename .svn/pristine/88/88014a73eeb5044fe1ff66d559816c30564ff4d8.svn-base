@@ -1,0 +1,105 @@
+package com.vritti.crm.bean;
+
+public class EntityMasterGroup {
+    String EntityGroupMasterId,
+            GroupCode ,
+            GroupName,
+            CreationLevel,
+            UserLevel,
+            IsDeleted,
+            AddedBy,
+            AddedDt,
+            ModifiedBy,
+            ModifiedDt;
+
+    public EntityMasterGroup(String entityGroupMasterId, String groupName) {
+        this.EntityGroupMasterId = entityGroupMasterId;
+        this.GroupName = groupName;
+    }
+
+
+    public String getEntityGroupMasterId() {
+        return EntityGroupMasterId;
+    }
+
+    public void setEntityGroupMasterId(String entityGroupMasterId) {
+        EntityGroupMasterId = entityGroupMasterId;
+    }
+
+    public String getGroupCode() {
+        return GroupCode;
+    }
+
+    public void setGroupCode(String groupCode) {
+        GroupCode = groupCode;
+    }
+
+    public String getGroupName() {
+        return GroupName;
+    }
+
+    public void setGroupName(String groupName) {
+        GroupName = groupName;
+    }
+
+    public String getCreationLevel() {
+        return CreationLevel;
+    }
+
+    public void setCreationLevel(String creationLevel) {
+        CreationLevel = creationLevel;
+    }
+
+    public String getUserLevel() {
+        return UserLevel;
+    }
+
+    public void setUserLevel(String userLevel) {
+        UserLevel = userLevel;
+    }
+
+    public String getIsDeleted() {
+        return IsDeleted;
+    }
+
+    public void setIsDeleted(String isDeleted) {
+        IsDeleted = isDeleted;
+    }
+
+    public String getAddedBy() {
+        return AddedBy;
+    }
+
+    public void setAddedBy(String addedBy) {
+        AddedBy = addedBy;
+    }
+
+    public String getAddedDt() {
+        return AddedDt;
+    }
+
+    public void setAddedDt(String addedDt) {
+        AddedDt = addedDt;
+    }
+
+    public String getModifiedBy() {
+        return ModifiedBy;
+    }
+
+    public void setModifiedBy(String modifiedBy) {
+        ModifiedBy = modifiedBy;
+    }
+
+    public String getModifiedDt() {
+        return ModifiedDt;
+    }
+
+    public void setModifiedDt(String modifiedDt) {
+        ModifiedDt = modifiedDt;
+    }
+
+    @Override
+    public String toString() {
+        return this.GroupName;
+    }
+}

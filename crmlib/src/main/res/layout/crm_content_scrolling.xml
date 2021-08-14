@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/crm_activity_scrolling"
+    android:background="@color/white"
+    android:fillViewport="true">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        >
+
+
+            <TextView
+                android:id="@+id/txt_participants"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="10dp"
+                android:text=""
+                android:textColor="@color/green"
+                android:textSize="16dp" />
+
+            <!--<LinearLayout
+                android:id="@+id/len"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_participants"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="20dp"
+                    android:src="@drawable/ic_add_user"
+
+                    />
+
+                <TextView
+                    android:id="@+id/txt_add_participant"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:padding="5dp"
+                    android:text="Add Participant..."
+                    android:textColor="#333333"
+                    android:textSize="18dp" />
+
+            </LinearLayout>-->
+
+            <View
+
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_below="@+id/txt_participants"
+                android:layout_marginLeft="45dp"
+                android:layout_marginRight="10dp"
+                android:background="@color/colorPrimaryDark" />
+
+            <ListView
+                android:id="@+id/list_group_member"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/view"
+                android:divider="@android:color/transparent"></ListView>
+            <TextView
+                android:id="@+id/txt_exit_chatroom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:layout_alignParentBottom="true"
+                android:gravity="center|bottom"
+                android:padding="10dp"
+                android:text="Exit Chat Room"
+                android:textColor="@color/red"
+                android:textSize="16dp"
+                android:visibility="visible" />
+        </RelativeLayout>
+
+</android.support.v4.widget.NestedScrollView>

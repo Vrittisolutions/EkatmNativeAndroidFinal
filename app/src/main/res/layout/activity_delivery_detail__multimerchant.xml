@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbarlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:background="@color/colorPrimary1"
+        android:paddingBottom="5dp">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar1"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+            <!--?attr/actionBarSize-->
+
+            <RelativeLayout
+                android:id="@+id/layyellow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:gravity="center_vertical|right"
+                android:layout_gravity="center_vertical|right"
+                android:visibility="gone">
+                <!-- android:padding="5dp"
+                android:layout_marginTop="@dimen/actionbar_height"-->
+
+                <ImageView
+                    android:id="@+id/imgcart"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:src="@drawable/cart2"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center_vertical|right" />
+
+                <TextView
+                    android:id="@+id/textview_cart"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/shape_cart_count"
+                    android:layout_marginLeft="25dp"
+                    android:text="0"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:textSize="10sp"
+                    android:textStyle="bold"/>
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Packaging Details "
+        android:fontFamily="@string/ButtonFont"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:padding="10dp"
+        android:textStyle="bold"
+        android:background="#ededed"
+        android:visibility="gone"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:layout_weight="9"
+        android:nestedScrollingEnabled="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:padding="5dp"
+                    android:background="#f0f6e8"
+                    android:elevation="5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/seldeloption"
+                            android:fontFamily="@string/ButtonFont"
+                            android:textSize="13sp"
+                            android:textColor="@color/black"
+                            android:paddingLeft="5dp"
+                            android:gravity="center_vertical"
+                            android:layout_gravity="center_vertical"/>
+
+                        <RadioGroup
+                            android:id="@+id/radgrpdelmode"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center_vertical"
+                            android:layout_marginLeft="15dp">
+
+                            <RadioButton
+                                android:id="@+id/raddoorstep"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/doorstep"
+                                android:textSize="12sp" />
+
+                            <RadioButton
+                                android:id="@+id/radtakeaway"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/takeaway"
+                                android:textSize="12sp" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/txtdelcharges"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="@string/delmsg"
+                        android:textColor="@color/btncolordark"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:gravity="center"
+                        android:visibility="gone"/>
+
+                </LinearLayout>
+                <!--android:text="*Delivery charges of  ₹ 50.00 is applied for home delivery."-->
+
+                <!--    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">&lt;!&ndash;android:layout_weight="1"&ndash;&gt;-->
+
+                <ListView
+                    android:id="@+id/listmerchants"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:divider="@null"
+                    android:dividerHeight="0dp"
+                    android:visibility="visible"/>
+
+                <!--</LinearLayout>-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="#f0f6e8"
+                    android:elevation="3dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="@string/pricedtl"
+                        android:textColor="@color/black"
+                        android:textSize="13sp"
+                        android:textStyle="bold"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:text="@string/prodtotal"
+                            android:textColor="@color/black"
+                            android:textSize="13sp"
+                            android:layout_weight="0.5"/>
+
+                        <TextView
+                            android:id="@+id/txttot_prod"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:text="0.00 ₹"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:textSize="13sp"
+                            android:layout_gravity="center_vertical|right"
+                            android:gravity="center_vertical|right"
+                            android:layout_weight="0.5"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="visible">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:text="@string/offrdiscount"
+                            android:textColor="@color/black"
+                            android:textSize="13sp"
+                            android:layout_weight="0.5"/>
+
+                        <TextView
+                            android:id="@+id/txtoffer"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:text="0.00 ₹"
+                            android:textColor="@color/black"
+                            android:textSize="13sp"
+                            android:layout_gravity="center_vertical|right"
+                            android:gravity="center_vertical|right"
+                            android:layout_weight="0.5"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:text="@string/subtot"
+                            android:textColor="@color/black"
+                            android:textSize="13sp"
+                            android:layout_weight="0.5"/>
+
+                        <TextView
+                            android:id="@+id/txtsubtot"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:text="0.00 ₹"
+                            android:textColor="@color/black"
+                            android:textSize="13sp"
+                            android:layout_gravity="center_vertical|right"
+                            android:gravity="center_vertical|right"
+                            android:layout_weight="0.5"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="visible">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:text="@string/delcharges"
+                            android:textColor="@color/black"
+                            android:textSize="13sp"
+                            android:layout_weight="0.5"/>
+
+                        <TextView
+                            android:id="@+id/txtdelchrg"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:text="0.00 ₹"
+                            android:textColor="@color/black"
+                            android:textSize="13sp"
+                            android:layout_gravity="center_vertical|right"
+                            android:gravity="center_vertical|right"
+                            android:layout_weight="0.5" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/latoutfinal"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:background="@color/colorPrimary1"
+                    android:orientation="horizontal"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:weightSum="1"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp">
+
+                    <TextView
+                        android:id="@+id/textview_amt_payable"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_gravity="center|right"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="0.5"
+                        android:text="@string/amount"
+                        android:textColor="@color/white"
+                        android:textSize="15dp"
+                        android:fontFamily="@string/ButtonFont"/>
+
+                    <TextView
+                        android:id="@+id/textview_total_amount_pay"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_gravity="center|right"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="0.5"
+                        android:gravity="right"
+                        android:text="0.00 ₹"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:textSize="15dp"
+                        android:fontFamily="@string/ButtonFont"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@color/white">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="@drawable/border_lightblue"
+                        android:layout_marginBottom="5dp">
+
+                        <TextView
+                            android:id="@+id/editTextAddress"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:elevation="0dp"
+                            android:hint="@string/deladdress"
+                            android:textSize="13sp"
+                            android:maxLines="5"
+                            android:textColor="@color/black"
+                            android:layout_margin="5dp"/>
+
+                        <Button
+                            android:id="@+id/btnchangeaddr"
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:text="Change Address"
+                            android:layout_gravity="right"
+                            android:background="@color/colorPrimary1"
+                            android:layout_marginRight="10dp"
+                            android:paddingLeft="10sp"
+                            android:paddingRight="10sp"
+                            android:textSize="13sp"
+                            android:textColor="@color/white"
+                            android:layout_marginBottom="5dp"
+                            android:visibility="gone"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="1"
+                        android:layout_marginTop="0dp">
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginBottom="8dp"
+                            android:paddingTop="2dp"
+                            android:layout_weight="0.33"
+                            android:textColorHint="@color/btncolordark"
+                            android:background="@drawable/border_lightblue">
+                            <!--android:layout_marginLeft="5dp"-->
+
+                            <EditText
+                                android:id="@+id/btndate"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/greyed"
+                                android:elevation="1dp"
+                                android:focusable="false"
+                                android:editable="false"
+                                android:gravity="center"
+                                android:hint="@string/deldate"
+                                android:layout_margin="5dp"
+                                android:textSize="13dp"
+                                android:textColor="@color/black"/>
+                            <!--android:drawablePadding="5dp"
+                             android:padding="5dp"-->
+
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_weight="0.33"
+                            android:paddingTop="2dp"
+                            android:textColorHint="@color/btncolordark"
+                            android:background="@drawable/border_lightblue">
+
+                            <EditText
+                                android:id="@+id/btntime"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/greyed"
+                                android:elevation="1dp"
+                                android:focusable="false"
+                                android:editable="false"
+                                android:gravity="center"
+                                android:hint="@string/frmtime"
+                                android:layout_margin="5dp"
+                                android:textSize="13sp"
+                                android:textColor="@color/black"/>
+
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="0.34"
+                            android:paddingTop="2dp"
+                            android:textColorHint="@color/btncolordark"
+                            android:background="@drawable/border_lightblue">
+                            <!--  android:layout_marginRight="5dp"-->
+
+                            <EditText
+                                android:id="@+id/btntime_to"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:elevation="1dp"
+                                android:background="@color/greyed"
+                                android:focusable="false"
+                                android:editable="false"
+                                android:gravity="center"
+                                android:hint="@string/totime"
+                                android:layout_margin="5dp"
+                                android:textSize="13sp"
+                                android:textColor="@color/black"/>
+
+                        </android.support.design.widget.TextInputLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_place_order"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="0dp"
+                    android:background="@drawable/btn_pressed"
+                    android:gravity="center"
+                    android:text="@string/placeord1"
+                    android:textColor="@color/white"
+                    android:textSize="17dp"
+                    android:fontFamily="@string/ButtonFont"
+                    android:textAllCaps="false"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/showdialog"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:visibility="gone">
+
+                <include
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    layout="@layout/inprogress_dialog"
+                    android:layout_margin="10dp"
+                    android:layout_gravity="center" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</LinearLayout>

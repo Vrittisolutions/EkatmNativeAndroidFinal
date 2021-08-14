@@ -1,0 +1,132 @@
+package com.vritti.inventory.MaterialRequisition.adapter;
+
+import android.content.Context;
+import android.graphics.Color;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.vritti.chat.adapter.ChatRoomMultipleAdapterNewRecycleView;
+import com.vritti.chat.adapter.GroupChatRecycleViewAdapter;
+import com.vritti.ekatm.R;
+import com.vritti.inventory.MaterialRequisition.activity.LotSelectionActivity;
+import com.vritti.inventory.MaterialRequisition.activity.MaterialIssueMainActivity;
+import com.vritti.inventory.MaterialRequisition.model.MRSNODetails;
+
+import java.util.ArrayList;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+public class MRSNoDetailsAdapter extends RecyclerView.Adapter<MRSNoDetailsAdapter.ViewHolder> {
+    Context context;
+    ArrayList<MRSNODetails> mrsnoDetailsArrayList;
+
+    public MRSNoDetailsAdapter(Context materialIssueMainActivity, ArrayList<MRSNODetails> mrsnoDetailsArrayList) {
+        this.context = materialIssueMainActivity;
+        this.mrsnoDetailsArrayList = mrsnoDetailsArrayList;
+    }
+
+    @NonNull
+    @Override
+    public MRSNoDetailsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.inventory_mrsnodetails_list, parent, false);
+
+        return new ViewHolder(itemView);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull MRSNoDetailsAdapter.ViewHolder holder, int position) {
+
+        String itemCode = mrsnoDetailsArrayList.get(position).getItemDesc();
+        String itemDesc = mrsnoDetailsArrayList.get(position).getItemCode();
+        String reqQty = mrsnoDetailsArrayList.get(position).getReqQty();
+        String issueQty = mrsnoDetailsArrayList.get(position).getIssuedQty();
+        String locationName = mrsnoDetailsArrayList.get(position).getLocationCode();
+        String warehouseName = mrsnoDetailsArrayList.get(position).getWarehouseCode();
+
+        if (itemCode != null) {
+            holder.txt_item_desc.setText(itemCode);
+        }
+        if (itemDesc != null) {
+            holder.txt_item_code.setText(itemDesc);
+        }
+        if (reqQty != null) {
+            holder.txt_qty.setText(reqQty);
+        }
+        if (issueQty != null) {
+            holder.txt_issueQty.setText(issueQty);
+        }
+
+        if (locationName != null) {
+            holder.txt_location.setText(locationName);
+        }
+        if (warehouseName != null) {
+            holder.txt_warehouse.setText(warehouseName);
+        }
+
+        if (position % 2 == 0) {
+            holder.card_view.setBackgroundColor(Color.parseColor("#DBE8EA"));
+        } else {
+            holder.card_view.setBackgroundColor(Color.parseColor("#F1F6F7"));
+        }
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return mrsnoDetailsArrayList.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.txt_itemCode)
+        TextView txt_item_code;
+
+        @BindView(R.id.txt_itemDesc)
+        TextView txt_item_desc;
+
+        @BindView(R.id.txt_qty)
+        TextView txt_qty;
+
+        @BindView(R.id.txt_issueQty)
+        TextView txt_issueQty;
+
+        @BindView(R.id.txt_warehouse)
+        TextView txt_warehouse;
+
+        @BindView(R.id.rel_main)
+        RelativeLayout rel_main;
+
+
+        @BindView(R.id.txt_location)
+        TextView txt_location;
+
+        @BindView(R.id.card_view)
+        CardView card_view;
+
+        @BindView(R.id.txt_lotdetails)
+        TextView txt_lotdetails;
+
+
+        public ViewHolder(View itemView) {
+            super(itemView);
+            ButterKnife.bind(this, itemView);
+        }
+
+        @OnClick(R.id.txt_lotdetails)
+        void lotDetails()
+        {
+                ((MaterialIssueMainActivity)context).rowClick(getAdapterPosition(),mrsnoDetailsArrayList);
+
+
+        }
+    }
+}

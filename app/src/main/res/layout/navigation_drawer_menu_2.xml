@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:background="@color/card_back"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/lay_mywork"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center|left"
+            android:gravity="left|center"
+            android:background="?android:selectableItemBackground"
+            android:weightSum="1">
+            <ImageView
+                android:id="@+id/img_enquiry"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:tint="#FD8E2A"
+                android:src="@drawable/collection" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.9"
+                android:padding="5dp"
+                android:text="Work Status"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_workcnt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_weight="0.1"
+                android:background="#FD8E2A"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="#fff" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/lay_overdue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/android:selectableItemBackground"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:paddingLeft="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.9"
+                android:layout_marginLeft="20dp"
+                android:text="Overdue"
+                android:textColor="@color/black"
+                />
+
+            <TextView
+                android:id="@+id/tv_overdue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|end"
+                android:layout_weight="0.1"
+                android:text="0"
+                android:textColor="@color/black"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lay_critical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/android:selectableItemBackground"
+            android:orientation="horizontal"
+            android:paddingLeft="8dp"
+            android:visibility="gone"
+
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.9"
+                android:text="Critical"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_critical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|end"
+                android:layout_weight="0.1"
+                android:text="0"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lay_today"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/android:selectableItemBackground"
+            android:orientation="horizontal"
+            android:paddingLeft="8dp"
+            android:visibility="gone"
+
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.9"
+                android:text="Today"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_today"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|end"
+                android:layout_weight="0.1"
+                android:text="0"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/lay_not_acted"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/android:selectableItemBackground"
+            android:orientation="horizontal"
+            android:paddingLeft="8dp"
+            android:visibility="gone"
+
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.9"
+                android:text="Not acted"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_notacted"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|end"
+                android:layout_weight="0.1"
+                android:text="0"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lay_ticket"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/android:selectableItemBackground"
+            android:orientation="horizontal"
+            android:paddingLeft="8dp"
+            android:visibility="gone"
+
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.9"
+                android:text="Ticket"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_ticket"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|end"
+                android:layout_weight="0.1"
+                android:text="0"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/lay_assign_by_me"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/android:selectableItemBackground"
+            android:orientation="horizontal"
+            android:paddingLeft="8dp"
+            android:visibility="gone"
+
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.9"
+                android:text="Assigned by me"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_assign_by_me"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|end"
+                android:layout_weight="0.1"
+                android:text="0"
+                android:textColor="@color/black" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/lay_unapprove"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/android:selectableItemBackground"
+            android:orientation="horizontal"
+            android:paddingLeft="8dp"
+            android:visibility="gone"
+
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.9"
+                android:text="Pending approval"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_unapprove"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|end"
+                android:layout_weight="0.1"
+                android:text="0"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="@dimen/sp_5"
+            android:background="#292E3E"></View>
+
+        <LinearLayout
+            android:id="@+id/lay_workspacewise_Act"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center|left"
+            android:gravity="left|center"
+            android:background="?android:selectableItemBackground"
+            android:weightSum="1">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:tint="#26C14B"
+                android:src="@drawable/ic_opportunity" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.9"
+                android:padding="5dp"
+                android:text="Workspace"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_workspacecnt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_weight="0.1"
+                android:background="#26C14B"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="#fff" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lay_Myworkspace"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="25dp"
+
+            ></LinearLayout>
+
+        <!--Clients-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="@dimen/sp_5"
+            android:background="#292E3E"></View>
+
+        <LinearLayout
+            android:id="@+id/lay_client"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="?android:selectableItemBackground"
+            android:weightSum="1"
+            android:layout_gravity="center|left"
+            android:gravity="left|center"
+            android:visibility="visible">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:tint="#26C14B"
+                android:src="@drawable/ic_opportunity" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.9"
+                android:text="Clients"
+                android:padding="5dp"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_client"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_weight="0.1"
+                android:background="#26C14B"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="#fff" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/reycleView_Clients"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="25dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="@dimen/sp_5"
+            android:background="#292E3E"></View>
+
+        <LinearLayout
+            android:id="@+id/lay_my_team"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:layout_gravity="center|left"
+            android:gravity="left|center"
+            android:background="?android:selectableItemBackground"
+            android:weightSum="1">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:tint="#EF4F4F"
+                android:src="@drawable/ic_team" />
+            <TextView
+                android:id="@+id/txt_team_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.700"
+                android:padding="5dp"
+                android:text="Team"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_team_mem_cnt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.115"
+                android:background="#EF4F4F"
+                android:gravity="center"
+                android:text="000"
+                android:textColor="#fff" />
+
+            <TextView
+                android:id="@+id/tv_plusSign"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.065"
+                android:gravity="center"
+                android:text="+"
+                android:textColor="#fff" />
+
+            <!--<TextView
+                android:id="@+id/tv_subteam_mem_cnt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_weight="0.1"
+                android:background="#EF4F4F"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="#fff" />-->
+            <TextView
+                android:id="@+id/tv_subteam_mem_cnt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_weight="0.115"
+                android:background="#EF4F4F"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="#fff" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ls_Team"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="25dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"></LinearLayout>
+
+
+
+
+
+    </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

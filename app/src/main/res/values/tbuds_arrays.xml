@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="unit">
+        <item>Select unit</item>
+        <item>gm</item>
+        <item>kg</item>
+        <item>item</item>
+
+    </string-array>
+
+</resources>

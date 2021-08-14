@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbarlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:background="@color/colorPrimary1"
+        android:paddingBottom="5dp"
+        android:orientation="vertical">
+        <!--?attr/actionBarSize-->
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar1"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@id/appbarlayout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|left"
+            android:gravity="left|center"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:padding="4dp"
+                android:background="@drawable/business_edit_text"
+                android:orientation="horizontal"
+                android:focusableInTouchMode="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp">
+
+                <TextView
+                    android:id="@+id/txt_fromdate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13dp"
+                    android:text="22-07-1990"
+                    android:layout_marginRight="10dp"
+                    android:focusable="false"
+                    android:textColor="@color/black"
+                    android:imeOptions="actionNext"
+                    android:padding="5dp" />
+                <ImageView
+                    android:id="@+id/img_from_date"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/calender"
+                    android:tint="@color/black"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:padding="4dp"
+                android:background="@drawable/business_edit_text"
+                android:orientation="horizontal"
+                android:focusableInTouchMode="true"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp">
+
+                <TextView
+                    android:id="@+id/txt_todate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="10dp"
+                    android:focusable="false"
+                    android:imeOptions="actionNext"
+                    android:padding="5dp"
+                    android:text="22-07-1990"
+                    android:textColor="@color/black"
+                    android:textSize="13dp" />
+                <ImageView
+                    android:id="@+id/img_to_date"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/calender"
+                    android:tint="@color/black"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/button_all_border_orange"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/txt_submit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:text="View"
+                    android:textColor="@color/white"
+                    android:background="@drawable/btn_pressed_2_orange"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="5dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <RadioGroup
+            android:id="@+id/radgroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <RadioButton
+                android:id="@+id/rdbtn_mycoll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="My Collections"
+                android:layout_weight="1"
+                android:checked="true"/>
+
+            <RadioButton
+                android:id="@+id/rdbtn_allcoll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="All Collections"
+                android:layout_weight="1" />
+
+        </RadioGroup>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/assitant_response"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentTop="true" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/showdialog"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/inprogress_dialog"
+            android:layout_margin="10dp"
+            android:layout_gravity="center" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txt_record"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold|italic"
+        android:text="No record found"
+        android:padding="10dp"
+        android:gravity="center"
+        android:textSize="16dp"
+        android:visibility="gone"
+        android:layout_centerInParent="true"/>
+
+</RelativeLayout>

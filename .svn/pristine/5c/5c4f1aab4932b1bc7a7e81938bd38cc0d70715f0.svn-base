@@ -1,0 +1,108 @@
+package com.vritti.vwb.Adapter;
+
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.vritti.databaselib.other.WebUrlClass;
+import com.vritti.ekatm.R;
+import com.vritti.vwb.Beans.ListObjectDoc;
+import com.vritti.vwb.vworkbench.DocumentReviewActivity;
+import com.vritti.vwb.vworkbench.SaharaSchoolDisplayList;
+
+import java.util.ArrayList;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+public class DocListAdapter extends RecyclerView.Adapter<DocListAdapter.DocListHolder> {
+    Context context;
+    ArrayList<ListObjectDoc> listObjectDocs;
+
+    public DocListAdapter(Context context, ArrayList<ListObjectDoc> listObjectDocs) {
+        this.context = context;
+        this.listObjectDocs = listObjectDocs;
+    }
+
+    @NonNull
+    @Override
+    public DocListHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.datasheet_doc_review_row, parent, false);
+
+
+        return new DocListHolder(itemView);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull DocListHolder holder, int position) {
+        ListObjectDoc listObjectDoc = listObjectDocs.get(position);
+        if (position == 0) {
+            holder.headerow.setVisibility(View.VISIBLE);
+            holder.nextRow.setVisibility(View.GONE);
+            if(listObjectDoc.isSelected())
+                holder.selectAllCheckBox.setChecked(true);
+            else
+                holder.selectAllCheckBox.setChecked(false);
+        } else {
+           // ListObjectDoc listObjectDoc = listObjectDocs.get(position);
+            holder.headerow.setVisibility(View.GONE);
+            holder.nextRow.setVisibility(View.VISIBLE);
+            holder.nameDoc.setText(listObjectDoc.getUserName());
+            holder.docCode.setText(listObjectDoc.getUserLoginId());
+            if(listObjectDoc.isSelected())
+                holder.checkBoxSelection.setChecked(true);
+            else
+                holder.checkBoxSelection.setChecked(false);
+        }
+    }
+
+
+
+    @Override
+    public int getItemCount() {
+        return listObjectDocs.size();
+    }
+
+    public void updateList(int adapterPosition) {
+        notifyItemChanged(adapterPosition);
+    }
+
+    public class DocListHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.headerow)
+        LinearLayout headerow;
+        @BindView(R.id.nextRow)
+        LinearLayout nextRow;
+        @BindView(R.id.nameDoc)
+        TextView nameDoc;
+        @BindView(R.id.docCode)
+        TextView docCode;
+         @BindView(R.id.checkBoxSelection)
+         CheckBox checkBoxSelection;
+         @BindView(R.id.selectAllCheckBox)
+         CheckBox selectAllCheckBox;
+
+        public DocListHolder(View itemView) {
+            super(itemView);
+            ButterKnife.bind(this, itemView);
+        }
+
+        @OnClick(R.id.checkBoxSelection)
+        void checkBtn(){
+
+            ((SaharaSchoolDisplayList)context).updateCheck(getAdapterPosition());
+        }
+        @OnClick(R.id.selectAllCheckBox)
+        void allSelect(){
+
+            ((SaharaSchoolDisplayList)context).updateCheckAll();
+        }
+    }
+}

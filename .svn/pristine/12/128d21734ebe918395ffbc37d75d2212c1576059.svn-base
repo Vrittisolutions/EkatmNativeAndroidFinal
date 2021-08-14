@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical">
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#6E6F72"
+        android:padding="5dp"
+        android:orientation="horizontal">
+
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingLeft="10dp"
+            android:padding="5dp"
+            android:text=" Add Product"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:textSize="18dp" />
+
+
+
+    </LinearLayout>
+
+    <Spinner
+        android:id="@+id/EdtProd"
+        android:ems="10"
+        android:inputType="textAutoComplete"
+        android:hint="Product"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        />
+
+    <EditText
+        android:id="@+id/editqnty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:hint="Quantity" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:background="#E4EAEB"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <Button
+            android:id="@+id/buttonSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/btn"
+            android:text="Save"
+            android:layout_weight="1"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/buttonCancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:background="@color/white"
+            android:text="Cancel"
+            android:layout_weight="1"
+            android:textColor="@color/black" />
+    </LinearLayout>
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:background="#6E6F72"
+        android:orientation="horizontal">
+
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.8"
+            android:paddingLeft="10dp"
+            android:text="  Product Details"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:padding="5dp"
+            android:textSize="18dp" />
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/laytxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Product"
+                android:textColor="@color/black" />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Quantity"
+                android:textColor="@color/black" />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Action"
+                android:textColor="@color/black" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+<LinearLayout
+    android:id="@+id/lst"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"></LinearLayout>
+    <!--<android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerproduct"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />-->
+</LinearLayout>

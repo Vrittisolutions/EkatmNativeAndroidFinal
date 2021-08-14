@@ -1,0 +1,22 @@
+package com.vritti.inventory.MaterialRequisition.model;
+
+public class MRSList {
+
+   String  MRSHeaderId,MRSNO;
+
+    public String getMRSHeaderId() {
+        return MRSHeaderId;
+    }
+
+    public void setMRSHeaderId(String MRSHeaderId) {
+        this.MRSHeaderId = MRSHeaderId;
+    }
+
+    public String getMRSNO() {
+        return MRSNO;
+    }
+
+    public void setMRSNO(String MRSNO) {
+        this.MRSNO = MRSNO;
+    }
+}

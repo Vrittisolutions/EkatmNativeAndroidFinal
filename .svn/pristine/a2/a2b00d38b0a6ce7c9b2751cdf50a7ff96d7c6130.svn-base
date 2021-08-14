@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TableRow
+            android:id="@+id/tablerow2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/txt_Code"
+                android:layout_width="150dp"
+                android:layout_height="45dp"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/button_border_row_dark"
+                android:gravity="center"
+                android:text="SR No"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/black" />
+
+
+            <TextView
+                android:id="@+id/txt_Name"
+                android:layout_width="200dp"
+                android:layout_height="45dp"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/button_border_row"
+                android:gravity="center"
+                android:text="Name"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/black" />
+
+
+            <TextView
+                android:id="@+id/txt_entityClass"
+                android:layout_width="100dp"
+                android:layout_height="45dp"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/button_border_row"
+                android:gravity="center"
+                android:text="Entity Class"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/txt_city"
+                android:layout_width="150dp"
+                android:layout_height="45dp"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/button_border_row"
+                android:gravity="center"
+                android:text="City"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/txt_address"
+                android:layout_width="250dp"
+                android:layout_height="45dp"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/button_border_row"
+                android:gravity="center"
+                android:text="Address"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/txt_contact"
+                android:layout_width="150dp"
+                android:layout_height="45dp"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/button_border_row"
+                android:gravity="center"
+                android:text="Contact"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/txt_email"
+                android:layout_width="150dp"
+                android:layout_height="45dp"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/button_border_row"
+                android:gravity="center"
+                android:text="Email"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/txt_mobile"
+                android:layout_width="120dp"
+                android:layout_height="45dp"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/button_border_row"
+                android:gravity="center"
+                android:text="Mobile"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/black" />
+
+            <ImageView
+                android:id="@+id/btn_editchrge"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="2dp"
+                android:src="@drawable/edit_icon1"/>
+
+            <ImageView
+                android:id="@+id/btn_deletechrge"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="#F3F9FD"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/delete"
+                android:layout_marginLeft="3dp"
+                android:backgroundTint="@color/red"/>
+
+        </TableRow>
+    </TableLayout>
+</HorizontalScrollView>

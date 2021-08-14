@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="2dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/txt_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chill test Perform"
+            android:textSize="14sp"
+            android:textColor="#111"
+            android:layout_marginLeft="5dp"
+            android:paddingLeft="5dp"
+            android:layout_weight="0.2"/>
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/ischeckvisible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.35"
+            android:layout_gravity="center|right"
+            android:gravity="center|right"/>
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/ischeckmandatory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"
+            android:layout_gravity="center|right"
+            android:gravity="center|right"
+            android:visibility="visible"/>
+
+    </LinearLayout>
+
+
+
+
+
+</RelativeLayout>

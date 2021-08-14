@@ -1,0 +1,384 @@
+package com.vritti.expensemanagement;
+
+import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.provider.MediaStore;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.googlecode.mp4parser.srt.SrtParser;
+import com.vritti.databaselib.data.DatabaseHandlers;
+import com.vritti.databaselib.other.Utility;
+import com.vritti.databaselib.other.WebUrlClass;
+import com.vritti.ekatm.R;
+import com.vritti.ekatm.services.SendOfflineData;
+import com.vritti.sessionlib.CallbackInterface;
+import com.vritti.sessionlib.StartSession;
+import com.vritti.vwb.ImageWithLocation.FileUtils;
+import com.vritti.vwb.classes.CommonFunction;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
+/**
+ * Created by sharvari on 19-Sep-19.
+ */
+
+public class HistoryActivity extends AppCompatActivity {
+
+    RecyclerView recyclerView;
+    HistoryAdapter historyAdapter;
+    ArrayList<ExpenseData>expenseDataArrayList;
+    TextView txt_record;
+    String PlantMasterId = "", LoginId = "", Password = "", CompanyURL = "", EnvMasterId = "",
+            UserMasterId = "", UserName = "", MobileNo = "",Attachment="",LinkId="";
+    Utility ut;
+    DatabaseHandlers db;
+    CommonFunction cf;
+    static Context context;
+    SQLiteDatabase sql;
+    Button btn_upload;
+    String[] user;
+    JSONArray jsonArray = new JSONArray();
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.history_list);
+        getSupportActionBar().setTitle("History");
+        recyclerView=findViewById(R.id.assitant_response);
+        txt_record=findViewById(R.id.txt_record);
+        context = HistoryActivity.this;
+        ut = new Utility();
+        cf = new CommonFunction(context);
+        String settingKey = ut.getSharedPreference_SettingKey(context);
+        String dabasename = ut.getValue(context, WebUrlClass.GET_DATABASE_NAME_KEY, settingKey);
+        db = new DatabaseHandlers(context, dabasename);
+        CompanyURL = ut.getValue(context, WebUrlClass.GET_COMPANY_URL_KEY, settingKey);
+        EnvMasterId = ut.getValue(context, WebUrlClass.GET_EnvMasterID_KEY, settingKey);
+        PlantMasterId = ut.getValue(context, WebUrlClass.GET_PlantID_KEY, settingKey);
+        LoginId = ut.getValue(context, WebUrlClass.GET_LOGIN_KEY, settingKey);
+        Password = ut.getValue(context, WebUrlClass.GET_PSW_KEY, settingKey);
+        UserMasterId = ut.getValue(context, WebUrlClass.GET_USERMASTERID_KEY, settingKey);
+        UserName = ut.getValue(context, WebUrlClass.GET_USERNAME_KEY, settingKey);
+        sql = db.getWritableDatabase();
+
+
+        btn_upload=findViewById(R.id.btn_upload);
+
+
+        expenseDataArrayList=new ArrayList<>();
+
+        historyAdapter=new HistoryAdapter(HistoryActivity.this,expenseDataArrayList);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setAdapter(historyAdapter);
+
+        getdata();
+
+       /* btn_upload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+
+                JSONObject obj = new JSONObject();
+                JSONObject jsonobj = new JSONObject();
+
+                try {
+                    if (expenseDataArrayList.size() > 0) {
+
+                        user = new String[expenseDataArrayList.size()];
+                        for (int i = 0; i < expenseDataArrayList.size(); i++) {
+//                            expenseData.setAttachment(cur.getString(cur.getColumnIndex("attachment")));
+
+
+                            if (expenseDataArrayList.get(i).getCat_name().equals("Official")) {
+
+                                obj.put("UserMasterId", expenseDataArrayList.get(i).getUserMasterId());
+                                obj.put("ExpType", expenseDataArrayList.get(i).getExpType());
+                                String exp_date = getdate(expenseDataArrayList.get(i).getExpDate());
+                                obj.put("ExpDate", exp_date);
+                                obj.put("PaymentMode", expenseDataArrayList.get(i).getPaymentMode());
+                                obj.put("FromLocation", expenseDataArrayList.get(i).getFromLocation());
+                                obj.put("ToLocation", expenseDataArrayList.get(i).getToLocation());
+                                obj.put("Distance", expenseDataArrayList.get(i).getDistance());
+                                obj.put("ExpRecordId", expenseDataArrayList.get(i).getExpRecordId());
+                                obj.put("Remark", expenseDataArrayList.get(i).getRemark());
+                                obj.put("LinkId", expenseDataArrayList.get(i).getLinkId());
+                                obj.put("LinkTo", expenseDataArrayList.get(i).getLinkTo());
+                                obj.put("TravelMode", expenseDataArrayList.get(i).getTravelMode());
+                                obj.put("VehicleType", expenseDataArrayList.get(i).getVehicleType());
+                                obj.put("Amount", expenseDataArrayList.get(i).getAmount());
+                                obj.put("UserName", UserName);
+
+
+                            }
+                            jsonobj.put("ExpenseArray", obj);
+                            final String FinalJson = jsonobj.toString();
+                            String remark = "Expense record successfully";
+                            String url = CompanyURL + WebUrlClass.api_Post_PostExpenseRecord;
+                            String op = "true";
+                            CreateOfflineExpense(url, FinalJson, WebUrlClass.POSTFLAG, remark, op);
+
+
+                    }
+
+
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+
+                            *//*if (expenseDataArrayList.get(i).getAttachment()!=null) {
+
+                                Attachment = expenseDataArrayList.get(i).getPath();
+                                LinkId = expenseDataArrayList.get(i).getExpRecordId();
+
+
+                                if (isnet()) {
+                                    new StartSession(HistoryActivity.this, new CallbackInterface() {
+                                        @Override
+
+                                        public void callMethod() {
+                                            new PostUploadImageMethodProspect().execute(Attachment, LinkId);
+                                        }
+
+                                        @Override
+                                        public void callfailMethod(String msg) {
+                                        }
+                                    });
+                                }
+
+                            }
+
+                                jsonobj.put("ExpenseArray", obj);
+
+                                jsonobj.put("StoreUploadedFile", jsonArray);
+
+                                final String FinalJson = jsonobj.toString();
+                            }
+*//*
+
+
+                       *//* JSONArray obj1 = new JSONArray();
+
+                        for (int i = 0; i < user.length; i++) {
+                            JSONObject a1 = new JSONObject(user[i]);
+                            obj1.put(a1);
+
+                        }*//*
+
+
+
+
+
+            }
+        });
+*/
+
+    }
+    public void chatuserdelete(String adapterPosition) {
+
+        sql.delete(db.TABLE_EXPENSE, "ExpRecordId=?", new String[]{String.valueOf(adapterPosition)});
+        Toast.makeText(HistoryActivity.this,"Record delete successfully",Toast.LENGTH_SHORT).show();
+        getdata();
+    }
+
+    private void getdata() {
+            expenseDataArrayList.clear();
+            String query = "SELECT * FROM " + db.TABLE_EXPENSE;
+            Cursor cur = sql.rawQuery(query, null);
+            if (cur.getCount() > 0) {
+                cur.moveToFirst();
+                do {
+                    ExpenseData expenseData = new ExpenseData();
+                    expenseData.setUserMasterId(cur.getString(cur.getColumnIndex("UserMasterId")));
+                    expenseData.setCat_name(cur.getString(cur.getColumnIndex("cat_name")));
+                    expenseData.setExpType(cur.getString(cur.getColumnIndex("ExpType")));
+                    expenseData.setExpDate(cur.getString(cur.getColumnIndex("ExpDate")));
+                    String exp=cur.getString(cur.getColumnIndex("Amount"));
+                    exp=exp.replace("\u20B9","");
+                    expenseData.setAmount(exp);
+                    expenseData.setPaymentMode(cur.getString(cur.getColumnIndex("PaymentMode")));
+                    expenseData.setFromLocation(cur.getString(cur.getColumnIndex("FromLocation")));
+                    expenseData.setToLocation(cur.getString(cur.getColumnIndex("ToLocation")));
+                    expenseData.setDistance(cur.getString(cur.getColumnIndex("Distance")));
+                    expenseData.setExpRecordId(cur.getString(cur.getColumnIndex("ExpRecordId")));
+                    expenseData.setRemark(cur.getString(cur.getColumnIndex("Remark")));
+                    expenseData.setAttachment(cur.getString(cur.getColumnIndex("attachment")));
+                    expenseData.setLinkId(cur.getString(cur.getColumnIndex("LinkId")));
+                    expenseData.setLinkTo(cur.getString(cur.getColumnIndex("LinkTo")));
+                    expenseData.setTravelMode(cur.getString(cur.getColumnIndex("TravelMode")));
+                    expenseData.setVehicleType(cur.getString(cur.getColumnIndex("VehicleType")));
+                    expenseData.setPath(cur.getString(cur.getColumnIndex("Path")));
+                    expenseDataArrayList.add(expenseData);
+                } while (cur.moveToNext());
+
+                   historyAdapter.notifyDataSetChanged();
+            }else {
+                txt_record.setVisibility(View.VISIBLE);
+            }
+        }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(HistoryActivity.this,AddExpenseActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+        finish();
+    }
+    public String getdate(String exp_date)
+    {
+        //Format of the date defined in the input String
+        DateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm aa");
+        //Desired format: 24 hour format: Change the pattern as per the need
+        DateFormat outputformat = new SimpleDateFormat("yyyy-MM-dd HH:mm ");
+        Date date = null;
+        String output = null;
+        try{
+            //Converting the input String to Date
+            date= df.parse(exp_date);
+            //Changing the format of date and storing it in String
+            output = outputformat.format(date);
+            //Displaying the date
+            System.out.println(output);
+        }catch(ParseException pe){
+            pe.printStackTrace();
+        }
+        return output;
+    }
+
+
+    public class PostUploadImageMethodProspect extends AsyncTask<String, String, String> {
+        JSONObject jsonimage = new JSONObject();
+        private Exception exception;
+        String params;
+        //   ProgressDialog SPdialog;
+        Object res = null;
+        String response = null;
+        String Imagefilename;
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+        }
+
+        protected String doInBackground(String... urls) {
+
+            try {
+
+               // Imagefilename =urls[0].substring(urls[0].lastIndexOf("/")+1);
+
+                File f = new File(urls[0]);
+
+                Object ActivityID = urls[1];//AtendanceSheredPreferance.getString(WebUrlClass.ATTENDANCE_PREFERENCES_ACTIVITY_KEY, null);
+                String upLoadServerUri = CompanyURL + WebUrlClass.api_UploadAttechmentnew + "?AppEnvMasterId=" + EnvMasterId +"&ActivityId="+ ActivityID;
+
+                //File imgfile=new File(getRealPathFromUri(HistoryActivity.this,f));
+
+                response = String.valueOf(Utility.OpenMultiPart(upLoadServerUri ,f ));
+
+                if (response!= null && (!response.equals(""))) {
+                    try {
+                        jsonimage.put("File",urls[0]);
+                        jsonimage.put("ActivityId", urls[1]);
+                        jsonimage.put("GUID", response);
+                        jsonArray.put(jsonimage);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
+                } else {
+
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
+            return response;
+
+        }
+
+        protected void onPostExecute(String feed) {
+
+            String Vendordata = "";
+            if (Attachment != null) {
+
+
+
+            }
+
+        }
+    }
+
+    private boolean isnet() {
+        // TODO Auto-generated method stub
+        Context context = this.getApplicationContext();
+        ConnectivityManager cm = (ConnectivityManager) context
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        if (netInfo != null && netInfo.isConnectedOrConnecting()) {
+            return true;
+        } else {
+            Toast.makeText(context, "No internet connection", Toast.LENGTH_LONG).show();
+            return false;
+        }
+    }
+    public static String getRealPathFromUri(Context context, Uri contentUri) {
+        Cursor cursor = null;
+        try {
+            String[] proj = { MediaStore.Images.Media.DATA };
+            cursor = context.getContentResolver().query(contentUri, proj, null, null, null);
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            cursor.moveToFirst();
+            return cursor.getString(column_index);
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+    }
+
+    private void CreateOfflineExpense(final String url, final String parameter,
+                                             final int method, final String remark, final String op) {
+        //final DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+        long a = cf.addofflinedata(url, parameter, method, remark, op);
+        if (a != -1) {
+            Toast.makeText(getApplicationContext(), "Record saved successfully", Toast.LENGTH_LONG).show();
+            Intent intent1 = new Intent(getApplicationContext(), SendOfflineData.class);
+            intent1.putExtra(WebUrlClass.INTENT_SEND_OFFLINE_DATA_FLAG_KEY, WebUrlClass.INTENT_SEND_OFFLINE_DATA_FLAG_VALUE);
+
+            startService(intent1);
+        } else {
+            Toast.makeText(getApplicationContext(), "Data not Saved", Toast.LENGTH_LONG).show();
+        }
+
+    }
+}

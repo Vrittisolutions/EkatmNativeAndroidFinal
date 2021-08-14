@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.vritti.sales.activity.SOApproveActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme"
+        android:visibility="visible"
+        android:background="@color/colorPrimary1">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar1"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="@color/colorPrimary1"
+            app:popupTheme="@style/AppTheme">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sales Orders"
+                android:textColor="#ffffff"
+                android:textSize="18sp"/>
+
+            <ProgressBar
+                android:id="@+id/mprogress"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="8dp"
+                android:indeterminateDrawable="@drawable/spinner"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/imgrefresh"
+                android:layout_width="30dp"
+                android:layout_height="35dp"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/ic_refresh"
+                android:layout_gravity="center|right"
+                android:visibility="visible"/>
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <include
+        android:id="@+id/tbar"
+        layout="@layout/tbuds_common_toolbar"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/txtlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#ededed"
+        android:padding="7dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/txtsono"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SO No."
+            android:textColor="#111"
+            android:textSize="12sp"
+            android:paddingLeft="10dp"
+            android:layout_weight="0.25"/>
+
+        <TextView
+            android:id="@+id/txtamt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_weight="0.3"
+            android:gravity="right"
+            android:text="Amount"
+            android:textColor="#111"
+            android:textSize="12sp"
+            android:paddingRight="10dp"/>
+
+        <TextView
+            android:id="@+id/txtsodate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SO Date"
+            android:textColor="#111"
+            android:layout_gravity="right"
+            android:gravity="right"
+            android:textSize="12sp"
+            android:paddingRight="7dp"
+            android:layout_weight="0.3"/>
+
+        <TextView
+            android:id="@+id/txtdeldate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delv. Date"
+            android:textColor="#111"
+            android:layout_gravity="right"
+            android:gravity="right"
+            android:textSize="12sp"
+            android:paddingRight="7dp"
+            android:layout_weight="0.3"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtnoordnote"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/sorry_no_ord_aval"
+        android:textStyle="italic|bold"
+        android:textSize="18sp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:padding="5dp"
+        android:visibility="gone"/>
+
+    <GridView
+        android:id="@+id/listso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:numColumns="2"/>
+
+</LinearLayout>

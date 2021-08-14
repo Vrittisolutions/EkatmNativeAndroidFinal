@@ -1,0 +1,649 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:2:1-386:12
+INJECTED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:2:1-386:12
+INJECTED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:2:1-386:12
+INJECTED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:2:1-386:12
+INJECTED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:2:1-386:12
+INJECTED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:2:1-386:12
+INJECTED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:2:1-386:12
+	package
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:3:5-32
+		INJECTED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml
+		INJECTED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:2:1-386:12
+		INJECTED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:2:1-386:12
+		INJECTED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:5:5-75
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:5:22-72
+uses-permission#android.permission.INTERNET
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:6:5-67
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:6:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:7:5-79
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:7:22-76
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:8:5-79
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:8:22-76
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:9:5-81
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:9:22-78
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:10:5-76
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:10:22-73
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:11:5-80
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:11:22-77
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:12:5-81
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:12:22-78
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:13:5-81
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:13:22-78
+uses-permission#android.permission.SYSTEM_ALERT_WINDOW
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:14:5-78
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:14:22-75
+uses-permission#android.permission.RECEIVE_SMS
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:15:5-70
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:15:22-67
+uses-permission#android.permission.READ_SMS
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:16:5-67
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:16:22-64
+uses-permission#android.permission.WRITE_SMS
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:17:5-68
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:17:22-65
+uses-permission#android.permission.SEND_SMS
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:18:5-67
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:18:22-64
+uses-feature#android.hardware.camera
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:19:5-59
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:19:19-57
+uses-feature#android.hardware.camera.autofocus
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:20:5-69
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:20:19-67
+uses-permission#android.permission.CAMERA
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:21:5-65
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:21:22-62
+uses-permission#android.permission.RECORD_AUDIO
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:22:5-70
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:22:22-68
+uses-permission#android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:23:5-24:81
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:24:9-79
+uses-permission#com.google.android.c2dm.permission.RECEIVE
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:25:5-82
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:25:22-79
+uses-permission#android.permission.WAKE_LOCK
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:26:5-68
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:26:22-65
+uses-permission#common.permission.MAPS_RECEIVE
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:27:5-29:47
+	android:protectionLevel
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:29:9-44
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:28:9-54
+uses-permission#com.javapapers.currentlocationinmap.permission.MAPS_RECEIVE
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:31:5-99
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:31:22-96
+application
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:32:5-385:19
+activity#com.vritti.vwblib.ActivityVwb
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:33:9-49
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:33:19-46
+activity#com.vritti.vwblib.MainActivity
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:36:9-60
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:36:19-47
+activity#com.vritti.vwblib.vworkbench.TicketUpdateDEPLActivity
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:39:9-42:63
+	android:launchMode
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:41:13-43
+	android:windowSoftInputMode
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:42:13-60
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:40:13-81
+activity#com.vritti.vwblib.vworkbench.ActivityMain
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:43:9-45:46
+	android:launchMode
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:45:13-43
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:44:13-69
+activity#com.vritti.vwblib.vworkbench.CompanyURLActivity
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:46:9-48:46
+	android:launchMode
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:48:13-43
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:47:13-75
+activity#com.vritti.vwblib.vworkbench.AssignActivity
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:52:9-58:20
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:53:13-71
+activity#com.vritti.vwblib.vworkbench.GPSTeamList
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:59:9-61:46
+	android:launchMode
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:61:13-43
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:60:13-68
+activity#com.vritti.vwblib.vworkbench.ActivityDetailsActivity
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:67:9-69:46
+	android:launchMode
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:69:13-43
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:68:13-80
+activity#com.vritti.vwblib.vworkbench.AddTimesheetActivity
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:70:9-72:46
+	android:launchMode
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:72:13-43
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:71:13-77
+activity#com.vritti.vwblib.vworkbench.ReassignActivity
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:73:9-75:46
+	android:launchMode
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:75:13-43
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:74:13-73
+activity#com.vritti.vwblib.vworkbench.ClaimMainActivity
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:76:9-78:46
+	android:launchMode
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:78:13-43
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:77:13-74
+activity#com.vritti.vwblib.vworkbench.ClaimDetailActivity
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:79:9-81:46
+	android:launchMode
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:81:13-43
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:80:13-76
+activity#com.vritti.vwblib.vworkbench.ApplyLeaveMainActivity
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:82:9-84:46
+	android:launchMode
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:84:13-43
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:83:13-79
+activity#com.vritti.vwblib.vworkbench.DatasheetMainActivity
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:85:9-87:46
+	android:launchMode
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:87:13-43
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:86:13-78
+activity#com.vritti.vwblib.vworkbench.AddDatasheetActivityMain
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:88:9-90:46
+	android:launchMode
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:90:13-43
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:89:13-81
+activity#com.vritti.vwblib.vworkbench.DatasheetAddDetailActivity
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:91:9-93:46
+	android:launchMode
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:93:13-43
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:92:13-83
+activity#com.vritti.vwblib.vworkbench.EditDatasheetActivityMain
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:94:9-96:46
+	android:launchMode
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:96:13-43
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:95:13-82
+activity#com.vritti.vwblib.vworkbench.EditDatasheetDetailActivity
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:97:9-99:46
+	android:launchMode
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:99:13-43
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:98:13-84
+activity#com.vritti.vwblib.vworkbench.LoggingTimeActivity
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:102:9-104:46
+	android:launchMode
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:104:13-43
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:103:13-76
+activity#com.vritti.vwblib.vworkbench.BirthdayListAcyivity
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:105:9-107:46
+	android:launchMode
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:107:13-43
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:106:13-77
+activity#com.vritti.vwblib.vworkbench.NotificationActivity
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:108:9-110:46
+	android:launchMode
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:110:13-43
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:109:13-77
+activity#com.vritti.vwblib.vworkbench.MeetingActivity
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:111:9-113:46
+	android:launchMode
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:113:13-43
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:112:13-72
+activity#com.vritti.vwblib.vworkbench.WorkspacewiseActCntActivity
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:114:9-117:59
+	android:launchMode
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:116:13-43
+	android:theme
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:117:13-56
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:115:13-84
+activity#com.vritti.vwblib.vworkbench.WorkspacewiseActDetailActivity
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:118:9-120:46
+	android:launchMode
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:120:13-43
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:119:13-87
+activity#com.vritti.vwblib.vworkbench.LeaveSummary
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:121:9-78
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:121:19-75
+activity#com.vritti.vwblib.vworkbench.LeaveRecords
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:122:9-78
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:122:19-75
+activity#com.vritti.vwblib.vworkbench.GPSMyOwnLocation
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:123:9-82
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:123:19-79
+activity#com.vritti.vwblib.vworkbench.ActivitySetting
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:124:9-81
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:124:19-78
+activity#com.vritti.vwblib.vworkbench.ActivityEmployeeInformation
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:125:9-93
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:125:19-90
+activity#com.vritti.vwblib.vworkbench.ActivityGPSLocalData
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:126:9-86
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:126:19-83
+activity#com.vritti.vwblib.vworkbench.MyTeamActivity
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:127:9-80
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:127:19-77
+activity#com.vritti.vwblib.vworkbench.MyTeamMemberActivity
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:128:9-86
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:128:19-83
+activity#com.vritti.vwblib.vworkbench.MyTeamMemberTimesheetActivity
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:129:9-95
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:129:19-92
+activity#com.vritti.vwblib.vworkbench.ViewTicketMain
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:130:9-80
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:130:19-77
+activity#com.vritti.vwblib.vworkbench.ActivityIndentApprovalNew
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:131:9-91
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:131:19-88
+activity#com.vritti.vwblib.chat.AttachmentsActivity
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:132:9-133:15
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:132:19-59
+activity#com.vritti.vwblib.vworkbench.TicketRegisterActivity
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:134:9-135:15
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:134:19-85
+activity#com.vritti.vwblib.vworkbench.EmployeeAdvanceRequestActivity
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:136:9-141:51
+	android:screenOrientation
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:141:13-49
+	android:launchMode
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:138:13-43
+	android:windowSoftInputMode
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:140:13-70
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:137:13-87
+activity#com.vritti.vwblib.vworkbench.TimeSheetLogActivity
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:144:9-145:15
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:144:19-83
+activity#com.vritti.vwblib.vworkbench.ActivityTrailActivity
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:146:9-147:15
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:146:19-84
+service#com.vritti.vwblib.Services.SendTimeSheet
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:148:9-151:39
+	android:enabled
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:150:13-35
+	android:exported
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:151:13-36
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:149:13-68
+service#com.vritti.vwblib.Services.DownloadWorkspaceData
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:152:9-155:39
+	android:enabled
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:154:13-35
+	android:exported
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:155:13-36
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:153:13-76
+service#com.vritti.vwblib.Services.PaidLocationFusedLocationTracker1
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:161:9-165:43
+	android:enabled
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:163:13-35
+	android:exported
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:164:13-36
+	android:stopWithTask
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:165:13-41
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:162:13-88
+service#com.vritti.vwblib.Services.BackgroundService
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:167:9-170:39
+	android:enabled
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:169:13-35
+	android:exported
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:170:13-36
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:168:13-72
+service#com.vritti.vwblib.receiver.MyFirebaseMessagingService
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:171:9-179:19
+	android:enabled
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:172:13-35
+	android:exported
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:173:13-37
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:171:18-86
+intent-filter#action:name:com.google.firebase.MESSAGING_EVENT
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:175:13-178:29
+action#com.google.firebase.MESSAGING_EVENT
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:176:17-78
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:176:25-75
+service#com.vritti.vwblib.receiver.MyFirebaseInstanceIDService
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:180:9-185:19
+	android:exported
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:181:13-37
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:180:18-87
+intent-filter#action:name:com.google.firebase.INSTANCE_ID_EVENT
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:182:13-184:29
+action#com.google.firebase.INSTANCE_ID_EVENT
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:183:17-80
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:183:25-77
+receiver#com.vritti.vwblib.reciver.AlarmManagerBroadcastReceiverGPS
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:188:9-196:20
+	android:enabled
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:190:13-35
+	android:exported
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:191:13-36
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:189:13-86
+intent-filter#action:name:android.intent.action.BOOT_COMPLETED+category:name:android.intent.category.DEFAULT
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:192:13-195:29
+action#android.intent.action.BOOT_COMPLETED
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:193:17-79
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:193:25-76
+category#android.intent.category.DEFAULT
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:194:17-76
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:194:27-73
+receiver#com.vritti.vwblib.reciver.BroadcastBackgroundData
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:198:9-205:20
+	android:enabled
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:200:13-35
+	android:exported
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:201:13-36
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:199:13-77
+intent-filter#action:name:android.intent.action.BOOT_COMPLETED
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:202:13-204:29
+receiver#com.vritti.vwblib.receiver.OfflineDataReceiver
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:206:9-214:20
+	android:enabled
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:208:13-35
+	android:exported
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:209:13-36
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:207:13-74
+intent-filter#action:name:android.intent.action.BOOT_COMPLETED+action:name:android.net.conn.CONNECTIVITY_CHANGE
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:210:13-213:29
+action#android.net.conn.CONNECTIVITY_CHANGE
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:212:17-79
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:212:25-76
+service#com.vritti.vwblib.Services.SendOfflineData
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:216:9-219:39
+	android:enabled
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:218:13-35
+	android:exported
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:219:13-36
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:217:13-70
+activity#com.vritti.vwblib.vworkbench.ActivityOfflineData
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:221:9-85
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:221:19-82
+receiver#com.vritti.vwblib.receiver.IncomingSmsReceiver
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:223:9-230:20
+	android:enabled
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:225:13-35
+	android:exported
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:226:13-36
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:224:13-74
+intent-filter#action:name:android.provider.Telephony.SMS_RECEIVED
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:227:13-229:29
+action#android.provider.Telephony.SMS_RECEIVED
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:228:17-82
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:228:25-79
+activity#com.vritti.vwblib.vworkbench.ClaimRecordActivity
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:232:9-85
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:232:19-82
+activity#com.vritti.vwblib.vworkbench.ActivityTrailDetails
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:233:9-95
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:233:19-83
+activity#com.vritti.vwblib.chat.AddGroupActivity
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:235:9-242:20
+	android:screenOrientation
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:238:13-49
+	android:windowSoftInputMode
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:236:13-70
+	android:theme
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:237:13-44
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:235:19-73
+activity#com.vritti.vwblib.chat.UserListDisplayActivity
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:243:9-250:20
+	android:screenOrientation
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:246:13-49
+	android:windowSoftInputMode
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:244:13-70
+	android:theme
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:245:13-44
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:243:19-80
+activity#com.vritti.vwblib.chat.MultipleGroupActivity
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:253:9-260:20
+	android:screenOrientation
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:256:13-49
+	android:windowSoftInputMode
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:254:13-70
+	android:theme
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:255:13-44
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:253:19-78
+activity#com.vritti.vwblib.chat.OpenChatroomActivity
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:262:9-280:20
+	android:screenOrientation
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:266:13-49
+	android:label
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:263:13-39
+	android:windowSoftInputMode
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:264:13-70
+	android:theme
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:265:13-44
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:262:19-77
+activity#com.vritti.vwblib.chat.AddChatRoomActivity
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:281:9-286:20
+	android:screenOrientation
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:284:13-49
+	android:label
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:282:13-38
+	android:windowSoftInputMode
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:283:13-73
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:281:19-76
+activity#com.vritti.vwblib.vworkbench.ClaimNotificationActivity
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:288:9-293:20
+	android:screenOrientation
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:290:13-49
+	android:windowSoftInputMode
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:289:13-73
+	android:theme
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:291:13-44
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:288:19-88
+activity#com.vritti.vwblib.chat.GroupmemberShowActivity
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:294:9-300:20
+	android:screenOrientation
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:298:13-49
+	android:label
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:295:13-38
+	android:windowSoftInputMode
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:296:13-70
+	android:theme
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:297:13-56
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:294:19-80
+activity#com.vritti.vwblib.chat.ImageFullScreenActivity
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:302:9-82
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:302:19-80
+activity#com.vritti.vwblib.vworkbench.GoogleMapTeamActivity
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:303:9-305:54
+	android:label
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:305:13-42
+	android:theme
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:304:13-44
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:303:19-84
+activity#com.vritti.vwblib.vworkbench.SharefunctionActivity
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:307:9-323:20
+	android:screenOrientation
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:309:13-49
+	android:windowSoftInputMode
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:308:13-73
+	android:theme
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:310:13-44
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:307:19-84
+intent-filter#action:name:android.intent.action.SEND+category:name:android.intent.category.DEFAULT+data:mimeType:application/pdf+data:mimeType:audio/*+data:mimeType:image/*+data:mimeType:text/plain+data:mimeType:video/*
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:312:13-321:29
+action#android.intent.action.SEND
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:313:17-69
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:313:25-66
+data
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:315:17-51
+	android:mimeType
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:315:23-49
+service#com.vritti.vwblib.chat.MessageRecieveBackground
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:326:9-328:38
+	android:enabled
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:328:13-35
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:327:13-75
+service#com.vritti.vwblib.chat.ChattingDataSendBackground
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:330:9-331:79
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:331:13-77
+provider#android.support.v4.content.FileProvider
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:345:9-353:20
+	android:grantUriPermissions
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:349:13-47
+	android:authorities
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:347:13-60
+	android:exported
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:348:13-37
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:346:13-67
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:350:13-352:57
+	android:resource
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:352:17-55
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:351:17-67
+service#com.vritti.vwblib.Services.GpsDataLocalSendSevice
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:363:9-366:39
+	android:enabled
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:365:13-35
+	android:exported
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:366:13-36
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:364:13-77
+receiver#com.vritti.vwblib.receiver.JobSchedulerReceiver
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:368:9-379:20
+	android:enabled
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:369:13-35
+	android:exported
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:370:13-36
+	android:permission
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:371:13-73
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:368:19-81
+intent-filter#action:name:android.intent.action.BOOT_COMPLETED+action:name:com.google.android.c2dm.intent.RECEIVE+action:name:com.hoanganhtuan95ptit.JobSchedulerReceiver
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:372:13-378:29
+	android:priority
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:373:17-39
+action#com.hoanganhtuan95ptit.JobSchedulerReceiver
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:375:17-86
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:375:25-83
+action#com.google.android.c2dm.intent.RECEIVE
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:376:17-81
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:376:25-78
+meta-data#com.google.android.geo.API_KEY
+ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:381:9-383:53
+	android:value
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:383:13-51
+	android:name
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml:382:13-58
+uses-sdk
+INJECTED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml
+INJECTED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml
+INJECTED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml
+INJECTED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml
+		INJECTED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml
+		ADDED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml
+		INJECTED from D:\ICAI\PM\vwblib\src\main\AndroidManifest.xml

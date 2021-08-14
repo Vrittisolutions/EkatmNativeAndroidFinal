@@ -1,0 +1,119 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="1dp">
+
+    <LinearLayout
+        android:id="@+id/chat_left_msg_layout"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:minWidth="120dp"
+        android:minHeight="41dp"
+        android:layout_marginRight="50dp"
+        android:visibility="gone"
+        android:background="@drawable/left"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/chat_left_msg_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|left"
+            android:paddingLeft="5dp"
+            android:textSize="16dp"
+            android:text="ffeffdsffadsfdsfdsfafadsffdsfdsdsfsdffdfdfddsfadddadsdfdsfadfsdfsfdsdfsdsfdfsdsfdsffsdsdf"
+            android:textColor="#000000"
+            android:layout_margin="10dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/chat_right_msgf_layout"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:minHeight="41dp"
+        android:minWidth="120dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        >
+
+        <TextView
+            android:id="@+id/chat_right_msg_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|right"
+            android:background="@drawable/expense_right"
+            android:padding="5dp"
+            android:textSize="16dp"
+            android:visibility="visible"
+            android:text="fdsfsdfdfdfdwqdweqdwrrqerdqewrdqewrqdweqqdfqewreqwrqewdreqrqe"
+            android:textColor="#000000"
+            />
+
+        <RadioGroup
+            android:id="@+id/radio_cash"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:padding="5dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/expense_right"
+            >
+
+            <android.support.v7.widget.AppCompatRadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:buttonTint="@color/colorAccent1"
+                android:text="Cash"
+                android:id="@+id/radiobtn_cash"
+                />
+            <android.support.v7.widget.AppCompatRadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:buttonTint="@color/colorAccent1"
+            android:text="E-Wallet"
+                android:id="@+id/radiobtn_evallet"
+
+                />
+            <android.support.v7.widget.AppCompatRadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:buttonTint="@color/colorAccent1"
+                android:text="Card"
+                android:id="@+id/radiobtn_card"
+                />
+        </RadioGroup>
+        <LinearLayout
+            android:id="@+id/len_image"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:minHeight="41dp"
+            android:minWidth="120dp"
+            android:layout_marginTop="10dp"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="300dp"
+                android:layout_height="250dp"
+                android:scaleType="fitXY"
+                android:layout_marginEnd="10dp"
+
+
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

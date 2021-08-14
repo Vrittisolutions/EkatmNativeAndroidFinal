@@ -1,0 +1,606 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.vritti.sales.activity.ContractActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme"
+        android:visibility="visible"
+        android:background="@color/colorPrimary1">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar1"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            app:popupTheme="@style/AppTheme">
+
+            <ProgressBar
+                android:id="@+id/toolbar_progress_Assgnwork"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="8dp"
+                android:indeterminateDrawable="@drawable/spinner"
+                android:visibility="gone" />
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
+        <!--pricelist-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:paddingLeft="0dp"
+                android:textSize="14sp"
+                android:layout_weight="0.7">
+                <!--    android:layout_weight="0.3"-->
+
+                <EditText
+                    android:id="@+id/txt_pcode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|left"
+                    android:gravity="center|left"
+                    android:hint="Price list code"
+                    android:textSize="12sp"
+                    android:textColor="#111"
+                    android:paddingLeft="5dp"
+                    android:enabled="true"
+                    android:focusable="false"
+                    android:clickable="true"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/txt_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:paddingLeft="0dp"
+                android:textSize="14sp"
+                android:layout_weight="0.3">
+
+                <EditText
+                    android:id="@+id/txt_pdesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|left"
+                    android:gravity="center|left"
+                    android:hint="Price list"
+                    android:textSize="12sp"
+                    android:textColor="#111"
+                    android:paddingLeft="5dp"
+                    android:enabled="true"
+                    android:focusable="false"
+                    android:clickable="true"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+
+        <!--disc, tax-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:paddingLeft="0dp"
+                android:textSize="14sp"
+                android:layout_weight="0.8">
+                <!--    android:layout_weight="0.3"-->
+
+                <EditText
+                    android:id="@+id/edt_disc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|left"
+                    android:gravity="center|left"
+                    android:hint="Disc %"
+                    android:textSize="12sp"
+                    android:textColor="#111"
+                    android:paddingLeft="5dp"
+                    android:enabled="true"
+                    android:inputType="number" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:paddingLeft="0dp"
+                android:textSize="14sp"
+                android:layout_weight="0.2">
+
+                <EditText
+                    android:id="@+id/txt_taxclass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|left"
+                    android:gravity="center|left"
+                    android:hint="Tax Class"
+                    android:textSize="12sp"
+                    android:textColor="#111"
+                    android:paddingLeft="5dp"
+                    android:editable="false"
+                    android:enabled="true"
+                    android:focusable="false" />
+
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+
+        <!--date start, deldate-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!--startdate-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:layout_weight="0.5">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingLeft="0dp"
+                    android:hint="Start Date"
+                    android:textSize="14sp">
+                    <!--    android:layout_weight="0.3"-->
+
+                    <EditText
+                        android:id="@+id/txt_startdate"
+                        android:layout_width="90dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center_vertical|left"
+                        android:gravity="center|left"
+                        android:textSize="12sp"
+                        android:textColor="#111"
+                        android:paddingLeft="5dp"
+                        android:enabled="false"
+                        android:focusable="false" />
+                    <!--       android:layout_weight="0.25"-->
+                    <!--android:background="@drawable/border"-->
+
+                </android.support.design.widget.TextInputLayout>
+
+                <ImageView
+                    android:id="@+id/imgdatestart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:src="@drawable/calender"/>
+                <!--android:layout_weight="0.75"-->
+
+            </LinearLayout>
+
+            <!--delscheduledate-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:layout_weight="0.5">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingLeft="0dp"
+                    android:hint="Delivery Schedule Date"
+                    android:textSize="14sp">
+                    <!--android:layout_weight="0.3"-->
+
+                    <EditText
+                        android:id="@+id/txt_del_date"
+                        android:layout_width="90dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center_vertical|left"
+                        android:gravity="center|left"
+                        android:textSize="12sp"
+                        android:textColor="#111"
+                        android:paddingLeft="5dp"
+                        android:enabled="false"
+                        android:focusable="false" />
+                    <!--android:background="@drawable/border"
+                    android:layout_weight="0.25"-->
+
+                </android.support.design.widget.TextInputLayout>
+
+                <ImageView
+                    android:id="@+id/img_delschedule"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:src="@drawable/calender"/>
+                <!--  android:layout_weight="0.75"-->
+
+            </LinearLayout>
+
+            <!--custdoordate-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:layout_weight="0.5">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingLeft="0dp"
+                    android:hint="Customer Door Date"
+                    android:textSize="14sp">
+                    <!--android:layout_weight="0.3"-->
+
+                    <EditText
+                        android:id="@+id/txt_doordate"
+                        android:layout_width="90dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|left"
+                        android:gravity="center|left"
+                        android:textSize="12sp"
+                        android:textColor="#111"
+                        android:paddingLeft="5dp"
+                        android:enabled="false"
+                        android:focusable="false" />
+                    <!--android:layout_weight="0.25"-->
+
+                </android.support.design.widget.TextInputLayout>
+
+                <ImageView
+                    android:id="@+id/img_doordate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:src="@drawable/calender"/>
+                <!--       android:layout_weight="0.75"-->
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:background="#dcdcdc">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Item"
+                android:textColor="#111"
+                android:textSize="12sp"
+                android:gravity="center_vertical|left"
+                android:layout_gravity="center_vertical|left"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#dcdcdc">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Qty"
+                android:textColor="#111"
+                android:textSize="12sp"
+                android:layout_weight="0.53"
+                android:paddingRight="5sp"
+                android:inputType="numberDecimal"
+                android:layout_gravity="center|right"
+                android:gravity="center|right"
+                android:editable="true"
+                android:focusable="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Rate"
+                android:textColor="#111"
+                android:textSize="12sp"
+                android:layout_weight="0.52"
+                android:paddingRight="5sp"
+                android:layout_gravity="center|right"
+                android:gravity="center|right" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Amt"
+                android:textColor="#111"
+                android:textSize="12sp"
+                android:layout_weight="0.5"
+                android:paddingRight="5sp"
+                android:layout_gravity="center|right"
+                android:gravity="center|right" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Disc.%"
+                android:textColor="#111"
+                android:textSize="12sp"
+                android:layout_weight="0.51"
+                android:paddingRight="5sp"
+                android:editable="true"
+                android:focusable="true"
+                android:inputType="numberDecimal"
+                android:layout_gravity="center|right"
+                android:gravity="center|right" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="DiscAmt"
+                android:textColor="#111"
+                android:textSize="12sp"
+                android:layout_weight="0.51"
+                android:paddingRight="5sp"
+                android:layout_gravity="center|right"
+                android:gravity="center|right" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical">
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/chkbox"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/txtitemcode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Item Code"
+                android:textStyle="bold"
+                android:textColor="#111"
+                android:textSize="12sp"
+                android:visibility="visible"
+                android:layout_weight="0.2"/>
+
+            <TextView
+                android:id="@+id/txtitem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Item Desc"
+                android:textStyle="bold"
+                android:textColor="#111"
+                android:textSize="12sp"
+                android:visibility="visible"
+                android:layout_weight="0.8"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/edtqty"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Qty"
+                android:textColor="#111"
+                android:textSize="12sp"
+                android:layout_weight="0.53"
+                android:paddingRight="5sp"
+                android:layout_gravity="center|right"
+                android:gravity="center|right"
+                android:editable="true"
+                android:focusable="true"
+                android:background="@drawable/border"/>
+
+            <TextView
+                android:id="@+id/txtrate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Rate"
+                android:textColor="#111"
+                android:textSize="12sp"
+                android:layout_weight="0.52"
+                android:paddingRight="5sp"
+                android:layout_gravity="center|right"
+                android:gravity="center|right"
+                android:background="@drawable/border_grey"/>
+
+            <TextView
+                android:id="@+id/txtamt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Line Amt"
+                android:textColor="#111"
+                android:textSize="12sp"
+                android:layout_weight="0.5"
+                android:paddingRight="5sp"
+                android:layout_gravity="center|right"
+                android:gravity="center|right"
+                android:background="@drawable/border_grey"/>
+
+            <EditText
+                android:id="@+id/edtdisc"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Disc"
+                android:textColor="#111"
+                android:textSize="12sp"
+                android:layout_weight="0.51"
+                android:paddingRight="5sp"
+                android:editable="true"
+                android:focusable="true"
+                android:layout_gravity="center|right"
+                android:gravity="center|right"
+                android:background="@drawable/border"/>
+
+            <TextView
+                android:id="@+id/txtdiscamt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Disc. Amt"
+                android:textColor="#111"
+                android:textSize="12sp"
+                android:layout_weight="0.51"
+                android:paddingRight="5sp"
+                android:layout_gravity="center|right"
+                android:gravity="center|right"
+                android:background="@drawable/border_grey"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/txttaxcls"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Tax class"
+                android:textColor="#111"
+                android:textSize="12sp"
+                android:layout_weight="0.2"
+                android:paddingRight="5sp"
+                android:drawableRight="@drawable/places_ic_search"
+                android:layout_gravity="center|right"
+                android:gravity="center|right"
+                android:background="@drawable/border"/>
+
+            <TextView
+                android:id="@+id/txttaxamt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Tax Amt"
+                android:textColor="#111"
+                android:textSize="12sp"
+                android:layout_weight="0.75"
+                android:paddingRight="5sp"
+                android:layout_gravity="center|right"
+                android:gravity="center|right"
+                android:background="@drawable/border_grey"/>
+
+            <!--<View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#111"
+                android:layout_marginLeft="5dp"/>-->
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ListView
+            android:id="@+id/list_items"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:layout_weight="0.2"
+            android:descendantFocusability="beforeDescendants"/>
+
+        <!--buttons-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_gravity="bottom"
+            android:gravity="bottom"
+            android:layout_weight="0.85">
+
+            <Button
+                android:id="@+id/btnadd"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:text="Add Price List"
+                android:textSize="14dp"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/tbuds_btn_pressed_2"
+                android:layout_weight="0.4"
+                android:layout_margin="5dp"/>
+
+            <Button
+                android:id="@+id/btn_cancel"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:text="Cancel"
+                android:textSize="14dp"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/tbuds_btn_pressed_2_orange"
+                android:layout_weight="0.6"
+                android:layout_margin="5dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

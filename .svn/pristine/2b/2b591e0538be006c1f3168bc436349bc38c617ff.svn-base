@@ -1,0 +1,41 @@
+package com.vritti.crm.bean;
+
+public class EntityTaxCode {
+
+    String TaxClassMasterId,TaxClassCode,TaxClassDesc;
+
+    public EntityTaxCode(String taxClassMasterId, String taxClassDesc) {
+        this.TaxClassMasterId = taxClassMasterId;
+        this.TaxClassDesc = taxClassDesc;
+    }
+
+
+    public String getTaxClassMasterId() {
+        return TaxClassMasterId;
+    }
+
+    public void setTaxClassMasterId(String taxClassMasterId) {
+        TaxClassMasterId = taxClassMasterId;
+    }
+
+    public String getTaxClassCode() {
+        return TaxClassCode;
+    }
+
+    public void setTaxClassCode(String taxClassCode) {
+        TaxClassCode = taxClassCode;
+    }
+
+    public String getTaxClassDesc() {
+        return TaxClassDesc;
+    }
+
+    public void setTaxClassDesc(String taxClassDesc) {
+        TaxClassDesc = taxClassDesc;
+    }
+
+    @Override
+    public String toString() {
+        return this.TaxClassDesc;
+    }
+}

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.vritti.inventory.physicalInventory.activity.PartCodeActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical">
+
+        <Button
+            android:id="@+id/btnocr"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textColor="@color/white"
+            android:text="OCR"
+            android:background="@drawable/button_blue_border"
+            android:layout_weight="0.5"/>
+
+        <ImageView
+            android:id="@+id/img_barcode"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:src="@drawable/barcode"
+            android:text=""
+            android:textSize="16sp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="0.5"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/edtsearchcode"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:hint="Search here"
+        android:padding="5dp"
+        android:drawableLeft="@drawable/places_ic_search"/>
+
+
+    <ListView
+        android:id="@+id/listpartcode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:dividerHeight="1dp"
+        android:divider="#dcdcdc"/>
+
+</LinearLayout>

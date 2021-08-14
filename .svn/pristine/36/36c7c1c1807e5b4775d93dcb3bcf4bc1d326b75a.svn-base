@@ -1,0 +1,122 @@
+[
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\menu\\menu_progress.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\menu\\menu_progress.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\menu\\open_chat_menu.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\menu\\open_chat_menu.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\menu\\menu_offline1.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\menu\\menu_offline1.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\menu\\new_member_chat_menu.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\menu\\new_member_chat_menu.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\menu\\activity_module_selection_drawer.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\menu\\activity_module_selection_drawer.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\menu\\calllist.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\menu\\calllist.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\menu\\refresh.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\menu\\refresh.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\menu\\menu_enquiry.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\menu\\menu_enquiry.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\menu\\menu_popup1.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\menu\\menu_popup1.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\menu\\add.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\menu\\add.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\menu\\activity_dra_drawer.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\menu\\activity_dra_drawer.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\menu\\main_viewticket.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\menu\\main_viewticket.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\menu\\menu_leave_records.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\menu\\menu_leave_records.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\menu\\main_menu.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\PM\\res\\menu\\main_menu.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\menu\\menu_refresh.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\menu\\menu_refresh.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\menu\\menu_popup.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\menu\\menu_popup.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\menu\\menu_scrolling.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\menu\\menu_scrolling.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\menu\\activity_module_selection.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\menu\\activity_module_selection.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\menu\\activity_pmdashboard.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\PM\\res\\menu\\activity_pmdashboard.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\menu\\menu_leave_summary.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\menu\\menu_leave_summary.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\menu\\manu_gps.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\menu\\manu_gps.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\menu\\activity_main_drawer.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\menu\\activity_main_drawer.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\menu\\menu_offline.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\menu\\menu_offline.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\menu\\chat_menu.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\menu\\chat_menu.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\menu\\refresh_menu.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\menu\\refresh_menu.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\menu\\prospect.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\menu\\prospect.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\menu\\menuprospectsetting.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\menu\\menuprospectsetting.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\menu\\provisional_receipt.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\menu\\provisional_receipt.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\menu\\pm_activity_pmdashboard_drawer.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\PM\\res\\menu\\pm_activity_pmdashboard_drawer.xml"
+    },
+    {
+        "merged": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\menu\\main.xml",
+        "source": "D:\\ICAI\\PM\\app\\src\\main\\res\\menu\\main.xml"
+    }
+]

@@ -1,0 +1,73 @@
+package com.vritti.crm.bean;
+
+import java.util.ArrayList;
+
+public class EntityContactDetails {
+
+    String contactname,contactDesignation,contactMobile,contactEmail,contactInfluence,contactdefault;
+    ArrayList<EntityContactDetails> entityContactDetailsArrayList;
+
+    public EntityContactDetails() {
+
+    }
+
+    public ArrayList<EntityContactDetails> getEntityContactDetailsArrayList() {
+        return entityContactDetailsArrayList;
+    }
+
+    public void setEntityContactDetailsArrayList(ArrayList<EntityContactDetails> entityContactDetailsArrayList) {
+        this.entityContactDetailsArrayList = entityContactDetailsArrayList;
+    }
+
+    public EntityContactDetails(ArrayList<EntityContactDetails> entityContactDetailsArrayList) {
+        this.entityContactDetailsArrayList = entityContactDetailsArrayList;
+    }
+
+    public String getContactname() {
+        return contactname;
+    }
+
+    public void setContactname(String contactname) {
+        this.contactname = contactname;
+    }
+
+    public String getContactDesignation() {
+        return contactDesignation;
+    }
+
+    public void setContactDesignation(String contactDesignatio) {
+        this.contactDesignation = contactDesignatio;
+    }
+
+    public String getContactMobile() {
+        return contactMobile;
+    }
+
+    public void setContactMobile(String contactMobile) {
+        this.contactMobile = contactMobile;
+    }
+
+    public String getContactEmail() {
+        return contactEmail;
+    }
+
+    public void setContactEmail(String contactEmail) {
+        this.contactEmail = contactEmail;
+    }
+
+    public String getContactInfluence() {
+        return contactInfluence;
+    }
+
+    public void setContactInfluence(String contactInfluence) {
+        this.contactInfluence = contactInfluence;
+    }
+
+    public String getContactdefault() {
+        return contactdefault;
+    }
+
+    public void setContactdefault(String contactdefault) {
+        this.contactdefault = contactdefault;
+    }
+}

@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/vwb_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="#6E6F72"
+        android:padding="8dp"
+        android:text="Activity reassignment"
+        android:textColor="#fff"
+        android:textSize="16dp" />
+
+
+
+   <!-- <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="5dp"
+        android:background="#000"></View>-->
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_activity_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:padding="5dp"
+                android:textColor="#000"
+                android:textSize="14sp"
+                android:background="@drawable/border"
+                android:typeface="serif" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="2dp">
+
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.4"
+                    android:text="Assignment :"
+                    android:textColor="#000"
+                    android:textSize="14sp"
+                    android:typeface="serif" />
+
+                <TextView
+                    android:id="@+id/tv_workspace_id"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:text="Agile-STU"
+                    android:textColor="#000"
+                    android:textSize="14sp"
+                    android:typeface="serif" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="3dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.4"
+                    android:text="Audit :"
+                    android:textColor="#000"
+                    android:textSize="14sp"
+                    android:typeface="serif" />
+
+                <TextView
+                    android:id="@+id/tv_main_group"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:text="Agile-STU"
+                    android:textColor="#000"
+                    android:textSize="14sp"
+                    android:typeface="serif" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="2dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.4"
+                    android:text="Process :"
+                    android:textColor="#000"
+                    android:textSize="14sp"
+                    android:typeface="serif" />
+
+                <TextView
+                    android:id="@+id/tv_sub_group"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:text="Agile-STU"
+                    android:textColor="#000"
+                    android:textSize="14sp"
+                    android:typeface="serif" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="3dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.4"
+                    android:text="Assigned To :"
+                    android:textColor="#000"
+                    android:textSize="14sp"
+                    android:typeface="serif" />
+
+                <TextView
+                    android:id="@+id/tv_assiged_to"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:text="Pradnya"
+                    android:textColor="#000"
+                    android:textSize="14sp"
+                    android:typeface="serif" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginBottom="5dp"
+                android:background="#000"></View>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.4"
+                    android:text="Activity Type :"
+                    android:textColor="#000"
+                    android:textSize="14sp"
+                    android:typeface="serif" />
+
+                <Spinner
+                    android:id="@+id/sp_spinner_activity_type"
+                    style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:textColor="#000"
+                    android:textSize="14sp"
+                    android:typeface="serif" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+               >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.4"
+                    android:text="Reassign To :"
+                    android:textColor="#000"
+                    android:textSize="14sp"
+                    android:typeface="serif" />
+
+                <com.vritti.vwb.vworkbench.CustomAutoCompleteView
+                    android:id="@+id/reassign_to_autocomplete"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.6"
+                    android:completionThreshold="1"
+                    android:hint="User name"
+                    android:textColor="#000"
+                    android:textSize="14sp"
+                    android:typeface="serif"
+                    android:windowSoftInputMode="adjustResize" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.4"
+                    android:text="Priority :"
+                    android:textColor="#000"
+                    android:textSize="14sp"
+                    android:typeface="serif" />
+
+                <Spinner
+                    android:id="@+id/sp_spinner_priority"
+                    style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:textColor="#000"
+                    android:textSize="14sp"
+                    android:typeface="serif" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.4"
+                    android:text="Reason:"
+                    android:textColor="#000"
+                    android:textSize="14sp"
+                    android:typeface="serif" />
+
+                <EditText
+                    android:id="@+id/ed_reason"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:maxLines="3"
+                    android:textColor="#000"
+                    android:textSize="14sp"
+                    android:typeface="serif"
+                    android:windowSoftInputMode="adjustResize" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="Estimated Hours :"
+                    android:textColor="#000"
+                    android:textSize="14sp"
+                    android:typeface="serif" />
+
+                <EditText
+                    android:id="@+id/ed_expected_hrs"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_weight="0.5"
+                    android:hint="Enter"
+                    android:inputType="number"
+                    android:textColor="#000"
+                    android:textSize="14sp"
+                    android:typeface="serif"
+                    android:background="@drawable/border"
+                    android:padding="5dp"
+                    android:windowSoftInputMode="adjustResize" />
+                <Spinner
+                    android:id="@+id/sp_spinner_hr"
+                    style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.3"
+                    android:textColor="#000"
+                    android:textSize="14sp"
+                    android:typeface="serif" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingTop="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:text="Start Date "
+                    android:textColor="#000" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="8dp"
+                    android:layout_weight="0.5"
+
+                    android:text="End Date "
+                    android:textColor="#000" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="8dp"
+                    android:layout_weight="0.5"
+                    android:text="Ex.Completion "
+                    android:textColor="#000" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingTop="5dp">
+
+                <Button
+                    android:id="@+id/btn_fromDate"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/backshape"
+                    android:text="Strat date"
+                    android:textColor="#fff" />
+
+                <Button
+                    android:id="@+id/btn_toDate"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="8dp"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/backshape"
+                    android:text="End date"
+                    android:textColor="#fff" />
+                <Button
+                    android:id="@+id/btn_expected_completion"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="8dp"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/backshape"
+                    android:text="Expected completion"
+                    android:textColor="#fff" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="5dp">
+
+                <Button
+                    android:id="@+id/btn_save"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/backshapegreen"
+                    android:text="Reassign"
+                    android:textColor="#fff" />
+
+                <Button
+                    android:id="@+id/btn_cancel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/backshape_orange"
+                    android:text="Cancel"
+                    android:textColor="#fff" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

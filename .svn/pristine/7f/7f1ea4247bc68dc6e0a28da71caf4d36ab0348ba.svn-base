@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/PM.iml" filepath="$PROJECT_DIR$/PM.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chatlib/chatlib.iml" filepath="$PROJECT_DIR$/chatlib/chatlib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/crmlib/crmlib.iml" filepath="$PROJECT_DIR$/crmlib/crmlib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/databaselib/databaselib.iml" filepath="$PROJECT_DIR$/databaselib/databaselib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sessionlib/sessionlib.iml" filepath="$PROJECT_DIR$/sessionlib/sessionlib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vwblib/vwblib.iml" filepath="$PROJECT_DIR$/vwblib/vwblib.iml" />
+    </modules>
+  </component>
+</project>

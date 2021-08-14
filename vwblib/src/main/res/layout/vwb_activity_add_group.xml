@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorIndivateTab"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:id="@+id/len_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/white"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/e1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@color/dark_grey"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:text="Save chat room name"
+            android:textColor="@color/white"
+            android:textColorHint="@color/dark_grey"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/icon_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/e1"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounded_textview"
+            android:gravity="center"
+            android:text="C"
+            android:textColor="@android:color/white"
+            android:textSize="30sp" />
+
+        <EditText
+            android:id="@+id/editGroupName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/e1"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/icon_group"
+            android:background="@android:color/transparent"
+            android:cursorVisible="true"
+            android:focusable="true"
+            android:hint="Type chat room name"
+            android:padding="10dp"
+            android:singleLine="false">
+
+            <requestFocus />
+        </EditText>
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/editGroupName"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/backshape_blue"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Create Chat Room"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/txt_create_room"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/editGroupName"
+            android:layout_marginEnd="13dp"
+            android:layout_marginRight="13dp"
+
+            android:gravity="center"
+            android:src="@drawable/right"
+            android:text=""
+            android:textColor="@android:color/white"
+            android:textSize="30sp" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@+id/len_group"
+        android:layout_marginTop="10dp"
+        android:background="@color/header"
+
+        />
+
+    <RelativeLayout
+        android:id="@+id/len_add_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/e"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@color/dark_grey"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:text="Add participants"
+            android:textColor="@color/white"
+            android:textColorHint="@color/dark_grey"
+            android:textSize="14dp">
+
+        </TextView>
+
+
+        <EditText
+            android:layout_marginTop="5dp"
+            android:id="@+id/edt_search_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/edit_text"
+            android:hint="Search name"
+            android:layout_below="@+id/e"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textColorHint="@color/dark_grey"
+            android:textSize="14dp">
+
+        </EditText>
+
+        <ImageView
+            android:id="@+id/img_adduser"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignEnd="@+id/edt_search_name"
+            android:layout_alignRight="@+id/edt_search_name"
+            android:layout_alignTop="@+id/edt_search_name"
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
+            android:src="@drawable/right"
+            android:text=""
+            android:textColor="@android:color/white"
+            android:textSize="30sp" />
+
+        <ListView
+            android:id="@+id/listview_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img_adduser"
+            android:paddingEnd="10dp"
+            android:paddingStart="10dp" />
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

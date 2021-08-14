@@ -1,0 +1,110 @@
+{
+    "logs": [
+        {
+            "outputFile": "D:\\ICAI\\PM\\app\\build\\intermediates\\res\\merged\\PM\\debug\\values-v16\\values-v16.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\datetimepicker-0.2.0.aar\\8906d3585d46b2715ac85166304b9464\\res\\values-v16\\values-v16.xml",
+                    "from": {
+                        "startLines": "4,7,10,13",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "169,354,482,596",
+                        "endLines": "4,9,12,15",
+                        "endColumns": "71,12,12,12",
+                        "endOffsets": "236,477,591,703"
+                    },
+                    "to": {
+                        "startLines": "3,8,11,14",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "121,366,494,608",
+                        "endLines": "3,10,13,16",
+                        "endColumns": "71,12,12,12",
+                        "endOffsets": "188,489,603,715"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\36558538b602a41a3f8b7493d79908f8\\res\\values-v16\\values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "65",
+                        "endOffsets": "116"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\values-v16\\values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "5",
+                        "endColumns": "12",
+                        "endOffsets": "223"
+                    },
+                    "to": {
+                        "startLines": "4",
+                        "startColumns": "4",
+                        "startOffsets": "193",
+                        "endLines": "7",
+                        "endColumns": "12",
+                        "endOffsets": "361"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "D:\\ICAI\\PM\\app\\build\\intermediates\\incremental\\mergePMDebugResources\\merged.dir\\values-v16\\values-v16.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\datetimepicker-0.2.0.aar\\8906d3585d46b2715ac85166304b9464\\res\\values-v16\\values-v16.xml",
+                    "from": {
+                        "startLines": "4,7,10,13",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "169,354,482,596",
+                        "endLines": "4,9,12,15",
+                        "endColumns": "71,12,12,12",
+                        "endOffsets": "236,477,591,703"
+                    },
+                    "to": {
+                        "startLines": "3,8,11,14",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "121,366,494,608",
+                        "endLines": "3,10,13,16",
+                        "endColumns": "71,12,12,12",
+                        "endOffsets": "188,489,603,715"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\36558538b602a41a3f8b7493d79908f8\\res\\values-v16\\values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "65",
+                        "endOffsets": "116"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\pradnya\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f97f8d62f38123e53f27e5349b3785a0\\res\\values-v16\\values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "5",
+                        "endColumns": "12",
+                        "endOffsets": "223"
+                    },
+                    "to": {
+                        "startLines": "4",
+                        "startColumns": "4",
+                        "startOffsets": "193",
+                        "endLines": "7",
+                        "endColumns": "12",
+                        "endOffsets": "361"
+                    }
+                }
+            ]
+        }
+    ]
+}

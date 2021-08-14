@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--  <item
+          android:id="@+id/miActionProgress"
+          android:title="Loading..."
+          android:visible="false"
+          android:orderInCategory="100"
+          app:showAsAction="always"
+          app:actionLayout="@layout/progress_xml"/>-->
+    <item
+        android:id="@+id/refresh"
+        android:icon="@drawable/ic_refresh"
+        android:title="Refresh"
+        android:visible="true"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/assign_activity"
+        android:title="Assign Work"
+        android:visible="true"
+        app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/apply_claim"
+        android:title="My Claim"
+        android:visible="true"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/apply_leave"
+        android:title="My Leave"
+        android:visible="true"
+        app:showAsAction="collapseActionView" />
+
+    <item
+        android:id="@+id/view_gps"
+        android:title="View GPS Location"
+        android:visible="true"
+        app:showAsAction="collapseActionView" />
+
+    <item
+        android:id="@+id/Open_grp"
+        android:title="Open Chat Room"
+        android:visible="false"
+        app:showAsAction="collapseActionView"
+        />
+
+    <item
+        android:id="@+id/asset"
+        android:title="Asset Transfer"
+        android:visible="true"
+        app:showAsAction="collapseActionView" />
+
+
+    <item
+        android:id="@+id/advance_request"
+        android:title="Employee Advance Request"
+        android:visible="true"
+        app:showAsAction="never" />
+
+    <!--<item
+        android:id="@+id/ticket_register"
+        android:title="Ticket Registration"
+        android:visible="true"
+        app:showAsAction="never" />-->
+
+
+
+
+
+
+    <item
+        android:id="@+id/claim_pay_noti"
+        android:title="Payment Notification"
+        android:visible="true"
+        app:showAsAction="collapseActionView" />
+
+    <item
+        android:id="@+id/credit_sanction"
+        android:title="Dealer Credit Sanction"
+        android:visible="true"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/meeting"
+        android:title="Meeting"
+        android:visible="true"
+        app:showAsAction="collapseActionView" />
+
+    <item
+        android:id="@+id/SupportStaff"
+        android:title="Support Staff"
+        android:visible="true"
+        app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/holiday"
+        android:title="Holiday List"
+        android:visible="true"
+        app:showAsAction="collapseActionView" />
+
+    <item
+        android:id="@+id/refreshall"
+        android:icon="@drawable/ic_refresh"
+        android:title="Refresh all Data"
+        android:visible="true" />
+    <item
+        android:id="@+id/settings"
+        android:title="Setting"
+        android:visible="true"
+        app:showAsAction="collapseActionView" >
+    </item>
+</menu>

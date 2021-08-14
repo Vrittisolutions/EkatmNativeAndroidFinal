@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_layout"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:popupTheme="@style/AppTheme">
+
+            <ProgressBar
+                android:id="@+id/toolbar_progress_App_bar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="8dp"
+                android:indeterminateDrawable="@drawable/spinner"
+                android:visibility="gone" />
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:background="@color/dark_grey"
+        android:text="Employee Advance Request"
+        android:textSize="16dp"
+        android:padding="5dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_gravity="center|left"
+        android:gravity="center|left">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="Employee Name"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:typeface="serif" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/edit_text"
+            >
+
+        <Spinner
+            android:id="@+id/spinner_employee"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="#000"
+            android:textSize="14dp"
+            android:theme="@style/ThemeSpinner"
+            android:typeface="serif" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|center"
+        android:gravity="center|left"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+          >
+
+            <TextView
+                android:id="@+id/txt_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:tag="lblResolDt"
+                android:text="Date"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/lay_Date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|left"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:layout_marginTop="5dp"
+            android:gravity="center|left"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:visibility="visible">
+
+            <EditText
+                android:id="@+id/edt_date"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_text"
+                android:editable="false"
+                android:focusable="false"
+                android:padding="10dp"
+                android:layout_marginLeft="20dp"
+                android:singleLine="true"
+                android:textSize="14dp" />
+
+            <ImageView
+                android:id="@+id/img_date"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/calender" />
+        </LinearLayout>
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:orientation="horizontal"
+        android:layout_gravity="center|left"
+        android:gravity="center|left">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="Amount"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:typeface="serif" />
+
+        <EditText
+            android:id="@+id/edt_amount"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit_text"
+            android:padding="10dp"
+            android:layout_marginLeft="5dp"
+            android:singleLine="true"
+            android:inputType="number"
+            android:textSize="14dp" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="Purpose of Advance"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:typeface="serif" />
+
+        <EditText
+            android:id="@+id/ed_travel_purpose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/star_img2"
+            android:hint="Enter text here..."
+            android:textColor="#000"
+            android:maxLines="2"
+            android:textSize="14sp"
+            android:theme="@style/ThemeSpinner"
+            android:typeface="serif" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_marginRight="5dp"
+        android:layout_gravity="center|left"
+        android:gravity="center|left"
+        android:layout_marginLeft="5dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.22"
+            android:gravity="center|left"
+            android:text="Approver"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:typeface="serif" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="0.78"
+            android:background="@drawable/edit_text"
+            android:padding="5dp"
+            android:layout_gravity="center|left"
+            android:gravity="center|left"
+            >
+        <Spinner
+            android:id="@+id/sp_approver"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.78"
+            android:textColor="#000"
+            android:textSize="14dp"
+            android:theme="@style/ThemeSpinner"
+            android:typeface="serif" />
+            </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/header"
+        android:layout_gravity="center|right"
+        android:gravity="center|right"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txt_send_request"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send Request"
+            android:textColor="@color/white"
+            android:padding="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/button_green"/>
+        <TextView
+            android:id="@+id/txt_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_orange"
+            android:text="Cancel"
+            android:padding="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:background="@color/dark_grey"
+        android:text="History Details"
+        android:textSize="16dp"
+        android:padding="5dp"
+        />
+    <LinearLayout
+        android:id="@+id/len_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+
+
+        >
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolbar1"
+            card_view:cardUseCompatPadding="true"
+            android:layout_weight="1"
+            card_view:cardElevation="4dp"
+            card_view:cardBackgroundColor="@color/white"
+            card_view:cardCornerRadius="4dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+          <TextView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:textSize="14dp"
+              android:text="Outstanding Amount"
+              android:background="#ff7b0d"
+              android:padding="5dp"
+              android:gravity="center"
+              android:textStyle="bold"
+              android:textColor="@color/white"/>
+            <TextView
+                android:id="@+id/txt_out_amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:text="657.00"
+                android:background="@color/white"
+                android:padding="5dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="#f05050"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/header"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="center_horizontal"/>
+            <TextView
+                android:id="@+id/txt_out_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:text="29 Mar 2018"
+                android:background="@color/white"
+                android:padding="10dp"
+                android:gravity="center"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolbar1"
+            card_view:cardUseCompatPadding="true"
+            card_view:cardBackgroundColor="@color/white"
+            android:layout_weight="1"
+            card_view:cardElevation="4dp"
+            card_view:cardCornerRadius="4dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:text="Last Claim Amount"
+                android:background="#ff7b0d"
+                android:padding="5dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/white"/>
+            <TextView
+                android:id="@+id/txt_last_amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:text="657.00"
+                android:background="@color/white"
+                android:padding="5dp"
+                android:gravity="center"
+                android:textColor="@color/black"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/header"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="center_horizontal"/>
+            <TextView
+                android:id="@+id/txt_last_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:text="29 Mar 2018"
+                android:background="@color/white"
+                android:padding="10dp"
+                android:gravity="center"
+                android:textColor="@color/black"/>
+
+
+        </LinearLayout>
+</android.support.v7.widget.CardView>
+    </LinearLayout>
+    </LinearLayout>

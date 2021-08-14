@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.vritti.inventory.physicalInventory.activity.ItemMasterSyncActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/MyToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/colorPrimary"
+            app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay"
+            app:subtitleTextAppearance="@style/ToolbarTextAppearance.Subtitle"
+            app:titleTextAppearance="@style/ToolbarTextAppearance.Title" >
+
+            <ProgressBar
+                android:id="@+id/toolbar_progress_App_bar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="8dp"
+                android:indeterminateDrawable="@drawable/spinner"
+                android:visibility="gone" />
+
+        </android.support.v7.widget.Toolbar>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/backgroundHeader"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Item Master Sync"
+                android:textColor="#fff"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        />
+
+    <LinearLayout
+        android:id="@+id/laystatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:layout_weight="0.5"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Available Items"
+                android:textSize="13sp"
+                android:layout_weight="0.6"
+                android:layout_gravity="center"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/txtavlitems"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="15sp"
+                android:textColor="#111"
+                android:paddingLeft="10dp"
+                android:textStyle="bold"
+                android:layout_weight="0.4"
+                android:layout_gravity="center"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:layout_weight="0.5"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Downloaded Items"
+                android:textSize="13sp"
+                android:layout_weight="0.6"
+                android:layout_gravity="center"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/txtdwnlitems"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="15sp"
+                android:textColor="#111"
+                android:paddingLeft="10dp"
+                android:textStyle="bold"
+                android:layout_weight="0.4"
+                android:layout_gravity="center"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoptions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp">
+
+            <Button
+                android:id="@+id/btn1_fromserver"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:textColor="#FFFFFF"
+                android:text="Download File"
+                android:textSize="17sp"
+                android:textAllCaps="false"
+                android:background="@drawable/button_blue_border"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:visibility="visible"
+                android:layout_weight="0.5"/>
+
+            <Button
+                android:id="@+id/btn1_fromfolder"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:textColor="#FFFFFF"
+                android:text="Select File"
+                android:textSize="17sp"
+                android:textAllCaps="false"
+                android:background="@drawable/button_blue_border"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:visibility="visible"
+                android:layout_weight="0.5"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnsyncall"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textColor="#FFFFFF"
+            android:text="Sync All"
+            android:textSize="17sp"
+            android:textAllCaps="false"
+            android:background="@drawable/button_blue_border"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:visibility="visible"/>
+
+        <LinearLayout
+            android:id="@+id/laystartfrom"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:orientation="horizontal"
+            android:background="@drawable/button_blue_border"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:visibility="visible">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:text="Items Starting After"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/txtstartfrom"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:text="0"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/laymodify"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:orientation="horizontal"
+            android:background="@drawable/button_blue_border"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:text="Items Modified After"
+                android:textAllCaps="false"
+                android:paddingLeft="10dp"
+                android:textColor="#FFFFFF"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/txtdate"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:text="11 Dec 2019 "
+                android:textAllCaps="false"
+                android:paddingLeft="10dp"
+                android:textColor="#FFFFFF"
+                android:textSize="17sp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/layprogrsbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:visibility="visible">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_marginLeft="0dp"
+            android:layout_margin="20dp"
+            android:layout_centerHorizontal="true"
+            android:indeterminate="false"
+            android:max="41763"
+            android:progressDrawable="@drawable/circular_progress_bar" />
+
+        <LinearLayout
+            android:id="@+id/layt"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:orientation="vertical"
+            android:layout_alignLeft="@id/progressBar"
+            android:layout_alignTop="@id/progressBar"
+            android:layout_alignRight="@id/progressBar"
+            android:layout_alignBottom="@id/progressBar"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/imgdone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/tbuds_correct"
+                android:layout_alignLeft="@id/progressBar"
+                android:layout_alignTop="@id/progressBar"
+                android:layout_alignRight="@id/progressBar"
+                android:layout_alignBottom="@id/progressBar"
+                android:padding="100dp"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/textprogrs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/progressBar"
+                android:layout_alignTop="@id/progressBar"
+                android:layout_alignRight="@id/progressBar"
+                android:layout_alignBottom="@id/progressBar"
+                android:gravity="center"
+                tools:text="0"
+                android:textColor="#111111"
+                android:textSize="25sp"
+                android:visibility="visible"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtdwnld"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="Wait for a while downloading is in progress..."
+            android:layout_below="@+id/layt"
+            android:layout_marginTop="5dp"
+            android:visibility="gone"/>
+
+
+    </RelativeLayout>
+
+</LinearLayout>

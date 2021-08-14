@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardCornerRadius="5dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:padding="0dp"
+    card_view:cardElevation="0dp"
+    card_view:cardMaxElevation="0.5dp"
+    card_view:cardUseCompatPadding="true"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/laydata"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:orientation="horizontal"
+                android:background="@drawable/shape_curve_blue_small"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/txtcustname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cust. Name"
+                        android:textColor="@color/white"
+                        android:textSize="13dp"
+                        android:textStyle="bold"
+                        android:paddingLeft="7dp"
+                        android:paddingRight="7dp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/txtinvoiceno"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PR19-20/046"
+                    android:textSize="13dp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:paddingRight="7dp"
+                    android:layout_gravity="center_vertical|right"
+                    android:gravity="center_vertical|right" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="0.5"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|left"
+                        android:gravity="center_vertical|left"
+                        android:text="@string/expdldt"
+                        android:textStyle="bold"
+                        android:textSize="10dp" />
+
+                    <TextView
+                        android:id="@+id/txtexpdeldate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|left"
+                        android:gravity="center_vertical|left"
+                        android:text="4 Jul"
+                        android:textStyle="bold"
+                        android:textSize="12dp"
+                        android:layout_marginLeft="10dp"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="0.5"
+                    android:layout_gravity="center_vertical|right"
+                    android:gravity="center_vertical|right">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|right"
+                        android:gravity="center_vertical|right"
+                        android:text="@string/invdate"
+                        android:textColor="@color/btncolordark"
+                        android:textSize="10dp"
+                        android:layout_marginRight="10dp"/>
+
+                    <TextView
+                        android:id="@+id/txtinvoicedate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|right"
+                        android:gravity="center_vertical|right"
+                        android:paddingRight="0dp"
+                        android:text="1 Jul"
+                        android:textColor="@color/btncolordark"
+                        android:textSize="12dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                android:paddingTop="2dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/grid9"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical|top"
+                    android:src="@drawable/tbuds_home"/>
+
+                <TextView
+                    android:id="@+id/txtaddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="5"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="7dp"
+                    android:paddingBottom="5dp"
+                    android:textColor="#2c2c2c"
+                    android:textSize="12dp"
+                    android:layout_weight="1"
+                    android:text="a"
+                    android:layout_gravity="center_vertical|top|left"
+                    android:gravity="center_vertical|left|top|left"/>
+
+                <ImageView
+                    android:id="@+id/img_pdf"
+                    android:layout_width="50dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_gravity="center_vertical|top"
+                    android:visibility="gone"/>
+
+            </LinearLayout>
+
+            <!--call-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:padding="5dp"
+                android:layout_weight="0.5">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="28dp"
+                    android:orientation="horizontal"
+                    android:layout_weight="0.55"
+                    android:background="@drawable/btn_pressed_2"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="4dp">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/ic_call_white" />
+
+                    <TextView
+                        android:id="@+id/txtmobile"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:maxLength="10"
+                        android:layout_marginLeft="5dp"
+                        android:text="1234567890"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:textSize="13dp"
+                        android:layout_weight="0.6"/>
+
+                </LinearLayout>
+
+                <!--deliverymode-->
+                <TextView
+                    android:id="@+id/delmode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtamt"
+                    android:layout_gravity="center_vertical|right"
+                    android:gravity="center_vertical|right"
+                    android:layout_marginRight="10dp"
+                    android:text="Take Away"
+                    android:textSize="14dp"
+                    android:textColor="@color/colorPrimary1"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="0.45"/>
+
+                <ImageView
+                    android:id="@+id/img_location"
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/gpsicon" />
+
+                <ImageView
+                    android:id="@+id/imgshare"
+                    android:layout_width="30dp"
+                    android:layout_height="20dp" 
+                    android:visibility="gone"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imgpaid"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:visibility="gone"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center_vertical|bottom"
+            android:gravity="center_vertical|bottom"
+            android:src="@drawable/paidstamp" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

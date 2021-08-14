@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "215836600894",
+    "firebase_url": "https://workbenchv7-154809.firebaseio.com",
+    "project_id": "workbenchv7-154809",
+    "storage_bucket": "workbenchv7-154809.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:215836600894:android:b6b870d29560efd2",
+        "android_client_info": {
+          "package_name": "vworkbench7.vritti.com.vworkbench7"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "215836600894-p9s89lmgv48p9o7gm0h9ljv8jdr78i04.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "vworkbench7.vritti.com.vworkbench7",
+            "certificate_hash": "47c161b6ac20c3391c5deaed3d925dfd01185a97"
+          }
+        },
+        {
+          "client_id": "215836600894-ttqneospcti8ida25q2g76cs4udpitb1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3ONS8gu5RY-Db5shmfI1Fc4NyygBGHSk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "215836600894-ttqneospcti8ida25q2g76cs4udpitb1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

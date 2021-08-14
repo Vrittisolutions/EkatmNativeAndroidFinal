@@ -1,0 +1,59 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/crm_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/include" />
+
+
+    <ListView
+        android:id="@+id/lstquestions_editdatasheet"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:cacheColorHint="#000000"
+        android:divider="#B6B6B4"
+        android:layout_above="@+id/len_button"
+        android:dividerHeight="1dp"
+        android:layout_below="@+id/include"></ListView>
+
+
+    <LinearLayout
+        android:id="@+id/len_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+
+        <Button
+             android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#27C24C"
+            android:gravity="center"
+            android:text="Save"
+            android:textColor="#ffffff" />
+
+
+        <Button
+            android:id="@+id/btnReturn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:layout_weight="1"
+            android:background="#F05050"
+            android:gravity="center"
+            android:text="Return"
+            android:textColor="#ffffff" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

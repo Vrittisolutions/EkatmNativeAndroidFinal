@@ -1,0 +1,200 @@
+package com.vritti.inventory.MaterialRequisition.model;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+
+/**
+ * Created by sharvari on 11-Aug-17.
+ */
+
+public class MaterialOrder implements Serializable {
+
+    String MRSDetailId;
+    String ItemMasterId;
+    String ItemCode;
+    String ItemDesc;
+    String UOMDesc;
+    String UOMMasterId;
+    String StockQuantity;
+    String ReqQty;
+    String Remark;
+    String lblhdn;
+    String MODetailId;
+    String SupplierId;
+    String RouteName;
+    String SegmentType;
+    String RouteFrom;
+    String RouteTo;
+    String Address;
+    String WarehouseMasterName;
+    String LocationMasterName;
+    ArrayList<MaterialOrder> materialOrderArrayList;
+
+    public MaterialOrder() {
+
+    }
+
+    public String getWarehouseMasterName() {
+        return WarehouseMasterName;
+    }
+
+    public void setWarehouseMasterName(String warehouseMasterName) {
+        WarehouseMasterName = warehouseMasterName;
+    }
+
+    public String getLocationMasterName() {
+        return LocationMasterName;
+    }
+
+    public void setLocationMasterName(String locationMasterName) {
+        LocationMasterName = locationMasterName;
+    }
+
+    public ArrayList<MaterialOrder> getMaterialOrderArrayList() {
+        return materialOrderArrayList;
+    }
+
+    public void setMaterialOrderArrayList(ArrayList<MaterialOrder> materialOrderArrayList) {
+        this.materialOrderArrayList = materialOrderArrayList;
+    }
+
+    public MaterialOrder(ArrayList<MaterialOrder> materialOrders) {
+        this.materialOrderArrayList = materialOrders;
+    }
+
+    public String getMRSDetailId() {
+        return MRSDetailId;
+    }
+
+    public void setMRSDetailId(String MRSDetailId) {
+        this.MRSDetailId = MRSDetailId;
+    }
+
+    public String getItemMasterId() {
+        return ItemMasterId;
+    }
+
+    public void setItemMasterId(String itemMasterId) {
+        ItemMasterId = itemMasterId;
+    }
+
+    public String getItemCode() {
+        return ItemCode;
+    }
+
+    public void setItemCode(String itemCode) {
+        ItemCode = itemCode;
+    }
+
+    public String getItemDesc() {
+        return ItemDesc;
+    }
+
+    public void setItemDesc(String itemDesc) {
+        ItemDesc = itemDesc;
+    }
+
+    public String getUOMDesc() {
+        return UOMDesc;
+    }
+
+    public void setUOMDesc(String UOMDesc) {
+        this.UOMDesc = UOMDesc;
+    }
+
+    public String getUOMMasterId() {
+        return UOMMasterId;
+    }
+
+    public void setUOMMasterId(String UOMMasterId) {
+        this.UOMMasterId = UOMMasterId;
+    }
+
+    public String getStockQuantity() {
+        return StockQuantity;
+    }
+
+    public void setStockQuantity(String stockQuantity) {
+        StockQuantity = stockQuantity;
+    }
+
+    public String getReqQty() {
+        return ReqQty;
+    }
+
+    public void setReqQty(String reqQty) {
+        ReqQty = reqQty;
+    }
+
+    public String getRemark() {
+        return Remark;
+    }
+
+    public void setRemark(String remark) {
+        Remark = remark;
+    }
+
+    public String getlblhdn() {
+        return lblhdn;
+    }
+
+    public void setlblhdn(String lblhdn) {
+        this.lblhdn = lblhdn;
+    }
+
+    public String getMODetailId() {
+        return MODetailId;
+    }
+
+    public void setMODetailId(String MODetailId) {
+        this.MODetailId = MODetailId;
+    }
+
+    public String getSupplierId() {
+        return SupplierId;
+    }
+
+    public void setSupplierId(String supplierId) {
+        SupplierId = supplierId;
+    }
+
+    public String getRouteName() {
+        return RouteName;
+    }
+
+    public void setRouteName(String routeName) {
+        RouteName = routeName;
+    }
+
+    public String getSegmentType() {
+        return SegmentType;
+    }
+
+    public void setSegmentType(String segmentType) {
+        SegmentType = segmentType;
+    }
+
+    public String getRouteFrom() {
+        return RouteFrom;
+    }
+
+    public void setRouteFrom(String routeFrom) {
+        RouteFrom = routeFrom;
+    }
+
+    public String getRouteTo() {
+        return RouteTo;
+    }
+
+    public void setRouteTo(String routeTo) {
+        RouteTo = routeTo;
+    }
+
+    public String getAddress() {
+        return Address;
+    }
+
+    public void setAddress(String address) {
+        Address = address;
+    }
+}

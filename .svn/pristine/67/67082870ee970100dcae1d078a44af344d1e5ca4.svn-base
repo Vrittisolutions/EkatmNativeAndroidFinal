@@ -1,0 +1,1551 @@
+package com.vritti.crm.vcrm7;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
+import com.vritti.crm.adapter.EntityMasterBankDetailsAdapter;
+import com.vritti.crm.bean.BankDetails;
+import com.vritti.crm.bean.EntityCategoryBean;
+import com.vritti.crm.bean.EntityContactDetails;
+import com.vritti.crm.bean.EntityPaymentTerms;
+import com.vritti.crm.bean.EntityTaxCode;
+import com.vritti.crm.bean.EntityTerms;
+import com.vritti.crm.classes.CommonFunctionCrm;
+import com.vritti.databaselib.data.DatabaseHandlers;
+import com.vritti.databaselib.other.Utility;
+import com.vritti.databaselib.other.WebUrlClass;
+import com.vritti.ekatm.R;
+import com.vritti.sales.beans.EntityType_Currency_PriceList;
+import com.vritti.sessionlib.CallbackInterface;
+import com.vritti.sessionlib.StartSession;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.UUID;
+
+public class EntityMasterSalesActivity extends AppCompatActivity {
+
+    String PlantMasterId = "", LoginId = "", Password = "", CompanyURL = "", EnvMasterId = "",
+            UserMasterId = "", UserName = "", MobileNo = "";
+    Utility ut;
+    DatabaseHandlers db;
+    CommonFunctionCrm cf;
+    Context context;
+    SQLiteDatabase sql;
+
+    Button btn_Bank, btn_save;
+    AutoCompleteTextView edt_salescategory, edt_PendingDelivery, edt_payment, edt_grn, edt_taxCode;
+    EntityCategoryBean entityCategoryBean;
+    ArrayList<EntityCategoryBean> entityCategoryBeanArrayList;
+    ArrayList<EntityTerms> entityTermsArrayList;
+    ArrayList<EntityPaymentTerms> entityPaymentTermsArrayList;
+    ArrayList<EntityTaxCode> entityTaxCodeArrayList;
+
+    String companyName = "", custVendorCode = "", registrationNo = "", vendorCode = "", address = "",
+            countryId = "", stateId = "",
+            districtId = "", talukaId = "", cityId = "", pinCode = "", landLineNo = "", mobileNo = "", emailId = "",
+            website = "", selPriceListId = "", currencyId = "", shortName = "", entityMasterID = "", contractReq = "";
+    String evaluationDt = "", validFromDt = "", validToDt = "", SystemUserCodeId = "", PaymentTermsId = "", DeliveryTermsId = "",
+            finalJsonObj = "", forPendingDelivery = "Y", forGRN = "Y", forPayment = "Y", forPO = "Y", forReceipts = "Y", forTalkProspect = "Y";
+    String salesCategoryId = "", taxCodeId = "";
+
+    String[] pendingDelivery = {"Yes", "No"};
+    String[] grn = {"Yes", "No"};
+    String[] payment = {"Yes", "No"};
+    String[] willing = {"Yes", "No"};
+
+    AutoCompleteTextView edt_deliveryTerms, edt_paymentTerms, edt_currency, edt_talktoprospect, edt_creditLimits, edt_creditDays, edt_resellerName;
+
+    ArrayList<String> pendingDeliveryList = new ArrayList<>();
+    ArrayList<String> grnList = new ArrayList<>();
+    ArrayList<String> paymentList = new ArrayList<>();
+    ArrayList<String> willingList = new ArrayList<>();
+    ArrayList<EntityContactDetails> entityContactDetailsArrayList = new ArrayList();
+    ArrayList<EntityType_Currency_PriceList> lstCurrency = new ArrayList<>();
+
+    ArrayList<BankDetails> bankDetailsArrayList = new ArrayList<>();
+    String entityClassId = "", entityGrpId = "", typeOfServiceId = "";
+
+    String KEY_JAPAN = "JPY";
+    String KEY_IND_RUPEES = "INR";
+    String KEY_FK = "BNK027";
+    String KEY_USD = "USD";
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_entity_master_sales);
+
+        initView();
+        setListner();
+
+
+        pendingDeliveryList.clear();
+
+        for (int i = 0; i < pendingDelivery.length; i++) {
+            pendingDeliveryList.add(pendingDelivery[i]);
+        }
+
+        ArrayAdapter<String> influence_adapt = new ArrayAdapter<String>(EntityMasterSalesActivity.this,
+                R.layout.crm_custom_spinner_txt, pendingDeliveryList);
+
+        edt_PendingDelivery.setAdapter(influence_adapt);
+        edt_PendingDelivery.setSelection(0);
+        edt_PendingDelivery.setThreshold(1);
+
+        grnList.clear();
+
+        for (int i = 0; i < grn.length; i++) {
+            grnList.add(grn[i]);
+        }
+
+        ArrayAdapter<String> grnArrayAdapter = new ArrayAdapter<String>(EntityMasterSalesActivity.this,
+                R.layout.crm_custom_spinner_txt, grnList);
+
+        edt_grn.setAdapter(grnArrayAdapter);
+        edt_grn.setSelection(0);
+        edt_grn.setThreshold(1);
+
+
+        paymentList.clear();
+
+        for (int i = 0; i < payment.length; i++) {
+            paymentList.add(payment[i]);
+        }
+
+        ArrayAdapter<String> paymentArrayAdapter = new ArrayAdapter<String>(EntityMasterSalesActivity.this,
+                R.layout.crm_custom_spinner_txt, paymentList);
+
+        edt_payment.setAdapter(paymentArrayAdapter);
+        edt_payment.setSelection(0);
+        edt_payment.setThreshold(1);
+
+
+        willingList.clear();
+
+        for (int i = 0; i < willing.length; i++) {
+            willingList.add(willing[i]);
+        }
+
+        ArrayAdapter<String> willingAdapter = new ArrayAdapter<String>(EntityMasterSalesActivity.this,
+                R.layout.crm_custom_spinner_txt, willingList);
+
+        edt_talktoprospect.setAdapter(willingAdapter);
+        edt_talktoprospect.setSelection(0);
+        edt_talktoprospect.setThreshold(1);
+
+
+        if (cf.getEntityCategoryCnt() > 0) {
+
+            storeCategoryData();
+
+        } else {
+            if (ut.isNet(context)) {
+                new StartSession(context, new CallbackInterface() {
+                    @Override
+                    public void callMethod() {
+                        new DownloadCategoryData().execute();
+                    }
+
+                    @Override
+                    public void callfailMethod(String msg) {
+
+                    }
+                });
+            } else {
+                Toast.makeText(EntityMasterSalesActivity.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if (cf.getEntityPaymentCnt() > 0) {
+            storePaymentTermsData();
+        } else {
+            if (ut.isNet(EntityMasterSalesActivity.this)) {
+                new StartSession(context, new CallbackInterface() {
+                    @Override
+                    public void callMethod() {
+                        new DownloadPaymentTerms().execute();
+                    }
+
+                    @Override
+                    public void callfailMethod(String msg) {
+
+                    }
+                });
+            } else {
+                Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if (cf.getDeliveryTermsCnt() > 0) {
+            storeDeliveryTermsData();
+        } else {
+            if (ut.isNet(EntityMasterSalesActivity.this)) {
+                new StartSession(context, new CallbackInterface() {
+                    @Override
+                    public void callMethod() {
+                        new DownloadDeliveryTerms().execute();
+                    }
+
+                    @Override
+                    public void callfailMethod(String msg) {
+
+                    }
+                });
+            } else {
+                Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+
+        if (cf.getCurrencycount() > 0) {
+            getCurrency();
+
+        } else {
+            if (ut.isNet(EntityMasterSalesActivity.this)) {
+                new StartSession(EntityMasterSalesActivity.this, new CallbackInterface() {
+                    @Override
+                    public void callMethod() {
+                        new DownloadCurrencyMasterJSON().execute();
+                    }
+
+                    @Override
+                    public void callfailMethod(String msg) {
+
+                    }
+                });
+            }
+        }
+
+
+        if (cf.getEntityTaxCodeCnt() > 0) {
+
+            storeTaxCodeData();
+
+        } else {
+            if (ut.isNet(context)) {
+                new StartSession(context, new CallbackInterface() {
+                    @Override
+                    public void callMethod() {
+                        new DownloadTaxCode().execute();
+                    }
+
+                    @Override
+                    public void callfailMethod(String msg) {
+
+                    }
+                });
+            } else {
+                Toast.makeText(EntityMasterSalesActivity.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private void setListner() {
+
+        btn_Bank.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // startActivity(new Intent(EntityMasterSalesActivity.this, EntityMasterClassificationActivity.class));
+
+
+                String contactDetailsList = "";
+                if (entityContactDetailsArrayList.size() != 0) {
+                    contactDetailsList = new Gson().toJson(new EntityContactDetails(entityContactDetailsArrayList));
+                }
+                startActivityForResult(new Intent(EntityMasterSalesActivity.this, EntityMasterBankActivity.class)
+                        .putExtra("ContactName", companyName).putExtra("ShortName", shortName)
+                        .putExtra("EntityMasterId", entityMasterID).putExtra("CustVendorCode", custVendorCode)
+                        .putExtra("VendorCode", vendorCode).putExtra("RegistrationNo", registrationNo)
+                        .putExtra("Address", address).putExtra("CountryId", countryId)
+                        .putExtra("StateId", stateId).putExtra("CityId", cityId)
+                        .putExtra("DistrictId", districtId).putExtra("TalukaId", talukaId)
+                        .putExtra("PinCode", pinCode).putExtra("MobileNo", mobileNo)
+                        .putExtra("LandLineno", landLineNo).putExtra("EmailId", emailId)
+                        .putExtra("Website", website).putExtra("CurrencyId", currencyId)
+                        .putExtra("SelPriceListId", selPriceListId).putExtra("ContractRequired", contractReq)
+                        .putExtra("ContactList", contactDetailsList).putExtra("EvaluationDate", evaluationDt)
+                        .putExtra("ValidFromDt", validFromDt).putExtra("ValidToDt", validToDt)
+                        .putExtra("SystemuserCodeId", SystemUserCodeId).putExtra("PaymentTermsId", PaymentTermsId)
+                        .putExtra("DeliveryTermsId", DeliveryTermsId).putExtra("ForPO", forPO)
+                        .putExtra("ForReceipt", forReceipts).putExtra("ForPendingDelivery", forPendingDelivery)
+                        .putExtra("ForGRN", forGRN).putExtra("ForPayment", forPayment).putExtra("CurrencyId", currencyId)
+                        .putExtra("CreditLimits", edt_creditLimits.getText().toString())
+                        .putExtra("CreditDays", edt_creditDays.getText().toString())
+                        .putExtra("SalesCategory", salesCategoryId).putExtra("TalkProspect", forTalkProspect)
+                        .putExtra("TaxCode", taxCodeId).putExtra("ResellerName", edt_resellerName.getText().toString()), 1140);
+            }
+        });
+
+        edt_PendingDelivery.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Object item = parent.getItemAtPosition(position);
+
+                try {
+                    if (item.toString().equalsIgnoreCase("Yes")) {
+                        forPendingDelivery = "Y";
+                    } else {
+                        forPendingDelivery = "N";
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        edt_grn.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Object item = parent.getItemAtPosition(position);
+
+                try {
+                    if (item.toString().equalsIgnoreCase("yes")) {
+                        forGRN = "Y";
+                    } else {
+                        forGRN = "N";
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        edt_payment.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Object item = parent.getItemAtPosition(position);
+                try {
+                    if (item.toString().equalsIgnoreCase("yes")) {
+                        forPayment = "Y";
+                    } else {
+                        forPayment = "N";
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        edt_salescategory.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Object item = parent.getItemAtPosition(position);
+
+                try {
+                    salesCategoryId = getPosition_SalesCategoryfromspin(entityCategoryBeanArrayList, item.toString());
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        edt_taxCode.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Object item = parent.getItemAtPosition(position);
+
+                try {
+                    taxCodeId = getPosition_TaxCodefromspin(entityTaxCodeArrayList, item.toString());
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        edt_talktoprospect.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Object item = parent.getItemAtPosition(position);
+
+                try {
+                    if (item.toString().equalsIgnoreCase("yes")) {
+                        forTalkProspect = "Y";
+                    } else {
+                        forTalkProspect = "N";
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+
+        btn_save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                JSONObject jsonObject = new JSONObject();
+                try {
+                    jsonObject.put("AadharNo", "");
+                    jsonObject.put("AccountId", "");
+                    jsonObject.put("AccountNo", "");
+                    jsonObject.put("AccountType", "");
+                    jsonObject.put("Active", "true");
+                    jsonObject.put("Address", address);
+                    jsonObject.put("BankAddress", "");
+                    jsonObject.put("BankName", "");
+                    jsonObject.put("BankPayeeName", "");
+                    jsonObject.put("Branch", address);
+                    jsonObject.put("CAT", "");
+                    jsonObject.put("CIN", "");
+                    jsonObject.put("CSTNo", "");
+                    jsonObject.put("CallId", "");
+                    jsonObject.put("City", cityId);
+
+                    JSONArray jsonArrayClient = new JSONArray();
+                    // JSONObject jsonClientObject = new JSONObject();
+
+                    if (entityContactDetailsArrayList.size() != 0) {
+                        for (int i = 0; i < entityContactDetailsArrayList.size(); i++) {
+                            JSONObject jsonClientObject = new JSONObject();
+                            jsonClientObject.put("ContPerName", entityContactDetailsArrayList.get(i).getContactname());
+                            jsonClientObject.put("ContactNo", entityContactDetailsArrayList.get(i).getContactMobile());
+                            jsonClientObject.put("DIN", "");
+                            jsonClientObject.put("Designation", entityContactDetailsArrayList.get(i).getContactDesignation());
+                            jsonClientObject.put("EmailId", entityContactDetailsArrayList.get(i).getContactEmail());
+                            jsonClientObject.put("EntityContactInfoId", entityContactDetailsArrayList.get(i).getContactDesignation());
+                            jsonClientObject.put("InfluentialLevel", entityContactDetailsArrayList.get(i).getContactInfluence());
+                            jsonClientObject.put("IsDefault", entityContactDetailsArrayList.get(i).getContactdefault());
+                            jsonClientObject.put("IsVWBLoginAllowed", "N");
+                            jsonClientObject.put("LoginId", "");
+                            jsonClientObject.put("Password", "");
+                            jsonArrayClient.put(jsonClientObject);
+                        }
+                    }
+
+
+                    jsonObject.put("ClientDetails", jsonArrayClient);
+                    jsonObject.put("ContactName", companyName);
+                    jsonObject.put("ContactTitle", companyName);
+                    jsonObject.put("Country", countryId);
+                    jsonObject.put("CountryId", countryId);
+                    if (edt_creditDays.getText().toString().equals("")) {
+                        jsonObject.put("CreditDays", "0");
+                    } else {
+                        jsonObject.put("CreditDays", edt_creditDays.getText().toString());
+                    }
+
+                    if (edt_creditLimits.getText().toString().equals("")) {
+                        jsonObject.put("CreditLimit", "0");
+                    } else {
+                        jsonObject.put("CreditLimit", edt_creditLimits.getText().toString());
+                    }
+                    jsonObject.put("CreditTerms", PaymentTermsId);
+                    jsonObject.put("Currency", currencyId);
+                    jsonObject.put("CurrencyMasterID", currencyId);
+                    jsonObject.put("CustVendor", "C");
+                    jsonObject.put("CustVendorCode", custVendorCode);
+                    final String guid = UUID.randomUUID().toString();
+                    jsonObject.put("CustVendorMasterId", guid);//guuid self
+                    jsonObject.put("CustVendorName", companyName);
+                    jsonObject.put("CustVendorType", "3");//doubt
+                    jsonObject.put("DeliveryTerms", DeliveryTermsId);
+                    jsonObject.put("District", districtId);
+                    jsonObject.put("ECCNo", "");
+                    jsonObject.put("ENGRN", forGRN);
+                    jsonObject.put("ENInv", forPO);//doubt
+                    jsonObject.put("ENPndPO", DeliveryTermsId);
+                    jsonObject.put("ENPymt", forPayment);//doubt
+                    jsonObject.put("ENRect", forReceipts);//doubt
+                    jsonObject.put("Email", emailId);//doubt--basic
+                    jsonObject.put("EnterpriseType", "");
+                    jsonObject.put("EntityClass", "1");//doubt
+                    jsonObject.put("EntityGroupMasterId", "1");//doubt
+                    jsonObject.put("EntityRestDate", "");
+                    jsonObject.put("EsicNo", "");
+                    jsonObject.put("EvaluationDt", evaluationDt);
+                    jsonObject.put("ExDivi", "");
+                    jsonObject.put("ExRange", "");
+                    jsonObject.put("ExpertiseDetails", "");
+                    jsonObject.put("FKTerritoryId", "");
+                    jsonObject.put("GSTNO", "");
+                    jsonObject.put("IFSCode", "");
+                    jsonObject.put("GSTNO", "");
+                    jsonObject.put("IndIndemnity", "");//doubt
+                    jsonObject.put("InsuranceDetails", "");
+                    jsonObject.put("IsActive", "");///basic
+                    jsonObject.put("IsApproved", "");//purchase
+                    jsonObject.put("IsContractReqd", contractReq);//basic
+                    jsonObject.put("IsWLForCRMRef", forTalkProspect);/////doubt
+                    jsonObject.put("Latitude", "");//shipTO
+                    jsonObject.put("LenderDetails", "");//doubt
+                    jsonObject.put("Longitude", "");//shipTO
+                    jsonObject.put("MSTNo", "");//doubt
+                    jsonObject.put("Mobile", mobileNo);
+                    jsonObject.put("PANNO", "");
+                    jsonObject.put("PFNo", "");
+                    jsonObject.put("PayeeName", "");
+                    jsonObject.put("PaymentTerms", PaymentTermsId);//sales
+                    jsonObject.put("Phone", landLineNo);
+                    jsonObject.put("Pin", pinCode);
+                    jsonObject.put("PriceListId", "");
+                    jsonObject.put("RegistrationFormNo", registrationNo);
+                    jsonObject.put("RemittanceInstruction", "");
+
+
+                    if (edt_resellerName.getText().toString().equalsIgnoreCase("")) {
+                        jsonObject.put("ResellerName", "");
+                    } else {
+                        jsonObject.put("ResellerName", edt_resellerName.getText().toString());
+                    }
+                    jsonObject.put("SalesFamily", "");
+                    jsonObject.put("ServClId", "");
+                    jsonObject.put("ServiceTaxNo", "");
+
+
+                    JSONObject shipToJsonObj = new JSONObject();
+                    JSONArray shipToJsonArr = new JSONArray();
+                    shipToJsonArr.put(shipToJsonObj);
+                    jsonObject.put("ShipToDetails", shipToJsonArr);
+
+                    jsonObject.put("ShortName", shortName);
+                    jsonObject.put("SlCatId", salesCategoryId);
+                    jsonObject.put("State", stateId);
+                    if (SystemUserCodeId != "") {
+                        jsonObject.put("SystemUserId", SystemUserCodeId);//doubt
+                    } else {
+                        jsonObject.put("SystemUserId", UserMasterId);//doubt
+                    }
+
+                    jsonObject.put("TANNO", "");
+                    jsonObject.put("TAN_GSTIN_Number", "");
+                    jsonObject.put("Taluka", talukaId);
+                    jsonObject.put("TaxClass", taxCodeId);
+                    jsonObject.put("TenorYear", "");
+                    jsonObject.put("Typeofservices", "");
+                    jsonObject.put("ValidFrom", validFromDt);
+                    jsonObject.put("ValidTo", validToDt);
+                    jsonObject.put("VendorMasterID", "");
+                    jsonObject.put("Website", "");
+                    jsonObject.put("vendorCode", vendorCode);//doubt
+
+
+                    finalJsonObj = jsonObject.toString();
+
+
+                    if (ut.isNet(EntityMasterSalesActivity.this)) {
+                        new StartSession(EntityMasterSalesActivity.this, new CallbackInterface() {
+                            @Override
+                            public void callMethod() {
+                                new DownloadCheckDuplicateEmpName().execute(companyName, "A", guid);
+                            }
+
+                            @Override
+                            public void callfailMethod(String msg) {
+
+                            }
+                        });
+                    } else {
+                        Toast.makeText(EntityMasterSalesActivity.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
+        edt_currency.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Object item = adapterView.getItemAtPosition(position);
+                String currencyname = edt_currency.getText().toString().trim();
+                try {
+                    currencyId = getPosition_Currencyfromspin(lstCurrency, item.toString());
+
+                    if (currencyname.equals("Japan")) {
+                        edt_currency.setText(KEY_JAPAN);
+                    } else if (currencyname.equals("indian rupee")) {
+                        edt_currency.setText(KEY_IND_RUPEES);
+                    } else if (currencyname.equals("fk")) {
+                        edt_currency.setText(KEY_FK);
+                    } else if (currencyname.equals("US Dollar")) {
+                        edt_currency.setText(KEY_USD);
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
+        edt_paymentTerms.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Object item = parent.getItemAtPosition(position);
+                try {
+                    PaymentTermsId = getPosition_Paymentfromspin(entityPaymentTermsArrayList, item.toString());
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+
+    }
+
+    private void initView() {
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar1);
+        //toolbar.setLogo(R.mipmap.ic_toolbar_logo_crm);
+        toolbar.setLogo(R.drawable.crm_logo_1);
+        toolbar.setTitle(R.string.app_name_toolbar_CRM);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        context = EntityMasterSalesActivity.this;
+
+        ut = new Utility();
+        cf = new CommonFunctionCrm(context);
+        String settingKey = ut.getSharedPreference_SettingKey(context);
+        String dabasename = ut.getValue(context, WebUrlClass.GET_DATABASE_NAME_KEY, settingKey);
+        db = new DatabaseHandlers(context, dabasename);
+        CompanyURL = ut.getValue(context, WebUrlClass.GET_COMPANY_URL_KEY, settingKey);
+        EnvMasterId = ut.getValue(context, WebUrlClass.GET_EnvMasterID_KEY, settingKey);
+        PlantMasterId = ut.getValue(context, WebUrlClass.GET_PlantID_KEY, settingKey);
+        LoginId = ut.getValue(context, WebUrlClass.GET_LOGIN_KEY, settingKey);
+        Password = ut.getValue(context, WebUrlClass.GET_PSW_KEY, settingKey);
+        UserMasterId = ut.getValue(context, WebUrlClass.GET_USERMASTERID_KEY, settingKey);
+        UserName = ut.getValue(context, WebUrlClass.GET_USERNAME_KEY, settingKey);
+        sql = db.getWritableDatabase();
+
+        btn_Bank = findViewById(R.id.btn_Bank);
+        btn_save = findViewById(R.id.btn_save);
+        edt_salescategory = findViewById(R.id.edt_salescategory);
+        edt_PendingDelivery = findViewById(R.id.edt_PendingDelivery);
+        edt_grn = findViewById(R.id.edt_grn);
+        edt_payment = findViewById(R.id.edt_payment);
+        edt_deliveryTerms = findViewById(R.id.edt_deliveryTerms);
+        edt_paymentTerms = findViewById(R.id.edt_paymentTerms);
+        edt_taxCode = findViewById(R.id.edt_taxCode);
+        edt_currency = findViewById(R.id.edt_currency);
+        edt_talktoprospect = findViewById(R.id.edt_talktoprospect);
+        edt_creditLimits = findViewById(R.id.edt_creditLimits);
+        edt_creditDays = findViewById(R.id.edt_creditDays);
+        edt_resellerName = findViewById(R.id.edt_resellerName);
+
+        entityCategoryBeanArrayList = new ArrayList<>();
+        entityTermsArrayList = new ArrayList<>();
+        entityPaymentTermsArrayList = new ArrayList<>();
+        entityTaxCodeArrayList = new ArrayList<>();
+
+
+        if (getIntent() != null) {
+            companyName = getIntent().getStringExtra("ContactName");
+            shortName = getIntent().getStringExtra("ShortName");
+            entityMasterID = getIntent().getStringExtra("EntityMasterId");
+            custVendorCode = getIntent().getStringExtra("CustVendorCode");
+            vendorCode = getIntent().getStringExtra("VendorCode");
+            registrationNo = getIntent().getStringExtra("RegistrationNo");
+            address = getIntent().getStringExtra("Address");
+            countryId = getIntent().getStringExtra("CountryId");
+            stateId = getIntent().getStringExtra("StateId");
+            cityId = getIntent().getStringExtra("CityId");
+            districtId = getIntent().getStringExtra("DistrictId");
+            talukaId = getIntent().getStringExtra("TalukaId");
+            pinCode = getIntent().getStringExtra("PinCode");
+            mobileNo = getIntent().getStringExtra("MobileNo");
+            landLineNo = getIntent().getStringExtra("LandLineno");
+            emailId = getIntent().getStringExtra("EmailId");
+            website = getIntent().getStringExtra("Website");
+            currencyId = getIntent().getStringExtra("CurrencyId");
+            selPriceListId = getIntent().getStringExtra("SelPriceListId");
+            contractReq = getIntent().getStringExtra("ContractRequired");
+
+            if (!getIntent().getStringExtra("ContactList").equals("")) {
+                entityContactDetailsArrayList = new Gson().fromJson(getIntent().getStringExtra("ContactList"),
+                        EntityContactDetails.class).getEntityContactDetailsArrayList();
+            }
+
+            evaluationDt = getIntent().getStringExtra("EvaluationDate");
+            validFromDt = getIntent().getStringExtra("ValidFromDt");
+            validToDt = getIntent().getStringExtra("ValidToDt");
+            SystemUserCodeId = getIntent().getStringExtra("SystemuserCodeId");
+            PaymentTermsId = getIntent().getStringExtra("PaymentTermsId");
+            if (!PaymentTermsId.equals("")) {
+                int pos = -1;
+                if (entityPaymentTermsArrayList.size() != 0) {
+                    for (int i = 0; i < entityPaymentTermsArrayList.size(); i++) {
+                        if (PaymentTermsId.equals(entityPaymentTermsArrayList.get(i).getPymtSettTermMasterId())) {
+                            pos = 1;
+                            break;
+                        }
+                    }
+
+                    if (pos != -1) {
+                        edt_paymentTerms.setText(entityPaymentTermsArrayList.get(pos).getTermsDescription());
+                    } else {
+                        edt_paymentTerms.setText(entityPaymentTermsArrayList.get(0).getTermsDescription());
+                    }
+                }
+            }
+
+
+            DeliveryTermsId = getIntent().getStringExtra("DeliveryTermsId");
+            if (DeliveryTermsId != "") {
+                int pos = -1;
+                if (entityTermsArrayList.size() != 0) {
+                    for (int i = 0; i < entityTermsArrayList.size(); i++) {
+                        if (DeliveryTermsId.equals(entityTermsArrayList.get(i).getConfigurationDetailId())) {
+                            pos = 1;
+                            break;
+                        }
+                    }
+                    if (pos != -1) {
+                        edt_deliveryTerms.setText(entityTermsArrayList.get(pos).getConfiguration());
+                    } else {
+                        edt_deliveryTerms.setText(entityTermsArrayList.get(0).getConfiguration());
+                    }
+                }
+            }
+
+            forPO = getIntent().getStringExtra("ForPO");
+            forReceipts = getIntent().getStringExtra("ForReceipt");
+
+        }
+
+
+    }
+
+    private class DownloadCategoryData extends AsyncTask<String, String, String> {
+        Object res;
+        String response = "";
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            String url = CompanyURL + WebUrlClass.api_getEntityCategory;
+            try {
+                res = ut.OpenConnection(url);
+                if (res != null) {
+                    String rplc = "\\\r\\\n";
+                    // response = res.toString().replaceAll(rplc,"");
+                    response = res.toString().replaceAll("\\\\", "");
+                    // response = res.toString().replaceAll("rn","");
+                    response = response.substring(1, response.length() - 1);
+
+                    ContentValues values = new ContentValues();
+                    JSONArray jResults = new JSONArray(response);
+                    sql.delete(db.TABLE_ENTITY_CATEGORY, null,
+                            null);
+                    Cursor c = sql.rawQuery("SELECT * FROM " + db.TABLE_ENTITY_CATEGORY, null);
+                    int count = c.getCount();
+                    String columnName, columnValue;
+                    for (int i = 0; i < jResults.length(); i++) {
+                        JSONObject jorder = jResults.getJSONObject(i);
+                        for (int j = 0; j < c.getColumnCount(); j++) {
+                            columnName = c.getColumnName(j);
+                            columnValue = jorder.getString(columnName);
+                            values.put(columnName, columnValue);
+                        }
+                        long a = sql.insert(db.TABLE_ENTITY_CATEGORY, null, values);
+                        Log.e("", "" + a);
+
+                    }
+                } else {
+                    response = "error";
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                response = "error";
+            }
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+
+            if (!response.equals("error")) {
+                storeCategoryData();
+            }
+
+
+        }
+    }
+
+    private void storeCategoryData() {
+        entityCategoryBeanArrayList.clear();
+
+        String query = "SELECT distinct SlCatId, SlCatDesc, CreationLevel" +
+                " FROM " + db.TABLE_ENTITY_CATEGORY;
+        Cursor cur = sql.rawQuery(query, null);
+        if (cur.getCount() > 0) {
+            cur.moveToFirst();
+            do {
+
+                entityCategoryBeanArrayList.add(new EntityCategoryBean(cur.getString(cur.getColumnIndex("SlCatId")),
+                        cur.getString(cur.getColumnIndex("SlCatDesc"))));
+
+            } while (cur.moveToNext());
+        }
+
+        ArrayAdapter<EntityCategoryBean> categoryBeanArrayAdapter = new ArrayAdapter<EntityCategoryBean>(EntityMasterSalesActivity.this,
+                R.layout.crm_custom_spinner_txt, entityCategoryBeanArrayList);
+
+        edt_salescategory.setAdapter(categoryBeanArrayAdapter);
+        edt_salescategory.setSelection(0);
+
+
+    }
+
+    private class DownloadPaymentTerms extends AsyncTask<String, Void, String> {
+        Object res;
+        String response = "";
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            String url = CompanyURL + WebUrlClass.api_getEntityPaymentTerms;
+            try {
+                res = ut.OpenConnection(url);
+                if (res != null) {
+
+                    String rplc = "\\\r\\\n";
+                    // response = res.toString().replaceAll(rplc,"");
+                    response = res.toString().replaceAll("\\\\", "");
+                    // response = res.toString().replaceAll("rn","");
+                    response = response.substring(1, response.length() - 1);
+                    ContentValues values = new ContentValues();
+                    JSONArray jResults = new JSONArray(response);
+                    sql.delete(db.TABLE_ENTITY_PAYMENT_TERMS, null,
+                            null);
+                    Cursor c = sql.rawQuery("SELECT * FROM " + db.TABLE_ENTITY_PAYMENT_TERMS, null);
+                    int count = c.getCount();
+                    String columnName, columnValue;
+                    for (int i = 0; i < jResults.length(); i++) {
+                        JSONObject jorder = jResults.getJSONObject(i);
+                        for (int j = 0; j < c.getColumnCount(); j++) {
+                            columnName = c.getColumnName(j);
+                            columnValue = jorder.getString(columnName);
+                            values.put(columnName, columnValue);
+                        }
+                        long a = sql.insert(db.TABLE_ENTITY_PAYMENT_TERMS, null, values);
+                        Log.e("", "" + a);
+
+                    }
+
+                } else {
+                    response = "error";
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                response = "error";
+            }
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            if (!response.equals("error")) {
+                storePaymentTermsData();
+            }
+        }
+    }
+
+    private void storePaymentTermsData() {
+
+        entityPaymentTermsArrayList.clear();
+
+        String query = "SELECT distinct TermsCode, TermsDescription, PymtSettTermMasterId" +
+                " FROM " + db.TABLE_ENTITY_PAYMENT_TERMS;
+        Cursor cur = sql.rawQuery(query, null);
+        if (cur.getCount() > 0) {
+            cur.moveToFirst();
+            do {
+
+                entityPaymentTermsArrayList.add(new EntityPaymentTerms(cur.getString(cur.getColumnIndex("TermsCode")),
+                        cur.getString(cur.getColumnIndex("TermsDescription")), cur.getString(cur.getColumnIndex("PymtSettTermMasterId"))));
+
+            } while (cur.moveToNext());
+        }
+
+        ArrayAdapter<EntityPaymentTerms> categoryBeanArrayAdapter = new ArrayAdapter<EntityPaymentTerms>(EntityMasterSalesActivity.this,
+                R.layout.crm_custom_spinner_txt, entityPaymentTermsArrayList);
+
+        edt_paymentTerms.setAdapter(categoryBeanArrayAdapter);
+        edt_paymentTerms.setSelection(0);
+
+    }
+
+
+    private class DownloadDeliveryTerms extends AsyncTask<String, Void, String> {
+        Object res;
+        String response = "";
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            String url = CompanyURL + WebUrlClass.api_getEntityTerms + "?Value=DeliveryTerms";
+            try {
+                res = ut.OpenConnection(url);
+                if (res != null) {
+
+                    String rplc = "\\\r\\\n";
+                    // response = res.toString().replaceAll(rplc,"");
+                    response = res.toString().replaceAll("\\\\", "");
+                    // response = res.toString().replaceAll("rn","");
+                    response = response.substring(1, response.length() - 1);
+                    ContentValues values = new ContentValues();
+                    JSONArray jResults = new JSONArray(response);
+                    sql.delete(db.TABLE_ENTITY_DELIVERY_TERMS, null,
+                            null);
+                    Cursor c = sql.rawQuery("SELECT * FROM " + db.TABLE_ENTITY_DELIVERY_TERMS, null);
+                    int count = c.getCount();
+                    String columnName, columnValue;
+                    for (int i = 0; i < jResults.length(); i++) {
+                        JSONObject jorder = jResults.getJSONObject(i);
+                        for (int j = 0; j < c.getColumnCount(); j++) {
+                            columnName = c.getColumnName(j);
+                            columnValue = jorder.getString(columnName);
+                            values.put(columnName, columnValue);
+                        }
+                        long a = sql.insert(db.TABLE_ENTITY_DELIVERY_TERMS, null, values);
+                        Log.e("", "" + a);
+
+                    }
+
+                } else {
+                    response = "error";
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                response = "error";
+            }
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            if (!response.equals("error")) {
+                storeDeliveryTermsData();
+            }
+        }
+    }
+
+    private void storeDeliveryTermsData() {
+
+        entityTermsArrayList.clear();
+
+        String query = "SELECT distinct ConfigurationDetailId, Configuration" +
+                " FROM " + db.TABLE_ENTITY_DELIVERY_TERMS;
+        Cursor cur = sql.rawQuery(query, null);
+        if (cur.getCount() > 0) {
+            cur.moveToFirst();
+            do {
+
+                entityTermsArrayList.add(new EntityTerms(cur.getString(cur.getColumnIndex("ConfigurationDetailId")),
+                        cur.getString(cur.getColumnIndex("Configuration"))));
+
+            } while (cur.moveToNext());
+        }
+
+        ArrayAdapter<EntityTerms> entityTermsArrayAdapter = new ArrayAdapter<EntityTerms>(EntityMasterSalesActivity.this,
+                R.layout.crm_custom_spinner_txt, entityTermsArrayList);
+
+        edt_deliveryTerms.setAdapter(entityTermsArrayAdapter);
+        edt_deliveryTerms.setSelection(0);
+
+    }
+
+    private class DownloadTaxCode extends AsyncTask<String, Void, String> {
+        Object res;
+        String response = "";
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            String url = CompanyURL + WebUrlClass.api_getEntityTaxCode;
+            try {
+                res = ut.OpenConnection(url);
+                if (res != null) {
+
+                    String rplc = "\\\r\\\n";
+                    // response = res.toString().replaceAll(rplc,"");
+                    response = res.toString().replaceAll("\\\\", "");
+                    // response = res.toString().replaceAll("rn","");
+                    response = response.substring(1, response.length() - 1);
+                    ContentValues values = new ContentValues();
+                    JSONArray jResults = new JSONArray(response);
+                    sql.delete(db.TABLE_ENTITY_TAXCODE, null,
+                            null);
+                    Cursor c = sql.rawQuery("SELECT * FROM " + db.TABLE_ENTITY_TAXCODE, null);
+                    int count = c.getCount();
+                    String columnName, columnValue;
+                    for (int i = 0; i < jResults.length(); i++) {
+                        JSONObject jorder = jResults.getJSONObject(i);
+                        for (int j = 0; j < c.getColumnCount(); j++) {
+                            columnName = c.getColumnName(j);
+                            columnValue = jorder.getString(columnName);
+                            values.put(columnName, columnValue);
+                        }
+                        long a = sql.insert(db.TABLE_ENTITY_TAXCODE, null, values);
+                        Log.e("", "" + a);
+
+                    }
+
+                } else {
+                    response = "error";
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                response = "error";
+            }
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            if (!response.equals("error")) {
+                storeTaxCodeData();
+            }
+        }
+    }
+
+    private void storeTaxCodeData() {
+
+        entityTaxCodeArrayList.clear();
+
+        String query = "SELECT distinct TaxClassMasterId, TaxClassDesc" +
+                " FROM " + db.TABLE_ENTITY_TAXCODE;
+        Cursor cur = sql.rawQuery(query, null);
+        if (cur.getCount() > 0) {
+            cur.moveToFirst();
+            do {
+
+                entityTaxCodeArrayList.add(new EntityTaxCode(cur.getString(cur.getColumnIndex("TaxClassMasterId")),
+                        cur.getString(cur.getColumnIndex("TaxClassDesc"))));
+
+            } while (cur.moveToNext());
+        }
+
+        ArrayAdapter<EntityTaxCode> entityTaxCodeArrayAdapter = new ArrayAdapter<EntityTaxCode>(EntityMasterSalesActivity.this,
+                R.layout.crm_custom_spinner_txt, entityTaxCodeArrayList);
+
+        edt_taxCode.setAdapter(entityTaxCodeArrayAdapter);
+        edt_taxCode.setSelection(0);
+
+    }
+
+    class DownloadCurrencyMasterJSON extends AsyncTask<String, Void, String> {
+        Object res;
+        String response;
+
+
+        @Override
+        protected void onPreExecute() {
+
+            //   progressHUD5 = ProgressHUD.show(context, " ", false, false, null);
+            super.onPreExecute();
+            // mprogress.setVisibility(View.VISIBLE);
+            //          showProgressDialog();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            String url = CompanyURL + WebUrlClass.api_getCurrencyMaster;
+            try {
+                res = ut.OpenConnection(url);
+                response = res.toString().replaceAll("\\\\", "");
+                response = response.replaceAll("\\\\\\\\/", "");
+                response = response.substring(1, response.length() - 1);
+                ContentValues values = new ContentValues();
+                JSONArray jResults = new JSONArray(response);
+                sql.delete(db.TABLE_CurrencyMaster, null,
+                        null);
+                Cursor c = sql.rawQuery("SELECT * FROM " + db.TABLE_CurrencyMaster, null);
+                int count = c.getCount();
+                String columnName, columnValue;
+                for (int i = 0; i < jResults.length(); i++) {
+                    JSONObject jorder = jResults.getJSONObject(i);
+                    for (int j = 0; j < c.getColumnCount(); j++) {
+
+                        columnName = c.getColumnName(j);
+                        columnValue = jorder.getString(columnName);
+                        values.put(columnName, columnValue);
+                    }
+                    long a = sql.insert(db.TABLE_CurrencyMaster, null, values);
+                    Log.e("", "" + a);
+
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                response = "Error";
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String integer) {
+            super.onPostExecute(integer);
+            //   mprogress.setVisibility(View.GONE);
+            if (response.contains("CurrencyMasterId")) {
+                getCurrency();
+            }
+        }
+
+    }
+
+    private void getCurrency() {
+
+        ArrayList<String> currency = new ArrayList();
+        currency.clear();
+        String query = "SELECT distinct CurrDesc,CurrencyMasterId" +
+                " FROM " + db.TABLE_CurrencyMaster;
+        Cursor cur = sql.rawQuery(query, null);
+        // currency.add("Select");
+        if (cur.getCount() > 0) {
+
+            cur.moveToFirst();
+            do {
+                EntityType_Currency_PriceList currencyBean = new EntityType_Currency_PriceList();
+                String currDesc = cur.getString(cur.getColumnIndex("CurrDesc"));
+                currencyBean.setCurrDesc(currDesc);
+                currencyBean.setCurrencyMasterId(cur.getString(cur.getColumnIndex("CurrencyMasterId")));
+
+                lstCurrency.add(currencyBean);
+
+                currency.add(currDesc);
+
+            } while (cur.moveToNext());
+
+        }
+
+        ArrayAdapter<String> customDept = new ArrayAdapter<String>(EntityMasterSalesActivity.this,
+                R.layout.crm_custom_spinner_txt, currency);
+
+        edt_currency.setAdapter(customDept);
+        edt_currency.setSelection(0);
+        edt_currency.setThreshold(0);
+
+      /*  if(currency.size() == 1){
+            edt_currency.setEnabled(false);
+            edt_currency.setThreshold(0);
+            //edt_currency.setText(lstCurrency.get(0).getCurrDesc());
+
+            Currencyid = lstCurrency.get(0).getCurrencyMasterId();
+
+            if(lstCurrency.get(0).getCurrDesc().equals("Japan")){
+                edt_currency.setText(KEY_JAPAN);
+            }else if(lstCurrency.get(0).getCurrDesc().equals("Indian Rupee")){
+                edt_currency.setText(KEY_IND_RUPEES);
+            }else if(lstCurrency.get(0).getCurrDesc().equals("fk")){
+                edt_currency.setText(KEY_FK);
+            }else if(lstCurrency.get(0).getCurrDesc().equals("US Dollar")){
+                edt_currency.setText(KEY_USD);
+            }
+
+        }else if(currency.size() > 1){
+            edt_currency.setEnabled(true);
+        }
+*/
+    }
+
+    private String getPosition_Currencyfromspin(ArrayList<EntityType_Currency_PriceList> lst_currency, String CurrencyName) throws JSONException {
+        String CurrencyID = null;
+        for (EntityType_Currency_PriceList currencyBean : lst_currency) {
+            if (currencyBean.getCurrDesc().equalsIgnoreCase(CurrencyName)) {
+                CurrencyID = currencyBean.getCurrencyMasterId();
+            }
+        }
+        return CurrencyID; //it wasn't found at all
+    }
+
+    private String getPosition_SalesCategoryfromspin(ArrayList<EntityCategoryBean> entityCategoryBeanArrayList1, String categoryName) throws JSONException {
+        String categoryId = "";
+        for (EntityCategoryBean entityCategoryBean : entityCategoryBeanArrayList1) {
+            if (entityCategoryBean.getSlCatDesc().equalsIgnoreCase(categoryName)) {
+                categoryId = entityCategoryBean.getSlCatId();
+            }
+        }
+
+        return categoryId; //it wasn't found at all
+    }
+
+    private String getPosition_Paymentfromspin(ArrayList<EntityPaymentTerms> lst_EntityType, String paymentTermsVal) throws JSONException {
+        String paymentTermId = "";
+        for (EntityPaymentTerms entityPaymentTerms : lst_EntityType) {
+            if (entityPaymentTerms.getTermsDescription().equalsIgnoreCase(paymentTermsVal)) {
+                paymentTermId = entityPaymentTerms.getPymtSettTermMasterId();
+            }
+        }
+        return paymentTermId; //it wasn't found at all
+    }
+
+    private String getPosition_TaxCodefromspin(ArrayList<EntityTaxCode> entityTaxCodeArrayList, String taxCodeVal) throws JSONException {
+        String taxCodeId = "";
+        for (EntityTaxCode entityTaxCode : entityTaxCodeArrayList) {
+            if (entityTaxCode.getTaxClassDesc().equalsIgnoreCase(taxCodeVal)) {
+                taxCodeId = entityTaxCode.getTaxClassMasterId();
+            }
+        }
+        return taxCodeId; //it wasn't found at all
+    }
+
+    private class PostSaveEntity extends AsyncTask<String, Void, String> {
+
+        Object res;
+        String response = "";
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            String finalJsonObj = params[0];
+            String url = CompanyURL + WebUrlClass.api_POSTEntityMaster;
+            res = ut.OpenPostConnection(url, finalJsonObj, EntityMasterSalesActivity.this);
+            try {
+                if (res != null) {
+                    response = res.toString().replaceAll("\\\\", "");
+                    response = response.substring(1, response.length() - 1);
+                } else {
+                    response = "error";
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                response = "error";
+            }
+
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            if (!response.equals("error")) {
+                Toast.makeText(EntityMasterSalesActivity.this, "Save Successfully", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        }
+    }
+
+    private class DownloadCheckDuplicateEmpName extends AsyncTask<String, Void, String> {
+
+        Object res;
+        String response = "";
+        String compnyName = "", Mode = "", guid = "";
+        //http://c207.ekatm.com/api/EntityMasterAPI/GETCheckDuplicateEmpName
+        // ?CustVendorName=sayali1234&Mode=A&CustVendorMasterGuid=41b13a46-146d-4051-aa1d-504177ef5c6c
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            compnyName = params[0];
+            Mode = params[1];
+            guid = params[2];
+
+            String url = CompanyURL + WebUrlClass.api_GETCheckDuplicateEmpName + "?CustVendorName=" + compnyName + "&Mode=" + Mode + "&CustVendorMasterGuid=" + guid;
+            res = ut.OpenConnection(url);
+            try {
+                if (res != null) {
+                    response = res.toString().replaceAll("\\\\", "");
+                    response = response.substring(1, response.length() - 1);
+                } else {
+                    response = "error";
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                response = "error";
+            }
+
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            if (response.equalsIgnoreCase("false")) {
+
+
+                if (ut.isNet(EntityMasterSalesActivity.this)) {
+                    new StartSession(EntityMasterSalesActivity.this, new CallbackInterface() {
+                        @Override
+                        public void callMethod() {
+                            new CheckDuplicateMobileNumber().execute(mobileNo, "C");
+                        }
+
+                        @Override
+                        public void callfailMethod(String msg) {
+
+                        }
+                    });
+                }
+            } else {
+                Toast.makeText(EntityMasterSalesActivity.this, "", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private class CheckDuplicateMobileNumber extends AsyncTask<String, Void, String> {
+
+        Object res;
+        String response = "";
+        String mobNo = "", custVendor = "";
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            // //http://c207.ekatm.com/api/EntityMasterAPI/GETCheckDuplicateMobileNumber?CustVendorMobile=3256977564&CustVendor=C
+
+            String url = CompanyURL + WebUrlClass.api_GETCheckDuplicateMobileNumber + "?CustVendorMobile=" + mobNo + "&CustVendor=" + custVendor;
+            res = ut.OpenConnection(url);
+            try {
+                if (res != null) {
+                    response = res.toString().replaceAll("\\\\", "");
+                    response = response.substring(1, response.length() - 1);
+                } else {
+                    response = "error";
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                response = "error";
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            if (response.equalsIgnoreCase("false")) {
+                if (ut.isNet(EntityMasterSalesActivity.this)) {
+                    new StartSession(EntityMasterSalesActivity.this, new CallbackInterface() {
+                        @Override
+                        public void callMethod() {
+
+                            new GetDuplicateEmailId().execute(emailId, "C");
+                        }
+
+                        @Override
+                        public void callfailMethod(String msg) {
+
+                        }
+                    });
+                }
+            } else {
+                Toast.makeText(EntityMasterSalesActivity.this, "", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private class GetDuplicateEmailId extends AsyncTask<String, Void, String> {
+
+        Object res;
+        String response = "";
+        String email = "", CustVendor = "";
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            ////http://c207.ekatm.com/api/EntityMasterAPI/GETCheckDuplicateEmailid?CustVendorEmailId=sayali12%40gmail.com&CustVendor=C
+
+            String url = CompanyURL + WebUrlClass.api_GETCheckDuplicateEmailid + "?CustVendorEmailId=" + email + "&CustVendor=" + CustVendor;
+            res = ut.OpenConnection(url);
+            try {
+                if (res != null) {
+                    response = res.toString().replaceAll("\\\\", "");
+                    response = response.substring(1, response.length() - 1);
+                } else {
+                    response = "error";
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                response = "error";
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            if (response.equalsIgnoreCase("false")) {
+                if (ut.isNet(EntityMasterSalesActivity.this)) {
+                    new StartSession(EntityMasterSalesActivity.this, new CallbackInterface() {
+                        @Override
+                        public void callMethod() {
+                            new PostSaveEntity().execute(finalJsonObj);
+                        }
+
+                        @Override
+                        public void callfailMethod(String msg) {
+
+                        }
+                    });
+                }
+
+
+            } else {
+                Toast.makeText(EntityMasterSalesActivity.this, "", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+
+        if (requestCode == 1140 && resultCode == 14) {
+            if (data != null) {
+
+
+                if (!(data.getStringExtra("BankDetailslist").equals(""))) {
+                    bankDetailsArrayList.clear();
+                    bankDetailsArrayList = new ArrayList<>();
+                    bankDetailsArrayList = new Gson().fromJson(data.getStringExtra("BankDetailslist"), BankDetails.class).getBankDetailsArrayList();
+
+                }
+                if (!(data.getStringExtra("ContactDetailslist").equals(""))) {
+                    entityContactDetailsArrayList.clear();
+                    entityContactDetailsArrayList = new ArrayList<>();
+                    entityContactDetailsArrayList = new Gson().fromJson(data.getStringExtra("ContactDetailslist"), EntityContactDetails.class).getEntityContactDetailsArrayList();
+
+                }
+
+
+                entityClassId = data.getStringExtra("EntityClass");
+                entityGrpId = data.getStringExtra("EntityGroupMasterId");
+                typeOfServiceId = data.getStringExtra("Typeofservices");
+
+            }
+        }
+    }
+
+
+    @Override
+    public void onBackPressed() {
+
+        String bankDetailsList = "", contactDetailsList = "";
+
+        if (bankDetailsArrayList.size() != 0) {
+            bankDetailsList = new Gson().toJson(new BankDetails(bankDetailsArrayList));
+        }
+        if (entityContactDetailsArrayList.size() != 0) {
+            contactDetailsList = new Gson().toJson(new EntityContactDetails(entityContactDetailsArrayList));
+        }
+
+        Intent intent = new Intent(EntityMasterSalesActivity.this, EntityMasterPurchaseActivity.class);
+
+
+        intent.putExtra("ForPendingDelivery", forPendingDelivery);
+        intent.putExtra("ForGRN", forGRN);
+        intent.putExtra("ForPayment", forPayment);
+        intent.putExtra("Currency", currencyId);
+        if (edt_creditLimits.getText().toString().equals("")) {
+            intent.putExtra("CreditLimits", "0");
+        } else {
+            intent.putExtra("CreditLimits", edt_creditLimits.getText().toString());
+        }
+
+
+        if (edt_creditDays.getText().toString().equals("")) {
+            intent.putExtra("CreditDays", "0");
+        } else {
+            intent.putExtra("CreditDays", edt_creditDays.getText().toString());
+        }
+
+        intent.putExtra("PaymentTerms", PaymentTermsId);
+        intent.putExtra("DeliveryTerms", DeliveryTermsId);
+        intent.putExtra("SalesCategory", salesCategoryId);
+        intent.putExtra("WillingTalkProspect", forTalkProspect);
+        intent.putExtra("TaxCode", taxCodeId);
+        if (edt_resellerName.getText().toString().equalsIgnoreCase("")) {
+            intent.putExtra("ResellerName", "");
+        } else {
+            intent.putExtra("ResellerName", edt_resellerName.getText().toString());
+        }
+
+
+        intent.putExtra("EntityClass", entityClassId);
+        intent.putExtra("EntityGroupMasterId", entityGrpId);
+        intent.putExtra("Typeofservices", typeOfServiceId);
+        intent.putExtra("BankDetailslist", bankDetailsList);
+        intent.putExtra("ContactDetailslist", contactDetailsList);
+
+        setResult(13, intent);
+
+        super.onBackPressed();
+    }
+}

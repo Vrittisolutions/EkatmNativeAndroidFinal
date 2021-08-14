@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/card_back">
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar1"
+        card_view:cardUseCompatPadding="true"
+        card_view:cardCornerRadius="8dp"
+        card_view:cardElevation="1dp"
+        card_view:cardMaxElevation="1dp"
+>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/dark_gray"
+            android:text="Customer Name :"/>
+        <TextView
+            android:id="@+id/txt_cust_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="12dp"
+            android:layout_marginLeft="1dp"
+            android:text="9X MEDIA PVT LTD"
+            android:textColor="@color/black"
+
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="5dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:textColor="@color/dark_gray"
+            android:text="Bank Name :"
+            android:layout_marginLeft="5dp"/>
+        <TextView
+            android:id="@+id/txt_bank_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="12dp"
+            android:singleLine="true"
+            android:layout_marginLeft="10dp"
+            android:text="ICICI"
+            android:textColor="@color/black"
+
+            />
+
+    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="2dp">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center|left"
+
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:textColor="@color/dark_gray"
+            android:text="Amount :"
+            android:layout_marginLeft="5dp"/>
+        <TextView
+            android:id="@+id/txt_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12dp"
+            android:singleLine="true"
+            android:layout_marginLeft="10dp"
+            android:text="50000"
+            android:textColor="@color/black"
+
+            />
+
+    </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:layout_marginLeft="10dp"
+
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:textColor="@color/dark_gray"
+                    android:text="TDS Amount :"
+                    android:layout_marginLeft="5dp"/>
+                <TextView
+                    android:id="@+id/txt_tds_amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="12dp"
+                    android:singleLine="true"
+                    android:layout_marginLeft="10dp"
+                    android:text="2333"
+                    android:textColor="@color/black"
+
+                    />
+            </LinearLayout>
+
+</LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center|left"
+            android:gravity="center|left"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="2dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:textColor="@color/dark_gray"
+                android:text="Instrument No :"
+                android:layout_marginLeft="5dp"/>
+            <TextView
+                android:id="@+id/txt_instrument_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="12dp"
+                android:singleLine="true"
+                android:text="2588755000"
+                android:textColor="@color/black"
+                android:layout_marginLeft="5dp"
+
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center|left"
+            android:gravity="center|left"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:textColor="@color/dark_gray"
+                android:text="Deposited Date :"
+                android:layout_marginLeft="5dp"/>
+            <TextView
+                android:id="@+id/txt_deposite_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="12dp"
+                android:singleLine="true"
+                android:layout_marginLeft="5dp"
+                android:text="01/01/1900"
+                android:textColor="@color/black"
+
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center|left"
+            android:gravity="center|left"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:textColor="@color/dark_gray"
+                android:text="Deposited Bank :"
+                android:layout_marginLeft="5dp"/>
+            <TextView
+                android:id="@+id/txt_deposite_bank"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="12dp"
+                android:singleLine="true"
+                android:text="Ahmednagar Shahar Sahakari Bank Ltd."
+                android:textColor="@color/black"
+
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center|left"
+            android:gravity="center|left"
+            android:layout_marginLeft="5dp"
+            android:visibility="gone"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="2dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:textColor="@color/dark_gray"
+                android:text="Added By :"
+                android:layout_marginLeft="5dp"/>
+            <TextView
+                android:id="@+id/txt_added_by"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="16dp"
+                android:singleLine="true"
+                android:text="Payal Jain"
+                android:textColor="@color/black"
+                android:layout_marginLeft="5dp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center|left"
+            android:gravity="center|left"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="2dp"
+            android:visibility="gone"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:textColor="@color/dark_gray"
+                android:text="Added Date :"
+                android:layout_marginLeft="5dp"/>
+            <TextView
+                android:id="@+id/txt_added_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="16dp"
+                android:singleLine="true"
+                android:text="28 Aug 2017"
+                android:textColor="@color/black"
+                android:layout_marginLeft="5dp"
+
+                />
+        </LinearLayout>
+    </LinearLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>

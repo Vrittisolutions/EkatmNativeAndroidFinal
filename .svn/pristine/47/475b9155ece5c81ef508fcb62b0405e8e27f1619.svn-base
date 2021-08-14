@@ -1,0 +1,75 @@
+package com.vritti.crm.adapter;
+
+import android.content.Context;
+import android.graphics.Color;
+import android.provider.ContactsContract;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.vritti.crm.bean.DatasheetFormList;
+import com.vritti.crm.vcrm7.DisplayDatasheetFormsActivity;
+import com.vritti.ekatm.R;
+import com.vritti.vwb.Adapter.ActivityListMainAdapter_New;
+
+import java.util.ArrayList;
+
+public class DatasheetFormListAdapter extends RecyclerView.Adapter<DatasheetFormListAdapter.ActivityHolder> {
+    Context context;
+    ArrayList<DatasheetFormList> datasheetFormListArrayList;
+
+    public DatasheetFormListAdapter(Context context, ArrayList<DatasheetFormList> datasheetFormListArrayList) {
+        this.context = context;
+        this.datasheetFormListArrayList = datasheetFormListArrayList;
+    }
+
+    @NonNull
+    @Override
+    public ActivityHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(context).inflate(R.layout.crm_datasheet_form_list, parent, false);
+
+        return new ActivityHolder(itemView);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ActivityHolder holder,  int position) {
+        String formName = datasheetFormListArrayList.get(position).getCSSFormsDesc();
+        holder.txt_formName.setText(formName);
+
+        if (position % 2 == 1) {
+            holder.lay_header.setBackgroundColor(Color.parseColor("#DBE8EA"));
+        } else {
+            holder.lay_header.setBackgroundColor(Color.parseColor("#F1F6F7"));
+        }
+    }
+
+    @Override
+    public int getItemCount() {
+        return datasheetFormListArrayList.size();
+    }
+
+    public class ActivityHolder extends RecyclerView.ViewHolder {
+        CardView card_view;
+        TextView txt_formName;
+        LinearLayout lay_header;
+
+        public ActivityHolder(View itemView) {
+            super(itemView);
+            card_view = itemView.findViewById(R.id.card_view);
+            txt_formName = itemView.findViewById(R.id.txt_formName);
+            lay_header = itemView.findViewById(R.id.lay_header);
+
+            card_view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ((DisplayDatasheetFormsActivity)context).rowClick(getAdapterPosition(),datasheetFormListArrayList);
+                }
+            });
+        }
+    }
+}

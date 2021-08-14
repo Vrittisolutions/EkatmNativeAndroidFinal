@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.vritti.crm.vcrm7.CreateNewOppActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/MyToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay"
+        app:subtitleTextAppearance="@style/ToolbarTextAppearance.Subtitle"
+        app:titleTextAppearance="@style/ToolbarTextAppearance.Title">
+    </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:id="@+id/ln_opp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/appbar_lay">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#6E6F72"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.7"
+                android:text="Opportunities"
+                android:textColor="#ffffff"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="0.1"
+                android:weightSum="1">
+
+                <RelativeLayout
+                    android:id="@+id/rel_opp_create"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:id="@+id/img_create_opp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center|right"
+                        android:layout_marginTop="5dp"
+                        android:src="@drawable/create_opportunities"/>
+
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/ln_opportunity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/header"
+        android:layout_gravity="center_vertical"
+        android:layout_below="@id/ln_opp"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@color/header"
+            android:gravity="center"
+            android:text="Oops!!!"
+            android:textColor="@color/red"
+            android:textSize="15sp" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/header"
+            android:gravity="center_horizontal"
+            android:text="You do not have opportunity.Please click on opportunity icon to create new  opportunity."
+            android:textSize="15sp"
+            android:layout_marginTop="5dp"/>
+
+
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ln_collection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/header"
+        android:layout_gravity="center_vertical"
+        android:layout_below="@id/ln_opp"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:visibility="visible">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@color/header"
+            android:gravity="center"
+            android:text="Oops!!!"
+            android:textColor="@color/red"
+            android:textSize="15sp" />
+
+
+        <TextView
+            android:id="@+id/txt_opp_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/header"
+            android:gravity="center_horizontal"
+            android:text="You do not have opportunity.Please click on opportunity icon to create new opportunity."
+            android:textSize="15sp"
+            android:layout_marginTop="5dp"/>
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_create"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_blue_border"
+            android:text="Create New"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16dp"/>
+
+
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>
+

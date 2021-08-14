@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/view_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/backshape"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:theme="@style/ThemeOverlay.AppCompat.Light"
+    android:paddingBottom="@dimen/nav_horizontal_margin"
+    android:paddingLeft="@dimen/nav_horizontal_margin"
+    android:paddingRight="@dimen/nav_horizontal_margin"
+    android:paddingTop="@dimen/nav_horizontal_margin">
+<RelativeLayout
+    android:id="@+id/len"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="left|center">
+    <ImageView
+        android:id="@+id/img_profile"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_weight="1"
+        android:layout_gravity="center|left"
+        android:layout_marginLeft="5dp"
+        android:padding="5dp"
+        android:src="@drawable/pm"
+        android:background="@drawable/map_circle_text"/>
+
+    <ImageView
+        android:id="@+id/img_adduser"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/add_user" />
+</RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/len"
+        android:layout_centerVertical="true"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_horizontal_margin">
+
+
+        <TextView
+            android:id="@+id/txt_userLoginID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="300169"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
+
+
+        <TextView
+            android:id="@+id/txt_mobile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="7776933750"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:id="@+id/txt_compcode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:text="adi"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:textStyle="bold">
+
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:orientation="vertical">
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

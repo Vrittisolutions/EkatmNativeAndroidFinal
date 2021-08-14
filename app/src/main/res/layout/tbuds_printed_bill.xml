@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#ededed"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/txtbillno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bill No"
+            android:textColor="#2c2c2c"
+            android:textSize="14dp"
+            android:layout_weight="0.4"
+            android:paddingLeft="3dp"
+            android:layout_gravity="center_vertical|left"
+            android:gravity="center_vertical|left"/>
+
+        <TextView
+            android:id="@+id/txtdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Date Time"
+            android:textColor="#2c2c2c"
+            android:textSize="14dp"
+            android:layout_weight="0.3"
+            android:paddingRight="3dp"
+            android:layout_gravity="center_vertical|center"
+            android:gravity="center_vertical|center"/>
+
+        <TextView
+            android:id="@+id/txtbillamt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bill Amount"
+            android:textColor="#2c2c2c"
+            android:textSize="14dp"
+            android:layout_weight="0.3"
+            android:paddingRight="5dp"
+            android:layout_gravity="center_vertical|right"
+            android:gravity="center_vertical|right"/>
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/list_printed_bills"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:divider="@null"
+        android:dividerHeight="0dp"/>
+
+</LinearLayout>

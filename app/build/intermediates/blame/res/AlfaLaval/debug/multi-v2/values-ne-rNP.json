@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\incremental\\mergeAlfaLavalDebugResources\\merged.dir\\values-ne-rNP\\values-ne-rNP.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Nilesh\\.gradle\\caches\\transforms-2\\files-2.1\\bcefe1a63aaad0e225ad14675b4e8bed\\datetimepicker-0.2.0\\res\\values-ne-rNP\\values-ne-rNP.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10,11,12,13,14",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "222,324,430,511,615,730,836,931,1022,1115,1204",
+                        "endColumns": "101,105,80,103,114,105,94,90,92,88,91",
+                        "endOffsets": "319,425,506,610,725,831,926,1017,1110,1199,1291"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,207,313,394,498,613,719,814,905,998,1087",
+                        "endColumns": "101,105,80,103,114,105,94,90,92,88,91",
+                        "endOffsets": "202,308,389,493,608,714,809,900,993,1082,1174"
+                    }
+                }
+            ]
+        }
+    ]
+}

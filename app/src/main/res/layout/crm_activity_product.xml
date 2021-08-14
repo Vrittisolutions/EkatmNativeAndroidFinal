@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical">
+    <include
+        layout="@layout/toolbar_header"
+        />
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#6E6F72"
+        android:padding="5dp"
+        android:visibility="gone"
+        android:orientation="horizontal">
+
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingLeft="10dp"
+            android:padding="5dp"
+            android:text=" Add Product"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:textSize="18dp" />
+
+
+
+    </LinearLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <AutoCompleteTextView
+            android:id="@+id/EdtProd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Product"
+            android:textSize="14dp"
+            android:padding="10dp"
+            android:drawableLeft="@drawable/product"
+            android:drawableTint="@color/colorPrimary"
+            android:drawablePadding="8dp"
+            android:layout_gravity="top"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/editqnty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:padding="10dp"
+            android:inputType="numberDecimal"
+            android:hint="Quantity"
+            android:drawableLeft="@drawable/notes"
+            android:drawableTint="@color/colorPrimary"
+            android:drawablePadding="8dp"
+            android:layout_gravity="top"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:background="#E4EAEB"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:padding="5dp">
+
+        <Button
+            android:id="@+id/buttonSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/btn"
+            android:text="Save"
+            android:layout_weight="1"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/buttonCancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:background="@color/white"
+            android:text="Cancel"
+            android:layout_weight="1"
+            android:textColor="@color/black" />
+    </LinearLayout>
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/blue_backgroung"
+        android:layout_marginLeft="@dimen/sp_5"
+        android:layout_marginRight="@dimen/sp_5"
+        android:orientation="horizontal">
+
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.8"
+            android:paddingLeft="10dp"
+            android:text="  Product Details"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:padding="5dp"
+            android:textSize="16dp" />
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/laytxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Product"
+                android:textColor="@color/black" />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Quantity"
+                android:textColor="@color/black" />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Action"
+                android:textColor="@color/black" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+<LinearLayout
+    android:id="@+id/lst"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/card_back"
+    android:layout_height="match_parent">
+
+</LinearLayout>
+    <!--<android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerproduct"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />-->
+</LinearLayout>

@@ -1,0 +1,1289 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:gpb="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    tools:context="vcrm7.vritti.com.vcrm7.ProspectEnterpriseActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rel_pros"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#ffffff"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="60sp"
+                        android:layout_marginLeft="10sp"
+                        android:layout_marginRight="10sp"
+                        android:layout_marginTop="5sp"
+                        android:orientation="vertical"
+                        android:focusableInTouchMode="true"
+                        >
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#0b6bb7"
+                            android:padding="5dp">
+
+                            <TextView
+                                android:id="@+id/headName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:gravity="center"
+                                android:paddingLeft="5sp"
+                                android:text="Name and Address"
+                                android:textColor="#ffffff"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <ImageView
+                                android:id="@+id/ExpandName"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginRight="3sp"
+                                android:background="@drawable/ic_add"
+                                android:visibility="gone"
+                                android:onClick="ExpandNameClick" />
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:id="@+id/llName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/border"
+                            android:orientation="vertical"
+                            android:visibility="visible"
+                            android:focusableInTouchMode="true"
+                            >
+
+                            <ScrollView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:scrollbars="none"
+                                android:isScrollContainer="false">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:focusableInTouchMode="true"
+                                    >
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_marginTop="10dp"
+                                        android:background="@drawable/business_edit_text"
+                                        android:orientation="horizontal"
+                                        android:padding="10dp"
+                                        android:focusableInTouchMode="true"
+                                        >
+
+                                        <AutoCompleteTextView
+                                            android:id="@+id/efName1"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="0.9"
+                                            android:background="@android:color/transparent"
+                                            android:completionThreshold="1"
+                                            android:hint="Firm Name"
+                                            android:singleLine="true"
+                                            android:imeOptions="actionNext"
+                                            android:textColor="#000"
+                                            android:textColorHint="@color/hint"
+                                            android:textSize="13sp">
+
+                                            <requestFocus />
+                                        </AutoCompleteTextView>
+
+
+                                        <ProgressBar
+                                            style="?android:attr/progressBarStyleSmall"
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_weight="0.1"
+                                            android:visibility="gone" />
+                                    </LinearLayout>
+
+                                    <EditText
+                                        android:id="@+id/efAlias"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_marginTop="10dp"
+                                        android:background="@drawable/business_edit_text"
+                                        android:hint="Firm Alias"
+                                        android:padding="10dp"
+                                        android:textColor="#000000"
+                                        android:textColorHint="@color/hint"
+                                        android:textSize="13sp"
+                                        android:singleLine="true"
+                                        android:imeOptions="actionNext"/>
+
+                                    <EditText
+                                        android:id="@+id/eAddress"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_marginTop="10dp"
+                                        android:background="@drawable/business_edit_text"
+                                        android:hint="Address"
+                                        android:padding="10dp"
+                                        android:textColor="#000000"
+                                        android:textSize="13sp"
+                                        android:singleLine="true"
+                                        android:imeOptions="actionNext"/>
+
+                                    <AutoCompleteTextView
+                                        android:id="@+id/eAutoCity"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="35dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_marginTop="10dp"
+                                        android:background="@drawable/business_edit_text"
+                                        android:hint="City"
+                                        android:padding="10dp"
+                                        android:textColor="#000000"
+                                        android:singleLine="true"
+                                        android:imeOptions="actionNext"
+                                        android:textSize="13sp" />
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:layout_gravity="center|left"
+                                        android:gravity="center|left"
+                                        android:background="@drawable/business_edit_text"
+                                        android:padding="10dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_weight="1">
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="State :"
+                                            android:textSize="14dp"
+                                            android:textColor="@color/black"/>
+
+                                        <Spinner
+                                            android:id="@+id/spinner_state"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:spinnerMode="dialog"
+                                            android:layout_weight="1"
+                                            android:layout_marginLeft="10dp"
+
+                                            >
+                                        </Spinner>
+
+                                    </LinearLayout>
+
+                                    <AutoCompleteTextView
+                                        android:id="@+id/eAutoTerritory"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_marginTop="10dp"
+                                        android:background="@drawable/business_edit_text"
+                                        android:hint="Territory"
+                                        android:padding="10dp"
+                                        android:textColor="#000000"
+                                        android:textSize="13sp"
+                                        android:singleLine="true"
+                                        android:imeOptions="actionNext"/>
+
+                                    <EditText
+                                        android:id="@+id/eEmail"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_marginTop="10dp"
+                                        android:background="@drawable/business_edit_text"
+                                        android:hint="Email"
+                                        android:inputType="textEmailAddress"
+                                        android:padding="10dp"
+                                        android:textColor="#000000"
+                                        android:singleLine="true"
+                                        android:imeOptions="actionNext"
+                                        android:textSize="13sp" />
+
+                                    <EditText
+                                        android:id="@+id/eUrl"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_marginTop="10dp"
+                                        android:background="@drawable/business_edit_text"
+                                        android:hint="Company URL"
+                                        android:padding="10dp"
+                                        android:singleLine="true"
+                                        android:imeOptions="actionNext"
+                                        android:textColor="#000000"
+                                        android:textSize="13sp" />
+
+                                    <EditText
+                                        android:id="@+id/eMobile"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_marginTop="10dp"
+                                        android:background="@drawable/business_edit_text"
+                                        android:hint="Mobile"
+                                        android:inputType="number"
+                                        android:padding="10dp"
+                                        android:singleLine="true"
+                                        android:imeOptions="actionNext"
+                                        android:textColor="#000000"
+                                        android:textSize="13sp" />
+
+                                    <EditText
+                                        android:id="@+id/eTelephone"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_marginTop="10dp"
+                                        android:background="@drawable/business_edit_text"
+                                        android:hint="Telephone"
+                                        android:inputType="number"
+                                        android:padding="10dp"
+                                        android:textColor="#000000"
+                                        android:textSize="13sp"
+                                        android:singleLine="true"
+                                        android:imeOptions="actionNext"/>
+
+                                    <EditText
+                                        android:id="@+id/efax"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="10dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_marginTop="10dp"
+                                        android:background="@drawable/business_edit_text"
+                                        android:hint="Fax"
+                                        android:padding="10dp"
+                                        android:textColor="#000000"
+                                        android:textSize="13sp"
+                                        android:singleLine="true"
+                                        android:imeOptions="actionNext"/>
+
+                                </LinearLayout>
+                            </ScrollView>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:orientation="vertical"
+                            android:weightSum="1"
+                            android:focusableInTouchMode="true"
+                            >
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="#0b6bb7"
+                                android:padding="5dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentLeft="true"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_centerVertical="true"
+                                    android:gravity="center"
+                                    android:paddingLeft="5sp"
+                                    android:text="Attach Entity"
+                                    android:textColor="#ffffff"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <ImageView
+                                    android:id="@+id/ExpandEntity"
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_marginRight="3sp"
+                                    android:background="@drawable/ic_add"
+                                    android:visibility="gone"
+                                    android:onClick="EntityClick" />
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:id="@+id/llEntity"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/border"
+                                android:orientation="vertical"
+                                android:paddingLeft="3sp"
+                                android:paddingRight="3sp"
+                                android:visibility="visible"
+                                android:focusableInTouchMode="true"
+                                >
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:background="@drawable/business_edit_text"
+                                    android:orientation="horizontal"
+                                    android:padding="5dp"
+                                    android:focusableInTouchMode="true"
+                                    >
+
+                                    <Spinner
+                                        android:id="@+id/sEntity"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:textColor="#000000"
+                                        android:textSize="13sp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:background="@drawable/business_edit_text"
+                                    android:orientation="horizontal"
+                                    android:padding="5dp"
+                                    android:focusableInTouchMode="true"
+                                    >
+
+                                    <Spinner
+                                        android:id="@+id/sConsignee"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:textColor="#000000"
+                                        android:textSize="13sp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center|left"
+                                    android:layout_marginBottom="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:gravity="center|left"
+                                    android:orientation="horizontal"
+                                    android:padding="5dp"
+                                    android:focusableInTouchMode="true"
+                                    >
+
+                                    <EditText
+                                        android:id="@+id/edt_gstn1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/business_edit_text"
+                                        android:hint="GSTN"
+                                        android:imeOptions="actionNext"
+                                        android:padding="10dp"
+                                        android:singleLine="true"
+                                        android:maxLength="15"
+                                        android:textColor="@color/black"
+                                        android:textColorHint="@color/hint"
+                                        android:textSize="12dp"
+
+
+                                        />
+                                    <EditText
+                                        android:id="@+id/edt_tan_no"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/business_edit_text"
+                                        android:hint="TAN No"
+                                        android:imeOptions="actionNext"
+                                        android:padding="10dp"
+                                        android:singleLine="true"
+                                        android:textColor="@color/black"
+                                        android:textColorHint="@color/hint"
+                                        android:textSize="12dp"
+
+
+                                        />
+                                    <EditText
+                                        android:id="@+id/edt_tan_no_name"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/business_edit_text"
+                                        android:hint="TAN No Name"
+                                        android:imeOptions="actionNext"
+                                        android:padding="10dp"
+                                        android:singleLine="true"
+                                        android:maxLength="9"
+                                        android:textColor="@color/black"
+                                        android:textColorHint="@color/hint"
+                                        android:textSize="12dp"
+
+
+                                        />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="5dp"
+                                android:background="#0b6bb7"
+                                android:padding="5dp">
+
+                                <TextView
+                                    android:id="@+id/headProductServices"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentLeft="true"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_centerVertical="true"
+                                    android:gravity="center"
+                                    android:paddingLeft="5sp"
+                                    android:text="Prospective Product Services"
+                                    android:textColor="#ffffff"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <ImageView
+                                    android:id="@+id/ExpandProduct"
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_marginRight="3sp"
+                                    android:background="@drawable/ic_add"
+                                    android:visibility="gone"
+                                    android:onClick="ProductClick" />
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:id="@+id/llProduct"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/border"
+                                android:orientation="vertical"
+                                android:paddingLeft="3sp"
+                                android:paddingRight="3sp"
+                                android:visibility="visible"
+                                android:focusableInTouchMode="true"
+                                >
+
+                                <TextView
+                                    android:id="@+id/Products"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:background="@drawable/business_edit_text"
+                                    android:clickable="true"
+                                    android:hint="--Select Product--"
+                                    android:padding="10dp"
+                                    android:textSize="13sp" />
+
+                                <LinearLayout
+                                    android:id="@+id/llProductList"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:background="@drawable/business_edit_text"
+                                    android:orientation="vertical"
+                                    android:padding="10dp"
+                                    android:focusableInTouchMode="true"
+                                    >
+
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="5dp"
+                                android:background="#0b6bb7"
+                                android:gravity="center"
+                                android:padding="5dp">
+
+                                <ImageView
+                                    android:id="@+id/ExpandBusinessDetails"
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_marginRight="3sp"
+                                    android:background="@drawable/ic_add"
+                                    android:visibility="gone"
+                                    android:onClick="ExpandBusinessDetailsClick" />
+
+                                <TextView
+                                    android:id="@+id/headBusiness"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentLeft="true"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_centerVertical="true"
+                                    android:gravity="center"
+                                    android:paddingLeft="5sp"
+                                    android:text="Business Details"
+                                    android:textColor="#ffffff"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:id="@+id/llBusinessDetails"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/border"
+                                android:orientation="vertical"
+                                android:paddingLeft="3sp"
+                                android:paddingRight="3sp"
+                                android:visibility="visible"
+                                android:focusableInTouchMode="true"
+                                >
+
+                                <ScrollView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:scrollbars="none"
+                                    android:isScrollContainer="false">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        android:focusableInTouchMode="true"
+                                        >
+
+                                        <AutoCompleteTextView
+                                            android:id="@+id/autotxtBusinessSegment"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="10dp"
+                                            android:layout_marginRight="10dp"
+                                            android:layout_marginTop="5dp"
+                                            android:background="@drawable/business_edit_text"
+                                            android:padding="10dp"
+                                            android:textColor="#000000"
+                                            android:singleLine="true"
+                                            android:imeOptions="actionNext"
+                                            android:textSize="13sp" />
+
+                                        <EditText
+                                            android:id="@+id/eEmployeeStrength"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="10dp"
+                                            android:layout_marginRight="10dp"
+                                            android:layout_marginTop="10dp"
+                                            android:background="@drawable/business_edit_text"
+                                            android:hint="No. of Employee"
+                                            android:inputType="number"
+                                            android:padding="10dp"
+                                            android:textColor="#000000"
+                                            android:singleLine="true"
+                                            android:imeOptions="actionNext"
+                                            android:textSize="13sp" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center|left"
+                                            android:layout_marginLeft="10dp"
+                                            android:layout_marginRight="10dp"
+                                            android:layout_marginTop="10dp"
+                                            android:background="@drawable/business_edit_text"
+                                            android:gravity="center|left"
+                                            android:orientation="horizontal"
+                                            android:padding="5dp"
+                                            android:focusableInTouchMode="true"
+                                            >
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="Currency :"
+                                                android:textColor="#000000"
+                                                android:textSize="13sp" />
+
+                                            <Spinner
+                                                android:id="@+id/sCurrency"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center"
+                                                android:layout_weight="1"
+                                                android:gravity="center"
+                                                android:textColor="#000000"
+                                                android:textSize="13sp" />
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="10dp"
+                                            android:layout_marginRight="10dp"
+                                            android:layout_marginTop="10dp"
+                                            android:background="@drawable/business_edit_text"
+                                            android:orientation="horizontal"
+                                            android:padding="5dp"
+                                            android:focusableInTouchMode="true"
+                                            >
+
+                                            <EditText
+                                                android:id="@+id/eTurnover"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center|left"
+                                                android:layout_weight="1"
+                                                android:gravity="center|left"
+                                                android:inputType="numberDecimal|numberSigned"
+                                                android:text="Turnover"
+                                                android:textColor="#000000"
+                                                android:textColorHint="@color/hint"
+                                                android:textSize="13sp"
+                                                android:singleLine="true"
+                                                android:imeOptions="actionNext"/>
+
+                                            <Spinner
+                                                android:id="@+id/sTurnover"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center"
+                                                android:layout_weight="1"
+                                                android:gravity="center"
+                                                android:textColor="#000000"
+                                                android:textSize="13sp" />
+                                        </LinearLayout>
+
+                                        <EditText
+                                            android:id="@+id/eOfficeCnt"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="10dp"
+                                            android:layout_marginRight="10dp"
+                                            android:layout_marginTop="10dp"
+                                            android:background="@drawable/business_edit_text"
+                                            android:hint="No. of offices"
+                                            android:inputType="number"
+                                            android:padding="10dp"
+                                            android:textColor="#000000"
+                                            android:textColorHint="@color/hint"
+                                            android:textSize="13sp"
+                                            android:singleLine="true"
+                                            android:imeOptions="actionNext"/>
+
+                                        <EditText
+                                            android:id="@+id/eRemark"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginBottom="10dp"
+                                            android:layout_marginLeft="10dp"
+                                            android:layout_marginRight="10dp"
+                                            android:layout_marginTop="10dp"
+                                            android:background="@drawable/business_edit_text"
+                                            android:hint="More Information"
+                                            android:inputType="textMultiLine"
+                                            android:padding="10dp"
+                                            android:textColor="#000000"
+                                            android:textColorHint="@color/hint"
+                                            android:textSize="13sp"
+                                            />
+                                    </LinearLayout>
+                                </ScrollView>
+                            </LinearLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:background="#0b6bb7"
+                                android:padding="5dp">
+
+                                <TextView
+                                    android:id="@+id/headProspect"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentLeft="true"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentTop="true"
+                                    android:gravity="center"
+                                    android:paddingLeft="5sp"
+                                    android:text="Source of Prospect"
+                                    android:textColor="#ffffff"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <ImageView
+                                    android:id="@+id/ExpandProspect"
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_marginRight="3sp"
+                                    android:background="@drawable/ic_add"
+                                    android:visibility="gone"
+                                    android:onClick="ProspectClick" />
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:id="@+id/llProspect"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/border"
+                                android:orientation="vertical"
+                                android:paddingLeft="3sp"
+                                android:paddingRight="3sp"
+                                android:visibility="visible"
+                                android:focusableInTouchMode="true"
+                                >
+                                <ScrollView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:scrollbars="none"
+                                    android:isScrollContainer="false">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        android:focusableInTouchMode="true"
+                                        >
+
+                                        <AutoCompleteTextView
+                                            android:id="@+id/autotxtProspect"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="10dp"
+                                            android:layout_marginRight="10dp"
+                                            android:layout_marginTop="10dp"
+                                            android:background="@drawable/business_edit_text"
+                                            android:hint="Source of Prospect"
+                                            android:padding="10dp"
+                                            android:textColor="#000000"
+                                            android:textSize="13sp"
+                                            android:singleLine="true"
+                                            android:imeOptions="actionNext"/>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="10dp"
+                                            android:layout_marginRight="10dp"
+                                            android:layout_marginTop="10dp"
+                                            android:background="@drawable/business_edit_text"
+                                            android:orientation="horizontal"
+                                            android:padding="5dp"
+                                            android:focusableInTouchMode="true"
+                                            >
+
+                                            <Spinner
+                                                android:id="@+id/sReferenceType"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:textColor="#000000"
+                                                android:textSize="13sp" />
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginBottom="10dp"
+                                            android:layout_marginLeft="10dp"
+                                            android:layout_marginRight="10dp"
+                                            android:layout_marginTop="10dp"
+                                            android:background="@drawable/business_edit_text"
+                                            android:orientation="horizontal"
+                                            android:padding="10dp">
+
+                                            <Spinner
+                                                android:id="@+id/sReference"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:textColor="#000000"
+                                                android:textSize="13sp" />
+                                        </LinearLayout>
+                                    </LinearLayout>
+                                </ScrollView>
+                            </LinearLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:background="#0b6bb7"
+                                android:padding="5dp">
+
+                                <TextView
+                                    android:id="@+id/headContact"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentLeft="true"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_centerVertical="true"
+                                    android:gravity="center"
+                                    android:paddingLeft="5sp"
+                                    android:text="Contacts"
+                                    android:textColor="#ffffff"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <ImageView
+                                    android:id="@+id/ExpandContact"
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_marginRight="3sp"
+                                    android:background="@drawable/ic_add"
+                                    android:visibility="gone"
+                                    android:onClick="ContactClick" />
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:id="@+id/llContact"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/border"
+                                android:orientation="vertical"
+                                android:paddingLeft="3sp"
+                                android:paddingRight="3sp"
+                                android:visibility="visible"
+                                android:focusableInTouchMode="true"
+                                >
+                                <ScrollView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:scrollbars="none"
+                                    android:isScrollContainer="false">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        android:focusableInTouchMode="true"
+                                        >
+                                        <LinearLayout
+                                            android:id="@+id/llAddContact"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical"
+                                            android:focusableInTouchMode="true"
+                                            >
+
+                                            <EditText
+                                                android:id="@+id/eContactName"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="10dp"
+                                                android:layout_marginRight="10dp"
+                                                android:layout_marginTop="10dp"
+                                                android:background="@drawable/business_edit_text"
+                                                android:hint="Contact Name"
+                                                android:padding="10dp"
+                                                android:textColor="#000000"
+                                                android:textSize="13sp"
+                                                android:singleLine="true"
+                                                android:imeOptions="actionNext"/>
+
+
+                                            <EditText
+                                                android:id="@+id/eContactDesignation"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="10dp"
+                                                android:layout_marginRight="10dp"
+                                                android:layout_marginTop="10dp"
+                                                android:background="@drawable/business_edit_text"
+                                                android:hint="Designation"
+                                                android:padding="10dp"
+                                                android:textColor="#000000"
+                                                android:textSize="13sp"
+                                                android:singleLine="true"
+                                                android:imeOptions="actionNext"/>
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="10dp"
+                                                android:layout_marginRight="10dp"
+                                                android:layout_marginTop="10dp"
+                                                android:background="@drawable/business_edit_text"
+                                                android:orientation="horizontal"
+                                                android:padding="5dp"
+                                                android:focusableInTouchMode="true"
+                                                >
+
+                                                <Spinner
+                                                    android:id="@+id/sDepartment"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:textColor="#000000"
+                                                    android:textSize="13sp" />
+                                            </LinearLayout>
+
+                                            <EditText
+                                                android:id="@+id/eBirthdate"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="10dp"
+                                                android:layout_marginRight="10dp"
+                                                android:layout_marginTop="10dp"
+                                                android:background="@drawable/business_edit_text"
+                                                android:clickable="true"
+                                                android:hint="Birthdate"
+                                                android:padding="10dp"
+                                                android:textColor="#000000"
+                                                android:textSize="13sp" />
+
+                                            <EditText
+                                                android:id="@+id/econtactEmailid"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="10dp"
+                                                android:layout_marginRight="10dp"
+                                                android:layout_marginTop="10dp"
+                                                android:background="@drawable/business_edit_text"
+                                                android:hint="Email"
+                                                android:padding="10dp"
+                                                android:singleLine="true"
+                                                android:imeOptions="actionNext"
+                                                android:textColor="#000000"
+                                                android:textSize="13sp" />
+
+                                            <EditText
+                                                android:id="@+id/econtactMobile"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="10dp"
+                                                android:layout_marginRight="10dp"
+                                                android:layout_marginTop="10dp"
+                                                android:background="@drawable/business_edit_text"
+                                                android:hint="Mobile Number"
+                                                android:inputType="number"
+                                                android:maxLength="10"
+                                                android:padding="10dp"
+                                                android:textColor="#000000"
+                                                android:textSize="13sp"
+                                                android:singleLine="true"
+                                                android:imeOptions="actionNext"/>
+
+                                            <EditText
+                                                android:id="@+id/eContactTele"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="10dp"
+                                                android:layout_marginRight="10dp"
+                                                android:layout_marginTop="10dp"
+                                                android:background="@drawable/business_edit_text"
+                                                android:hint="Telephone"
+                                                android:inputType="number"
+                                                android:padding="10dp"
+                                                android:textColor="#000000"
+                                                android:textSize="13sp"
+                                                android:singleLine="true"
+                                                android:imeOptions="actionNext"/>
+
+                                            <EditText
+                                                android:id="@+id/eContactFax"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="10dp"
+                                                android:layout_marginRight="10dp"
+                                                android:layout_marginTop="10dp"
+                                                android:background="@drawable/business_edit_text"
+                                                android:hint="Fax"
+                                                android:padding="10dp"
+                                                android:textColor="#000000"
+                                                android:textSize="13sp"
+                                                android:singleLine="true"
+                                                android:imeOptions="actionNext"/>
+
+                                            <TextView
+                                                android:id="@+id/btnSaveContact"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="right"
+                                                android:layout_marginBottom="5dp"
+                                                android:layout_marginRight="5dp"
+                                                android:layout_marginTop="10sp"
+                                                android:background="@color/btnsave"
+                                                android:clickable="true"
+                                                android:gravity="right"
+                                                android:padding="10dp"
+                                                android:text="Save Contact"
+                                                android:textColor="#fff"
+                                                android:textSize="14sp" />
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:id="@+id/llAddContact1"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="10dp"
+                                            android:focusableInTouchMode="true"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:id="@+id/btnSaveContact1"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="right"
+                                                android:background="@color/btnNext"
+                                                android:clickable="true"
+                                                android:gravity="right"
+                                                android:padding="10dp"
+                                                android:text="Add Contact"
+                                                android:textColor="#fff"
+                                                android:textSize="15sp" />
+
+                                            <ListView
+                                                android:id="@+id/listContacts"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginTop="10dp"
+                                                android:divider="@color/barDarkColor"
+                                                android:dividerHeight="1sp"
+                                                android:isScrollContainer="false"></ListView>
+                                        </LinearLayout>
+                                    </LinearLayout>
+                                </ScrollView>
+                            </LinearLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:background="#0b6bb7"
+                                android:padding="5dp">
+
+                                <TextView
+                                    android:id="@+id/headNotes"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentLeft="true"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_centerVertical="true"
+                                    android:gravity="center"
+                                    android:paddingLeft="5sp"
+                                    android:text="Notes"
+                                    android:textColor="#ffffff"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <ImageView
+                                    android:id="@+id/ExpandNotes"
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_marginRight="3sp"
+                                    android:background="@drawable/ic_add"
+                                    android:onClick="NotesClick"
+                                    android:visibility="gone"
+                                    />
+
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:id="@+id/llNotes"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/border"
+                                android:orientation="vertical"
+                                android:layout_gravity="left|top"
+                                android:gravity="left|top"
+                                android:paddingLeft="3sp"
+                                android:paddingRight="3sp"
+                                android:visibility="visible"
+                                android:focusableInTouchMode="true"
+                                >
+
+                                <EditText
+                                    android:id="@+id/eNotes"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="10dp"
+                                    android:layout_weight="1"
+                                    android:minLines="2"
+                                    android:hint="Remark"
+                                    android:inputType="textMultiLine"
+                                    android:padding="8dp"
+                                    android:textColor="#000000"
+                                    android:textSize="13sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                    <!-- <LinearLayout
+                             android:layout_width="fill_parent"
+                             android:layout_height="50sp"
+                             android:background="#0b6bb7"
+                             android:gravity="center"
+                             android:orientation="horizontal">
+
+
+
+                                <RelativeLayout
+                                    android:layout_width="100sp"
+                                    android:layout_height="47sp"
+                                    android:layout_marginLeft="2sp"
+
+                                    android:clickable="true"
+                                    android:onClick="ConfirmClick" >
+
+
+
+                                    <TextView
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="wrap_content"
+
+                                        android:layout_centerHorizontal="true"
+                                        android:gravity="center"
+                                        android:text="Save Prospect"
+                                        android:textColor="#ffffff"
+                                        android:textSize="12sp" />
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="100sp"
+                                    android:layout_height="47sp"
+                                    android:layout_marginLeft="2sp"
+
+                                    android:clickable="true"
+                                    android:onClick="CancelClick" >
+
+
+
+                                    <TextView
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="wrap_content"
+
+                                        android:layout_centerHorizontal="true"
+                                        android:gravity="center"
+                                        android:text="Cancel Prospect"
+                                        android:textColor="#ffffff"
+                                        android:textSize="12sp" />
+                                </RelativeLayout>
+
+
+                         </LinearLayout>-->
+
+                </RelativeLayout>
+            </ScrollView>
+        </LinearLayout>
+    </ScrollView>
+    <com.jpardogo.android.googleprogressbar.library.GoogleProgressBar
+        android:id="@+id/progressbar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        gpb:colors="@array/google_colors"
+        gpb:type="chrome_floating_circles" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center|bottom"
+        android:gravity="center|bottom"
+        android:orientation="horizontal"
+        android:focusableInTouchMode="true"
+
+
+        >
+
+        <Button
+            android:id="@+id/buttonSave_prospect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@color/btnsave"
+            android:text="Save"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/buttonSaveandstartcall_prospect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="1"
+            android:background="@color/btnsave"
+            android:text="@string/savecall"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+
+            />
+
+        <Button
+            android:id="@+id/buttonClose_prospect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:text="Cancel"
+            android:textAllCaps="false"
+
+            />
+    </LinearLayout>
+</RelativeLayout>

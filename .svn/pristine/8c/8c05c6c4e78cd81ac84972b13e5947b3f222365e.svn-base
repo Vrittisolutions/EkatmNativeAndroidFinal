@@ -1,0 +1,228 @@
+package com.vritti.inventory.MaterialRequisition.model;
+
+import com.google.gson.annotations.SerializedName;
+
+import java.util.ArrayList;
+
+public class MRSNODetails {
+
+    String MISDetailId,MRSDetailId,ItemMasterId,ReqQty, MRSNo, MRSDate,MRSHeaderId,IssuedQty,ItemCode,ItemDesc,TechnicalDesc,
+            UOMMasterId
+            ,UOMCode,UOMDesc,BalQty,IsPacketAppl,MRSType,WarehouseCode,LocationCode,WarehouseMasterId,LocationMasterId,
+            StockDetailsId,BatchNo,FiFo,IssueQty,OrderId,BatchControl;
+    String CurrentIssueQty;
+
+    public String getCurrentIssueQty() {
+        return CurrentIssueQty;
+    }
+
+    public void setCurrentIssueQty(String currentIssueQty) {
+        CurrentIssueQty = currentIssueQty;
+    }
+
+    ArrayList<ShowAllLotDetails> showAllLotDetailsArrayList;
+
+
+    public String getBatchControl() {
+        return BatchControl;
+    }
+
+    public void setBatchControl(String batchControl) {
+        BatchControl = batchControl;
+    }
+
+    ArrayList<MRSNODetails> mrsnoDetailsArrayList;
+
+
+    public MRSNODetails() {
+
+    }
+
+    public ArrayList<MRSNODetails> getMrsnoDetailsArrayList() {
+        return mrsnoDetailsArrayList;
+    }
+
+    public void setMrsnoDetailsArrayList(ArrayList<MRSNODetails> mrsnoDetailsArrayList) {
+        this.mrsnoDetailsArrayList = mrsnoDetailsArrayList;
+    }
+
+    public ArrayList<ShowAllLotDetails> getShowAllLotDetailsArrayList() {
+        return showAllLotDetailsArrayList;
+    }
+
+    public void setShowAllLotDetailsArrayList(ArrayList<ShowAllLotDetails> showAllLotDetailsArrayList) {
+        this.showAllLotDetailsArrayList = showAllLotDetailsArrayList;
+    }
+
+    public MRSNODetails(ArrayList<MRSNODetails> mrsnoDetailsArrayList) {
+        this.mrsnoDetailsArrayList = mrsnoDetailsArrayList;
+    }
+
+    public String getMISDetailId() {
+        return MISDetailId;
+    }
+
+    public void setMISDetailId(String MISDetailId) {
+        this.MISDetailId = MISDetailId;
+    }
+
+    public String getMRSDetailId() {
+        return MRSDetailId;
+    }
+
+    public void setMRSDetailId(String MRSDetailId) {
+        this.MRSDetailId = MRSDetailId;
+    }
+
+    public String getItemMasterId() {
+        return ItemMasterId;
+    }
+
+    public void setItemMasterId(String itemMasterId) {
+        ItemMasterId = itemMasterId;
+    }
+
+    public String getReqQty() {
+        return ReqQty;
+    }
+
+    public void setReqQty(String reqQty) {
+        ReqQty = reqQty;
+    }
+
+    public String getMRSNo() {
+        return MRSNo;
+    }
+
+    public void setMRSNo(String MRSNo) {
+        this.MRSNo = MRSNo;
+    }
+
+    public String getMRSDate() {
+        return MRSDate;
+    }
+
+    public void setMRSDate(String MRSDate) {
+        this.MRSDate = MRSDate;
+    }
+
+    public String getMRSHeaderId() {
+        return MRSHeaderId;
+    }
+
+    public void setMRSHeaderId(String MRSHeaderId) {
+        this.MRSHeaderId = MRSHeaderId;
+    }
+
+    public String getIssuedQty() {
+        return IssuedQty;
+    }
+
+    public void setIssuedQty(String issuedQty) {
+        IssuedQty = issuedQty;
+    }
+
+    public String getItemCode() {
+        return ItemCode;
+    }
+
+    public void setItemCode(String itemCode) {
+        ItemCode = itemCode;
+    }
+
+    public String getItemDesc() {
+        return ItemDesc;
+    }
+
+    public void setItemDesc(String itemDesc) {
+        ItemDesc = itemDesc;
+    }
+
+    public String getTechnicalDesc() {
+        return TechnicalDesc;
+    }
+
+    public void setTechnicalDesc(String technicalDesc) {
+        TechnicalDesc = technicalDesc;
+    }
+
+    public String getUOMMasterId() {
+        return UOMMasterId;
+    }
+
+    public void setUOMMasterId(String UOMMasterId) {
+        this.UOMMasterId = UOMMasterId;
+    }
+
+    public String getUOMCode() {
+        return UOMCode;
+    }
+
+    public void setUOMCode(String UOMCode) {
+        this.UOMCode = UOMCode;
+    }
+
+    public String getUOMDesc() {
+        return UOMDesc;
+    }
+
+    public void setUOMDesc(String UOMDesc) {
+        this.UOMDesc = UOMDesc;
+    }
+
+    public String getBalQty() {
+        return BalQty;
+    }
+
+    public void setBalQty(String balQty) {
+        BalQty = balQty;
+    }
+
+    public String getIsPacketAppl() {
+        return IsPacketAppl;
+    }
+
+    public void setIsPacketAppl(String isPacketAppl) {
+        IsPacketAppl = isPacketAppl;
+    }
+
+    public String getMRSType() {
+        return MRSType;
+    }
+
+    public void setMRSType(String MRSType) {
+        this.MRSType = MRSType;
+    }
+
+    public String getWarehouseCode() {
+        return WarehouseCode;
+    }
+
+    public void setWarehouseCode(String warehouseCode) {
+        WarehouseCode = warehouseCode;
+    }
+
+    public String getLocationCode() {
+        return LocationCode;
+    }
+
+    public void setLocationCode(String locationCode) {
+        LocationCode = locationCode;
+    }
+
+    public String getWarehouseMasterId() {
+        return WarehouseMasterId;
+    }
+
+    public void setWarehouseMasterId(String warehouseMasterId) {
+        WarehouseMasterId = warehouseMasterId;
+    }
+
+    public String getLocationMasterId() {
+        return LocationMasterId;
+    }
+
+    public void setLocationMasterId(String locationMasterId) {
+        LocationMasterId = locationMasterId;
+    }
+}

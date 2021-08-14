@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/len"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:visibility="visible"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+       >
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_viewfill"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardCornerRadius="8dp"
+        card_view:cardUseCompatPadding="true"
+        card_view:cardPreventCornerOverlap="false"
+        card_view:cardElevation="1dp"
+        card_view:cardMaxElevation="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="3dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="left|center"
+                    android:gravity="center|left"
+                    android:padding="1dp">
+
+                    <TextView android:id="@+id/txt_show_contactname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/travel_name"
+                        android:singleLine="true"
+                        android:layout_gravity="left|center"
+                        android:gravity="center|left"
+                        android:layout_marginRight="@dimen/sp_5"
+                        android:layout_weight="1"
+                        android:padding="2dp"
+                        android:textColor="@color/black"
+                        android:textSize="12dp" />
+                    <ImageView android:id="@+id/plus"
+                        android:layout_width="20dp"
+                        android:tint="@color/colorPrimary"
+                        android:layout_height="20dp"
+                        android:visibility="gone"
+                        android:layout_marginRight="@dimen/sp_10"
+                        android:src="@drawable/icon_plus" />
+                    <ImageView
+                        android:id="@+id/edit"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:padding="2dp"
+                        android:layout_marginRight="10dp"
+                        android:tint="@color/colorPrimary"
+                        android:src="@drawable/ic_edit" />
+
+                    <ImageView android:id="@+id/delete"
+                        android:layout_width="20dp"
+                        android:tint="@color/colorPrimary"
+                        android:layout_marginRight="10dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_delete" />
+
+
+
+                </LinearLayout>
+                <View android:layout_width="match_parent" android:layout_height="0.5dp"
+                    android:layout_marginLeft="5dp" android:layout_marginRight="5dp"
+                    android:layout_marginBottom="2dp" android:layout_gravity="center_horizontal"
+                    android:background="@color/stroke" />
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView android:id="@+id/txt_show_contact_designation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:layout_gravity="center|left"
+                        android:gravity="center|left"
+                        android:singleLine="true"
+                        android:drawableLeft="@drawable/designation"
+                        android:textColor="@color/black"
+                        android:layout_weight="1"
+                        android:textSize="12dp" />
+
+
+                    <TextView android:id="@+id/txt_show_contact_department"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|left"
+                        android:layout_weight="1"
+                        android:visibility="gone"
+                        android:drawableLeft="@drawable/office"
+                        android:gravity="center|left"
+                        android:padding="2dp"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textSize="12dp" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txt_show_contact_mobileno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="10"
+                    android:layout_gravity="left|center"
+                    android:gravity="center|left"
+                    android:layout_weight="1"
+                    android:padding="2dp"
+                    android:drawableLeft="@drawable/mobile"
+                    android:textColor="@color/black"
+                    android:textSize="12dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:gravity="left|center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/txt_show_contact_email"
+                        android:layout_width="379dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center|left"
+                        android:layout_weight="1"
+                        android:drawableLeft="@drawable/email_24"
+                        android:gravity="center|left"
+                        android:padding="2dp"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textSize="12dp" />
+                    <TextView
+                        android:id="@+id/txt_flag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="\u2713"
+                        android:layout_gravity="right|center"
+                        android:gravity="center|right"
+                        android:textColor="@color/orange"
+                        android:layout_marginRight="@dimen/sp_10"
+                        android:textSize="18dp"
+                        android:visibility="gone"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_gravity="left|center"
+                    android:layout_marginLeft="5dp" android:visibility="gone" android:gravity="left|center">
+
+                    <TextView android:id="@+id/txt_show_contact_primary" android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:layout_gravity="center"
+                        android:gravity="center" android:padding="5dp" android:layout_weight="1"
+                        android:singleLine="true" android:textColor="@color/black" android:textSize="14dp"
+                        android:layout_marginLeft="5dp" />
+
+                    <LinearLayout android:id="@+id/len_action" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:layout_gravity="left|center"
+                        android:layout_marginRight="5dp" android:background="@drawable/edit_text"
+                        android:gravity="center|left" android:layout_marginTop="2dp"
+                        android:layout_marginBottom="2dp" android:orientation="horizontal">
+
+                        <Spinner android:id="@+id/txt_action" android:padding="2dp"
+                            android:layout_width="90dp" android:layout_height="wrap_content"
+                            android:layout_gravity="center|left" android:layout_marginLeft="5dp"
+                            android:entries="@array/action" android:gravity="center|left"
+                            android:singleLine="true" android:text="Action" android:textColor="@color/black"
+                            android:textSize="10dp" />
+
+                        <ImageView android:layout_width="12dp" android:layout_height="10dp"
+                            android:visibility="gone" android:layout_gravity="center|left"
+                            android:src="@mipmap/ic_expand" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+
+
+
+            <TextView android:id="@+id/txt_show_office" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:maxLength="10"
+                android:visibility="gone"
+                android:layout_weight="1" android:padding="2dp" android:drawableLeft="@drawable/call_24"
+                android:textColor="@color/black" android:textSize="12dp" />
+
+        </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
+    </LinearLayout>
+
+</LinearLayout>
+
+
