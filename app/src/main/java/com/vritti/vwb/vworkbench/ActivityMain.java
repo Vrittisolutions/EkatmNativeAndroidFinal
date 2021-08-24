@@ -85,6 +85,8 @@ import com.vritti.DliveryModule.DeliveryDetailPage;
 import com.vritti.MilkModule.MilkRunLocationListActivity;
 import com.vritti.chat.activity.OpenChatroomActivity;
 import com.vritti.chat.bean.DefaultUser;
+import com.vritti.crm.vcrm7.ActivityOfflineData;
+import com.vritti.crm.vcrm7.CRMRightMenuActivity;
 import com.vritti.databaselib.data.DatabaseHandlers;
 import com.vritti.databaselib.other.Utility;
 import com.vritti.databaselib.other.WebUrlClass;
@@ -2447,7 +2449,18 @@ public class ActivityMain extends AppCompatActivity {
                         rowStart = 0;
                         reQuery = "Y";
                         new DownloadTeamDataJSON().execute();
-                        new DownloadWorkloadActivity().execute(UserMasterId, "");
+
+                        if(cf.getOfflineDataCnt() > 0){
+
+                            Intent intent = new Intent(ActivityMain.this, ActivityOfflineData.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(intent);
+
+
+                        }else{
+                            new DownloadWorkloadActivity().execute(UserMasterId, "");
+                        }
+
                         new DownloadBirthdayDataJSON().execute();
 
                     }

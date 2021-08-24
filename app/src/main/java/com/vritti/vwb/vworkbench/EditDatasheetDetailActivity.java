@@ -73,8 +73,8 @@ import com.vritti.vwb.classes.CommonFunction;
  */
 public class EditDatasheetDetailActivity extends AppCompatActivity {
 
-    String PlantMasterId ="", LoginId="", Password="", CompanyURL="", EnvMasterId="",
-            UserMasterId="",UserName = "", MobileNo = "";
+    String PlantMasterId = "", LoginId = "", Password = "", CompanyURL = "", EnvMasterId = "",
+            UserMasterId = "", UserName = "", MobileNo = "";
     Utility ut;
     DatabaseHandlers db;
     CommonFunction cf;
@@ -86,7 +86,7 @@ public class EditDatasheetDetailActivity extends AppCompatActivity {
     public String MaxValueText, ControlWidth, MaxNoOfResponses, ResponseType,
             Notes, FKPrimaryQuesId, FKSecondaryQuesId, IfResponseId,
             IsBranching, ExpectedResponse, DisableQuesStr, GroupID, GroupName,
-            QuesCode, MaxExpectedResponse, ResponseValue, Answer = " ", Answer_Value = " ",Attachment="";
+            QuesCode, MaxExpectedResponse, ResponseValue, Answer = " ", Answer_Value = " ", Attachment = "";
     public int SequenceNo, position, id, setFlag;
     public static final int MEDIA_TYPE_IMAGE = 1;
     private static final String IMAGE_DIRECTORY_NAME = "vWorkbench";
@@ -126,9 +126,9 @@ public class EditDatasheetDetailActivity extends AppCompatActivity {
     //GPSTracker gps;
     public static double latitude, longitude;
     String SourceId, FormId, ActivityId;
-    private ArrayList<String> selectedTravelId=new ArrayList<>();
+    private ArrayList<String> selectedTravelId = new ArrayList<>();
     private AppCompatCheckBox checkBoxcheck;
-    private ArrayList<String> selectedcvalue=new ArrayList<>();
+    private ArrayList<String> selectedcvalue = new ArrayList<>();
 
     File file;
     private static int RESULT_LOAD_IMG = 2;
@@ -137,7 +137,7 @@ public class EditDatasheetDetailActivity extends AppCompatActivity {
     private static final int RESULT_DOCUMENT = 4;
     private Uri outPutfileUri;
     private int APP_REQUEST_CODE = 4478;
-    private String attachment,PKCssDtlsID="";
+    private String attachment, PKCssDtlsID = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -153,8 +153,9 @@ public class EditDatasheetDetailActivity extends AppCompatActivity {
         EnvMasterId = ut.getValue(context, WebUrlClass.GET_EnvMasterID_KEY, settingKey);
         PlantMasterId = ut.getValue(context, WebUrlClass.GET_PlantID_KEY, settingKey);
         LoginId = ut.getValue(context, WebUrlClass.GET_LOGIN_KEY, settingKey);
-        Password =ut.getValue(context, WebUrlClass.GET_PSW_KEY, settingKey);
-       UserMasterId = ut.getValue(context, WebUrlClass.GET_USERMASTERID_KEY, settingKey);        UserName = ut.getValue(context, WebUrlClass.GET_USERNAME_KEY, settingKey);
+        Password = ut.getValue(context, WebUrlClass.GET_PSW_KEY, settingKey);
+        UserMasterId = ut.getValue(context, WebUrlClass.GET_USERMASTERID_KEY, settingKey);
+        UserName = ut.getValue(context, WebUrlClass.GET_USERNAME_KEY, settingKey);
         sql = db.getWritableDatabase();
         if (getIntent().hasExtra("FormId") && getIntent().hasExtra("FKQuesId")) {
             Intent intent = getIntent();
@@ -256,7 +257,8 @@ public class EditDatasheetDetailActivity extends AppCompatActivity {
 
                 edtAns.setMaxWidth(200);
                 //edtAns.setBackgroundResource(R.drawable.edittext_border);
-                edtAns.setInputType(InputType.TYPE_CLASS_NUMBER);
+                //edtAns.setInputType(InputType.TYPE_CLASS_NUMBER);
+                edtAns.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL | InputType.TYPE_NUMBER_FLAG_SIGNED);
                 edtAns.setTextSize(18);
                 edtAns.setHint("Enter answer");
                 edtAns.setFocusable(true);
@@ -482,7 +484,7 @@ public class EditDatasheetDetailActivity extends AppCompatActivity {
                 layoutBtn.setLayoutParams(new LayoutParams(
                         LayoutParams.FILL_PARENT, LayoutParams.MATCH_PARENT));
                 layoutBtn.setOrientation(LinearLayout.VERTICAL);
-               // layoutBtn.addView(layoutbtnCode);
+                // layoutBtn.addView(layoutbtnCode);
                 layoutBtn.addView(layoutans);
                 layoutBtn.addView(view);
                 layoutBtn.addView(layoutbtnatch);
@@ -849,10 +851,10 @@ public class EditDatasheetDetailActivity extends AppCompatActivity {
                 });
 
             } else {
-               // UUID uuid = UUID.randomUUID();
-               // detailid = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
-                        //newId).getDetailid();
-               // detailid = uuid.toString();
+                // UUID uuid = UUID.randomUUID();
+                // detailid = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                //newId).getDetailid();
+                // detailid = uuid.toString();
 
                 final TextView txtque = new TextView(this);
                 RelativeLayout.LayoutParams paramstxt = new RelativeLayout.LayoutParams(
@@ -1096,7 +1098,7 @@ public class EditDatasheetDetailActivity extends AppCompatActivity {
                 layoutBtn.setLayoutParams(new LayoutParams(
                         LayoutParams.FILL_PARENT, LayoutParams.MATCH_PARENT));
                 layoutBtn.setOrientation(LinearLayout.VERTICAL);
-               // layoutBtn.addView(layoutbtnCode);
+                // layoutBtn.addView(layoutbtnCode);
                 layoutBtn.addView(layoutans);
                 layoutBtn.addView(view);
                 layoutBtn.addView(layoutbtnatch);
@@ -1477,7 +1479,7 @@ public class EditDatasheetDetailActivity extends AppCompatActivity {
                 UUID uuid = UUID.randomUUID();
                 detailid = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
                         newId).getDetailid();
-               // detailid = uuid.toString();
+                // detailid = uuid.toString();
                 int totalLength = 0;
                 String token = null;
                 final StringTokenizer st = new StringTokenizer(SelectionText, "|");
@@ -1585,13 +1587,13 @@ public class EditDatasheetDetailActivity extends AppCompatActivity {
                     checkBoxcheck.setText(txt);
                     cf.addDatasheetSelection(i, txt, txtvalue, FormId, FKQuesId);
 
-                        if (Answer == null || Answer.equalsIgnoreCase("") || Answer.equalsIgnoreCase("null")) {
+                    if (Answer == null || Answer.equalsIgnoreCase("") || Answer.equalsIgnoreCase("null")) {
 
-                        } else {
-                            String[] arr = Answer.split("@,");
+                    } else {
+                        String[] arr = Answer.split("@,");
 
-                            Answer=arr[0];
-                        }
+                        Answer = arr[0];
+                    }
 
 
                     if (Answer == null || Answer.equalsIgnoreCase("") || Answer.equalsIgnoreCase("null")) {
@@ -1613,12 +1615,12 @@ public class EditDatasheetDetailActivity extends AppCompatActivity {
                         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                             int a = buttonView.getId();
                             radiselection_text = checkBoxcheck.getText().toString();
-                            radioselection_value=getCheckboxvalue(radiselection_text);
+                            radioselection_value = getCheckboxvalue(radiselection_text);
                             if (isChecked) {
                                 selectedTravelId.add(radiselection_text);
                                 selectedcvalue.add(radioselection_value);
                             } else {
-                                if (selectedTravelId.contains(radiselection_text)||selectedcvalue.contains(radioselection_value) ){
+                                if (selectedTravelId.contains(radiselection_text) || selectedcvalue.contains(radioselection_value)) {
                                     selectedTravelId.remove(radiselection_text);
                                     selectedcvalue.remove(radioselection_value);
 
@@ -1825,7 +1827,7 @@ public class EditDatasheetDetailActivity extends AppCompatActivity {
                                 StringBuilder travelId = new StringBuilder();
                                 StringBuilder value = new StringBuilder();
 
-                                String data = "",data1="";
+                                String data = "", data1 = "";
                                 for (int i = 0; i < selectedTravelId.size(); i++) {
 
                                     travelId.append(selectedTravelId.get(i));
@@ -1855,7 +1857,6 @@ public class EditDatasheetDetailActivity extends AppCompatActivity {
                                     data1 = value.toString();// to convert StringBuilder to String
 
                                 }
-
 
 
                                 cf.addDatasheetANS(new Datasheet(
@@ -2156,7 +2157,6 @@ public class EditDatasheetDetailActivity extends AppCompatActivity {
                     txtvalue = stvalue.nextToken();
                     rbutton1.setText(txt);
                     cf.addDatasheetSelection(i, txt, txtvalue, FormId, FKQuesId);
-
 
 
                     if (Answer == null || Answer.equalsIgnoreCase("") || Answer.equalsIgnoreCase("null")) {
@@ -2567,11 +2567,11 @@ public class EditDatasheetDetailActivity extends AppCompatActivity {
         }
 
         /************************************* Numeric ****************************************************************/
-          if (ResponseType.equals("Numeric")) {
+        if (ResponseType.equals("Numeric")) {
             UUID uuid = UUID.randomUUID();
-           // detailid = uuid.toString();
-              detailid = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
-                      newId).getDetailid();
+            // detailid = uuid.toString();
+            detailid = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                    newId).getDetailid();
 
             final TextView txtque = new TextView(this);
             RelativeLayout.LayoutParams paramstxt = new RelativeLayout.LayoutParams(
@@ -2592,7 +2592,8 @@ public class EditDatasheetDetailActivity extends AppCompatActivity {
             // edtAns.setHint("Enter answer");
             edtAns.setMaxWidth(200);
             // edtAns.setBackgroundResource(R.drawable.edittext_border);
-            edtAns.setInputType(InputType.TYPE_CLASS_NUMBER);
+            // edtAns.setInputType(InputType.TYPE_CLASS_NUMBER);
+            edtAns.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL | InputType.TYPE_NUMBER_FLAG_SIGNED);
             edtAns.setTextSize(18);
             edtAns.setHint("Enter answer " + ValueMin + " - " + ValueMax);
             edtAns.setFocusable(true);
@@ -2679,7 +2680,7 @@ public class EditDatasheetDetailActivity extends AppCompatActivity {
             layoutbtnCode.setOrientation(LinearLayout.HORIZONTAL);
 
             layoutbtnCode.setGravity(Gravity.CENTER);
-           // layoutbtnCode.addView(layoutQR);
+            // layoutbtnCode.addView(layoutQR);
             //layoutbtnCode.addView(layoutBarcode);
 
             //layoutbtnCode.setPadding(10, 10, 10, 10);
@@ -2813,7 +2814,7 @@ public class EditDatasheetDetailActivity extends AppCompatActivity {
             layoutBtn.setLayoutParams(new LayoutParams(
                     LayoutParams.FILL_PARENT, LayoutParams.MATCH_PARENT));
             layoutBtn.setOrientation(LinearLayout.VERTICAL);
-          //  layoutBtn.addView(layoutbtnCode);
+            //  layoutBtn.addView(layoutbtnCode);
             layoutBtn.addView(layoutans);
             layoutBtn.addView(view);
             layoutBtn.addView(layoutbtnatch);
@@ -3251,6 +3252,7 @@ public class EditDatasheetDetailActivity extends AppCompatActivity {
                 super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
+
     private void requestCameraPermission() {
         if (ContextCompat.checkSelfPermission(this,
                 android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -3289,7 +3291,7 @@ public class EditDatasheetDetailActivity extends AppCompatActivity {
         TextView camera = (TextView) dialog.findViewById(R.id.camera);
         TextView gallery = (TextView) dialog.findViewById(R.id.gallery);
         TextView textViewCancel = (TextView) dialog.findViewById(R.id.cancel);
-        TextView document=dialog.findViewById(R.id.document);
+        TextView document = dialog.findViewById(R.id.document);
         gallery.setVisibility(View.VISIBLE);
         camera.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -3331,6 +3333,7 @@ public class EditDatasheetDetailActivity extends AppCompatActivity {
         startActivityForResult(intent, RESULT_LOAD_IMG);
 
     }
+
     private void DocumentIntent() {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("application/*");
@@ -3357,6 +3360,7 @@ public class EditDatasheetDetailActivity extends AppCompatActivity {
         intent.putExtra(MediaStore.EXTRA_OUTPUT, outPutfileUri);
         startActivityForResult(intent, RESULT_CAPTURE_IMG);
     }
+
     private String getRealPathFromURI(Uri outPutfileUri) {
         Cursor cur = getContentResolver().query(outPutfileUri, null, null, null, null);
         cur.moveToFirst();
@@ -3369,7 +3373,7 @@ public class EditDatasheetDetailActivity extends AppCompatActivity {
         //Uri imageUri = (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM);
         if (imageUri != null) {
             File file = new File(getCacheDir(), "image");
-            InputStream inputStream=getContentResolver().openInputStream(imageUri);
+            InputStream inputStream = getContentResolver().openInputStream(imageUri);
             try {
 
                 OutputStream output = new FileOutputStream(file);
@@ -3387,7 +3391,7 @@ public class EditDatasheetDetailActivity extends AppCompatActivity {
                 }
             } finally {
                 inputStream.close();
-                byte[] bytes =getFileFromPath(file);
+                byte[] bytes = getFileFromPath(file);
                 Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
                 bitmapToUriConverter(bitmap);
                 //Upload Bytes.
@@ -3429,10 +3433,10 @@ public class EditDatasheetDetailActivity extends AppCompatActivity {
                     true);
             String path1 = Environment.getExternalStorageDirectory()
                     .toString();
-            File file = new File(path1 + "/" + "Sahara"+"/"+"Sender");
+            File file = new File(path1 + "/" + "Sahara" + "/" + "Sender");
             if (!file.exists())
                 file.mkdirs();
-            File file1 = new File(file, "Image-"+ new Random().nextInt() + ".jpg");
+            File file1 = new File(file, "Image-" + new Random().nextInt() + ".jpg");
             if (file1.exists())
                 file1.delete();
            /* File file = new File(SharefunctionActivity.this.getFilesDir(), "Image"
@@ -3462,10 +3466,7 @@ public class EditDatasheetDetailActivity extends AppCompatActivity {
                 ut.displayToast(EditDatasheetDetailActivity.this, "No Internet connection");
                 //  Toast.makeText(ActivityMain.this, , Toast.LENGTH_LONG).show();
             }
-            Toast.makeText(EditDatasheetDetailActivity.this,"Document attached successfully",Toast.LENGTH_SHORT).show();
-
-
-
+            Toast.makeText(EditDatasheetDetailActivity.this, "Document attached successfully", Toast.LENGTH_SHORT).show();
 
 
             //	uri = Uri.fromFile(f);
@@ -3501,6 +3502,7 @@ public class EditDatasheetDetailActivity extends AppCompatActivity {
 
         return inSampleSize;
     }
+
     public static String getRealPathFromUri(Context context, final Uri uri) {
         // DocumentProvider
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT && DocumentsContract.isDocumentUri(context, uri)) {
@@ -3622,8 +3624,8 @@ public class EditDatasheetDetailActivity extends AppCompatActivity {
                     outPutfileUri = Uri.parse(url);
                     if (outPutfileUri.toString().contains("content")) {
                         handleSendImage(outPutfileUri);
-                    }else {
-                        File file = new File(getRealPathFromUri(EditDatasheetDetailActivity.this,outPutfileUri));//create path from uri
+                    } else {
+                        File file = new File(getRealPathFromUri(EditDatasheetDetailActivity.this, outPutfileUri));//create path from uri
                         attachment = file.getName();
                         if (isnet()) {
                             new StartSession(context, new CallbackInterface() {
@@ -3666,8 +3668,8 @@ public class EditDatasheetDetailActivity extends AppCompatActivity {
                     outPutfileUri = Uri.parse(url);
                     if (outPutfileUri.toString().contains("content")) {
                         handleSendImage(outPutfileUri);
-                    }else {
-                        File file = new File(getRealPathFromUri(EditDatasheetDetailActivity.this,outPutfileUri));//create path from uri
+                    } else {
+                        File file = new File(getRealPathFromUri(EditDatasheetDetailActivity.this, outPutfileUri));//create path from uri
                         attachment = file.getName();
 
                         if (isnet()) {
@@ -3690,7 +3692,6 @@ public class EditDatasheetDetailActivity extends AppCompatActivity {
                     }
 
 
-
                     //img_userpic.setImageURI(fileUri);
                     //callChangeProfileImageApi(file.getAbsoluteFile().toString());
 
@@ -3699,10 +3700,10 @@ public class EditDatasheetDetailActivity extends AppCompatActivity {
                     Toast.makeText(this, "You haven't picked Image",
                             Toast.LENGTH_LONG).show();
                 }
-            }else if (requestCode == RESULT_DOCUMENT && null != data) {
+            } else if (requestCode == RESULT_DOCUMENT && null != data) {
 
                 Uri selectedFileURI = data.getData();
-                File file = new File(getRealPathFromUri(EditDatasheetDetailActivity.this,selectedFileURI));//create path from uri
+                File file = new File(getRealPathFromUri(EditDatasheetDetailActivity.this, selectedFileURI));//create path from uri
                 Log.d("", "File : " + file.getName());
                 attachment = file.toString();
 
@@ -3723,8 +3724,7 @@ public class EditDatasheetDetailActivity extends AppCompatActivity {
                     //  Toast.makeText(ActivityMain.this, , Toast.LENGTH_LONG).show();
                 }
 
-            }
-            else {
+            } else {
                 if (requestCode == APP_REQUEST_CODE) {
                     Toast.makeText(this, "verification cancel",
                             Toast.LENGTH_LONG).show();
@@ -3759,12 +3759,12 @@ public class EditDatasheetDetailActivity extends AppCompatActivity {
         protected String doInBackground(String... urls) {
 
             try {
-                String upLoadServerUri = CompanyURL + WebUrlClass.api_UploadAttechmentnew + "?AppEnvMasterId=" + EnvMasterId +"&ActivityId="+ detailid;
+                String upLoadServerUri = CompanyURL + WebUrlClass.api_UploadAttechmentnew + "?AppEnvMasterId=" + EnvMasterId + "&ActivityId=" + detailid;
                 FileInputStream fileInputStream = new FileInputStream(attachment);
                 Object res = null;
-                File file=new File(attachment);
-                response = String.valueOf(Utility.OpenMultiPart(upLoadServerUri , file));
-                if (response!= null && (!response.equals(""))) {
+                File file = new File(attachment);
+                response = String.valueOf(Utility.OpenMultiPart(upLoadServerUri, file));
+                if (response != null && (!response.equals(""))) {
                     try {
                         /*Log.i("imageNameDone:", urls[0]);
                         jsonimage.put("File", urls[0]);
@@ -3792,7 +3792,7 @@ public class EditDatasheetDetailActivity extends AppCompatActivity {
 
             } catch (Exception e) {
                 e.printStackTrace();
-                Log.d("ImageText",e.getMessage());
+                Log.d("ImageText", e.getMessage());
             }
 
             return response;
@@ -3809,6 +3809,7 @@ public class EditDatasheetDetailActivity extends AppCompatActivity {
 
         }
     }
+
     private boolean isnet() {
         // TODO Auto-generated method stub
         Context context = this.getApplicationContext();

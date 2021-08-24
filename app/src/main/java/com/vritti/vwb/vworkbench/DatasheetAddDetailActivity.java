@@ -280,7 +280,8 @@ public class DatasheetAddDetailActivity extends AppCompatActivity {
 
                 edtAns.setMaxWidth(200);
                 //edtAns.setBackgroundResource(R.drawable.edittext_border);
-                edtAns.setInputType(InputType.TYPE_CLASS_NUMBER);
+              //  edtAns.setInputType(InputType.TYPE_CLASS_NUMBER);
+                edtAns.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL | InputType.TYPE_NUMBER_FLAG_SIGNED);
                 edtAns.setTextSize(18);
                 edtAns.setHint("Enter answer");
                 edtAns.setFocusable(true);
@@ -2830,7 +2831,8 @@ public class DatasheetAddDetailActivity extends AppCompatActivity {
             // edtAns.setHint("Enter answer");
             edtAns.setMaxWidth(200);
             // edtAns.setBackgroundResource(R.drawable.edittext_border);
-            edtAns.setInputType(InputType.TYPE_CLASS_NUMBER);
+          //  edtAns.setInputType(InputType.TYPE_CLASS_NUMBER);
+            edtAns.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL | InputType.TYPE_NUMBER_FLAG_SIGNED);
             edtAns.setTextSize(18);
             edtAns.setHint("Enter answer " + ValueMin + " - " + ValueMax);
             edtAns.setFocusable(true);

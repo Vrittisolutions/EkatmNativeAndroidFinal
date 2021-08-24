@@ -403,8 +403,9 @@ getCurrentLocationNew();
 
                 String status = "";
                 String url = CompanyURL + WebUrlClass.api_save_datasheet;
-                String op = ActivityName;
-                remark = "Datasheet save successfully for ";
+                String op = "Success-Data Save Successfully";
+
+                remark = "Datasheet save successfully for- "+ActivityName;
                 CreateOfflinedatasheetfill_Appr(url, FinalObj, WebUrlClass.POSTFLAG, remark, op);
 
 
@@ -2199,7 +2200,7 @@ getCurrentLocationNew();
         long a = cf.addofflinedata(url, parameter, method, remark, op);
         if (a != -1) {
             SQLiteDatabase sql1 = db.getWritableDatabase();
-            sql1.delete(db.TABLE_ACTIVITYMASTER, "ActivityId=?",
+            sql1.delete(db.TABLE_ACTIVITYMASTER_PAGING, "ActivityId=?",
                     new String[]{ActivityId});
             Toast.makeText(AddDatasheetActivityMain.this, "Datasheet save successfully", Toast.LENGTH_LONG).show();
             //  dismissProgressDialog();
