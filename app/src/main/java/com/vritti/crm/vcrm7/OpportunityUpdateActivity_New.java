@@ -9,6 +9,7 @@ import android.content.ActivityNotFoundException;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -37,12 +38,14 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v4.widget.ImageViewCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -68,6 +71,7 @@ import android.widget.Toast;
 
 import com.firebase.jobdispatcher.FirebaseJobDispatcher;
 import com.firebase.jobdispatcher.Job;
+import com.vritti.AlfaLavaModule.activity.picking.ItemWisePickListDetailActivity;
 import com.vritti.SaharaModule.SaharaBeans.AttachmentBean;
 import com.vritti.crm.adapter.AttachmentDetailsAdapter;
 import com.vritti.crm.classes.CommonFunctionCrm;
@@ -221,7 +225,7 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
     private boolean isFollowup = false, IsOutcome = false,
             isReason = false, Contact = false, Approver = false,
             Receive = false, Schedule = false,isOrder = false,isAssignBOE=false,
-            isAssignSE=false,isDemo=false,isPreSale=false,isHandOver=false,isVisit=false,isCurrency=false;
+            isAssignSE=false,isDemo=false,isPreSale=false,isHandOver=false,isVisit=false,isCurrency=false,isAssignBOESE=false;
     public final int Followup = 2;
 
     TextView Firmname, actiondatetime, tv_latestremark, tvcall, txt_expvalue, milestone, txt_prospect, call_rating;
@@ -279,6 +283,9 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
     private String Flag="",Start="";
     private SharedPreferences AtendanceSheredPreferance;
     private int check=0;
+    private String Duration="",CalllogDuration;
+    private Date d;
+    private AlertDialog alertDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -302,7 +309,7 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
         UserType = userpreferences.getString(WebUrlClass.USERINFO_USER_TYPE, "");
         AtendanceSheredPreferance = getSharedPreferences(WebUrlClass.ATTENDANCE_PREFERENCES, Context.MODE_PRIVATE);
 
-        dateFormat = new SimpleDateFormat("HH:mm aa");
+        dateFormat = new SimpleDateFormat("HH:mm");
         cl = Calendar.getInstance();
         init_layout();
         init_spinner();
@@ -348,14 +355,48 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
             starttime = intent.getStringExtra("starttime");
 
             String Tstarttime = intent.getStringExtra("starttime");
-            Telestarttime = formateDateFromstring("yyyy-MM-dd HH:mm:ss.SSS", "hh:mm", Tstarttime);
+            //Telestarttime = formateDateFromstring("yyyy-MM-dd HH:mm:ss.SSS", "hh:mm", Tstarttime);
+
+            SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+            SimpleDateFormat output = new SimpleDateFormat("HH:mm");
+            try {
+                d = dateformat.parse(Tstarttime /*your date as String*/);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            Telestarttime = output.format(d);
+
+            Log.d("Date format", "output Startdate :" + Telestarttime);
+
             edtfrom.setText(Telestarttime);
             endtime = intent.getStringExtra("endtime");
             Teleendtime = intent.getStringExtra("endtime");
-            Teleendtime = formateDateFromstring("yyyy-MM-dd HH:mm:ss.SSS", "hh:mm", Teleendtime);
+           // Teleendtime = formateDateFromstring("yyyy-MM-dd HH:mm:ss.SSS", "hh:mm aa", Teleendtime);
+            dateformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+            output = new SimpleDateFormat("HH:mm");
+            try {
+                d = dateformat.parse(Teleendtime /*your date as String*/);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            Teleendtime = output.format(d);
+            Log.d("Date format", "output Enddate :" + Teleendtime);
             edtto.setText(Teleendtime);
-            duration = intent.getStringExtra("duration");
-            EdttxtHours.setText(duration);
+
+            Duration = intent.getStringExtra("duration");
+           try{
+            String namepass[] = Duration.split(":");
+            String hh = namepass[1];
+            String mm = namepass[2];
+            Duration=hh+":"+mm;
+            //Log.d("Duration",Duration);
+
+            EdttxtHours.setText(Duration);
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
             MobileCallType = intent.getStringExtra("MobileCalltype");
             rowNo = intent.getStringExtra("rowNo");
             CurrentDate = formateDateFromstring("yyyy-MM-dd HH:mm:ss.SSS", "dd/MM/yyyy", Tstarttime);
@@ -386,6 +427,25 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
         else {
 
             if (getIntent().hasExtra("Start")){
+                btnemailid.setEnabled(false);
+                btnemailid.setClickable(false);
+                btntelep.setEnabled(false);
+                btntelep.setClickable(false);
+                edtto.setClickable(false);
+                edtto.setEnabled(false);
+                edtfrom.setEnabled(false);
+                edtfrom.setClickable(false);
+                btnyesterday.setEnabled(false);
+                btnyesterday.setClickable(false);
+                btnbefore.setEnabled(false);
+                btnbefore.setClickable(false);
+                editTextFollowupDate.setEnabled(false);
+                editTextFollowupDate.setClickable(false);
+                layhead.setVisibility(View.GONE);
+                layHdr_two.setVisibility(View.VISIBLE);
+
+                getheader_2();
+
                 if (starttime.equals("")) {
                 if (Start != null) {
 
@@ -425,8 +485,8 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                 if (!endtime.equals("")) {
                     edtto.setText(endtime);
                 }
-                if (!duration.equals("")) {
-                    EdttxtHours.setText(duration);
+                if (!Duration.equals("")) {
+                    EdttxtHours.setText(Duration);
                 }
                 //   editTextFollowupDate.setText(CurrentDate);
                 //  txt3dateshow.setText(whendoucall);
@@ -442,6 +502,7 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
         firmname = intent.getStringExtra("firmname");
         table = intent.getStringExtra("table");
         ProspectId = intent.getStringExtra("ProspectId");
+
         if (getIntent().hasExtra("callmob")) {
             LogContact = getIntent().getStringExtra("callmob");
         }
@@ -449,19 +510,24 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
         if (table.equalsIgnoreCase("Call")) {
             tablename = db.TABLE_CRM_CALL;
             tablename_partial = db.TABLE_CRM_CALL_PARTIAL;
-        } else if (table.equalsIgnoreCase("Opportunity")) {
+        }
+        else if (table.equalsIgnoreCase("Opportunity")) {
             tablename = db.TABLE_CRM_CALL_OPP;
             tablename_partial = db.TABLE_CRM_CALL_PARTIAL_OPP;
-        } else if (table.equalsIgnoreCase("Callfromcalllogs")) {
+        }
+        else if (table.equalsIgnoreCase("Callfromcalllogs")) {
             tablename = db.TABLE_CRM_CALL;
             tablename_partial = db.TABLE_CRM_CALL_PARTIAL;
 
         }
+
         if (calltype.equalsIgnoreCase("1")) {
             getoutcome = "Sales";
-        } else if (calltype.equalsIgnoreCase("2")) {
+        }
+        else if (calltype.equalsIgnoreCase("2")) {
             getoutcome = "Collection";
-        } else if (calltype.equalsIgnoreCase("3")) {
+        }
+        else if (calltype.equalsIgnoreCase("3")) {
             getoutcome = "Feedback";
             layhead.setVisibility(View.GONE);
         }
@@ -703,7 +769,7 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
             edtfrom.setText(Telestarttime);
             edtto.setText(Teleendtime);
             if (!type.equalsIgnoreCase("")) {
-                EdttxtHours.setText(duration);
+                EdttxtHours.setText(Duration);
             } else {
                 String count = calculate_time_diff(Telestarttime, Teleendtime);
                 Log.d("crm_dialog_action", "count" + count);
@@ -772,6 +838,11 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                 followupreasonid = data.getStringExtra("ID");
 
                 spinner_Followupreason.setText(Reason);
+                spinner_Followupreason.setError(null);
+                Openoutcome();
+
+
+
             } else if (IsOutcome == true) {
                 String Outcome = data.getStringExtra("Name");
                 outcomeid = data.getStringExtra("ID");
@@ -799,6 +870,7 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                 reasonid = data.getStringExtra("ID");
 
                 spinner_Reason.setText(reason);
+                spinner_Reason.setError(null);
 
             } else if (Schedule == true) {
                 String reason = data.getStringExtra("Name");
@@ -813,6 +885,13 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                 String reason = data.getStringExtra("Name");
                 reassignboeid = data.getStringExtra("ID");
                 spinner_ReassigntoBOE.setText(reason);
+                spinner_ReassigntoBOE.setError(null);
+            }
+            else if (isAssignBOESE == true) {
+                String reason = data.getStringExtra("Name");
+                reassignboeid = data.getStringExtra("ID");
+                spinner_AssigntoBOE_SE.setText(reason);
+                spinner_AssigntoBOE_SE.setError(null);
             }
             else if (isPreSale == true) {
                 String reason = data.getStringExtra("Name");
@@ -832,6 +911,11 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                 String whom = data.getStringExtra("Name");
                 followupwithid = data.getStringExtra("ID");
                 spinner_With_Towhom.setText(whom);
+                spinner_With_Towhom.setError(null);
+
+
+
+                OpenFollouppurpose();
 
             }
 
@@ -1033,6 +1117,97 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
 
     }
 
+    private void OpenFollouppurpose() {
+
+        Intent intent = new Intent(OpportunityUpdateActivity_New.this,
+                CountryListActivity.class);
+
+        IsOutcome = false;
+        isFollowup = true;
+        isReason = false;
+        isOrder = false;
+        isAssignBOE = false;
+        isAssignBOESE = false;
+        isAssignSE = false;
+        isDemo = false;
+        Receive=false;
+        Contact = false;
+        Approver=false;
+        isHandOver=false;
+        isPreSale=false;
+        isVisit = false;
+        isCurrency = false;
+        String url = CompanyURL + WebUrlClass.api_getFollowupReason;
+        intent.putExtra("Table_Name", db.TABLE_Followup_reason);
+        intent.putExtra("Id", "PKCallPurposeId");
+        intent.putExtra("DispName", "CallPurposeDesc");
+        intent.putExtra("WHClauseParameter", "");
+        //intent.putExtra("WHClauseParamVal","");
+        intent.putExtra("APIName", url);
+        intent.putExtra("out", "follow");
+        //intent.putExtra("APIParameters","");
+        //intent.putExtra("ArrayList",    "ArrayList<Territory> mList = new ArrayList<>()");
+        startActivityForResult(intent, Followup);
+        overridePendingTransition(R.anim.slide_right_to_left, R.anim.slide_left_to_right);
+
+
+    }
+
+    private void Openoutcome() {
+
+        Intent intent = new Intent(OpportunityUpdateActivity_New.this,
+                CountryListActivity.class);
+
+        IsOutcome = true;
+        isFollowup = false;
+        isReason = false;
+        isOrder = false;
+        isAssignBOE = false;
+        isAssignBOESE = false;
+        isAssignSE = false;
+        isDemo = false;
+        Receive=false;
+        Contact = false;
+        Approver=false;
+        isHandOver=false;
+        isPreSale=false;
+        isVisit = false;
+        isCurrency = false;
+
+        String url = "";
+        if (calltype.equalsIgnoreCase("1")) {
+            getoutcome = "Sales";
+        } else if (calltype.equalsIgnoreCase("2")) {
+            getoutcome = "Collection";
+        } else if (calltype.equalsIgnoreCase("3")) {
+            getoutcome = "Feedback";
+            layhead.setVisibility(View.GONE);
+        }
+        try {
+            url = CompanyURL + WebUrlClass.api_Outcome
+                    + "?CallType=" + URLEncoder.encode(getoutcome, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        intent.putExtra("Table_Name", db.TABLE_Outcome);
+        intent.putExtra("Id", "Code");
+        intent.putExtra("DispName", "Outcome");
+        intent.putExtra("WHClauseParameter", "WHERE OutcomeType='" + getoutcome + "'");
+        intent.putExtra("APIName", url);
+        intent.putExtra("out", "1");
+        startActivityForResult(intent, Followup);
+        Animation animation = AnimationUtils.loadAnimation(OpportunityUpdateActivity_New.this, R.anim.slide_right_to_left);
+        animation.setDuration(1);
+        len_outcome.setAnimation(animation);
+        len_outcome.animate();
+        animation.start();
+        layHdr_one.setVisibility(View.GONE);
+        layHdr_two.setVisibility(View.GONE);
+        lay_next_action.setVisibility(View.GONE);
+        len_outcome.setVisibility(View.VISIBLE);
+
+    }
+
     private void Outcomedata(String outcomeid) {
         selected_outcome_code = outcomeid;
         //selected_outcome_code = cf.getOutcomecode(outcomeid);
@@ -1047,7 +1222,8 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
             // TODO: handle exception
         }
 
-        if (selected_outcome_code.equalsIgnoreCase("ATS")) {
+        if (selected_outcome_code.equalsIgnoreCase("ATS"))
+        {
             //  spinner_Nextaction.setSelection();
             lay_AssigntoBOE_SE.setVisibility(View.VISIBLE);
             spinner_AssigntoBOE_SE.setSelection(0);
@@ -1104,7 +1280,67 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
             lay_processed.setVisibility(View.GONE);
 
             getCategory();
-        } else if (selected_outcome_code.equalsIgnoreCase("CA")
+        }
+        else if (selected_outcome_code.equalsIgnoreCase("QR"))
+        {
+            //  spinner_Nextaction.setSelection();
+            lay_AssigntoBOE_SE.setVisibility(View.VISIBLE);
+            spinner_AssigntoBOE_SE.setSelection(0);
+            lay_Reason.setVisibility(View.GONE);
+            lay_Whendoyoucall.setVisibility(View.GONE);
+            lay_Approver.setVisibility(View.GONE);
+            lay_Details.setVisibility(View.GONE);
+            lay_Callagain.setVisibility(View.GONE);
+            lay_Notes.setVisibility(View.GONE);
+            lay_Mode.setVisibility(View.GONE);
+            lay_InstrumentNo.setVisibility(View.GONE);
+            lay_BankName.setVisibility(View.GONE);
+            lay_Branch.setVisibility(View.GONE);
+            lay_ChqAmount.setVisibility(View.GONE);
+            lay_TDSAmount.setVisibility(View.GONE);
+            lay_DiffAmount.setVisibility(View.GONE);
+            lay_ReasonED.setVisibility(View.GONE);
+            lay_PBT.setVisibility(View.GONE);
+            lay_PTA.setVisibility(View.GONE);
+            lay_Networth.setVisibility(View.GONE);
+            lay_Creditrate.setVisibility(View.GONE);
+            lay_PresentBorrowing.setVisibility(View.GONE);
+            lay_currency.setVisibility(View.GONE);
+            lay_rs.setVisibility(View.GONE);
+            lay_Managementcomment.setVisibility(View.GONE);
+            lay_DemoComplete.setVisibility(View.GONE);
+            lay_Demo.setVisibility(View.GONE);
+            lay_Date_time_custom.setVisibility(View.GONE);
+            lay_ProductForBank.setVisibility(View.GONE);
+            lay_cospreferred.setVisibility(View.GONE);
+            lay_PrepaymentSecuterization.setVisibility(View.GONE);
+            lay_ParticipateInsyndication.setVisibility(View.GONE);
+            lay_Receiveddate.setVisibility(View.GONE);
+            lay_PONo.setVisibility(View.GONE);
+            lay_POvalue.setVisibility(View.GONE);
+            lay_Ordertype.setVisibility(View.GONE);
+            lay_Contractreviewrequest.setVisibility(View.GONE);
+            lay_CustomerBudgetSanction.setVisibility(View.GONE);
+            lay_CustomerBudget.setVisibility(View.GONE);
+            lay_QuotationValue.setVisibility(View.GONE);
+            lay_QuotationDocument.setVisibility(View.GONE);
+            lay_ReassigntoBOE.setVisibility(View.GONE);
+            lay_PresaleSE.setVisibility(View.GONE);
+            lay_SEName.setVisibility(View.GONE);
+            lay_whowillvisit.setVisibility(View.GONE);
+            lay_Receivedby.setVisibility(View.GONE);
+            lay_Quotationno.setVisibility(View.GONE);
+            lay_application_no.setVisibility(View.GONE);
+            lay_dochandover.setVisibility(View.GONE);
+            lay_savingacc.setVisibility(View.GONE);
+            lay_fdacc.setVisibility(View.GONE);
+            lay_disburseVal.setVisibility(View.GONE);
+            lay_tenure.setVisibility(View.GONE);
+            lay_processed.setVisibility(View.GONE);
+
+            getCategory();
+        }
+        else if (selected_outcome_code.equalsIgnoreCase("CA")
                 || selected_outcome_code.equalsIgnoreCase("CustCall")) {
             lay_Reason.setVisibility(View.VISIBLE);
             lay_AssigntoBOE_SE.setVisibility(View.GONE);
@@ -2107,7 +2343,8 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
             lay_Reason.setVisibility(View.GONE);
             lay_Approver.setVisibility(View.GONE);
             lay_Details.setVisibility(View.GONE);
-            lay_Callagain.setVisibility(View.GONE);
+            lay_Callagain.setVisibility(View.VISIBLE);
+            lay_Whendoyoucall.setVisibility(View.VISIBLE);
             lay_Notes.setVisibility(View.GONE);
             lay_Mode.setVisibility(View.GONE);
             lay_InstrumentNo.setVisibility(View.GONE);
@@ -2140,7 +2377,7 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
 
                 lay_gstn.setVisibility(View.VISIBLE);
             }
-            lay_Ordertype.setVisibility(View.VISIBLE);
+            lay_Ordertype.setVisibility(View.GONE);
             lay_Contractreviewrequest.setVisibility(View.VISIBLE);
             lay_CustomerBudgetSanction.setVisibility(View.GONE);
             lay_CustomerBudget.setVisibility(View.GONE);
@@ -2150,7 +2387,6 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
             lay_PresaleSE.setVisibility(View.GONE);
             lay_SEName.setVisibility(View.GONE);
             lay_whowillvisit.setVisibility(View.GONE);
-            lay_Whendoyoucall.setVisibility(View.GONE);
             lay_Quotationno.setVisibility(View.GONE);
             lay_application_no.setVisibility(View.GONE);
             lay_dochandover.setVisibility(View.GONE);
@@ -2979,7 +3215,7 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
         int minutes = 0;
         try {
 
-            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm aa");
+            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
 
 
             Date d1 = sdf.parse(t1);
@@ -3022,6 +3258,57 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
 
 
     }
+    private String calculate_time_diff_calllog(String t1, String t2) {
+
+        float min = 0;
+        int hours = 0;
+        int minutes = 0;
+        try {
+
+            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+
+
+            Date d1 = sdf.parse(t1);
+
+            Date d2 = sdf.parse(t2);
+
+
+            long diffMs = d2.getTime() - d1.getTime();
+            int diffSec = (int) diffMs / 1000;
+            min = diffSec / 60;
+            /*if(min<60){
+
+            }else {
+                min = min / 60;
+            }*/
+            int sec = (int) diffSec % 60;
+
+
+            final int MINUTES_IN_AN_HOUR = 60;
+            final int SECONDS_IN_A_MINUTE = 60;
+
+            int seconds = diffSec % SECONDS_IN_A_MINUTE;
+            int totalMinutes = diffSec / SECONDS_IN_A_MINUTE;
+            minutes = totalMinutes % MINUTES_IN_AN_HOUR;
+            hours = totalMinutes / MINUTES_IN_AN_HOUR;
+
+            Log.d("crm_dialog_action", "crm_dialog_action" + hours + ":" + minutes);
+            Log.d("crm_dialog_action", "crm_dialog_action" + min);
+            Log.d("crm_dialog_action", "crm_dialog_action" + sec);
+            if (min < 0) {
+                min = 0;
+            } else {
+
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return hours + ":" + minutes;
+
+
+    }
+
 
     private void getNextAction() {
 
@@ -3542,7 +3829,13 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                 reasonid.equalsIgnoreCase(" ") ||
                 reasonid.equalsIgnoreCase(null))) {
             //  edt_inwarddate.setError("Fill Inward date");
-            Toast.makeText(context, "Select Reason", Toast.LENGTH_LONG).show();
+           // Toast.makeText(context, "Select Reason", Toast.LENGTH_LONG).show();
+            spinner_Reason.setError("Select Reason");
+            spinner_Reason.setFocusable(true);
+            spinner_Reason.setFocusableInTouchMode(true);
+            spinner_Reason.requestFocus();
+
+
             return false;
         } else {
             return true;
@@ -3556,13 +3849,20 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                 AssignToSEId.equalsIgnoreCase(" ") ||
                 AssignToSEId.equalsIgnoreCase(null))) {
             //  edt_inwarddate.setError("Fill Inward date");
-            Toast.makeText(context, "Select Assign to BOE/SE", Toast.LENGTH_LONG).show();
+            spinner_AssigntoBOE_SE.setError("Select Assign to BOE/SE");
+            spinner_AssigntoBOE_SE.setFocusable(true);
+            spinner_AssigntoBOE_SE.setFocusableInTouchMode(true);
+            spinner_AssigntoBOE_SE.requestFocus();
+
+          //  Toast.makeText(context, "Select Assign to BOE/SE", Toast.LENGTH_LONG).show();
             return false;
         } else if ((spinner_AssigntoBOE_SE.getText().toString().equalsIgnoreCase("Select") ||
                 spinner_AssigntoBOE_SE.getText().toString().equalsIgnoreCase(" ") ||
                 spinner_AssigntoBOE_SE.getText().toString().equalsIgnoreCase(null))) {
-            //  edt_inwarddate.setError("Fill Inward date");
-            // Toast.makeText(context, "Select Reason", Toast.LENGTH_LONG).show();
+            spinner_AssigntoBOE_SE.setError("Select Assign to BOE/SE");
+            spinner_AssigntoBOE_SE.setFocusable(true);
+            spinner_AssigntoBOE_SE.setFocusableInTouchMode(true);
+            spinner_AssigntoBOE_SE.requestFocus();
             return false;
         } else {
             return true;
@@ -3576,24 +3876,43 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                 reassignboeid.equalsIgnoreCase(" ") ||
                 reassignboeid.equalsIgnoreCase(null))) {
             //  edt_inwarddate.setError("Fill Inward date");
-            Toast.makeText(context, "Select Reassign to BOE", Toast.LENGTH_LONG).show();
+
+            spinner_ReassigntoBOE.setError("Select Reassign to BOE");
+            spinner_ReassigntoBOE.setFocusable(true);
+            spinner_ReassigntoBOE.setFocusableInTouchMode(true);
+            spinner_ReassigntoBOE.requestFocus();
+
+          //  Toast.makeText(context, "Select Reassign to BOE", Toast.LENGTH_LONG).show();
             return false;
         } else if ((spinner_ReassigntoBOE.getText().toString().equalsIgnoreCase("Select") ||
                 spinner_ReassigntoBOE.getText().toString().equalsIgnoreCase(" ") ||
                 spinner_ReassigntoBOE.getText().toString().equalsIgnoreCase(null))) {
-            //  edt_inwarddate.setError("Fill Inward date");
-
+            spinner_ReassigntoBOE.setError("Select Reassign to BOE");
+            spinner_ReassigntoBOE.setFocusable(true);
+            spinner_ReassigntoBOE.setFocusableInTouchMode(true);
+            spinner_ReassigntoBOE.requestFocus();
             return false;
         } else if ((reasonid.equalsIgnoreCase("") ||
                 reasonid.equalsIgnoreCase(" ") ||
                 reasonid.equalsIgnoreCase(null))) {
             //  edt_inwarddate.setError("Fill Inward date");
-            Toast.makeText(context, "Select Reason", Toast.LENGTH_LONG).show();
+         //   Toast.makeText(context, "Select Reason", Toast.LENGTH_LONG).show();
+
+            spinner_Reason.setError("Select Reason");
+            spinner_Reason.setFocusable(true);
+            spinner_Reason.setFocusableInTouchMode(true);
+            spinner_Reason.requestFocus();
+
             return false;
         } else if ((spinner_Reason.getText().toString().equalsIgnoreCase("Select") ||
                 spinner_Reason.getText().toString().equalsIgnoreCase(" ") ||
                 spinner_Reason.getText().toString().equalsIgnoreCase(null))) {
             //  edt_inwarddate.setError("Fill Inward date");
+
+            spinner_Reason.setError("Select Reason");
+            spinner_Reason.setFocusable(true);
+            spinner_Reason.setFocusableInTouchMode(true);
+            spinner_Reason.requestFocus();
 
             return false;
         } else {
@@ -3653,12 +3972,20 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                 reasonid.equalsIgnoreCase(" ") ||
                 reasonid.equalsIgnoreCase(null))) {
             //  edt_inwarddate.setError("Fill Inward date");
-            Toast.makeText(context, "Select Reason", Toast.LENGTH_LONG).show();
+           // Toast.makeText(context, "Select Reason", Toast.LENGTH_LONG).show();
+            spinner_Reason.setError("Select Reason");
+            spinner_Reason.setFocusable(true);
+            spinner_Reason.setFocusableInTouchMode(true);
+            spinner_Reason.requestFocus();
             return false;
         } else if ((spinner_Reason.getText().toString().equalsIgnoreCase("Select") ||
                 spinner_Reason.getText().toString().equalsIgnoreCase(" ") ||
                 spinner_Reason.getText().toString().equalsIgnoreCase(null))) {
             //  edt_inwarddate.setError("Fill Inward date");
+            spinner_Reason.setError("Select Reason");
+            spinner_Reason.setFocusable(true);
+            spinner_Reason.setFocusableInTouchMode(true);
+            spinner_Reason.requestFocus();
 
             return false;
         } else if (((approverid.equalsIgnoreCase("") ||
@@ -4283,7 +4610,7 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                                                   int selectedHour, int selectedMinute) {
 
                                 if (clickDayBefore == 1 || clickYesterday == 1) {
-                                    String time = selectedHour + ":" + selectedMinute;
+                                    String time = checkDigit(selectedHour) + ":" +checkDigit(selectedMinute);
                                     fromHour = selectedHour;
                                     fromMinute = selectedMinute;
                                     edtfrom.setText(time);
@@ -4294,7 +4621,7 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                                         String toTime = "";
                                         if (selectedMinute <= minute) {
                                             if (selectedHour < 24 && selectedHour >= 6) {
-                                                String time = selectedHour + ":" + selectedMinute;
+                                                String time = checkDigit(selectedHour) + ":" +checkDigit(selectedMinute);
                                                 fromHour = selectedHour;
                                                 fromMinute = selectedMinute;
                                                 edtfrom.setText(time);
@@ -4363,8 +4690,15 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
 
 
                                     if(selectedHour >= fromHour){
-                                        String time = selectedHour + ":" + selectedMinute;
+
+                                        String time = checkDigit(selectedHour) + ":" +checkDigit(selectedMinute);
                                         edtto.setText(time);
+                                        /*try {
+                                            duration = calculate_time_diff(edtfrom.getText().toString(), edtto.getText().toString());
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                            duration = "0:10";
+                                        }*/
                                     }
 
                                 } else {
@@ -4375,8 +4709,15 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                                         if (selectedMinute <= minute) {
                                             if (selectedHour > fromHour) {
                                                 if (selectedHour < 24 && selectedHour >= 6) {
-                                                    String time = selectedHour + ":" + selectedMinute;
+                                                    String time = checkDigit(selectedHour) + ":" +checkDigit(selectedMinute);
                                                     edtto.setText(time);
+                                                    try {
+                                                        duration = calculate_time_diff(edtfrom.getText().toString(), edtto.getText().toString());
+                                                    } catch (Exception e) {
+                                                        e.printStackTrace();
+                                                        duration = "0:10";
+                                                    }
+
                                             /*if(selectedMinute >=60){
                                                 selectedHour++;
                                                 selectedMinute = selectedMinute - 60;
@@ -4456,7 +4797,6 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
             @Override
             public void onSwipeLeft() {
                 super.onSwipeLeft();
-                Toast.makeText(OpportunityUpdateActivity_New.this, "Header Swipe Left gesture detected", Toast.LENGTH_SHORT).show();
 
                 Animation animation = AnimationUtils.loadAnimation(OpportunityUpdateActivity_New.this, R.anim.slide_right_to_left);
                 animation.setDuration(500);
@@ -4469,6 +4809,8 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                 len_outcome.setVisibility(View.GONE);
                 lay_next_action.setVisibility(View.GONE);
 
+
+
             }
 
             @Override
@@ -4476,7 +4818,6 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                 super.onSwipeRight();
 
                 onBackPressed();
-                Toast.makeText(OpportunityUpdateActivity_New.this, "Header Swipe Right gesture detected", Toast.LENGTH_SHORT).show();
 
 
             }
@@ -4487,7 +4828,6 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
             @Override
             public void onSwipeLeft() {
                 super.onSwipeLeft();
-                Toast.makeText(OpportunityUpdateActivity_New.this, "Scroll Swipe Left gesture detected", Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(OpportunityUpdateActivity_New.this,
                         CountryListActivity.class);
@@ -4528,7 +4868,6 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
             @Override
             public void onSwipeRight() {
                 super.onSwipeRight();
-                Toast.makeText(OpportunityUpdateActivity_New.this, "Scroll Swipe Right gesture detected", Toast.LENGTH_SHORT).show();
 
                 Animation animation = AnimationUtils.loadAnimation(OpportunityUpdateActivity_New.this, R.anim.slide_right_to_left);
                 animation.setDuration(500);
@@ -4549,7 +4888,6 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
             @Override
             public void onSwipeLeft() {
                 super.onSwipeLeft();
-                Toast.makeText(OpportunityUpdateActivity_New.this, "Footer Swipe Left gesture detected", Toast.LENGTH_SHORT).show();
                 Animation animation = AnimationUtils.loadAnimation(OpportunityUpdateActivity_New.this, R.anim.slide_right_to_left);
                 animation.setDuration(500);
                 len_outcome.setAnimation(animation);
@@ -4564,7 +4902,6 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
             @Override
             public void onSwipeRight() {
                 super.onSwipeRight();
-                Toast.makeText(OpportunityUpdateActivity_New.this, "Footer Swipe Right gesture detected", Toast.LENGTH_SHORT).show();
 
                 Animation animation = AnimationUtils.loadAnimation(OpportunityUpdateActivity_New.this, R.anim.slide_right_to_left);
                 animation.setDuration(500);
@@ -4582,7 +4919,6 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
             @Override
             public void onSwipeLeft() {
                 super.onSwipeLeft();
-                Toast.makeText(OpportunityUpdateActivity_New.this, "Footer Swipe Left gesture detected", Toast.LENGTH_SHORT).show();
 
                /* Animation animation   =  AnimationUtils.loadAnimation(OpportunityUpdateActivity_New.this, R.anim.slide_right_to_left);
                 animation.setDuration(500);
@@ -4599,7 +4935,6 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
             @Override
             public void onSwipeRight() {
                 super.onSwipeRight();
-                Toast.makeText(OpportunityUpdateActivity_New.this, "Footer Swipe Right gesture detected", Toast.LENGTH_SHORT).show();
 
                 Animation animation = AnimationUtils.loadAnimation(OpportunityUpdateActivity_New.this, R.anim.slide_right_to_left);
                 animation.setDuration(500);
@@ -4820,6 +5155,15 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                    try {
+                        duration = calculate_time_diff(edtfrom.getText().toString(), edtto.getText().toString());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        duration = "0:10";
+                    }
+
+
+
                 if ((ProductId.equalsIgnoreCase("") ||
                         ProductId.equalsIgnoreCase(" ") ||
                         ProductId.equalsIgnoreCase(null)
@@ -4830,11 +5174,11 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
 
                 String applicationno = edit_applicaton_no.getText().toString();
                 if (validate_Header() == true) {
-                    if (SystemClock.elapsedRealtime() - mLastClickTime < 30000) {
+                    /*if (SystemClock.elapsedRealtime() - mLastClickTime < 30000) {
 
                         Toast.makeText(getApplicationContext(), "You can click only after 30 sec from your first click", Toast.LENGTH_LONG).show();
                         return;
-                    }
+                    }*/
                     mLastClickTime = SystemClock.elapsedRealtime();
                     try {
                         JSONObject jsonObject = new JSONObject();
@@ -4843,10 +5187,20 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                         jsonObject.put("CallType", calltype);
                         jsonObject.put("ProductId", ProductId);
                         jsonObject.put("FollowupDate", editTextFollowupDate.getText().toString());
-                        if (EdttxtHours.getText().toString().equals("")) {
-                            jsonObject.put("FollowupHours", "0");
+                        /*if (EdttxtHours.getText().toString().equals("")) {
+                            jsonObject.put("FollowupHours", duration);
                         } else {
-                            jsonObject.put("FollowupHours", EdttxtHours.getText().toString());
+                            jsonObject.put("FollowupHours", duration);
+                        }*/
+                        if (intent.hasExtra("type")) {
+                            jsonObject.put("FollowupHours", Duration);
+
+                        }else {
+                            if (duration.equalsIgnoreCase("0:0")) {
+                                jsonObject.put("FollowupHours", "0:10");
+                            }else {
+                                jsonObject.put("FollowupHours", duration);
+                            }
                         }
                         jsonObject.put("FollowupReason", followupreasonid);
                         jsonObject.put("FollowupWith", followupwithid);
@@ -5035,7 +5389,8 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                             } else {
 
                             }
-                        } else if (selected_outcome_code.equalsIgnoreCase("ATS")) {
+                        }
+                        else if (selected_outcome_code.equalsIgnoreCase("ATS")) {
                             if (validate_appointments() == true) {
                                 //Call Again
                                 jsonObject.put("CallReason", "");
@@ -5163,12 +5518,13 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                                 UpdateOpportunity(finaljson);
 
                                 Log.d("crm_dialog_action", "json" + finaljson);
-                            } else {
+                            }
+                            else {
 
                             }
-                        } else if (selected_outcome_code.equalsIgnoreCase("CC") ||
-                                selected_outcome_code.equalsIgnoreCase("Oreg")) {
-                            if (validate_ccwo() == true) {
+                        }
+
+                        else if (selected_outcome_code.equalsIgnoreCase("QR")) {
                                 //Call Again
                                 jsonObject.put("CallReason", "");
                                 //Appointment
@@ -5209,14 +5565,14 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                                 jsonObject.put("RTS_TransferReasonId", "");
                                 jsonObject.put("RTS_TransferReasonName", "");
                                 //Call Close Without Order
-                                jsonObject.put("CC_CallCloseReasonId", reasonid);
-                                jsonObject.put("CC_CallCloseReasonName", spinner_Reason.getText().toString());
-                                jsonObject.put("CC_CallCloseApproverId", approverid);
-                                jsonObject.put("CC_CallCloseApproverName", spinner_Approver.getText().toString());
-                                jsonObject.put("CC_CallCloseDetails", editTextDetails.getText().toString());
-                                jsonObject.put("CC_CallCloseCallCustAgain", selected_call_again);
-                                jsonObject.put("CC_CallCloseWhenUCall", editTextWhendoyoucall.getText().toString());
-                                jsonObject.put("CC_CallCloseNotes", editTextNotes.getText().toString());
+                                jsonObject.put("CC_CallCloseReasonId", "");
+                                jsonObject.put("CC_CallCloseReasonName", "");
+                                jsonObject.put("CC_CallCloseApproverId", "");
+                                jsonObject.put("CC_CallCloseApproverName", "");
+                                jsonObject.put("CC_CallCloseDetails", "");
+                                jsonObject.put("CC_CallCloseCallCustAgain", "");
+                                jsonObject.put("CC_CallCloseWhenUCall", "");
+                                jsonObject.put("CC_CallCloseNotes", "");
                                 //Disput
                                 jsonObject.put("Disp_Reason", "");
                                 //COLLCT
@@ -5274,6 +5630,148 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                                 jsonObject.put("OReg_OrderRegretCallCustAgain", "");
                                 jsonObject.put("OReg_OrderRegretWhenUCall", "");
                                 jsonObject.put("OReg_OrderRegretOLNotes", "");
+                                //Presales Support (PS)
+                                jsonObject.put("PS_PresaleSEId", "");
+                                jsonObject.put("PS_PresaleSEName", "");
+                                jsonObject.put("PS_PresaleDetails", "");
+                                jsonObject.put("PS_PresaleDueDate", "");
+                                // Quotation Submitted(QS)
+                                jsonObject.put("QS_QuotationNo", "");
+                                jsonObject.put("QS_CustBudgetSanct", "");
+                                jsonObject.put("QS_CustBudget", "");
+                                jsonObject.put("QS_QuotationValue", "");
+                                jsonObject.put("QS_QuotDoc", "");
+                                //Promise Date Change (PRMS)
+                                jsonObject.put("PRMS_NextDate", "");
+                                jsonObject.put("PRMS_Reason", "");
+
+                                // QR
+                                jsonObject.put("QR_AssignToSEBOEId", reassignboeid);
+                                jsonObject.put("QR_AssignToSEBOEName", spinner_AssigntoBOE_SE.getText().toString().trim());
+                                finaljson = jsonObject.toString();
+                                finaljson = finaljson.replaceAll("\\\\", "");
+                                finaljson = finaljson.replaceAll(" ", " ");
+                                finaljson = finaljson.replaceAll("=", " ");
+                                UpdateOpportunity(finaljson);
+
+                                Log.d("crm_dialog_action", "json" + finaljson);
+
+                        }
+                        else if (selected_outcome_code.equalsIgnoreCase("CC") ||
+                                selected_outcome_code.equalsIgnoreCase("Oreg")) {
+                            if (validate_ccwo() == true) {
+                                //Call Again
+                                jsonObject.put("CallReason", "");
+                                //Appointment
+                                jsonObject.put("AssignToSEId", "");
+                                jsonObject.put("AssignToSEName", "");
+                                //Transfer to BOE
+                                jsonObject.put("ReAssignToTMEId", "");
+                                jsonObject.put("ReAssignToTMEName", "");
+                                jsonObject.put("CallReasonTTB", "");
+                                jsonObject.put("CallReasonTTBName", "");
+                                //Order Received
+                                jsonObject.put("OR_OrderReceivedById", "");
+                                jsonObject.put("OR_OrderReceivedByName", "");
+                                jsonObject.put("OR_OrderReceivedDate", "");
+                                jsonObject.put("OR_OrderPONo", "");
+                                jsonObject.put("OR_OrderPOValue", "");
+                                jsonObject.put("OR_OrderContractReview", "");
+                                jsonObject.put("OR_OrderType", "");
+                                //Order Lost
+                                jsonObject.put("OL_OrderLostReasonId", "");
+                                jsonObject.put("OL_OrderLostReasonName", "");
+                                jsonObject.put("OL_OrderLostApproverId", "");
+                                jsonObject.put("OL_OrderLostApproverName", "");
+                                jsonObject.put("OL_OrderLostDetails", "");
+                                jsonObject.put("OL_OrderLostCallCustAgain", "");
+                                jsonObject.put("OL_OrderLostWhenUCall", "");
+                                jsonObject.put("OL_OrderLostOLNotes", "");
+                                //Visit
+                                jsonObject.put("SV_VisitById", "");
+                                jsonObject.put("SV_VisitByName", "");
+                                jsonObject.put("SV_VisitDate", "");
+                                //Reschedule
+                                jsonObject.put("Res_RescheduleReasonId", "");
+                                jsonObject.put("Res_RescheduleReasonName", "");
+                                //Transfer to SE
+                                jsonObject.put("RTS_TransferSEId", "");
+                                jsonObject.put("RTS_TransferSEName", "");
+                                jsonObject.put("RTS_TransferReasonId", "");
+                                jsonObject.put("RTS_TransferReasonName", "");
+                                //Call Close Without Order
+                                jsonObject.put("CC_CallCloseReasonId", reasonid);
+                                jsonObject.put("CC_CallCloseReasonName", spinner_Reason.getText().toString());
+                                jsonObject.put("CC_CallCloseApproverId", approverid);
+                                jsonObject.put("CC_CallCloseApproverName", spinner_Approver.getText().toString());
+                                jsonObject.put("CC_CallCloseDetails", editTextDetails.getText().toString());
+                                jsonObject.put("CC_CallCloseCallCustAgain", selected_call_again);
+                                jsonObject.put("CC_CallCloseWhenUCall", editTextWhendoyoucall.getText().toString());
+                                jsonObject.put("CC_CallCloseNotes", EdttxtNotes.getText().toString());  //EdttxtNotes
+                                //Disput
+                                jsonObject.put("Disp_Reason", "");
+                                //COLLCT
+                                jsonObject.put("Collect_Mode", "");
+                                jsonObject.put("Collect_InstrNo", "");
+                                jsonObject.put("Collect_InstrDate", "");
+                                jsonObject.put("Collect_BankName", "");
+                                jsonObject.put("Collect_BranchName", "");
+                                jsonObject.put("Collect_ChqAmount", "");
+                                jsonObject.put("Collect_TDSAmount", "");
+                                jsonObject.put("Collect_DiffAmount", "");
+                                jsonObject.put("Collect_Reason", "");
+                                //WI / WCF
+                                jsonObject.put("WIWCF_Details", "");
+                                //Customer Profile Update (CPU)
+                                jsonObject.put("CPU_txtEBITDA", "");
+                                jsonObject.put("CPU_txtPAT", "");
+                                jsonObject.put("CPU_txtNetworth", "");
+                                jsonObject.put("CPU_txtBorrowings", "");
+                                jsonObject.put("CPU_txtRatings", "");
+                                jsonObject.put("CPU_ddlCurrency", "");
+                                jsonObject.put("CPU_txtMComments", "");
+                                jsonObject.put("CPU_ddlCurrencyVal", "");
+                                //Insurance Update (IU)
+                                jsonObject.put("IU_txtInsuBank", "");
+                                jsonObject.put("IU_txtInsCos", "");
+                                jsonObject.put("IU_txtPreRec", "");
+                                jsonObject.put("IU_txtPartIns", "");
+                                //Demo Reschedule (DRes)
+                                jsonObject.put("DRes_DemoResReasonId", "");
+                                jsonObject.put("DRes_DemoResReasonName", "");
+                                jsonObject.put("DRes_DemoGivenById", "");
+                                jsonObject.put("DRes_DemoGivenByName", "");
+                                jsonObject.put("DRes_DemoDate", "");
+                                jsonObject.put("DRes_DemoTime", "");
+
+                                //Demo Request
+                                jsonObject.put("DReq_DemoGivenById", "");
+                                jsonObject.put("DReq_DemoTime", "");
+                                jsonObject.put("DReq_DemoDate", "");
+                                //Demo Complete(DC)
+                                jsonObject.put("DC_chkdemocomplete", "");
+                                //Demo Cancelled (DCans)
+                                jsonObject.put("DCans_ReasonId", "");
+                                jsonObject.put("DCans_ReasonName", "");
+                                //Customer will Call (CustCall)
+                                jsonObject.put("CustCall_ReasonId", "");
+                                jsonObject.put("CustCall_ReasonName", "");
+                                //Order Regret (Oreg)
+
+                                jsonObject.put("OReg_OrderRegretReasonId", reasonid);
+                                jsonObject.put("OReg_OrderRegretReasonName", spinner_Reason.getText().toString());
+                                jsonObject.put("OReg_OrderRegretApproverId", approverid);
+                                jsonObject.put("OReg_OrderRegretApproverName", spinner_Approver.getText().toString());
+                                jsonObject.put("OReg_OrderRegretDetails", editTextDetails.getText().toString());
+                                jsonObject.put("CC_CallCloseWhenUCall", editTextWhendoyoucall.getText().toString());
+                                jsonObject.put("OReg_OrderRegretOLNotes", EdttxtNotes.getText().toString());
+                                if (selected_outcome_code.equalsIgnoreCase("Oreg")){
+                                    jsonObject.put("OReg_OrderRegretCallCustAgain", selected_call_again);
+                                    jsonObject.put("OReg_OrderRegretWhenUCall", editTextWhendoyoucall.getText().toString());
+                                }else {
+                                    jsonObject.put("OReg_OrderRegretCallCustAgain", "");
+                                    jsonObject.put("OReg_OrderRegretWhenUCall", "");
+                                }
                                 //Presales Support (PS)
                                 jsonObject.put("PS_PresaleSEId", "");
                                 jsonObject.put("PS_PresaleSEName", "");
@@ -6391,7 +6889,9 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                                 jsonObject.put("OR_OrderPONo", "");
                                 jsonObject.put("OR_OrderPOValue", editTextPOvalue.getText().toString());
                                 jsonObject.put("OR_OrderContractReview", chk_Contractreviewrequest);
-                                jsonObject.put("OR_OrderType", ordertypeid);
+                                jsonObject.put("OR_OrderType", "");  // ordertypeid
+                                jsonObject.put("OR_OrderReceivedWhenUCall", editTextWhendoyoucall.getText().toString());  // ordertypeid
+                                jsonObject.put("OR_OrderReceivedCallCustAgain", selected_call_again);  // ordertypeid
                                 //Order Lost
                                 jsonObject.put("OL_OrderLostReasonId", "");
                                 jsonObject.put("OL_OrderLostReasonName", "");
@@ -8470,6 +8970,7 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                 isReason = false;
                 isOrder = false;
                 isAssignBOE = false;
+                isAssignBOESE = false;
                 isAssignSE = true;
                 Receive=false;
                 Approver=false;
@@ -8508,6 +9009,7 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                 isReason = false;
                 isOrder = false;
                 isAssignBOE = false;
+                isAssignBOESE = false;
                 isAssignSE = false;
                 Receive=false;
                 Approver=false;
@@ -8546,6 +9048,7 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                 isReason = false;
                 isOrder = false;
                 isAssignBOE = false;
+                isAssignBOESE = false;
                 isAssignSE = false;
                 Receive=false;
                 Approver=false;
@@ -8584,6 +9087,7 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                 isReason = false;
                 isOrder = false;
                 isAssignBOE = false;
+                isAssignBOESE = false;
                 isAssignSE = false;
                 Receive=false;
                 Approver=false;
@@ -8622,6 +9126,7 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                 isReason = false;
                 isOrder = false;
                 isAssignBOE = false;
+                isAssignBOESE = false;
                 isAssignSE = false;
                 Receive=false;
                 Approver=false;
@@ -8661,6 +9166,7 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                 isAssignBOE = false;
                 isAssignSE = false;
                 Receive=false;
+                isAssignBOESE = false;
                 Approver=false;
                 Contact = false;
                 isPreSale = false;
@@ -8762,6 +9268,7 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                 isAssignSE=false;
                 Contact = false;
                 isAssignBOE=false;
+                isAssignBOESE = false;
                 isHandOver=false;
                 isPreSale=false;
                 isVisit = false;
@@ -8800,9 +9307,9 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                 isOrder=false;
                 isAssignSE=false;
                 isAssignBOE=false;
+                isAssignBOESE = false;
                 Contact = false;
                 Receive = true;
-                Contact = false;
                 isHandOver=false;
                 isPreSale=false;
                 isVisit = false;
@@ -8833,6 +9340,7 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                 isReason = false;
                 isOrder = false;
                 isAssignBOE = false;
+                isAssignBOESE = false;
                 isAssignSE = false;
                 isDemo = true;
                 Receive=false;
@@ -8876,6 +9384,7 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                 isReason = true;
                 isOrder = false;
                 isAssignBOE = false;
+                isAssignBOESE = false;
                 isAssignSE = false;
                 isDemo = false;
                 Receive=false;
@@ -8914,6 +9423,7 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                 isReason = false;
                 isOrder = false;
                 isAssignBOE = true;
+                isAssignBOESE = false;
                 isAssignSE = false;
                 isDemo = false;
                 Receive=false;
@@ -8940,6 +9450,48 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                 overridePendingTransition(R.anim.slide_right_to_left, R.anim.slide_left_to_right);
             }
         });
+
+        // BOE/SE
+
+        spinner_AssigntoBOE_SE.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(OpportunityUpdateActivity_New.this,
+                        CountryListActivity.class);
+
+                IsOutcome = false;
+                isFollowup = false;
+                isReason = false;
+                isOrder = false;
+                isAssignBOE = false;
+                isAssignBOESE = true;
+                isAssignSE = false;
+                isDemo = false;
+                Receive=false;
+                Contact = false;
+                Approver=false;
+                isHandOver=false;
+                isPreSale=false;
+                isVisit = false;
+                isCurrency = false;
+                String url = "";
+
+
+                url = CompanyURL + WebUrlClass.api_Category;
+                intent.putExtra("Table_Name", db.TABLE_Category);
+                intent.putExtra("Id", "UserMasterId");
+                intent.putExtra("DispName", "UserName");
+                intent.putExtra("WHClauseParameter", "");
+                //intent.putExtra("WHClauseParamVal","");
+                intent.putExtra("APIName", url);
+                intent.putExtra("out", "");
+                //intent.putExtra("APIParameters","");
+                //intent.putExtra("ArrayList",    "ArrayList<Territory> mList = new ArrayList<>()");
+                startActivityForResult(intent, Followup);
+                overridePendingTransition(R.anim.slide_right_to_left, R.anim.slide_left_to_right);
+            }
+        });
+
 
         spinner_Nextaction.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -8976,6 +9528,7 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                 isReason = false;
                 isOrder = false;
                 isAssignBOE = false;
+                isAssignBOESE = false;
                 isAssignSE = false;
                 isDemo = false;
                 Receive=false;
@@ -9012,6 +9565,7 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                 isReason = false;
                 isOrder = false;
                 isAssignBOE = false;
+                isAssignBOESE = false;
                 isAssignSE = false;
                 isDemo = false;
                 Receive=false;
@@ -9062,6 +9616,7 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                 isReason = false;
                 isOrder = true;
                 isAssignBOE = false;
+                isAssignBOESE = false;
                 isAssignSE = false;
                 isDemo = false;
                 Receive=false;
@@ -9101,6 +9656,7 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                 Contact = true;
                 isOrder = false;
                 isAssignBOE = false;
+                isAssignBOESE = false;
                 isAssignSE = false;
                 isDemo = false;
                 Receive=false;
@@ -9495,9 +10051,22 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                                 date = dayOfMonth + "/"
                                         + String.format("%02d", (monthOfYear + 1))
                                         + "/" + year;
-                                if (compare_date(date) == true) {
+                               // String mDate = date + "/" + month + "/" + year;
+
+                                if (show(date) > 15) {
                                     editTextWhendoyoucall.setText(date);
-                                } /*else {
+                                } else {
+                                    String alert="You have set Call again date within the next " + day + " days .Are you sure to continue with this date?";
+                                    getdialog(alert);
+
+                                }
+
+                                /*if (compare_date(date) == true) {
+
+                                    editTextWhendoyoucall.setText(date);
+
+                                }*/
+                                /*else {
                                     editTextWhendoyoucall.setText(date);
                                     Toast.makeText(OpportunityUpdateActivity.this,
                                             "You cannot select a day earlier than today!",
@@ -9508,7 +10077,7 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                             }
                         }, year, month, day);
                 datePickerDialog.setTitle("Select Date");
-
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
                 datePickerDialog.show();
 
             }
@@ -10684,7 +11253,8 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                     lay_Reason.setVisibility(View.GONE);
                     lay_Approver.setVisibility(View.GONE);
                     lay_Details.setVisibility(View.GONE);
-                    lay_Callagain.setVisibility(View.GONE);
+                    lay_Callagain.setVisibility(View.VISIBLE);
+                    lay_Whendoyoucall.setVisibility(View.VISIBLE);
                     lay_Notes.setVisibility(View.GONE);
                     lay_Mode.setVisibility(View.GONE);
                     lay_InstrumentNo.setVisibility(View.GONE);
@@ -10717,7 +11287,7 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
 
                         lay_gstn.setVisibility(View.VISIBLE);
                     }
-                    lay_Ordertype.setVisibility(View.VISIBLE);
+                    lay_Ordertype.setVisibility(View.GONE);
                     lay_Contractreviewrequest.setVisibility(View.VISIBLE);
                     lay_CustomerBudgetSanction.setVisibility(View.GONE);
                     lay_CustomerBudget.setVisibility(View.GONE);
@@ -10727,7 +11297,6 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                     lay_PresaleSE.setVisibility(View.GONE);
                     lay_SEName.setVisibility(View.GONE);
                     lay_whowillvisit.setVisibility(View.GONE);
-                    lay_Whendoyoucall.setVisibility(View.GONE);
                     lay_Quotationno.setVisibility(View.GONE);
                     lay_application_no.setVisibility(View.GONE);
                     lay_dochandover.setVisibility(View.GONE);
@@ -12662,7 +13231,7 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
 
                         lay_gstn.setVisibility(View.VISIBLE);
                     }
-                    lay_Ordertype.setVisibility(View.VISIBLE);
+                    lay_Ordertype.setVisibility(View.VISIBLE);VISIBLE
                     lay_Contractreviewrequest.setVisibility(View.VISIBLE);
                     lay_CustomerBudgetSanction.setVisibility(View.GONE);
                     lay_CustomerBudget.setVisibility(View.GONE);
@@ -14083,7 +14652,14 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                 callrating.setBackgroundColor(Color.parseColor("#FF1493"));
             }
 
-
+            if (getIntent().hasExtra("Start")) {
+                btnvisit.setBackground(getResources().getDrawable(R.drawable.button_orange));
+                img_nextaction.setImageDrawable(getResources().getDrawable(R.drawable.visit24));
+                img_nextaction.setColorFilter(ContextCompat.getColor(OpportunityUpdateActivity_New.this, R.color.colorPrimary
+                ), android.graphics.PorterDuff.Mode.MULTIPLY);
+                NatureOfCall = "Visit";
+            }
+            else {
             NextAction = getIntent().getStringExtra("action");
             if (NextAction.equalsIgnoreCase("Email")) {
                 btnemailid.setBackground(getResources().getDrawable(R.drawable.button_orange));
@@ -14101,6 +14677,7 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
             } else {
                 btntelep.setBackground(getResources().getDrawable(R.drawable.button_orange));
                 img_nextaction.setImageDrawable(getResources().getDrawable(R.drawable.call_24));
+            }
             }
         }
         else {
@@ -14154,24 +14731,31 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                 callrating.setImageResource(R.drawable.ic_cube);
             }
 
-
-            NextAction = getIntent().getStringExtra("action");
-            if (NextAction.equalsIgnoreCase("Email")) {
-                btnemailid.setBackground(getResources().getDrawable(R.drawable.button_orange));
-                img_nextaction.setImageDrawable(getResources().getDrawable(R.drawable.email_24));
-                img_nextaction.setColorFilter(ContextCompat.getColor(OpportunityUpdateActivity_New.this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
-
-            } else if (NextAction.equalsIgnoreCase("Telephone")) {
-                btntelep.setBackground(getResources().getDrawable(R.drawable.button_orange));
-                img_nextaction.setImageDrawable(getResources().getDrawable(R.drawable.call_24));
-            } else if (NextAction.equalsIgnoreCase("Visit")) {
+            if (getIntent().hasExtra("Start")) {
                 btnvisit.setBackground(getResources().getDrawable(R.drawable.button_orange));
                 img_nextaction.setImageDrawable(getResources().getDrawable(R.drawable.visit24));
                 img_nextaction.setColorFilter(ContextCompat.getColor(OpportunityUpdateActivity_New.this, R.color.colorPrimary
                 ), android.graphics.PorterDuff.Mode.MULTIPLY);
-            } else {
-                btntelep.setBackground(getResources().getDrawable(R.drawable.button_orange));
-                img_nextaction.setImageDrawable(getResources().getDrawable(R.drawable.call_24));
+                NatureOfCall = "Visit";
+            }else {
+                NextAction = getIntent().getStringExtra("action");
+                if (NextAction.equalsIgnoreCase("Email")) {
+                    btnemailid.setBackground(getResources().getDrawable(R.drawable.button_orange));
+                    img_nextaction.setImageDrawable(getResources().getDrawable(R.drawable.email_24));
+                    img_nextaction.setColorFilter(ContextCompat.getColor(OpportunityUpdateActivity_New.this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
+
+                } else if (NextAction.equalsIgnoreCase("Telephone")) {
+                    btntelep.setBackground(getResources().getDrawable(R.drawable.button_orange));
+                    img_nextaction.setImageDrawable(getResources().getDrawable(R.drawable.call_24));
+                } else if (NextAction.equalsIgnoreCase("Visit")) {
+                    btnvisit.setBackground(getResources().getDrawable(R.drawable.button_orange));
+                    img_nextaction.setImageDrawable(getResources().getDrawable(R.drawable.visit24));
+                    img_nextaction.setColorFilter(ContextCompat.getColor(OpportunityUpdateActivity_New.this, R.color.colorPrimary
+                    ), android.graphics.PorterDuff.Mode.MULTIPLY);
+                } else {
+                    btntelep.setBackground(getResources().getDrawable(R.drawable.button_orange));
+                    img_nextaction.setImageDrawable(getResources().getDrawable(R.drawable.call_24));
+                }
             }
         }
 
@@ -14431,6 +15015,8 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                     layHdr_two.setVisibility(View.VISIBLE);
                     len_outcome.setVisibility(View.GONE);
                     lay_next_action.setVisibility(View.GONE);
+
+                    getheader_2();
                 }
             }
         });
@@ -14452,9 +15038,18 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (spinner_With_Towhom.getText().toString().equalsIgnoreCase("select")) {
-                    Toast.makeText(OpportunityUpdateActivity_New.this, "Please select contact", Toast.LENGTH_LONG).show();
+                    spinner_With_Towhom.setError("Select With/To Whom");
+                    spinner_With_Towhom.setFocusable(true);
+                    spinner_With_Towhom.setFocusableInTouchMode(true);
+                    spinner_With_Towhom.requestFocus();
+                  //  Toast.makeText(OpportunityUpdateActivity_New.this, "Please select contact", Toast.LENGTH_LONG).show();
                 } else if (spinner_Followupreason.getText().toString().equalsIgnoreCase("")) {
-                    Toast.makeText(OpportunityUpdateActivity_New.this, "Please select purpose", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(OpportunityUpdateActivity_New.this, "Select followup purpose", Toast.LENGTH_LONG).show();
+                    spinner_Followupreason.setError("Select followup purpose");
+                    spinner_Followupreason.setFocusable(true);
+                    spinner_Followupreason.setFocusableInTouchMode(true);
+                    spinner_Followupreason.requestFocus();
+
                 } else {
                     Intent intent = new Intent(OpportunityUpdateActivity_New.this,
                             CountryListActivity.class);
@@ -15745,7 +16340,7 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
     private void CreateOfflineIntend(final String url, final String parameter,
                                      final int method, final String remark, final String op) {
         //final DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-        long a = cf.addofflinedata(url, parameter, method, remark, op);
+           long a = cf.addofflinedata(url, parameter, method, remark, op);
         if (a != -1) {
             // Toast.makeText(getApplicationContext(), "Record Saved Sucessfully", Toast.LENGTH_LONG).show();
             Intent intent1 = new Intent(OpportunityUpdateActivity_New.this,
@@ -15782,6 +16377,7 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
 
     }
 
+/*
     private void dataObj() {
         if (Flag_is_tele.equalsIgnoreCase("Telephone")) {
             try {
@@ -15800,19 +16396,23 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                 jsonObject.put("FollowupFrom", edtfrom.getText().toString());
                 jsonObject.put("FollowupTo", edtto.getText().toString());
 
-                /*    if ((selected_from_time.equalsIgnoreCase("Select"))) {
+                */
+/*    if ((selected_from_time.equalsIgnoreCase("Select"))) {
                     jsonObject.put("FollowupFrom", "");
 
                 } else {
                     jsonObject.put("FollowupFrom", selected_from_time);
-                }*/
-                /*if ((selected_to_time.equalsIgnoreCase("Select"))
+                }*//*
+
+                */
+/*if ((selected_to_time.equalsIgnoreCase("Select"))
                 ) {
                     jsonObject.put("FollowupTo", "");
 
                 } else {
                     jsonObject.put("FollowupTo", selected_to_time);
-                }*/
+                }*//*
+
                 if (((((String) spinner_Followupreason.getText().toString().trim()).equalsIgnoreCase("Select")))
                         || (((String) spinner_Followupreason.getText().toString().trim()).equalsIgnoreCase(""))) {
                     jsonObject.put("FollowupReasonName", "");
@@ -15821,7 +16421,8 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                     jsonObject.put("FollowupReasonName", ((String) spinner_Followupreason.getText().toString().trim()));
                 }
 
-                /*if ((((String) spinner_Initiatedby.getText().toString().trim()).equalsIgnoreCase("Select"))
+                */
+/*if ((((String) spinner_Initiatedby.getText().toString().trim()).equalsIgnoreCase("Select"))
                         || (((String) spinner_Initiatedby.getText().toString().trim()).equalsIgnoreCase(""))) {
                     jsonObject.put("InitiatedBy", "");
 
@@ -15829,7 +16430,8 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                 } else {
                     jsonObject.put("InitiatedBy", spinner_Initiatedby.getText().toString());
 
-                }*/
+                }*//*
+
                 jsonObject.put("InitiatedBy", txtnamefrm.getText().toString());
 
                 if ((spinner_Nextaction.getText().toString().equalsIgnoreCase("Select"))
@@ -15990,6 +16592,7 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
             }
         }
     }
+*/
 
     public void handleBtnVisibility() {
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.slide_right_to_left);
@@ -16012,6 +16615,9 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
 
             layHdr_one.setVisibility(View.GONE);
             layHdr_two.setVisibility(View.VISIBLE);
+
+            getheader_2();
+
             len_outcome.setVisibility(View.GONE);
             lay_next_action.setVisibility(View.GONE);
         } else if (layVisCnt == 2) {
@@ -16033,6 +16639,34 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
             lay_next_action.setVisibility(View.VISIBLE);
             len_outcome.setVisibility(View.GONE);
         }
+    }
+
+    private void getheader_2() {
+
+        IsOutcome = false;
+        isFollowup = false;
+        isReason = false;
+        Contact = true;
+        isOrder = false;
+        isAssignBOE = false;
+        isAssignBOESE = false;
+        isAssignSE = false;
+        isDemo = false;
+        Receive=false;
+        Approver=false;
+        isHandOver=false;
+        isPreSale=false;
+        isVisit = false;
+        isCurrency = false;
+
+        Intent intent = new Intent(OpportunityUpdateActivity_New.this, ContactShowActivity.class);
+        intent.putExtra("callid", CallId);
+        intent.putExtra("call_prospect", ProspectId);
+        intent.putExtra("call_type", call_type);
+        intent.putExtra("callmob", LogContact);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivityForResult(intent, Followup);
+        overridePendingTransition(R.anim.slide_right_to_left, R.anim.slide_left_to_right);
     }
 
 
@@ -16688,7 +17322,83 @@ private void requestDocumentPermission() {
 		}
 	}
 
+    private int show(String time) {
+        try {
+            String outputPattern = "dd/MM/yyyy";
+            SimpleDateFormat format = new SimpleDateFormat(outputPattern);
+
+            Date Date1 = format.parse(getdate());
+            Date Date2 = format.parse(time);
+            long mills = Date2.getTime() - Date1.getTime();
+            long Day1 = mills / (1000 * 60 * 60);
+
+            day = (int) Day1 / 24;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return day;
+    }
+    private String getdate() {
+        String time = "";
+        try {
+            String outputPattern = "dd/MM/yyyy";
+
+            Calendar c = Calendar.getInstance();
+            SimpleDateFormat df = new SimpleDateFormat(outputPattern);
+            time = df.format(c.getTime());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return time;
+    }
+
+    private void getdialog(String alert) {
+
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(OpportunityUpdateActivity_New.this);
+        LayoutInflater inflater = OpportunityUpdateActivity_New.this.getLayoutInflater();
+        final View myView = inflater.inflate(R.layout.callagain_alert_lay, null);
+        dialogBuilder.setView(myView);
+
+        TextView btn_cancel=myView.findViewById(R.id.btn_cancel);
+        TextView btn_yes=myView.findViewById(R.id.btn_yes);
+        TextView Txt_wait_reshuffle=myView.findViewById(R.id.MO);
+
+        Txt_wait_reshuffle.setText(alert);
 
 
 
+        btn_yes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editTextWhendoyoucall.setText(date);
+                alertDialog.dismiss();
+
+
+
+
+            }
+        });
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editTextWhendoyoucall.setText(CurrentDate);
+                alertDialog.dismiss();
+            }
+        });
+
+
+
+
+
+
+        alertDialog = dialogBuilder.create();
+        alertDialog.setCanceledOnTouchOutside(false);
+        alertDialog.show();
+    }
+    public String checkDigit(int number) {
+        return number <= 9 ? "0" + number : String.valueOf(number);
+    }
 }

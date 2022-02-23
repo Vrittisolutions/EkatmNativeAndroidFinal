@@ -1,12 +1,20 @@
 package com.vritti.crm.vcrm7;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Typeface;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,6 +32,8 @@ import com.vritti.databaselib.other.Utility;
 import com.vritti.databaselib.other.WebUrlClass;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class ActivityOfflineData extends AppCompatActivity {
@@ -98,10 +108,12 @@ public class ActivityOfflineData extends AppCompatActivity {
                 Context.MODE_PRIVATE);
 
 
+
+
     }
     private void initView() {
         teamlist = (ListView) findViewById(R.id.list_offdata);
-        mProgress = (ProgressBar) findViewById(R.id.toolbar_progress_set);
+        mProgress = (ProgressBar) findViewById(R.id.progressbar);
         mtextcount = (TextView) findViewById(R.id.mTxtcount);
     }
 
@@ -158,5 +170,54 @@ public class ActivityOfflineData extends AppCompatActivity {
         super.onBackPressed();
         finish();
         overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+    }
+
+    public void sharedata(String linkurl, String parameter, String output, String remark,String AddedDt) {
+
+        Intent i = new Intent(Intent.ACTION_SEND);
+       // i.setType("text/plain");
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        String msgDate = "Offline Data Report " + AddedDt;
+        i.setData(Uri.parse("mailto:"));
+        i.setType("message/rfc822");
+        i.putExtra(Intent.EXTRA_SUBJECT, msgDate);
+        i.putExtra(Intent.EXTRA_EMAIL, "vrittiisolutions@gmail.com");
+
+        Calendar calendar = new GregorianCalendar(2021, 01, 18); // Note that Month value is 0-based. e.g., 0 for January.
+        int reslut = calendar.get(Calendar.DAY_OF_WEEK);
+        final SpannableString out0 = new SpannableString(UserName);
+        StyleSpan boldSpan = new StyleSpan(Typeface.BOLD);
+        out0.setSpan(boldSpan, 0, 3, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        String Manufacturer_value = Build.MANUFACTURER;
+        Log.d("Device-1",Manufacturer_value);
+        String Brand_value = Build.BRAND;
+        Log.d("Device-2",Brand_value);
+        String Model_value = Build.MODEL;
+        Log.d("Device-3",Model_value);
+        String User_value = Build.USER;
+        Log.d("Device-9",User_value);
+        String Host_value = Build.HOST;
+        Log.d("Device-10",Host_value);
+        String Version = Build.VERSION.RELEASE;
+        Log.d("Device-11",Version);
+        String API_level = Build.VERSION.SDK_INT + "";
+        Log.d("Device-12",API_level);
+
+
+        String msg =
+                "*Manufacturer*: " + Manufacturer_value + "\n" +
+                "*Brand*: " + Brand_value+"\n" +
+                "*Model*: " + Model_value + "\n" +
+                "*Version*: " + Version + "\n" +
+                "*API*: " + API_level + "\n\n" +
+                "*Company URL*: " + linkurl + "\n\n" +
+                "*Object*: " + parameter + "\n\n" +
+                "*Output*: " + output + "\n\n" +
+                "*Remark*: " + remark + "\n";
+        i.putExtra(Intent.EXTRA_TEXT, msg);
+        i.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+        startActivity(Intent.createChooser(i, "Choose one to Share link!"));
     }
 }

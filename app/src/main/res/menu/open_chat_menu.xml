@@ -18,7 +18,7 @@
         app:showAsAction="never" />
     <item
         android:id="@+id/group_chat"
-        android:title="Group Chat"
+        android:title="Group Conversation "
         android:visible="true"
         android:orderInCategory="100"
         app:itemBackground="?android:actionBarItemBackground"

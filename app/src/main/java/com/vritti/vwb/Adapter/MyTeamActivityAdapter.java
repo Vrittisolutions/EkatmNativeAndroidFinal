@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import com.vritti.ekatm.Constants;
 import com.vritti.vwb.Beans.MyTeamDeptBean;
 import com.vritti.ekatm.R;
 import com.vritti.vwb.vworkbench.AttendanceDisplayActivity;
@@ -225,16 +226,23 @@ public class MyTeamActivityAdapter extends BaseAdapter {
         holder.txt_location_name.setTag(position);
         String s = myteancount.get(position).getMobileUser();
         String subgrpcount = myteancount.get(position).getReport();
-
-        if(subgrpcount.equalsIgnoreCase("Yes")){
-            holder.img_issubgrp.setVisibility(View.VISIBLE);
+        if(Constants.type == Constants.Type.PM){
+            int subcount = Integer.parseInt(myteancount.get(position).getReport());
+            if (subcount==0) {
+                holder.img_issubgrp.setVisibility(View.GONE);
+            } else {
+                holder.img_issubgrp.setVisibility(View.VISIBLE);
+            }
         }
         else {
-            holder.img_issubgrp.setVisibility(View.GONE);
+            if (subgrpcount.equalsIgnoreCase("Yes")) {
+                holder.img_issubgrp.setVisibility(View.VISIBLE);
+            } else {
+                holder.img_issubgrp.setVisibility(View.GONE);
+            }
         }
 
-
-        if (s.equalsIgnoreCase("N")) {
+        if (s.equalsIgnoreCase("N")||s.equalsIgnoreCase("0")) {
             Drawable image = convertView.getResources().getDrawable(R.drawable.mobilefalse);
             holder.img_view.setBackground(image);
         } else {

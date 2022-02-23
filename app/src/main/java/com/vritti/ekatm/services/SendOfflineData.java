@@ -274,7 +274,7 @@ public class SendOfflineData extends Service {
                 e.printStackTrace();
             }
         }
-        String data = "An Error has occured while sending action " + remark + " to server";
+        String data = "An error has occured while sending action " + remark + " to server";
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
         builder.setSmallIcon(android.R.drawable.ic_dialog_alert);
@@ -359,11 +359,13 @@ public class SendOfflineData extends Service {
             try {
                 String url = params[0];
                 res = ut.OpenPostConnection(url, params[1], getApplicationContext());
-                response = res.toString().replaceAll("\\\\", "");
-                //response = response.replaceAll("\\\\", "");
+                if (res!=null) {
 
-                response = response.substring(1, response.length() - 1);
+                    response = res.toString().replaceAll("\\\\", "");
+                    //response = response.replaceAll("\\\\", "");
 
+                    response = response.substring(1, response.length() - 1);
+                }
             } catch (Exception e) {
                 e.printStackTrace();
                 response = WebUrlClass.Errormsg;
@@ -388,26 +390,58 @@ public class SendOfflineData extends Service {
             String filename = result.get(4);
             SQLiteDatabase sql = db.getWritableDatabase();
 
+            if (res.equals("10")){
+                Toast.makeText(context,"You have already filled the time slot !",Toast.LENGTH_SHORT).show();
+            }
+            if (res.contains("Biometric punch")||res.equalsIgnoreCase("20")){
+                Toast.makeText(context,"You can not fill time sheet before Biometric punch !",Toast.LENGTH_SHORT).show();
+            }
+            if (res.contains("From time")||res.equalsIgnoreCase("30")){
+                Toast.makeText(context,"From time should not be greater than to time !",Toast.LENGTH_SHORT).show();
+            }
+            if (res.contains("current time")||res.equalsIgnoreCase("40")){
+                Toast.makeText(context,"You can not fill time sheet greater than current time !",Toast.LENGTH_SHORT).show();
+            }
 
-            if (!(res.equalsIgnoreCase(WebUrlClass.Errormsg))) {
-                if (res.equalsIgnoreCase(stdres)) {
-                    ContentValues contentValues = new ContentValues();
-                    contentValues.put("isUploaded", WebUrlClass.FlagisUploadedTrue);
-                    sql.update(db.TABLE_DATA_OFFLINE, contentValues, "recordID=?",
-                            new String[]{recid});
-                    getRowFromDatabase();
+            try {
+                if (!(res.equalsIgnoreCase(WebUrlClass.Errormsg))) {
+                    if (res.equalsIgnoreCase(stdres)) {
+                        ContentValues contentValues = new ContentValues();
+                        contentValues.put("isUploaded", WebUrlClass.FlagisUploadedTrue);
+                        sql.update(db.TABLE_DATA_OFFLINE, contentValues, "recordID=?",
+                                new String[]{recid});
+                        getRowFromDatabase();
 
-                } else if (res.length() >= 36) {
-                    ContentValues contentValues = new ContentValues();
-                    contentValues.put("isUploaded", WebUrlClass.FlagisUploadedTrue);
-                    sql.update(db.TABLE_DATA_OFFLINE, contentValues, "recordID=?",
-                            new String[]{recid});
-                    getRowFromDatabase();
+                    } else if (res.length() >= 36) {
+                        ContentValues contentValues = new ContentValues();
+                        contentValues.put("isUploaded", WebUrlClass.FlagisUploadedTrue);
+                        sql.update(db.TABLE_DATA_OFFLINE, contentValues, "recordID=?",
+                                new String[]{recid});
+                        getRowFromDatabase();
 
-                    if (isInternetAvailable(getApplicationContext())) {
-                        new PostUploadImageMethod().execute(filepath, filename, res, "");
+                        if (isInternetAvailable(getApplicationContext())) {
+                            new PostUploadImageMethod().execute(filepath, filename, res, "");
+                        }
+                    } else {
+                        Cursor c = sql.rawQuery("Select * From " + db.TABLE_DATA_OFFLINE + " Where recordID='" + recid + "'", null);
+                        int i = 0;
+                        if ((c.getCount() > 0)) {
+                            c.moveToFirst();
+                            i = c.getInt(c.getColumnIndex("AttemptCount"));
+                            i = i + 1;
+                        }
+                        ContentValues contentValues = new ContentValues();
+                        contentValues.put("isUploaded", WebUrlClass.FlagisUploadedFalse);
+                        contentValues.put("AttemptCount", i);
+                        sql.update(db.TABLE_DATA_OFFLINE, contentValues, "recordID=?",
+                                new String[]{recid});
+
+
+                        SendNotificatioMsg(recid, stdres);
                     }
-                } else {
+                }
+                else {
+
                     Cursor c = sql.rawQuery("Select * From " + db.TABLE_DATA_OFFLINE + " Where recordID='" + recid + "'", null);
                     int i = 0;
                     if ((c.getCount() > 0)) {
@@ -416,32 +450,19 @@ public class SendOfflineData extends Service {
                         i = i + 1;
                     }
                     ContentValues contentValues = new ContentValues();
-                    contentValues.put("isUploaded", WebUrlClass.FlagisUploadedFalse);
+                    contentValues.put("isUploaded", WebUrlClass.FlagisUploadedFailed);
                     contentValues.put("AttemptCount", i);
+                    contentValues.put("remark", response);
                     sql.update(db.TABLE_DATA_OFFLINE, contentValues, "recordID=?",
                             new String[]{recid});
-
-
-                    SendNotificatioMsg(recid, stdres);
+                    SendNotification(recid);
                 }
-            } else {
+                sql.close();
 
-                Cursor c = sql.rawQuery("Select * From " + db.TABLE_DATA_OFFLINE + " Where recordID='" + recid + "'", null);
-                int i = 0;
-                if ((c.getCount() > 0)) {
-                    c.moveToFirst();
-                    i = c.getInt(c.getColumnIndex("AttemptCount"));
-                    i = i + 1;
-                }
-                ContentValues contentValues = new ContentValues();
-                contentValues.put("isUploaded", WebUrlClass.FlagisUploadedFailed);
-                contentValues.put("AttemptCount", i);
-                sql.update(db.TABLE_DATA_OFFLINE, contentValues, "recordID=?",
-                        new String[]{recid});
-                SendNotification(recid);
+            }catch (Exception e){
+                e.printStackTrace();
+
             }
-            sql.close();
-
         }
     }
 

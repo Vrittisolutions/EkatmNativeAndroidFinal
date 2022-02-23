@@ -18,6 +18,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -98,6 +99,7 @@ public class ShipmentEntryActivity extends AppCompatActivity {
     Float baseAMT = 0.0F;
     Float totalTaxWithNet = 0.0F;
     Float netTOTAL = 0.0F;
+    String TotalAmt="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -196,6 +198,8 @@ public class ShipmentEntryActivity extends AppCompatActivity {
         prfDelFrmTime = intent.getStringExtra("prfDelFrmTime");
         prfDelToTime = intent.getStringExtra("prfDelToTime");
         CustomerMasterId = intent.getStringExtra("CustomerMasterId");
+        TotalAmt = intent.getStringExtra("TotalAmt");
+        Log.d("Amount",TotalAmt);
 
         //edt_ordtype.setText(OrderType);
         edt_sono.setText(SONO_from_intent);
@@ -746,6 +750,7 @@ public class ShipmentEntryActivity extends AppCompatActivity {
             }
         }
 
+
         baseAMT = BaseAmt;
         totalTaxWithNet = TotTaxWithNet;
         netTOTAL = NetTotal;
@@ -757,9 +762,11 @@ public class ShipmentEntryActivity extends AppCompatActivity {
             jMain.put("SONO",SOHeaderID);       //pass SOheaderId as SONO
             jMain.put("BaseAmt",String.valueOf(BaseAmt));
             jMain.put("TotalTaxAmt",String.valueOf(TotalTaxAmt));
-            jMain.put("TotTaxWithNet",String.valueOf(TotTaxWithNet));
+            jMain.put("TotTaxWithNet",TotalAmt);
+           // jMain.put("TotTaxWithNet",String.valueOf(TotTaxWithNet));
             jMain.put("TotDisc",String.valueOf(TotDisc));
-            jMain.put("NetTotal",String.valueOf(NetTotal));
+           // jMain.put("NetTotal",String.valueOf(NetTotal));
+            jMain.put("NetTotal",TotalAmt);
             jMain.put("DiscPc",String.valueOf(DiscPC));
             jMain.put("AppEnvMasterId",EnvMasterId);
             jMain.put("PlantId",PlantMasterId);

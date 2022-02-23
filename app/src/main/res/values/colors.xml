@@ -2,7 +2,8 @@
 <resources>
     <color name="colorPrimary">#0A9BC5</color>
     <color name="colorPrimaryDark">#016A97</color>
-    <color name="colorAccent">#0A9BC5</color>
+    <color name="colorAccent">#888888</color>
+    <color name="color_common">#0A9BC5</color>
     <color name="colorAccent1">#FF4081</color>
 
     <color name="textColor">#FFF</color>
@@ -14,6 +15,7 @@
     <color name="sendMeduimColor">#5D6CA5</color>
     <color name="sendDarkColor">#515F9F</color>
     <color name="barDarkColor">#CECECE</color>
+
     <color name="barMeduimColor">#DFDEE0</color>
     <color name="barLightColor">#F2F2F2</color>
     <color name="tabColor">#376092</color>
@@ -168,6 +170,7 @@
     <color name="act_3">#27C24C</color>
     <color name="act_4">#27C24C</color>
 
-
+    <color name="start_again">#e8e831</color>
+    <color name="notify">#094c84</color>
 
 </resources>

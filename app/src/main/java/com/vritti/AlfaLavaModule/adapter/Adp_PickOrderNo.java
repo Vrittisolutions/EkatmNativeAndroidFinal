@@ -8,8 +8,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.vritti.AlfaLavaModule.activity.DOListActivity;
-import com.vritti.AlfaLavaModule.activity.ReceiptPackagingDOListActivity;
+import com.vritti.AlfaLavaModule.activity.packaging.ReceiptPackagingDOListActivity;
 import com.vritti.AlfaLavaModule.bean.PicklistNO;
 import com.vritti.ekatm.R;
 

@@ -153,7 +153,20 @@ public class CRMDayEndReport extends AppCompatActivity {
         txt_pickupdate.setText(date);
         selectedDate = formateDateFromstring("dd/MM/yyyy", "yyyy-MM-dd", date);
 
-        showReport();
+        if (getIntent().hasExtra("user")){
+            UserMasterId=getIntent().getStringExtra("user");
+            UserName=getIntent().getStringExtra("name");
+            showReport();
+            txt_title.setText(UserName);
+
+        }else {
+            UserMasterId = ut.getValue(context, WebUrlClass.GET_USERMASTERID_KEY, settingKey);
+            UserName = ut.getValue(context, WebUrlClass.GET_USERNAME_KEY, settingKey);
+            showReport();
+            txt_title.setText("CRM Report");
+
+        }
+
 
 
     }
@@ -174,7 +187,6 @@ public class CRMDayEndReport extends AppCompatActivity {
       /*  img_add.setVisibility(View.VISIBLE);
         img_add.setImageDrawable(getResources().getDrawable(R.drawable.save_icon));
 */
-        txt_title.setText("CRM Report");
 
         img_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -265,7 +277,15 @@ public class CRMDayEndReport extends AppCompatActivity {
                                 txt_pickupdate.setText(date);
                                 selectedDate = formateDateFromstring("dd/MM/yyyy", "yyyy-MM-dd", date);
 
-                                showReport();
+                                if (getIntent().hasExtra("user")){
+                                    UserMasterId=getIntent().getStringExtra("user");
+                                    UserName=getIntent().getStringExtra("name");
+                                    showReport();
+                                }else {
+                                    UserMasterId = ut.getValue(context, WebUrlClass.GET_USERMASTERID_KEY, settingKey);
+                                    UserName = ut.getValue(context, WebUrlClass.GET_USERNAME_KEY, settingKey);
+                                    showReport();
+                                }
 
 
                             }
@@ -327,7 +347,7 @@ public class CRMDayEndReport extends AppCompatActivity {
                 StringBuilder fullString1 = new StringBuilder();
                 if (crmDayEndReportDetailsBeanArrayList.size() != 0) {
                     String prospectName = "-", person = "-", followupType = "-", outCome = "-", reason = "-", time = "-", duration = "-",
-                            callPurposeDesc = "-";
+                            callPurposeDesc = "-",historynotes="";
 
                     for (int j = 0; j < crmDayEndReportDetailsBeanArrayList.size(); j++) {
                         prospectName = crmDayEndReportDetailsBeanArrayList.get(j).getFirmname().trim();
@@ -337,10 +357,6 @@ public class CRMDayEndReport extends AppCompatActivity {
                         reason = crmDayEndReportDetailsBeanArrayList.get(j).getReasonDescription().trim();
                         time = crmDayEndReportDetailsBeanArrayList.get(j).getSchTime().trim();
 
-                        /*String[] splitTime = time.split(":");
-                        if (!time.equals("")) {
-                            time = updateTime(Integer.parseInt(splitTime[0].trim()), Integer.parseInt(splitTime[1].trim())).trim();
-                        }*/
 
                         try{
                             String[] split1;
@@ -363,6 +379,8 @@ public class CRMDayEndReport extends AppCompatActivity {
                         // int h  = Integer.parseInt(splitTime[0]);
                         duration = crmDayEndReportDetailsBeanArrayList.get(j).getTotalHoursSpent().trim();
                         callPurposeDesc = crmDayEndReportDetailsBeanArrayList.get(j).getCallPurposeDesc().trim();
+                        historynotes = crmDayEndReportDetailsBeanArrayList.get(j).getHistorynotes().trim();
+
 
                         if (prospectName.equals(null) || prospectName.equals("null") || prospectName.equals("")) {
                             prospectName = "-";
@@ -400,19 +418,52 @@ public class CRMDayEndReport extends AppCompatActivity {
                                 outCome.equalsIgnoreCase("Demo Reschedule") ||
                                 outCome.equalsIgnoreCase("Transfer To BOE") ||
                                 outCome.equalsIgnoreCase("Customer will Call")) {
-                            reasonappend = " because of " + reason;
+                            reasonappend = " because " + reason;
                         } else {
                             reasonappend = ".";
                         }
 
-                        if (reason.equals("")) {
-                            details1 = "\n" + "*" + prospect + "*" + " *" + followupType + "* " + " at " + "*" + time + "*" + " for duration of " + "*" + duration + "*" + " with " + "*" +
-                                    person + "*" + " .Outcome is "
-                                    + " *" + outCome + "* " + reasonappend + "\n";
+                        /*if (reason.equals("-")) {
+                            if (historynotes.equalsIgnoreCase("null")||historynotes.equalsIgnoreCase("")||historynotes==null){
+                                details1 = "Outcome was " + outCome + reasonappend + "\n";
+                            }else {
+                                details1 = "Outcome was " + outCome + reasonappend + "\n" + "Reason: " + historynotes;
+                            }
                         } else {
-                            details1 = "\n" + "*" + prospect + "*" + " *" + followupType + "* " + " at " + "*" + time + "*" + " for duration of " + "*" + duration + "*" + " with " + "*" +
-                                    person + "*" + " .Outcome is "
-                                    + " *" + outCome + "* " + reasonappend + "\n";
+                            if (historynotes.equalsIgnoreCase("null")||historynotes.equalsIgnoreCase("")||historynotes==null){
+                                details1 = "Outcome was " + outCome + reasonappend + "\n";
+                            }else {
+                                details1 = "Outcome was " + outCome + reasonappend + "\n" + "Reason: " + historynotes;
+                            }
+                        }*/
+
+                        if (reason.equals("-")) {
+                            if (historynotes.equalsIgnoreCase("null")||historynotes.equalsIgnoreCase("")||historynotes==null) {
+
+                                details1 = "\n" + "*" + prospect + "*" + " *" + followupType + "* " + "at " + "*" + time + "*" + " for duration of " + "*" + duration + "*" + " with " + "*" +
+                                        person + "*" + " . Outcome is "
+                                        + " *" + outCome + "* " + reasonappend + "\n";
+                            }else {
+                                details1 = "\n" + "*" + prospect + "*" + " *" + followupType + "* " + "at " + "*" + time + "*" + " for duration of " + "*" + duration + "*" + " with " + "*" +
+                                        person + "*" + " . Outcome is "
+                                        + " *" + outCome + "* " + reasonappend + "\n"+"Notes: " + historynotes+"\n";
+                            }
+                        } else {
+                           /* details1 = "\n" + "*" + prospect + "*" + " *" + followupType + "* " + "at " + "*" + time + "*" + " for duration of " + "*" + duration + "*" + " with " + "*" +
+                                    person + "*" + " . Outcome is "
+                                    + " *" + outCome + "* " + reasonappend + "\n"+"Reason: " + historynotes+"\n";*/
+
+                            if (historynotes.equalsIgnoreCase("null")||historynotes.equalsIgnoreCase("")||historynotes==null) {
+
+                                details1 = "\n" + "*" + prospect + "*" + " *" + followupType + "* " + "at " + "*" + time + "*" + " for duration of " + "*" + duration + "*" + " with " + "*" +
+                                        person + "*" + " . Outcome is "
+                                        + " *" + outCome + "* " + reasonappend + "\n";
+                            }else {
+                                details1 = "\n" + "*" + prospect + "*" + " *" + followupType + "* " + "at " + "*" + time + "*" + " for duration of " + "*" + duration + "*" + " with " + "*" +
+                                        person + "*" + " . Outcome is "
+                                        + " *" + outCome + "* " + reasonappend + "\n"+"Notes: " + historynotes+"\n";
+                            }
+
 
                         }
 
@@ -466,8 +517,8 @@ public class CRMDayEndReport extends AppCompatActivity {
                         "*30-45*: " + txt_overdueColl45.getText().toString() + "" + txt_overdueCollAmt45.getText().toString() +/*" L" +*/ "\n" +
                         "*45-90*: " + txt_overdueColl90.getText().toString() + "" + txt_overdueCollAmt90.getText().toString() +/*" L" + */"\n" +
                         "*90+*: " + txt_overdueCollabove.getText().toString() + "" + txt_overdueCollAmtabove.getText().toString() +/*" L" +*/ "\n\n" +
-                        "*Visit*: " + txt_visit.getText().toString() + "" + txt_visitTime.getText().toString() + "\n" +
-                        "*Telephone*: " + txt_telephn.getText().toString() + "" + txt_telephnTime.getText().toString() + "\n" +
+                        "*Visit*: " + txt_visit.getText().toString() + " " + txt_visitTime.getText().toString() + "\n" +
+                        "*Telephone*: " + txt_telephn.getText().toString() + "- " + txt_telephnTime.getText().toString() + "\n" +
                         "*Email*: " + txt_email.getText().toString() + "" + txt_emailTime.getText().toString() + "\n" +
                         "*Total Time*: " + totalTime + "\n\n" +
                         fullString1;
@@ -500,7 +551,7 @@ public class CRMDayEndReport extends AppCompatActivity {
                 StringBuilder fullString1 = new StringBuilder();
                 if (crmDayEndReportDetailsBeanArrayList.size() != 0) {
                     String prospectName = "-", person = "-", followupType = "-", outCome = "-", reason = "-", time = "-", duration = "-",
-                            callPurposeDesc = "-", historyNotes = "-";
+                            callPurposeDesc = "-", historyNotes = "";
 
                     for (int j = 0; j < crmDayEndReportDetailsBeanArrayList.size(); j++) {
                         prospectName = crmDayEndReportDetailsBeanArrayList.get(j).getFirmname().trim();
@@ -509,10 +560,6 @@ public class CRMDayEndReport extends AppCompatActivity {
                         outCome = crmDayEndReportDetailsBeanArrayList.get(j).getOutcome().trim();
                         reason = crmDayEndReportDetailsBeanArrayList.get(j).getReasonDescription().trim();
                         time = crmDayEndReportDetailsBeanArrayList.get(j).getSchTime().trim();
-                        /*String[] splitTime = time.split(":");
-                        if (!time.equals("")) {
-                            time = updateTime(Integer.parseInt(splitTime[0].trim()), Integer.parseInt(splitTime[1].trim())).trim();
-                        }*/
 
                         try{
                             String[] split1;
@@ -576,18 +623,35 @@ Client busy*/
                                 outCome.equalsIgnoreCase("Demo Reschedule") ||
                                 outCome.equalsIgnoreCase("Transfer To BOE") ||
                                 outCome.equalsIgnoreCase("Customer will Call")) {
-                            reasonappend = " because of " + reason;
+                            reasonappend = " because " + reason;
                         } else {
                             reasonappend = ".";
                         }
 
 
-                        if (reason.equals("")) {
-                            details1 = "\n" + prospect + followupType + "at " + time + " for duration of " + duration + " with " + person + " .Outcome is "
-                                    + outCome + reasonappend + "\n";
+                        if (reason.equals("-")) {
+                            if (historyNotes.equalsIgnoreCase("null")||historyNotes.equalsIgnoreCase("")||historyNotes==null) {
+
+                                details1 = "\n" + prospect + " " + followupType + " " + "at " + time + " for duration of " + duration + " with " + person + " . Outcome is "
+                                        + outCome + reasonappend + "\n";
+                            }else {
+                                details1 = "\n" + prospect + " " + followupType + " " + "at " + time + " for duration of " + duration + " with " + person + " . Outcome is "
+                                        + outCome + reasonappend + "\n" + "Notes: " + historyNotes + "\n";
+                            }
                         } else {
-                            details1 = "\n" + prospect + followupType + " at " + time + " for duration of " + duration + " with " + person + " .Outcome is "
-                                    + outCome + reasonappend + "\n";
+                           /* details1 = "\n" + prospect + " " +followupType + " "+"at " + time + " for duration of " + duration + " with " + person + " . Outcome is "
+                                    + outCome + reasonappend + "\n"+"Reason: " + historyNotes+"\n";
+
+*/
+
+                            if (historyNotes.equalsIgnoreCase("null")||historyNotes.equalsIgnoreCase("")||historyNotes==null) {
+
+                                details1 = "\n" + prospect + " " + followupType + " " + "at " + time + " for duration of " + duration + " with " + person + " . Outcome is "
+                                        + outCome + reasonappend + "\n";
+                            }else {
+                                details1 = "\n" + prospect + " " + followupType + " " + "at " + time + " for duration of " + duration + " with " + person + " . Outcome is "
+                                        + outCome + reasonappend + "\n" + "Notes: " + historyNotes + "\n";
+                            }
 
                         }
 
@@ -641,8 +705,8 @@ Client busy*/
                         "30-45: " + txt_overdueColl45.getText().toString() + "" + txt_overdueCollAmt45.getText().toString() +/*" L" +*/ "\n" +
                         "45-90: " + txt_overdueColl90.getText().toString() + "" + txt_overdueCollAmt90.getText().toString() +/*" L" + */"\n" +
                         "90+: " + txt_overdueCollabove.getText().toString() + "" + txt_overdueCollAmtabove.getText().toString() +/*" L" +*/ "\n\n" +
-                        "Visit: " + txt_visit.getText().toString() + "" + txt_visitTime.getText().toString() + "\n" +
-                        "Telephone: " + txt_telephn.getText().toString() + "" + txt_telephnTime.getText().toString() + "\n" +
+                        "Visit: " + txt_visit.getText().toString() + " " + txt_visitTime.getText().toString() + "\n" +
+                        "Telephone: " + txt_telephn.getText().toString() + "- " + txt_telephnTime.getText().toString() + "\n" +
                         "Email: " + txt_email.getText().toString() + "" + txt_emailTime.getText().toString() + "\n" +
                         "Total Time: " + totalTime + "\n\n" +
                         fullString1;
@@ -776,7 +840,8 @@ Client busy*/
             date1 = params[0];
             /*2020-02-05*/
 
-            String url = CompanyURL + WebUrlClass.api_POSTCrmDayReport + "?PickDate=" + date1;
+            String url = CompanyURL + WebUrlClass.api_POSTCrmDayReport + "?PickDate=" + date1+"&UID="+UserMasterId;
+           // String url = CompanyURL + WebUrlClass.api_POSTCrmDayReport + "?PickDate=" + date1+"&UID=6977a444-c205-4348-8a01-90843192d883";
             res = ut.OpenConnection(url, CRMDayEndReport.this);
 
             try {
@@ -977,7 +1042,7 @@ Client busy*/
                         if (visit == null || visit.equals("null") || visit.equals("")) {
                             txt_visitTime.setText("-");
                         } else {
-                            txt_visitTime.setText(countJSONObj.getString("MMVisit"));
+                            txt_visitTime.setText("- "+countJSONObj.getString("MMVisit"));
                         }
 
                         String teleVal = countJSONObj.get("MMTele").toString().trim();

@@ -18,7 +18,7 @@ import java.lang.Override;
 public class CallLogDetailsAdapter$ActivityHolder_ViewBinding implements Unbinder {
   private CallLogDetailsAdapter.ActivityHolder target;
 
-  private View view2131296783;
+  private View view2131296790;
 
   @UiThread
   public CallLogDetailsAdapter$ActivityHolder_ViewBinding(final CallLogDetailsAdapter.ActivityHolder target,
@@ -33,7 +33,7 @@ public class CallLogDetailsAdapter$ActivityHolder_ViewBinding implements Unbinde
     target.txt_calltypename = Utils.findRequiredViewAsType(source, R.id.txt_calltypename, "field 'txt_calltypename'", TextView.class);
     view = Utils.findRequiredView(source, R.id.card_view, "field 'card_view' and method 'rowClick'");
     target.card_view = Utils.castView(view, R.id.card_view, "field 'card_view'", CardView.class);
-    view2131296783 = view;
+    view2131296790 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -64,7 +64,7 @@ public class CallLogDetailsAdapter$ActivityHolder_ViewBinding implements Unbinde
     target.txt_firmname = null;
     target.txt_mobile = null;
 
-    view2131296783.setOnClickListener(null);
-    view2131296783 = null;
+    view2131296790.setOnClickListener(null);
+    view2131296790 = null;
   }
 }

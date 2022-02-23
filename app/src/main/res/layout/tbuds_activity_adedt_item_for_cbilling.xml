@@ -190,7 +190,6 @@
                         android:hint=""
                         android:editable="false"
                         android:clickable="false"
-                        android:inputType="number"
                         android:textSize="14sp"
                         android:textColor="#111"/>
 

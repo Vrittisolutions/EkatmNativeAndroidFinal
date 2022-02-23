@@ -78,10 +78,22 @@ public class SOApprListAdapter extends BaseAdapter {
         String DoAck = arraylist.get(position).getDoAck();
         String DoDelDate = arraylist.get(position).getSODate();
 
-        double amount = Double.parseDouble(String.valueOf(arraylist.get(position).getNetAmt()));
-        DecimalFormat formatter = new DecimalFormat("#,##,##,###.00");
-        String formatted = formatter.format(amount);
-        holder.txtamt.setText(formatted +" ₹");
+        try {
+            double amount = Double.parseDouble(String.valueOf(arraylist.get(position).getNetAmt()));
+            DecimalFormat formatter = new DecimalFormat("#,##,##,###.00");
+            String formatted = formatter.format(amount);
+
+            String tax = arraylist.get(position).getTax();
+            if (tax.equalsIgnoreCase("0") || tax.equalsIgnoreCase("") || tax.equalsIgnoreCase("0.0") || tax.equalsIgnoreCase("0.0000")) {
+                holder.txtamt.setText(formatted + " ₹");
+            } else {
+                double Tottax = Double.parseDouble(tax);
+                double TotalAmount = amount + Tottax;
+                holder.txtamt.setText(String.format("%.2f", TotalAmount) + " ₹");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
         if(!DoAck.equalsIgnoreCase("")){
             holder.txtsodate.setText(Convertdate(DoAck));

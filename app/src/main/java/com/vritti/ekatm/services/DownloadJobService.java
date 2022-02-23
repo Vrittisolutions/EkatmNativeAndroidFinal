@@ -26,8 +26,10 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.PowerManager;
 import android.provider.Settings;
 import android.support.annotation.RequiresApi;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
@@ -169,10 +171,13 @@ public class DownloadJobService extends JobService implements LocationListener, 
     String startWorkingTime = "8";
     int stopWorkingTime = 20;
     boolean isGPSGetLocation = true;
+    private PowerManager.WakeLock wakeLock;
 
     @Override
     public boolean onStartJob(JobParameters jobParameters) {
 
+        PowerManager pm = (PowerManager)getSystemService(POWER_SERVICE);
+        wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "PeriSecure:MyWakeLock");
 
         context = this;
         Log.e("", "");
@@ -657,7 +662,9 @@ public class DownloadJobService extends JobService implements LocationListener, 
                     float distance = lastUpdatedLocationObject.distanceTo(mUpdatedLocation);
                     if (distance <= 100 && diffreance >= 1200000) {
                         // if distance is less then 100 meter and time diffrence is more then 20 min
-                        maxTimeNotification("You stay on same place last 20 min");
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                            maxTimeNotification("You stay on same place last 20 min");
+                        }
                     }
                 }
                 if (diffreance >= 60000) {  // check for 1 is over or not
@@ -672,7 +679,17 @@ public class DownloadJobService extends JobService implements LocationListener, 
                         }
                     }
                 }
-                if(AppCommon.getInstance(context).IsSMS()){
+                if (AppCommon.getInstance(context).IsSMS()) {
+                    if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                        // TODO: Consider calling
+                        //    ActivityCompat#requestPermissions
+                        // here to request the missing permissions, and then overriding
+                        //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                        //                                          int[] grantResults)
+                        // to handle the case where the user grants the permission. See the documentation
+                        // for ActivityCompat#requestPermissions for more details.
+                        return;
+                    }
                     Location mCurrentLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
                     Location vendorLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);;
                     vendorLocation.setLatitude(Double.parseDouble(AppCommon.getInstance(context).getVendorLatitude()));
@@ -686,7 +703,9 @@ public class DownloadJobService extends JobService implements LocationListener, 
                     float vendorDistance = mCurrentLocation.distanceTo(vendorLocation);
                    // vendorDistance = 800;
                     if(vendorDistance <= 1000){
-                        maxTimeNotification("You Are near to your location");
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                            maxTimeNotification("You Are near to your location");
+                        }
                         senSMS();
                         AppCommon.getInstance(context).setSMS_Servive(false , ""
                                 ,"" ,""
@@ -1272,10 +1291,6 @@ public class DownloadJobService extends JobService implements LocationListener, 
         return currentBestLocation;
     }
 
-    /**
-     * Checks whether two providers are the same
-     */
-
     private boolean isSameProvider(String provider1, String provider2) {
         if (provider1 == null) {
             return provider2 == null;
@@ -1283,36 +1298,6 @@ public class DownloadJobService extends JobService implements LocationListener, 
         return provider1.equals(provider2);
     }
 
-    public boolean isLocationAccurate(Location location) {
-        if (location.hasAccuracy()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public Location getStaleLocation() {
-        if (mLastLocationFetched != null) {
-            return mLastLocationFetched;
-        }
-        /*if (Build.VERSION.SDK_INT >= 23 &&
-                ContextCompat.checkSelfPermission(mContext, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-                ContextCompat.checkSelfPermission(mContext, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return null;
-        }*/
-        try {
-            if (mProviderType == GPS_PROVIDER) {
-                return locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-            } else if (mProviderType == NETWORK_PROVIDER) {
-                return locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-            } else {
-                return getBetterLocation(locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER), locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER));
-            }
-        } catch (SecurityException e) {
-
-        }
-        return mLastLocationFetched;
-    }
 
     private void setNewLocation(Location location, Location oldLocation) {
         if (location != null) {
@@ -1341,24 +1326,6 @@ public class DownloadJobService extends JobService implements LocationListener, 
             Log.e(TAG, e.getMessage());
         }
         return lastKnownLocation;
-    }
-
-    public void checkNetworkProviderEnable() {
-        locationManager = (LocationManager) getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
-
-        isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
-        isNetworkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
-
-        if (!isGPSEnabled && !isNetworkEnabled) {
-            // buildAlertMessageTurnOnLocationProviders("Your location providers seems to be disabled, please enable it", "OK", "Cancel");
-        } else if (!isGPSEnabled) {
-            // buildAlertMessageTurnOnLocationProviders("Your GPS seems to be disabled, please enable it", "OK", "Cancel");
-        } else if (!isNetworkEnabled) {
-            // buildAlertMessageTurnOnLocationProviders("Your Network location provider seems to be disabled, please enable it", "OK", "Cancel");
-        }
-        // getting network status
-
-
     }
 
     public double getLatitude() {

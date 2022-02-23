@@ -336,9 +336,9 @@ public class NotificationActivity extends AppCompatActivity {
 
     private void callAgainApi(final String path, final String attachmentName1) {
         if (isnet()) {
-            String path1 = Environment.getExternalStorageDirectory()
+            String path1 = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
                     .toString();
-            File file = new File(path1 + "/" + "Vwb" + "/" + "File");
+            File file = new File(path1 + "/" + "Notification" + "/" + "File");
             if (file.exists()) {
                 final File fileNew = new File(file + "/" + attachmentName1);
                 if (fileNew.exists()) {
@@ -396,14 +396,14 @@ public class NotificationActivity extends AppCompatActivity {
             File file=null;
             String urlStr = CompanyURL + "/Downloads/" + pathName + "/" + fileName;
             try {
-                String path1 = Environment.getExternalStorageDirectory()
+                String path1 = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
                         .toString();
 
                 if (Constants.type == Constants.Type.Sahara){
                     file = new File(path1 + "/" + "Sahara" + "/" + "File");
 
                 }else {
-                     file = new File(path1 + "/" + "Ekatm" + "/" + "File");
+                     file = new File(path1 + "/" + "Notification" + "/" + "File");
                 }
                 if (!file.exists())
                     file.mkdirs();
@@ -424,13 +424,14 @@ public class NotificationActivity extends AppCompatActivity {
                         URL url = new URL(urlStr);
 
                         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                        urlConnection.setRequestMethod("GET");
+                        urlConnection.setDoOutput(false);
                         urlConnection.connect();
                         int lenghtOfFile = urlConnection.getContentLength();
                         long total = 0;
 
-
-                        FileOutputStream fileOutputStream = new FileOutputStream(fileNew);
                         InputStream inputStream = urlConnection.getInputStream();
+                        FileOutputStream fileOutputStream = new FileOutputStream(fileNew);
                         int totalSize = urlConnection.getContentLength();
                         int serverResponseCode = urlConnection.getResponseCode();
                         String serverResponseMessage = urlConnection.getResponseMessage();

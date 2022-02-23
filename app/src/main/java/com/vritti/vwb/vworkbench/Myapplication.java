@@ -77,11 +77,11 @@ public class Myapplication extends Application {
         ShortcutBadger.with(getApplicationContext()).count(badgeCount);
 
 
-       /* AutoErrorReporter.get(this)
+      /*  AutoErrorReporter.get(this)
                 .setEmailAddresses("vrittiisolutions@gmail.com")
                 .setEmailSubject("vwb crash report")
-                .start();*/
-
+                .start();
+*/
 
 
 

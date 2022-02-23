@@ -2,6 +2,7 @@ package com.vritti.AlfaLavaModule.activity;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -17,31 +18,38 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.coremedia.iso.boxes.Box;
+import com.vritti.AlfaLavaModule.adapter.Adapter_PrinterName;
 import com.vritti.AlfaLavaModule.adapter.Adp_Box;
 import com.vritti.AlfaLavaModule.adapter.Adp_Putaways;
 import com.vritti.AlfaLavaModule.bean.AlfaLocation;
 import com.vritti.AlfaLavaModule.bean.BoxBean;
+import com.vritti.AlfaLavaModule.bean.PrinterName;
 import com.vritti.AlfaLavaModule.bean.PutAwaysBean;
 import com.vritti.AlfaLavaModule.utility.ProgressHUD;
 import com.vritti.databaselib.data.DatabaseHandlers;
 import com.vritti.databaselib.other.Utility;
 import com.vritti.databaselib.other.WebUrlClass;
+import com.vritti.ekatm.Constants;
 import com.vritti.ekatm.R;
 import com.vritti.sessionlib.CallbackInterface;
 import com.vritti.sessionlib.StartSession;
@@ -51,6 +59,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,6 +94,10 @@ public class BoxmasterActivity extends AppCompatActivity {
     private String Cartan_code="";
     private String CartanHeaderId;
 
+    ArrayList<PrinterName>printerNameArrayList;
+    private String printerName;
+    private Adapter_PrinterName adapterPrinterName;
+    private AlertDialog b;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -91,6 +105,8 @@ public class BoxmasterActivity extends AppCompatActivity {
         setContentView(R.layout.alfa_activity_putaway);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Carton/Box");
+
+        printerNameArrayList=new ArrayList<>();
 
 
         userpreferences = getSharedPreferences(WebUrlClass.USERINFO, Context.MODE_PRIVATE);
@@ -511,8 +527,30 @@ public class BoxmasterActivity extends AppCompatActivity {
                 editor.putString("OrdNo", PackOrderNo);
                 editor.commit();
 
-                finish();
+                if (Constants.type == Constants.Type.Alfa) {
+                    if (isnet()) {
+                        new StartSession(BoxmasterActivity.this, new CallbackInterface() {
+                            @Override
+                            public void callMethod() {
+                                new DownloadPrinterData().execute();
+                            }
 
+                            @Override
+                            public void callfailMethod(String msg) {
+
+                            }
+
+
+                        });
+
+                    } else {
+                        Toast.makeText(BoxmasterActivity.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                    }
+
+
+                }else {
+                    finish();
+                }
 
                /* startActivity(new Intent(BoxmasterActivity.this,DOPackingScanDetails.class)
                         .putExtra("dono",PackOrderNo)
@@ -521,5 +559,198 @@ public class BoxmasterActivity extends AppCompatActivity {
             }
         }
     }
+
+    private class UpLoadSplitData extends AsyncTask<String, String, String> {
+        Object res;
+        String response, data;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            String url = null;
+            try {
+                url = CompanyURL + WebUrlClass.api_Get_Carton_Packet_For_QR+"?CartonNo="+Cartan_code+"&PackOrderNo="+PackOrderNo+"&PrinterName="+ URLEncoder.encode(printerName,"UTF-8");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+            try {
+                res = ut.OpenConnection(url, BoxmasterActivity.this);
+                response = res.toString().replaceAll("\\\\", "");
+
+            } catch (Exception e) {
+                response = "Error";
+            }
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            if (s.equalsIgnoreCase("ok")) {
+                Toast.makeText(BoxmasterActivity.this, "Label Printed Successfully", Toast.LENGTH_SHORT).show();
+                finish();
+                //b.dismiss();
+            } else {
+                //    Toast.makeText(ItemWisePickListDetailActivity.this, "Packet split Successfully", Toast.LENGTH_SHORT).show();
+
+                Toast toast = Toast.makeText(BoxmasterActivity.this, "Label Printed Successfully", Toast.LENGTH_SHORT);
+                View toastView = toast.getView();
+                TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                toastMessage.setTextSize(18);
+                toastMessage.setTextColor(Color.GREEN);
+                toastMessage.setGravity(Gravity.CENTER);
+                toastView.setBackgroundColor(Color.WHITE);
+                toast.show();
+                finish();
+
+
+                //   onResume();
+                // b.dismiss();
+            }
+        }
+    }
+    class DownloadPrinterData extends AsyncTask<String, Void, String> {
+        Object res;
+        String response;
+        ProgressDialog progressDialog;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            //showProgressDialog();
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            String url = CompanyURL + WebUrlClass.api_GetPrinterName;
+
+            try {
+                res = ut.OpenConnection(url, BoxmasterActivity.this);
+                if (res != null) {
+                    response = res.toString();
+                    response = res.toString().replaceAll("\\\\", "");
+                    response = response.replaceAll("\\\\\\\\/", "");
+                    response = response.substring(1, response.length() - 1);
+
+                    printerNameArrayList.clear();
+                    JSONArray jResults = new JSONArray(response);
+
+                    for (int i = 0; i < jResults.length(); i++) {
+                        PrinterName userList = new PrinterName();
+                        JSONObject jorder = jResults.getJSONObject(i);
+                        userList.setPrinterName(jorder.getString("PrinterName"));
+                        printerNameArrayList.add(userList);
+
+
+                    }
+
+
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String integer) {
+            super.onPostExecute(integer);
+
+
+
+            if (response.contains("[]")) {
+
+                Toast.makeText(BoxmasterActivity.this, "Printer not found", Toast.LENGTH_SHORT).show();
+            } if (response.equals("")) {
+                printerName="";
+                //   Toast.makeText(ItemWisePickListDetailActivity.this, "Printer not found", Toast.LENGTH_SHORT).show();
+
+                if (isnet()) {
+                    new StartSession(BoxmasterActivity.this, new CallbackInterface() {
+                        @Override
+                        public void callMethod() {
+                            new UpLoadSplitData().execute();
+                        }
+
+                        @Override
+                        public void callfailMethod(String msg) {
+                            new UpLoadSplitData().execute();
+
+                        }
+
+
+                    });
+
+                } else {
+                    Toast.makeText(BoxmasterActivity.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+
+                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(BoxmasterActivity.this);
+                LayoutInflater inflater = BoxmasterActivity.this.getLayoutInflater();
+                final View myView = inflater.inflate(R.layout.printername_lay, null);
+                dialogBuilder.setView(myView);
+                Spinner printername = (Spinner) myView .findViewById(R.id.spinner_printer);
+
+                adapterPrinterName = new Adapter_PrinterName(BoxmasterActivity.this, printerNameArrayList);
+                printername.setAdapter(adapterPrinterName);
+                printername.setSelection(0,false);
+
+
+                printername.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+
+                        printerName=printerNameArrayList.get(position).getPrinterName();
+
+
+                        if (isnet()) {
+                            b.dismiss();
+                            new StartSession(BoxmasterActivity.this, new CallbackInterface() {
+                                @Override
+                                public void callMethod() {
+                                    new UpLoadSplitData().execute();
+                                }
+
+                                @Override
+                                public void callfailMethod(String msg) {
+                                    new UpLoadSplitData().execute();
+
+                                }
+
+
+                            });
+
+                        } else {
+                            Toast.makeText(BoxmasterActivity.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                        }
+
+
+
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+
+                b = dialogBuilder.create();
+                b.show();
+
+            }
+
+
+        }
+    }
+
+
 }
 

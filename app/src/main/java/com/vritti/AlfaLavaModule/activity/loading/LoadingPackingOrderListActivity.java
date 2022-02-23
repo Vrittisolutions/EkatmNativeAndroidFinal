@@ -22,6 +22,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 import com.vritti.AlfaLavaModule.activity.DOPackingScanDetails;
 import com.vritti.AlfaLavaModule.activity.unpacking.CartonHeaderListActivity;
 import com.vritti.AlfaLavaModule.adapter.Adp_UnPackingOrder;
@@ -55,7 +57,7 @@ public class LoadingPackingOrderListActivity extends AppCompatActivity {
     TextView edt_scanPacket;
     ImageView img_search;
     ProgressBar progress;
-
+    ImageView img_barcode;
 
 
     @Override
@@ -98,6 +100,9 @@ public class LoadingPackingOrderListActivity extends AppCompatActivity {
         recycler.setLayoutManager(layoutManager);
         adapter=new Adp_LoadingPackingOrder(picklistNOList);
         recycler.setAdapter(adapter);
+
+        img_barcode = findViewById(R.id.img_barcode);
+        img_barcode.setVisibility(View.VISIBLE);
 
        edt_scanPacket.setHint("Search pack order");
 
@@ -203,6 +208,20 @@ public class LoadingPackingOrderListActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable arg0) {
                 // TODO Auto-generated method stub
+            }
+        });
+
+        img_barcode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IntentIntegrator integrator = new IntentIntegrator(LoadingPackingOrderListActivity.this);
+                integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
+                integrator.setPrompt("Scan");
+                integrator.setCameraId(0);
+                integrator.setBeepEnabled(false);
+                integrator.setBarcodeImageEnabled(false);
+                integrator.initiateScan();
+
             }
         });
     }
@@ -335,6 +354,24 @@ public class LoadingPackingOrderListActivity extends AppCompatActivity {
 
         //calling a method of the adapter class and passing the filtered list
         adapter.update(filterdNames);
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data1) {
+        super.onActivityResult(requestCode, resultCode, data1);
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data1);
+        if (result != null) {
+            if (result.getContents() == null) {
+                Log.e("Scan*******", "Cancelled scan");
+
+            } else {
+                Log.e("Scan", "Scanned");
+
+
+                String text= result.getContents().toString();
+                filter(text);
+
+            }
+        }
     }
 
 }

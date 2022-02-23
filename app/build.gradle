@@ -54,22 +54,22 @@ android {
                 minSdkVersion 19
                 applicationId 'vworkbench7.vritti.com.vworkbench7'
                 targetSdkVersion 30
-                versionCode 128
-                versionName '5.5.7'
+                versionCode 146
+                versionName '7.2'
             }
               Delivery {
                   minSdkVersion 19
                   applicationId 'vworkbench7.vritti.com.delivery'
                   targetSdkVersion 30
-                  versionCode 5
-                  versionName '1.0.3'
+                  versionCode 6
+                  versionName '1.0.4'
               }
             PM {
                 minSdkVersion 19
                 applicationId 'practice.vritti.com'
                 targetSdkVersion 30
-                versionCode 18
-                versionName '1.2.4'
+                versionCode 23
+                versionName '1.2.9'
             }
             MilkRun {
                 minSdkVersion 19
@@ -222,6 +222,17 @@ dependencies {
     implementation (group: 'com.scichart.library', name: 'extensions', version: '3.0.0.4253', ext: 'aar')
     implementation (group: 'com.scichart.library', name: 'extensions3d', version: '3.0.0.4253', ext: 'aar')
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.0-beta1'
+    implementation "android.arch.work:work-runtime:1.0.0"
+   // implementation 'com.google.cloud:google-cloud-speech:0.30.0-alpha'
+    /*implementation 'com.google.cloud:google-cloud-speech:0.30.0-alpha'
+    annotationProcessor 'com.google.cloud:google-cloud-speech:0.30.0-alpha'
+
+*/
+    //implementation 'com.google.cloud:google-cloud-speech:0.80.0-beta'
+    //implementation 'com.google.cloud:google-cloud-speech:2.2.4'
+    implementation 'com.github.Lauzy:LyricView:1.0.4'
+    implementation 'android.lib.verticalmarqueetextview:VerticalMarqueeTextView:+'
+
 
 }
 apply plugin: 'com.google.gms.google-services'

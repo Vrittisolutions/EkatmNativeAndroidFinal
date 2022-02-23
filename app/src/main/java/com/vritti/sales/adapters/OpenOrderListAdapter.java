@@ -92,6 +92,7 @@ public class OpenOrderListAdapter extends BaseAdapter {
 
         holder.id.setText(arrayList.get(position).getSONo());
 
+
         double amount = Double.parseDouble(String.valueOf(arrayList.get(position).getNetAmt()));
         DecimalFormat formatter = new DecimalFormat("#,##,##,###.00");
         String formatted = formatter.format(amount);

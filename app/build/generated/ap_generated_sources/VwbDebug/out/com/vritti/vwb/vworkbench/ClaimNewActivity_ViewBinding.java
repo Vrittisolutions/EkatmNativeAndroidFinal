@@ -21,11 +21,11 @@ import java.lang.Override;
 public class ClaimNewActivity_ViewBinding implements Unbinder {
   private ClaimNewActivity target;
 
-  private View view2131296458;
+  private View view2131296460;
 
-  private View view2131296470;
+  private View view2131296473;
 
-  private View view2131297646;
+  private View view2131297657;
 
   @UiThread
   public ClaimNewActivity_ViewBinding(ClaimNewActivity target) {
@@ -46,7 +46,7 @@ public class ClaimNewActivity_ViewBinding implements Unbinder {
     target.lay_claim_details = Utils.findRequiredViewAsType(source, R.id.lay_claim_details, "field 'lay_claim_details'", RecyclerView.class);
     view = Utils.findRequiredView(source, R.id.btnSave, "field 'btnSave' and method 'submitClaim'");
     target.btnSave = Utils.castView(view, R.id.btnSave, "field 'btnSave'", Button.class);
-    view2131296458 = view;
+    view2131296460 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -58,7 +58,7 @@ public class ClaimNewActivity_ViewBinding implements Unbinder {
     target.toolbar = Utils.findRequiredViewAsType(source, R.id.toolbar1, "field 'toolbar'", Toolbar.class);
     target.mProgress = Utils.findRequiredViewAsType(source, R.id.toolbar_progress_App_bar, "field 'mProgress'", ProgressBar.class);
     view = Utils.findRequiredView(source, R.id.btn_add_claim, "method 'addClaim'");
-    view2131296470 = view;
+    view2131296473 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -66,7 +66,7 @@ public class ClaimNewActivity_ViewBinding implements Unbinder {
       }
     });
     view = Utils.findRequiredView(source, R.id.imAttachment, "method 'addAttachment'");
-    view2131297646 = view;
+    view2131297657 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -95,11 +95,11 @@ public class ClaimNewActivity_ViewBinding implements Unbinder {
     target.toolbar = null;
     target.mProgress = null;
 
-    view2131296458.setOnClickListener(null);
-    view2131296458 = null;
-    view2131296470.setOnClickListener(null);
-    view2131296470 = null;
-    view2131297646.setOnClickListener(null);
-    view2131297646 = null;
+    view2131296460.setOnClickListener(null);
+    view2131296460 = null;
+    view2131296473.setOnClickListener(null);
+    view2131296473 = null;
+    view2131297657.setOnClickListener(null);
+    view2131297657 = null;
   }
 }

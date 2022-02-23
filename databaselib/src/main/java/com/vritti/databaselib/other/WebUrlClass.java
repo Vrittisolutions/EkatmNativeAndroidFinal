@@ -11,8 +11,8 @@ public class WebUrlClass {
 
     /*  ----------------------------  static strings common  ----------------------------------------- */
 
-           public static final String APP_URL_PM = "https://app.simplifypractice.com";
-         // public static final String APP_URL_PM = "http://vritti1.simplifypractice.com";
+           public static final String APP_URL_PM = "https://app.simplifypractice.com";  // Production
+         // public static final String APP_URL_PM = "http://vritti1.simplifypractice.com"; // Testing
 
 
 
@@ -92,6 +92,7 @@ public class WebUrlClass {
     public static final String MyPREFERENCES_IS_GPS_LOCATION_KEY = "gpsloc";
     public static final String MyPREFERENCES_FIREBASE_TOKEN_KEY = "firbasetoken";
     public static final String MyPREFERENCES_IS_CRMUSER_KEY = "crmuser";
+    public static final String MyPREFERENCES_IS_APPCODE = "AppCode";
 
 
     public static final String GET_COMPANY_URL_KEY = "CompanyURL";
@@ -215,7 +216,7 @@ public class WebUrlClass {
     public static final String api_get_fill_consignee = "/api/SuspectMasterAPI/GetFillEntityConsignee";
     public static final String api_get_fill_territory = "/api/SuspectMasterAPI/GetFillTerritory";
     public static final String api_get_Businesssegment = "/api/SuspectMasterAPI/GetFillCustomerSegment";
-    public static final String api_get_ProspectSource = "/api/SuspectMasterAFoPI/GetFillSuspectSource";
+    public static final String api_get_ProspectSource = "/api/SuspectMasterAPI/GetFillSuspectSource";
     public static final String api_get_ProspectCheckSerial= "/api/SuspectMasterAPI/DuplicateRecChkForEmamiAndroid";
 
     public static final String api_get_Prospect_validations = "/api/ProspectSettingAPI/getDatabyId";
@@ -326,9 +327,6 @@ public class WebUrlClass {
     public static final String api_GetPromoterList2 = "/api/AdvancePaymentVoucherAPI/GetUserName";
 
     public static final String api_GetPromoterRecord = "/api/SuspectMasterAPI/getPromoterReportData";
-
-
-
  public static final String api_getTicketDataForAndroid = "/api/CustomerwiseTicketDetailsAPI/getTicketDataForAndroid";
  public static final String api_TicketCountForAndroid = "/api/CustomerwiseTicketDetailsAPI/TicketCountForAndroid";
  public static final String api_TicketCountMonthWiseForAndroid =  "/api/CustomerwiseTicketDetailsAPI/TicketCountMonthWiseForAndroid";
@@ -394,6 +392,7 @@ public static String statusCancel = "Cancel";
     public static final String SENDER_ID = "215836600894";
 
     public static final String api_PostloadWorkData = "/api/TimesheetAPI/PostloadWorkData";
+    public static final String api_PostloadWorkDataPaging = "/api/TimesheetAPI/PostloadWorkDataPaging";
     public static final String api_PostloadWorkData_Indexing = "/api/TimesheetAPI/GetTimeSheetPaging";
     public static final String api_GetTimeSheet = "/api/TimesheetAPI/GetTimeSheet";
 
@@ -513,7 +512,8 @@ public static String statusCancel = "Cancel";
     public static final String api_ClaimApprove = "/api/MyClaimAPI/PostApproveClaim";
     public static final String api_ClaimDisApprovebg = "/api/MyClaimApprovalApi/PostRejectClaim";
     public static final String api_ClaimApprovebg = "/api/MyClaimApprovalApi/PostApproveClaim";
-    public static final String api_GetUploadedAttachment = "/api/DocInfoAPI/GetUploadedAttachment";
+    //public static final String api_GetUploadedAttachment = "/api/DocInfoAPI/GetUploadedAttachment";
+    public static final String api_GetUploadedAttachment = "/api/UploadFilesAPI/GetUploadedAttachment";
     public static final String api_getDategps = "/api/GroupMasterAPI/GetDate";//GetDate(string UserMasterId)
     public static final String FCMurl = "/api/PushNotificationAPI/PostDeviceMaster";
 
@@ -787,6 +787,7 @@ public static String statusCancel = "Cancel";
     public static String api_UploadDoDump = "/api/UploadOfflineALMTAPI/UploadDoDump";
     public static String api_OrderPacking = "/api/UploadOfflineALMTAPI/OrderPacking";
     public static String api_GetPicklistNO = "/api/PutPacketInCartonAPI/GetPicklistNO";
+    public static String api_GetPick_ListNo = "/api/PickingConfirmationApi/GetPick_ListNo";
     public static String api_GetPostedPicklistNO = "/api/PutPacketInCartonAPI/GetPostedPicklistNO";
     public static String api_GetPackOrdNO = "/api/PutPacketInCartonAPI/GetPackOrdNO";
     public static String api_UpdateComputedWt = "/api/PutPacketInCartonAPI/UpdateComputedWt";
@@ -828,7 +829,9 @@ public static String statusCancel = "Cancel";
 
     public static String api_CheckPacketValidation = "/api/PickingConfirmationApi/CheckPacketValidation";
     public static String api_CheckPacketValidationNew = "/api/PickingConfirmationApi/CheckPacketValidationNew";
+    public static String api_CheckPacketValidationAlfaLaval = "/api/PickingConfirmationApi/CheckPacketValidationAlfaLaval";
     public static String api_CheckPacketPackingValidation = "/api/PickingConfirmationApi/CheckPacketPackingValidation";
+    public static String api_CheckPacketPackingValidationAlfa = "/api/PickingConfirmationApi/CheckPacketPackingValidationAlfa";
     public static String GetPickListPacketNoData = "/api/GRNEntryApi/GetPickListPacketNoData";
     public static String GetPackListPacketNoData = "/api/GRNEntryApi/GetPackListPacketNoData";
     public static String GetPacketEnquiryData = "/api/PickListConfirmApi/GetPacketEnquiryData";
@@ -959,6 +962,8 @@ public static String statusCancel = "Cancel";
     public static final String api_GetCountExpReg = "/api/MyClaimAPI/GetCountExpReg";
 
     public static final String api_getListProduct = "/api/CRMCallAssignmentAPI/getListProduct";
+    public static final String api_getListProduct_1 = "/api/CRMCallAssignmentAPI/getListProduct";
+   // https://vritti.ekatm.co.in/api/CRMCallAssignmentAPI/getListProduct?OrderTypeMasterId=
     public static final String api_getProductDetailEdit = "/api/CRMCallAssignmentAPI/getproductforEdit";
     public static final String api_PostUpdate = "/api/CRMCallAssignmentAPI/POSTUpdate";
     public static final String api_getOpportunityDetail= "/api/CRMCallAssignmentAPI/getOpportunityDetail";
@@ -984,5 +989,25 @@ public static String statusCancel = "Cancel";
     public static final String GetCallDetails = "/api/CRMCallLogAPI/GetCallDetails";
     public static final String GetCallUserList = "/api/CRMCallLogApi/GetCallUserList";
     public static final String api_remarks_sahara = "/api/DatasheetEntryAPI/GetRemarkDetails";
+
+    //Activity Filter Paging
+
+    public static final String api_getFilterActivityForAndroid = "/api/Timesheetapi/getFilterActivityForAndroid";
+    public static final String api_Get_Carton_Packet_For_QR = "/api/PutPacketInCartonAPI/Get_Carton_Packet_For_QR";
+    public static final String api_PackOrderPacking = "/api/PickingConfirmationApi/OrderPacking";
+
+
+    public static final String api_GetRestartCallOnebyOne = "/api/CallListAPI/GetRestartCallOnebyOne";
+    public static final String api_GetIgnoreCallOnebyOne = "/api/CallListAPI/GetIgnoreCallOnebyOne";
+
+
+    public static final String api_SavePaidAmount = "/api/ShipmentEntryAPI/SavePaidAmount";
+    //GetDeviceAuthentication
+    public static final String api_GetDeviceAuthentication = "/api/LoginAPI/GetDeviceAuthentication";
+    public static final String api_GetReviewDate = "/api/CallListAPI/GetReviewDate";
+
+    // Used for send any Sourcetype
+    public static final String api_UploadAttechmentDatasheet = "/api/UploadFilesAPI/UploadAttachment";
+
 
 }

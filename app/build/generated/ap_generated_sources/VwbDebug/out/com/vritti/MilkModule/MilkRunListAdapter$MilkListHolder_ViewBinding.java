@@ -16,7 +16,7 @@ import java.lang.Override;
 public class MilkRunListAdapter$MilkListHolder_ViewBinding implements Unbinder {
   private MilkRunListAdapter.MilkListHolder target;
 
-  private View view2131299533;
+  private View view2131299559;
 
   @UiThread
   public MilkRunListAdapter$MilkListHolder_ViewBinding(final MilkRunListAdapter.MilkListHolder target,
@@ -31,7 +31,7 @@ public class MilkRunListAdapter$MilkListHolder_ViewBinding implements Unbinder {
     target.v1 = Utils.findRequiredView(source, R.id.v1, "field 'v1'");
     target.v2 = Utils.findRequiredView(source, R.id.v2, "field 'v2'");
     view = Utils.findRequiredView(source, R.id.tripRow, "method 'tripRow'");
-    view2131299533 = view;
+    view2131299559 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -54,7 +54,7 @@ public class MilkRunListAdapter$MilkListHolder_ViewBinding implements Unbinder {
     target.v1 = null;
     target.v2 = null;
 
-    view2131299533.setOnClickListener(null);
-    view2131299533 = null;
+    view2131299559.setOnClickListener(null);
+    view2131299559 = null;
   }
 }

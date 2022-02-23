@@ -25,6 +25,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -47,30 +48,23 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.vritti.AlfaLavaModule.activity.DOListActivity;
-import com.vritti.AlfaLavaModule.activity.DOPackingScanDetails;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 import com.vritti.AlfaLavaModule.activity.PacketNoDisplayActivity;
-import com.vritti.AlfaLavaModule.activity.PickListDetailActivity;
-import com.vritti.AlfaLavaModule.activity.ReceiptPackagingDOListActivity;
-import com.vritti.AlfaLavaModule.activity.cartonlabel.CartonLabelHeaderListActivity;
 import com.vritti.AlfaLavaModule.adapter.AdapterPicklistDetail;
 import com.vritti.AlfaLavaModule.adapter.Adapter_PrinterName;
 import com.vritti.AlfaLavaModule.bean.FIFOBreakReson;
 import com.vritti.AlfaLavaModule.bean.Packet;
 import com.vritti.AlfaLavaModule.bean.PickListDetail;
 import com.vritti.AlfaLavaModule.bean.PrinterName;
-import com.vritti.AlfaLavaModule.utility.ProgressHUD;
 import com.vritti.databaselib.data.DatabaseHandlers;
 import com.vritti.databaselib.other.Utility;
 import com.vritti.databaselib.other.WebUrlClass;
 import com.vritti.ekatm.Constants;
 import com.vritti.ekatm.R;
-import com.vritti.inventory.physicalInventory.bean.BluetoothClass;
 import com.vritti.sessionlib.CallbackInterface;
 import com.vritti.sessionlib.StartSession;
-import com.vritti.vwb.Beans.ApproverData;
 import com.vritti.vwb.classes.CommonFunction;
-import com.vritti.vwb.vworkbench.CreditSanctionActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -150,6 +144,7 @@ public class ItemWisePickListDetailActivity extends AppCompatActivity {
     ArrayAdapter<FIFOBreakReson> dataAdapter;
     private AutoCompleteTextView edt_reason;
     private String QCStatus="";
+    ImageView img_barcode;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -204,6 +199,20 @@ public class ItemWisePickListDetailActivity extends AppCompatActivity {
                 }
             }
         });
+
+        /*String s="true@9612636710#10$PV-H2-12!e03c822b-b5ad-41b6-970a-ddf5a741cb36";
+        String[] separated = s.split("@");
+        String Item = separated[1];
+        String[] sep1 = Item.split("#");
+        ItemCode = sep1[0];
+        String qty= sep1[1];
+        String[] parts = qty.split("\\$"); // escape .
+        Qty = Integer.parseInt(parts[0]);
+        String locationCode = parts[1];
+        String[] parts1 = locationCode.split("!"); // escape .
+        LocationCode = parts1[0] ;// escape .
+        Pick_listSuggLotId = parts1[1]; // escape .*/
+
 
 
     //   BreakFifo("","");
@@ -313,7 +322,9 @@ public class ItemWisePickListDetailActivity extends AppCompatActivity {
                                         cursor.moveToFirst();
                                         do {
                                             s_search1.setText("");
-                                            Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, "Already scanned packet", Toast.LENGTH_LONG);
+                                            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+
+                                                Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, "Already scanned packet", Toast.LENGTH_SHORT);
                                             View toastView = toast.getView();
                                             TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
                                             toastMessage.setTextSize(18);
@@ -324,6 +335,11 @@ public class ItemWisePickListDetailActivity extends AppCompatActivity {
                                             toast.show();
                                             final MediaPlayer mp = MediaPlayer.create(ItemWisePickListDetailActivity.this, R.raw.alert);
                                             mp.start();
+                                        }else {
+                                                Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + "Already scanned packet" + "</big></b></font>"), Toast.LENGTH_LONG);
+                                                toast.setGravity(Gravity.CENTER, 0, 0);
+                                                toast.show();
+                                            }
                                         } while (cursor.moveToNext());
 
                                     } else {
@@ -381,6 +397,7 @@ public class ItemWisePickListDetailActivity extends AppCompatActivity {
         txt_do = findViewById(R.id.txt_do);
         txt_qty = findViewById(R.id.txt_qty);
         img_search = findViewById(R.id.img_search);
+        img_barcode = findViewById(R.id.img_barcode);
 
         txt_do.setText("DN - " + DONumber);
 
@@ -485,6 +502,21 @@ public class ItemWisePickListDetailActivity extends AppCompatActivity {
             }
         });
 
+        img_barcode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    IntentIntegrator integrator = new IntentIntegrator(ItemWisePickListDetailActivity.this);
+                    integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
+                    integrator.setPrompt("Scan");
+                    integrator.setCameraId(0);
+                    integrator.setBeepEnabled(false);
+                    integrator.setBarcodeImageEnabled(false);
+                    integrator.initiateScan();
+
+            }
+        });
+
+
 /*
         s_search.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -551,7 +583,7 @@ public class ItemWisePickListDetailActivity extends AppCompatActivity {
                     pickListDetail.setPickListNo(c.getString(c.getColumnIndex("PickListNo")));
                     Pick_ListDtlId=c.getString(c.getColumnIndex("Pick_ListDtlId"));
                     pickListDetail.setPick_listDtlId(Pick_ListDtlId);
-                    pickListDetail.setSoScheduleId(c.getString(c.getColumnIndex("SoScheduleId")));
+                  //  pickListDetail.setSoScheduleId(c.getString(c.getColumnIndex("SoScheduleId")));
                     String ItemmasterId=c.getString(c.getColumnIndex("ItemMasterId"));
                     pickListDetail.setItemMasterId(ItemmasterId);
                     pickListDetail.setQtyToPick(c.getString(c.getColumnIndex("QtyToPick")));
@@ -562,6 +594,7 @@ public class ItemWisePickListDetailActivity extends AppCompatActivity {
                     pickListDetail.setStockDetailsId(c.getString(c.getColumnIndex("StockDetailsId")));
                     pickListDetail.setFlag(c.getString(c.getColumnIndex("Flag")));
                     pickListDetail.setLocationCode(c.getString(c.getColumnIndex("LocationCode")));
+                    pickListDetail.setPick_listSuggLotId(c.getString(c.getColumnIndex("Pick_listSuggLotId")));
                     list.add(pickListDetail);
 
 
@@ -727,14 +760,22 @@ public class ItemWisePickListDetailActivity extends AppCompatActivity {
                     }
                     final MediaPlayer mp = MediaPlayer.create(ItemWisePickListDetailActivity.this, R.raw.ok);
                     mp.start();
-                    Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, "Data send successfully", Toast.LENGTH_LONG);
-                    View toastView = toast.getView();
-                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-                    toastMessage.setTextSize(18);
-                    toastMessage.setTextColor(Color.GREEN);
-                    toastMessage.setGravity(Gravity.CENTER);
-                    toastView.setBackgroundColor(Color.WHITE);
-                    toast.show();
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+
+                        Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, "Data send successfully", Toast.LENGTH_SHORT);
+                        View toastView = toast.getView();
+                        TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                        toastMessage.setTextSize(18);
+                        toastMessage.setTextColor(Color.GREEN);
+                        toastMessage.setGravity(Gravity.CENTER);
+                        toastView.setBackgroundColor(Color.WHITE);
+                        toast.show();
+                    }
+                    else {
+                        Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, Html.fromHtml("<font color='#26C14B' ><b><big>" + "Data send successfully" + "</big></b></font>"), Toast.LENGTH_LONG);
+                        toast.setGravity(Gravity.CENTER, 0, 0);
+                        toast.show();
+                    }
 
 
                 } else if (s.contains("Failed")) {
@@ -778,7 +819,7 @@ public class ItemWisePickListDetailActivity extends AppCompatActivity {
                     try {
                         jsonObject = new JSONObject(s);
                         String Error = jsonObject.getString("ERROR");
-                        Toast.makeText(ItemWisePickListDetailActivity.this, Error, Toast.LENGTH_LONG).show();
+                        Toast.makeText(ItemWisePickListDetailActivity.this, Error, Toast.LENGTH_SHORT).show();
                         onResume();
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -848,7 +889,7 @@ public class ItemWisePickListDetailActivity extends AppCompatActivity {
                             for (int i=0;i<pick_listSuggLotId.length();i++){
                                 JSONObject Pick_ListSuggLotId=pick_listSuggLotId.getJSONObject(i);
                                 Pick_listSuggLotId=Pick_ListSuggLotId.getString("Pick_listSuggLotId");
-                                pickListDetail.setSoScheduleId(Pick_listSuggLotId);
+                                pickListDetail.setPick_listSuggLotId(Pick_listSuggLotId);
                                 Pick_listDtlId=Pick_ListSuggLotId.getString("Pick_listDtlId");
                                 pickListDetail.setPick_listDtlId(Pick_listDtlId);
                                 StockDetailsId=Pick_ListSuggLotId.getString("StockDetailsId");
@@ -920,7 +961,9 @@ public class ItemWisePickListDetailActivity extends AppCompatActivity {
                 } else {
                     cf.DeleteAllRecord(db.TABLE_CARTAN_PICKLIST);
                     detailPacket(DONumber);
-                    Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, "Record not found", Toast.LENGTH_LONG);
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+
+                        Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, "Record not found", Toast.LENGTH_SHORT);
                     View toastView = toast.getView();
                     TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
                     toastMessage.setTextSize(18);
@@ -932,14 +975,20 @@ public class ItemWisePickListDetailActivity extends AppCompatActivity {
 
                     final MediaPlayer mp = MediaPlayer.create(ItemWisePickListDetailActivity.this, R.raw.alert);
                     mp.start();
-
+                }else{
+                    Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + "Record not found" + "</big></b></font>"), Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                }
 
 
                 }
 
             } else {
                 cf.DeleteAllRecord(db.TABLE_CARTAN_PICKLIST);
-                Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, "Record not found", Toast.LENGTH_LONG);
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+
+                    Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, "Record not found", Toast.LENGTH_SHORT);
                 View toastView = toast.getView();
                 TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
                 toastMessage.setTextSize(18);
@@ -950,6 +999,11 @@ public class ItemWisePickListDetailActivity extends AppCompatActivity {
                 progress.setVisibility(View.GONE);
                 final MediaPlayer mp = MediaPlayer.create(ItemWisePickListDetailActivity.this, R.raw.alert);
                 mp.start();
+            }else {
+                    Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + "Record not found" + "</big></b></font>"), Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                }
 
             }
         }
@@ -1202,12 +1256,13 @@ public class ItemWisePickListDetailActivity extends AppCompatActivity {
 */
 
                 onResume();
-                Toast.makeText(ItemWisePickListDetailActivity.this, "Packet split Successfully", Toast.LENGTH_LONG).show();
+                Toast.makeText(ItemWisePickListDetailActivity.this, "Packet split Successfully", Toast.LENGTH_SHORT).show();
                 //b.dismiss();
             } else {
-            //    Toast.makeText(ItemWisePickListDetailActivity.this, "Packet split Successfully", Toast.LENGTH_LONG).show();
+                //    Toast.makeText(ItemWisePickListDetailActivity.this, "Packet split Successfully", Toast.LENGTH_SHORT).show();
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
 
-                Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, "Packet split Successfully", Toast.LENGTH_LONG);
+                Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, "Packet split Successfully", Toast.LENGTH_SHORT);
                 View toastView = toast.getView();
                 TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
                 toastMessage.setTextSize(18);
@@ -1216,6 +1271,11 @@ public class ItemWisePickListDetailActivity extends AppCompatActivity {
                 toastView.setBackgroundColor(Color.WHITE);
                 toast.show();
 
+            }else{
+                Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, Html.fromHtml("<font color='#26C14B' ><b><big>" + "Packet split Successfully" + "</big></b></font>"), Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+            }
                 s=s.substring(1, s.length() - 1);
 
                 getpacketdialog(s);
@@ -1378,7 +1438,7 @@ public class ItemWisePickListDetailActivity extends AppCompatActivity {
             String url = null;
             try {
                 if (Constants.type == Constants.Type.Alfa) {
-                    url = CompanyURL + WebUrlClass.api_CheckPacketValidationNew+"?Pick_ListHdrId="+HeaderId+"&PacketNo="+data+"&QCStatus="+URLEncoder.encode(QCStatus,"UTF-8")+"&FifoBreak="+Flag+"&FifoBreakReason="+URLEncoder.encode(Reason,"UTF-8");
+                    url = CompanyURL + WebUrlClass.api_CheckPacketValidationAlfaLaval+"?Pick_ListHdrId="+HeaderId+"&PacketNo="+data+"&QCStatus="+URLEncoder.encode(QCStatus,"UTF-8")+"&FifoBreak="+Flag+"&FifoBreakReason="+URLEncoder.encode(Reason,"UTF-8");
 
                 }else {
                     url = CompanyURL + WebUrlClass.api_CheckPacketValidationNew+"?Pick_ListHdrId="+HeaderId+"&PacketNo="+data+"&QCStatus="+URLEncoder.encode(QCStatus,"UTF-8")+"&FifoBreak="+Flag+"&FifoBreakReason="+URLEncoder.encode(Reason,"UTF-8");
@@ -1420,33 +1480,38 @@ public class ItemWisePickListDetailActivity extends AppCompatActivity {
 
                 s_search1.setText("");
 
-                if (s.contains("true"))
-                {
-
-                    Packet grnpost_1 = new Packet();
-                    grnpost_1.setPacketNo(PacketNo);
-                    cf.Insert_GRNPACKETNO(grnpost_1);
-
-                    String[] separated = s.split("@");
-                    String Item = separated[1];
-                    String[] sep1 = Item.split("#");
-                    ItemCode = sep1[0];
-                    String qty= sep1[1];
-                    String[] parts = qty.split("\\$"); // escape .
-                    Qty = Integer.parseInt(parts[0]);
-                    LocationCode = parts[1];
+                if (Constants.type == Constants.Type.Alfa) {
+                    if (s.contains("true"))
+                    {
 
 
+                        Packet grnpost_1 = new Packet();
+                        grnpost_1.setPacketNo(PacketNo);
+                        cf.Insert_GRNPACKETNO(grnpost_1);
 
-                    ContentValues values_1 = new ContentValues();
-                    if (list.size() > 0) {
-                        for (int j = 0; j < list.size(); j++) {
-                            if (list.get(j).getItemCode().equals(ItemCode)&&list.get(j).getLocationCode().equals(LocationCode)) {
-                                String current = String.valueOf(list.get(j).getQtyPicked());
-                                String Pick = String.valueOf(list.get(j).getQtyToPick());
+                        String[] separated = s.split("@");
+                        String Item = separated[1];
+                        String[] sep1 = Item.split("#");
+                        ItemCode = sep1[0];
+                        String qty= sep1[1];
+                        String[] parts = qty.split("\\$"); // escape .
+                        Qty = Integer.parseInt(parts[0]);
+                        String locationCode = parts[1];
+                        String[] parts1 = locationCode.split("!"); // escape .
+                        LocationCode = parts1[0] ;// escape .
+                        String Pick_listSuggLotId = parts1[1]; // escape
 
-                                if (Pick.equals(current)) {
-                                    Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, "Picking completed for "+ItemCode, Toast.LENGTH_LONG);View toastView = toast.getView();
+
+
+                        ContentValues values_1 = new ContentValues();
+                        if (list.size() > 0) {
+                            for (int j = 0; j < list.size(); j++) {
+                                if (list.get(j).getPick_listSuggLotId().equals(Pick_listSuggLotId)) {
+                                    String current = String.valueOf(list.get(j).getQtyPicked());
+                                    String Pick = String.valueOf(list.get(j).getQtyToPick());
+
+                                    if (Pick.equals(current)) {
+                                    /*Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, "Picking completed for "+ItemCode, Toast.LENGTH_SHORT);View toastView = toast.getView();
                                     TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
                                     toastMessage.setTextSize(18);
                                     toastMessage.setTextColor(Color.GREEN);
@@ -1455,20 +1520,22 @@ public class ItemWisePickListDetailActivity extends AppCompatActivity {
                                     toastView.setBackgroundColor(Color.TRANSPARENT);
                                     toast.show();
                                     final MediaPlayer mp = MediaPlayer.create(ItemWisePickListDetailActivity.this, R.raw.ok);
-                                    mp.start();
+                                    mp.start();*/
 
 
-                                } else {
+                                    } else {
 
 
-                                    String[] namesList = current.split(".0");
-                                    currentQty = Integer.parseInt(namesList[0]);
-                                    currentTotal = currentQty + Qty;
-                                    values_1.put("QtyPicked", currentTotal);
+                                        String[] namesList = current.split("\\.0");
+                                        currentQty = Integer.parseInt(namesList[0]);
+                                        currentTotal = currentQty + Qty;
+                                        values_1.put("QtyPicked", currentTotal);
+                                        sql.update(db.TABLE_CARTAN_PICKLIST, values_1, "Pick_listSuggLotId=?", new String[]{String.valueOf(Pick_listSuggLotId)});
 
 
-                                    String[] args = new String[]{ItemCode, LocationCode};
-                                    sql.update(db.TABLE_CARTAN_PICKLIST, values_1, "ItemCode=? AND LocationCode=?", args);
+                                       /* String[] args = new String[]{ItemCode, LocationCode};
+                                        sql.update(db.TABLE_CARTAN_PICKLIST, values_1, "ItemCode=? AND LocationCode=?", args);
+*/
 
 /*
                                 for (int i = 0; i < list.size(); i++) {
@@ -1488,48 +1555,292 @@ public class ItemWisePickListDetailActivity extends AppCompatActivity {
 
                                 if (qtypick-qtypicked<Qty){
 
-                                    Toast.makeText(ItemWisePickListDetailActivity.this,"",Toast.LENGTH_LONG).show();
+                                    Toast.makeText(ItemWisePickListDetailActivity.this,"",Toast.LENGTH_SHORT).show();
                                 }*/
 
-                                    onResume();
+                                        onResume();
 
-                                    MediaPlayer mp = MediaPlayer.create(ItemWisePickListDetailActivity.this, R.raw.ok);
-                                    mp.start();
-                                    Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, "Data send successfully", Toast.LENGTH_LONG);
-                                    View toastView = toast.getView();
-                                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-                                    toastMessage.setTextSize(18);
-                                    toastMessage.setTextColor(Color.GREEN);
-                                    toastMessage.setGravity(Gravity.CENTER);
-                                    toastView.setBackgroundColor(Color.WHITE);
-                                    toast.show();
+                                        MediaPlayer mp = MediaPlayer.create(ItemWisePickListDetailActivity.this, R.raw.ok);
+                                        mp.start();
+                                        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
 
+                                            Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, "Data send successfully", Toast.LENGTH_SHORT);
+                                            View toastView = toast.getView();
+                                            TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                                            toastMessage.setTextSize(18);
+                                            toastMessage.setTextColor(Color.GREEN);
+                                            toastMessage.setGravity(Gravity.CENTER);
+                                            toastView.setBackgroundColor(Color.WHITE);
+                                            toast.show();
+                                        }else {
+                                            Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, Html.fromHtml("<font color='#26C14B' ><b><big>" + "Data send successfully" + "</big></b></font>"), Toast.LENGTH_LONG);
+                                            toast.setGravity(Gravity.CENTER, 0, 0);
+                                            toast.show();
+                                        }
+
+                                    }
                                 }
                             }
                         }
+
+
+
+
                     }
+                    else  if (s.contains("PickedQty")) {
+
+                        JSONArray jResults = new JSONArray(s);
+                        for (int i = 0; i < jResults.length(); i++) {
+                            JSONObject jsonObject = jResults.getJSONObject(i);
+                            Qty = jsonObject.getInt("BalQty");
+                            PickedQty = jsonObject.getInt("PickedQty");
+                            PacketNo = jsonObject.getString("PacketNo");
+                            PacketMasterId = jsonObject.getString("PacketMasterId");
+
+                            t1.speak(PacketNo + " already scanned", TextToSpeech.QUEUE_FLUSH, null);
+                            if (t1 != null) {
+                                t1.stop();
+                                t1.shutdown();
+                            }
+                            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                            Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, PacketNo + " already scanned", Toast.LENGTH_SHORT);
+                            View toastView = toast.getView();
+                            TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                            toastMessage.setTextSize(18);
+                            toastMessage.setTextColor(Color.GREEN);
+                            toastMessage.setGravity(Gravity.CENTER);
+                            toastView.setBackgroundColor(Color.WHITE);
+                            toast.show();
+
+                            final MediaPlayer mp = MediaPlayer.create(ItemWisePickListDetailActivity.this, R.raw.alert);
+                            mp.start();
+                        }else{
+                                Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, Html.fromHtml("<font color='#26C14B'><b><big>" + PacketNo + " already scanned" + "</big></b></font>"), Toast.LENGTH_LONG);
+                                toast.setGravity(Gravity.CENTER, 0, 0);
+                                toast.show();
 
 
+                            }
 
-
-                }
-                else  if (s.contains("PickedQty")) {
-
-                    JSONArray jResults = new JSONArray(s);
-                    for (int i = 0; i < jResults.length(); i++) {
-                        JSONObject jsonObject = jResults.getJSONObject(i);
-                        Qty = jsonObject.getInt("BalQty");
-                        PickedQty = jsonObject.getInt("PickedQty");
-                        PacketNo = jsonObject.getString("PacketNo");
-                        PacketMasterId = jsonObject.getString("PacketMasterId");
-
-                        t1.speak(PacketNo+" already scanned", TextToSpeech.QUEUE_FLUSH, null);
+                            Packetdeletedialog();
+                        }
+                    }
+                    else if(s.contains("Picking completed")){
+                        t1.speak(s, TextToSpeech.QUEUE_FLUSH, null);
                         if (t1 != null) {
                             t1.stop();
                             t1.shutdown();
                         }
+                        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                            Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, s, Toast.LENGTH_SHORT);
+                            View toastView = toast.getView();
+                            TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                            toastMessage.setTextSize(18);
+                            toastMessage.setTextColor(Color.GREEN);
+                            toastMessage.setGravity(Gravity.CENTER);
+                            toastView.setBackgroundColor(Color.WHITE);
+                            toast.show();
+                        } else{
+                            Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, Html.fromHtml("<font color='#26C14B' ><b><big>" + s + "</big></b></font>"), Toast.LENGTH_LONG);
+                            toast.setGravity(Gravity.CENTER, 0, 0);
+                            toast.show();
+                        }
+                        final MediaPlayer mp = MediaPlayer.create(ItemWisePickListDetailActivity.this, R.raw.ok);
+                        mp.start();
+                    }
+                    else  if(s.contains("Split")){
+                        JSONObject jsonObject = new JSONObject(s);
+                        String Error = jsonObject.getString("ERROR");
+                        String[] separated = Error.split(":");
+                        try {
+                            ReqQty = Double.parseDouble(separated[1]);
+                            getdeletedialog();
 
-                        Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, PacketNo+" already scanned", Toast.LENGTH_LONG);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            Toast.makeText(ItemWisePickListDetailActivity.this, "Technical error", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    else {
+                        t1.speak(s, TextToSpeech.QUEUE_FLUSH, null);
+                        if (t1 != null) {
+                            t1.stop();
+                            t1.shutdown();
+                        }
+                        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                            Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, s, Toast.LENGTH_SHORT);
+                            View toastView = toast.getView();
+                            TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                            toastMessage.setTextSize(18);
+                            toastMessage.setTextColor(Color.RED);
+                            toastMessage.setGravity(Gravity.CENTER);
+                            toastView.setBackgroundColor(Color.WHITE);
+                            toast.show();
+                        }else {
+                            Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + s + "</big></b></font>"), Toast.LENGTH_LONG);
+                            toast.setGravity(Gravity.CENTER, 0, 0);
+                            toast.show();
+                        }
+                        final MediaPlayer mp = MediaPlayer.create(ItemWisePickListDetailActivity.this, R.raw.alert);
+                        mp.start();
+
+                        if (s.contains("FIFO")){
+                            BreakFifo(s,data);
+                        }
+
+
+                    }
+
+                    progress.setVisibility(View.GONE);
+                }
+
+                else {
+                    if (s.contains("true"))
+                    {
+
+
+                        Packet grnpost_1 = new Packet();
+                        grnpost_1.setPacketNo(PacketNo);
+                        cf.Insert_GRNPACKETNO(grnpost_1);
+
+                        String[] separated = s.split("@");
+                        String Item = separated[1];
+                        String[] sep1 = Item.split("#");
+                        ItemCode = sep1[0];
+                        String qty= sep1[1];
+                        String[] parts = qty.split("\\$"); // escape .
+                        Qty = Integer.parseInt(parts[0]);
+                        LocationCode = parts[1];
+
+
+
+                        ContentValues values_1 = new ContentValues();
+                        if (list.size() > 0) {
+                            for (int j = 0; j < list.size(); j++) {
+                                if (list.get(j).getItemCode().equals(ItemCode)&&list.get(j).getLocationCode().equals(LocationCode))
+                                {
+                                    String current = String.valueOf(list.get(j).getQtyPicked());
+                                    String Pick = String.valueOf(list.get(j).getQtyToPick());
+
+                                    if (Pick.equals(current)) {
+                                    /*Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, "Picking completed for "+ItemCode, Toast.LENGTH_SHORT);View toastView = toast.getView();
+                                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                                    toastMessage.setTextSize(18);
+                                    toastMessage.setTextColor(Color.GREEN);
+                                    toastMessage.setGravity(Gravity.CENTER);
+                                    toastMessage.setCompoundDrawablePadding(5);
+                                    toastView.setBackgroundColor(Color.TRANSPARENT);
+                                    toast.show();
+                                    final MediaPlayer mp = MediaPlayer.create(ItemWisePickListDetailActivity.this, R.raw.ok);
+                                    mp.start();*/
+
+
+                                    } else {
+
+
+                                        String[] namesList = current.split("\\.0");
+                                        currentQty = Integer.parseInt(namesList[0]);
+                                        currentTotal = currentQty + Qty;
+                                        values_1.put("QtyPicked", currentTotal);
+
+
+                                        String[] args = new String[]{ItemCode, LocationCode};
+                                        sql.update(db.TABLE_CARTAN_PICKLIST, values_1, "ItemCode=? AND LocationCode=?", args);
+
+/*
+                                for (int i = 0; i < list.size(); i++) {
+                                    if (list.get(i).getItemCode().equals(ItemCode)) {
+                                        String current1 = String.valueOf(list.get(i).getQtyPicked());
+                                        String[] namesList1 = current1.split(".0");
+                                        currentQty = Integer.parseInt(namesList1[0]);
+                                        currentTotal = currentQty + Qty;
+                                        values_1.put("QtyPicked", currentTotal);
+                                        sql.update(db.TABLE_ITEM_PICKLIST, values_1, "ItemCode=?", new String[]{String.valueOf(ItemCode)});
+
+                                    }
+                                }*/
+
+                                /*int qtypick= Integer.parseInt(list.get(j).getQtyToPick());
+                                int qtypicked= Integer.parseInt(list.get(j).getQtyPicked());
+
+                                if (qtypick-qtypicked<Qty){
+
+                                    Toast.makeText(ItemWisePickListDetailActivity.this,"",Toast.LENGTH_SHORT).show();
+                                }*/
+
+                                        onResume();
+
+                                        MediaPlayer mp = MediaPlayer.create(ItemWisePickListDetailActivity.this, R.raw.ok);
+                                        mp.start();
+                                        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                                            Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, "Data send successfully", Toast.LENGTH_SHORT);
+                                            View toastView = toast.getView();
+                                            TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                                            toastMessage.setTextSize(18);
+                                            toastMessage.setTextColor(Color.GREEN);
+                                            toastMessage.setGravity(Gravity.CENTER);
+                                            toastView.setBackgroundColor(Color.WHITE);
+                                            toast.show();
+                                        }else {
+                                            Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, Html.fromHtml("<font color='#26C14B' ><b><big>" + "Data send successfully" + "</big></b></font>"), Toast.LENGTH_LONG);
+                                            toast.setGravity(Gravity.CENTER, 0, 0);
+                                            toast.show();
+                                        }
+
+                                    }
+                                }
+                            }
+                        }
+
+
+
+
+                    }
+                    else  if (s.contains("PickedQty")) {
+
+                        JSONArray jResults = new JSONArray(s);
+                        for (int i = 0; i < jResults.length(); i++) {
+                            JSONObject jsonObject = jResults.getJSONObject(i);
+                            Qty = jsonObject.getInt("BalQty");
+                            PickedQty = jsonObject.getInt("PickedQty");
+                            PacketNo = jsonObject.getString("PacketNo");
+                            PacketMasterId = jsonObject.getString("PacketMasterId");
+
+                            t1.speak(PacketNo+" already scanned", TextToSpeech.QUEUE_FLUSH, null);
+                            if (t1 != null) {
+                                t1.stop();
+                                t1.shutdown();
+                            }
+                            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                                Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, PacketNo + " already scanned", Toast.LENGTH_SHORT);
+                                View toastView = toast.getView();
+                                TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                                toastMessage.setTextSize(18);
+                                toastMessage.setTextColor(Color.GREEN);
+                                toastMessage.setGravity(Gravity.CENTER);
+                                toastView.setBackgroundColor(Color.WHITE);
+                                toast.show();
+
+                            }else {
+                                Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, Html.fromHtml("<font color='#26C14B'><b><big>" + PacketNo + " already scanned" + "</big></b></font>"), Toast.LENGTH_LONG);
+                                toast.setGravity(Gravity.CENTER, 0, 0);
+                                toast.show();
+                            }
+                            final MediaPlayer mp = MediaPlayer.create(ItemWisePickListDetailActivity.this, R.raw.alert);
+                            mp.start();
+
+                            Packetdeletedialog();
+                        }
+                    }
+                    else if(s.contains("Picking completed")) {
+                        t1.speak(s, TextToSpeech.QUEUE_FLUSH, null);
+                        if (t1 != null) {
+                            t1.stop();
+                            t1.shutdown();
+                        }
+                        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+
+                            Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, s, Toast.LENGTH_SHORT);
                         View toastView = toast.getView();
                         TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
                         toastMessage.setTextSize(18);
@@ -1537,69 +1848,63 @@ public class ItemWisePickListDetailActivity extends AppCompatActivity {
                         toastMessage.setGravity(Gravity.CENTER);
                         toastView.setBackgroundColor(Color.WHITE);
                         toast.show();
+                    }else {
+                        Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, Html.fromHtml("<font color='#26C14B'><b><big>" + s + "</big></b></font>"), Toast.LENGTH_LONG);
+                        toast.setGravity(Gravity.CENTER, 0, 0);
+                        toast.show();
+                    }
+                        final MediaPlayer mp = MediaPlayer.create(ItemWisePickListDetailActivity.this, R.raw.ok);
+                        mp.start();
+                    }
+                    else  if(s.contains("Split")){
+                        JSONObject jsonObject = new JSONObject(s);
+                        String Error = jsonObject.getString("ERROR");
+                        String[] separated = Error.split(":");
+                        try {
+                            ReqQty = Double.parseDouble(separated[1]);
+                            getdeletedialog();
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            Toast.makeText(ItemWisePickListDetailActivity.this, "Technical error", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    else {
+                        t1.speak(s, TextToSpeech.QUEUE_FLUSH, null);
+                        if (t1 != null) {
+                            t1.stop();
+                            t1.shutdown();
+                        }
+                        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                            Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, s, Toast.LENGTH_SHORT);
+                        View toastView = toast.getView();
+                        TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                        toastMessage.setTextSize(18);
+                        toastMessage.setTextColor(Color.RED);
+                        toastMessage.setGravity(Gravity.CENTER);
+                        toastView.setBackgroundColor(Color.WHITE);
+                        toast.show();
+                    }else{
+                        Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, Html.fromHtml("<font color='#EF4F4F'><b><big>" + s + "</big></b></font>"), Toast.LENGTH_LONG);
+                        toast.setGravity(Gravity.CENTER, 0, 0);
+                        toast.show();
+                    }
 
                         final MediaPlayer mp = MediaPlayer.create(ItemWisePickListDetailActivity.this, R.raw.alert);
                         mp.start();
 
-                        Packetdeletedialog();
-                    }
-                }
-                else if(s.contains("Picking completed")){
-                    t1.speak(s, TextToSpeech.QUEUE_FLUSH, null);
-                    if (t1 != null) {
-                        t1.stop();
-                        t1.shutdown();
-                    }
-                    Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, s, Toast.LENGTH_LONG);
-                    View toastView = toast.getView();
-                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-                    toastMessage.setTextSize(18);
-                    toastMessage.setTextColor(Color.GREEN);
-                    toastMessage.setGravity(Gravity.CENTER);
-                    toastView.setBackgroundColor(Color.WHITE);
-                    toast.show();
-                    final MediaPlayer mp = MediaPlayer.create(ItemWisePickListDetailActivity.this, R.raw.ok);
-                    mp.start();
-                }
-                else  if(s.contains("Split")){
-                   JSONObject jsonObject = new JSONObject(s);
-                    String Error = jsonObject.getString("ERROR");
-                    String[] separated = Error.split(":");
-                    try {
-                        ReqQty = Double.parseDouble(separated[1]);
-                        getdeletedialog();
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        Toast.makeText(ItemWisePickListDetailActivity.this, "Technical error", Toast.LENGTH_SHORT).show();
-                    }
-                }
-                else {
-                    t1.speak(s, TextToSpeech.QUEUE_FLUSH, null);
-                    if (t1 != null) {
-                        t1.stop();
-                        t1.shutdown();
-                    }
-                    Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, s, Toast.LENGTH_LONG);
-                    View toastView = toast.getView();
-                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-                    toastMessage.setTextSize(18);
-                    toastMessage.setTextColor(Color.RED);
-                    toastMessage.setGravity(Gravity.CENTER);
-                    toastView.setBackgroundColor(Color.WHITE);
-                    toast.show();
-
-                    final MediaPlayer mp = MediaPlayer.create(ItemWisePickListDetailActivity.this, R.raw.alert);
-                    mp.start();
-
-                    if (s.contains("FIFO")){
-                        BreakFifo(s,data);
-                    }
+                        if (s.contains("FIFO")){
+                            BreakFifo(s,data);
+                        }
 
 
+                    }
+
+                    progress.setVisibility(View.GONE);
                 }
 
-                progress.setVisibility(View.GONE);
+
+
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -1840,8 +2145,8 @@ public class ItemWisePickListDetailActivity extends AppCompatActivity {
 
             if (integer.contains("Success")) {
 
-
-                Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, "Packet removed successfully", Toast.LENGTH_LONG);
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, "Packet removed successfully", Toast.LENGTH_SHORT);
                 View toastView = toast.getView();
                 TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
                 toastMessage.setTextSize(18);
@@ -1850,6 +2155,12 @@ public class ItemWisePickListDetailActivity extends AppCompatActivity {
                 toastMessage.setCompoundDrawablePadding(5);
                 toastView.setBackgroundColor(Color.TRANSPARENT);
                 toast.show();
+            }else {
+                Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, Html.fromHtml("<font color='#26C14B' ><b><big>" + "Packet removed successfully" + "</big></b></font>"), Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+
+            }
 
                 if (isnet()) {
                     progress.setVisibility(View.VISIBLE);
@@ -1877,15 +2188,22 @@ public class ItemWisePickListDetailActivity extends AppCompatActivity {
                     integer = integer.substring(1, integer.length() - 1);
                     JSONObject jsonObject = new JSONObject(integer);
                     String status = jsonObject.getString("ERROR");
-                    Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, status, Toast.LENGTH_LONG);
-                    View toastView = toast.getView();
-                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-                    toastMessage.setTextSize(18);
-                    toastMessage.setTextColor(Color.RED);
-                    toastMessage.setGravity(Gravity.CENTER);
-                    toastMessage.setCompoundDrawablePadding(5);
-                    toastView.setBackgroundColor(Color.TRANSPARENT);
-                    toast.show();
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                        Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, status, Toast.LENGTH_SHORT);
+                        View toastView = toast.getView();
+                        TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                        toastMessage.setTextSize(18);
+                        toastMessage.setTextColor(Color.RED);
+                        toastMessage.setGravity(Gravity.CENTER);
+                        toastMessage.setCompoundDrawablePadding(5);
+                        toastView.setBackgroundColor(Color.TRANSPARENT);
+                        toast.show();
+                    }else {
+                        Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + status + "</big></b></font>"), Toast.LENGTH_LONG);
+                        toast.setGravity(Gravity.CENTER, 0, 0);
+                        toast.show();
+
+                    }
 
                     final MediaPlayer mp = MediaPlayer.create(ItemWisePickListDetailActivity.this, R.raw.alert);
                     mp.start();
@@ -1975,7 +2293,8 @@ public class ItemWisePickListDetailActivity extends AppCompatActivity {
                 if (Reason.equalsIgnoreCase("")) {
                     final MediaPlayer mp = MediaPlayer.create(ItemWisePickListDetailActivity.this, R.raw.ok);
                     mp.start();
-                    Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, "Please enter reason", Toast.LENGTH_LONG);
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                    Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, "Please enter reason", Toast.LENGTH_SHORT);
                     View toastView = toast.getView();
                     TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
                     toastMessage.setTextSize(18);
@@ -1983,6 +2302,12 @@ public class ItemWisePickListDetailActivity extends AppCompatActivity {
                     toastMessage.setGravity(Gravity.CENTER);
                     toastView.setBackgroundColor(Color.WHITE);
                     toast.show();
+                }else {
+                    Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + "Please enter reason" + "</big></b></font>"), Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                }
+
                 } else {
                     b.dismiss();
                     if (isnet()) {
@@ -2079,6 +2404,128 @@ public class ItemWisePickListDetailActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
             return 0;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data1) {
+        super.onActivityResult(requestCode, resultCode, data1);
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data1);
+        if (result != null) {
+            if (result.getContents() == null) {
+                Log.e("Scan*******", "Cancelled scan");
+
+            } else {
+                Log.e("Scan", "Scanned");
+
+
+                data = result.getContents().toString();
+                PacketNo = data;
+                try {
+                    if (Constants.type == Constants.Type.Alfa) {
+
+                        JSONObject jsonObject = new JSONObject(data);
+
+                        ItemCode = jsonObject.getString("Itemcode");
+                        data = jsonObject.getString("PacketNo");
+                        PacketNo = data;
+                        Qty = Integer.parseInt(jsonObject.getString("PacketQty"));
+
+                        s_search1.setText("");
+
+
+                        //filter(ItemCode, PacketNo);
+
+                        if (isnet()) {
+                            try {
+                                progress.setVisibility(View.VISIBLE);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            new StartSession(ItemWisePickListDetailActivity.this, new CallbackInterface() {
+                                @Override
+                                public void callMethod() {
+                                    new GetPacketValidation().execute();
+                                }
+
+                                @Override
+                                public void callfailMethod(String msg) {
+                                }
+
+
+                            });
+
+                        } else {
+                            Toast.makeText(ItemWisePickListDetailActivity.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                        }
+
+
+                    }
+                    else {
+
+                        if (data != null && !(data.equals(""))) {
+                            String searchQuery = "SELECT  * FROM " + db.TABLE_GRN_PACKET + " where PacketNo='" + data + "'";
+                            Cursor cursor = sql.rawQuery(searchQuery, null);
+                            int count = cursor.getCount();
+                            if (count > 0) {
+                                cursor.moveToFirst();
+                                do {
+                                    s_search1.setText("");
+                                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+
+                                        Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, "Already scanned packet", Toast.LENGTH_SHORT);
+                                        View toastView = toast.getView();
+                                        TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                                        toastMessage.setTextSize(18);
+                                        toastMessage.setTextColor(Color.RED);
+                                        toastMessage.setGravity(Gravity.CENTER);
+                                        toastMessage.setCompoundDrawablePadding(5);
+                                        toastView.setBackgroundColor(Color.TRANSPARENT);
+                                        toast.show();
+                                        final MediaPlayer mp = MediaPlayer.create(ItemWisePickListDetailActivity.this, R.raw.alert);
+                                        mp.start();
+                                    } else {
+                                        Toast toast = Toast.makeText(ItemWisePickListDetailActivity.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + "Already scanned packet" + "</big></b></font>"), Toast.LENGTH_LONG);
+                                        toast.setGravity(Gravity.CENTER, 0, 0);
+                                        toast.show();
+                                    }
+                                } while (cursor.moveToNext());
+
+                            } else {
+
+                                if (isnet()) {
+                                    try {
+                                        progress.setVisibility(View.VISIBLE);
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                    new StartSession(ItemWisePickListDetailActivity.this, new CallbackInterface() {
+                                        @Override
+                                        public void callMethod() {
+                                            new GetPacketValidation().execute();
+                                        }
+
+                                        @Override
+                                        public void callfailMethod(String msg) {
+                                        }
+
+
+                                    });
+
+                                } else {
+                                    Toast.makeText(ItemWisePickListDetailActivity.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                                }
+
+                            }
+                        }
+                    }
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
         }
     }
 

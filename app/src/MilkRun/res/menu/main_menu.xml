@@ -39,7 +39,7 @@
 
     <item
         android:id="@+id/Open_grp"
-        android:title="Open Chat Room"
+        android:title="Open Conversation Room"
         android:visible="false"
         app:showAsAction="collapseActionView"
         />

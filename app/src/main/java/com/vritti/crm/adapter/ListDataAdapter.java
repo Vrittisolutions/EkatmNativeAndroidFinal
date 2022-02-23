@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.vritti.crm.bean.Country;
 import com.vritti.crm.bean.ListData;
 import com.vritti.crm.vcrm7.CountryListActivity;
+import com.vritti.crm.vcrm7.FilterListActivity;
 import com.vritti.ekatm.R;
 
 import java.util.ArrayList;
@@ -86,6 +87,24 @@ public class ListDataAdapter extends BaseAdapter {
                 if (wp.getName().toLowerCase(Locale.getDefault()).contains(charText)) {
                     arrayListFiltered.add(wp);
                     ((CountryListActivity)context).updateList(countryArrayList);
+                }
+            }
+        }
+
+        notifyDataSetChanged();
+        return countryArrayList;
+    }
+
+    public ArrayList<ListData> filter1(String charText) {
+        charText = charText.toLowerCase(Locale.getDefault());
+        arrayListFiltered.clear();
+        if (charText.length() == 0) {
+            arrayListFiltered.addAll(arrayList1);
+        } else {
+            for (ListData wp : arrayList1) {
+                if (wp.getName().toLowerCase(Locale.getDefault()).contains(charText)) {
+                    arrayListFiltered.add(wp);
+                    ((FilterListActivity)context).updateList(countryArrayList);
                 }
             }
         }

@@ -9,6 +9,7 @@ import android.content.res.ColorStateList;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.location.Address;
 import android.location.Geocoder;
 import android.net.ConnectivityManager;
@@ -55,24 +56,32 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.vritti.AlfaLavaModule.activity.AlfaHomePage;
 import com.vritti.chat.activity.MultipleGroupActivity;
 import com.vritti.crm.adapter.OpportunityAdapter;
 import com.vritti.crm.adapter.OpportunityAdapter_V1;
 import com.vritti.crm.bean.ApproverData;
 import com.vritti.crm.bean.PartialCallList;
+import com.vritti.crm.classes.CallHistory;
 import com.vritti.crm.classes.CollectionCallCommonObjectProperties;
 import com.vritti.crm.classes.CommonFunctionCrm;
 import com.vritti.crm.classes.CommonObjectProperties;
 import com.vritti.crm.classes.FeedbackCommonObjectProperties;
 import com.vritti.crm.classes.ProgressHUD;
+import com.vritti.ekatm.Constants;
 import com.vritti.ekatm.R;
 import com.vritti.databaselib.data.DatabaseHandlers;
 import com.vritti.databaselib.other.Utility;
 import com.vritti.databaselib.other.WebUrlClass;
+import com.vritti.ekatm.activity.ActivityLogIn;
+import com.vritti.ekatm.activity.ActivityModuleSelection;
+import com.vritti.ekatm.other.SetAppName;
 import com.vritti.ekatm.services.ForegroundService;
 import com.vritti.sessionlib.CallbackInterface;
 import com.vritti.sessionlib.StartSession;
 import com.vritti.vwb.Beans.ActivityBean;
+import com.vritti.vwb.vworkbench.ActivityMain;
+import com.vritti.vwb.vworkbench.WelcomeScreenActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -109,7 +118,7 @@ public class OpportunityActivity_V1 extends AppCompatActivity implements PopupMe
     SimpleDateFormat dfDate, dftime;
     String FinalObj, Firmname;
     String obj = "";
-    String Opportunity_type, contactno = "", starttime = "", endtime = "", duration = "", rowNo = "";
+    String Opportunity_type="", contactno = "", starttime = "", endtime = "", duration = "", rowNo = "";
     SharedPreferences userpreferences;
     String UserType;
     SQLiteDatabase sql;
@@ -179,6 +188,7 @@ public class OpportunityActivity_V1 extends AppCompatActivity implements PopupMe
     private SharedPreferences AtendanceSheredPreferance;
     String getdate, currentTime;
     private int backToposition;
+    String Response_Call="";
 
 
     @Override
@@ -499,7 +509,7 @@ public class OpportunityActivity_V1 extends AppCompatActivity implements PopupMe
 
                 if (getIntent().hasExtra("flag")){
                     Flag=getIntent().getStringExtra("flag");
-                    opportunityAdapter = new OpportunityAdapter_V1(OpportunityActivity_V1.this, partialCallLists,Flag,"","","","","");
+                    opportunityAdapter = new OpportunityAdapter_V1(OpportunityActivity_V1.this, partialCallLists,Flag,"","","","","",Opportunity_type);
 
                 }else if (getIntent().hasExtra("logupdate")){
                     Flag=getIntent().getStringExtra("logupdate");
@@ -508,10 +518,10 @@ public class OpportunityActivity_V1 extends AppCompatActivity implements PopupMe
                     endtime = getIntent().getStringExtra("endtime");
                     duration = getIntent().getStringExtra("duration");
                     rowNo = getIntent().getStringExtra("Rowno");
-                    opportunityAdapter = new OpportunityAdapter_V1(OpportunityActivity_V1.this, partialCallLists,Flag,contact,starttime,endtime,duration,rowNo);
+                    opportunityAdapter = new OpportunityAdapter_V1(OpportunityActivity_V1.this, partialCallLists,Flag,contact,starttime,endtime,duration,rowNo,Opportunity_type);
                 }
                 else {
-                    opportunityAdapter = new OpportunityAdapter_V1(OpportunityActivity_V1.this, partialCallLists,"","","","","","");
+                    opportunityAdapter = new OpportunityAdapter_V1(OpportunityActivity_V1.this, partialCallLists,"","","","","","",Opportunity_type);
                 }
                 RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
                 list_Opportunity.setLayoutManager(mLayoutManager);
@@ -653,8 +663,19 @@ public class OpportunityActivity_V1 extends AppCompatActivity implements PopupMe
             e.printStackTrace();
         }
 
+        if (Opportunity_type.equalsIgnoreCase("start_again")) {
+             try {
+            jsonObj = jsoncommonObj.getJSONObject("Isclose");
+            jsonObj.put("IsSet", true);
+            jsonObj.put("value1", "Y");
+            jsonObj.put("Operator", "eq");
 
-        try {
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        }else {
+           try {
             jsonObj = jsoncommonObj.getJSONObject("Isclose");
             jsonObj.put("IsSet", true);
             jsonObj.put("value1", "N");
@@ -664,6 +685,10 @@ public class OpportunityActivity_V1 extends AppCompatActivity implements PopupMe
         } catch (Exception e) {
             e.printStackTrace();
         }
+        }
+
+
+
         try {
             jsonObj = jsoncommonObj.getJSONObject("IsPartial");
             jsonObj.put("IsSet", false);
@@ -691,6 +716,14 @@ public class OpportunityActivity_V1 extends AppCompatActivity implements PopupMe
         else if (Opportunity_type.equalsIgnoreCase("main_opp")) {
             txtopportunity_type.setText("Opportunity");
             /************************************************/
+
+            try {
+                jsoncommonObj.put("TypeofCall","1");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
 
             try {
                 String currentDateandTime = dfDate.format(new Date());
@@ -773,7 +806,16 @@ public class OpportunityActivity_V1 extends AppCompatActivity implements PopupMe
             }
 
 
+            try {
+                jsonObj = jsoncommonObj.getJSONObject("IsCallAgain");
+                jsonObj.put("IsSet", false);
+                jsonObj.put("value1", "");
+                jsonObj.put("value2", "");
+                jsonObj.put("Operator", "eq");
 
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
 
 
@@ -814,6 +856,15 @@ public class OpportunityActivity_V1 extends AppCompatActivity implements PopupMe
         }
         else if (Opportunity_type.equalsIgnoreCase("new_opp")) {
             txtopportunity_type.setText("New Opportunity");
+
+
+
+            try {
+                jsoncommonObj.put("TypeofCall","1");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
 
             try {
                 String currentDateandTime = dfDate.format(new Date());
@@ -891,9 +942,28 @@ public class OpportunityActivity_V1 extends AppCompatActivity implements PopupMe
                 e.printStackTrace();
             }
 
+            try {
+                jsonObj = jsoncommonObj.getJSONObject("IsCallAgain");
+                jsonObj.put("IsSet", false);
+                jsonObj.put("value1", "");
+                jsonObj.put("value2", "");
+                jsonObj.put("Operator", "eq");
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
         }
         else if (Opportunity_type.equalsIgnoreCase("overdue_opp")) {
             txtopportunity_type.setText("Overdue Opportunity");
+
+            try {
+                jsoncommonObj.put("TypeofCall","1");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
 
             try {
                 String currentDateandTime = dftime.format(new Date());
@@ -971,9 +1041,28 @@ public class OpportunityActivity_V1 extends AppCompatActivity implements PopupMe
                 e.printStackTrace();
             }
 
+            try {
+                jsonObj = jsoncommonObj.getJSONObject("IsCallAgain");
+                jsonObj.put("IsSet", false);
+                jsonObj.put("value1", "");
+                jsonObj.put("value2", "");
+                jsonObj.put("Operator", "eq");
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
         }
         else if (Opportunity_type.equalsIgnoreCase("yesterday_opp")) {
             txtopportunity_type.setText("Yesterday Opportunity");
+
+            try {
+                jsoncommonObj.put("TypeofCall","1");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
 
             try {
                 String currentDateandTime = dfDate.format(new Date());
@@ -1050,11 +1139,29 @@ public class OpportunityActivity_V1 extends AppCompatActivity implements PopupMe
                 e.printStackTrace();
             }
 
+            try {
+                jsonObj = jsoncommonObj.getJSONObject("IsCallAgain");
+                jsonObj.put("IsSet", false);
+                jsonObj.put("value1", "");
+                jsonObj.put("value2", "");
+                jsonObj.put("Operator", "eq");
 
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
         }
         else if (Opportunity_type.equalsIgnoreCase("today_opp")) {
             txtopportunity_type.setText("Today Opportunity");
+
+            try {
+                jsoncommonObj.put("TypeofCall","1");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+
             try {
                 String currentDateandTime = dfDate.format(new Date());
                 Date cdate = dfDate.parse(currentDateandTime);
@@ -1130,9 +1237,29 @@ public class OpportunityActivity_V1 extends AppCompatActivity implements PopupMe
                 e.printStackTrace();
             }
 
+            try {
+                jsonObj = jsoncommonObj.getJSONObject("IsCallAgain");
+                jsonObj.put("IsSet", false);
+                jsonObj.put("value1", "");
+                jsonObj.put("value2", "");
+                jsonObj.put("Operator", "eq");
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
         }
         else if (Opportunity_type.equalsIgnoreCase("callagain_opp")) {
             txtopportunity_type.setText("Call Again Opportunity");
+
+            try {
+                jsoncommonObj.put("TypeofCall","1");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+
             try {
                 String currentDateandTime = dfDate.format(new Date());
                 Date cdate = dfDate.parse(currentDateandTime);
@@ -1215,10 +1342,28 @@ public class OpportunityActivity_V1 extends AppCompatActivity implements PopupMe
             }
 
 
+            try {
+                jsonObj = jsoncommonObj.getJSONObject("IsCallAgain");
+                jsonObj.put("IsSet", false);
+                jsonObj.put("value1", "");
+                jsonObj.put("value2", "");
+                jsonObj.put("Operator", "eq");
 
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         else if (Opportunity_type.equalsIgnoreCase("Tommorow_opp")) {
             txtopportunity_type.setText("Tomorrow Opportunity");
+
+            try {
+                jsoncommonObj.put("TypeofCall","1");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+
             try {
                 String currentDateandTime = dfDate.format(new Date());
                 Date cdate = dfDate.parse(currentDateandTime);
@@ -1294,11 +1439,28 @@ public class OpportunityActivity_V1 extends AppCompatActivity implements PopupMe
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            try {
+                jsonObj = jsoncommonObj.getJSONObject("IsCallAgain");
+                jsonObj.put("IsSet", false);
+                jsonObj.put("value1", "");
+                jsonObj.put("value2", "");
+                jsonObj.put("Operator", "eq");
 
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
         }
         else if (Opportunity_type.equalsIgnoreCase("revived_opp")) {
             txtopportunity_type.setText("Revived Opportunity");
+
+            try {
+                jsoncommonObj.put("TypeofCall","1");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
 
 
 
@@ -1387,10 +1549,29 @@ public class OpportunityActivity_V1 extends AppCompatActivity implements PopupMe
                 e.printStackTrace();
             }
 
+            try {
+                jsonObj = jsoncommonObj.getJSONObject("IsCallAgain");
+                jsonObj.put("IsSet", false);
+                jsonObj.put("value1", "");
+                jsonObj.put("value2", "");
+                jsonObj.put("Operator", "eq");
 
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         else if (Opportunity_type.equalsIgnoreCase("this_week_opp")) {
             txtopportunity_type.setText("This Week Opportunity");
+
+            try {
+                jsoncommonObj.put("TypeofCall","1");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+
+
             try {
                 String currentDateandTime = dfDate.format(new Date());
                 Date cdate = dfDate.parse(currentDateandTime);
@@ -1488,7 +1669,125 @@ public class OpportunityActivity_V1 extends AppCompatActivity implements PopupMe
                 e.printStackTrace();
             }
 
+            try {
+                jsonObj = jsoncommonObj.getJSONObject("IsCallAgain");
+                jsonObj.put("IsSet", false);
+                jsonObj.put("value1", "");
+                jsonObj.put("value2", "");
+                jsonObj.put("Operator", "eq");
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
         }
+        else if (Opportunity_type.equalsIgnoreCase("start_again")) {
+            txtopportunity_type.setText("Start Again Opportunity");
+            /************************************************/
+
+
+            try {
+                jsoncommonObj.put("TypeofCall","1");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+
+
+            try {
+                String currentDateandTime = dfDate.format(new Date());
+                Date cdate = dfDate.parse(currentDateandTime);
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(cdate);
+                calendar.add(Calendar.DAY_OF_YEAR, 30);
+                Date newDate1 = calendar.getTime();
+
+            /*Calendar calendar1 = Calendar.getInstance();
+            calendar1.setTime(cdate);
+            calendar1.add(Calendar.DAY_OF_YEAR, 7);
+            Date newDate2 = calendar1.getTime();*/
+
+                jsonObj = jsoncommonObj.getJSONObject("NextActionDateTime");
+                jsonObj.put("IsSet", true);
+                jsonObj.put("value1", dfDate.format(newDate1));
+                jsonObj.put("value2", "");
+                jsonObj.put("Operator", "<");
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            try {
+                jsonObj = jsoncommonObj.getJSONObject("CallType");
+                jsonObj.put("IsSet", true);
+                jsonObj.put("value1", "1");
+                jsonObj.put("Operator", "eq");
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            try {
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("name", "RowStart");
+                jsonObject.put("IsSet", false);
+                jsonObject.put("Operator", "eq");
+                jsonObject.put("value1", rowStart);
+                jsonObject.put("value2", "");
+
+
+                jsoncommonObj.put("RowStart", jsonObject);
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            try {
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("name", "RowEnd");
+                jsonObject.put("IsSet", false);
+                jsonObject.put("Operator", "eq");
+                jsonObject.put("value1", rowEnd);
+                jsonObject.put("value2", "");
+
+                jsoncommonObj.put("RowEnd", jsonObject);
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            try {
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("name", "ReQuery");
+                jsonObject.put("IsSet", false);
+                jsonObject.put("Operator", "eq");
+                jsonObject.put("value1", "Y");
+                jsonObject.put("value2", "");
+
+                jsoncommonObj.put("ReQuery", jsonObject);
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            try {
+                jsonObj = jsoncommonObj.getJSONObject("IsCallAgain");
+                jsonObj.put("IsSet", true);
+                jsonObj.put("value1", "Yes");
+                jsonObj.put("value2", "");
+                jsonObj.put("Operator", "eq");
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+
         else if (Opportunity_type.equalsIgnoreCase("collection")) {
 
             collectioncallcommonObj = new CollectionCallCommonObjectProperties();
@@ -1879,6 +2178,11 @@ public class OpportunityActivity_V1 extends AppCompatActivity implements PopupMe
             txtopportunity_type.setText("Hot Opportunity");
 
             try {
+                jsoncommonObj.put("TypeofCall","1");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            try {
 
                 jsonObj = jsoncommonObj.getJSONObject("CurrentCallOwner");
                 jsonObj.put("IsSet", true);
@@ -1974,9 +2278,28 @@ public class OpportunityActivity_V1 extends AppCompatActivity implements PopupMe
             }catch (Exception e){
                 e.printStackTrace();
             }
+
+            try {
+                jsonObj = jsoncommonObj.getJSONObject("IsCallAgain");
+                jsonObj.put("IsSet", false);
+                jsonObj.put("value1", "");
+                jsonObj.put("value2", "");
+                jsonObj.put("Operator", "eq");
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
         }
         else if (Opportunity_type.equalsIgnoreCase("warm_call")) {
             txtopportunity_type.setText("Warm Opportunity");
+
+            try {
+                jsoncommonObj.put("TypeofCall","1");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
             try {
                 jsonObj = jsoncommonObj.getJSONObject("CallStatus");
                 jsonObj.put("IsSet", true);
@@ -2041,7 +2364,19 @@ public class OpportunityActivity_V1 extends AppCompatActivity implements PopupMe
                 e.printStackTrace();
             }
 
+            try {
+                jsonObj = jsoncommonObj.getJSONObject("IsCallAgain");
+                jsonObj.put("IsSet", false);
+                jsonObj.put("value1", "");
+                jsonObj.put("value2", "");
+                jsonObj.put("Operator", "eq");
+
+            } catch (Exception e) {
+                e.printStackTrace();
             }
+
+
+        }
         else if (Opportunity_type.equalsIgnoreCase("feedback")) {
 
             feedbackcommonObj = new FeedbackCommonObjectProperties();
@@ -2415,10 +2750,13 @@ public class OpportunityActivity_V1 extends AppCompatActivity implements PopupMe
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
         }
+
         else {
 
         }
+
         FinalObj = jsoncommonObj.toString();
         FinalObj = FinalObj.replaceAll("\\\\", "");
         return FinalObj;
@@ -3379,6 +3717,8 @@ public class OpportunityActivity_V1 extends AppCompatActivity implements PopupMe
         finish();
 
     }
+
+
 
 
     class DownloadCustomerIdData extends AsyncTask<String, Void, String> {
@@ -5686,13 +6026,20 @@ public class OpportunityActivity_V1 extends AppCompatActivity implements PopupMe
         MenuItem searchViewItem = menu.findItem(R.id.app_bar_search);
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchViewItem);
 
+        /*searchView.setIconifiedByDefault(true);
+        searchView.setFocusable(true);
+        searchView.setIconified(false);
+        searchView.requestFocusFromTouch();
+       */
+
+
+
+
+        searchView.setMaxWidth(Integer.MAX_VALUE);
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                txtopportunity_type.setVisibility(View.VISIBLE);
-                lay_reveal.setVisibility(View.GONE);
-                len_firm.setBackground(getResources().getDrawable(R.drawable.whtsaap_button_background_white));
                 searchView.clearFocus();
                 return false;
 
@@ -5702,14 +6049,26 @@ public class OpportunityActivity_V1 extends AppCompatActivity implements PopupMe
             public boolean onQueryTextChange(String newText) {
                 String text1 = newText;
               //  txtopportunity_type.setVisibility(View.GONE);
-                lay_reveal.setVisibility(View.VISIBLE);
-                len_firm.setBackground(getResources().getDrawable(R.drawable.whtsaap_button_background_white));
-                Filtername="Firm";
+                if (newText.equalsIgnoreCase("")) {
+                    txtopportunity_type.setVisibility(View.VISIBLE);
+                    lay_reveal.setVisibility(View.GONE);
+                    len_firm.setBackground(getResources().getDrawable(R.drawable.whtsaap_button_background_white));
+                    if (Opportunity_type.contains("opp")) {
+                        filter("");
+                    } else if (Opportunity_type.contains("collection")) {
+                        UpdatList_CollectionOPPfilter("");
+                    }
+                }else {
+                    lay_reveal.setVisibility(View.VISIBLE);
+                    len_firm.setBackground(getResources().getDrawable(R.drawable.whtsaap_button_background_white));
+                    Filtername = "Firm";
 
-                if (Opportunity_type.contains("opp")) {
-                    filter(text1);
-                } else if (Opportunity_type.contains("collection")) {
-                    UpdatList_CollectionOPPfilter(text1);
+                    if (Opportunity_type.contains("opp")) {
+                        filter(text1);
+                    } else if (Opportunity_type.contains("collection")) {
+                        UpdatList_CollectionOPPfilter(text1);
+                    }
+
                 }
                 return false;
             }
@@ -5718,8 +6077,218 @@ public class OpportunityActivity_V1 extends AppCompatActivity implements PopupMe
     }
 
 
+    public void callstartagain(int adapterPosition, ArrayList<PartialCallList> partialCallListArrayList) {
+        int position = adapterPosition;
+
+        Call_ID=partialCallListArrayList.get(position).getCallId();
+
+        if (ut.isNet(OpportunityActivity_V1.this)) {
+            showProgressDialog();
+            new StartSession(OpportunityActivity_V1.this, new CallbackInterface() {
+                @Override
+                public void callMethod() {
+                    new DownloadGetRestartData().execute();
+                }
+
+                @Override
+                public void callfailMethod(String msg) {
+
+                }
+            });
+        }
 
 
+    }
+
+    public void callignore(int adapterPosition, ArrayList<PartialCallList> partialCallListArrayList) {
+        int position = adapterPosition;
+
+        Call_ID=partialCallListArrayList.get(position).getCallId();
+
+        if (ut.isNet(OpportunityActivity_V1.this)) {
+            showProgressDialog();
+            new StartSession(OpportunityActivity_V1.this, new CallbackInterface() {
+                @Override
+                public void callMethod() {
+                    new DownloadGetIgnoreData().execute();
+                }
+
+                @Override
+                public void callfailMethod(String msg) {
+
+                }
+            });
+        }
+
+
+    }
+
+
+    class DownloadGetRestartData extends AsyncTask<String, Void, String> {
+        Object res;
+        String response = "error";
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                String url = CompanyURL + WebUrlClass.api_GetRestartCallOnebyOne + "?CallId=" +
+                        Call_ID;
+
+                System.out.println("URLCALLHISTORY :" + url);
+                res = ut.OpenConnection(url);
+                if (res != null) {
+                    response = res.toString().replaceAll("\\\\", "");
+                    response = response.replaceAll("\\\\\\\\/", "");
+                    response = response.substring(1, response.length() - 1);
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                response = "error";
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String integer) {
+            super.onPostExecute(integer);
+            dismissProgressDialog();
+            if (response.equals("[]")) {
+                Toast.makeText(OpportunityActivity_V1.this, "Record not save successfully", Toast.LENGTH_SHORT).show();
+
+
+            } else {
+                if (response != null) {
+                    Toast.makeText(OpportunityActivity_V1.this, "Record save successfully", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(context, CRMHomeActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.slide_right_to_left, R.anim.slide_left_to_right);
+
+
+                }
+
+            }
+        }
+    }
+    class DownloadGetIgnoreData extends AsyncTask<String, Void, String> {
+        Object res;
+        String response = "error";
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                String url = CompanyURL + WebUrlClass.api_GetIgnoreCallOnebyOne + "?CallId=" +
+                        Call_ID;
+
+                System.out.println("URLCALLHISTORY :" + url);
+                res = ut.OpenConnection(url);
+                if (res != null) {
+                    response = res.toString().replaceAll("\\\\", "");
+                    response = response.replaceAll("\\\\\\\\/", "");
+                    response = response.substring(1, response.length() - 1);
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                response = "error";
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String integer) {
+            super.onPostExecute(integer);
+            dismissProgressDialog();
+            if (response.equals("[]")) {
+                Toast.makeText(OpportunityActivity_V1.this, "Record not save successfully", Toast.LENGTH_SHORT).show();
+
+
+            } else {
+                if (response != null) {
+                    Toast.makeText(OpportunityActivity_V1.this, "Record save successfully", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(context, CRMHomeActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.slide_right_to_left, R.anim.slide_left_to_right);
+
+
+                }
+
+            }
+        }
+    }
+
+    public String Call_Review(String callId) {
+
+        Call_ID=callId;
+
+        if (isnet()) {
+            new StartSession(OpportunityActivity_V1.this, new CallbackInterface() {
+                @Override
+                public void callMethod() {
+                    new GetCallReview().execute(Call_ID);
+                }
+
+                @Override
+                public void callfailMethod(String msg) {
+
+                }
+            });
+        }
+
+        return Response_Call ;
+    }
+    class GetCallReview extends AsyncTask<String, Void, String> {
+        String res;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            String url =CompanyURL+ WebUrlClass.api_GetReviewDate + "?CallId="+params[0];
+            try {
+                res = ut.OpenConnection(url, getApplicationContext());
+                Response_Call = res.toString();
+                Log.d("Response-1",Response_Call);
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                Response_Call = WebUrlClass.setError;
+                Log.d("Response-2",Response_Call);
+            }
+            return Response_Call;
+        }
+
+        @Override
+        protected void onPostExecute(String str) {
+            super.onPostExecute(str);
+
+
+            if (Response_Call!=null||Response_Call.equalsIgnoreCase("")) {
+                Log.d("Response-3",Response_Call);
+
+            }
+        }
+    }
 
 }
 

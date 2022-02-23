@@ -1066,25 +1066,10 @@ public class ItemMasterSyncActivity extends AppCompatActivity {
 
                 }
 
-                //txtdwnlitems.setText(String.valueOf(cf.getGetItemcount()));
 
-              /*  runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(ItemMasterSyncActivity.this,
-                                "Storing items..."+String.valueOf(cf.getGetItemcount()),Toast.LENGTH_SHORT).show();
-                        Log.e("Count2 : ",String.valueOf(cf.getGetItemcount()));
-                        ItemMasterSyncActivity.this.txtdwnlitems.setText(String.valueOf(cf.getGetItemcount()));
-                    }
-                });*/
             }
 
-         /*   runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    progress.setVisibility(View.GONE);
-                }
-            });*/
+
 
         } catch (JSONException e) {
             e.printStackTrace();

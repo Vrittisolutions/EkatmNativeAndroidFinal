@@ -8,9 +8,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.vritti.AlfaLavaModule.activity.BoxmasterActivity;
-import com.vritti.AlfaLavaModule.activity.DOListActivity;
-import com.vritti.AlfaLavaModule.bean.BoxBean;
+import com.vritti.AlfaLavaModule.activity.picking.DOListActivity;
 import com.vritti.AlfaLavaModule.bean.PicklistNO;
 import com.vritti.ekatm.R;
 

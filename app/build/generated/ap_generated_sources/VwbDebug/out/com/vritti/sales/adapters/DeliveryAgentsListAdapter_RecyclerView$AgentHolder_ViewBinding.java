@@ -16,7 +16,7 @@ import java.lang.Override;
 public class DeliveryAgentsListAdapter_RecyclerView$AgentHolder_ViewBinding implements Unbinder {
   private DeliveryAgentsListAdapter_RecyclerView.AgentHolder target;
 
-  private View view2131296913;
+  private View view2131296921;
 
   @UiThread
   public DeliveryAgentsListAdapter_RecyclerView$AgentHolder_ViewBinding(final DeliveryAgentsListAdapter_RecyclerView.AgentHolder target,
@@ -26,7 +26,7 @@ public class DeliveryAgentsListAdapter_RecyclerView$AgentHolder_ViewBinding impl
     View view;
     view = Utils.findRequiredView(source, R.id.chkagent, "field 'chkagent' and method 'setChkagent'");
     target.chkagent = Utils.castView(view, R.id.chkagent, "field 'chkagent'", CheckBox.class);
-    view2131296913 = view;
+    view2131296921 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -56,7 +56,7 @@ public class DeliveryAgentsListAdapter_RecyclerView$AgentHolder_ViewBinding impl
     target.txtlocation = null;
     target.txt_pendingshipments = null;
 
-    view2131296913.setOnClickListener(null);
-    view2131296913 = null;
+    view2131296921.setOnClickListener(null);
+    view2131296921 = null;
   }
 }

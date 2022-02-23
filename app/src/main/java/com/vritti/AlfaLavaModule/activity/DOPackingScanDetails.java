@@ -1,6 +1,7 @@
 package com.vritti.AlfaLavaModule.activity;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.bluetooth.BluetoothDevice;
 import android.content.ContentValues;
 import android.content.Context;
@@ -14,16 +15,17 @@ import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.StrictMode;
-import android.speech.tts.TextToSpeech;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -32,34 +34,35 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.common.BitMatrix;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
-import com.vritti.AlfaLavaModule.activity.cartonlabel.CartonLabelHeaderListActivity;
-import com.vritti.AlfaLavaModule.activity.picking.ItemPickListDetailActivity;
+import com.vritti.AlfaLavaModule.activity.packaging.ReceiptPackagingDOListActivity;
 import com.vritti.AlfaLavaModule.adapter.AdapterSecondaryDetail;
-import com.vritti.AlfaLavaModule.adapter.Adp_Box;
+import com.vritti.AlfaLavaModule.adapter.Adapter_PrinterName;
 import com.vritti.AlfaLavaModule.bean.BoxBean;
 import com.vritti.AlfaLavaModule.bean.Packet;
 import com.vritti.AlfaLavaModule.bean.PacketListDetail;
+import com.vritti.AlfaLavaModule.bean.PrinterName;
 import com.vritti.AlfaLavaModule.bean.PutAwayDetail;
 import com.vritti.AlfaLavaModule.bean.SecondaryBox;
-import com.vritti.AlfaLavaModule.utility.ProgressHUD;
 import com.vritti.databaselib.data.DatabaseHandlers;
 import com.vritti.databaselib.other.Utility;
 import com.vritti.databaselib.other.WebUrlClass;
 import com.vritti.ekatm.Constants;
 import com.vritti.ekatm.R;
-import com.vritti.inventory.physicalInventory.activity.Devicelist_LablelPrint;
 import com.vritti.inventory.physicalInventory.bean.BluetoothClass;
 import com.vritti.inventory.physicalInventory.bean.Utils_print;
 import com.vritti.sales.CounterBilling.DeviceListActivity;
@@ -131,6 +134,12 @@ public class DOPackingScanDetails extends AppCompatActivity {
     SharedPreferences.Editor editor;
     private List<BoxBean> list;
     private String Pack="";
+    ArrayList<PrinterName>printerNameArrayList;
+    private String printerName;
+    private Adapter_PrinterName adapterPrinterName;
+    private String url="";
+    ImageView img_barcode;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -164,6 +173,7 @@ public class DOPackingScanDetails extends AppCompatActivity {
         txt = (TextView) findViewById(R.id.txt);
         secondaryBoxArrayList = new ArrayList<>();
         editor= userpreferences.edit();
+        printerNameArrayList=new ArrayList<>();
 
        // getdialog();
 
@@ -178,7 +188,17 @@ public class DOPackingScanDetails extends AppCompatActivity {
             Toast.makeText(DOPackingScanDetails.this, "Bluetooth is not available", Toast.LENGTH_LONG).show();
         }
 
-
+       /* String s="true #10.0000 Item Code @9612636710!9D4CCF87-6CB1-4362-9A53-4F40087DBE22";
+        String[] separated = s.split("#");
+        String Item = separated[1];
+        String[] sep1 = Item.split("Item Code @");
+        double quantity = Double.parseDouble(sep1[0]);
+        Quantity= (int) quantity;
+        String itemCode = sep1[1];
+        String[] sep2 = itemCode.split("!");
+        ItemCode = sep2[0];
+        Pack_OrdDtlId = sep2[1];
+*/
 
 
 
@@ -234,6 +254,8 @@ public class DOPackingScanDetails extends AppCompatActivity {
         img_search = (ImageView) findViewById(R.id.img_search);
         btn_finish = (Button) findViewById(R.id.btn_finish);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        img_barcode = findViewById(R.id.img_barcode);
+        img_barcode.setVisibility(View.VISIBLE);
 
         recycler.setHasFixedSize(true);
         adapter = new AdapterSecondaryDetail(secondaryBoxArrayList);
@@ -310,15 +332,24 @@ public class DOPackingScanDetails extends AppCompatActivity {
                                 cursor.moveToFirst();
                                 do {
                                     edt_scanPacket.setText("");
-                                    Toast toast = Toast.makeText(DOPackingScanDetails.this, "Already scanned packet", Toast.LENGTH_LONG);
-                                    View toastView = toast.getView();
-                                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-                                    toastMessage.setTextSize(18);
-                                    toastMessage.setTextColor(Color.RED);
-                                    toastMessage.setGravity(Gravity.CENTER);
-                                    toastMessage.setCompoundDrawablePadding(5);
-                                    toastView.setBackgroundColor(Color.TRANSPARENT);
-                                    toast.show();
+                                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+
+                                        Toast toast = Toast.makeText(DOPackingScanDetails.this, "Already scanned packet", Toast.LENGTH_LONG);
+                                        View toastView = toast.getView();
+                                        TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                                        toastMessage.setTextSize(18);
+                                        toastMessage.setTextColor(Color.RED);
+                                        toastMessage.setGravity(Gravity.CENTER);
+                                        toastMessage.setCompoundDrawablePadding(5);
+                                        toastView.setBackgroundColor(Color.TRANSPARENT);
+                                        toast.show();
+                                    }else {
+
+                                        Toast toast = Toast.makeText(DOPackingScanDetails.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + "Already scanned packet" + "</big></b></font>"), Toast.LENGTH_LONG);
+                                        toast.setGravity(Gravity.CENTER, 0, 0);
+                                        toast.show();
+                                    }
+
                                 } while (cursor.moveToNext());
 
                             }
@@ -387,7 +418,8 @@ public class DOPackingScanDetails extends AppCompatActivity {
                       }
                       }
 
-                    }else {
+                    }
+                    else {
                         try {
                             if (Constants.type == Constants.Type.Alfa) {
 
@@ -411,7 +443,8 @@ public class DOPackingScanDetails extends AppCompatActivity {
                                     Toast.makeText(DOPackingScanDetails.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
                                 }
 
-                            } else {
+                            }
+                            else {
                                 PacketNo = data;
                                 String searchQuery = "SELECT  * FROM " + db.TABLE_GRN_PACKET + " where PacketNo='" + data + "'";
                                 Cursor cursor = sql.rawQuery(searchQuery, null);
@@ -420,6 +453,7 @@ public class DOPackingScanDetails extends AppCompatActivity {
                                     cursor.moveToFirst();
                                     do {
                                         edt_scanPacket.setText("");
+                                        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
                                         Toast toast = Toast.makeText(DOPackingScanDetails.this, "Already scanned packet", Toast.LENGTH_LONG);
                                         View toastView = toast.getView();
                                         TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
@@ -429,6 +463,12 @@ public class DOPackingScanDetails extends AppCompatActivity {
                                         toastMessage.setCompoundDrawablePadding(5);
                                         toastView.setBackgroundColor(Color.TRANSPARENT);
                                         toast.show();
+                                    }else {
+
+                                            Toast toast = Toast.makeText(DOPackingScanDetails.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + "Already scanned packet" + "</big></b></font>"), Toast.LENGTH_LONG);
+                                            toast.setGravity(Gravity.CENTER, 0, 0);
+                                            toast.show();
+                                        }
                                     } while (cursor.moveToNext());
 
                                 } else {
@@ -547,7 +587,8 @@ public class DOPackingScanDetails extends AppCompatActivity {
 
                 data = edt_scanPacket.getText().toString().trim();
 
-                if (EnvMasterId.equals("jal")||EnvMasterId.equals("jaluat")||EnvMasterId.equals("jaltest")||EnvMasterId.equals("jallocal")) {
+                if (EnvMasterId.equals("jal")||EnvMasterId.equals("jaluat")
+                        ||EnvMasterId.equals("jaltest")||EnvMasterId.equals("jallocal")) {
                     if (data.contains("PN") || (data.contains("P-21") || (data.contains("G")))) {
                         PacketNo = data;
 
@@ -559,15 +600,21 @@ public class DOPackingScanDetails extends AppCompatActivity {
                             cursor.moveToFirst();
                             do {
                                 edt_scanPacket.setText("");
-                                Toast toast = Toast.makeText(DOPackingScanDetails.this, "Already scanned packet", Toast.LENGTH_LONG);
-                                View toastView = toast.getView();
-                                TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-                                toastMessage.setTextSize(18);
-                                toastMessage.setTextColor(Color.RED);
-                                toastMessage.setGravity(Gravity.CENTER);
-                                toastMessage.setCompoundDrawablePadding(5);
-                                toastView.setBackgroundColor(Color.TRANSPARENT);
-                                toast.show();
+                                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                                    Toast toast = Toast.makeText(DOPackingScanDetails.this, "Already scanned packet", Toast.LENGTH_LONG);
+                                    View toastView = toast.getView();
+                                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                                    toastMessage.setTextSize(18);
+                                    toastMessage.setTextColor(Color.RED);
+                                    toastMessage.setGravity(Gravity.CENTER);
+                                    toastMessage.setCompoundDrawablePadding(5);
+                                    toastView.setBackgroundColor(Color.TRANSPARENT);
+                                    toast.show();
+                                }else {
+                                    Toast toast = Toast.makeText(DOPackingScanDetails.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + "Already scanned packet" + "</big></b></font>"), Toast.LENGTH_LONG);
+                                    toast.setGravity(Gravity.CENTER, 0, 0);
+                                    toast.show();
+                                }
                             } while (cursor.moveToNext());
 
                         } else {
@@ -585,10 +632,108 @@ public class DOPackingScanDetails extends AppCompatActivity {
 
                     }
                 }
+                // Jal development
+                else {
+                    try {
+                        if (Constants.type == Constants.Type.Alfa) {
+
+                            JSONObject jsonObject = new JSONObject(data);
+
+                            ItemCode = jsonObject.getString("Itemcode");
+                            data = jsonObject.getString("PacketNo");
+                            PacketNo=data;
+                            Qty = jsonObject.getString("PacketQty");
+
+                            edt_scanPacket.setText("");
+
+                            if (isnet()) {
+                                //   progress.setVisibility(View.VISIBLE);
+                                progressBar.setVisibility(View.VISIBLE);
+
+                                new GetPacketValidation().execute();
+
+
+                            } else {
+                                Toast.makeText(DOPackingScanDetails.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
+                        else {
+                            PacketNo = data;
+                            String searchQuery = "SELECT  * FROM " + db.TABLE_GRN_PACKET + " where PacketNo='" + data + "'";
+                            Cursor cursor = sql.rawQuery(searchQuery, null);
+                            int count = cursor.getCount();
+                            if (count > 0) {
+                                cursor.moveToFirst();
+                                do {
+                                    edt_scanPacket.setText("");
+                                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                                        Toast toast = Toast.makeText(DOPackingScanDetails.this, "Already scanned packet", Toast.LENGTH_LONG);
+                                        View toastView = toast.getView();
+                                        TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                                        toastMessage.setTextSize(18);
+                                        toastMessage.setTextColor(Color.RED);
+                                        toastMessage.setGravity(Gravity.CENTER);
+                                        toastMessage.setCompoundDrawablePadding(5);
+                                        toastView.setBackgroundColor(Color.TRANSPARENT);
+                                        toast.show();
+                                    }else {
+
+                                        Toast toast = Toast.makeText(DOPackingScanDetails.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + "Already scanned packet" + "</big></b></font>"), Toast.LENGTH_LONG);
+                                        toast.setGravity(Gravity.CENTER, 0, 0);
+                                        toast.show();
+                                    }
+                                } while (cursor.moveToNext());
+
+                            } else {
+                                if (isnet()) {
+                                    //   progress.setVisibility(View.VISIBLE);
+                                    progressBar.setVisibility(View.VISIBLE);
+                                    new StartSession(DOPackingScanDetails.this, new CallbackInterface() {
+                                        @Override
+                                        public void callMethod() {
+                                            new GetPacketValidation().execute();
+                                        }
+
+                                        @Override
+                                        public void callfailMethod(String msg) {
+                                        }
+
+
+                                    });
+
+                                } else {
+                                    Toast.makeText(DOPackingScanDetails.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+
+
+                        }
+
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
 
 
             }
         });
+
+        img_barcode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IntentIntegrator integrator = new IntentIntegrator(DOPackingScanDetails.this);
+                integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
+                integrator.setPrompt("Scan");
+                integrator.setCameraId(0);
+                integrator.setBeepEnabled(false);
+                integrator.setBarcodeImageEnabled(false);
+                integrator.initiateScan();
+
+            }
+        });
+
 
 
     }
@@ -881,7 +1026,7 @@ public class DOPackingScanDetails extends AppCompatActivity {
                                 // ItemMasterId = secondaryBoxArrayList.get(j).getItemMasterId();
 
                                 if (Pick.equals(Picked)) {
-                                    Toast toast = Toast.makeText(DOPackingScanDetails.this, "Packing completed for " + ItemCode, Toast.LENGTH_LONG);
+                                    /*Toast toast = Toast.makeText(DOPackingScanDetails.this, "Packing completed for " + ItemCode, Toast.LENGTH_LONG);
                                     View toastView = toast.getView();
                                     TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
                                     toastMessage.setTextSize(18);
@@ -891,7 +1036,7 @@ public class DOPackingScanDetails extends AppCompatActivity {
                                     toastView.setBackgroundColor(Color.TRANSPARENT);
                                     toast.show();
                                     final MediaPlayer mp = MediaPlayer.create(DOPackingScanDetails.this, R.raw.ok);
-                                    mp.start();
+                                    mp.start();*/
                                 }
 
 
@@ -938,6 +1083,7 @@ public class DOPackingScanDetails extends AppCompatActivity {
 
 
             }else {
+
                 recycler.setVisibility(View.GONE);
                 if (isnet()) {
                     progressBar.setVisibility(View.VISIBLE);
@@ -1068,7 +1214,7 @@ public class DOPackingScanDetails extends AppCompatActivity {
                 editor.remove("OrdNo");
                 editor.commit();
 
-                startActivity(new Intent(DOPackingScanDetails.this,DOPackingScanDetails.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                startActivity(new Intent(DOPackingScanDetails.this, ReceiptPackagingDOListActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                 finish();
                 return true;
 
@@ -1150,17 +1296,31 @@ public class DOPackingScanDetails extends AppCompatActivity {
     private void filter(String data, String packet) {
         ArrayList<SecondaryBox> dummyList = new ArrayList<>();
 
-        for (int i = 0; i < secondaryBoxArrayList.size(); i++) {
-            if (secondaryBoxArrayList.get(i).getItemCode().equals(data)) {
-                dummyList.add(secondaryBoxArrayList.get(i));
-                adapter.update(dummyList);
-            }
+        if (Constants.type == Constants.Type.Alfa) {
+            for (int i = 0; i < secondaryBoxArrayList.size(); i++) {
+                if (secondaryBoxArrayList.get(i).getPack_OrdDtlId().equals(data)) {
+                    dummyList.add(secondaryBoxArrayList.get(i));
+                    adapter.update(dummyList);
+                }
 
+            }
+        }else {
+            for (int i = 0; i < secondaryBoxArrayList.size(); i++) {
+                if (secondaryBoxArrayList.get(i).getItemCode().equals(data)) {
+                    dummyList.add(secondaryBoxArrayList.get(i));
+                    adapter.update(dummyList);
+                }
+
+            }
         }
+
+
 
         if (dummyList.size() == 0) {
             dummyList.clear();
-            Toast toast = Toast.makeText(DOPackingScanDetails.this, "Wrong item scanned!", Toast.LENGTH_LONG);View toastView = toast.getView();
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+            Toast toast = Toast.makeText(DOPackingScanDetails.this, "Wrong item scanned!", Toast.LENGTH_LONG);
+            View toastView = toast.getView();
 
             TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
             toastMessage.setTextSize(18);
@@ -1171,6 +1331,11 @@ public class DOPackingScanDetails extends AppCompatActivity {
             toast.show();
             final MediaPlayer mp = MediaPlayer.create(DOPackingScanDetails.this, R.raw.alert);
             mp.start();
+        }else {
+            Toast toast = Toast.makeText(DOPackingScanDetails.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + "Wrong item scanned!" + "</big></b></font>"), Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
+        }
 
         } else {
            // Toast.makeText(DOPackingScanDetails.this, "Item found!!", Toast.LENGTH_SHORT).show();
@@ -1306,8 +1471,8 @@ public class DOPackingScanDetails extends AppCompatActivity {
 
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data1) {
+        super.onActivityResult(requestCode, resultCode, data1);
 
         if (requestCode == CreateSecondaryPackActivity.REQUEST_ENABLE_BT && resultCode == RESULT_OK) {
             //bluetooth enabled and request for showing available bluetooth devices
@@ -1315,11 +1480,207 @@ public class DOPackingScanDetails extends AppCompatActivity {
             BluetoothClass.pairPrinter(getApplicationContext(), DOPackingScanDetails.this);
         }else if (requestCode == CreateSecondaryPackActivity.REQUEST_CONNECT_DEVICE && resultCode == RESULT_OK) {
             //bluetooth device selected and request pairing with device
-            String address = data.getExtras().getString(DeviceListActivity.EXTRA_DEVICE_ADDRESS);
+            String address = data1.getExtras().getString(DeviceListActivity.EXTRA_DEVICE_ADDRESS);
             String Address = address.substring(address.length() - 17);
             BluetoothClass.pairedPrinterAddress(getApplicationContext(), DOPackingScanDetails.this,Address);
 
 
+        }
+        else {
+            IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data1);
+            if (result != null) {
+                if (result.getContents() == null) {
+                    Log.e("Scan*******", "Cancelled scan");
+
+                } else {
+                    Log.e("Scan", "Scanned");
+
+
+                    data = result.getContents().toString();
+                    if (EnvMasterId.equals("jal")||EnvMasterId.equals("jaluat")||EnvMasterId.equals("jaltest")||EnvMasterId.equals("jallocal"))
+                    {
+                        if (data.contains("PN")||(data.contains("P-21")||(data.contains("G")))) {
+                            PacketNo=data;
+
+
+                            String searchQuery = "SELECT  * FROM " + db.TABLE_GRN_PACKET + " where PacketNo='" + data + "'";
+                            Cursor cursor = sql.rawQuery(searchQuery, null);
+                            int count = cursor.getCount();
+                            if (count > 0) {
+                                cursor.moveToFirst();
+                                do {
+                                    edt_scanPacket.setText("");
+                                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+
+                                        Toast toast = Toast.makeText(DOPackingScanDetails.this, "Already scanned packet", Toast.LENGTH_LONG);
+                                        View toastView = toast.getView();
+                                        TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                                        toastMessage.setTextSize(18);
+                                        toastMessage.setTextColor(Color.RED);
+                                        toastMessage.setGravity(Gravity.CENTER);
+                                        toastMessage.setCompoundDrawablePadding(5);
+                                        toastView.setBackgroundColor(Color.TRANSPARENT);
+                                        toast.show();
+                                    }else {
+
+                                        Toast toast = Toast.makeText(DOPackingScanDetails.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + "Already scanned packet" + "</big></b></font>"), Toast.LENGTH_LONG);
+                                        toast.setGravity(Gravity.CENTER, 0, 0);
+                                        toast.show();
+                                    }
+
+                                } while (cursor.moveToNext());
+
+                            }
+                            else {
+                                if (isnet()) {
+                                    //   progress.setVisibility(View.VISIBLE);
+                                    progressBar.setVisibility(View.VISIBLE);
+
+                                    new GetPacketValidation().execute();
+
+
+                                } else {
+                                    Toast.makeText(DOPackingScanDetails.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+
+                        }else {
+                            PackOrderNo=userpreferences.getString("OrdNo","");
+
+                            if (PackOrderNo.equals("")) {
+                                PackOrderNo = edt_scanPacket.getText().toString();
+                                if (data.length()==13){
+                                    PackOrderNo = data;
+                                }else if (data.length()==11) {
+                                    PackOrderNo = data;
+                                }
+                                else {
+                                    data = data.substring(data.length() - 12);
+                                    PackOrderNo = data;
+                                }
+
+                                editor.putString("OrdNo", PackOrderNo);
+                                editor.commit();
+                            }
+
+                            if(PackOrderNo != null && !(PackOrderNo.equals(""))) {
+                                PackOrderNo=userpreferences.getString("OrdNo","");
+                                DOdetailPacket();
+
+
+/*
+                          else {
+                              if (isnet()) {
+                                  ProgressHUD.show(pContext, "Fetching data...", true, false);
+                                  new StartSession(pContext, new CallbackInterface() {
+                                      @Override
+                                      public void callMethod() {
+                                          downloadPutAwayDetails = new DownloadPacketedOrdNoDetails();
+                                          downloadPutAwayDetails.execute();
+                                      }
+
+                                      @Override
+                                      public void callfailMethod(String msg) {
+                                          downloadPutAwayDetails = new DownloadPacketedOrdNoDetails();
+                                          downloadPutAwayDetails.execute();
+                                      }
+
+
+                                  });
+
+                              } else {
+                                  Toast.makeText(pContext, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                              }
+                          }
+*/
+                            }
+                        }
+
+                    }
+                    else {
+                        try {
+                            if (Constants.type == Constants.Type.Alfa) {
+
+                                JSONObject jsonObject = new JSONObject(data);
+
+                                ItemCode = jsonObject.getString("Itemcode");
+                                data = jsonObject.getString("PacketNo");
+                                PacketNo=data;
+                                Qty = jsonObject.getString("PacketQty");
+
+                                edt_scanPacket.setText("");
+
+                                if (isnet()) {
+                                    //   progress.setVisibility(View.VISIBLE);
+                                    progressBar.setVisibility(View.VISIBLE);
+
+                                    new GetPacketValidation().execute();
+
+
+                                } else {
+                                    Toast.makeText(DOPackingScanDetails.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                                }
+
+                            }
+                            else {
+                                PacketNo = data;
+                                String searchQuery = "SELECT  * FROM " + db.TABLE_GRN_PACKET + " where PacketNo='" + data + "'";
+                                Cursor cursor = sql.rawQuery(searchQuery, null);
+                                int count = cursor.getCount();
+                                if (count > 0) {
+                                    cursor.moveToFirst();
+                                    do {
+                                        edt_scanPacket.setText("");
+                                        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                                            Toast toast = Toast.makeText(DOPackingScanDetails.this, "Already scanned packet", Toast.LENGTH_LONG);
+                                            View toastView = toast.getView();
+                                            TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                                            toastMessage.setTextSize(18);
+                                            toastMessage.setTextColor(Color.RED);
+                                            toastMessage.setGravity(Gravity.CENTER);
+                                            toastMessage.setCompoundDrawablePadding(5);
+                                            toastView.setBackgroundColor(Color.TRANSPARENT);
+                                            toast.show();
+                                        }else {
+
+                                            Toast toast = Toast.makeText(DOPackingScanDetails.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + "Already scanned packet" + "</big></b></font>"), Toast.LENGTH_LONG);
+                                            toast.setGravity(Gravity.CENTER, 0, 0);
+                                            toast.show();
+                                        }
+                                    } while (cursor.moveToNext());
+
+                                } else {
+                                    if (isnet()) {
+                                        //   progress.setVisibility(View.VISIBLE);
+                                        progressBar.setVisibility(View.VISIBLE);
+                                        new StartSession(DOPackingScanDetails.this, new CallbackInterface() {
+                                            @Override
+                                            public void callMethod() {
+                                                new GetPacketValidation().execute();
+                                            }
+
+                                            @Override
+                                            public void callfailMethod(String msg) {
+                                            }
+
+
+                                        });
+
+                                    } else {
+                                        Toast.makeText(DOPackingScanDetails.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+
+
+                            }
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -1549,8 +1910,12 @@ public class DOPackingScanDetails extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
             //String url = CompanyURL + WebUrlClass.api_CheckPacketValidation+"?Pick_ListHdrId="+Pick_ListHdrId+"&PacketNo="+data;
-            String url = CompanyURL + WebUrlClass.api_CheckPacketPackingValidation+"?Pack_OrdHdrId="+Pack_OrdHdrId+"&PacketNo="+data;
+            if (Constants.type == Constants.Type.Alfa) {
+                url = CompanyURL + WebUrlClass.api_CheckPacketPackingValidationAlfa + "?Pack_OrdHdrId=" + Pack_OrdHdrId + "&PacketNo=" + data;
 
+            }else {
+                url = CompanyURL + WebUrlClass.api_CheckPacketPackingValidation + "?Pack_OrdHdrId=" + Pack_OrdHdrId + "&PacketNo=" + data;
+            }
             try {
                 res = ut.OpenConnection(url, DOPackingScanDetails.this);
                 response = res.toString().replaceAll("\\\\", "");
@@ -1575,22 +1940,133 @@ public class DOPackingScanDetails extends AppCompatActivity {
 
             edt_scanPacket.setText("");
 
+            if (Constants.type == Constants.Type.Alfa) {
 
-            if (s.contains("already Packed")){
-                Toast toast = Toast.makeText(DOPackingScanDetails.this, s, Toast.LENGTH_LONG);View toastView = toast.getView();
+                if (s.contains("already Packed")) {
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                    Toast toast = Toast.makeText(DOPackingScanDetails.this, s, Toast.LENGTH_LONG);
+                    View toastView = toast.getView();
 
-                TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-                toastMessage.setTextSize(18);
-                toastMessage.setTextColor(Color.RED);
-                toastMessage.setGravity(Gravity.CENTER);
-                toastMessage.setCompoundDrawablePadding(5);
-                toastView.setBackgroundColor(Color.TRANSPARENT);
-                toast.show();
-                final MediaPlayer mp = MediaPlayer.create(DOPackingScanDetails.this, R.raw.alert);
-                mp.start();
+                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                    toastMessage.setTextSize(18);
+                    toastMessage.setTextColor(Color.RED);
+                    toastMessage.setGravity(Gravity.CENTER);
+                    toastMessage.setCompoundDrawablePadding(5);
+                    toastView.setBackgroundColor(Color.TRANSPARENT);
+                    toast.show();
+                    final MediaPlayer mp = MediaPlayer.create(DOPackingScanDetails.this, R.raw.alert);
+                    mp.start();
+                }else {
+                    Toast toast = Toast.makeText(DOPackingScanDetails.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + s + "</big></b></font>"), Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                }
 
+                }
+                else  if (s.contains("true")) {
+                    try {
+
+                        String[] separated = s.split("#");
+                        String Item = separated[1];
+                        String[] sep1 = Item.split("Item Code @");
+                        double quantity = Double.parseDouble(sep1[0]);
+                        Quantity= (int) quantity;
+                        String itemCode = sep1[1];
+                        String[] sep2 = itemCode.split("!");
+                        ItemCode = sep2[0];
+                        Pack_OrdDtlId = sep2[1];
+
+
+                        if (secondaryBoxArrayList.size() > 0) {
+                            for (int j = 0; j < secondaryBoxArrayList.size(); j++) {
+                                if (secondaryBoxArrayList.get(j).getPack_OrdDtlId().equals(Pack_OrdDtlId)) {
+
+                                    Packet grnpost_1 = new Packet();
+                                    grnpost_1.setPacketNo(PacketNo);
+                                    cf.Insert_GRNPACKETNO(grnpost_1);
+
+                                    String Picked = String.valueOf(secondaryBoxArrayList.get(j).getQtyPacked());
+                                    String Pick = String.valueOf(secondaryBoxArrayList.get(j).getQtyToPack());
+                                    ItemMasterId=secondaryBoxArrayList.get(j).getItemMasterId();
+
+                                    if (Pick.equals(Picked)) {
+
+                                         /*   Toast toast = Toast.makeText(DOPackingScanDetails.this, "Packing completed for "+ItemCode, Toast.LENGTH_LONG);View toastView = toast.getView();
+                                            TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                                            toastMessage.setTextSize(18);
+                                            toastMessage.setTextColor(Color.GREEN);
+                                            toastMessage.setGravity(Gravity.CENTER);
+                                            toastMessage.setCompoundDrawablePadding(5);
+                                            toastView.setBackgroundColor(Color.TRANSPARENT);
+                                            toast.show();
+                                            final MediaPlayer mp = MediaPlayer.create(DOPackingScanDetails.this, R.raw.ok);
+                                            mp.start();*/
+
+
+                                    } else {
+                                        filter(Pack_OrdDtlId, data);
+                                    }
+                                }else {
+
+                                }
+                            }
+
+                        }
+
+
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                }else {
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                    Toast toast = Toast.makeText(DOPackingScanDetails.this, s, Toast.LENGTH_SHORT);
+                    View toastView = toast.getView();
+
+                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                    toastMessage.setTextSize(18);
+                    toastMessage.setTextColor(Color.RED);
+                    toastMessage.setGravity(Gravity.CENTER);
+                    toastMessage.setCompoundDrawablePadding(5);
+                    toastView.setBackgroundColor(Color.TRANSPARENT);
+                    toast.show();
+                    final MediaPlayer mp = MediaPlayer.create(DOPackingScanDetails.this, R.raw.alert);
+                    mp.start();
+                }else {
+                        Toast toast = Toast.makeText(DOPackingScanDetails.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + s + "</big></b></font>"), Toast.LENGTH_LONG);
+                        toast.setGravity(Gravity.CENTER, 0, 0);
+                        toast.show();
+                    }
+
+                }
+
+                progressBar.setVisibility(View.GONE);
             }
-            else  if (s.contains("true")) {
+
+            else {
+
+                if (s.contains("already Packed")){
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                    Toast toast = Toast.makeText(DOPackingScanDetails.this, s, Toast.LENGTH_LONG);View toastView = toast.getView();
+
+                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                    toastMessage.setTextSize(18);
+                    toastMessage.setTextColor(Color.RED);
+                    toastMessage.setGravity(Gravity.CENTER);
+                    toastMessage.setCompoundDrawablePadding(5);
+                    toastView.setBackgroundColor(Color.TRANSPARENT);
+                    toast.show();
+                    final MediaPlayer mp = MediaPlayer.create(DOPackingScanDetails.this, R.raw.alert);
+                    mp.start();
+                    }else {
+                        Toast toast = Toast.makeText(DOPackingScanDetails.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + s + "</big></b></font>"), Toast.LENGTH_LONG);
+                        toast.setGravity(Gravity.CENTER, 0, 0);
+                        toast.show();
+                    }
+
+                }
+                else  if (s.contains("true")) {
                     try {
 
                         String[] separated = s.split("#");
@@ -1601,20 +2077,21 @@ public class DOPackingScanDetails extends AppCompatActivity {
                         ItemCode = sep1[1];
 
 
-                            if (secondaryBoxArrayList.size() > 0) {
-                                for (int j = 0; j < secondaryBoxArrayList.size(); j++) {
-                                    if (secondaryBoxArrayList.get(j).getItemCode().equals(ItemCode)) {
+                        if (secondaryBoxArrayList.size() > 0) {
+                            for (int j = 0; j < secondaryBoxArrayList.size(); j++) {
+                                if (secondaryBoxArrayList.get(j).getItemCode().equals(ItemCode)) {
 
-                                        Packet grnpost_1 = new Packet();
-                                        grnpost_1.setPacketNo(PacketNo);
-                                        cf.Insert_GRNPACKETNO(grnpost_1);
+                                    Packet grnpost_1 = new Packet();
+                                    grnpost_1.setPacketNo(PacketNo);
+                                    cf.Insert_GRNPACKETNO(grnpost_1);
 
-                                        String Picked = String.valueOf(secondaryBoxArrayList.get(j).getQtyPacked());
-                                        String Pick = String.valueOf(secondaryBoxArrayList.get(j).getQtyToPack());
-                                        ItemMasterId=secondaryBoxArrayList.get(j).getItemMasterId();
+                                    String Picked = String.valueOf(secondaryBoxArrayList.get(j).getQtyPacked());
+                                    String Pick = String.valueOf(secondaryBoxArrayList.get(j).getQtyToPack());
+                                    ItemMasterId=secondaryBoxArrayList.get(j).getItemMasterId();
 
-                                        if (Pick.equals(Picked)) {
-                                            Toast toast = Toast.makeText(DOPackingScanDetails.this, "Packing completed for "+ItemCode, Toast.LENGTH_LONG);View toastView = toast.getView();
+                                    if (Pick.equals(Picked)) {
+
+                                         /*   Toast toast = Toast.makeText(DOPackingScanDetails.this, "Packing completed for "+ItemCode, Toast.LENGTH_LONG);View toastView = toast.getView();
                                             TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
                                             toastMessage.setTextSize(18);
                                             toastMessage.setTextColor(Color.GREEN);
@@ -1623,25 +2100,18 @@ public class DOPackingScanDetails extends AppCompatActivity {
                                             toastView.setBackgroundColor(Color.TRANSPARENT);
                                             toast.show();
                                             final MediaPlayer mp = MediaPlayer.create(DOPackingScanDetails.this, R.raw.ok);
-                                            mp.start();
+                                            mp.start();*/
 
 
-                                        } else {
-                                            filter(ItemCode, data);
-                                        }
-                                    }else {
-                                        Toast toast = Toast.makeText(DOPackingScanDetails.this, ItemCode +" not found in packing list ", Toast.LENGTH_LONG);View toastView = toast.getView();
-                                        TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-                                        toastMessage.setTextSize(18);
-                                        toastMessage.setTextColor(Color.GREEN);
-                                        toastMessage.setGravity(Gravity.CENTER);
-                                        toastMessage.setCompoundDrawablePadding(5);
-                                        toastView.setBackgroundColor(Color.TRANSPARENT);
-                                        toast.show();
-                                        }
+                                    } else {
+                                        filter(ItemCode, data);
+                                    }
+                                }else {
+
                                 }
-
                             }
+
+                        }
 
 
 
@@ -1650,23 +2120,35 @@ public class DOPackingScanDetails extends AppCompatActivity {
                     }
 
                 }else {
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                    Toast toast = Toast.makeText(DOPackingScanDetails.this, s, Toast.LENGTH_SHORT);
+                    View toastView = toast.getView();
 
-                Toast toast = Toast.makeText(DOPackingScanDetails.this, s, Toast.LENGTH_LONG);View toastView = toast.getView();
+                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                    toastMessage.setTextSize(18);
+                    toastMessage.setTextColor(Color.RED);
+                    toastMessage.setGravity(Gravity.CENTER);
+                    toastMessage.setCompoundDrawablePadding(5);
+                    toastView.setBackgroundColor(Color.TRANSPARENT);
+                    toast.show();
+                    final MediaPlayer mp = MediaPlayer.create(DOPackingScanDetails.this, R.raw.alert);
+                    mp.start();
+                }else {
+                    Toast toast = Toast.makeText(DOPackingScanDetails.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + s + "</big></b></font>"), Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                }
+                }
 
-                TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-                toastMessage.setTextSize(18);
-                toastMessage.setTextColor(Color.RED);
-                toastMessage.setGravity(Gravity.CENTER);
-                toastMessage.setCompoundDrawablePadding(5);
-                toastView.setBackgroundColor(Color.TRANSPARENT);
-                toast.show();
-                final MediaPlayer mp = MediaPlayer.create(DOPackingScanDetails.this, R.raw.alert);
-                mp.start();
+                progressBar.setVisibility(View.GONE);
             }
 
-            progressBar.setVisibility(View.GONE);
+
         }
-    }
+
+
+
+        }
 
 
 
@@ -1702,37 +2184,120 @@ public class DOPackingScanDetails extends AppCompatActivity {
 
             if (s.contains("Success")) {
 
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                    Toast toast = Toast.makeText(DOPackingScanDetails.this, "Data Send Successfully", Toast.LENGTH_SHORT);
+                    View toastView = toast.getView();
 
-                Toast toast = Toast.makeText(DOPackingScanDetails.this, "Data Send Successfully", Toast.LENGTH_LONG);View toastView = toast.getView();
+                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                    toastMessage.setTextSize(18);
+                    toastMessage.setTextColor(Color.GREEN);
+                    toastMessage.setGravity(Gravity.CENTER);
+                    toastMessage.setCompoundDrawablePadding(5);
+                    toastView.setBackgroundColor(Color.TRANSPARENT);
+                    toast.show();
+                    final MediaPlayer mp = MediaPlayer.create(DOPackingScanDetails.this, R.raw.ok);
+                    mp.start();
 
-                TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-                toastMessage.setTextSize(18);
-                toastMessage.setTextColor(Color.GREEN);
-                toastMessage.setGravity(Gravity.CENTER);
-                toastMessage.setCompoundDrawablePadding(5);
-                toastView.setBackgroundColor(Color.TRANSPARENT);
-                toast.show();
-                final MediaPlayer mp = MediaPlayer.create(DOPackingScanDetails.this, R.raw.ok);
-                mp.start();
-
-                if (secondaryBoxArrayList.size()>0) {
-                    for (int j = 0; j < secondaryBoxArrayList.size(); j++) {
-                        if (secondaryBoxArrayList.get(j).getItemCode().equals(ItemCode)) {
-                            int current = secondaryBoxArrayList.get(j).getQtyPacked();
-                            ContentValues values = new ContentValues();
-                            int currentTotal = current + Quantity;
-                            values.put("QtyPacked", currentTotal);
-                            String aa = WebUrlClass.DoneFlag_Complete;
-                            values.put("Flag", aa);
-                            sql.update(db.TABLE_SECONDARY_BOX, values, "ItemCode=?", new String[]{String.valueOf(ItemCode)});
-                            onResume();
+                }else {
+                    Toast toast = Toast.makeText(DOPackingScanDetails.this, Html.fromHtml("<font color='#26C14B' ><b><big>" + "Data Send Successfully" + "</big></b></font>"), Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                }
+                if (Constants.type == Constants.Type.Alfa) {
+                    if (secondaryBoxArrayList.size()>0) {
+                        for (int j = 0; j < secondaryBoxArrayList.size(); j++) {
+                            if (secondaryBoxArrayList.get(j).getPack_OrdDtlId().equals(Pack_OrdDtlId)) {
+                                int current = secondaryBoxArrayList.get(j).getQtyPacked();
+                                ContentValues values = new ContentValues();
+                                int currentTotal = current + Quantity;
+                                values.put("QtyPacked", currentTotal);
+                                String aa = WebUrlClass.DoneFlag_Complete;
+                                values.put("Flag", aa);
+                                sql.update(db.TABLE_SECONDARY_BOX, values, "Pack_OrdDtlId=?", new String[]{String.valueOf(Pack_OrdDtlId)});
+                                onResume();
+                            }
                         }
                     }
+
+                }else {
+                    if (secondaryBoxArrayList.size()>0) {
+                        for (int j = 0; j < secondaryBoxArrayList.size(); j++) {
+                            if (secondaryBoxArrayList.get(j).getItemCode().equals(ItemCode)) {
+                                int current = secondaryBoxArrayList.get(j).getQtyPacked();
+                                ContentValues values = new ContentValues();
+                                int currentTotal = current + Quantity;
+                                values.put("QtyPacked", currentTotal);
+                                String aa = WebUrlClass.DoneFlag_Complete;
+                                values.put("Flag", aa);
+                                sql.update(db.TABLE_SECONDARY_BOX, values, "ItemCode=?", new String[]{String.valueOf(ItemCode)});
+                                onResume();
+                            }
+                        }
+                    }
+
                 }
 
-            } else {
 
-                Toast toast = Toast.makeText(DOPackingScanDetails.this, "Record not saved", Toast.LENGTH_LONG);View toastView = toast.getView();
+            }
+            else if (s.contains("Fail")) {
+                try {
+                    response = response.substring(1, response.length() - 1);
+                    JSONObject jsonObject = new JSONObject(response);
+                    String status = jsonObject.getString("ERROR");
+
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                        Toast toast = Toast.makeText(DOPackingScanDetails.this, status, Toast.LENGTH_SHORT);
+                        View toastView = toast.getView();
+                        TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                        toastMessage.setTextSize(18);
+                        toastMessage.setTextColor(Color.RED);
+                        toastMessage.setGravity(Gravity.CENTER);
+                        toastMessage.setCompoundDrawablePadding(5);
+                        toastView.setBackgroundColor(Color.TRANSPARENT);
+                        toast.show();
+                    }else {
+                        Toast toast = Toast.makeText(DOPackingScanDetails.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + status + "</big></b></font>"), Toast.LENGTH_LONG);
+                        toast.setGravity(Gravity.CENTER, 0, 0);
+                        toast.show();
+                        }
+
+                    final MediaPlayer mp = MediaPlayer.create(DOPackingScanDetails.this, R.raw.alert);
+                    mp.start();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            else if (s.contains("Failed")) {
+                try {
+                    response = response.substring(1, response.length() - 1);
+                    JSONObject jsonObject = new JSONObject(response);
+                    String status = jsonObject.getString("ERROR");
+
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                        Toast toast = Toast.makeText(DOPackingScanDetails.this, status, Toast.LENGTH_SHORT);
+                        View toastView = toast.getView();
+                        TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                        toastMessage.setTextSize(18);
+                        toastMessage.setTextColor(Color.RED);
+                        toastMessage.setGravity(Gravity.CENTER);
+                        toastMessage.setCompoundDrawablePadding(5);
+                        toastView.setBackgroundColor(Color.TRANSPARENT);
+                        toast.show();
+                    }else {
+                        Toast toast = Toast.makeText(DOPackingScanDetails.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + status + "</big></b></font>"), Toast.LENGTH_LONG);
+                        toast.setGravity(Gravity.CENTER, 0, 0);
+                        toast.show();
+                    }
+
+                    final MediaPlayer mp = MediaPlayer.create(DOPackingScanDetails.this, R.raw.alert);
+                    mp.start();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            else {
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                Toast toast = Toast.makeText(DOPackingScanDetails.this, s, Toast.LENGTH_SHORT);View toastView = toast.getView();
 
                 TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
                 toastMessage.setTextSize(18);
@@ -1743,6 +2308,11 @@ public class DOPackingScanDetails extends AppCompatActivity {
                 toast.show();
                 final MediaPlayer mp = MediaPlayer.create(DOPackingScanDetails.this, R.raw.alert);
                 mp.start();
+                }else {
+                    Toast toast = Toast.makeText(DOPackingScanDetails.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + s + "</big></b></font>"), Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                }
             }
         }
     }
@@ -1785,12 +2355,12 @@ public class DOPackingScanDetails extends AppCompatActivity {
             String s = resp;
            /* String s = String.valueOf(res);
             if (s.contains("false")) {
-                Toast.makeText(DOPackingScanDetails.this, "Please check stock", Toast.LENGTH_LONG).show();
+                Toast.makeText(DOPackingScanDetails.this, "Please check stock", Toast.LENGTH_SHORT).show();
             } else if (s.equals("Error")) {
-                Toast.makeText(DOPackingScanDetails.this, "Server Error....", Toast.LENGTH_LONG).show();
+                Toast.makeText(DOPackingScanDetails.this, "Server Error....", Toast.LENGTH_SHORT).show();
             }
             else if (s.contains("true")) {
-                Toast.makeText(DOPackingScanDetails.this, "Record saved Successfully", Toast.LENGTH_LONG).show();
+                Toast.makeText(DOPackingScanDetails.this, "Record saved Successfully", Toast.LENGTH_SHORT).show();
                 editor.remove(WebUrlClass.MyPREFERENCES_HEADER);
                 editor.remove(WebUrlClass.MyPREFERENCES_CODE);
                 editor.remove("OrdNo");
@@ -1817,16 +2387,22 @@ public class DOPackingScanDetails extends AppCompatActivity {
 
             if (s.contains("Success")) {
 
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                    Toast toast = Toast.makeText(DOPackingScanDetails.this, "Shipment created Successfully", Toast.LENGTH_SHORT);
+                    View toastView = toast.getView();
+                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                    toastMessage.setTextSize(18);
+                    toastMessage.setTextColor(Color.GREEN);
+                    toastMessage.setGravity(Gravity.CENTER);
+                    toastMessage.setCompoundDrawablePadding(5);
+                    toastView.setBackgroundColor(Color.TRANSPARENT);
+                    toast.show();
+                }else {
+                    Toast toast = Toast.makeText(DOPackingScanDetails.this, Html.fromHtml("<font color='#26C14B' ><b><big>" + "Shipment created Successfully" + "</big></b></font>"), Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
 
-                Toast toast = Toast.makeText(DOPackingScanDetails.this, "Shipment created Successfully", Toast.LENGTH_LONG);
-                View toastView = toast.getView();
-                TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-                toastMessage.setTextSize(18);
-                toastMessage.setTextColor(Color.GREEN);
-                toastMessage.setGravity(Gravity.CENTER);
-                toastMessage.setCompoundDrawablePadding(5);
-                toastView.setBackgroundColor(Color.TRANSPARENT);
-                toast.show();
+                }
 
                 editor.remove(WebUrlClass.MyPREFERENCES_HEADER);
                 editor.remove(WebUrlClass.MyPREFERENCES_CODE);
@@ -1856,15 +2432,22 @@ public class DOPackingScanDetails extends AppCompatActivity {
                     s = s.substring(1, s.length() - 1);
                     JSONObject jsonObject = new JSONObject(s);
                     String status = jsonObject.getString("ERROR");
-                    Toast toast = Toast.makeText(DOPackingScanDetails.this, status, Toast.LENGTH_LONG);
-                    View toastView = toast.getView();
-                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-                    toastMessage.setTextSize(18);
-                    toastMessage.setTextColor(Color.RED);
-                    toastMessage.setGravity(Gravity.CENTER);
-                    toastMessage.setCompoundDrawablePadding(5);
-                    toastView.setBackgroundColor(Color.TRANSPARENT);
-                    toast.show();
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+
+                        Toast toast = Toast.makeText(DOPackingScanDetails.this, status, Toast.LENGTH_SHORT);
+                        View toastView = toast.getView();
+                        TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                        toastMessage.setTextSize(18);
+                        toastMessage.setTextColor(Color.RED);
+                        toastMessage.setGravity(Gravity.CENTER);
+                        toastMessage.setCompoundDrawablePadding(5);
+                        toastView.setBackgroundColor(Color.TRANSPARENT);
+                        toast.show();
+                    }else {
+                        Toast toast = Toast.makeText(DOPackingScanDetails.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + status + "</big></b></font>"), Toast.LENGTH_LONG);
+                        toast.setGravity(Gravity.CENTER, 0, 0);
+                        toast.show();
+                    }
 
                     final MediaPlayer mp = MediaPlayer.create(DOPackingScanDetails.this, R.raw.alert);
                     mp.start();
@@ -1878,8 +2461,8 @@ public class DOPackingScanDetails extends AppCompatActivity {
                 try {
                     JSONObject jsonObject = new JSONObject(s);
                     String status = jsonObject.getString("ERROR");
-
-                    Toast toast = Toast.makeText(DOPackingScanDetails.this, status, Toast.LENGTH_LONG);
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                    Toast toast = Toast.makeText(DOPackingScanDetails.this, status, Toast.LENGTH_SHORT);
                     View toastView = toast.getView();
                     TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
                     toastMessage.setTextSize(18);
@@ -1888,7 +2471,11 @@ public class DOPackingScanDetails extends AppCompatActivity {
                     toastMessage.setCompoundDrawablePadding(5);
                     toastView.setBackgroundColor(Color.TRANSPARENT);
                     toast.show();
-
+                 }else {
+                    Toast toast = Toast.makeText(DOPackingScanDetails.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + status + "</big></b></font>"), Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                 }
                     final MediaPlayer mp = MediaPlayer.create(DOPackingScanDetails.this, R.raw.alert);
                     mp.start();
 
@@ -1896,7 +2483,9 @@ public class DOPackingScanDetails extends AppCompatActivity {
                     e.printStackTrace();
                 }
             } else {
-                Toast toast = Toast.makeText(DOPackingScanDetails.this, s, Toast.LENGTH_LONG);
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+
+                    Toast toast = Toast.makeText(DOPackingScanDetails.this, s, Toast.LENGTH_SHORT);
                 View toastView = toast.getView();
                 TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
                 toastMessage.setTextSize(18);
@@ -1905,6 +2494,11 @@ public class DOPackingScanDetails extends AppCompatActivity {
                 toastMessage.setCompoundDrawablePadding(5);
                 toastView.setBackgroundColor(Color.TRANSPARENT);
                 toast.show();
+            }else {
+                Toast toast = Toast.makeText(DOPackingScanDetails.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + s + "</big></b></font>"), Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+            }
                 final MediaPlayer mp = MediaPlayer.create(DOPackingScanDetails.this, R.raw.alert);
                 mp.start();
 
@@ -1953,19 +2547,49 @@ public class DOPackingScanDetails extends AppCompatActivity {
 
                 final MediaPlayer mp = MediaPlayer.create(DOPackingScanDetails.this, R.raw.ok);
                 mp.start();
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
 
-                Toast toast = Toast.makeText(DOPackingScanDetails.this, "Carton created successfully", Toast.LENGTH_LONG);
-                View toastView = toast.getView();
-                TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-                toastMessage.setTextSize(18);
-                toastMessage.setTextColor(Color.GREEN);
-                toastMessage.setGravity(Gravity.CENTER);
-                toastMessage.setCompoundDrawablePadding(5);
-                toastView.setBackgroundColor(Color.TRANSPARENT);
-                toast.show();
+                    Toast toast = Toast.makeText(DOPackingScanDetails.this, "Carton created successfully", Toast.LENGTH_SHORT);
+                    View toastView = toast.getView();
+                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                    toastMessage.setTextSize(18);
+                    toastMessage.setTextColor(Color.GREEN);
+                    toastMessage.setGravity(Gravity.CENTER);
+                    toastMessage.setCompoundDrawablePadding(5);
+                    toastView.setBackgroundColor(Color.TRANSPARENT);
+                    toast.show();
+                }else {
+                    Toast toast = Toast.makeText(DOPackingScanDetails.this, Html.fromHtml("<font color='#26C14B' ><b><big>" + "Carton created successfully" + "</big></b></font>"), Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
 
-                printlabel(CartanCode.replace("\"", ""),PackOrderNo);
+                }
+                if (Constants.type == Constants.Type.Alfa) {
+                        if (isnet()) {
+                            progressBar.setVisibility(View.VISIBLE);
+                            new StartSession(DOPackingScanDetails.this, new CallbackInterface() {
+                                @Override
+                                public void callMethod() {
+                                    new DownloadPrinterData().execute();
+                                }
 
+                                @Override
+                                public void callfailMethod(String msg) {
+
+                                }
+
+
+                            });
+
+                        } else {
+                            Toast.makeText(DOPackingScanDetails.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                        }
+
+
+                }
+                else {
+                    printlabel(CartanCode.replace("\"", ""), PackOrderNo);
+                }
               //  Toast.makeText(DOPackingScanDetails.this,"Carton created successfully",Toast.LENGTH_SHORT).show();
 
                 getSupportActionBar().setTitle(PackOrderNo);
@@ -1975,6 +2599,7 @@ public class DOPackingScanDetails extends AppCompatActivity {
         }
     }
 
+/*
     private class UploadDoDump extends AsyncTask<String, String, String> {
         Object res;
         String response;
@@ -2017,6 +2642,7 @@ public class DOPackingScanDetails extends AppCompatActivity {
 
         }
     }
+*/
 
 
     private class DowmloadBox extends AsyncTask<String, String, String> {
@@ -2076,10 +2702,10 @@ public class DOPackingScanDetails extends AppCompatActivity {
 
                 Update_BOX();
             } else if (s.contains("[]")) {
-                Toast.makeText(DOPackingScanDetails.this, "No records Present", Toast.LENGTH_LONG).show();
+                Toast.makeText(DOPackingScanDetails.this, "No records Present", Toast.LENGTH_SHORT).show();
 
             } else {
-                Toast.makeText(DOPackingScanDetails.this, "Server Time Out...", Toast.LENGTH_LONG).show();
+                Toast.makeText(DOPackingScanDetails.this, "Server Time Out...", Toast.LENGTH_SHORT).show();
             }
 
         }
@@ -2109,7 +2735,8 @@ public class DOPackingScanDetails extends AppCompatActivity {
                     if (EnvMasterId.equals("jal")||EnvMasterId.equals("jaluat")||EnvMasterId.equals("jaltest")||EnvMasterId.equals("jallocal")) {
 
 
-                    }else {
+                    }
+                    else {
                         String CartanHeaderId = userpreferences.getString(WebUrlClass.MyPREFERENCES_HEADER, "");
 
                         if (CartanHeaderId.equals("")) {
@@ -2245,6 +2872,209 @@ public class DOPackingScanDetails extends AppCompatActivity {
         b = dialogBuilder.create();
         b.show();
     }
+
+
+    class DownloadPrinterData extends AsyncTask<String, Void, String> {
+        Object res;
+        String response;
+        ProgressDialog progressDialog;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            //showProgressDialog();
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            String url = CompanyURL + WebUrlClass.api_GetPrinterName;
+
+            try {
+                res = ut.OpenConnection(url, DOPackingScanDetails.this);
+                if (res != null) {
+                    response = res.toString();
+                    response = res.toString().replaceAll("\\\\", "");
+                    response = response.replaceAll("\\\\\\\\/", "");
+                    response = response.substring(1, response.length() - 1);
+
+                    printerNameArrayList.clear();
+                    JSONArray jResults = new JSONArray(response);
+
+                    for (int i = 0; i < jResults.length(); i++) {
+                        PrinterName userList = new PrinterName();
+                        JSONObject jorder = jResults.getJSONObject(i);
+                        userList.setPrinterName(jorder.getString("PrinterName"));
+                        printerNameArrayList.add(userList);
+
+
+                    }
+
+
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String integer) {
+            super.onPostExecute(integer);
+
+
+            progressBar.setVisibility(View.GONE);
+
+            if (response.contains("[]")) {
+
+                Toast.makeText(DOPackingScanDetails.this, "Printer not found", Toast.LENGTH_SHORT).show();
+            } if (response.equals("")) {
+                printerName="";
+                //   Toast.makeText(ItemWisePickListDetailActivity.this, "Printer not found", Toast.LENGTH_SHORT).show();
+
+                if (isnet()) {
+                    progressBar.setVisibility(View.VISIBLE);
+                    new StartSession(DOPackingScanDetails.this, new CallbackInterface() {
+                        @Override
+                        public void callMethod() {
+                            new UpLoadSplitData().execute();
+                        }
+
+                        @Override
+                        public void callfailMethod(String msg) {
+                            new UpLoadSplitData().execute();
+
+                        }
+
+
+                    });
+
+                } else {
+                    Toast.makeText(DOPackingScanDetails.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+
+                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(DOPackingScanDetails.this);
+                LayoutInflater inflater = DOPackingScanDetails.this.getLayoutInflater();
+                final View myView = inflater.inflate(R.layout.printername_lay, null);
+                dialogBuilder.setView(myView);
+                Spinner printername = (Spinner) myView .findViewById(R.id.spinner_printer);
+
+                adapterPrinterName = new Adapter_PrinterName(DOPackingScanDetails.this, printerNameArrayList);
+                printername.setAdapter(adapterPrinterName);
+                printername.setSelection(0,false);
+
+
+                printername.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+
+                        printerName=printerNameArrayList.get(position).getPrinterName();
+
+
+                        if (isnet()) {
+                            b.dismiss();
+                            progressBar.setVisibility(View.VISIBLE);
+                            new StartSession(DOPackingScanDetails.this, new CallbackInterface() {
+                                @Override
+                                public void callMethod() {
+                                    new UpLoadSplitData().execute();
+                                }
+
+                                @Override
+                                public void callfailMethod(String msg) {
+                                    new UpLoadSplitData().execute();
+
+                                }
+
+
+                            });
+
+                        } else {
+                            Toast.makeText(DOPackingScanDetails.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                        }
+
+
+
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+
+                b = dialogBuilder.create();
+                b.show();
+
+            }
+
+
+        }
+    }
+
+    private class UpLoadSplitData extends AsyncTask<String, String, String> {
+        Object res;
+        String response, data;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            String url = null;
+            try {
+                url = CompanyURL + WebUrlClass.api_Get_Carton_Packet_For_QR+"?CartonNo="+CartanCode+"&PackOrderNo="+PackOrderNo+"&PrinterName="+ URLEncoder.encode(printerName,"UTF-8");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+            try {
+                res = ut.OpenConnection(url, DOPackingScanDetails.this);
+                response = res.toString().replaceAll("\\\\", "");
+
+            } catch (Exception e) {
+                response = "Error";
+            }
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            progressBar.setVisibility(View.GONE);
+            if (s.equalsIgnoreCase("ok")) {
+                onResume();
+                Toast.makeText(DOPackingScanDetails.this, "Label Printed Successfully", Toast.LENGTH_SHORT).show();
+                //b.dismiss();
+            } else {
+                //    Toast.makeText(ItemWisePickListDetailActivity.this, "Packet split Successfully", Toast.LENGTH_SHORT).show();
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                    Toast toast = Toast.makeText(DOPackingScanDetails.this, "Label Printed Successfully", Toast.LENGTH_SHORT);
+                    View toastView = toast.getView();
+                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                    toastMessage.setTextSize(18);
+                    toastMessage.setTextColor(Color.GREEN);
+                    toastMessage.setGravity(Gravity.CENTER);
+                    toastView.setBackgroundColor(Color.WHITE);
+                    toast.show();
+                }else {
+                    Toast toast = Toast.makeText(DOPackingScanDetails.this, Html.fromHtml("<font color='#26C14B' ><b><big>" + "Label Printed Successfully" + "</big></b></font>"), Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                }
+
+
+                //   onResume();
+                // b.dismiss();
+            }
+        }
+    }
+
+
 
 }
 

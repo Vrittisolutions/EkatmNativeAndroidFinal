@@ -37,12 +37,17 @@ import android.widget.TextView;
 import com.vritti.AlfaLavaModule.PI.BluetoothConnectivityActivity;
 
 import com.vritti.AlfaLavaModule.activity.AlfaShipment.DOShipmentListActivity;
+import com.vritti.AlfaLavaModule.activity.Consolidation.PickListNoListActivity;
+import com.vritti.AlfaLavaModule.activity.Inspection.InspectionPackingOrderListActivity;
 import com.vritti.AlfaLavaModule.activity.cartonlabel.CartonPackingOrderListActivity;
 import com.vritti.AlfaLavaModule.activity.grn.GRNPendingActivity;
 import com.vritti.AlfaLavaModule.activity.loading.LoadingPackingOrderListActivity;
+import com.vritti.AlfaLavaModule.activity.packaging.ReceiptPackagingDOListActivity;
+import com.vritti.AlfaLavaModule.activity.packetenquiry.PacketEnquiryDetails;
 import com.vritti.AlfaLavaModule.activity.packing_loading.LoadingPackOrderListActivity;
 import com.vritti.AlfaLavaModule.activity.packing_qc.QCPackingOrderListActivity;
 import com.vritti.AlfaLavaModule.activity.pick_riversal.PickReversalActivity;
+import com.vritti.AlfaLavaModule.activity.picking.DOListActivity;
 import com.vritti.AlfaLavaModule.activity.unpacking.UpPackingOrderListActivity;
 import com.vritti.AlfaLavaModule.activity.weight.WeightPackingOrderListActivity;
 import com.vritti.AlfaLavaModule.bean.MenuModel;
@@ -206,20 +211,31 @@ public class AlfaHomePage extends AppCompatActivity
             childList.put(menuModel, null);
         }*/
 
-        if (Constants.type == Constants.Type.Alfa) {
+        /*if (Constants.type == Constants.Type.Alfa) {
 
         }else {
             MenuModel menuModel = new MenuModel("Pending GRN", true, false); //Menu of Java Tutorials
             headerList.add(menuModel);
-        }
+        }*/
+
+
+        MenuModel menuModel1 = new MenuModel("Location Transfer", true, false); //Menu of Java Tutorials
+        headerList.add(menuModel1);
+
 
         MenuModel menuModel = new MenuModel("Inward", true, true); //Menu of Java Tutorials
         headerList.add(menuModel);
         List<MenuModel> childModelsList = new ArrayList<>();
 
-        MenuModel childModel = new MenuModel("GRN Putaway", false, false);
+        MenuModel childModel = new MenuModel("GRN Putaway-Manual", false, false);
         childModelsList.add(childModel);
 
+        if (Constants.type == Constants.Type.Alfa) {
+
+        }else {
+            childModel = new MenuModel("Pending GRN", false, false); //Menu of Java Tutorials
+            childModelsList.add(childModel);
+        }
 
         if (menuModel.hasChildren) {
             Log.d("API123","here");
@@ -260,6 +276,13 @@ public class AlfaHomePage extends AppCompatActivity
         if (Constants.type == Constants.Type.Alfa) {
 
         }else {
+
+            menuModel = new MenuModel("Packet Enquiry", true, false); //Menu of Python Tutorials
+            headerList.add(menuModel);
+        }
+        if (Constants.type == Constants.Type.Alfa) {
+
+        }else {
             menuModel = new MenuModel("Cutover Inventory", true, false); //Menu of Python Tutorials
             headerList.add(menuModel);
         }
@@ -278,6 +301,13 @@ public class AlfaHomePage extends AppCompatActivity
 
         }else {
             childModel = new MenuModel("Picking Reversal", true, false); //Menu of Python Tutorials
+            childModelsList.add(childModel);
+        }
+
+        if (Constants.type == Constants.Type.Alfa) {
+
+        }else {
+            childModel = new MenuModel("Picking Order Creation", true, false); //Menu of Python Tutorials
             childModelsList.add(childModel);
         }
 
@@ -414,12 +444,15 @@ public class AlfaHomePage extends AppCompatActivity
                             startActivity(new Intent(AlfaHomePage.this, BluetoothConnectivityActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                         }else if (group.equalsIgnoreCase( "Cutover Inventory")){
                             startActivity(new Intent(AlfaHomePage.this, LocationScannerCutoff.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                        }else if (group.equalsIgnoreCase( "Pending GRN")){
-                            startActivity(new Intent(AlfaHomePage.this, GRNPendingActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                         }else if (group.equalsIgnoreCase( "Loading")){
                             startActivity(new Intent(AlfaHomePage.this, LoadingPackOrderListActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                         }
-
+                        else if (group.equalsIgnoreCase( "Packet Enquiry")){
+                            startActivity(new Intent(AlfaHomePage.this, PacketEnquiryDetails.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                        }
+                        else if (group.equalsIgnoreCase( "Location Transfer")){
+                            startActivity(new Intent(AlfaHomePage.this, LocationOptionsSelection.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                        }
 
 
                     }
@@ -451,7 +484,7 @@ public class AlfaHomePage extends AppCompatActivity
 
                     }else  if (menu.equalsIgnoreCase("Picking")){
 
-                        startActivity(new Intent(AlfaHomePage.this,DOListActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                        startActivity(new Intent(AlfaHomePage.this, DOListActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 
 
                     //    startActivity(new Intent(AlfaHomePage.this, WifiListActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
@@ -460,16 +493,32 @@ public class AlfaHomePage extends AppCompatActivity
 
                         //  drawer.closeDrawers();
 
-                    }else  if (menu.equalsIgnoreCase("Picklist")){
+                    }
+                    else  if (menu.equalsIgnoreCase("Picking Order Creation")){
+
+                        startActivity(new Intent(AlfaHomePage.this, PickListNoListActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+
+
+                        //    startActivity(new Intent(AlfaHomePage.this, WifiListActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+
+                        // startActivity(new Intent(AlfaHomePage.this,PickingActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+
+                        //  drawer.closeDrawers();
+
+                    }
+                    //Picking Order Creation
+                    else  if (menu.equalsIgnoreCase("Picklist")){
                         startActivity(new Intent(AlfaHomePage.this,PickListDetailActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                         //  drawer.closeDrawers();
                     }
-                    else  if (menu.equalsIgnoreCase("GRN Putaway")){
+                    else  if (menu.equalsIgnoreCase("GRN Putaway-Manual")){
 
 
-                        GetSetting();
+                      //  GetSetting();
 
-                      //  startActivity(new Intent(AlfaHomePage.this,ActivityGRNPutAway.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                        startActivity(new Intent(AlfaHomePage.this,ActivityGRNPutAway.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+
+                        //  startActivity(new Intent(AlfaHomePage.this,ActivityGRNPutAway.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                         //drawer.closeDrawers();
 
                     }
@@ -478,7 +527,7 @@ public class AlfaHomePage extends AppCompatActivity
                         startActivity(new Intent(AlfaHomePage.this,MRSHeaderActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 
                     }else  if (menu.equalsIgnoreCase("Inspection Sheet")){
-                        startActivity(new Intent(AlfaHomePage.this,ShipingInspectionSheetActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                        startActivity(new Intent(AlfaHomePage.this, InspectionPackingOrderListActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 
                     }
                     else  if (menu.equalsIgnoreCase("Loading Confirmation")){
@@ -527,6 +576,9 @@ public class AlfaHomePage extends AppCompatActivity
                         startActivity(new Intent(AlfaHomePage.this, DOShipmentListActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 
 
+                    }
+                    else if (menu.equalsIgnoreCase( "Pending GRN")){
+                        startActivity(new Intent(AlfaHomePage.this, GRNPendingActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                     }
 
                 }

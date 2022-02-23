@@ -5479,6 +5479,15 @@ public class OpportunityActivity extends AppCompatActivity implements PopupMenu.
     }
 
 
+    public void callstartagain(int adapterPosition, ArrayList<PartialCallList> partialCallListArrayList) {
+        int position = adapterPosition;
+
+       Call_ID=partialCallListArrayList.get(position).getCallId();
+
+
+
+    }
+
 
 }
 

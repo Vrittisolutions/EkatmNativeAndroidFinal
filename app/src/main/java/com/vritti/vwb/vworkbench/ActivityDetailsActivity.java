@@ -739,7 +739,8 @@ public class ActivityDetailsActivity extends AppCompatActivity {
                     }
                 } else if (option.equalsIgnoreCase("Attachments")) {
 
-                    startActivity(new Intent(ActivityDetailsActivity.this, AttachmentsActivity.class).putExtra("SourceId", SourceId));
+                    startActivity(new Intent(ActivityDetailsActivity.this,
+                            AttachmentsActivity.class).putExtra("SourceId", SourceId).putExtra("ActivityId", ActivityId));//Assigned_To
                 } else if (option.equalsIgnoreCase("Timesheet log")) {
                     startActivity(new Intent(ActivityDetailsActivity.this, TimeSheetLogActivity.class).putExtra("ActId", ActivityId)
                             .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
@@ -1702,7 +1703,8 @@ public class ActivityDetailsActivity extends AppCompatActivity {
         protected String doInBackground(String... params) {
             String url = null;
             try {
-                url = CompanyURL + WebUrlClass.api_GetUploadedAttachment + "?activityId=" + URLEncoder.encode(SourceId, "UTF-8");
+                url = CompanyURL + WebUrlClass.api_GetUploadedAttachment +
+                        "?activityId=" + URLEncoder.encode(ActivityId, "UTF-8")+"&SourceType=Activity";
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }

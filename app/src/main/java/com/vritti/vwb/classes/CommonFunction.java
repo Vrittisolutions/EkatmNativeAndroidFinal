@@ -1496,7 +1496,7 @@ public class CommonFunction {
         cv.put("Pick_ListHdrId", listDetail.getPick_ListHdrId());
         cv.put("PickListNo", listDetail.getPickListNo());
         cv.put("Pick_ListDtlId", listDetail.getPick_listDtlId());
-        cv.put("SoScheduleId", listDetail.getSoScheduleId());
+       // cv.put("SoScheduleId", listDetail.getSoScheduleId());
         cv.put("ItemMasterId", listDetail.getItemMasterId());
         cv.put("QtyPicked", listDetail.getQtyPicked());
         cv.put("QtyToPick", listDetail.getQtyToPick());
@@ -1506,6 +1506,7 @@ public class CommonFunction {
         cv.put("DONumber",listDetail.getDONumber());
         cv.put("LocationCode",listDetail.getLocationCode());
         cv.put("Flag", listDetail.getFlag());
+        cv.put("Pick_listSuggLotId", listDetail.getPick_listSuggLotId());
 
         long a = sql.insert(db.TABLE_CARTAN_PICKLIST, null, cv);
         Log.e("", "" + a);
@@ -1734,6 +1735,20 @@ public class CommonFunction {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public int getOfflineDataCnt() {
+
+        // String countQuery = "SELECT * FROM " + db.TABLE_DATA_OFFLINE + " WHERE isUploaded=?" + new String[]{WebUrlClass.FlagisUploadedFalse};
+        String countQuery = "SELECT  * FROM " + db.TABLE_DATA_OFFLINE + " WHERE isUploaded= 'NO'";
+        int count = 0;
+        SQLiteDatabase sql = db.getReadableDatabase();
+        Cursor cursor = sql.rawQuery(countQuery, null);
+        if (cursor != null && !cursor.isClosed()) {
+            count = cursor.getCount();
+            cursor.close();
+        }
+        return count;
     }
 
 }

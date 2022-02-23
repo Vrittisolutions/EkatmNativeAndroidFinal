@@ -73,7 +73,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:padding="10dp"
-                android:text="Exit chat room"
+                android:text="Exit conversation room"
                 android:layout_toRightOf="@id/exitImage"
                 android:textColor="@color/white"
                 android:textSize="18sp"

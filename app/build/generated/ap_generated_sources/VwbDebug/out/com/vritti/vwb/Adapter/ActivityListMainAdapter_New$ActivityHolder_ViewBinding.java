@@ -18,7 +18,7 @@ import java.lang.Override;
 public class ActivityListMainAdapter_New$ActivityHolder_ViewBinding implements Unbinder {
   private ActivityListMainAdapter_New.ActivityHolder target;
 
-  private View view2131296789;
+  private View view2131296796;
 
   @UiThread
   public ActivityListMainAdapter_New$ActivityHolder_ViewBinding(final ActivityListMainAdapter_New.ActivityHolder target,
@@ -38,7 +38,7 @@ public class ActivityListMainAdapter_New$ActivityHolder_ViewBinding implements U
     target.lay_ticketDesc = Utils.findRequiredViewAsType(source, R.id.lay_ticketDesc, "field 'lay_ticketDesc'", LinearLayout.class);
     view = Utils.findRequiredView(source, R.id.card_viewfill, "field 'card_viewfill', method 'header', and method 'longPress'");
     target.card_viewfill = Utils.castView(view, R.id.card_viewfill, "field 'card_viewfill'", CardView.class);
-    view2131296789 = view;
+    view2131296796 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -80,8 +80,8 @@ public class ActivityListMainAdapter_New$ActivityHolder_ViewBinding implements U
     target.tv_clientName = null;
     target.tv_contact = null;
 
-    view2131296789.setOnClickListener(null);
-    view2131296789.setOnLongClickListener(null);
-    view2131296789 = null;
+    view2131296796.setOnClickListener(null);
+    view2131296796.setOnLongClickListener(null);
+    view2131296796 = null;
   }
 }

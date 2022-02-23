@@ -65,7 +65,7 @@ public class AddTimesheetActivity extends AppCompatActivity {
     JSONObject jsonObj;
     String ActivityId, ActivityName;
     String JsonString;
-    String ValidBackDate, IsTimeslotBooked;
+    String ValidBackDate, IsTimeslotBooked,CurrentDate="";
     private Boolean SaveChecked;
     SharedPreferences userpreferences;
     String UsermasterID;
@@ -147,6 +147,8 @@ public class AddTimesheetActivity extends AppCompatActivity {
         String date = dff.format(new Date());
         //String ftime = tff.format(new Date());
         btn_date.setText(date);
+        CurrentDate =formateDateFromstring("dd/MM/yyyy", "yyyy-MM-dd", date);
+
         TimesheetDate = btn_date.getText().toString();
         dounloadtimesheettime();
     }
@@ -238,7 +240,7 @@ public class AddTimesheetActivity extends AppCompatActivity {
                                         + year;
                                 btn_date.setText(date);
                                 TimesheetDate = date;
-
+                                CurrentDate =formateDateFromstring("dd/MM/yyyy", "yyyy-MM-dd", date);
                                 dounloadtimesheettime();
 
                             }
@@ -372,13 +374,19 @@ public class AddTimesheetActivity extends AppCompatActivity {
 
     private void insertTimesheet(final String ActivityId) {
         jsonObj = new JSONObject();
+       // ActivityTypeId=&ActivityId=90949831-ED6A-4CF9-BA7E-454D89093FA2
+        // &workDesc=working&forDate=01%2F25%2F2022&fromTime=09%3A30+AM
+        // &toTime=9%3A35+AM&SaveChecked=false&FrmClient=From+Office&valFlag=8D9C307CB7F3C4A32822A51922D1CEAA
         try {
+            jsonObj.put("ActivityTypeId","");
             jsonObj.put("ActivityId", ActivityId);
             jsonObj.put("workDesc", ed_timesheet_desc.getText().toString());
-            jsonObj.put("forDate", btn_date.getText().toString());
+            jsonObj.put("forDate", CurrentDate);
             jsonObj.put("fromTime", btn_fromTime.getText().toString());
             jsonObj.put("toTime", btn_toTime.getText().toString());
             jsonObj.put("SaveChecked", chk_make_complete.isChecked());
+            jsonObj.put("FrmClient","From Office");
+            jsonObj.put("valFlag", IsTimeslotBooked);
             JsonString = jsonObj.toString().trim();
             JsonString = JsonString.replaceAll("\\\\", "");
             JsonString = JsonString.replaceAll("\" ", "\"");
@@ -403,16 +411,16 @@ public class AddTimesheetActivity extends AppCompatActivity {
         String workDesc = ed_timesheet_desc.getText().toString();
         String remark = "Add Timesheet of  " + ActivityName + " From time " + fromTime + " to " + toTime;
         String url = null;
-        try {
+       /* try {
             url = CompanyURL + WebUrlClass.api_getInsertTimesheet + "?forDate=" + URLEncoder.encode(input, "UTF-8") + "&SaveChecked="
                     + URLEncoder.encode(SaveChecked1, "UTF-8") + "&fromTime=" + URLEncoder.encode(fromTime, "UTF-8") + "&ActivityId=" + URLEncoder.encode(ActivityId, "UTF-8") +
                     "&toTime=" + URLEncoder.encode(toTime, "UTF-8") + "&workDesc=" + URLEncoder.encode(workDesc, "UTF-8") + "&Timehrs=" + Bookedhrs + "";
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
-        }
+        }*/
         String op = "1";
-
-        CreateOfflineModeTimesheet(url, null, WebUrlClass.GETFlAG, remark, op);
+        url = CompanyURL + WebUrlClass.api_PostInsertTimesheet;
+        CreateOfflineModeTimesheet(url, JsonString, WebUrlClass.POSTFLAG, remark, op);
 
         if (SaveChecked) {
             SQLiteDatabase sql = db.getWritableDatabase();
@@ -840,5 +848,25 @@ public class AddTimesheetActivity extends AppCompatActivity {
 
 
         return ads;
+    }
+
+    public static String formateDateFromstring(String inputFormat, String outputFormat, String inputDate) {
+
+        Date parsed = null;
+        String outputDate = "";
+
+        SimpleDateFormat df_input = new SimpleDateFormat(inputFormat, java.util.Locale.getDefault());
+        SimpleDateFormat df_output = new SimpleDateFormat(outputFormat, java.util.Locale.getDefault());
+
+        try {
+            parsed = df_input.parse(inputDate);
+            outputDate = df_output.format(parsed);
+
+        } catch (ParseException e) {
+
+        }
+
+        return outputDate;
+
     }
 }

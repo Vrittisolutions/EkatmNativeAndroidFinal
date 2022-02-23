@@ -24,6 +24,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -40,9 +41,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.vritti.AlfaLavaModule.activity.DOListActivity;
-import com.vritti.AlfaLavaModule.activity.GRNScanner;
-import com.vritti.AlfaLavaModule.activity.PutAwayScanDetails;
 import com.vritti.AlfaLavaModule.adapter.AdapterItemPicklist;
 import com.vritti.AlfaLavaModule.adapter.Adapter_PrinterName;
 import com.vritti.AlfaLavaModule.bean.PickListDetail;
@@ -485,6 +483,34 @@ public class ItemPickListDetailActivity extends AppCompatActivity {
                 } else {
                     cf.DeleteAllRecord(db.TABLE_ITEM_PICKLIST);
                     detailPacket(PickListNo);
+
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+
+                        Toast toast = Toast.makeText(ItemPickListDetailActivity.this, "Record not found", Toast.LENGTH_LONG);
+                        View toastView = toast.getView();
+                        TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                        toastMessage.setTextSize(18);
+                        toastMessage.setTextColor(Color.RED);
+                        toastMessage.setGravity(Gravity.CENTER);
+                        toastView.setBackgroundColor(Color.WHITE);
+                        toast.show();
+                        progress.setVisibility(View.GONE);
+
+                        final MediaPlayer mp = MediaPlayer.create(ItemPickListDetailActivity.this, R.raw.alert);
+                        mp.start();
+                    }else {
+                        Toast toast = Toast.makeText(ItemPickListDetailActivity.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + "Record not found" + "</big></b></font>"), Toast.LENGTH_LONG);
+                        toast.setGravity(Gravity.CENTER, 0, 0);
+                        toast.show();
+                    }
+
+
+                }
+
+            } else {
+                cf.DeleteAllRecord(db.TABLE_ITEM_PICKLIST);
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+
                     Toast toast = Toast.makeText(ItemPickListDetailActivity.this, "Record not found", Toast.LENGTH_LONG);
                     View toastView = toast.getView();
                     TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
@@ -494,27 +520,13 @@ public class ItemPickListDetailActivity extends AppCompatActivity {
                     toastView.setBackgroundColor(Color.WHITE);
                     toast.show();
                     progress.setVisibility(View.GONE);
-
                     final MediaPlayer mp = MediaPlayer.create(ItemPickListDetailActivity.this, R.raw.alert);
                     mp.start();
-
-
-
+                }else {
+                    Toast toast = Toast.makeText(ItemPickListDetailActivity.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + "Record not found" + "</big></b></font>"), Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
                 }
-
-            } else {
-                cf.DeleteAllRecord(db.TABLE_ITEM_PICKLIST);
-                Toast toast = Toast.makeText(ItemPickListDetailActivity.this, "Record not found", Toast.LENGTH_LONG);
-                View toastView = toast.getView();
-                TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-                toastMessage.setTextSize(18);
-                toastMessage.setTextColor(Color.RED);
-                toastMessage.setGravity(Gravity.CENTER);
-                toastView.setBackgroundColor(Color.WHITE);
-                toast.show();
-                progress.setVisibility(View.GONE);
-                final MediaPlayer mp = MediaPlayer.create(ItemPickListDetailActivity.this, R.raw.alert);
-                mp.start();
 
             }
         }

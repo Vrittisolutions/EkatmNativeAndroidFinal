@@ -38,6 +38,7 @@ import com.vritti.databaselib.other.WebUrlClass;
 import com.vritti.ekatm.R;
 import com.vritti.inventory.physicalInventory.adapter.PartCodeNameAdapter;
 import com.vritti.inventory.physicalInventory.bean.PartCodeName;
+import com.vritti.sales.beans.AllCatSubcatItems;
 import com.vritti.sessionlib.CallbackInterface;
 import com.vritti.sessionlib.StartSession;
 import com.vritti.vwb.classes.CommonFunction;
@@ -97,7 +98,7 @@ public class PartCodeActivity extends AppCompatActivity {
                 new StartSession(PartCodeActivity.this, new CallbackInterface() {
                     @Override
                     public void callMethod() {
-                       // new DownloadGetItemlistJSON().execute();
+                        new DownloadGetItemlistJSON().execute();
                     }
 
                     @Override
@@ -248,10 +249,10 @@ public class PartCodeActivity extends AppCompatActivity {
         btnocr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*Intent intent = new Intent(PartCodeActivity.this, OcrCaptureActivity.class);
-               // intent.putExtra(OcrCaptureActivity.AutoFocus, autoFocus.isChecked());
-               // intent.putExtra(OcrCaptureActivity.UseFlash, useFlash.isChecked());
-                startActivityForResult(intent, RC_OCR_CAPTURE);*/
+                Intent intent = new Intent(PartCodeActivity.this, OcrCaptureActivity.class);
+                intent.putExtra(OcrCaptureActivity.AutoFocus, true);
+                intent.putExtra(OcrCaptureActivity.UseFlash, true);
+                startActivityForResult(intent, RC_OCR_CAPTURE);
             }
         });
     }
@@ -421,6 +422,7 @@ public class PartCodeActivity extends AppCompatActivity {
 
                     sql.delete(db.TABLE_GetItemList, null,
                             null);
+                 //   Cursor c = sql.rawQuery("SELECT * FROM " + db.TABLE_GetItemList, null);
                     Cursor c = sql.rawQuery("SELECT * FROM " + db.TABLE_GetItemList, null);
                     int count = c.getCount();
                     String columnName, columnValue;

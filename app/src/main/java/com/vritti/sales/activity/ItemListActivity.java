@@ -23,11 +23,11 @@ import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -38,6 +38,7 @@ import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -151,6 +152,7 @@ public class ItemListActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Products");
+        setSupportActionBar(toolbar);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimary1));
@@ -1150,13 +1152,13 @@ public class ItemListActivity extends AppCompatActivity {
         return b;
     }
 
-    @Override
+   /* @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
 
         m = menu.findItem(R.id.miActionProgress);
         refresh = menu.findItem(R.id.refresh);
         return super.onPrepareOptionsMenu(menu);
-    }
+    }*/
 
     public void showProgressBar() {
         // Show progress item
@@ -1798,18 +1800,9 @@ public class ItemListActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.refresh, menu);
+        getMenuInflater().inflate(R.menu.menu_search, menu);
 
-        /*MenuItem myMenuItem = menu.findItem(R.id.btncopy);
-        getMenuInflater().inflate(R.menu.refresh, myMenuItem.getSubMenu());*/
-
-      /*  View m = menu.findItem(R.id.search).getActionView();
-        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        SearchView searchView = (SearchView) menu.findItem(R.id.search).getActionView();
-        SearchableInfo info = searchManager.getSearchableInfo(getComponentName());
-        searchView.setSearchableInfo(info);*/
-
-        MenuItem search = menu.findItem(R.id.search);
+        MenuItem search = menu.findItem(R.id.app_bar_search);
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(search);
 
         // listening to search query text change
@@ -1984,4 +1977,5 @@ public class ItemListActivity extends AppCompatActivity {
 
         // }
     }
+
 }

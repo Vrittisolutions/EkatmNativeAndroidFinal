@@ -111,7 +111,8 @@ public class ShipmentEntryAdapter_RecyclerView extends
                 Amt = qty * rate ;       //rate * edtqty
                 list_shipments.get(position).setSubtotal_Amt(Amt);
 
-            }else if(list_shipments.get(position).getShipmentQty().contains(".00")){
+            }
+            else if(list_shipments.get(position).getShipmentQty().contains(".00")){
                 holder.txtshipmentqty.setText(list_shipments.get(position).getShipmentQty().replace(".00",""));
                 holder.edtqty.setText(list_shipments.get(position).getShipmentQty().replace(".00",""));
                 list_shipments.get(position).setChecked(true);
@@ -125,7 +126,8 @@ public class ShipmentEntryAdapter_RecyclerView extends
                 Amt = qty * rate ;       //rate * edtqty
                 list_shipments.get(position).setSubtotal_Amt(Amt);
 
-            }else {
+            }
+            else {
                 holder.txtshipmentqty.setText(list_shipments.get(position).getShipmentQty());
                 holder.edtqty.setText(list_shipments.get(position).getShipmentQty());
                 list_shipments.get(position).setChecked(true);

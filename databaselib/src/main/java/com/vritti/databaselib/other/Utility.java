@@ -37,6 +37,9 @@ import org.apache.http.entity.StringEntity;
 
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
@@ -209,6 +212,10 @@ Context context;
 
             HttpResponse response = null;
 
+            HttpParams httpParams = new BasicHttpParams();
+            HttpConnectionParams.setConnectionTimeout(httpParams, 300000);
+            HttpConnectionParams.setSoTimeout(httpParams, 300000);
+            httpClient.setParams(httpParams);
 
             response = httpClient.execute(httppost);
            /* inputStream = response.getEntity().getContent();
@@ -400,6 +407,11 @@ Context context;
             httppost.setHeader("Accept", "application/json");
             httppost.setHeader("Content-type", "application/json");
             ResponseHandler responseHandler = new BasicResponseHandler();
+
+            HttpParams httpParams = new BasicHttpParams();
+            HttpConnectionParams.setConnectionTimeout(httpParams, 300000);
+            HttpConnectionParams.setSoTimeout(httpParams, 300000);
+            httpClient.setParams(httpParams);
 
             response = httpClient.execute(httppost, responseHandler);
 

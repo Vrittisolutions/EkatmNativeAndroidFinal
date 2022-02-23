@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+        android:layout_height="match_parent"
+        >
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
@@ -30,7 +30,7 @@
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 
-    <Spinner
+    <ListView
         android:id="@+id/spinner_attachment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,15 +38,17 @@
         android:layout_marginTop="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp"
-        android:divider="@android:color/transparent">
+        android:dividerHeight="1dp"
+        android:divider="@color/grey_border">
 
-    </Spinner>
+    </ListView>
 <WebView
     android:id="@+id/webview_attachment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="10dp"
     android:layout_marginRight="5dp"
+    android:visibility="gone"
     android:layout_marginLeft="5dp"
     android:layout_below="@+id/listview_attachment"/>
 

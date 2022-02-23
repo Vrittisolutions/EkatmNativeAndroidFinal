@@ -28,7 +28,7 @@
             android:background="@color/dark_grey"
             android:padding="10dp"
             android:singleLine="true"
-            android:text="Save chat room name"
+            android:text="Save conversation room name"
             android:textColor="@color/white"
             android:textColorHint="@color/dark_grey"
             android:textSize="14dp"
@@ -81,7 +81,7 @@
             android:cursorVisible="true"
             android:layout_weight="1"
             android:focusable="true"
-            android:hint="Type chat room name"
+            android:hint="Type conversation room name"
             android:padding="10dp"
             android:singleLine="false">
 
@@ -108,7 +108,7 @@
             android:background="@drawable/backshape_blue"
             android:gravity="center"
             android:padding="10dp"
-            android:text="Create Chat Room"
+            android:text="Create Conversation Room"
             android:textColor="@color/white"
             android:textSize="16dp"
             android:visibility="gone" />

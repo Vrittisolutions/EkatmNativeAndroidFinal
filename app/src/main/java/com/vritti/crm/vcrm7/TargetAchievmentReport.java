@@ -21,6 +21,7 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
+import android.text.TextUtils;
 import android.text.style.StyleSpan;
 import android.view.View;
 import android.widget.Button;
@@ -83,20 +84,22 @@ public class TargetAchievmentReport extends AppCompatActivity {
     int year, month, day;
     ArrayList<Target> targetArrayList;
     TextView txt_target, txt_achievment, txt_achievment_percent, txt_backlog,txt_claim,txt_incentive,
-    today_orderbooking,today_collection,
+            today_orderbooking,today_collection,
             txt_overdue_call,txt_cold_call,txt_hot_call,txt_order_till_date,
             txt_order_value,txt_collection,txt_over_collection,txt_order_no,
-            txt_tot_outstanding,txt_claim_date,txt_today_opp,txt_plan;
+            txt_tot_outstanding,txt_claim_date,txt_today_opp,txt_plan,txt_team_value,txt_team_exp_order_no;
     ImageView img_whatsapp;
     ImageView img_add,img_refresh,img_back;
     TextView txt_title;
     ScrollView scroll;
     private ProgressDialog progressDialog;
     public double totalTargets,AchievementAsOnDates,backlogs,OrderValues,CollectionAmounts,
-            OrderValueAchievementAsOnDat,Collectionamount,AchievementinPerCent,ClaimAount,Incentive,ClaimDate,Outstanding;
-    private String TotalOverdueCount="",TotalHOTOverdueCount="",TotalColdOverdueCount="",OrderCountAchievementAsOnDate="",TotalCollectionoverdue="",TodayOpp="";
-    private String TodaysExpOrderNo="";
-    private String CityName="";
+            OrderValueAchievementAsOnDat,Collectionamount,AchievementinPerCent,ClaimAount,Incentive,ClaimDate,Outstanding,TeamOrderValues;
+    private String TotalOverdueCount="",TotalHOTOverdueCount="",TotalColdOverdueCount="",
+            OrderCountAchievementAsOnDate="",TotalCollectionoverdue="",TodayOpp="";
+    private String TodaysExpOrderNo="",TeamTodaysExpOrderNo;
+    private String CityName="",Cityname="";
+    private String[] user5;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -144,7 +147,19 @@ public class TargetAchievmentReport extends AppCompatActivity {
         txt_pickupdate.setText(date);
         selectedDate = formateDateFromstring("dd/MM/yyyy", "yyyy-MM-dd", date);
 
-        showReport();
+        if (getIntent().hasExtra("user")){
+            UserMasterId=getIntent().getStringExtra("user");
+            UserName=getIntent().getStringExtra("name");
+            showReport();
+            txt_title.setText(UserName);
+        }else {
+            UserMasterId = ut.getValue(context, WebUrlClass.GET_USERMASTERID_KEY, settingKey);
+            UserName = ut.getValue(context, WebUrlClass.GET_USERNAME_KEY, settingKey);
+            showReport();
+            txt_title.setText("Target and Achievement");
+        }
+
+
 
 
     }
@@ -161,7 +176,7 @@ public class TargetAchievmentReport extends AppCompatActivity {
         img_back=findViewById(R.id.img_back);
 
 
-        txt_title.setText("Target and Achievement");
+
 
         img_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -190,6 +205,8 @@ public class TargetAchievmentReport extends AppCompatActivity {
         txt_claim_date=findViewById(R.id.txt_claim_date);
         txt_today_opp=findViewById(R.id.txt_today_opp);
         txt_plan=findViewById(R.id.txt_plan);
+        txt_team_value=findViewById(R.id.txt_team_value);
+        txt_team_exp_order_no=findViewById(R.id.txt_team_exp_order_no);
         img_whatsapp = findViewById(R.id.img_whatsapp);
         img_share = findViewById(R.id.img_share);
         targetArrayList=new ArrayList<>();
@@ -228,7 +245,16 @@ public class TargetAchievmentReport extends AppCompatActivity {
                                 txt_pickupdate.setText(date);
                                 selectedDate = formateDateFromstring("dd/MM/yyyy", "yyyy-MM-dd", date);
 
-                                showReport();
+                                if (getIntent().hasExtra("user")){
+                                    UserMasterId=getIntent().getStringExtra("user");
+                                    UserName=getIntent().getStringExtra("name");
+                                    showReport();
+                                }else {
+                                    UserMasterId = ut.getValue(context, WebUrlClass.GET_USERMASTERID_KEY, settingKey);
+                                    UserName = ut.getValue(context, WebUrlClass.GET_USERNAME_KEY, settingKey);
+                                    showReport();
+                                }
+
 
 
                             }
@@ -263,7 +289,7 @@ public class TargetAchievmentReport extends AppCompatActivity {
 
 
 
-                String msg = "*" + UserName + "*" + "\n" + "*" + dayDt + "* \n" +"*Reporting Place*: " + CityName + "\n\n"
+                String msg = "*" + UserName + "*" + "\n" + "*" + dayDt + "* \n" +"*Reporting Place*: " + Cityname + "\n\n"
                         +"*Total Target*: " + formatLakh(totalTargets) + "\n" +
                         "*Achievement Value*: " + formatLakh(AchievementAsOnDates) + "&" + AchievementinPerCent + "%"+"\n" +
                         "*Backlog*: " + formatLakh(backlogs) + "\n\n" +
@@ -271,6 +297,8 @@ public class TargetAchievmentReport extends AppCompatActivity {
                         "*Today's Expected Order No.*: " + TodaysExpOrderNo + "\n" +
                         "*Expected Order Value*: " + formatLakh(OrderValues) + "\n" +
                         "*Expected Collection*: " + formatLakh(CollectionAmounts) + "\n\n" +
+                        "*Team Expected Order No.*: " + TeamTodaysExpOrderNo + "\n" +
+                        "*Team Expected Value*: " + formatLakh(TeamOrderValues) + "\n\n" +
                         "*Total Overdue Opportunity*: " + TotalOverdueCount + "\n" +
                         "*Total Overdue Collection Opportunity*: " + TotalCollectionoverdue + "\n" +
                         "*Total Overdue Hot Opportunity*: " + TotalHOTOverdueCount + "\n\n" +
@@ -315,7 +343,7 @@ public class TargetAchievmentReport extends AppCompatActivity {
 
 
 
-                String msg = "*" + UserName + "*" + "\n" + "*" + dayDt + "* \n" +"*Reporting Place*: " + CityName + "\n\n"
+                String msg = "*" + UserName + "*" + "\n" + "*" + dayDt + "* \n" +"*Reporting Place*: " + Cityname + "\n\n"
                         +"*Total Target*: " + formatLakh(totalTargets) + "\n" +
                         "*Achievement Value*: " + formatLakh(AchievementAsOnDates) + "&" + AchievementinPerCent + "%"+"\n" +
                         "*Backlog*: " + formatLakh(backlogs) + "\n\n" +
@@ -323,6 +351,8 @@ public class TargetAchievmentReport extends AppCompatActivity {
                         "*Today's Expected Order No.*: " + TodaysExpOrderNo + "\n" +
                         "*Expected Order Value*: " + formatLakh(OrderValues) + "\n" +
                         "*Expected Collection*: " + formatLakh(CollectionAmounts) + "\n\n" +
+                        "*Team Expected Order No.*: " + TeamTodaysExpOrderNo + "\n" +
+                        "*Team Expected Value*: " + formatLakh(TeamOrderValues) + "\n\n" +
                         "*Total Overdue Opportunity*: " + TotalOverdueCount + "\n" +
                         "*Total Overdue Collection Opportunity*: " + TotalCollectionoverdue + "\n" +
                         "*Total Overdue Hot Opportunity*: " + TotalHOTOverdueCount + "\n\n" +
@@ -449,7 +479,7 @@ public class TargetAchievmentReport extends AppCompatActivity {
             /*2020-02-05*/
 
             String url = CompanyURL + WebUrlClass.GetCallDetails + "?UserMasterId=" + UserMasterId + "&Date=" + selectedDate;
-          // String url = CompanyURL + WebUrlClass.GetCallDetails + "?UserMasterId=fe66846d-6656-41b1-b3e0-2b2d20d71592&Date=" + selectedDate;
+            // String url = CompanyURL + WebUrlClass.GetCallDetails + "?UserMasterId=fe66846d-6656-41b1-b3e0-2b2d20d71592&Date=" + selectedDate;
             res = ut.OpenConnection(url, TargetAchievmentReport.this);
 
             try {
@@ -473,7 +503,7 @@ public class TargetAchievmentReport extends AppCompatActivity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             progressDialog.dismiss();
-        if (!(response.equals("error") || response.contains("error") || response.equals(""))) {
+            if (!(response.equals("error") || response.contains("error") || response.equals(""))) {
                 try {
                     JSONObject mainJsonObject = new JSONObject(response);
                     scroll.setVisibility(View.VISIBLE);
@@ -487,7 +517,7 @@ public class TargetAchievmentReport extends AppCompatActivity {
                                 double value = totalTargets/100000;
                                 totalTargets=value;
                                 txt_target.setText(String.format("%.2f", totalTargets));
-                               // txt_target.setText(formatLakh(totalTargets));
+                                // txt_target.setText(formatLakh(totalTargets));
                             }else {
                                 totalTargets = Double.parseDouble(totalTarget);
                                 txt_target.setText(String.format("%.2f", totalTargets));
@@ -526,7 +556,7 @@ public class TargetAchievmentReport extends AppCompatActivity {
                                 backlogs=Double.parseDouble(backlog);
                                 backlogs = backlogs/100000;
                                 txt_backlog.setText(String.format("%.2f", backlogs));
-                               // txt_backlog.setText(formatLakh(backlogs));
+                                // txt_backlog.setText(formatLakh(backlogs));
                             }else {
                                 backlogs=Double.parseDouble(backlog);
                                 txt_backlog.setText(String.format("%.2f", backlogs));
@@ -554,7 +584,7 @@ public class TargetAchievmentReport extends AppCompatActivity {
                                 double value = OrderValues/100000;
                                 OrderValues=value;
                                 today_orderbooking.setText(String.format("%.2f", OrderValues));
-                               // today_orderbooking.setText(formatLakh(OrderValues));
+                                // today_orderbooking.setText(formatLakh(OrderValues));
                             }else {
                                 OrderValues=Double.parseDouble(OrderValue);
                                 today_orderbooking.setText(String.format("%.2f", OrderValues));
@@ -572,7 +602,7 @@ public class TargetAchievmentReport extends AppCompatActivity {
                                 double value = CollectionAmounts/100000;
                                 CollectionAmounts=value;
                                 today_collection.setText(String.format("%.2f", CollectionAmounts));
-                               // today_collection.setText(formatLakh(CollectionAmounts));
+                                // today_collection.setText(formatLakh(CollectionAmounts));
                             }else {
                                 CollectionAmounts=Double.parseDouble(CollectionAmount);
                                 today_collection.setText(String.format("%.2f", CollectionAmounts));
@@ -634,7 +664,7 @@ public class TargetAchievmentReport extends AppCompatActivity {
                                 double value = OrderValueAchievementAsOnDat/100000;
                                 OrderValueAchievementAsOnDat=value;
                                 txt_order_value.setText(String.format("%.2f", OrderValueAchievementAsOnDat));
-                               // txt_order_value.setText(formatLakh(OrderValueAchievementAsOnDat));
+                                // txt_order_value.setText(formatLakh(OrderValueAchievementAsOnDat));
                             }else {
                                 OrderValueAchievementAsOnDat=Double.parseDouble(OrderAchievementAsOnDate);
                                 txt_order_value.setText(String.format("%.2f", OrderValueAchievementAsOnDat));
@@ -666,8 +696,8 @@ public class TargetAchievmentReport extends AppCompatActivity {
                         for (int i = 0; i < AchievementinPer.length(); i++) {
                             JSONObject Totalachievement = AchievementinPer.getJSONObject(i);
                             String AchievementinPerent=Totalachievement.getString("AchievementinPer");
-                                AchievementinPerCent=Double.parseDouble(AchievementinPerent);
-                                txt_achievment_percent.setText(String.valueOf(AchievementinPerCent));
+                            AchievementinPerCent=Double.parseDouble(AchievementinPerent);
+                            txt_achievment_percent.setText(String.valueOf(AchievementinPerCent));
 
                         }
                     }
@@ -713,7 +743,7 @@ public class TargetAchievmentReport extends AppCompatActivity {
                                 double value = Outstanding/100000;
                                 Outstanding=value;
                                 txt_tot_outstanding.setText(String.format("%.2f", Outstanding));
-                               // txt_tot_outstanding.setText(formatLakh(Outstanding));
+                                // txt_tot_outstanding.setText(formatLakh(Outstanding));
                             }else {
                                 Outstanding=Double.parseDouble(out);
                                 txt_tot_outstanding.setText(String.format("%.2f", Outstanding));
@@ -746,14 +776,63 @@ public class TargetAchievmentReport extends AppCompatActivity {
                     }
 
                     JSONArray TravelPlan= mainJsonObject.getJSONArray("TravelPlan");
+                    ArrayList<String>TravelArrayList=new ArrayList<>();
                     if (TravelPlan.length() > 0) {
                         for (int i = 0; i < TravelPlan.length(); i++) {
                             JSONObject Totalachievement = TravelPlan.getJSONObject(i);
-                            CityName=Totalachievement.getString("CityName");
-                            txt_plan.setText(CityName);
+                            if (TravelPlan.length()>1){
+                                CityName=Totalachievement.getString("CityName");
+                                TravelArrayList.add(CityName);
+                                if (TravelArrayList.size() > 0) {
+                                    if (TravelArrayList.size() > 0) {
+                                        user5 = new String[TravelArrayList.size()];
+                                        for (int j = 0; j < TravelArrayList.size(); j++) {
+                                            String travelname = TravelArrayList.get(j).toString();
+                                            user5[j] = travelname.toString();
+                                            Cityname = TextUtils.join(",", user5);
+
+                                        }
+                                    }
+
+                                }
+                                txt_plan.setText(Cityname);
+                            }else {
+                                Cityname=Totalachievement.getString("CityName");
+                                txt_plan.setText(Cityname);
+                            }
 
                         }
                     }
+
+                    JSONArray TeamTodaysExpectedOrderNo  = mainJsonObject.getJSONArray("TeamTodaysExpectedOrderNo");
+                    if (TeamTodaysExpectedOrderNo.length() > 0) {
+                        for (int i = 0; i < TeamTodaysExpectedOrderNo.length(); i++) {
+                            JSONObject Totalachievement = TeamTodaysExpectedOrderNo.getJSONObject(i);
+                            TeamTodaysExpOrderNo=Totalachievement.getString("TodaysExpOrderNo");
+                            txt_team_exp_order_no.setText(TeamTodaysExpOrderNo);
+
+                        }
+                    }
+
+
+                    JSONArray TeamExpectedOrderValue = mainJsonObject.getJSONArray("TeamExpectedOrderValue");
+                    if (TeamExpectedOrderValue.length() > 0) {
+                        for (int i = 0; i < TeamExpectedOrderValue.length(); i++) {
+                            JSONObject Totalachievement = TeamExpectedOrderValue.getJSONObject(i);
+                            String TeamOrderValue=Totalachievement.getString("OrderValue");
+                            if (TeamOrderValue.length()>5){
+                                TeamOrderValues=Double.parseDouble(TeamOrderValue);
+                                double value = TeamOrderValues/100000;
+                                TeamOrderValues=value;
+                                txt_team_value.setText(String.format("%.2f", TeamOrderValues));
+                                // today_orderbooking.setText(formatLakh(OrderValues));
+                            }else {
+                                TeamOrderValues=Double.parseDouble(TeamOrderValue);
+                                txt_team_value.setText(String.format("%.2f", TeamOrderValues));
+                            }
+                        }
+                    }
+
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -762,15 +841,15 @@ public class TargetAchievmentReport extends AppCompatActivity {
         }
     }
 
-  /*  @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    /*  @Override
+      public boolean onOptionsItemSelected(MenuItem item) {
 
-        int id = item.getItemId();
-        if (id == android.R.id.home) {
-            onBackPressed();
-        }
-        return super.onOptionsItemSelected(item);
-    }*/
+          int id = item.getItemId();
+          if (id == android.R.id.home) {
+              onBackPressed();
+          }
+          return super.onOptionsItemSelected(item);
+      }*/
     @Override
     public void onBackPressed() {
         super.onBackPressed();

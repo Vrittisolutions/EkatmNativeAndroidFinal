@@ -888,7 +888,8 @@ public class CreateOpportunityActivity extends AppCompatActivity {
         img_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Mode.equals("E")) {
+                if (Mode.equals("E"))
+                {
                     Calendar mcurrentDate = Calendar.getInstance();
                     int mYear = mcurrentDate.get(Calendar.YEAR);
                     int mMonth = mcurrentDate.get(Calendar.MONTH);
@@ -944,7 +945,8 @@ public class CreateOpportunityActivity extends AppCompatActivity {
                                 jobj.put("PrefferedTutor", tutor);
                                 jobj.put("IdeaAboutPayment", "");
 
-                            } else {
+                            }
+                            else {
 
                                 jobj.put("OrderType", ordertypeid);
                                 jobj.put("Campaign", campaignId);
@@ -1041,7 +1043,8 @@ public class CreateOpportunityActivity extends AppCompatActivity {
                         }
                     }
 
-                } else {
+                }
+                else {
 
                     if (validate1()) {
                         EnvMasterId = ut.getValue(context, WebUrlClass.GET_EnvMasterID_KEY, settingKey);
@@ -1085,7 +1088,8 @@ public class CreateOpportunityActivity extends AppCompatActivity {
                                 jobj.put("PrefferedTutor", tutor);
                                 jobj.put("IdeaAboutPayment", "");
 
-                            } else {
+                            }
+                            else {
 
 
                                 jobj.put("ProspectId", SuspectID);
@@ -2250,7 +2254,7 @@ public class CreateOpportunityActivity extends AppCompatActivity {
 
         @Override
         protected Integer doInBackground(Integer... params) {
-            String url = CompanyURL + WebUrlClass.api_getListProduct;
+            String url = CompanyURL + WebUrlClass.api_getListProduct+"?OrderTypeMasterId=";
             try {
                 res = ut.OpenConnection(url);
                 if (res != null) {

@@ -12,6 +12,7 @@ import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.StrictMode;
@@ -21,22 +22,29 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 import com.vritti.AlfaLavaModule.activity.PacketNoDisplayActivity;
+import com.vritti.AlfaLavaModule.activity.picking.ItemWisePickListDetailActivity;
 import com.vritti.AlfaLavaModule.utility.ProgressHUD;
 import com.vritti.databaselib.data.DatabaseHandlers;
 import com.vritti.databaselib.other.Utility;
 import com.vritti.databaselib.other.WebUrlClass;
+import com.vritti.ekatm.Constants;
 import com.vritti.ekatm.R;
 import com.vritti.sessionlib.CallbackInterface;
 import com.vritti.sessionlib.StartSession;
@@ -97,6 +105,7 @@ public class GRNPOSTPACKETSacnDetails extends Activity {
     Utility ut;
     DatabaseHandlers db;
     CommonFunction cf;
+    ImageView img_barcode;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -150,6 +159,7 @@ public class GRNPOSTPACKETSacnDetails extends Activity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(pContext);
         recycler.setLayoutManager(layoutManager);
         progressBar=findViewById(R.id.progressBar);
+        img_barcode = findViewById(R.id.img_barcode);
 
         if (btn_reject.isChecked()){
             Flag="D";
@@ -210,18 +220,22 @@ public class GRNPOSTPACKETSacnDetails extends Activity {
                                 cursor.moveToFirst();
                                 do {
                                     edt_scanPacket.setText("");
+                                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                                        Toast toast = Toast.makeText(GRNPOSTPACKETSacnDetails.this, "Already scanned packet", Toast.LENGTH_LONG);
+                                        View toastView = toast.getView();
 
-                                    Toast toast = Toast.makeText(GRNPOSTPACKETSacnDetails.this, "Already scanned packet", Toast.LENGTH_LONG);
-                                    View toastView = toast.getView();
-
-                                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-                                    toastMessage.setTextSize(18);
-                                    toastMessage.setTextColor(Color.RED);
-                                    toastMessage.setGravity(Gravity.CENTER);
-                                    toastMessage.setCompoundDrawablePadding(5);
-                                    toastView.setBackgroundColor(Color.TRANSPARENT);
-                                    toast.show();
-
+                                        TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                                        toastMessage.setTextSize(18);
+                                        toastMessage.setTextColor(Color.RED);
+                                        toastMessage.setGravity(Gravity.CENTER);
+                                        toastMessage.setCompoundDrawablePadding(5);
+                                        toastView.setBackgroundColor(Color.TRANSPARENT);
+                                        toast.show();
+                                    }else {
+                                        Toast toast = Toast.makeText(GRNPOSTPACKETSacnDetails.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + "Already scanned packet" + "</big></b></font>"), Toast.LENGTH_LONG);
+                                        toast.setGravity(Gravity.CENTER, 0, 0);
+                                        toast.show();
+                                    }
 
                                 } while (cursor.moveToNext());
 
@@ -406,6 +420,21 @@ public class GRNPOSTPACKETSacnDetails extends Activity {
                }
            }
        });
+        img_barcode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IntentIntegrator integrator = new IntentIntegrator(GRNPOSTPACKETSacnDetails.this);
+                integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
+                integrator.setPrompt("Scan");
+                integrator.setCameraId(0);
+                integrator.setBeepEnabled(false);
+                integrator.setBarcodeImageEnabled(false);
+                integrator.initiateScan();
+
+            }
+        });
+
+
     }
 
     private void getdeletedialog(final String packetNo) {
@@ -508,17 +537,22 @@ public class GRNPOSTPACKETSacnDetails extends Activity {
             progressBar.setVisibility(View.GONE);
 
             if (s.contains("true")) {
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                    Toast toast = Toast.makeText(GRNPOSTPACKETSacnDetails.this, "Data Send Successfully", Toast.LENGTH_LONG);
+                    View toastView = toast.getView();
 
-                Toast toast = Toast.makeText(GRNPOSTPACKETSacnDetails.this, "Data Send Successfully", Toast.LENGTH_LONG);
-                View toastView = toast.getView();
-
-                TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-                toastMessage.setTextSize(18);
-                toastMessage.setTextColor(Color.GREEN);
-                toastMessage.setGravity(Gravity.CENTER);
-                toastMessage.setCompoundDrawablePadding(5);
-                toastView.setBackgroundColor(Color.TRANSPARENT);
-                toast.show();
+                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                    toastMessage.setTextSize(18);
+                    toastMessage.setTextColor(Color.GREEN);
+                    toastMessage.setGravity(Gravity.CENTER);
+                    toastMessage.setCompoundDrawablePadding(5);
+                    toastView.setBackgroundColor(Color.TRANSPARENT);
+                    toast.show();
+                }else {
+                    Toast toast = Toast.makeText(GRNPOSTPACKETSacnDetails.this, Html.fromHtml("<font color='#26C14B' ><b><big>" + "Data Send Successfully" + "</big></b></font>"), Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                }
 
                 sql.delete(db.TABLE_GRN_POST, "GRNHeaderId=?", new String[]{GRNHeaderId});
                 btn_post.setVisibility(View.GONE);
@@ -606,26 +640,26 @@ public class GRNPOSTPACKETSacnDetails extends Activity {
 
                 try {
 
-                        grnpost.setGRNNo(GRN_NO);
-                        grnpost.setGRNHeaderId(GRNHeaderId);
-                        grnpost.setPacketNo(packId);
-                        grnpost.setItemCode(ItemCode);
-                        grnpost.setQuantity(qty);
-                        grnpost.setUOM("NO");
-                        cf.Insert_GRNPACKET(grnpost);
+                    grnpost.setGRNNo(GRN_NO);
+                    grnpost.setGRNHeaderId(GRNHeaderId);
+                    grnpost.setPacketNo(packId);
+                    grnpost.setItemCode(ItemCode);
+                    grnpost.setQuantity(qty);
+                    grnpost.setUOM("NO");
+                    cf.Insert_GRNPACKET(grnpost);
 
 
-                    if (arrayList.size()>0) {
+                    if (arrayList.size() > 0) {
                         for (int j = 0; j < arrayList.size(); j++) {
                             if (arrayList.get(j).getItemCode().equals(ItemCode)) {
-                                if (Flag.contains("D")){
+                                if (Flag.contains("D")) {
                                     int current = arrayList.get(j).getRejQty();
                                     ContentValues values = new ContentValues();
                                     int currentTotal = current + qty;
                                     values.put("RejQty", currentTotal);
                                     sql.update(db.TABLE_GRN_POST_ITEM, values, "ItemCode=?", new String[]{String.valueOf(ItemCode)});
 
-                                }else {
+                                } else {
                                     int current = arrayList.get(j).getQuantity();
                                     ContentValues values = new ContentValues();
                                     int currentTotal = current + qty;
@@ -640,7 +674,7 @@ public class GRNPOSTPACKETSacnDetails extends Activity {
                     }
                     MediaPlayer mp = MediaPlayer.create(GRNPOSTPACKETSacnDetails.this, R.raw.ok);
                     mp.start();
-
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
                     Toast toast = Toast.makeText(GRNPOSTPACKETSacnDetails.this, "Packet scan successfully", Toast.LENGTH_LONG);
                     View toastView = toast.getView();
                     TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
@@ -650,6 +684,11 @@ public class GRNPOSTPACKETSacnDetails extends Activity {
                     toastMessage.setCompoundDrawablePadding(5);
                     toastView.setBackgroundColor(Color.TRANSPARENT);
                     toast.show();
+                }else{
+                    Toast toast = Toast.makeText(GRNPOSTPACKETSacnDetails.this, Html.fromHtml("<font color='#26C14B' ><b><big>" + "Packet scan successfully" + "</big></b></font>"), Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                }
 
                     t1.speak("Packet scan successfully", TextToSpeech.QUEUE_FLUSH, null);
 
@@ -661,16 +700,21 @@ public class GRNPOSTPACKETSacnDetails extends Activity {
 
                 MediaPlayer mp = MediaPlayer.create(GRNPOSTPACKETSacnDetails.this, R.raw.alert);
                 mp.start();
-
-                Toast toast = Toast.makeText(GRNPOSTPACKETSacnDetails.this, s, Toast.LENGTH_LONG);
-                View toastView = toast.getView();
-                TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-                toastMessage.setTextSize(18);
-                toastMessage.setTextColor(Color.RED);
-                toastMessage.setGravity(Gravity.CENTER);
-                toastMessage.setCompoundDrawablePadding(5);
-                toastView.setBackgroundColor(Color.TRANSPARENT);
-                toast.show();
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                    Toast toast = Toast.makeText(GRNPOSTPACKETSacnDetails.this, s, Toast.LENGTH_LONG);
+                    View toastView = toast.getView();
+                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                    toastMessage.setTextSize(18);
+                    toastMessage.setTextColor(Color.RED);
+                    toastMessage.setGravity(Gravity.CENTER);
+                    toastMessage.setCompoundDrawablePadding(5);
+                    toastView.setBackgroundColor(Color.TRANSPARENT);
+                    toast.show();
+                }else {
+                    Toast toast = Toast.makeText(GRNPOSTPACKETSacnDetails.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + s + "</big></b></font>"), Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                }
                 t1.speak(s, TextToSpeech.QUEUE_FLUSH, null);
             }
         }
@@ -844,16 +888,22 @@ public class GRNPOSTPACKETSacnDetails extends Activity {
 
             }else if (s.equals("[]")){
                 progressBar.setVisibility(View.GONE);
-                Toast toast = Toast.makeText(GRNPOSTPACKETSacnDetails.this, "Record not found", Toast.LENGTH_LONG);
-                View toastView = toast.getView();
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                    Toast toast = Toast.makeText(GRNPOSTPACKETSacnDetails.this, "Record not found", Toast.LENGTH_LONG);
+                    View toastView = toast.getView();
 
-                TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-                toastMessage.setTextSize(18);
-                toastMessage.setTextColor(Color.RED);
-                toastMessage.setGravity(Gravity.CENTER);
-                toastMessage.setCompoundDrawablePadding(5);
-                toastView.setBackgroundColor(Color.TRANSPARENT);
-                toast.show();
+                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                    toastMessage.setTextSize(18);
+                    toastMessage.setTextColor(Color.RED);
+                    toastMessage.setGravity(Gravity.CENTER);
+                    toastMessage.setCompoundDrawablePadding(5);
+                    toastView.setBackgroundColor(Color.TRANSPARENT);
+                    toast.show();
+                }else {
+                    Toast toast = Toast.makeText(GRNPOSTPACKETSacnDetails.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + "Record not found" + "</big></b></font>"), Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                }
                 t1.speak("Record not found", TextToSpeech.QUEUE_FLUSH, null);
 
             }
@@ -872,4 +922,125 @@ public class GRNPOSTPACKETSacnDetails extends Activity {
         super.onResume();
         LoadItem(GRN_NO);
     }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data1) {
+        super.onActivityResult(requestCode, resultCode, data1);
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data1);
+        if (result != null) {
+            if (result.getContents() == null) {
+                Log.e("Scan*******", "Cancelled scan");
+
+            } else {
+                Log.e("Scan", "Scanned");
+
+
+                packId = result.getContents().toString();
+
+                if (isnet()) {
+
+                    try {
+
+//                        packId = edt_scanPacket.getText().toString().trim();
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                    if (packId != null && !(packId.equals(""))) {
+
+                        String searchQuery = "SELECT  * FROM " + db.TABLE_GRNNO_PACKET + " where PacketNo='" + packId + "'";
+                        Cursor cursor = sql.rawQuery(searchQuery, null);
+                        int count = cursor.getCount();
+                        if (count > 0) {
+                            cursor.moveToFirst();
+                            do {
+                                edt_scanPacket.setText("");
+                                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                                    Toast toast = Toast.makeText(GRNPOSTPACKETSacnDetails.this, "Already scanned packet", Toast.LENGTH_LONG);
+                                    View toastView = toast.getView();
+
+                                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                                    toastMessage.setTextSize(18);
+                                    toastMessage.setTextColor(Color.RED);
+                                    toastMessage.setGravity(Gravity.CENTER);
+                                    toastMessage.setCompoundDrawablePadding(5);
+                                    toastView.setBackgroundColor(Color.TRANSPARENT);
+                                    toast.show();
+                                }else {
+                                    Toast toast = Toast.makeText(GRNPOSTPACKETSacnDetails.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + "Already scanned packet" + "</big></b></font>"), Toast.LENGTH_LONG);
+                                    toast.setGravity(Gravity.CENTER, 0, 0);
+                                    toast.show();
+                                }
+
+                            } while (cursor.moveToNext());
+
+                        } else {
+                            if (isnet()) {
+                                edt_scanPacket.setText("");
+
+                                if (packId.contains("PDK")||packId.contains("NO")||packId.contains("MTR")||packId.contains("Mtr")) {
+                                    qtyUOM = packId;
+                                    if (qtyUOM.contains("NO")){
+                                        separated= qtyUOM.split("NO");
+                                    }else if (qtyUOM.contains("MTR")){
+                                        separated= qtyUOM.split("MTR");
+                                    }else if (qtyUOM.contains("Mtr")){
+                                        separated= qtyUOM.split("Mtr");
+                                    }
+                                    else {
+                                        separated = qtyUOM.split("PDK");
+                                    }
+                                    qty = Integer.parseInt(separated[0]);
+                                    String Item = separated[1];
+                                    if (Item.contains("PN")){
+                                        String[] separated_1 = Item.split("PN");
+                                        ItemCode = separated_1[0];
+                                    }else {
+                                        String[] separated_1 = Item.split("S");
+                                        ItemCode = separated_1[0];
+                                    }
+
+
+                                    progressBar.setVisibility(View.VISIBLE);
+
+                                    try {
+                                        new StartSession(GRNPOSTPACKETSacnDetails.this, new CallbackInterface() {
+                                            @Override
+                                            public void callMethod() {
+                                                downloadPutAwayDetails = new DownloadPutAwayPacketDetails();
+                                                downloadPutAwayDetails.execute(); }
+
+                                            @Override
+                                            public void callfailMethod(String msg) {
+
+                                            }
+
+
+                                        });
+                                    }catch (Exception e){
+                                        e.printStackTrace();
+                                    }
+
+
+
+                                } else {
+                                    Toast.makeText(GRNPOSTPACKETSacnDetails.this, "PDK/NO not found in string", Toast.LENGTH_SHORT).show();
+                                }
+                            }else {
+                                Toast.makeText(pContext, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    } else {
+                        Toast.makeText(pContext, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                    }
+
+
+                }
+
+            }
+        }
+    }
+
 }

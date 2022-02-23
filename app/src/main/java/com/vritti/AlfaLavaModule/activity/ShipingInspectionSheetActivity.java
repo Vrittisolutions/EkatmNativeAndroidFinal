@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -21,6 +22,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -38,6 +40,7 @@ import com.google.zxing.EncodeHintType;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+import com.vritti.AlfaLavaModule.activity.AlfaShipment.DOShipmentListActivity;
 import com.vritti.AlfaLavaModule.adapter.AdapterSecondaryDetail;
 import com.vritti.AlfaLavaModule.bean.PacketListDetail;
 import com.vritti.AlfaLavaModule.bean.PutAwayDetail;
@@ -183,7 +186,7 @@ public class ShipingInspectionSheetActivity extends AppCompatActivity {
             try {
                 res = ut.OpenPostConnection(url,jsonObject.toString(),pContext);
                 response = res.toString().replaceAll("\\\\", "");
-                response = response.substring(1, response.length() - 1);
+                //response = response.substring(1, response.length() - 1);
             } catch (Exception e) {
                 response = "Error";
                 e.printStackTrace();
@@ -203,13 +206,89 @@ public class ShipingInspectionSheetActivity extends AppCompatActivity {
         protected void onPostExecute(String res) {
             super.onPostExecute(res);//GRNHeaderId
             ProgressHUD.Destroy();
+            String s = res;
             b.dismiss();
-            if (res.contains("Success")){
-                Toast.makeText(ShipingInspectionSheetActivity.this,"Record save successfully",Toast.LENGTH_SHORT).show();
+            if (s.contains("Success")) {
+
+                Toast toast = Toast.makeText(ShipingInspectionSheetActivity.this, "Record save Successfully", Toast.LENGTH_LONG);
+                View toastView = toast.getView();
+                TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                toastMessage.setTextSize(18);
+                toastMessage.setTextColor(Color.GREEN);
+                toastMessage.setGravity(Gravity.CENTER);
+                toastMessage.setCompoundDrawablePadding(5);
+                toastView.setBackgroundColor(Color.TRANSPARENT);
+                toast.show();
+
+                final MediaPlayer mp = MediaPlayer.create(ShipingInspectionSheetActivity.this, R.raw.ok);
+                mp.start();
+
+
             }
+            else if (s.contains("Failed")) {
+                try {
+                    s = s.substring(1, s.length() - 1);
+                    JSONObject jsonObject = new JSONObject(s);
+                    String status = jsonObject.getString("Message");
+                    Toast toast = Toast.makeText(ShipingInspectionSheetActivity.this, status, Toast.LENGTH_LONG);
+                    View toastView = toast.getView();
+                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                    toastMessage.setTextSize(18);
+                    toastMessage.setTextColor(Color.RED);
+                    toastMessage.setGravity(Gravity.CENTER);
+                    toastMessage.setCompoundDrawablePadding(5);
+                    toastView.setBackgroundColor(Color.TRANSPARENT);
+                    toast.show();
 
+                    final MediaPlayer mp = MediaPlayer.create(ShipingInspectionSheetActivity.this, R.raw.alert);
+                    mp.start();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            else if (res.contains("False"))
+            {
+               // s = s.substring(1, s.length() - 1);
+                try {
+                   // JSONObject jsonObject = new JSONObject(s);
+                   // String status = jsonObject.getString("ERROR");
 
+                 //   Toast toast = Toast.makeText(ShipingInspectionSheetActivity.this, status, Toast.LENGTH_LONG);
+                    Toast toast = Toast.makeText(ShipingInspectionSheetActivity.this, "Packet Not availale in carton", Toast.LENGTH_LONG);
+                    View toastView = toast.getView();
+                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                    toastMessage.setTextSize(18);
+                    toastMessage.setTextColor(Color.RED);
+                    toastMessage.setGravity(Gravity.CENTER);
+                    toastMessage.setCompoundDrawablePadding(5);
+                    toastView.setBackgroundColor(Color.TRANSPARENT);
+                    toast.show();
+
+                    final MediaPlayer mp = MediaPlayer.create(ShipingInspectionSheetActivity.this, R.raw.alert);
+                    mp.start();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else {
+                Toast toast = Toast.makeText(ShipingInspectionSheetActivity.this, s, Toast.LENGTH_LONG);
+                View toastView = toast.getView();
+                TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                toastMessage.setTextSize(18);
+                toastMessage.setTextColor(Color.RED);
+                toastMessage.setGravity(Gravity.CENTER);
+                toastMessage.setCompoundDrawablePadding(5);
+                toastView.setBackgroundColor(Color.TRANSPARENT);
+                toast.show();
+                final MediaPlayer mp = MediaPlayer.create(ShipingInspectionSheetActivity.this, R.raw.alert);
+                mp.start();
+
+            }
         }
+
+
+
+
     }
 
     public boolean isnet() {

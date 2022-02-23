@@ -37,7 +37,7 @@ public class SaleCommonAdapter extends BaseAdapter {
     String key = "", type = "";
     ArrayAdapter adapter;
 
-    public SaleCommonAdapter(Context parent, ArrayList<PriceListBean> saleitemList, String callFrom,
+    public  SaleCommonAdapter(Context parent, ArrayList<PriceListBean> saleitemList, String callFrom,
                              ArrayList<TaxClassBean> taxclslist,ArrayList<String> listTaxString) {
         this.parent = parent;
         this.list = saleitemList;
@@ -122,7 +122,8 @@ public class SaleCommonAdapter extends BaseAdapter {
             holder.edtdisc.setFocusable(false);
             holder.txtrate.setBackgroundDrawable(parent.getResources().getDrawable(R.drawable.border_grey));
             holder.edtdisc.setBackgroundDrawable(parent.getResources().getDrawable(R.drawable.border_grey));
-        }else if(type.equalsIgnoreCase("PriceList")){
+        }
+        else if(type.equalsIgnoreCase("PriceList")){
             //qty, disc, tax editable
             holder.txtrate.setEnabled(false);
             holder.txtrate.setFocusable(false);
@@ -130,7 +131,8 @@ public class SaleCommonAdapter extends BaseAdapter {
             holder.edtdisc.setFocusable(true);
             holder.txtrate.setBackgroundDrawable(parent.getResources().getDrawable(R.drawable.border_grey));
             holder.edtdisc.setBackgroundDrawable(parent.getResources().getDrawable(R.drawable.border));
-        }else if(type.equalsIgnoreCase("SalesFamily") || type.equalsIgnoreCase("Quotation")){
+        }
+        else if(type.equalsIgnoreCase("SalesFamily") || type.equalsIgnoreCase("Quotation")){
             //qty, disc, tax editable
             holder.txtrate.setEnabled(true);
             holder.txtrate.setFocusable(true);

@@ -16,7 +16,7 @@ import java.lang.Override;
 public class ChatGroupMemberlistAdapter$ChatGroupHolder_ViewBinding implements Unbinder {
   private ChatGroupMemberlistAdapter.ChatGroupHolder target;
 
-  private View view2131297020;
+  private View view2131297028;
 
   @UiThread
   public ChatGroupMemberlistAdapter$ChatGroupHolder_ViewBinding(final ChatGroupMemberlistAdapter.ChatGroupHolder target,
@@ -27,7 +27,7 @@ public class ChatGroupMemberlistAdapter$ChatGroupHolder_ViewBinding implements U
     target.profileImag = Utils.findRequiredViewAsType(source, R.id.profile_image, "field 'profileImag'", SimpleDraweeView.class);
     view = Utils.findRequiredView(source, R.id.delete, "field 'delete' and method 'deleteUserName'");
     target.delete = Utils.castView(view, R.id.delete, "field 'delete'", ImageView.class);
-    view2131297020 = view;
+    view2131297028 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -46,7 +46,7 @@ public class ChatGroupMemberlistAdapter$ChatGroupHolder_ViewBinding implements U
     target.profileImag = null;
     target.delete = null;
 
-    view2131297020.setOnClickListener(null);
-    view2131297020 = null;
+    view2131297028.setOnClickListener(null);
+    view2131297028 = null;
   }
 }

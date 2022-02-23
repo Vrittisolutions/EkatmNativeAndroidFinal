@@ -9,9 +9,15 @@ public class Factory {
             "(ItemCode TEXT,ItemDesc TEXT,ItemMasterId TEXT,ItemPlantId TEXT,PurUnit TEXT,SalesUnit" +
             " TEXT,ConvFactor TEXT,StockUnit TEXT,WareHouseMasterId TEXT,LocationMasterId TEXT,WarehouseCode TEXT,LocationCode TEXT)";
 
-    public static final String CREATE_TABLE_TABLE_GetItemList = "CREATE TABLE " + DatabaseHandlers.TABLE_GetItemList +
-            "(ItemCode TEXT,ItemDesc TEXT,ItemMasterId TEXT,ItemPlantId TEXT,PurUnit TEXT,SalesUnit TEXT,ConvFactor TEXT,LocationCode TEXT)";
 
+    public static final String CREATE_TABLE_TABLE_GetItemList = "CREATE TABLE " + DatabaseHandlers.TABLE_GetItemList +
+            "(ItemCode TEXT,ItemDesc TEXT,ItemMasterId TEXT,ItemPlantId TEXT,PurUnit TEXT,SalesUnit" +
+            " TEXT,ConvFactor TEXT,StockUnit TEXT,WareHouseMasterId TEXT,LocationMasterId TEXT,WarehouseCode TEXT,LocationCode TEXT)";
+
+
+  /*  public static final String CREATE_TABLE_TABLE_GetItemList = "CREATE TABLE " + DatabaseHandlers.TABLE_GetItemList +
+            "(ItemCode TEXT,ItemDesc TEXT,ItemMasterId TEXT,ItemPlantId TEXT,PurUnit TEXT,SalesUnit TEXT,ConvFactor TEXT,LocationCode TEXT)";
+*/
     public static final String CREATE_TABLE_LOGIN_SETTING = "CREATE TABLE " + DatabaseHandlers.TABLE_LOGIN_SETTING +
             "(LogInKey TEXT,CompanyURL TEXT,EnvId TEXT,PlantID TEXT," +
             "PlantName TEXT,UserLogInId TEXT,UserMasterId TEXT,UserName TEXT," +
@@ -658,8 +664,12 @@ public class Factory {
         public static final String CREATE_SETTING_TABLE = "CREATE TABLE " + DatabaseHandlers.TABLE_SETTING + "(SettingName TEXT,SettingValue TEXT)";
 
         public static final String CREATE_PLANTMASTER_TABLE = "CREATE TABLE " + DatabaseHandlers.TABLE_PLANTMASTER + "(PlantMasterId TEXT,PlantName TEXT)";
-        public static final String CREATE_TABLE_NEXTAPPR = "CREATE TABLE " + DatabaseHandlers.TABLE_NEXTAPPR + "(UserName TEXT,UserMasterId TEXT," +
+        /*public static final String CREATE_TABLE_NEXTAPPR = "CREATE TABLE " +
+                DatabaseHandlers.TABLE_NEXTAPPR + "(UserName TEXT,UserMasterId TEXT," +
                 "ApprLvl TEXT,Email TEXT)";
+*/
+        public static final String CREATE_TABLE_NEXTAPPR = "CREATE TABLE " +
+                DatabaseHandlers.TABLE_NEXTAPPR + "(UserName TEXT,UserMasterId TEXT)";
 
 
         public static final String CREATE_TABLE_NEXTAPPR_SAHARA = "CREATE TABLE " + DatabaseHandlers.TABLE_NEXTAPPR_SAHARA +
@@ -987,6 +997,84 @@ public class Factory {
                 "        ActivityTypeName TEXT," +
                 "        SubActCount TEXT)";
         // "        CompActName TEXT,ROWNo TEXT,EndDateAct TEXT,SubActCount TEXT)";
+
+
+        // Activity Filiter Dev
+
+        public static final String CREATE_ACTIVITYMASTERPAGINGFILTER_TABLE = "CREATE TABLE " + DatabaseHandlers.TABLE_ACTIVITYMASTERFILTER_PAGING +
+                "(IsChargable TEXT," +
+                "        ActivityName TEXT," +
+                "        AssignedById TEXT," +
+                "        Assigned_By TEXT," +
+                /*"        IssuedToName TEXT," +*/
+                "        ActivityId TEXT PRIMARY KEY," +
+                "        StartDate TEXT," +
+                "        EndDate TEXT," +
+                "        ExpectedCompleteDate TEXT," +
+                "        ExpectedComplete_Date TEXT," +
+                "        ModifiedBy TEXT," +
+                "        Modified_By TEXT," +
+                "        FormatStDt TEXT," +
+              /*  "        StartDt TEXT," +
+                "        EndDt TEXT," +*/
+                "        FormatEndDt TEXT," +
+                "        Status TEXT," +
+                "        ProjectId TEXT," +
+                "        PAllowUsrTimeSlotHrs TEXT," +
+              /*  "        IsActivityMandatory TEXT," +
+                "        IsDelayedActivityAllowed TEXT," +
+              */"        Cd TEXT," +
+                "        UnitId TEXT," +
+                "        PKModuleMastId TEXT," +
+                "        PriorityName TEXT," +
+                "        Colour TEXT," +
+                "        PriorityIndex TEXT," +
+                "        TotalHoursBooked TEXT," +
+                "        AddedDt TEXT," +
+                "        UserMasterId TEXT," +
+                "        ModifiedDt TEXT," +
+                "        AssignedById1 TEXT," +
+                "        IsDeleted TEXT," +
+                "        IsApproved TEXT," +
+                /* "        IsChargable1 TEXT," +*/
+                "        ActivityTypeId TEXT," +
+                "        IsApproval TEXT," +
+                "        HoursRequired TEXT," +
+                "        AttachmentName TEXT," +
+                /* "        AttachmentContent TEXT," +*/
+                /*  "        ModifiedDt1 TEXT," +*/
+                "        SourceType TEXT," +
+                "        SourceId TEXT," +
+                "        UnitName TEXT," +
+                "        UnitDesc TEXT," +
+                "        ModuleName TEXT," +
+                //"        ActivityName1 TEXT," +
+                "        Remarks TEXT," +
+                "        ProjectCode TEXT," +
+                "        ProjectName TEXT," +
+                "        UserName TEXT," +
+                //  "        ExpectedComplete_Date1 TEXT," +
+                "        DeptDesc TEXT," +
+                "        DeptMasterId TEXT," +
+                "        CompletionIntimate TEXT," +
+                "        ActivityCode TEXT," +
+                "        ModifiedBy1 TEXT," +
+                "        ReassignedBy TEXT," +
+                "        ReassignedDt TEXT," +
+                "        ActualCompletionDate TEXT," +
+                "        WarrantyCode TEXT," +
+                "        TicketCategory TEXT," +
+                "        IsEndTime TEXT," +
+                "        IsCompActPresent TEXT," +
+                "        CompletionActId TEXT," +
+                "        TktCustReportedBy TEXT," +
+                "        TktCustApprovedBy TEXT," +
+                "        IsSubActivity TEXT," +
+                "        ParentActId TEXT," +
+                "        ConsigneeName TEXT," +
+                "        ContMob TEXT," +
+                "        ActivityTypeName TEXT," +
+                "        SubActCount TEXT)";
 
 
 
@@ -2482,7 +2570,7 @@ public class Factory {
 
         public static final String CREATE_TABLE_OPPORTUNITIES = "CREATE TABLE "
                 + DatabaseHandlers.TABLE_OPPORTUNITIES + "(Assigned TEXT,Overdue TEXT,Today TEXT,Tomorrow TEXT," +
-                "ThisWeek TEXT,Hot TEXT,Warm TEXT,New TEXT,Yesterday TEXT,CallAgain TEXT,Revived TEXT)";
+                "ThisWeek TEXT,Hot TEXT,Warm TEXT,New TEXT,Yesterday TEXT,CallAgain TEXT,Revived TEXT,StartAgain TEXT)";
 
 
         public static final String CREATE_CALLHISTORY_TABLE = "CREATE TABLE " + DatabaseHandlers.TABLE_CALLHISTORY + "(CallHistoryId TEXT,CallId TEXT,CurrentCallOwner TEXT,ActionType TEXT,Contact TEXT,Purpose TEXT,NextAction TEXT,NextActionDateTime TEXT,ModifiedDt TEXT,Outcome TEXT,UserName TEXT,OutcomeCode TEXT,LatestRemark TEXT)";
@@ -2965,7 +3053,7 @@ public class Factory {
                 "(MRSHeaderId TEXT,MRSNO TEXT)";
 
         public static final String CREATE_TABLE_GETALLUsers = "CREATE TABLE " + DatabaseHandlers.TABLE_GETALLUsers +
-                "(UserMasterId TEXT,UserLoginId TEXT,UserName TEXT)";
+                "(UserMasterId TEXT,UserName TEXT)";
 
 
     }
@@ -3252,7 +3340,7 @@ public class Factory {
                 + "(sono TEXT,SOHeaderId TEXT,SODetailId TEXT,ConsigneeName TEXT,CustomerMasterId TEXT,ItemDesc TEXT,ItemMasterId TEXT,Qty TEXT," +
                 "OrgQty TEXT,Rate TEXT,LineAmt TEXT,TotalOrderValue TEXT,SODate TEXT,DoAck TEXT,Range TEXT,MRP TEXT,distance TEXT," +
                 "UOMDigit TEXT,UOMCode TEXT,DeliveryTerms TEXT,Mobile TEXT,Brand TEXT,Content TEXT,ContentUOM TEXT,SellingUOM TEXT,PackOfQty TEXT," +
-                "FreeAboveAmt TEXT,FreeDelyMaxDist TEXT,MinDelyKg TEXT,MinDelyKm TEXT,ExprDelyWithinMin TEXT,ExpressDelyChg TEXT)";
+                "FreeAboveAmt TEXT,FreeDelyMaxDist TEXT,MinDelyKg TEXT,MinDelyKm TEXT,ExprDelyWithinMin TEXT,ExpressDelyChg TEXT,TotTaxAmt TEXT)";
 
         public static final String CREATE_TABLE_SOHEADER = "CREATE TABLE "+DatabaseHandlers.TABLE_SOHEADER
                 + "(SOHeaderId TEXT,SONo TEXT,SODate TEXT,CustomerMasterId TEXT,ShipToMasterId TEXT,ConsigneeName TEXT,Address TEXT,City TEXT,"+
@@ -3418,7 +3506,7 @@ public class Factory {
                         "QtyToPick TEXT,StockDetailsId TEXT," +
                         "Flag TEXT," +
                         "ItemCode TEXT,ItemDesc TEXT," +
-                        "QtyPickPosted TEXT,DONumber TEXT,LocationCode Text,BatchNo TEXT)";
+                        "QtyPickPosted TEXT,DONumber TEXT,LocationCode Text,BatchNo TEXT,Pick_listSuggLotId TEXT)";
 
         public static final String CREATE_TABLE_GRNPACKET =
                 "CREATE TABLE " + DatabaseHandlers.TABLE_GRN_PACKET
@@ -3459,6 +3547,9 @@ public class Factory {
                 "UOM TEXT)";
 
     }
+
+
+
 
 
 

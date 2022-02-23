@@ -51,6 +51,7 @@ array Arr_AssignFrom
 array CRMDateFilter
 array CallAgain
 array Calltype
+array Consolidation
 array OptionSex
 array OptionTest
 array OptionYN
@@ -62,6 +63,7 @@ array ViewReseller
 array Yes
 array academic_Year
 array action
+array activity_status
 array added_date
 array array_do
 array array_do_no
@@ -151,6 +153,7 @@ attr autoSizeMinTextSize
 attr autoSizePresetSizes
 attr autoSizeStepGranularity
 attr autoSizeTextType
+attr autoStartMarquee
 attr axisBandsColor
 attr axisTooltipBackground
 attr axisTooltipTextColor
@@ -298,6 +301,7 @@ attr counterEnabled
 attr counterMaxLength
 attr counterOverflowTextAppearance
 attr counterTextAppearance
+attr currentIndicateLrcColor
 attr cursorLineColor
 attr customNavigationLayout
 attr defaultAnnotationGripsBackgroundColor
@@ -387,6 +391,7 @@ attr hintTextAppearance
 attr homeAsUpIndicator
 attr homeLayout
 attr icon
+attr iconLineGap
 attr iconTint
 attr iconTintMode
 attr iconifiedByDefault
@@ -395,11 +400,19 @@ attr imageAspectRatioAdjust
 attr imageButtonStyle
 attr indeterminateProgressStyle
 attr indexPrefixes
+attr indicatorLineColor
+attr indicatorLineHeight
+attr indicatorStartEndMargin
+attr indicatorTextColor
+attr indicatorTextSize
+attr indicatorTouchDelay
 attr initialActivityCount
 attr inputEnabled
 attr insetForeground
 attr isDrawingListUnderStickyHeader
 attr isLightTheme
+attr isLrcCurrentTextBold
+attr isLrcIndicatorTextBold
 attr isOpaque
 attr itemBackground
 attr itemIconTint
@@ -492,9 +505,15 @@ attr listPreferredItemPaddingRight
 attr liteMode
 attr logo
 attr logoDescription
+attr lrcCurrentTextColor
+attr lrcLineSpaceSize
+attr lrcNormalTextColor
+attr lrcTextSize
+attr lrcTouchDelay
 attr majorGridLinesColor
 attr majorTickLinesLength
 attr mapType
+attr marqueeSpeed
 attr maskedWalletDetailsBackground
 attr maskedWalletDetailsButtonBackground
 attr maskedWalletDetailsButtonTextAppearance
@@ -528,6 +547,8 @@ attr navigationContentDescription
 attr navigationIcon
 attr navigationMode
 attr noIndex
+attr noLrcTextColor
+attr noLrcTextSize
 attr numericModifiers
 attr overlapAnchor
 attr overlayImage
@@ -548,6 +569,9 @@ attr passwordToggleTintMode
 attr perAccountTemplate
 attr placeholderImage
 attr placeholderImageScaleType
+attr playIcon
+attr playIconHeight
+attr playIconWidth
 attr popupMenuStyle
 attr popupTheme
 attr popupWindowStyle
@@ -664,10 +688,12 @@ attr tabPaddingTop
 attr tabSelectedTextColor
 attr tabTextAppearance
 attr tabTextColor
+attr text
 attr textAllCaps
 attr textAnnotationBackgroundColor
 attr textAnnotationTextColor
 attr textAnnotationTextSize
+attr textAppearance
 attr textAppearanceLargePopupMenu
 attr textAppearanceListItem
 attr textAppearanceListItemSecondary
@@ -676,9 +702,12 @@ attr textAppearancePopupMenuHeader
 attr textAppearanceSearchResultSubtitle
 attr textAppearanceSearchResultTitle
 attr textAppearanceSmallPopupMenu
+attr textColor
 attr textColorAlertDialogListItem
 attr textColorError
 attr textColorSearchUrl
+attr textSize
+attr textStyle
 attr theme
 attr thickness
 attr thumbTextPadding
@@ -722,6 +751,7 @@ attr trimLines
 attr trimMode
 attr trimmable
 attr type
+attr typeface
 attr uiCompass
 attr uiMapToolbar
 attr uiRotateGestures
@@ -762,6 +792,9 @@ bool abc_action_bar_embed_tabs
 bool abc_allow_stacked_button_bar
 bool abc_config_actionMenuItemAllCaps
 bool abc_config_showMenuShortcutsWhenKeyboardPresent
+bool enable_system_alarm_service_default
+bool enable_system_job_service_default
+bool workmanager_test_configuration
 color abc_background_cache_hint_selector_material_dark
 color abc_background_cache_hint_selector_material_light
 color abc_btn_colored_borderless_text_material
@@ -881,6 +914,7 @@ color colorPrimaryDark
 color colorPrimaryDark1
 color colorPrimaryDarks
 color colorPrimarys
+color color_common
 color colorfeedback
 color colryellow
 color colryellow2
@@ -998,6 +1032,7 @@ color neutral_pressed
 color notification_action_color_filter
 color notification_icon_bg_color
 color notification_material_background_media_default_color
+color notify
 color numbers_text_color
 color orange
 color pink
@@ -1041,6 +1076,7 @@ color sendLightColor
 color sendLightColor_1
 color sendMeduimColor
 color shadow_color
+color start_again
 color stroke
 color switch_thumb_disabled_material_dark
 color switch_thumb_disabled_material_light
@@ -1768,6 +1804,7 @@ drawable download
 drawable download_border
 drawable download_file
 drawable dropdown
+drawable dummy
 drawable dwnlding
 drawable edit
 drawable edit_border
@@ -1782,6 +1819,7 @@ drawable edittext_border
 drawable edittext_border_lightblue
 drawable ekatm_logo
 drawable ekatmicon
+drawable election
 drawable email
 drawable email_24
 drawable email_icon_white
@@ -3522,6 +3560,7 @@ drawable icon_contact
 drawable icon_done
 drawable icon_done_white
 drawable icon_download
+drawable icon_filter
 drawable icon_group
 drawable icon_list
 drawable icon_map
@@ -3685,6 +3724,7 @@ drawable phone2
 drawable places_ic_clear
 drawable places_ic_search
 drawable play_button
+drawable play_icon
 drawable play_video
 drawable playstore
 drawable plcord
@@ -3860,6 +3900,7 @@ drawable star_img
 drawable star_img2
 drawable star_red
 drawable starred1
+drawable start_again_lay_border
 drawable state
 drawable status
 drawable support
@@ -3935,6 +3976,7 @@ drawable team_subgroup
 drawable territory
 drawable text_color
 drawable textview_border
+drawable thanku
 drawable thumb
 drawable ticket
 drawable ticket_white
@@ -4059,6 +4101,7 @@ id TextView04
 id TextView05
 id TextView06
 id ToPlace
+id TotTaxAmt
 id TotalAmt
 id Txt_wait_reshuffle
 id ViewDetails
@@ -4170,6 +4213,7 @@ id bills_history
 id blocking
 id blurred_background_image_view
 id boeder
+id bold
 id book_now
 id bottom
 id bottomlayout
@@ -4205,6 +4249,7 @@ id btn_4wheeler
 id btn_Save
 id btn_SaveDraft
 id btn_Village_name
+id btn_accept
 id btn_achived
 id btn_action
 id btn_action1
@@ -4234,6 +4279,7 @@ id btn_create_ship
 id btn_date
 id btn_delete
 id btn_delivery
+id btn_deny
 id btn_details
 id btn_eateries1
 id btn_eateries2
@@ -4269,9 +4315,11 @@ id btn_outstanding
 id btn_packetadd
 id btn_packetalllots
 id btn_partial
+id btn_pause
 id btn_per
 id btn_place
 id btn_place_order
+id btn_play
 id btn_post
 id btn_prev_tag
 id btn_print
@@ -4519,6 +4567,7 @@ id card_passcode
 id card_pm
 id card_pm_crm
 id card_print
+id card_print_1
 id card_sales
 id card_service
 id card_target
@@ -4534,6 +4583,7 @@ id card_viewheader2
 id card_vwb
 id cardview
 id cardview1
+id cardview_2
 id cardview_outcome
 id cartlist_delete_row_1
 id cartlist_itemname
@@ -5050,6 +5100,7 @@ id edt_firmalise
 id edt_first_name
 id edt_food
 id edt_freight
+id edt_gst_amount
 id edt_gstn
 id edt_gstn1
 id edt_heat
@@ -5094,6 +5145,7 @@ id edt_order_qty
 id edt_ordtype
 id edt_others
 id edt_otp
+id edt_paid_amount
 id edt_pan
 id edt_panno
 id edt_payble_name
@@ -5132,6 +5184,7 @@ id edt_security_cheque
 id edt_security_deposite
 id edt_selproject
 id edt_sename
+id edt_settle_amount
 id edt_sex
 id edt_shortname
 id edt_skypeid
@@ -5577,6 +5630,7 @@ id incoming_layout_bubble
 id index_entity_types
 id info
 id input_Url
+id input_company
 id instant_message
 id intent_action
 id intent_activity
@@ -5767,6 +5821,7 @@ id lay_revived_opp
 id lay_rs
 id lay_savingacc
 id lay_so_schedule
+id lay_start_again
 id lay_state
 id lay_taluka
 id lay_tenure
@@ -5985,6 +6040,7 @@ id len_outcome
 id len_overdue
 id len_overdue_collection
 id len_pi
+id len_pick
 id len_piechart
 id len_pincode
 id len_pm
@@ -5994,6 +6050,7 @@ id len_rating
 id len_read
 id len_reason
 id len_record_video
+id len_refer
 id len_review
 id len_routename
 id len_scanPacket
@@ -6006,14 +6063,17 @@ id len_shortname
 id len_show_calldetails
 id len_source
 id len_spouse_name
+id len_start
 id len_state
 id len_sub_group
 id len_supplier_name
 id len_task
+id len_tax
 id len_ticket
 id len_to
 id len_today
 id len_tomo
+id len_total
 id len_trail
 id len_trail_desc
 id len_tutor
@@ -6445,6 +6505,7 @@ id mob
 id mobile_no
 id mobileno
 id monochrome
+id monospace
 id month_text_view
 id mprogress
 id mr_art
@@ -6789,6 +6850,7 @@ id s_search1
 id sampleSpinner
 id sampleSpinnerLaytout
 id sandbox
+id sans
 id satellite
 id save
 id saveImage
@@ -6831,6 +6893,7 @@ id searchview
 id seeMore
 id seek_bar
 id seek_bar_controls
+id seek_play
 id seekbar_layout
 id sel_influence
 id sel_pricelist
@@ -6850,8 +6913,10 @@ id selwarehouse
 id send
 id sendMessage
 id separator
+id serif
 id settings
 id settlement_date
+id share
 id shipment_invoice
 id shortcut
 id showCustom
@@ -6958,6 +7023,7 @@ id spinner_chilltasteperform
 id spinner_city
 id spinner_code
 id spinner_consignee
+id spinner_consolidation
 id spinner_contactno
 id spinner_country
 id spinner_currency
@@ -6970,6 +7036,7 @@ id spinner_dochandover
 id spinner_edit_department
 id spinner_edit_primary
 id spinner_employee
+id spinner_employee_1
 id spinner_entitytype
 id spinner_equal
 id spinner_fiber_type
@@ -7003,6 +7070,7 @@ id spinner_sex
 id spinner_source
 id spinner_sourceofprospect
 id spinner_state
+id spinner_status
 id spinner_sub_group
 id spinner_subcategory
 id spinner_supplier_name
@@ -7326,6 +7394,7 @@ id tv_critical
 id tv_currency
 id tv_date_time
 id tv_distance
+id tv_end
 id tv_endDate
 id tv_endDate1
 id tv_enquiry
@@ -7347,6 +7416,7 @@ id tv_latestremark
 id tv_loc_code
 id tv_loc_type
 id tv_location
+id tv_location_type
 id tv_lodging
 id tv_lot
 id tv_mailid
@@ -7363,6 +7433,7 @@ id tv_mode
 id tv_mode_new
 id tv_mono
 id tv_month
+id tv_mov_qty
 id tv_moved
 id tv_new_collection
 id tv_new_feedback
@@ -7383,9 +7454,11 @@ id tv_phncall_cnt
 id tv_picked
 id tv_plusSign
 id tv_product
+id tv_qc_status
 id tv_qualification
 id tv_quantity
 id tv_queText
+id tv_recv_qty
 id tv_reference
 id tv_report
 id tv_revived_opp
@@ -7393,6 +7466,8 @@ id tv_role
 id tv_sex
 id tv_source
 id tv_sourceofprospect
+id tv_start
+id tv_start_again
 id tv_state
 id tv_status
 id tv_sub_group
@@ -7517,6 +7592,7 @@ id txt_address
 id txt_adduser
 id txt_admin
 id txt_affect_customer
+id txt_age
 id txt_alllots_packets
 id txt_amount
 id txt_anniversary
@@ -7609,6 +7685,7 @@ id txt_desc
 id txt_description
 id txt_dest
 id txt_details
+id txt_dialogue
 id txt_dispStatus
 id txt_distance
 id txt_do
@@ -7657,6 +7734,7 @@ id txt_header
 id txt_heading
 id txt_hot_call
 id txt_hrs
+id txt_ignore
 id txt_image_delivered
 id txt_incentive
 id txt_individual_prospect
@@ -7820,6 +7898,7 @@ id txt_source
 id txt_spam
 id txt_spinnervalue
 id txt_srcnname
+id txt_start
 id txt_start_date
 id txt_startdate
 id txt_startdate2
@@ -7839,7 +7918,9 @@ id txt_taxamt
 id txt_taxclass
 id txt_tcknane
 id txt_tds_amount
+id txt_team_exp_order_no
 id txt_team_title
+id txt_team_value
 id txt_telephn
 id txt_telephnTime
 id txt_theme
@@ -7859,6 +7940,7 @@ id txt_todate
 id txt_today
 id txt_today_opp
 id txt_tot
+id txt_tot_amount
 id txt_tot_exp
 id txt_tot_outstanding
 id txt_total
@@ -8289,6 +8371,8 @@ layout activity_eno_sampling_screen2
 layout activity_eno_sampling_screen3
 layout activity_erroe_reporter
 layout activity_expense_list
+layout activity_filter_list
+layout activity_filter_v1
 layout activity_hajmola__end__screen
 layout activity_hajmola__main
 layout activity_item_master_sync
@@ -8358,6 +8442,8 @@ layout alfa_item_putaway
 layout alfa_item_putaway_details
 layout alfa_item_putaway_packet_detail
 layout alfa_nav_header_main
+layout alfa_pickno_item_lay
+layout alfa_pickno_list_lay
 layout alfa_progress_hud
 layout alfa_shipping_qty_lay
 layout alfa_weight_lay
@@ -8371,10 +8457,12 @@ layout attendance_list_lay
 layout aw_player
 layout axis_marker_annotation_layout
 layout batchlist_adapter_xml
+layout billing_otp_lay
 layout bluetooth_qsprinter
 layout bottomsheet_item_lay
 layout business_notification_type_item_lay
 layout callaction_history_items_row
+layout callagain_alert_lay
 layout calllog_list
 layout calllogs_askfor_calltype
 layout calllogs_askfor_calltype_v1
@@ -8588,6 +8676,7 @@ layout crm_provisional_receipt_lay
 layout crm_provisional_receipt_lay_v1
 layout crm_row_contactitem
 layout crm_spinner_text
+layout crm_team_report_lay
 layout crm_updated_call_history_lay
 layout crm_user_item_list
 layout crm_user_list_lay
@@ -8694,6 +8783,7 @@ layout item_spinner_custom
 layout itempicklist_item_lay
 layout know_more
 layout label_selection
+layout layout_search
 layout legend_item
 layout list_document_review
 layout list_group_child
@@ -8703,6 +8793,7 @@ layout list_item_lay
 layout listview_with_text_image
 layout live_custom_marker
 layout location_lay
+layout location_permission_dialog
 layout location_transfer_list
 layout main
 layout menu_dot
@@ -8933,6 +9024,7 @@ layout vwb_activity_mysubteam
 layout vwb_add_claim
 layout vwb_affected_customer_lay
 layout vwb_affected_customer_listview
+layout vwb_already_login
 layout vwb_app_bar1
 layout vwb_approve_periodic_billing
 layout vwb_asset_lay
@@ -9186,10 +9278,12 @@ mipmap ic_vwb
 mipmap input_emoji
 mipmap message_got_receipt_from_server
 mipmap vsm_image
+raw alarm
 raw alert
 raw asdad
 raw beep
 raw ok
+raw shapath
 raw zxing_beep
 string AssginWork
 string ButtonFont
@@ -9242,6 +9336,7 @@ string address
 string address_found
 string addt
 string addtocart
+string age_address
 string age_hindi
 string amount
 string ampm_circle_radius_multiplier
@@ -9403,6 +9498,7 @@ string doorstep
 string drawer_close
 string drawer_open
 string edt
+string ekatm
 string empty_directory
 string entshpqty
 string error_code_company
@@ -9686,6 +9782,7 @@ string str_scaning
 string str_scanover
 string str_succonnect
 string str_unconnected
+string submit
 string subtot
 string tag_desc
 string tagmanager_preview_dialog_button
@@ -10269,6 +10366,7 @@ styleable LinearLayoutCompat android_gravity android_orientation android_baselin
 styleable LinearLayoutCompat_Layout android_layout_gravity android_layout_width android_layout_height android_layout_weight
 styleable ListPopupWindow android_dropDownHorizontalOffset android_dropDownVerticalOffset
 styleable LoadingImageView circleCrop imageAspectRatio imageAspectRatioAdjust
+styleable LrcView currentIndicateLrcColor iconLineGap indicatorLineColor indicatorLineHeight indicatorStartEndMargin indicatorTextColor indicatorTextSize indicatorTouchDelay isLrcCurrentTextBold isLrcIndicatorTextBold lrcCurrentTextColor lrcLineSpaceSize lrcNormalTextColor lrcTextSize lrcTouchDelay noLrcTextColor noLrcTextSize playIcon playIconHeight playIconWidth
 styleable MapAttrs ambientEnabled cameraBearing cameraMaxZoomPreference cameraMinZoomPreference cameraTargetLat cameraTargetLng cameraTilt cameraZoom latLngBoundsNorthEastLatitude latLngBoundsNorthEastLongitude latLngBoundsSouthWestLatitude latLngBoundsSouthWestLongitude liteMode mapType uiCompass uiMapToolbar uiRotateGestures uiScrollGestures uiTiltGestures uiZoomControls uiZoomGestures useViewLifecycle zOrderOnTop
 styleable MediaRouteButton android_minWidth android_minHeight externalRouteEnabledDrawable mediaRouteButtonTint
 styleable MenuGroup android_enabled android_id android_visible android_menuCategory android_orderInCategory android_checkableBehavior
@@ -10301,6 +10399,7 @@ styleable TextAppearance android_textSize android_typeface android_textStyle and
 styleable TextInputLayout android_textColorHint android_hint counterEnabled counterMaxLength counterOverflowTextAppearance counterTextAppearance errorEnabled errorTextAppearance hintAnimationEnabled hintEnabled hintTextAppearance passwordToggleContentDescription passwordToggleDrawable passwordToggleEnabled passwordToggleTint passwordToggleTintMode
 styleable ThemeProvider axisBandsColor axisTooltipBackground axisTooltipTextColor axisTooltipTextSize bandFillDownColor bandFillUpColor bandStrokeDownColor bandStrokeUpColor candleStickFillDownColor candleStickFillUpColor candleStickStrokeDownColor candleStickStrokeUpColor columnFillColor columnLineColor cursorLineColor defaultAnnotationGripsBackgroundColor defaultAnnotationGripsStrokeColor defaultPieSegmentTitleTextColor defaultPieSegmentTitleTextSize defaultTextColor defaultTextSize labelBackground legendBackground lineAnnotationLineColor lineAnnotationLineThickness lineSeriesColor majorGridLinesColor majorTickLinesLength minorGridLinesColor minorTickLinesLength mountainAreaColor mountainLineColor renderableSeriesAreaBorderColor renderableSeriesAreaFillColor renderableSeriesAreaStrokeThickness rolloverLineColor rubberBandFillColor rubberBandStrokeColor sciChartBackground textAnnotationBackgroundColor textAnnotationTextColor textAnnotationTextSize tickTextColor tickTextSize tickTextTypeFace titleTextSize
 styleable Toolbar android_gravity android_minHeight buttonGravity collapseContentDescription collapseIcon contentInsetEnd contentInsetEndWithActions contentInsetLeft contentInsetRight contentInsetStart contentInsetStartWithNavigation logo logoDescription maxButtonHeight navigationContentDescription navigationIcon popupTheme subtitle subtitleTextAppearance subtitleTextColor title titleMargin titleMarginBottom titleMarginEnd titleMarginStart titleMarginTop titleMargins titleTextAppearance titleTextColor
+styleable VerticalMarqueeTextView autoStartMarquee marqueeSpeed text textAppearance textColor textSize textStyle typeface
 styleable View android_theme android_focusable paddingEnd paddingStart theme
 styleable ViewBackgroundHelper android_background backgroundTint backgroundTintMode
 styleable ViewStubCompat android_id android_layout android_inflatedId

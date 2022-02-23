@@ -30,6 +30,7 @@ import android.os.Message;
 import android.os.StrictMode;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -64,10 +65,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.googlecode.mp4parser.authoring.Edit;
 import com.vritti.databaselib.data.DatabaseHandlers;
 import com.vritti.databaselib.other.Utility;
 import com.vritti.databaselib.other.WebUrlClass;
 import com.vritti.ekatm.R;
+import com.vritti.ekatm.activity.ActivityLogIn;
+import com.vritti.ekatm.other.SetAppName;
 import com.vritti.inventory.physicalInventory.bean.BluetoothClass;
 import com.vritti.sales.adapters.AdapterCBillingList;
 import com.vritti.sales.beans.AllCatSubcatItems;
@@ -167,7 +171,7 @@ public class ItemListCB extends AppCompatActivity {
     float final_subtotal = 0.0F, final_discountedTotal = 0.0F, final_taxinRupsTotal = 0.0F, discount_on_NetAmt = 0.0F, _total = 0.0F;
     int BILLNO  = 0;
     float CGST_TOTAL = 0.0F, SGST_TOTAL = 0.0F, IGST_TOTAL = 0.0F, _cgstPrint = 0F, _sgst = 0F;
-    String Cid = "", Cname = "", factoryAddress = "", regAddress = "", _taxClass = "", intentFrom = "";
+    String Cid = "", Cname = "", factoryAddress = "", regAddress = "", _taxClass = "", intentFrom = "",FSSAI="FSSAI : Lic.No.21519196000705";
 
     String igstType = "", sgstType = "", cgstType = "",ugstType = "",vatType = "",
             sgstVal = "0", cgstVal = "0", igstVal = "0", ugstVal = "0", vatVal = "0";
@@ -199,6 +203,9 @@ public class ItemListCB extends AppCompatActivity {
     boolean isTakePrint = false;
 
     MediaPlayer mediaPlayer;
+    private String paid_amount="";
+    private String Invoicenumber="",AppCode="";
+    private AlertDialog b;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -237,6 +244,7 @@ public class ItemListCB extends AppCompatActivity {
         sharedpreferences = getSharedPreferences(WebUrlClass.MyPREFERENCES, Context.MODE_PRIVATE);
         userId = sharedpreferences.getString("userid", null);
         restoredText = sharedpreferences.getString("Mobileno", null);
+        AppCode = sharedpreferences.getString(WebUrlClass.MyPREFERENCES_IS_APPCODE, null);
 
         final Intent intent = getIntent();
         intentFrom = intent.getStringExtra("intentFrom");
@@ -943,7 +951,7 @@ public class ItemListCB extends AppCompatActivity {
                                     "No", "No", getCurrentDate(), bill_No);
                         }
                     }
-                    Toast.makeText(parent, "Bill saved successfully.", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(parent, "Bill saved successfully.", Toast.LENGTH_SHORT).show();
 
                     createXml();
 
@@ -1531,6 +1539,7 @@ public class ItemListCB extends AppCompatActivity {
         //splitAddressInLines(factoryAddress);
         //msg = "\n" + "      Vritti Solutions Ltd      " + "\n\n";
         msg = "\n         "+Cname+"         \n";
+        msg = "\n  "+FSSAI+"  \n";
         msg += " "+regaddr1+"\n";
         msg += "   "+regaddr2+"  \n";
 
@@ -3833,6 +3842,7 @@ public class ItemListCB extends AppCompatActivity {
             jObj_mainarr.put("SOHeaderid",SOHeaderid);
             jObj_mainarr.put("RoundOff",RoundOff);
             jObj_mainarr.put("RefDt",RefDt);        //2020-11-18 12:00:00 AM
+            jObj_mainarr.put("Mobile",custMob);        //2020-11-18 12:00:00 AM
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -3922,7 +3932,7 @@ public class ItemListCB extends AppCompatActivity {
             mprogress.setVisibility(View.GONE);
 
             try{
-                String invoiceNo = "", status = "";
+                String invoiceNo = "", status = "",otp="";
                 if(response.contains("InvoiceNo")){
                     try{
                         String res = response.replace("\"[","[");
@@ -3931,15 +3941,25 @@ public class ItemListCB extends AppCompatActivity {
 
                         status = jArr.getJSONObject(0).getString("Status");
                         invoiceNo = jArr.getJSONObject(0).getString("InvoiceNo");
+                        otp = jArr.getJSONObject(0).getString("OTP");
+
+                        if (AppCode.equalsIgnoreCase("SM")){
+                            getotp(invoiceNo,otp);
+                        }
                     }catch(Exception e){
                         e.printStackTrace();
                     }
 
                     Toast.makeText(parent,"Bill saved successfully",Toast.LENGTH_SHORT).show();
+
                 }else if(response.contains("Not able to process shipment due to lot") || response.contains("error")){
+
                     Toast.makeText(parent,"Sorry, Not able to process shipment due to lot.",Toast.LENGTH_SHORT).show();
+
                 }else {
+
                     Toast.makeText(parent,"Sorry, server error! failed to save bill.",Toast.LENGTH_SHORT).show();
+
                 }
 
                 if(isTakePrint){
@@ -3948,13 +3968,86 @@ public class ItemListCB extends AppCompatActivity {
                     cbillList.clear();
                     tcf.clearTable(parent, dbhandler.TABLE_ADD_ITMDTLS_FORBILL);
                     AppCommon.getInstance(parent).setBillingObject("");
-                    finish();
+                   // finish();
                 }
 
             }catch (Exception e){
                 e.printStackTrace();
             }
         }
+    }
+
+    private void getotp(String invoice, final String otp) {
+
+        Invoicenumber=invoice;
+
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(ItemListCB.this);
+        LayoutInflater inflater = getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.billing_otp_lay, null);
+        dialogBuilder.setView(dialogView);
+
+        // set the custom dialog components - text, image and button
+        final EditText textotp = (EditText) dialogView.findViewById(R.id.edt_otp);
+        final EditText edt_amount = (EditText) dialogView.findViewById(R.id.edt_paid_amount);
+        Button button = (Button) dialogView.findViewById(R.id.txt_submit);
+
+        // TextView txt_resend_otp=dialogView.findViewById(R.id.txt_resend_otp);
+        dialogBuilder.setCancelable(false);
+        b = dialogBuilder.create();
+        b.show();
+        // if button is clicked, close the custom dialog
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String entrotp = textotp.getText().toString().trim();
+                paid_amount=edt_amount.getText().toString();
+
+
+                if (paid_amount.equalsIgnoreCase("")||paid_amount.equalsIgnoreCase("null")||paid_amount==null){
+                    Toast.makeText(getApplicationContext(), "Please enter amount", Toast.LENGTH_LONG).show();
+                }else {
+                    if (!(entrotp.equals(""))) {
+                        if (entrotp.equalsIgnoreCase(otp)) {
+
+                            if (isnet()) {
+
+                                new StartSession(parent, new CallbackInterface() {
+                                    @Override
+                                    public void callMethod() {
+
+                                        new PostPaidAmount().execute();
+                                    }
+
+                                    @Override
+                                    public void callfailMethod(String msg) {
+                                    }
+                                });
+                            }
+
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Invalid OTP!!! try again", Toast.LENGTH_LONG).show();
+                        }
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Enter OTP", Toast.LENGTH_LONG).show();
+                    }
+                }
+
+
+            }
+        });
+
+
+                /*
+                cancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        b.dismiss();
+                    }
+                });
+*/
+
+
     }
 
     // verifying if storage permission is given or not
@@ -3986,10 +4079,6 @@ public class ItemListCB extends AppCompatActivity {
 
             File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM) + "/Ekatm/Generated_Doc");
 
-           /* String path1 = Environment.getExternalStorageDirectory()
-                    .toString();
-            File file = new File(path1 + "/" + "Ekatm"+"/"+"Generated_Doc");
-*/
 
             if (!file.exists())
                 file.mkdirs();
@@ -4205,4 +4294,42 @@ public class ItemListCB extends AppCompatActivity {
         return true; // assumed storage permissions granted
     }
 
+    class PostPaidAmount extends AsyncTask<String, Void, String> {
+        String res;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            String url = CompanyURL + WebUrlClass.api_SavePaidAmount + "?InvoiceNo="+Invoicenumber+"&RecdAmt="+paid_amount;
+
+            try {
+                res = ut.OpenConnection(url, getApplicationContext());
+              //  res = res.replaceAll("\\\\", "");
+                //res = res.substring(1, res.length() - 1);
+            } catch (Exception e) {
+                e.printStackTrace();
+                res = "Error";
+            }
+            return res;
+        }
+
+
+        @Override
+        protected void onPostExecute(String integer) {
+            super.onPostExecute(integer);
+            if (res.contains("false")||res.contains("False")) {
+                b.dismiss();
+              Toast.makeText(ItemListCB.this,"Bill submitted successfully",Toast.LENGTH_LONG).show();
+            }else {
+                b.dismiss();
+                Toast.makeText(ItemListCB.this,"Bill not submitted successfully",Toast.LENGTH_LONG).show();
+
+            }
+        }
+    }
 }

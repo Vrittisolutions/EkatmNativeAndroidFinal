@@ -120,6 +120,7 @@ public class AddEditItemForCBilling extends AppCompatActivity {
     boolean IsShipInvRequired;
     List<String> lstOrdertype = new ArrayList<String>();
     ArrayList<Customer> OrderTypeArrayList;
+    private String AppCode="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -156,24 +157,31 @@ public class AddEditItemForCBilling extends AppCompatActivity {
             mrp = Float.parseFloat(intent.getStringExtra("mrp"));
             edtmrp.setText(String.format("%.02f",mrp));
 
-            if(isInclusiveTax){
-                spintaxclass.setFocusable(false);
-                spintaxclass.setEnabled(false);
-                spintaxclass.setText("SGST 2.5% + CGST 2.5% INPUT");
-                taxClass = spintaxclass.getText().toString().trim();
-                float tax = checkTaxType(taxClass);  //get tax summation here
+            if (AppCode.equalsIgnoreCase("SM")){
+                        spintaxclass.setFocusable(false);
+                        spintaxclass.setEnabled(false);
 
-                /*inclusive tax frmula*/
-                mrp = (mrp/((100 + tax)/100));
-                rate = mrp;
-            }else {
-                spintaxclass.setFocusable(true);
-                spintaxclass.setEnabled(true);
+                        mrp = mrp;
+                        rate = mrp;
+                }else {
+                if (isInclusiveTax) {
+                    spintaxclass.setFocusable(false);
+                    spintaxclass.setEnabled(false);
+                    spintaxclass.setText("SGST 2.5% + CGST 2.5% INPUT");
+                    taxClass = spintaxclass.getText().toString().trim();
+                    float tax = checkTaxType(taxClass);  //get tax summation here
 
-                mrp = mrp;
-                rate = mrp;
+                    /*inclusive tax frmula*/
+                    mrp = (mrp / ((100 + tax) / 100));
+                    rate = mrp;
+                } else {
+                    spintaxclass.setFocusable(true);
+                    spintaxclass.setEnabled(true);
+
+                    mrp = mrp;
+                    rate = mrp;
+                }
             }
-
             String isdiscinrups = intent.getStringExtra("discinrups");
             String DISC = intent.getStringExtra("discount");
             String DISC_AMT = intent.getStringExtra("discamt");
@@ -359,6 +367,7 @@ public class AddEditItemForCBilling extends AppCompatActivity {
         swtchdisc = (Switch)findViewById(R.id.swtchdisc);
 
         sharedpreferences = getSharedPreferences(WebUrlClass.MyPREFERENCES, MODE_PRIVATE);
+        AppCode = sharedpreferences.getString(WebUrlClass.MyPREFERENCES_IS_APPCODE, null);
 
         ut = new Utility();
         tcf = new Tbuds_commonFunctions(AddEditItemForCBilling.this);
@@ -400,6 +409,19 @@ public class AddEditItemForCBilling extends AppCompatActivity {
                         }
                         @Override
                         public void callfailMethod(String msg) {
+                        }
+                    });
+                }
+
+                if (isnet()) {
+                    new StartSession(parent, new CallbackInterface() {
+                        @Override
+                        public void callMethod() {
+                            new DownloadOrderTypeJSON().execute();
+                        }
+                        @Override
+                        public void callfailMethod(String msg) {
+
                         }
                     });
                 }
@@ -513,11 +535,13 @@ public class AddEditItemForCBilling extends AppCompatActivity {
                             itemMRP = c.getString(c.getColumnIndex("ItemMRP"));
                         }while (c.moveToNext());
                     }else {
-                        itemMRP = "00.00";
+                        itemMRP = "0.00";
                     }
-
-                    edtmrp.setText(itemMRP);
-
+                    if (itemMRP.equalsIgnoreCase("00.00")){
+                        edtmrp.setText("0.00");
+                    }else {
+                        edtmrp.setText(itemMRP);
+                    }
                 }catch (Exception e){
                     e.printStackTrace();
                 }
@@ -607,21 +631,30 @@ public class AddEditItemForCBilling extends AppCompatActivity {
                 //int tax = 5;    //get tax summation here
 
                 //if exclusive of tax mrp = mrp;
-                if(isInclusiveTax){
-                    spintaxclass.setFocusable(false);
-                    spintaxclass.setEnabled(false);
-                    spintaxclass.setText("SGST 2.5% + CGST 2.5% INPUT");
-                    taxClass = spintaxclass.getText().toString().trim();
-                    float tax = checkTaxType(taxClass);  //get tax summation here
+                if (AppCode.equalsIgnoreCase("SM")){
+                        spintaxclass.setFocusable(false);
+                        spintaxclass.setEnabled(false);
 
-                    mrp = (mrp/((100 + tax)/100));
-                    rate = mrp;
+                        mrp = mrp;
+                        rate = mrp;
                 }else {
-                    spintaxclass.setFocusable(true);
-                    spintaxclass.setEnabled(true);
 
-                    mrp = mrp;
-                    rate = mrp;
+                    if (isInclusiveTax) {
+                        spintaxclass.setFocusable(false);
+                        spintaxclass.setEnabled(false);
+                        spintaxclass.setText("SGST 2.5% + CGST 2.5% INPUT");
+                        taxClass = spintaxclass.getText().toString().trim();
+                        float tax = checkTaxType(taxClass);  //get tax summation here
+
+                        mrp = (mrp / ((100 + tax) / 100));
+                        rate = mrp;
+                    } else {
+                        spintaxclass.setFocusable(true);
+                        spintaxclass.setEnabled(true);
+
+                        mrp = mrp;
+                        rate = mrp;
+                    }
                 }
                 //if inclusive of tax mrp = (mrp/((100+tax)/100))
 
@@ -700,20 +733,28 @@ public class AddEditItemForCBilling extends AppCompatActivity {
                 float tax = 0;    //get tax summation here
 
                 //if exclusive of tax mrp = mrp;
-                if(isInclusiveTax){
-                    spintaxclass.setFocusable(false);
-                    spintaxclass.setEnabled(false);
-                    spintaxclass.setText("SGST 2.5% + CGST 2.5% INPUT");
-                    taxClass = spintaxclass.getText().toString().trim();
-                    tax = checkTaxType(taxClass);  //get tax summation here
+                if (AppCode.equalsIgnoreCase("SM")){
+                        spintaxclass.setFocusable(false);
+                        spintaxclass.setEnabled(false);
 
-                    mrp = (mrp/((100 + tax)/100));
-                    rate = mrp;
+                        mrp = mrp;
+                        rate = mrp;
                 }else {
-                    spintaxclass.setEnabled(true);
-                    spintaxclass.setFocusable(true);
-                    mrp = mrp;
-                    rate = mrp;
+                    if (isInclusiveTax) {
+                        spintaxclass.setFocusable(false);
+                        spintaxclass.setEnabled(false);
+                        spintaxclass.setText("SGST 2.5% + CGST 2.5% INPUT");
+                        taxClass = spintaxclass.getText().toString().trim();
+                        tax = checkTaxType(taxClass);  //get tax summation here
+
+                        mrp = (mrp / ((100 + tax) / 100));
+                        rate = mrp;
+                    } else {
+                        spintaxclass.setEnabled(true);
+                        spintaxclass.setFocusable(true);
+                        mrp = mrp;
+                        rate = mrp;
+                    }
                 }
                 //if inclusive of tax mrp = (mrp/((100+tax)/100))
 
@@ -744,33 +785,41 @@ public class AddEditItemForCBilling extends AppCompatActivity {
                     }else {
                         mrp = Float.parseFloat(s.toString());
 
-                       // int tax = 0;    //get tax summation here
+                        // int tax = 0;    //get tax summation here
 
                         //if exclusive of tax mrp = mrp;
-                        if(isInclusiveTax){
+                        if (AppCode.equalsIgnoreCase("SM")){
                             spintaxclass.setFocusable(false);
                             spintaxclass.setEnabled(false);
-                            spintaxclass.setText("SGST 2.5% + CGST 2.5% INPUT");
-                            taxClass = spintaxclass.getText().toString().trim();
-                            tax = checkTaxType(taxClass);  //get tax summation here
 
-                            mrp = (mrp/((100 + tax)/100));
-                            rate = mrp;
-                        }else {
-                            spintaxclass.setFocusable(true);
-                            spintaxclass.setEnabled(true);
                             mrp = mrp;
                             rate = mrp;
-                        }
-                        //if inclusive of tax mrp = (mrp/((100+tax)/100))
+                        } else {
+                            if (isInclusiveTax) {
+                                spintaxclass.setFocusable(false);
+                                spintaxclass.setEnabled(false);
+                                spintaxclass.setText("SGST 2.5% + CGST 2.5% INPUT");
+                                taxClass = spintaxclass.getText().toString().trim();
+                                tax = checkTaxType(taxClass);  //get tax summation here
 
-                        lineamt = mrp * Float.parseFloat(qty);
-                        txtlineamt.setText(String.format("%.02f",lineamt));
-                        txttotamt_incltax.setText(String.format("%.02f",lineamt));
+                                mrp = (mrp / ((100 + tax) / 100));
+                                rate = mrp;
+                            } else {
+                                spintaxclass.setFocusable(true);
+                                spintaxclass.setEnabled(true);
+                                mrp = mrp;
+                                rate = mrp;
+                            }
+                            //if inclusive of tax mrp = (mrp/((100+tax)/100))
+
+                            lineamt = mrp * Float.parseFloat(qty);
+                            txtlineamt.setText(String.format("%.02f", lineamt));
+                            txttotamt_incltax.setText(String.format("%.02f", lineamt));
                        /* txttotwithdisc.setText(String.format("%.02f",lineamt));
                         txtdisc.setText("0.00");
                         edtdisc.setText("");*/
-                        CSGT_SGST_calculate(taxClass, lineamt);
+                            CSGT_SGST_calculate(taxClass, lineamt);
+                        }
                     }
                 }
 
@@ -799,26 +848,33 @@ public class AddEditItemForCBilling extends AppCompatActivity {
                     mrp = Float.parseFloat(edtmrp.getText().toString().trim());
 
                     float tax = 0;    //get tax summation here
-
-                    //if exclusive of tax mrp = mrp;
-                    if(isInclusiveTax){
+                    if (AppCode.equalsIgnoreCase("SM")){
                         spintaxclass.setFocusable(false);
                         spintaxclass.setEnabled(false);
-                        spintaxclass.setText("SGST 2.5% + CGST 2.5% INPUT");
-                        taxClass = spintaxclass.getText().toString().trim();
-                        tax = checkTaxType(taxClass);  //get tax summation here
-
-                        mrp = (mrp/((100 + tax)/100));
-                        rate = mrp;
-                    }else {
-                        spintaxclass.setFocusable(true);
-                        spintaxclass.setEnabled(true);
 
                         mrp = mrp;
                         rate = mrp;
-                    }
-                    //if inclusive of tax mrp = (mrp/((100+tax)/100))
+                }else {
 
+                        //if exclusive of tax mrp = mrp;
+                        if (isInclusiveTax) {
+                            spintaxclass.setFocusable(false);
+                            spintaxclass.setEnabled(false);
+                            spintaxclass.setText("SGST 2.5% + CGST 2.5% INPUT");
+                            taxClass = spintaxclass.getText().toString().trim();
+                            tax = checkTaxType(taxClass);  //get tax summation here
+
+                            mrp = (mrp / ((100 + tax) / 100));
+                            rate = mrp;
+                        } else {
+                            spintaxclass.setFocusable(true);
+                            spintaxclass.setEnabled(true);
+
+                            mrp = mrp;
+                            rate = mrp;
+                        }
+                        //if inclusive of tax mrp = (mrp/((100+tax)/100))
+                    }
                 }catch (Exception e){
                     e.printStackTrace();
                     mrp = 0;
@@ -937,22 +993,31 @@ public class AddEditItemForCBilling extends AppCompatActivity {
 
                     float tax = 0;    //get tax summation here
 
-                    //if exclusive of tax mrp = mrp;
-                    if(isInclusiveTax){
+                    if (AppCode.equalsIgnoreCase("SM")){
                         spintaxclass.setFocusable(false);
                         spintaxclass.setEnabled(false);
-                        spintaxclass.setText("SGST 2.5% + CGST 2.5% INPUT");
-                        taxClass = spintaxclass.getText().toString().trim();
-                        tax = checkTaxType(taxClass);  //get tax summation here
-
-                        mrp = (mrp/((100 + tax)/100));
-                        rate = mrp;
-                    }else {
-                        spintaxclass.setFocusable(true);
-                        spintaxclass.setEnabled(true);
 
                         mrp = mrp;
                         rate = mrp;
+                }else {
+
+                        //if exclusive of tax mrp = mrp;
+                        if (isInclusiveTax) {
+                            spintaxclass.setFocusable(false);
+                            spintaxclass.setEnabled(false);
+                            spintaxclass.setText("SGST 2.5% + CGST 2.5% INPUT");
+                            taxClass = spintaxclass.getText().toString().trim();
+                            tax = checkTaxType(taxClass);  //get tax summation here
+
+                            mrp = (mrp / ((100 + tax) / 100));
+                            rate = mrp;
+                        } else {
+                            spintaxclass.setFocusable(true);
+                            spintaxclass.setEnabled(true);
+
+                            mrp = mrp;
+                            rate = mrp;
+                        }
                     }
                     //if inclusive of tax mrp = (mrp/((100+tax)/100))
 

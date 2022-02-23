@@ -246,7 +246,7 @@ public class ActvityNotificationTypeActivity extends AppCompatActivity  {
         protected String doInBackground(String... params) {
 
             try {
-                url = CompanyURL + WebUrlClass.api_GetNotifyTypeDD + "?NotificationType="+TypeCode;
+                url = CompanyURL + WebUrlClass.api_GetNotifyTypeDD + "?NotificationType=News";
                 res = ut.OpenConnection(url, ActvityNotificationTypeActivity.this);
                 response = res.toString().replaceAll("\\\\", "");
                 response = response.replaceAll("\\\\\\\\/", "");
@@ -267,7 +267,7 @@ public class ActvityNotificationTypeActivity extends AppCompatActivity  {
 
 
             if (response.equalsIgnoreCase("error")||integer.equals("[]")) {
-                Toast.makeText(getApplicationContext(), "Server error occurred..try after sometime", Toast.LENGTH_LONG).show();
+            //    Toast.makeText(getApplicationContext(), "Server error occurred..try after sometime", Toast.LENGTH_LONG).show();
             }
 
                 try {

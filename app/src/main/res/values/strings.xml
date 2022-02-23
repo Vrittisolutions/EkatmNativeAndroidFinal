@@ -276,7 +276,7 @@
     <string name="drawer_close">Close</string>
     //
     <string name="type_your_message">Type Message here</string>
-    <string name="otpmsg">Sit back and relax !\n while we verify your mobile number</string>
+    <string name="otpmsg">we are verify your mobile number</string>
     <string name="UpTicMat_Default_Setting">Default setting</string>
     <string name="UpTicMat_Change_Setting">Change warehouse and location</string>
     -
@@ -687,14 +687,19 @@
 
     <!--==========================================================================================-->
         <string name="name_hindi">नाम</string>
+<!--
         <string name="mobno_hindi">मोबाइल नंबर</string>
+-->
+        <string name="mobno_hindi">मोबाइल</string>
         <string name="gender_hindi">लिंग</string>
         <string name="age_hindi">उम्र</string>
+        <string name="age_address">पता</string>
         <string name="btn_forward">आगे</string>
         <string name="txt_greet">वोट देने के लिए धन्यवाद</string>
         <string name="txt_male">पुरुष</string>
         <string name="txt_female">महिला</string>
         <string name="txt_other">अन्य</string>
+        <string name="submit">प्रस्तुत करना</string>
 
         <!--<string name="address">""</string>-->
         <string name="zip_code">Area:</string>
@@ -844,6 +849,25 @@
     <string name="fulpackord">Full packed Orders</string>
     <string name="delvords">Delivered Orders</string>
     <string name="canords">Cancelled Orders</string>
+
+    <string name="ekatm">Ekatm</string>
+
+    <string-array name="activity_status">
+        <item>Select</item>
+        <item>Assigned</item>
+        <item>Cancel</item>
+        <item>Completed</item>
+        <item>Pause</item>
+        <item>WIP</item>
+
+
+    </string-array>
+
+
+    <string-array name="Consolidation">
+        <item>SO Wise</item>
+        <item>Ship To Wise</item>
+    </string-array>
 
 </resources>
 

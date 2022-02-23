@@ -259,7 +259,7 @@ public class DownloadActivity {
             String prefix = parts[1];
             /*String path1 = Environment.getExternalStorageDirectory()
                     .toString();*/
-            String path1 = Environment.getExternalStorageDirectory()
+            String path1 = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM)
                     .toString();
             File file = null;
             if(fileUrl.contains("mp4"))

@@ -106,8 +106,11 @@ public class FollowupActivity extends AppCompatActivity {
 
         long date1 = System.currentTimeMillis();
 
+
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+
         dateString = sdf.format(date1);
+
         img_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

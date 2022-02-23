@@ -17,11 +17,11 @@ import java.lang.Override;
 public class AddUserAdapter$AddUserHolder_ViewBinding implements Unbinder {
   private AddUserAdapter.AddUserHolder target;
 
-  private View view2131300417;
+  private View view2131300457;
 
-  private View view2131298168;
+  private View view2131298181;
 
-  private View view2131296902;
+  private View view2131296910;
 
   @UiThread
   public AddUserAdapter$AddUserHolder_ViewBinding(final AddUserAdapter.AddUserHolder target,
@@ -31,7 +31,7 @@ public class AddUserAdapter$AddUserHolder_ViewBinding implements Unbinder {
     View view;
     view = Utils.findRequiredView(source, R.id.user_name_data, "field 'user_name_data' and method 'chatnewUser'");
     target.user_name_data = Utils.castView(view, R.id.user_name_data, "field 'user_name_data'", TextView.class);
-    view2131300417 = view;
+    view2131300457 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -40,7 +40,7 @@ public class AddUserAdapter$AddUserHolder_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.len, "field 'len' and method 'chatnewUser'");
     target.len = Utils.castView(view, R.id.len, "field 'len'", RelativeLayout.class);
-    view2131298168 = view;
+    view2131298181 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -49,7 +49,7 @@ public class AddUserAdapter$AddUserHolder_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.checkbox_user, "field 'checkbox_user' and method 'chatUser'");
     target.checkbox_user = Utils.castView(view, R.id.checkbox_user, "field 'checkbox_user'", AppCompatCheckBox.class);
-    view2131296902 = view;
+    view2131296910 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -69,11 +69,11 @@ public class AddUserAdapter$AddUserHolder_ViewBinding implements Unbinder {
     target.len = null;
     target.checkbox_user = null;
 
-    view2131300417.setOnClickListener(null);
-    view2131300417 = null;
-    view2131298168.setOnClickListener(null);
-    view2131298168 = null;
-    view2131296902.setOnClickListener(null);
-    view2131296902 = null;
+    view2131300457.setOnClickListener(null);
+    view2131300457 = null;
+    view2131298181.setOnClickListener(null);
+    view2131298181 = null;
+    view2131296910.setOnClickListener(null);
+    view2131296910 = null;
   }
 }

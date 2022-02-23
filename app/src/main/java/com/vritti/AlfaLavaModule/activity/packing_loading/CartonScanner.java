@@ -9,11 +9,13 @@ import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.speech.tts.TextToSpeech;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -24,30 +26,19 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.vritti.AlfaLavaModule.activity.DOPackingScanDetails;
-import com.vritti.AlfaLavaModule.activity.PutAwayScanDetails;
-import com.vritti.AlfaLavaModule.activity.ReceiptPackagingDOListActivity;
-import com.vritti.AlfaLavaModule.activity.pick_riversal.PickPacketScanDetails;
-import com.vritti.AlfaLavaModule.bean.PutAwayDetail;
-import com.vritti.AlfaLavaModule.utility.ProgressHUD;
+import com.vritti.AlfaLavaModule.activity.packaging.ReceiptPackagingDOListActivity;
 import com.vritti.databaselib.data.DatabaseHandlers;
 import com.vritti.databaselib.other.Utility;
 import com.vritti.databaselib.other.WebUrlClass;
-import com.vritti.ekatm.Constants;
 import com.vritti.ekatm.R;
 import com.vritti.sessionlib.CallbackInterface;
 import com.vritti.sessionlib.StartSession;
 import com.vritti.vwb.classes.CommonFunction;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -236,16 +227,22 @@ public class CartonScanner extends AppCompatActivity {
             locationId.setText("");
 
             if (integer.contains("Success")) {
-
-                Toast toast = Toast.makeText(CartonScanner.this, "Data send successfully", Toast.LENGTH_LONG);
-                View toastView = toast.getView();
-                TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-                toastMessage.setTextSize(18);
-                toastMessage.setTextColor(Color.GREEN);
-                toastMessage.setGravity(Gravity.CENTER);
-                toastMessage.setCompoundDrawablePadding(5);
-                toastView.setBackgroundColor(Color.TRANSPARENT);
-                toast.show();
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                    Toast toast = Toast.makeText(CartonScanner.this, "Data send successfully", Toast.LENGTH_LONG);
+                    View toastView = toast.getView();
+                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                    toastMessage.setTextSize(18);
+                    toastMessage.setTextColor(Color.GREEN);
+                    toastMessage.setGravity(Gravity.CENTER);
+                    toastMessage.setCompoundDrawablePadding(5);
+                    toastView.setBackgroundColor(Color.TRANSPARENT);
+                    toast.show();
+                }else
+                {
+                    Toast toast = Toast.makeText(CartonScanner.this, Html.fromHtml("<font color='#26C14B' ><b><big>" + "Data send successfully" + "</big></b></font>"), Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                }
 
                 //onBackPressed();
 
@@ -254,15 +251,22 @@ public class CartonScanner extends AppCompatActivity {
                 try {
                     JSONObject jsonObject = new JSONObject(integer);
                     String status = jsonObject.getString("ERROR");
-                    Toast toast = Toast.makeText(CartonScanner.this, status, Toast.LENGTH_LONG);
-                    View toastView = toast.getView();
-                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-                    toastMessage.setTextSize(18);
-                    toastMessage.setTextColor(Color.RED);
-                    toastMessage.setGravity(Gravity.CENTER);
-                    toastMessage.setCompoundDrawablePadding(5);
-                    toastView.setBackgroundColor(Color.TRANSPARENT);
-                    toast.show();
+
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                        Toast toast = Toast.makeText(CartonScanner.this, status, Toast.LENGTH_LONG);
+                        View toastView = toast.getView();
+                        TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                        toastMessage.setTextSize(18);
+                        toastMessage.setTextColor(Color.RED);
+                        toastMessage.setGravity(Gravity.CENTER);
+                        toastMessage.setCompoundDrawablePadding(5);
+                        toastView.setBackgroundColor(Color.TRANSPARENT);
+                        toast.show();
+                    }else {
+                        Toast toast = Toast.makeText(CartonScanner.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + status + "</big></b></font>"), Toast.LENGTH_LONG);
+                        toast.setGravity(Gravity.CENTER, 0, 0);
+                        toast.show();
+                    }
 
                     final MediaPlayer mp = MediaPlayer.create(CartonScanner.this, R.raw.alert);
                     mp.start();
@@ -273,7 +277,9 @@ public class CartonScanner extends AppCompatActivity {
                 try {
                     JSONObject jsonObject = new JSONObject(integer);
                     String status = jsonObject.getString("ERROR");
-                    Toast toast = Toast.makeText(CartonScanner.this, status, Toast.LENGTH_LONG);
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+
+                        Toast toast = Toast.makeText(CartonScanner.this, status, Toast.LENGTH_LONG);
                     View toastView = toast.getView();
                     TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
                     toastMessage.setTextSize(18);
@@ -282,7 +288,11 @@ public class CartonScanner extends AppCompatActivity {
                     toastMessage.setCompoundDrawablePadding(5);
                     toastView.setBackgroundColor(Color.TRANSPARENT);
                     toast.show();
-
+                }else {
+                    Toast toast = Toast.makeText(CartonScanner.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + status + "</big></b></font>"), Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                }
                     final MediaPlayer mp = MediaPlayer.create(CartonScanner.this, R.raw.alert);
                     mp.start();
                 } catch (Exception e) {
@@ -379,17 +389,21 @@ public class CartonScanner extends AppCompatActivity {
 
             if (s.contains("Success")) {
 
-
-                Toast toast = Toast.makeText(CartonScanner.this, "Shipment created Successfully", Toast.LENGTH_LONG);
-                View toastView = toast.getView();
-                TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-                toastMessage.setTextSize(18);
-                toastMessage.setTextColor(Color.GREEN);
-                toastMessage.setGravity(Gravity.CENTER);
-                toastMessage.setCompoundDrawablePadding(5);
-                toastView.setBackgroundColor(Color.TRANSPARENT);
-                toast.show();
-
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                    Toast toast = Toast.makeText(CartonScanner.this, "Shipment created Successfully", Toast.LENGTH_LONG);
+                    View toastView = toast.getView();
+                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                    toastMessage.setTextSize(18);
+                    toastMessage.setTextColor(Color.GREEN);
+                    toastMessage.setGravity(Gravity.CENTER);
+                    toastMessage.setCompoundDrawablePadding(5);
+                    toastView.setBackgroundColor(Color.TRANSPARENT);
+                    toast.show();
+                }else {
+                    Toast toast = Toast.makeText(CartonScanner.this, Html.fromHtml("<font color='#26C14B' ><b><big>" + "Shipment created Successfully" + "</big></b></font>"), Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                }
 
                 final MediaPlayer mp = MediaPlayer.create(CartonScanner.this, R.raw.ok);
                 mp.start();
@@ -403,7 +417,9 @@ public class CartonScanner extends AppCompatActivity {
                     s = s.substring(1, s.length() - 1);
                     JSONObject jsonObject = new JSONObject(s);
                     String status = jsonObject.getString("ERROR");
-                    Toast toast = Toast.makeText(CartonScanner.this, status, Toast.LENGTH_LONG);
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+
+                        Toast toast = Toast.makeText(CartonScanner.this, status, Toast.LENGTH_LONG);
                     View toastView = toast.getView();
                     TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
                     toastMessage.setTextSize(18);
@@ -412,7 +428,11 @@ public class CartonScanner extends AppCompatActivity {
                     toastMessage.setCompoundDrawablePadding(5);
                     toastView.setBackgroundColor(Color.TRANSPARENT);
                     toast.show();
-
+                }else {
+                    Toast toast = Toast.makeText(CartonScanner.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + status + "</big></b></font>"), Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                }
                     final MediaPlayer mp = MediaPlayer.create(CartonScanner.this, R.raw.alert);
                     mp.start();
                 } catch (Exception e) {
@@ -425,6 +445,7 @@ public class CartonScanner extends AppCompatActivity {
                 try {
                     JSONObject jsonObject = new JSONObject(s);
                     String status = jsonObject.getString("ERROR");
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
 
                     Toast toast = Toast.makeText(CartonScanner.this, status, Toast.LENGTH_LONG);
                     View toastView = toast.getView();
@@ -435,7 +456,11 @@ public class CartonScanner extends AppCompatActivity {
                     toastMessage.setCompoundDrawablePadding(5);
                     toastView.setBackgroundColor(Color.TRANSPARENT);
                     toast.show();
-
+                }else {
+                Toast toast = Toast.makeText(CartonScanner.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + status + "</big></b></font>"), Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+            }
                     final MediaPlayer mp = MediaPlayer.create(CartonScanner.this, R.raw.alert);
                     mp.start();
 
@@ -443,7 +468,9 @@ public class CartonScanner extends AppCompatActivity {
                     e.printStackTrace();
                 }
             } else {
-                Toast toast = Toast.makeText(CartonScanner.this, s, Toast.LENGTH_LONG);
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+
+                    Toast toast = Toast.makeText(CartonScanner.this, s, Toast.LENGTH_LONG);
                 View toastView = toast.getView();
                 TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
                 toastMessage.setTextSize(18);
@@ -452,6 +479,11 @@ public class CartonScanner extends AppCompatActivity {
                 toastMessage.setCompoundDrawablePadding(5);
                 toastView.setBackgroundColor(Color.TRANSPARENT);
                 toast.show();
+            }else {
+                Toast toast = Toast.makeText(CartonScanner.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + s + "</big></b></font>"), Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+            }
                 final MediaPlayer mp = MediaPlayer.create(CartonScanner.this, R.raw.alert);
                 mp.start();
 

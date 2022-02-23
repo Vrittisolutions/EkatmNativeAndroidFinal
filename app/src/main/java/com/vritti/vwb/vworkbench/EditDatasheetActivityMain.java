@@ -353,7 +353,7 @@ public class EditDatasheetActivityMain extends AppCompatActivity implements Loca
 
                                 MimeTypeMap myMime = MimeTypeMap.getSingleton();
                                 Intent newIntent = new Intent(Intent.ACTION_VIEW);
-                                String extension = android.webkit.MimeTypeMap.getFileExtensionFromUrl(Uri.fromFile(fileNew).toString());
+                                String extension = MimeTypeMap.getFileExtensionFromUrl(Uri.fromFile(fileNew).toString());
                                 String mimeType = myMime.getMimeTypeFromExtension(fileNew.getAbsolutePath());
                                 String file = fileNew.getAbsolutePath();
 
@@ -568,8 +568,8 @@ public class EditDatasheetActivityMain extends AppCompatActivity implements Loca
     private void openDocument(String attachment) {
         Intent intent = new Intent(Intent.ACTION_VIEW);
         File file = new File(attachment);
-        String extension = android.webkit.MimeTypeMap.getFileExtensionFromUrl(Uri.fromFile(file).toString());
-        String mimetype = android.webkit.MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension);
+        String extension = MimeTypeMap.getFileExtensionFromUrl(Uri.fromFile(file).toString());
+        String mimetype = MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension);
         if (extension.equalsIgnoreCase("") || mimetype == null) {
             // if there is no extension or there is no definite mimetype, still try to open the file
             intent.setDataAndType(Uri.fromFile(file), "text/*");
@@ -1272,7 +1272,7 @@ getCurrentLocationNew();
 
 //                Datasheet Saved Successfully and Forwarded to Kendra!
                     Toast.makeText(EditDatasheetActivityMain.this, "Datasheet Saved Sucessfully", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(EditDatasheetActivityMain.this, com.vritti.vwb.vworkbench.ActivityMain.class);
+                    Intent intent = new Intent(EditDatasheetActivityMain.this, ActivityMain.class);
                     // intent.putExtra("fromEdit",0);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
@@ -3061,7 +3061,7 @@ getCurrentLocationNew();
 
 //                Datasheet Saved Successfully and Forwarded to Kendra!
                 Toast.makeText(EditDatasheetActivityMain.this, msg, Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(EditDatasheetActivityMain.this, com.vritti.vwb.vworkbench.ActivityMain.class);
+                Intent intent = new Intent(EditDatasheetActivityMain.this, ActivityMain.class);
                 // intent.putExtra("fromEdit",0);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);

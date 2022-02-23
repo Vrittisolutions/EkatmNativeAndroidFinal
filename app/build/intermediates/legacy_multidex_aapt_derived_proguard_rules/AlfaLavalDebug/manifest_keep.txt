@@ -1,1 +1,0 @@
--keep class com.vritti.vwb.vworkbench.Myapplication { <init>(); }

@@ -3,30 +3,46 @@ package com.vritti.vwb.vworkbench;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.AssetFileDescriptor;
 import android.database.sqlite.SQLiteDatabase;
+import android.media.MediaMetadataRetriever;
+import android.media.MediaPlayer;
+import android.os.AsyncTask;
+import android.os.Handler;
 import android.support.design.widget.TextInputLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatRadioButton;
-import android.support.v7.widget.Toolbar;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
+import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.lauzy.freedom.library.Lrc;
+import com.lauzy.freedom.library.LrcHelper;
+import com.lauzy.freedom.library.LrcView;
 import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
-import com.vritti.crm.classes.CommonFunctionCrm;
+import com.vritti.AlfaLavaModule.activity.BoxmasterActivity;
+import com.vritti.AlfaLavaModule.activity.DOPackingScanDetails;
+import com.vritti.AlfaLavaModule.utility.ProgressHUD;
 import com.vritti.databaselib.data.DatabaseHandlers;
 import com.vritti.databaselib.other.Utility;
 import com.vritti.databaselib.other.WebUrlClass;
 import com.vritti.ekatm.R;
+import com.vritti.ekatm.activity.ActivityLogIn;
+import com.vritti.ekatm.other.SetAppName;
 import com.vritti.ekatm.services.SendOfflineData;
 import com.vritti.sessionlib.CallbackInterface;
 import com.vritti.sessionlib.StartSession;
+import com.vritti.vwb.Beans.ColorSpan;
 import com.vritti.vwb.CommonClass.AppCommon;
 import com.vritti.vwb.classes.CommonFunction;
 
@@ -34,8 +50,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -45,7 +63,7 @@ public class Hajmola_MainActivity extends AppCompatActivity {
 
     TextInputLayout txtlay_Name, txtlay_Mobno, txtlay_Gender, txtlay_Age;
     Button btn_forward;
-    EditText edt_Name, edt_Mobno, edt_Age;
+    EditText edt_Name, edt_Mobno, edt_Age,edt_address;
     SearchableSpinner spinner_sex;
     LinearLayout ln_details;
     String PlantMasterId = "", LoginId = "", Password = "", CompanyURL = "", EnvMasterId = "",
@@ -78,6 +96,19 @@ public class Hajmola_MainActivity extends AppCompatActivity {
     private String finaljson;
 
     String gender = "Male";
+    private int index;
+    private Handler handler=new Handler();
+    private MediaPlayer mMediaPlayer = new MediaPlayer();
+    private LrcView mLrcView;
+
+    private Handler mHandler = new Handler();
+    private SeekBar mSeekBar;
+    private TextView mTvStart;
+    private TextView mTvEnd;
+    private EditText textotp;
+
+    MediaMetadataRetriever metaRetriver;
+    byte[] art;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -188,7 +219,30 @@ public class Hajmola_MainActivity extends AppCompatActivity {
         btn_forward.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ln_imgMain.setVisibility(View.VISIBLE);
+                if (Validate()) {
+
+                    MobileNo=edt_Mobno.getText().toString();
+
+                        new StartSession(Hajmola_MainActivity.this, new CallbackInterface() {
+                            @Override
+                            public void callMethod() {
+                                new DownloadAuthenticate().execute();
+
+                            }
+
+                            @Override
+                            public void callfailMethod(String msg) {
+
+                            }
+
+
+                        });
+
+
+                }else{
+                    Toast.makeText(getApplicationContext(), "Please Enter Valid Data", Toast.LENGTH_LONG).show();
+                }
+             //   ln_imgMain.setVisibility(View.VISIBLE);
 
             }
         });
@@ -234,11 +288,12 @@ public class Hajmola_MainActivity extends AppCompatActivity {
 
     public void getData() {
 
-        String name = "", mobNo = "", age = "";
+        String name = "",age = "",address="";
 
         name = edt_Name.getText().toString();
-        mobNo = edt_Mobno.getText().toString();
+        MobileNo = edt_Mobno.getText().toString();
         age = edt_Age.getText().toString();
+        address = edt_address.getText().toString();
 
 
                /* getId();
@@ -248,16 +303,17 @@ public class Hajmola_MainActivity extends AppCompatActivity {
             jsoncontact.put("ContactName", name);
             jsoncontact.put("Designation", "");
             jsoncontact.put("EmailId", "");
-            jsoncontact.put("Mobile", mobNo);
+            jsoncontact.put("Mobile", MobileNo);
             jsoncontact.put("Telephone", "");
             jsoncontact.put("DateofBirth", "");
             jsoncontact.put("ContactPersonDept", "");
             jsoncontact.put("Fax", "");
             jsoncontact.put("AnniversaryDate", "");
-            jsoncontact.put("Gender", gender);
+          //  jsoncontact.put("Gender", gender);
+            jsoncontact.put("Gender", "");
             jsoncontact.put("MaritalStatus", "");
             jsoncontact.put("SpouseName", "");
-            jsoncontact.put("WhatsAppNo", mobNo);
+            jsoncontact.put("WhatsAppNo", MobileNo);
 
             contact = jsoncontact.toString();
 
@@ -286,7 +342,7 @@ public class Hajmola_MainActivity extends AppCompatActivity {
         try {
 
             jsonBusinessprospect.put("PKSuspectId", null);
-            jsonBusinessprospect.put("FirmName", name);
+            jsonBusinessprospect.put("FirmName", "");
             jsonBusinessprospect.put("Address", "");
             jsonBusinessprospect.put("FirmAlias", "");
             jsonBusinessprospect.put("FKCityId", "");
@@ -318,6 +374,11 @@ public class Hajmola_MainActivity extends AppCompatActivity {
             jsonBusinessprospect.put("GSTCode", "");
             jsonBusinessprospect.put("TANNo", "");
             jsonBusinessprospect.put("TANNoName", "");
+            if (ProspectTypeID.equalsIgnoreCase("")) {
+                ProspectTypeID = "3";
+            }else {
+                ProspectTypeID = "3";
+            }
             jsonBusinessprospect.put("ProspectType", ProspectTypeID);//"Individual"
             jsonBusinessprospect.put("Qualification: ", "");
             jsonBusinessprospect.put("Experience: ", "");
@@ -352,7 +413,8 @@ public class Hajmola_MainActivity extends AppCompatActivity {
             jsonBusinessprospect.put("val6", val6);
             jsonBusinessprospect.put("val7", val7);
             jsonBusinessprospect.put("val8", val8);
-            jsonBusinessprospect.put("val9", selectedItem);
+            jsonBusinessprospect.put("val9", "");
+            //jsonBusinessprospect.put("val9", selectedItem);
             jsonBusinessprospect.put("val10", val10);
 
             jsonBusinessprospect.put("sex", "");
@@ -407,12 +469,12 @@ public class Hajmola_MainActivity extends AppCompatActivity {
         String age = edt_Age.getText().toString();
         int num=Integer.parseInt(age);
 
-        if(edt_Name.getText().toString().equalsIgnoreCase("") ||
+        /*if(edt_Name.getText().toString().equalsIgnoreCase("") ||
                 edt_Name.getText().toString().equalsIgnoreCase(" ") ||
                 edt_Name.getText().toString().equalsIgnoreCase(null)){
             Toast.makeText(getApplicationContext(), "Enter name", Toast.LENGTH_LONG).show();
             return false;
-        } else if(edt_Mobno.getText().toString().equalsIgnoreCase("") ||
+        } else*/ if(edt_Mobno.getText().toString().equalsIgnoreCase("") ||
                 edt_Mobno.getText().toString().equalsIgnoreCase(" ") ||
                 edt_Mobno.getText().toString().equalsIgnoreCase(null) ||
                 edt_Mobno.getText().toString().length() != 10 ){
@@ -424,11 +486,18 @@ public class Hajmola_MainActivity extends AppCompatActivity {
                    num>50){
             Toast.makeText(getApplicationContext(), "Age should not be greater than 50", Toast.LENGTH_LONG).show();
             return false;
-        }else if(gender.equalsIgnoreCase("")){
+        }
+        /*else if(edt_address.getText().toString().equalsIgnoreCase("") ||
+                edt_address.getText().toString().equalsIgnoreCase(" ") ||
+                edt_address.getText().toString().equalsIgnoreCase(null)){
+            Toast.makeText(getApplicationContext(), "Enter address", Toast.LENGTH_LONG).show();
+            return false;
+        }*/
+        /*else if(gender.equalsIgnoreCase("")){
             Toast.makeText(getApplicationContext(), "Click on any of the given gender", Toast.LENGTH_LONG).show();
             return false;
 
-        } else {
+        }*/ else {
             return true;
         }
 
@@ -440,7 +509,7 @@ public class Hajmola_MainActivity extends AppCompatActivity {
         long a = cf.addofflinedata(url, parameter, method, remark, op);
         if (a != -1) {
 
-            Toast.makeText(Hajmola_MainActivity.this, "Thank You for your Vote", Toast.LENGTH_LONG).show();
+            Toast.makeText(Hajmola_MainActivity.this, "धन्यवाद", Toast.LENGTH_LONG).show();
             Intent intent1 = new Intent(Hajmola_MainActivity.this,
                     SendOfflineData.class);
             intent1.putExtra(WebUrlClass.INTENT_SEND_OFFLINE_DATA_FLAG_KEY, WebUrlClass.INTENT_SEND_OFFLINE_DATA_FLAG_VALUE);
@@ -449,6 +518,7 @@ public class Hajmola_MainActivity extends AppCompatActivity {
 
             startActivity(new Intent(Hajmola_MainActivity.this, Hajmola_End_Screen.class));
             finish();
+          // onBackPressed();
         } else {
             Toast.makeText(getApplicationContext(), "Data not Saved", Toast.LENGTH_LONG).show();
         }
@@ -471,7 +541,137 @@ public class Hajmola_MainActivity extends AppCompatActivity {
         radioBtn_Female = findViewById(R.id.radiobtn_female);
         radioBtn_Others = findViewById(R.id.radiobtn_others);
         edt_Age = findViewById(R.id.edt_age);
+        edt_address = findViewById(R.id.edt_address);
 
+      //  txt_name=findViewById(R.id.txt_name);
+
+
+
+        mMediaPlayer = MediaPlayer.create(Hajmola_MainActivity.this, R.raw.shapath);
+        mMediaPlayer.start();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        mMediaPlayer.pause();
+    }
+
+    class DownloadAuthenticate extends AsyncTask<String, Void, String> {
+        String res;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            String AppName = "";
+            AppName = SetAppName.AppNameFCM;
+
+            String url = ut.getSharedPreference_URL(context) + WebUrlClass.api_GetOTPServer + "?MobNo=" + MobileNo + "&UserLoginId=" + LoginId + "&AppName=" + AppName;
+
+            try {
+                res = ut.OpenConnection(url, getApplicationContext());
+                res = res.replaceAll("\\\\", "");
+                res = res.substring(1, res.length() - 1);
+            } catch (Exception e) {
+                e.printStackTrace();
+                res = "Error";
+            }
+            return res;
+        }
+
+
+        @Override
+        protected void onPostExecute(String integer) {
+            super.onPostExecute(integer);
+            if (res.contains("#Success")) {
+                String data[] = res.split("#");
+                final String OPT = data[0];
+
+                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(Hajmola_MainActivity.this);
+                LayoutInflater inflater = getLayoutInflater();
+                final View dialogView = inflater.inflate(R.layout.vwb_otp_lay, null);
+                dialogBuilder.setView(dialogView);
+
+                // set the custom dialog components - text, image and button
+                textotp = (EditText) dialogView.findViewById(R.id.edt_otp);
+                Button button = (Button) dialogView.findViewById(R.id.txt_submit);
+                Button txt_resend_otp = (Button) dialogView.findViewById(R.id.txt_resend_otp);
+                // TextView txt_resend_otp=dialogView.findViewById(R.id.txt_resend_otp);
+                dialogBuilder.setCancelable(false);
+                final AlertDialog b = dialogBuilder.create();
+                b.show();
+                // if button is clicked, close the custom dialog
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        String entrotp = textotp.getText().toString().trim();
+                        if (!(entrotp.equals(""))) {
+                            if (entrotp.equalsIgnoreCase(OPT)) {
+                                b.dismiss();
+                                //Toast.makeText(getApplicationContext(), "OTP s", Toast.LENGTH_LONG).show();
+                                getData();
+
+                            } else {
+                                Toast.makeText(getApplicationContext(), "Invalid OTP!!! try again", Toast.LENGTH_LONG).show();
+                            }
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Enter OTP", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+
+
+                /*
+                cancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        b.dismiss();
+                    }
+                });
+*/
+
+                txt_resend_otp.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        MobileNo = edt_Mobno.getText().toString();
+
+                        new StartSession(Hajmola_MainActivity.this, new CallbackInterface() {
+                            @Override
+                            public void callMethod() {
+                                new DownloadAuthenticate().execute();
+
+                            }
+
+                            @Override
+                            public void callfailMethod(String msg) {
+
+                            }
+
+
+                        });
+                    }
+                });
+
+            } else if (res.contains("User Not Found")) {
+                Toast.makeText(getApplicationContext(), "Please Enter Register Mobile Number", Toast.LENGTH_LONG).show();
+            } else if (res.contains("UserId and Password not found in ERPModuleSetUp")) {
+                Toast.makeText(getApplicationContext(), "OTP service is not registered ", Toast.LENGTH_LONG).show();
+            } else {
+               Toast.makeText(getApplicationContext(), "temporarily unavailable service!!! Please try after some time..", Toast.LENGTH_LONG).show();
+            }
+
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
 
     }
 }

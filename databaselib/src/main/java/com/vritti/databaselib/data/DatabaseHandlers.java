@@ -13,7 +13,7 @@ import android.util.Log;
 public class DatabaseHandlers extends SQLiteOpenHelper {
 
     //  private static final int DATABASE_VERSION = 63;
-    private static final int DATABASE_VERSION = 101;
+    private static final int DATABASE_VERSION = 120;
     private static final String DATABASE_NAME = "MainInfo.db";
 
     public DatabaseHandlers(Context context, String name) {
@@ -84,6 +84,8 @@ public class DatabaseHandlers extends SQLiteOpenHelper {
     public static final String TABLE_ACTIVITYMASTER_PAGING_CLIENTPAGE = "ActivityMaster_Clients";
     public static final String TABLE_ZPREPORTS = "ZPReports";
     public static final String TABLE_ACTIVITYMASTER_PAGING = "AcivityMasterDemo";
+    public static final String TABLE_ACTIVITYMASTERFILTER_PAGING = "AcivityMasterFilter";
+
     public static final String TABLE_NEXTAPPR = "nextappr";
     public static final String TABLE_ACTIVITYMASTER_TEAM = "AcivityMasterteam";
     public static final String TABLE_SETTING = "tablesetting";
@@ -431,6 +433,7 @@ public class DatabaseHandlers extends SQLiteOpenHelper {
         db.execSQL(Factory.vwbFactory.CREATE_ASSIGNBYMEPAGING_TABLE);//TABLE_ACTIVITYMASTER_ASSIGN
         db.execSQL(Factory.vwbFactory.CREATE_CLIENTPAGING_TABLE);//TABLE_ACTIVITYMASTER_CLIENT
         db.execSQL(Factory.vwbFactory.CREATE_ACTIVITYMASTERPAGING_TABLE);//TABLE_ACTIVITYMASTER
+        db.execSQL(Factory.vwbFactory.CREATE_ACTIVITYMASTERPAGINGFILTER_TABLE);//TABLE_ACTIVITYMASTER FILTER
         db.execSQL(Factory.vwbFactory.CREATE_ACTIVITYMASTER_TEAM_TABLE);//TABLE_ACTIVITYMASTER_TEAM
         db.execSQL(Factory.vwbFactory.CREATE_MYWORK_TABLE);//TABLE_MYWORK
         db.execSQL(Factory.vwbFactory.CREATE_MYWORKSPACE_TABLE);//TABLE_MYWORKSPACE
@@ -752,8 +755,8 @@ public class DatabaseHandlers extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_CRM_CALL);
         db.execSQL(Factory.CREATE_TABLE_CRM_CALL);
 
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_CALL_LOG);
-        db.execSQL(Factory.CREATE_TABLE_CALL_LOG);
+       /* db.execSQL("DROP TABLE IF EXISTS " + TABLE_CALL_LOG);
+        db.execSQL(Factory.CREATE_TABLE_CALL_LOG);*/
 
 
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_MEETING);
@@ -861,6 +864,11 @@ public class DatabaseHandlers extends SQLiteOpenHelper {
 
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_ACTIVITYMASTER_PAGING);
         db.execSQL(Factory.vwbFactory.CREATE_ACTIVITYMASTERPAGING_TABLE);
+
+
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_ACTIVITYMASTERFILTER_PAGING);
+        db.execSQL(Factory.vwbFactory.CREATE_ACTIVITYMASTERPAGINGFILTER_TABLE);
+
 
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_ACTIVITYMASTER_TEAM);
         db.execSQL(Factory.vwbFactory.CREATE_ACTIVITYMASTER_TEAM_TABLE);//TABLE_ACTIVITYMASTER_TEAM

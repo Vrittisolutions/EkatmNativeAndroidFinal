@@ -212,7 +212,7 @@ public class GroupmemberShowActivity extends AppCompatActivity {
                 alertDialog.setTitle("Confirm exit chat room...");
 
                 // Setting Dialog Message
-                alertDialog.setMessage("Are you sure you want exit this chat room ?");
+                alertDialog.setMessage("Are you sure you want exit this conversation  room ?");
 
                 // Setting Icon to Dialog
                 alertDialog.setIcon(R.mipmap.ic_vwb);

@@ -10,8 +10,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.media.MediaPlayer;
-import android.media.Ringtone;
-import android.media.RingtoneManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -19,7 +17,6 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.speech.tts.TextToSpeech;
 import android.support.annotation.Nullable;
@@ -27,8 +24,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -38,27 +33,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.vritti.AlfaLavaModule.activity.picking.ItemWisePickListDetailActivity;
-import com.vritti.AlfaLavaModule.adapter.AdapteMRSDetail;
+import com.vritti.AlfaLavaModule.activity.picking.DOListActivity;
 import com.vritti.AlfaLavaModule.adapter.AdapterPicklistDetail;
 import com.vritti.AlfaLavaModule.adapter.Adapter_PrinterName;
-import com.vritti.AlfaLavaModule.bean.AlfaLocation;
-import com.vritti.AlfaLavaModule.bean.MRSDetailBean;
 import com.vritti.AlfaLavaModule.bean.Packet;
 import com.vritti.AlfaLavaModule.bean.PickListDetail;
-import com.vritti.AlfaLavaModule.bean.PicklistNO;
 import com.vritti.AlfaLavaModule.bean.PrinterName;
 import com.vritti.AlfaLavaModule.utility.ProgressHUD;
 import com.vritti.databaselib.data.DatabaseHandlers;
@@ -68,10 +55,7 @@ import com.vritti.ekatm.Constants;
 import com.vritti.ekatm.R;
 import com.vritti.sessionlib.CallbackInterface;
 import com.vritti.sessionlib.StartSession;
-import com.vritti.vwb.Adapter.UserListAdapter;
-import com.vritti.vwb.Beans.UserList;
 import com.vritti.vwb.classes.CommonFunction;
-import com.vritti.vwb.vworkbench.AssetTransferActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -80,7 +64,6 @@ import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
 public class PickListDetailActivity extends AppCompatActivity {
@@ -364,7 +347,7 @@ public class PickListDetailActivity extends AppCompatActivity {
         btn_finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(PickListDetailActivity.this,DOListActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                startActivity(new Intent(PickListDetailActivity.this, DOListActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                 finish();
             }
         });

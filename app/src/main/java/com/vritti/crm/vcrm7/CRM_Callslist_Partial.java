@@ -42,7 +42,9 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -285,6 +287,9 @@ public class CRM_Callslist_Partial extends AppCompatActivity {
     private int APP_REQUEST_CODE = 4478;
     String Contact="";
     TextView txt_notfound;
+    Date review_date,current_date2;
+    String Response_Call="",Call_ID="";
+    private boolean Flag=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -356,6 +361,8 @@ public class CRM_Callslist_Partial extends AppCompatActivity {
         buttonSave = (Button) findViewById(R.id.buttonSave);
         buttonClose = (Button) findViewById(R.id.buttonClose);
         layreason = (LinearLayout) findViewById(R.id.layreason);
+        final TextInputLayout txt_value=findViewById(R.id.txt_value);
+
         hot = (Button)findViewById(R.id.btnhot);
         warm = (Button)findViewById(R.id.btnwarm);
         cold = (Button)findViewById(R.id.btncold);
@@ -399,6 +406,10 @@ public class CRM_Callslist_Partial extends AppCompatActivity {
 
             }
         });
+
+
+
+
 
 
         hot.setOnClickListener(new View.OnClickListener() {
@@ -465,7 +476,7 @@ public class CRM_Callslist_Partial extends AppCompatActivity {
                 callStatus=cold.getText().toString();
                 layout_reason.setVisibility(View.VISIBLE);
                 editTextExpecteddate.setVisibility(View.GONE);
-                Expectedvalue.setVisibility(View.GONE);
+                txt_value.setVisibility(View.GONE);
                 Expectedvalue.setText("");
                 txt3date.setVisibility(View.GONE);
                 editTextExpecteddate.setText("");
@@ -493,6 +504,21 @@ public class CRM_Callslist_Partial extends AppCompatActivity {
         EstimateValue=getIntent().getStringExtra("evalue");
         if (getIntent().hasExtra("callmob")){
             Contact= getIntent().getStringExtra("callmob");
+        }
+
+
+        if (isnet()) {
+            new StartSession(context, new CallbackInterface() {
+                @Override
+                public void callMethod() {
+                    new GetCallReview().execute(CallId);
+                }
+
+                @Override
+                public void callfailMethod(String msg) {
+
+                }
+            });
         }
 
 
@@ -737,39 +763,94 @@ public class CRM_Callslist_Partial extends AppCompatActivity {
                 txt_prospect.setBackgroundColor(getResources().getColor(R.color.white));
                 call_rating.setBackgroundColor(getResources().getColor(R.color.white));
 
-                Intent intent = new Intent(CRM_Callslist_Partial.this, OpportunityUpdateActivity_New.class);
-                intent.putExtra("callid", CallId);
-                intent.putExtra("firmname", firmname.getText().toString());
-                intent.putExtra("firm", firmname.getText().toString());
-                intent.putExtra("calltype", call_type);
-                intent.putExtra("table", "Call");
-                intent.putExtra("date", getIntent().getStringExtra("date"));
-                intent.putExtra("remark", getIntent().getStringExtra("remark"));
-                intent.putExtra("call", getIntent().getStringExtra("call"));
-                intent.putExtra("status", Status);
-                intent.putExtra("call_type_1", Call);
-                intent.putExtra("SourceId", SourceId);
-                intent.putExtra("mile", Milestone);
-                intent.putExtra("mobile", Mobile);
-                intent.putExtra("evalue", EstimateValue);
-                intent.putExtra("call_type",call_type);
-                intent.putExtra("action",NextAction);
-                intent.putExtra("ProspectId",Prospect);
-                if (getIntent().hasExtra("type")){
-                    intent.putExtra("type", "Callfromcalllogs");
-                    intent.putExtra("starttime", Start);
-                    intent.putExtra("endtime", EndTime);
-                    intent.putExtra("duration", Duration);
-                    intent.putExtra("rowNo", RowNo);
-                }
-                if (getIntent().hasExtra("callmob")){
-                    intent.putExtra("callmob", Contact);
-                }
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_right_to_left,R.anim.slide_left_to_right);
+                String reviewDate="";
 
+                if (Response_Call.contains("-")){
+                     reviewDate = formateDateFromstring("yyyy-MM-dd hh:mm:ss a", "yyyy-MM-dd", Response_Call);
+                }else {
+                      reviewDate = formateDateFromstring("MM/dd/yyyy hh:mm:ss a", "yyyy-MM-dd", Response_Call);
+                }
+
+                long date1 = System.currentTimeMillis();
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                String dateString = sdf.format(date1);
+
+
+                try {
+                    review_date = sdf.parse(reviewDate);
+                    Log.d("Response-5", review_date.toString());
+
+                    current_date2 = sdf.parse(dateString);
+
+                    Log.d("Response-6", current_date2.toString());
+
+                           /* if (review_date.after(current_date2)) {
+                                txtView.setText("true");
+                            } else {
+                                txtView.setText("false");
+                            }*/
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                  try {
+
+
+                    if (review_date.before(current_date2)) {
+                              if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                              Toast toast = Toast.makeText(context, "Cannot Update Call - It is Under Review State", Toast.LENGTH_SHORT);
+                              View toastView = toast.getView();
+                              TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                              toastMessage.setTextSize(18);
+                              toastMessage.setTextColor(Color.RED);
+                              toastMessage.setGravity(Gravity.CENTER);
+                              toastView.setBackgroundColor(Color.WHITE);
+                              toast.show();
+                          } else {
+                              Toast toast = Toast.makeText(context, Html.fromHtml("<font color='#EF4F4F'><b><big>Cannot Update Call - It is Under Review State</big></b></font>"), Toast.LENGTH_SHORT);
+                              toast.setGravity(Gravity.CENTER, 0, 0);
+                              toast.show();
+                          }
+
+                    }
+                    else {
+
+                        Intent intent = new Intent(CRM_Callslist_Partial.this, OpportunityUpdateActivity_New.class);
+                        intent.putExtra("callid", CallId);
+                        intent.putExtra("firmname", firmname.getText().toString());
+                        intent.putExtra("firm", firmname.getText().toString());
+                        intent.putExtra("calltype", call_type);
+                        intent.putExtra("table", "Call");
+                        intent.putExtra("date", getIntent().getStringExtra("date"));
+                        intent.putExtra("remark", getIntent().getStringExtra("remark"));
+                        intent.putExtra("call", getIntent().getStringExtra("call"));
+                        intent.putExtra("status", Status);
+                        intent.putExtra("call_type_1", Call);
+                        intent.putExtra("SourceId", SourceId);
+                        intent.putExtra("mile", Milestone);
+                        intent.putExtra("mobile", Mobile);
+                        intent.putExtra("evalue", EstimateValue);
+                        intent.putExtra("call_type", call_type);
+                        intent.putExtra("action", NextAction);
+                        intent.putExtra("ProspectId", Prospect);
+                        if (getIntent().hasExtra("type")) {
+                            intent.putExtra("type", "Callfromcalllogs");
+                            intent.putExtra("starttime", Start);
+                            intent.putExtra("endtime", EndTime);
+                            intent.putExtra("duration", Duration);
+                            intent.putExtra("rowNo", RowNo);
+                        }
+                        if (getIntent().hasExtra("callmob")) {
+                            intent.putExtra("callmob", Contact);
+                        }
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                        overridePendingTransition(R.anim.slide_right_to_left, R.anim.slide_left_to_right);
+
+                }
+                  }catch (Exception e){
+                      e.printStackTrace();
+                  }
             }
         });
 
@@ -3712,8 +3793,7 @@ private void addMoreImages() {
 	}
 
 
-	public static int calculateInSampleSize(
-			BitmapFactory.Options options, int reqWidth, int reqHeight) {
+	public static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
 		// Raw height and width of image
 		final int height = options.outHeight;
 		final int width = options.outWidth;
@@ -3957,5 +4037,65 @@ private void addMoreImages() {
             call_rating.setBackgroundColor(getResources().getColor(R.color.white));
         }
 
+    class GetCallReview extends AsyncTask<String, Void, String> {
+        String res;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            String url =CompanyURL+ WebUrlClass.api_GetReviewDate + "?CallId="+params[0];
+            try {
+                res = ut.OpenConnection(url, context);
+                Response_Call = res;
+                Response_Call = Response_Call.substring(1, Response_Call.length()-1);
+
+               /* Response_Call = res.toString();
+                Response_Call = Response_Call.substring(1, Response_Call.length()-1);*/
+
+                Log.d("Response-1",Response_Call);
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                Response_Call = WebUrlClass.setError;
+                Log.d("Response-2",Response_Call);
+            }
+            return Response_Call;
+        }
+
+        @Override
+        protected void onPostExecute(String str) {
+            super.onPostExecute(str);
+
+
+            if (Response_Call!=null||Response_Call.equalsIgnoreCase("")) {
+                Log.d("Response-3",Response_Call);
+            }
+        }
+    }
+
+    public  String formateDateFromstring(String inputFormat, String outputFormat, String inputDate) {
+
+        Date parsed = null;
+        String outputDate = "";
+
+        SimpleDateFormat df_input = new SimpleDateFormat(inputFormat, Locale.getDefault());
+        SimpleDateFormat df_output = new SimpleDateFormat(outputFormat, Locale.getDefault());
+
+        try {
+            parsed = df_input.parse(inputDate);
+            outputDate = df_output.format(parsed);
+
+        } catch (ParseException e) {
+
+        }
+
+        return outputDate;
+
+    }
 
 }

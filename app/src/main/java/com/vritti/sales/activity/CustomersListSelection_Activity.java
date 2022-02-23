@@ -456,7 +456,7 @@ public class CustomersListSelection_Activity extends AppCompatActivity {
         String q="";
 
         if(isAllCust == true){
-            q = "Select * from "+DatabaseHandlers.TABLE_CONSIGNEES;//+" Where AddedBy='"+AddedBy+"'";
+            q = "Select * from "+DatabaseHandlers.TABLE_CONSIGNEES;
         }else {
             q = "Select * from "+DatabaseHandlers.TABLE_CONSIGNEES+" Where AddedBy='"+AddedBy+"'";
         }

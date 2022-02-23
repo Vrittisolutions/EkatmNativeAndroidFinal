@@ -857,6 +857,46 @@ c
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content">
 
+                                <EditText
+                                    android:id="@+id/edt_settle_amount"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="Settlement Discount"
+                                    android:textSize="14dp"
+                                    android:inputType="number"
+                                    android:drawableLeft="@drawable/account_balance_24"
+                                    android:drawableTint="@color/colorPrimary"
+                                    android:padding="10dp"
+                                    android:backgroundTint="@color/stroke"
+                                    android:drawablePadding="8dp"/>
+
+                            </android.support.design.widget.TextInputLayout>
+
+
+                            <android.support.design.widget.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <EditText
+                                    android:id="@+id/edt_gst_amount"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="GST retaintion"
+                                    android:textSize="14dp"
+                                    android:inputType="number"
+                                    android:drawableLeft="@drawable/account_balance_24"
+                                    android:drawableTint="@color/colorPrimary"
+                                    android:padding="10dp"
+                                    android:backgroundTint="@color/stroke"
+                                    android:drawablePadding="8dp"/>
+
+                            </android.support.design.widget.TextInputLayout>
+
+
+                            <android.support.design.widget.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
                                 <AutoCompleteTextView
                                     android:id="@+id/spinner_bankname"
                                     android:layout_width="match_parent"

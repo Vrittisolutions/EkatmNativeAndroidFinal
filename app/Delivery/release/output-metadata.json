@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "vworkbench7.vritti.com.delivery",
+  "variantName": "DeliveryRelease",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "properties": [],
+      "versionCode": 6,
+      "versionName": "1.0.4",
+      "enabled": true,
+      "outputFile": "app-Delivery-release.apk"
+    }
+  ]
+}

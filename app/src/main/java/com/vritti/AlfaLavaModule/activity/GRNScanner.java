@@ -1,27 +1,40 @@
 package com.vritti.AlfaLavaModule.activity;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.speech.tts.TextToSpeech;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+import com.vritti.AlfaLavaModule.activity.grn.GRNPOSTPACKETSacnDetails;
 import com.vritti.AlfaLavaModule.bean.PutAwayDetail;
 import com.vritti.AlfaLavaModule.utility.ProgressHUD;
+import com.vritti.crm.vcrm7.CRMHomeActivity;
 import com.vritti.databaselib.data.DatabaseHandlers;
 import com.vritti.databaselib.other.Utility;
 import com.vritti.databaselib.other.WebUrlClass;
@@ -60,7 +73,8 @@ public class GRNScanner extends AppCompatActivity {
     String locationCode = "";
     private TextToSpeech t1;
     String  Location_Transfer="";
-
+    ImageView img_barcode;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -68,8 +82,9 @@ public class GRNScanner extends AppCompatActivity {
         setContentView(R.layout.new_grn_scanner);
         ButterKnife.bind(this);
         pContext = GRNScanner.this;
-        getSupportActionBar().setTitle("GRN Put-away");
+        getSupportActionBar().setTitle("Stock Transfer");
 
+        img_barcode = findViewById(R.id.img_barcode);
 
 
         userpreferences = getSharedPreferences(WebUrlClass.USERINFO, Context.MODE_PRIVATE);
@@ -140,8 +155,13 @@ public class GRNScanner extends AppCompatActivity {
 
 
                          if (isnet()) {
-                             ProgressHUD.show(pContext, "Fetching location details ...", true, false);
-                             new StartSession(pContext, new CallbackInterface() {
+                             progressDialog = new ProgressDialog(GRNScanner.this);
+                             progressDialog.setCancelable(true);
+                             if (!isFinishing()) {
+                                 progressDialog.show();
+                             }
+                             progressDialog.setContentView(R.layout.crm_progress_lay);
+                             progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));                             new StartSession(pContext, new CallbackInterface() {
                                  @Override
                                  public void callMethod() {
                                      downloadPutAwayDetails = new DownloadPutAwayDetails();
@@ -169,8 +189,13 @@ public class GRNScanner extends AppCompatActivity {
 
 
                          if (isnet()) {
-                             ProgressHUD.show(pContext, "Fetching location details ...", true, false);
-                             new StartSession(pContext, new CallbackInterface() {
+                             progressDialog = new ProgressDialog(GRNScanner.this);
+                             progressDialog.setCancelable(true);
+                             if (!isFinishing()) {
+                                 progressDialog.show();
+                             }
+                             progressDialog.setContentView(R.layout.crm_progress_lay);
+                             progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));                                    new StartSession(pContext, new CallbackInterface() {
                                  @Override
                                  public void callMethod() {
                                      downloadPutAwayDetails = new DownloadPutAwayDetails();
@@ -200,6 +225,21 @@ public class GRNScanner extends AppCompatActivity {
                 return false;
             }
         });
+
+        img_barcode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IntentIntegrator integrator = new IntentIntegrator(GRNScanner.this);
+                integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
+                integrator.setPrompt("Scan");
+                integrator.setCameraId(0);
+                integrator.setBeepEnabled(false);
+                integrator.setBarcodeImageEnabled(false);
+                integrator.initiateScan();
+
+            }
+        });
+
     }
 
 
@@ -213,7 +253,8 @@ public class GRNScanner extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... params) {
-            String strRes = null;
+
+
            // locationCode = "PV-H2-100";
             // String url = pUt.getSharedPreference_URL(pContext) + WebUrlClass.api_GetUserWithCount;
             //String url = pUt.getSharedPreference_URL(pContext) + WebUrlClass.api_GetUserWithCount;
@@ -251,10 +292,10 @@ public class GRNScanner extends AppCompatActivity {
             String s = res;
 
             if (response.equals("Error")){
-                ProgressHUD.Destroy();
+                progressDialog.dismiss();
             }
             if(s.equals("[]")){
-                ProgressHUD.Destroy();
+                progressDialog.dismiss();
                 Toast.makeText(pContext, "Record not present", Toast.LENGTH_LONG).show();
                 t1.speak("Record not present", TextToSpeech.QUEUE_FLUSH, null);
                 if (t1 != null) {
@@ -262,7 +303,8 @@ public class GRNScanner extends AppCompatActivity {
                     t1.shutdown();
                 }
             }else if(s.equals("Error")){
-                ProgressHUD.Destroy();
+                progressDialog.dismiss();
+
                 Toast.makeText(pContext, "Technical error....", Toast.LENGTH_LONG).show();
                 t1.speak("Technical error....", TextToSpeech.QUEUE_FLUSH, null);
                 if (t1 != null) {
@@ -271,7 +313,7 @@ public class GRNScanner extends AppCompatActivity {
                 }
             }
             else if(s.contains("Loction not found in data")){
-                ProgressHUD.Destroy();
+                progressDialog.dismiss();
                 Toast.makeText(pContext, "Location not found", Toast.LENGTH_LONG).show();
                 t1.speak("Location not found", TextToSpeech.QUEUE_FLUSH, null);
                 if (t1 != null) {
@@ -280,6 +322,8 @@ public class GRNScanner extends AppCompatActivity {
                 }
             }else {
                 try {
+                    progressDialog.dismiss();
+
                     putAwayDetail = new ArrayList<>();
 
                     Log.e("save ps : ", "res : " + s);
@@ -306,7 +350,6 @@ public class GRNScanner extends AppCompatActivity {
                     ));
 
 
-                    ProgressHUD.Destroy();
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -333,4 +376,105 @@ public class GRNScanner extends AppCompatActivity {
         super.onResume();
         locationId.setText("");
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data1) {
+        super.onActivityResult(requestCode, resultCode, data1);
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data1);
+        if (result != null) {
+            if (result.getContents() == null) {
+                Log.e("Scan*******", "Cancelled scan");
+
+            } else {
+                Log.e("Scan", "Scanned");
+
+
+                locationCode = result.getContents().toString();
+                if (Constants.type == Constants.Type.Alfa) {
+
+                    try {
+
+                        locationCode = new JSONObject(locationCode.replace("Info:", "")).getString("Location");
+                        locationId.setText("");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    Log.i("id", locationId.getText().toString());
+                    // callApi id pass
+                    //      public string GetScanLocation(string LocationCode)
+                    if (locationCode != null && !(locationCode.equals(""))) {
+
+
+                        if (isnet()) {
+                            progressDialog = new ProgressDialog(GRNScanner.this);
+                            progressDialog.setCancelable(true);
+                            if (!isFinishing()) {
+                                progressDialog.show();
+                            }
+                            progressDialog.setContentView(R.layout.crm_progress_lay);
+                            progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));                              new StartSession(pContext, new CallbackInterface() {
+                                @Override
+                                public void callMethod() {
+                                    downloadPutAwayDetails = new DownloadPutAwayDetails();
+                                    downloadPutAwayDetails.execute();
+                                }
+
+                                @Override
+                                public void callfailMethod(String msg) {
+                                    downloadPutAwayDetails = new DownloadPutAwayDetails();
+                                    downloadPutAwayDetails.execute();
+                                }
+
+
+                            });
+
+                        } else {
+                            Toast.makeText(pContext, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                        }
+
+
+                    }
+                    ;
+                }else {
+                    if (locationCode != null && !(locationCode.equals(""))) {
+
+
+                        if (isnet()) {
+                            progressDialog = new ProgressDialog(GRNScanner.this);
+                            progressDialog.setCancelable(true);
+                            if (!isFinishing()) {
+                                progressDialog.show();
+                            }
+                            progressDialog.setContentView(R.layout.crm_progress_lay);
+                            progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));                              new StartSession(pContext, new CallbackInterface() {
+                                @Override
+                                public void callMethod() {
+                                    downloadPutAwayDetails = new DownloadPutAwayDetails();
+                                    downloadPutAwayDetails.execute();
+                                }
+
+                                @Override
+                                public void callfailMethod(String msg) {
+                                    downloadPutAwayDetails = new DownloadPutAwayDetails();
+                                    downloadPutAwayDetails.execute();
+                                }
+
+
+                            });
+
+                        } else {
+                            Toast.makeText(pContext, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                        }
+
+
+                    }
+
+                }
+
+
+            }
+        }
+    }
+
 }

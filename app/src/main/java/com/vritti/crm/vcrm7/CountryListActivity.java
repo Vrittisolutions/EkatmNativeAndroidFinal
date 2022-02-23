@@ -101,7 +101,7 @@ public class CountryListActivity extends AppCompatActivity {
         //getLoadDataValidations();
 
         R_and_D_Method_getLocatlData();
-        
+
         setlistener();
     }
     
@@ -167,6 +167,9 @@ public class CountryListActivity extends AppCompatActivity {
             }
             else if (getIntent().getStringExtra("out").equals("1")){
                 txt_title.setText("Outcome list");
+            }
+            else if (getIntent().getStringExtra("out").equals("expense")){
+                txt_title.setText("Employee name");
             }
             else {
                 txt_title.setText("List");
@@ -356,13 +359,18 @@ public class CountryListActivity extends AppCompatActivity {
             String url = APIName;
 
             try {
-                res = ut.OpenConnection(url);
+
+                    res = ut.OpenConnection(url);
+                    response = res.toString().replaceAll("\\\\", "");
+                    response = response.replaceAll("\\\\\\\\/", "");
+                    response = response.substring(1, response.length() - 1);
+
+               /* res = ut.OpenConnection(url);
                 response = res.toString().replaceAll("\\\\", "");
                 response = response.replaceAll("\\\\\\\\/", "");
-                response = response.substring(1, response.length() - 1);
-                ContentValues values = new ContentValues();
+                response = response.substring(1, response.length() - 1);*/
                 JSONArray jResults = new JSONArray(response);
-
+                ContentValues values = new ContentValues();
                 sql.delete(TABLE_NAME, null, null);
                 Cursor c = sql.rawQuery("SELECT * FROM " + TABLE_NAME, null);
                 int count = c.getCount();

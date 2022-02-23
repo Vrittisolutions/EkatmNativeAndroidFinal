@@ -643,7 +643,7 @@ https://maps.app.goo.gl/9WZR7jfmP95HCq497*/
             options.inJustDecodeBounds = false;
             Bitmap newBitmap = Bitmap.createScaledBitmap(mBitmap, w, h,
                     true);
-            String path1 = Environment.getExternalStorageDirectory()
+            String path1 = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM)
                     .toString();
             File file = new File(path1 + "/" + "Vwb" + "/" + "Sender");
             if (!file.exists())
@@ -695,26 +695,6 @@ https://maps.app.goo.gl/9WZR7jfmP95HCq497*/
         return inSampleSize;
     }
 
-    private void saveImage(Bitmap bitmap) {
-        Long tsLong = System.currentTimeMillis();
-        //timestamp = tsLong;
-        String path1 = Environment.getExternalStorageDirectory()
-                .toString();
-        File file = new File(path1 + "/" + "Vwb" + "/" + "Sender");
-        if (!file.exists())
-            file.mkdirs();
-        File file1 = new File(file, tsLong.toString());
-        if (file1.exists())
-            file1.delete();
-        try {
-            FileOutputStream out = new FileOutputStream(file1);
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 75, out);
-            out.flush();
-            out.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     class PostProspectUpdate_savenstartJSON extends AsyncTask<String, Void, String> {
         Object res;

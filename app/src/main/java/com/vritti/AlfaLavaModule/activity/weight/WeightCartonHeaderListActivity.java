@@ -1,13 +1,11 @@
 package com.vritti.AlfaLavaModule.activity.weight;
 
-import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
@@ -15,14 +13,12 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 import android.os.StrictMode;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -35,26 +31,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.EncodeHintType;
-import com.google.zxing.common.BitMatrix;
-import com.google.zxing.qrcode.QRCodeWriter;
-import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
-import com.vritti.AlfaLavaModule.activity.CreateSecondaryPackActivity;
-import com.vritti.AlfaLavaModule.activity.DOPackingScanDetails;
-import com.vritti.AlfaLavaModule.activity.ReceiptPackagingDOListActivity;
-import com.vritti.AlfaLavaModule.activity.cartonlabel.CartonLabelHeaderListActivity;
-import com.vritti.AlfaLavaModule.activity.unpacking.UnPackingCartonDetailActivity;
-import com.vritti.AlfaLavaModule.adapter.Adp_CartonListData;
 import com.vritti.AlfaLavaModule.bean.CartonData;
 import com.vritti.AlfaLavaModule.utility.ProgressHUD;
 import com.vritti.databaselib.data.DatabaseHandlers;
 import com.vritti.databaselib.other.Utility;
 import com.vritti.databaselib.other.WebUrlClass;
 import com.vritti.ekatm.R;
-import com.vritti.inventory.physicalInventory.bean.BluetoothClass;
-import com.vritti.inventory.physicalInventory.bean.Utils_print;
-import com.vritti.sales.CounterBilling.DeviceListActivity;
 import com.vritti.sessionlib.CallbackInterface;
 import com.vritti.sessionlib.StartSession;
 import com.vritti.vwb.classes.CommonFunction;
@@ -64,7 +46,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Hashtable;
 
 public class WeightCartonHeaderListActivity extends AppCompatActivity {
 

@@ -1,12 +1,14 @@
 package com.vritti.AlfaLavaModule.activity;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
@@ -27,10 +29,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 import com.vritti.AlfaLavaModule.adapter.AdapterPutHandDetail;
 import com.vritti.AlfaLavaModule.bean.Packet;
 import com.vritti.AlfaLavaModule.bean.PutAwayDetail;
@@ -95,6 +100,8 @@ public class PutAwayScanDetails extends AppCompatActivity {
     private int backpressCount = 0;
     Handler mHandler = new Handler();
     private String Location_Transfer="";
+    private ProgressDialog progressDialog;
+    ImageView img_barcode;
 
 
     @Override
@@ -147,6 +154,8 @@ public class PutAwayScanDetails extends AppCompatActivity {
         recycler.setAdapter(adapter);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(pContext);
         recycler.setLayoutManager(layoutManager);
+        img_barcode = findViewById(R.id.img_barcode);
+
 
         Location_Transfer=getIntent().getStringExtra("loc_transcode");
 
@@ -210,8 +219,13 @@ public class PutAwayScanDetails extends AppCompatActivity {
 
                 } else {
                     if (isnet()) {
-                        ProgressHUD.show(pContext, "Fetching Pending Putaway...", true, false);
-                        new StartSession(pContext, new CallbackInterface() {
+                        progressDialog = new ProgressDialog(PutAwayScanDetails.this);
+                        progressDialog.setCancelable(true);
+                        if (!isFinishing()) {
+                            progressDialog.show();
+                        }
+                        progressDialog.setContentView(R.layout.crm_progress_lay);
+                        progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));                        new StartSession(pContext, new CallbackInterface() {
                             @Override
                             public void callMethod() {
                                 downloadPutAwayDetails = new DownloadPutAwayPacketDetails();
@@ -270,8 +284,13 @@ public class PutAwayScanDetails extends AppCompatActivity {
 
 
                             if (isnet()) {
-                                ProgressHUD.show(pContext, "Fetching Pending Putaway...", true, false);
-
+                                progressDialog = new ProgressDialog(PutAwayScanDetails.this);
+                                progressDialog.setCancelable(true);
+                                if (!isFinishing()) {
+                                    progressDialog.show();
+                                }
+                                progressDialog.setContentView(R.layout.crm_progress_lay);
+                                progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                                 downloadPutAwayDetails = new DownloadPutAwayPacketDetails();
                                 downloadPutAwayDetails.execute();
 
@@ -336,8 +355,13 @@ public class PutAwayScanDetails extends AppCompatActivity {
 
                             } else {
                                 if (isnet()) {
-                                    ProgressHUD.show(pContext, "Fetching Pending Putaway...", true, false);
-
+                                    progressDialog = new ProgressDialog(PutAwayScanDetails.this);
+                                    progressDialog.setCancelable(true);
+                                    if (!isFinishing()) {
+                                        progressDialog.show();
+                                    }
+                                    progressDialog.setContentView(R.layout.crm_progress_lay);
+                                    progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                                     downloadPutAwayDetails = new DownloadPutAwayPacketDetails();
                                     downloadPutAwayDetails.execute();
 
@@ -401,7 +425,7 @@ public class PutAwayScanDetails extends AppCompatActivity {
 
                             for (int j = 0; j < putAwayDetail.size(); j++) {
 
-                                qty = Double.parseDouble(putAwayDetail.get(j).getBalQty());
+                                qty = Double.parseDouble(putAwayDetail.get(j).getBalenceQty());
                                 //mimba change
                                 TotalQty = qty + TotalQty;
 
@@ -458,8 +482,13 @@ public class PutAwayScanDetails extends AppCompatActivity {
                             editor.commit();
 
                             if (isnet()) {
-                                ProgressHUD.show(pContext, "Sending data please wait...", true, false);
-                                new StartSession(pContext, new CallbackInterface() {
+                                progressDialog = new ProgressDialog(PutAwayScanDetails.this);
+                                progressDialog.setCancelable(true);
+                                if (!isFinishing()) {
+                                    progressDialog.show();
+                                }
+                                progressDialog.setContentView(R.layout.crm_progress_lay);
+                                progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));                                           new StartSession(pContext, new CallbackInterface() {
                                     @Override
                                     public void callMethod() {
                                         new UpLoadData().execute(finaljson);
@@ -482,8 +511,13 @@ public class PutAwayScanDetails extends AppCompatActivity {
                         } else {
                             finaljson = userpreferences.getString("api", "");
                             if (isnet()) {
-                                ProgressHUD.show(pContext, "Sending data please wait...", true, false);
-                                new StartSession(pContext, new CallbackInterface() {
+                                progressDialog = new ProgressDialog(PutAwayScanDetails.this);
+                                progressDialog.setCancelable(true);
+                                if (!isFinishing()) {
+                                    progressDialog.show();
+                                }
+                                progressDialog.setContentView(R.layout.crm_progress_lay);
+                                progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));                                           new StartSession(pContext, new CallbackInterface() {
                                     @Override
                                     public void callMethod() {
                                         new UpLoadData().execute(finaljson);
@@ -516,6 +550,20 @@ public class PutAwayScanDetails extends AppCompatActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+
+            }
+        });
+
+        img_barcode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IntentIntegrator integrator = new IntentIntegrator(PutAwayScanDetails.this);
+                integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
+                integrator.setPrompt("Scan");
+                integrator.setCameraId(0);
+                integrator.setBeepEnabled(false);
+                integrator.setBarcodeImageEnabled(false);
+                integrator.initiateScan();
 
             }
         });
@@ -563,7 +611,7 @@ public class PutAwayScanDetails extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            ProgressHUD.Destroy();
+            progressDialog.dismiss();
 
             if (s.contains("Success")) {
 
@@ -674,7 +722,8 @@ public class PutAwayScanDetails extends AppCompatActivity {
         @Override
         protected void onPostExecute(String res) {
             super.onPostExecute(res);//GRNHeaderId
-            ProgressHUD.Destroy();
+         //   ProgressHUD.Destroy();
+            progressDialog.dismiss();
             edt_scanPacket.setText("");
 
             String s = res;
@@ -722,7 +771,7 @@ public class PutAwayScanDetails extends AppCompatActivity {
                         FIFODate = jsonObject.getString("FIFODate");
                         FIFODate = getDateEnd(FIFODate);
                         putAwayDetaill.setFIFODate(FIFODate);
-                        putAwayDetaill.setBalQty(BalQty);
+                        putAwayDetaill.setBalenceQty(BalQty);
                         putAwayDetail.add(0, putAwayDetaill);
 
 
@@ -983,7 +1032,7 @@ public class PutAwayScanDetails extends AppCompatActivity {
 
                     for (int j = 0; j < putAwayDetail.size(); j++) {
 
-                        qty = Double.parseDouble(putAwayDetail.get(j).getBalQty());
+                        qty = Double.parseDouble(putAwayDetail.get(j).getBalenceQty());
                         //mimba change
                         TotalQty = qty + TotalQty;
 
@@ -1038,7 +1087,13 @@ public class PutAwayScanDetails extends AppCompatActivity {
                     editor.commit();
 
                     if (isnet()) {
-                        ProgressHUD.show(pContext, "Sending data please wait...", true, false);
+                        progressDialog = new ProgressDialog(PutAwayScanDetails.this);
+                        progressDialog.setCancelable(true);
+                        if (!isFinishing()) {
+                            progressDialog.show();
+                        }
+                        progressDialog.setContentView(R.layout.crm_progress_lay);
+                        progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                         new StartSession(pContext, new CallbackInterface() {
                             @Override
                             public void callMethod() {
@@ -1062,8 +1117,13 @@ public class PutAwayScanDetails extends AppCompatActivity {
                 } else {
                     finaljson = userpreferences.getString("api", "");
                     if (isnet()) {
-                        ProgressHUD.show(pContext, "Sending data please wait...", true, false);
-                        new StartSession(pContext, new CallbackInterface() {
+                        progressDialog = new ProgressDialog(PutAwayScanDetails.this);
+                        progressDialog.setCancelable(true);
+                        if (!isFinishing()) {
+                            progressDialog.show();
+                        }
+                        progressDialog.setContentView(R.layout.crm_progress_lay);
+                        progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));                                   new StartSession(pContext, new CallbackInterface() {
                             @Override
                             public void callMethod() {
                                 new UpLoadData().execute(finaljson);
@@ -1111,4 +1171,132 @@ public class PutAwayScanDetails extends AppCompatActivity {
         }
 
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data1) {
+        super.onActivityResult(requestCode, resultCode, data1);
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data1);
+        if (result != null) {
+            if (result.getContents() == null) {
+                Log.e("Scan*******", "Cancelled scan");
+
+            } else {
+                Log.e("Scan", "Scanned");
+
+
+                packetno = result.getContents().toString();
+
+                if (Constants.type == Constants.Type.Alfa) {
+
+                    try {
+                        packetno = new JSONObject(packetno.replace("Info:", "")).getString("PacketNo");
+                        edt_scanPacket.setText("");
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    Log.i("id", packetno);
+
+                    if (packetno != null && !(packetno.equals(""))) {
+
+
+                        if (isnet()) {
+                            progressDialog = new ProgressDialog(PutAwayScanDetails.this);
+                            progressDialog.setCancelable(true);
+                            if (!isFinishing()) {
+                                progressDialog.show();
+                            }
+                            progressDialog.setContentView(R.layout.crm_progress_lay);
+                            progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                            downloadPutAwayDetails = new DownloadPutAwayPacketDetails();
+                            downloadPutAwayDetails.execute();
+
+
+                        } else {
+                            Toast.makeText(pContext, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                        }
+
+                           /* if (isnet()) {
+                                ProgressHUD.show(pContext, "Fetching Pending Putaway...", true, false);
+                                new StartSession(pContext, new CallbackInterface() {
+                                    @Override
+                                    public void callMethod() {
+                                        downloadPutAwayDetails = new DownloadPutAwayPacketDetails();
+                                        downloadPutAwayDetails.execute();
+                                    }
+
+                                    @Override
+                                    public void callfailMethod(String msg) {
+                                        downloadPutAwayDetails = new DownloadPutAwayPacketDetails();
+                                        downloadPutAwayDetails.execute();
+                                    }
+
+
+                                });
+
+                            } else {
+                                Toast.makeText(pContext, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                            }*/
+
+                    }
+                } else {
+
+
+                    if (packetno != null && !(packetno.equals(""))) {
+
+                        String searchQuery = "SELECT  * FROM " + db.TABLE_GRN_PACKET + " where PacketNo='" + packetno + "'";
+                        Cursor cursor = sql.rawQuery(searchQuery, null);
+                        int count = cursor.getCount();
+                        if (count > 0) {
+                            cursor.moveToFirst();
+                            do {
+                                edt_scanPacket.setText("");
+
+                                t1.speak("You have already scanned this packet", TextToSpeech.QUEUE_FLUSH, null);
+                                if (t1 != null) {
+                                    t1.stop();
+                                    t1.shutdown();
+                                }
+                                Toast toast = Toast.makeText(PutAwayScanDetails.this, "You have already scanned this packet", Toast.LENGTH_LONG);
+                                View toastView = toast.getView();
+                                TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                                toastMessage.setTextSize(18);
+                                toastMessage.setTextColor(Color.RED);
+                                toastMessage.setGravity(Gravity.CENTER);
+                                toastMessage.setCompoundDrawablePadding(5);
+                                toastView.setBackgroundColor(Color.TRANSPARENT);
+                                toast.show();
+                                final MediaPlayer mp = MediaPlayer.create(PutAwayScanDetails.this, R.raw.alert);
+                                mp.start();
+                            } while (cursor.moveToNext());
+
+                        } else {
+                            if (isnet()) {
+                                progressDialog = new ProgressDialog(PutAwayScanDetails.this);
+                                progressDialog.setCancelable(true);
+                                if (!isFinishing()) {
+                                    progressDialog.show();
+                                }
+                                progressDialog.setContentView(R.layout.crm_progress_lay);
+                                progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                downloadPutAwayDetails = new DownloadPutAwayPacketDetails();
+                                downloadPutAwayDetails.execute();
+
+                            } else {
+
+                                Toast.makeText(pContext, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
+
+                    }
+                }
+
+
+
+            }
+        }
+    }
+
 }

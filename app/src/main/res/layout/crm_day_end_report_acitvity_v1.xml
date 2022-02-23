@@ -196,11 +196,9 @@
                                 android:id="@+id/txt_plan"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:gravity="center_vertical"
+                                android:gravity="left|center"
                                 android:padding="1dp"
                                 android:text=""
-                                android:singleLine="true"
                                 android:textStyle="bold"
                                 android:textColor="@color/black"
                                 android:textSize="14dp"
@@ -737,7 +735,7 @@
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
-                    android:id="@+id/cardview1"
+                    android:id="@+id/cardview_2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     card_view:cardCornerRadius="8dp"
@@ -746,6 +744,132 @@
                     card_view:cardElevation="1dp"
                     card_view:cardMaxElevation="1dp"
                     android:layout_below="@+id/cardview"
+                    card_view:cardPreventCornerOverlap="false">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center|left"
+                            android:gravity="center|left"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:drawableLeft="@drawable/team"
+                                android:drawablePadding="8dp"
+                                android:gravity="center_vertical"
+                                android:padding="1dp"
+                                android:drawableTint="@color/colorPrimary"
+                                android:text="Team expected order no: "
+                                android:textSize="14dp" />
+
+                            <TextView
+                                android:id="@+id/txt_team_exp_order_no"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:gravity="center_vertical"
+                                android:padding="1dp"
+                                android:text="0"
+                                android:textColor="@color/black"
+                                android:textSize="14dp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center|left"
+                            android:gravity="center|left"
+                            android:layout_marginLeft="@dimen/sp_5"
+                            android:visibility="gone"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:drawableLeft="@drawable/coldcall"
+                                android:drawablePadding="8dp"
+
+                                android:drawableTint="@color/colorPrimary"
+                                android:gravity="center_vertical"
+                                android:padding="1dp"
+                                android:text="Overdue cold opportunity: "
+                                android:textSize="14dp" />
+
+                            <TextView
+                                android:id="@+id/txt_cold_call"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:gravity="center_vertical"
+                                android:padding="1dp"
+                                android:text="0"
+                                android:textColor="@color/black"
+                                android:textSize="14dp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center|left"
+                            android:gravity="center|left"
+                            android:layout_marginLeft="5dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:drawableLeft="@drawable/collection"
+                                android:drawablePadding="8dp"
+                                android:drawableTint="@color/colorPrimary"
+                                android:gravity="center_vertical"
+                                android:padding="1dp"
+                                android:text="Team expected value: "
+                                android:textSize="14dp" />
+
+                            <TextView
+                                android:id="@+id/txt_team_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:gravity="center_vertical"
+                                android:padding="1dp"
+                                android:text="0"
+                                android:textColor="@color/black"
+                                android:textSize="14dp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cardview1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    card_view:cardCornerRadius="8dp"
+                    card_view:background="@color/white"
+                    card_view:cardUseCompatPadding="true"
+                    card_view:cardElevation="1dp"
+                    card_view:cardMaxElevation="1dp"
+                    android:layout_below="@+id/cardview_2"
                     card_view:cardPreventCornerOverlap="false">
 
 

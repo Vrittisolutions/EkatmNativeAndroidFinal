@@ -67,6 +67,7 @@ import com.vritti.databaselib.other.Utility;
 import com.vritti.databaselib.other.WebUrlClass;
 import com.vritti.ekatm.Constants;
 import com.vritti.ekatm.R;
+import com.vritti.expensemanagement.HistoryActivity;
 import com.vritti.sessionlib.CallbackInterface;
 import com.vritti.sessionlib.StartSession;
 
@@ -175,20 +176,21 @@ public class CRM_Collection_List extends AppCompatActivity {
 
     private boolean isProvision=false;
     private int Followup=2;
-    EditText edt_bankname, edt_amount, edt_instrument_no, edt_tds_amount, edt_narration,edt_deposite_bank;
+    EditText edt_bankname, edt_amount, edt_instrument_no, edt_tds_amount, edt_narration,edt_deposite_bank,edt_gst_amount,edt_settle_amount;
     TextView txtfirmname, txtcall, txtcityname, txtactiondatetime, txtopportunity_type, txt_latestremark, txt_Save, txt_Close, txt_invoice_number, txt_Amount;
     ImageView img_date;
     int Provi_count;
     SimpleDateFormat dfDate;
     LinearLayout lsCall_list;
     ArrayList<ProvisionalData> provisionalDataArrayList=new ArrayList<>();
-    String BankMasterId, CustomerId,Amount, InstrumentNo, BankName, TDSAmount, Narration, ReceiptStatus, AddedBy, AddedDt, PaymentDepBank, DepositedDt;
+    String BankMasterId, CustomerId,Amount, InstrumentNo, BankName, TDSAmount,
+            Narration, ReceiptStatus, AddedBy, AddedDt, PaymentDepBank, DepositedDt;
     AutoCompleteTextView spinner_bankname;
     List<String> listBanknamedata = new ArrayList<String>();
     TextView edt_date;
     ImageView imag_save_provision;
     private String date="";
-    String FKCustomerId, FKConsigneeId,ProvisionalRecieptjson;
+    String FKCustomerId, FKConsigneeId,ProvisionalRecieptjson,SettleAmount="0",GST="0",InvoiceNumber="";
     LinearLayout len_pro;
 
     // Discount Voucher
@@ -285,6 +287,9 @@ public class CRM_Collection_List extends AppCompatActivity {
         txt_invoice_date.setText(Invoice_Date);
         txt_amount.setText(Invoice_Amount);
 
+        progressDialog = new ProgressDialog(CRM_Collection_List.this);
+
+
         Provisional_count=getIntent().getIntExtra("Provisional_count",0);
 
          if (getIntent().hasExtra("type")){
@@ -375,6 +380,9 @@ public class CRM_Collection_List extends AppCompatActivity {
         edt_tds_amount = (EditText) findViewById(R.id.edt_tds_amount);
         edt_narration = (EditText) findViewById(R.id.edt_narration);
         edt_date = (TextView) findViewById(R.id.edt_date);
+        edt_bankname = (EditText) findViewById(R.id.edt_bankname);
+        edt_settle_amount = (EditText) findViewById(R.id.edt_settle_amount);
+        edt_gst_amount = (EditText) findViewById(R.id.edt_gst_amount);
         edt_bankname = (EditText) findViewById(R.id.edt_bankname);
         img_date = (ImageView) findViewById(R.id.img_date);
         lsCall_list = (LinearLayout) findViewById(R.id.lsCall_list);
@@ -875,32 +883,50 @@ public class CRM_Collection_List extends AppCompatActivity {
                     if (view.getTag() instanceof Integer) {
                         pos = (Integer) view.getTag();
                     }
-
                     String Amount = edt_amount.getText().toString();
                     String Instrument = edt_instrument_no.getText().toString();
                     String Bankname = edt_bankname.getText().toString();
                     String TDS_Amount = edt_tds_amount.getText().toString();
                     String Narration = edt_narration.getText().toString();
+                    SettleAmount = edt_settle_amount.getText().toString();
+                    GST = edt_gst_amount.getText().toString();
 
                     // String Deposite = edt_deposite_bank.getText().toString();
 
                     JSONObject jsonprovisionalreciptadd = new JSONObject();
-                    dfDate = new SimpleDateFormat("dd/MM/yyyy");
-                    date = dfDate.format(new Date());
+                   /* dfDate = new SimpleDateFormat("dd/MM/yyyy");
+                    date = dfDate.format(new Date());*/
 
                     try {
                         jsonprovisionalreciptadd.put("CallId", CallId);
-                        jsonprovisionalreciptadd.put("InvoiceNumber", Invoice_No);
+                        jsonprovisionalreciptadd.put("InvoiceNumber", InvoiceNumber);
                         jsonprovisionalreciptadd.put("Amount", Amount);
                         jsonprovisionalreciptadd.put("InstrumentNo", Instrument);
                         jsonprovisionalreciptadd.put("BankName", Bankname);
-                        jsonprovisionalreciptadd.put("TDSAmount", TDS_Amount);
+                        if (TDS_Amount.equalsIgnoreCase("")){
+                            jsonprovisionalreciptadd.put("TDSAmount", "0");
+                        }else {
+                            jsonprovisionalreciptadd.put("TDSAmount", TDS_Amount);
+                        }
                         jsonprovisionalreciptadd.put("Narration", Narration);
                         jsonprovisionalreciptadd.put("PaymentDepBank", BankMasterId);
-                        jsonprovisionalreciptadd.put("DepositedDt", date);
+                        jsonprovisionalreciptadd.put("DepositedDt", edt_date.getText().toString());
                         jsonprovisionalreciptadd.put("CustId", FKCustomerId);
                         jsonprovisionalreciptadd.put("ReceiptId: ", "");
                         jsonprovisionalreciptadd.put("ConsigneeId", FKConsigneeId);
+                        if (SettleAmount.equalsIgnoreCase("")){
+                            jsonprovisionalreciptadd.put("SttlAmt", 0);
+                        }else {
+                            jsonprovisionalreciptadd.put("SttlAmt", SettleAmount);
+                        }
+                       // jsonprovisionalreciptadd.put("SttlAmt", SettleAmount);
+
+                        if (GST.equalsIgnoreCase("")){
+                            jsonprovisionalreciptadd.put("GSTAmount", 0);
+                        }else {
+                            jsonprovisionalreciptadd.put("GSTAmount", GST);
+                        }
+
 
                         ProvisionalRecieptjson = jsonprovisionalreciptadd.toString();
 
@@ -913,7 +939,12 @@ public class CRM_Collection_List extends AppCompatActivity {
                     ProvisionalRecieptjson = ProvisionalRecieptjson.toString();
                     ProvisionalRecieptjson = ProvisionalRecieptjson.replaceAll("\\\\", "");
                     if (isnet()) {
-                        dialog_loading.setVisibility(View.VISIBLE);
+                        if (progressDialog == null) {
+                            progressDialog.setMessage("Please wait...");
+                            progressDialog.setIndeterminate(false);
+                            progressDialog.setCancelable(true);
+
+                        }
                         new StartSession(CRM_Collection_List.this, new CallbackInterface() {
                             @Override
                             public void callMethod() {
@@ -949,7 +980,7 @@ public class CRM_Collection_List extends AppCompatActivity {
                             public void onDateSet(DatePicker datePicker, int year,
                                                   int monthOfYear, int dayOfMonth) {
                                 //    datePicker.setMinDate(c.getTimeInMillis());
-                                date = year + "-" + String.format("%02d", (monthOfYear + 1)) + "-" + String.format("%02d", (dayOfMonth));
+                                date = String.format("%02d", (dayOfMonth) )+ "/" + String.format("%02d", (monthOfYear + 1)) + "/" +year;
                                 edt_date.setText(date);
                             }
                         }, year, month, day);
@@ -1981,9 +2012,9 @@ public class CRM_Collection_List extends AppCompatActivity {
                     try {
                         jsoncustomer_id = new JSONObject(response);
                         FKCustomerId = jsoncustomer_id.getString("FKCustomerId");
-
-                        FKConsigneeId = jsoncustomer_id.getString("FKConsigneeId");
-                        Invoice_No = jsoncustomer_id.getString("InvoiceNo");
+                        FKConsigneeId = jsoncustomer_id.getString("ShipToMasterId");
+                     //   FKConsigneeId = jsoncustomer_id.getString("FKConsigneeId");
+                        InvoiceNumber = jsoncustomer_id.getString("InvoiceNo");
 
 
                     } catch (JSONException e1) {
@@ -2146,11 +2177,11 @@ public class CRM_Collection_List extends AppCompatActivity {
             Toast.makeText(CRM_Collection_List.this, "Date is required", Toast.LENGTH_SHORT).show();
             return false;
 
-        } else if (edt_date.getText().toString().equalsIgnoreCase("") ||
-                edt_date.getText().toString().equalsIgnoreCase(" ") ||
-                edt_date.getText().toString().equalsIgnoreCase(null)) {
+        } else if (spinner_bankname.getText().toString().equalsIgnoreCase("") ||
+                spinner_bankname.getText().toString().equalsIgnoreCase(" ") ||
+                spinner_bankname.getText().toString().equalsIgnoreCase(null)) {
 
-            Toast.makeText(CRM_Collection_List.this, "Date required", Toast.LENGTH_SHORT).show();
+            Toast.makeText(CRM_Collection_List.this, "Select bank", Toast.LENGTH_SHORT).show();
             return false;
 
         } else {
@@ -2161,7 +2192,6 @@ public class CRM_Collection_List extends AppCompatActivity {
     class PostSaveReciptJSON extends AsyncTask<String, Void, String> {
         Object res;
         String response;
-        ProgressDialog progressDialog;
 
         @Override
         protected void onPreExecute() {
@@ -2193,12 +2223,15 @@ public class CRM_Collection_List extends AppCompatActivity {
         @Override
         protected void onPostExecute(String integer) {
             super.onPostExecute(integer);
-            dialog_loading.setVisibility(View.GONE);
+            progressDialog.dismiss();
 
+            if (integer.contains("Success")) {
 
-
-            Toast.makeText(CRM_Collection_List.this, "Receipt save successfully", Toast.LENGTH_LONG).show();
-
+                Toast.makeText(CRM_Collection_List.this, "Receipt save successfully", Toast.LENGTH_LONG).show();
+                onBackPressed();
+            }else {
+                Toast.makeText(CRM_Collection_List.this, integer, Toast.LENGTH_LONG).show();
+            }
 
         }
 

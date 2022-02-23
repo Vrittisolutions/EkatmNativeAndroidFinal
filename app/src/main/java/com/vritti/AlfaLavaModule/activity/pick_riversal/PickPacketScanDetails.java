@@ -11,6 +11,7 @@ import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.speech.tts.TextToSpeech;
@@ -19,6 +20,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -26,11 +28,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 import com.vritti.AlfaLavaModule.activity.GRNScanner;
 import com.vritti.AlfaLavaModule.activity.picking.ItemWisePickListDetailActivity;
 import com.vritti.AlfaLavaModule.activity.unpacking.UnPackingCartonDetailActivity;
@@ -98,6 +103,7 @@ public class PickPacketScanDetails extends AppCompatActivity {
     private String Location_Transfer="";
     private ProgressBar progress;
     private String Pick_ListHdrId="";
+    ImageView img_barcode;
 
 
     @Override
@@ -145,6 +151,9 @@ public class PickPacketScanDetails extends AppCompatActivity {
         recycler.setAdapter(adapter);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(pContext);
         recycler.setLayoutManager(layoutManager);
+
+        img_barcode = findViewById(R.id.img_barcode);
+
 
 
         t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
@@ -231,15 +240,22 @@ public class PickPacketScanDetails extends AppCompatActivity {
                             cursor.moveToFirst();
                             do {
                                 edt_scanPacket.setText("");
-                                Toast toast = Toast.makeText(PickPacketScanDetails.this, "Already scanned packet", Toast.LENGTH_LONG);
-                                View toastView = toast.getView();
-                                TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-                                toastMessage.setTextSize(18);
-                                toastMessage.setTextColor(Color.RED);
-                                toastMessage.setGravity(Gravity.CENTER);
-                                toastMessage.setCompoundDrawablePadding(5);
-                                toastView.setBackgroundColor(Color.TRANSPARENT);
-                                toast.show();
+                                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+
+                                    Toast toast = Toast.makeText(PickPacketScanDetails.this, "Already scanned packet", Toast.LENGTH_LONG);
+                                    View toastView = toast.getView();
+                                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                                    toastMessage.setTextSize(18);
+                                    toastMessage.setTextColor(Color.RED);
+                                    toastMessage.setGravity(Gravity.CENTER);
+                                    toastMessage.setCompoundDrawablePadding(5);
+                                    toastView.setBackgroundColor(Color.TRANSPARENT);
+                                    toast.show();
+                                }else {
+                                    Toast toast = Toast.makeText(PickPacketScanDetails.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + "Already scanned packet" + "</big></b></font>"), Toast.LENGTH_LONG);
+                                    toast.setGravity(Gravity.CENTER, 0, 0);
+                                    toast.show();
+                                }
                                 final MediaPlayer mp = MediaPlayer.create(PickPacketScanDetails.this, R.raw.alert);
                                 mp.start();
                             } while (cursor.moveToNext());
@@ -268,6 +284,19 @@ public class PickPacketScanDetails extends AppCompatActivity {
             }
         });
 
+        img_barcode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IntentIntegrator integrator = new IntentIntegrator(PickPacketScanDetails.this);
+                integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
+                integrator.setPrompt("Scan");
+                integrator.setCameraId(0);
+                integrator.setBeepEnabled(false);
+                integrator.setBarcodeImageEnabled(false);
+                integrator.initiateScan();
+
+            }
+        });
 
     }
 
@@ -353,7 +382,7 @@ public class PickPacketScanDetails extends AppCompatActivity {
                 Packet grnpost_1 = new Packet();
                 grnpost_1.setPacketNo(PacketNo);
                 cf.Insert_GRNPACKETNO(grnpost_1);
-
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
                 Toast toast = Toast.makeText(PickPacketScanDetails.this, "Packet removed successfully", Toast.LENGTH_LONG);
                 View toastView = toast.getView();
                 TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
@@ -363,6 +392,11 @@ public class PickPacketScanDetails extends AppCompatActivity {
                 toastMessage.setCompoundDrawablePadding(5);
                 toastView.setBackgroundColor(Color.TRANSPARENT);
                 toast.show();
+            }else {
+                    Toast toast = Toast.makeText(PickPacketScanDetails.this, Html.fromHtml("<font color='#26C14B' ><b><big>" + "Packet removed successfully" + "</big></b></font>"), Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+            }
 
 
 
@@ -373,7 +407,9 @@ public class PickPacketScanDetails extends AppCompatActivity {
                 try {
                     JSONObject jsonObject = new JSONObject(integer);
                     String status = jsonObject.getString("ERROR");
-                    Toast toast = Toast.makeText(PickPacketScanDetails.this, status, Toast.LENGTH_LONG);
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+
+                        Toast toast = Toast.makeText(PickPacketScanDetails.this, status, Toast.LENGTH_LONG);
                     View toastView = toast.getView();
                     TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
                     toastMessage.setTextSize(18);
@@ -382,6 +418,11 @@ public class PickPacketScanDetails extends AppCompatActivity {
                     toastMessage.setCompoundDrawablePadding(5);
                     toastView.setBackgroundColor(Color.TRANSPARENT);
                     toast.show();
+                }else{
+                    Toast toast = Toast.makeText(PickPacketScanDetails.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + status + "</big></b></font>"), Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                }
 
                     final MediaPlayer mp = MediaPlayer.create(PickPacketScanDetails.this, R.raw.alert);
                     mp.start();
@@ -392,7 +433,9 @@ public class PickPacketScanDetails extends AppCompatActivity {
                 try {
                     JSONObject jsonObject = new JSONObject(integer);
                     String status = jsonObject.getString("ERROR");
-                    Toast toast = Toast.makeText(PickPacketScanDetails.this, status, Toast.LENGTH_LONG);
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+
+                        Toast toast = Toast.makeText(PickPacketScanDetails.this, status, Toast.LENGTH_LONG);
                     View toastView = toast.getView();
                     TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
                     toastMessage.setTextSize(18);
@@ -401,7 +444,11 @@ public class PickPacketScanDetails extends AppCompatActivity {
                     toastMessage.setCompoundDrawablePadding(5);
                     toastView.setBackgroundColor(Color.TRANSPARENT);
                     toast.show();
-
+                }else{
+                    Toast toast = Toast.makeText(PickPacketScanDetails.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + status + "</big></b></font>"), Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                }
                     final MediaPlayer mp = MediaPlayer.create(PickPacketScanDetails.this, R.raw.alert);
                     mp.start();
                 } catch (Exception e) {
@@ -410,4 +457,70 @@ public class PickPacketScanDetails extends AppCompatActivity {
             }
         }
     }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data1) {
+        super.onActivityResult(requestCode, resultCode, data1);
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data1);
+        if (result != null) {
+            if (result.getContents() == null) {
+                Log.e("Scan*******", "Cancelled scan");
+
+            } else {
+                Log.e("Scan", "Scanned");
+
+
+                PacketNo= result.getContents().toString();
+
+                if (PacketNo != null && !(PacketNo.equals(""))) {
+                    String searchQuery = "SELECT  * FROM " + db.TABLE_GRN_PACKET + " where PacketNo='" + PacketNo + "'";
+                    Cursor cursor = sql.rawQuery(searchQuery, null);
+                    int count = cursor.getCount();
+                    if (count > 0) {
+                        cursor.moveToFirst();
+                        do {
+                            edt_scanPacket.setText("");
+                            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+
+                                Toast toast = Toast.makeText(PickPacketScanDetails.this, "Already scanned packet", Toast.LENGTH_LONG);
+                                View toastView = toast.getView();
+                                TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                                toastMessage.setTextSize(18);
+                                toastMessage.setTextColor(Color.RED);
+                                toastMessage.setGravity(Gravity.CENTER);
+                                toastMessage.setCompoundDrawablePadding(5);
+                                toastView.setBackgroundColor(Color.TRANSPARENT);
+                                toast.show();
+                            }else {
+                                Toast toast = Toast.makeText(PickPacketScanDetails.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + "Already scanned packet" + "</big></b></font>"), Toast.LENGTH_LONG);
+                                toast.setGravity(Gravity.CENTER, 0, 0);
+                                toast.show();
+                            }
+                            final MediaPlayer mp = MediaPlayer.create(PickPacketScanDetails.this, R.raw.alert);
+                            mp.start();
+                        } while (cursor.moveToNext());
+
+                    }
+                }else {
+
+
+                    if (isnet()) {
+                        progress.setVisibility(View.VISIBLE);
+                        PacketReversalData downloadPutAwayDetails = new PacketReversalData();
+                        downloadPutAwayDetails.execute();
+
+                    } else {
+
+                        Toast.makeText(pContext, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                    }
+
+
+                }
+
+
+            }
+        }
+    }
+
 }

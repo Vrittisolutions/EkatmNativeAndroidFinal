@@ -23,13 +23,22 @@ public class OrderHistoryBean implements Comparable<OrderHistoryBean> {
 
     String FreeAboveAmt="",FreeDelyMaxDist="",MinDelyKg="",MinDelyKm="",ExprDelyWithinMin="",ExpressDelyChg="",Open_slots="",
             OpenTime1="",CloseTime1="",OpenTime2="",CloseTime2="", MerchLatitude="",MerchLongitude="";
-    String custLat="",custLng="";
+    String custLat="",custLng="",Tax="";
 
     public OrderHistoryBean(ArrayList<OrderHistoryBean> arrayList) {
     }
 
     public OrderHistoryBean(){
 
+    }
+
+
+    public String getTax() {
+        return Tax;
+    }
+
+    public void setTax(String tax) {
+        Tax = tax;
     }
 
     public String getCategoryid() {

@@ -21,6 +21,7 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -32,7 +33,6 @@ import android.os.Environment;
 import android.os.RemoteException;
 import android.os.StrictMode;
 import android.provider.ContactsContract;
-import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.provider.OpenableColumns;
 import android.provider.Settings;
@@ -49,6 +49,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Base64;
 import android.util.Log;
@@ -62,7 +63,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -78,7 +78,6 @@ import com.facebook.imagepipeline.request.ImageRequest;
 import com.facebook.imagepipeline.request.ImageRequestBuilder;
 import com.google.gson.Gson;
 import com.vritti.chat.adapter.GroupChatRecycleViewAdapter;
-import com.vritti.chat.bean.ChatGroup;
 import com.vritti.chat.bean.ChatGroupJson;
 import com.vritti.chat.bean.ChatMessage;
 import com.vritti.chat.bean.ChatModelObject;
@@ -92,25 +91,25 @@ import com.vritti.databaselib.other.WebUrlClass;
 import com.vritti.databaselib.videocompression.MediaController;
 import com.vritti.ekatm.Constants;
 import com.vritti.ekatm.R;
-import com.vritti.ekatm.other.FileUtilities;
 import com.vritti.ekatm.other.SetAppName;
 import com.vritti.ekatm.receiver.ConnectivityReceiver;
 import com.vritti.ekatm.services.GPSTracker;
 import com.vritti.sessionlib.CallbackInterface;
 import com.vritti.sessionlib.StartSession;
-import com.vritti.vwb.Beans.Attachment;
 import com.vritti.vwb.Beans.TeamChatListObject;
 import com.vritti.vwb.CommonClass.AppCommon;
 import com.vritti.vwb.classes.CommonFunction;
 import com.vritti.vwb.vworkbench.AssignActivity;
 import com.vritti.vwb.vworkbench.Myapplication;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringEscapeUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.File;
@@ -120,7 +119,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.channels.FileChannel;
@@ -132,6 +130,7 @@ import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.Locale;
+import java.util.Random;
 import java.util.Set;
 import java.util.UUID;
 
@@ -140,6 +139,7 @@ import hani.momanii.supernova_emoji_library.Helper.EmojiconEditText;
 import io.codetail.animation.SupportAnimator;
 import me.leolin.shortcutbadger.ShortcutBadger;
 
+import static com.vritti.chat.activity.SharefunctionActivity.calculateInSampleSize;
 import static com.vritti.chat.activity.SharefunctionActivity.getRealPathFromUri;
 import static org.apache.commons.io.FilenameUtils.getName;
 
@@ -286,6 +286,7 @@ public class AddChatRoomActivity extends AppCompatActivity implements Connectivi
     int listCount = 0;
     ArrayList<ChatMessage> chatMessageArrayListTotal;
     int firstSlotRefreshData = -1;
+    private File file;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -846,7 +847,6 @@ public class AddChatRoomActivity extends AppCompatActivity implements Connectivi
                 }
             }
         });
-
 
         toolbar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -1947,10 +1947,11 @@ public class AddChatRoomActivity extends AppCompatActivity implements Connectivi
             String ReceiverImage = ((ChatModelObject) consolidatedList.get(position)).getChatMessage().getAttachment();
             String path1 = Environment.getExternalStorageDirectory()
                     .toString();
-            File recFile = new File(path1 + "/" + "Vwb" + "/" + "Receive");
+
+            File recFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM) + "/" + "Vwb" + "/" + "Receive");
             if (!recFile.exists())
                 recFile.mkdirs();
-            File sendFile = new File(path1 + "/" + "Vwb" + "/" + "Sender");
+            File sendFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM) + "/" + "Vwb" + "/" + "Sender");
             if (!sendFile.exists())
                 sendFile.mkdirs();
             imgFileReceiver = new File(ReceiverImage);
@@ -2212,7 +2213,7 @@ public class AddChatRoomActivity extends AppCompatActivity implements Connectivi
                                         chatMessage.setAttachment(null);
                                     } else {
                                         if (Status.equals("")) {
-                                            String path1 = Environment.getExternalStorageDirectory()
+                                            String path1 = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM)
                                                     .toString();
                                             File file = new File(path1 + "/" + "Vwb" + "/" + "Receive");
                                             if (!file.exists())
@@ -2487,9 +2488,17 @@ public class AddChatRoomActivity extends AppCompatActivity implements Connectivi
 
     private void GallerycaptureImage() {
 
-        Intent intent = new Intent(Intent.ACTION_PICK,
+        /*Intent intent = new Intent(Intent.ACTION_PICK,
                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(intent, SELECT_FILE_IMAGE);
+
+         */
+            Intent intent = new Intent();
+            intent.setType("image/*");
+            intent.setAction(Intent.ACTION_GET_CONTENT);
+            startActivityForResult(Intent.createChooser(intent, "Select Video"), SELECT_FILE_IMAGE);
+
+
     }
 
     private void pickaudio() {
@@ -2539,34 +2548,35 @@ public class AddChatRoomActivity extends AppCompatActivity implements Connectivi
 
     private void DocumentSelect() {
         browseDocuments();
-        /*Intent chooseFile;
-        Intent intent;
-        chooseFile = new Intent(Intent.ACTION_GET_CONTENT);
-        chooseFile.setType("*//*");
-        intent = Intent.createChooser(chooseFile, "Choose a file");
-        startActivityForResult(intent, PICK_PDF_REQUEST);*/
 
-        /* Intent i = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
-        i.addCategory(Intent.CATEGORY_DEFAULT);
-        startActivityForResult(Intent.createChooser(i, "Choose directory"), PICK_PDF_REQUEST);
-
-*/
-
-
-        /*Intent intent = new Intent();
-        intent.setType("application");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        //intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
-        startActivityForResult(Intent.createChooser(intent, "Select File"), PICK_PDF_REQUEST);*/
     }
 
 
     private void saveImage(String imagefilename, Bitmap bitmap) {
 
         if (bitmap != null) {
-            String path1 = Environment.getExternalStorageDirectory()
-                    .toString();
-            File file = new File(path1 + "/" + "Vwb" + "/" + "Sender");
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
+            {
+                if (imagefilename.contains(".doc")||imagefilename.contains(".docx")||imagefilename.contains(".pdf")
+                        ||imagefilename.contains(".ppt")||
+                        imagefilename.contains(".pptx")||imagefilename.contains(".xls")||imagefilename.contains(".zip")
+                        ||imagefilename.contains(".xlsx")||imagefilename.contains(".txt")){
+                    file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS) + "/" + "Vwb" + "/" + "Sender");
+
+                    }else {
+
+                    file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM) + "/" + "Vwb" + "/" + "Sender");
+                      }
+           }
+            else
+
+            {
+                 file = new File(path1 + "/" + "Vwb" + "/" + "Sender");
+
+
+            }
+           // File file = new File(path1 + "/" + "Vwb" + "/" + "Sender");
             if (!file.exists())
                 file.mkdirs();
             File file1 = new File(file, imagefilename);
@@ -2580,6 +2590,8 @@ public class AddChatRoomActivity extends AppCompatActivity implements Connectivi
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        }else {
+
         }
     }
 
@@ -2601,7 +2613,7 @@ public class AddChatRoomActivity extends AppCompatActivity implements Connectivi
                 try {
                     // bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(fileUri));
 
-                    bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), fileUri);
+                   /* bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), fileUri);
                     FileOutputStream out = new FileOutputStream(mediaFile);
                     bitmap.compress(Bitmap.CompressFormat.JPEG, 75, out);
                     String url = MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, "attachment", null);
@@ -2640,6 +2652,51 @@ public class AddChatRoomActivity extends AppCompatActivity implements Connectivi
 
                     if (isnet()) {
                         async = new PostUploadImageMethod().execute(uuidInString);
+                    }*/
+
+                    bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), fileUri);
+                    String url = MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, "title", null);
+                    fileUri = Uri.parse(url);
+                    if (fileUri.toString().contains("content")) {
+                        handleSendImage(fileUri);
+                    } else {
+                        file = new File(getRealPathFromUri(AddChatRoomActivity.this, fileUri));//create path from uri
+                        path = file.toString();
+                        Imagefilename = file.getName();
+
+                        chatMessage = new ChatMessage();
+                        chatMessage.setMessage(message);
+                        chatMessage.setStatus("Sender");
+                        chatMessage.setMessageDate(timestamp);
+                        chatMessage.setUsername(UserName);
+                        UUID uuid = UUID.randomUUID();
+                        String uuidInString = uuid.toString();
+                        chatMessage.setMessageId(uuidInString);
+                        chatMessage.setChatRoomId(ChatRoomId);
+                        chatMessage.setUserMasterId(UserMasterId);
+                        chatMessage.setMessageType("text:");
+                        chatMessage.setIsDownloaded("No");
+                        if (path != null) {
+                            chatMessage.setAttachment(path);
+                        }
+                        cf.AddGroupMessage(chatMessage);
+                        AddChatRoomActivity.this.runOnUiThread(new Thread(new Runnable() {
+                            public void run() {
+
+
+                                groupMessage(ChatRoomId, AddChatRoomActivity.this);
+
+
+                            }
+
+                        }));
+
+
+                        if (isnet()) {
+                            async = new PostUploadImageMethod().execute(uuidInString);
+
+
+                        }
                     }
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
@@ -2655,6 +2712,7 @@ public class AddChatRoomActivity extends AppCompatActivity implements Connectivi
             if (resultCode == RESULT_OK) {
 
                 fileUri = data.getData();
+
                 Intent intent = new Intent(AddChatRoomActivity.this, AddImageWithTextForChat.class).putExtra("imageUri", String.valueOf(fileUri));
                 startActivityForResult(intent, 987);
              /*   bitmap = null;
@@ -2720,29 +2778,23 @@ public class AddChatRoomActivity extends AppCompatActivity implements Connectivi
         } else if (requestCode == PICK_PDF_REQUEST) {
             if (resultCode == RESULT_OK) {
                 fileUri = data.getData();
-              /*  File f = new File(FileUtilities.getPath(AddChatRoomActivity.this, fileUri));
-
-                path = f.toString();
-
-                Imagefilename = f.getName();
 
 
-*/
                 try {
                     fileUri = data.getData();
                     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
-                        File file = new File(getRealPathFromUri(AddChatRoomActivity.this, fileUri));//create path from uri
-                        Log.d("", "File : " + file.getName());
+                        File file = new File(getFilePathFromURI(AddChatRoomActivity.this, fileUri));//create path from uri
                         path = file.toString();
                         Imagefilename = file.getName();
+
                     }
 
                     Toast.makeText(AddChatRoomActivity.this, "Document attached successfully", Toast.LENGTH_SHORT).show();
 
                 }catch (Exception e){
                     e.printStackTrace();
-
                     String id = null;
+                    /*String id = null;
                     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
                         id = DocumentsContract.getDocumentId(fileUri);
                     }
@@ -2751,7 +2803,25 @@ public class AddChatRoomActivity extends AppCompatActivity implements Connectivi
                         inputStream = getContentResolver().openInputStream(fileUri);
                     } catch (FileNotFoundException fileNotFoundException) {
                         fileNotFoundException.printStackTrace();
+                    }*/
+                    String result;
+                    Cursor cursor = getContentResolver().query(fileUri, null, null, null, null);
+                    if (cursor == null) { // Source is Dropbox or other similar local file path
+                        result = fileUri.getPath();
+                    } else {
+                        cursor.moveToFirst();
+                        int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+                        result = cursor.getString(idx);
+                        cursor.close();
                     }
+
+                    InputStream inputStream = null;
+                    try {
+                        inputStream = getContentResolver().openInputStream(Uri.parse(result));
+                    } catch (FileNotFoundException fileNotFoundException) {
+                        fileNotFoundException.printStackTrace();
+                    }
+
                     File file = new File(getCacheDir().getAbsolutePath() + "/" + id);
                     writeFile(inputStream, file);
                     path = file.getAbsolutePath();
@@ -3100,8 +3170,55 @@ public class AddChatRoomActivity extends AppCompatActivity implements Connectivi
                 bitmap = null;
                 try {
 
+
                     bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), fileUri);
-                    File f = new File(getRealPathFromURI(fileUri));
+                    String url = MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, "title", null);
+                    fileUri = Uri.parse(url);
+                    if (fileUri.toString().contains("content")) {
+                        handleSendImage(fileUri);
+                    } else {
+                        file = new File(getRealPathFromUri(AddChatRoomActivity.this, fileUri));//create path from uri
+                        path = file.toString();
+                        Imagefilename = file.getName();
+                        path = file.toString();
+                        Imagefilename = file.getName();
+
+                        chatMessage = new ChatMessage();
+                        chatMessage.setMessage(message);
+                        chatMessage.setStatus("Sender");
+                        chatMessage.setMessageDate(timestamp);
+                        chatMessage.setUsername(UserName);
+                        UUID uuid = UUID.randomUUID();
+                        String uuidInString = uuid.toString();
+                        chatMessage.setMessageId(uuidInString);
+                        chatMessage.setChatRoomId(ChatRoomId);
+                        chatMessage.setUserMasterId(UserMasterId);
+                        chatMessage.setMessageType("text:");
+                        chatMessage.setIsDownloaded("No");
+                        if (path != null) {
+                            chatMessage.setAttachment(path);
+                        }
+                        cf.AddGroupMessage(chatMessage);
+                        AddChatRoomActivity.this.runOnUiThread(new Thread(new Runnable() {
+                            public void run() {
+
+
+                                groupMessage(ChatRoomId, AddChatRoomActivity.this);
+
+
+                            }
+
+                        }));
+
+
+                        if (isnet()) {
+                            async = new PostUploadImageMethod().execute(uuidInString);
+
+
+                        }
+                    }
+
+                   /* File f = new File(getRealPathFromURI(fileUri));
                     FileOutputStream out = new FileOutputStream(f);
                     bitmap.compress(Bitmap.CompressFormat.JPEG, 75, out);
                     String url = MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, "attachment", null);
@@ -3142,7 +3259,7 @@ public class AddChatRoomActivity extends AppCompatActivity implements Connectivi
                         async = new PostUploadImageMethod().execute(uuidInString);
 
 
-                    }
+                    }*/
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
@@ -3277,7 +3394,7 @@ public class AddChatRoomActivity extends AppCompatActivity implements Connectivi
     public static File getOutputMediaFile(int type) {
         File mediaStorageDir;
         // External sdcard location
-        mediaStorageDir = new File(Environment.getExternalStorageDirectory(), SetAppName.IMAGE_DIRECTORY_NAME);
+        mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM), SetAppName.IMAGE_DIRECTORY_NAME);
 
 
         // Create the storage directory if it does not exist
@@ -3593,33 +3710,6 @@ public class AddChatRoomActivity extends AppCompatActivity implements Connectivi
 
 
     private void browseDocuments() {
-
-//        String[] mimeTypes =
-//                {"application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", // .doc & .docx
-//                        "application/vnd.ms-powerpoint", "application/vnd.openxmlformats-officedocument.presentationml.presentation", // .ppt & .pptx
-//                        "application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", // .xls & .xlsx
-//                        "text/plain",
-//                        "application/pdf",
-//                        "application/zip"};
-//
-//        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-//        intent.addCategory(Intent.CATEGORY_OPENABLE);
-//
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-//            intent.setType(mimeTypes.length == 1 ? mimeTypes[0] : "*/*");
-//            if (mimeTypes.length > 0) {
-//                intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes);
-//            }
-//        } else {
-//            String mimeTypesStr = "";
-//            for (String mimeType : mimeTypes) {
-//                mimeTypesStr += mimeType + "|";
-//            }
-//            intent.setType(mimeTypesStr.substring(0, mimeTypesStr.length() - 1));
-//        }
-//        startActivityForResult(Intent.createChooser(intent, "ChooseFile"), PICK_PDF_REQUEST);
-
-
         Intent intent;
         if (android.os.Build.MANUFACTURER.equalsIgnoreCase("samsung")) {
             intent = new Intent("com.sec.android.app.myfiles.PICK_DATA");
@@ -4138,6 +4228,169 @@ public class AddChatRoomActivity extends AppCompatActivity implements Connectivi
         }
 
         return filename;
+    }
+
+    public void handleSendImage(Uri imageUri) throws IOException {
+        //Uri imageUri = (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM);
+        if (imageUri != null) {
+            File file = new File(getCacheDir(), "image");
+            InputStream inputStream=getContentResolver().openInputStream(imageUri);
+            try {
+
+                OutputStream output = new FileOutputStream(file);
+                try {
+                    byte[] buffer = new byte[4 * 1024]; // or other buffer size
+                    int read;
+
+                    while ((read = inputStream.read(buffer)) != -1) {
+                        output.write(buffer, 0, read);
+                    }
+
+                    output.flush();
+                } finally {
+                    output.close();
+                }
+            } finally {
+                inputStream.close();
+                byte[] bytes =getFileFromPath(file);
+                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                bitmapToUriConverter(bitmap);
+                //Upload Bytes.
+            }
+        }
+    }
+
+    public static byte[] getFileFromPath(File file) {
+        int size = (int) file.length();
+        byte[] bytes = new byte[size];
+        try {
+            BufferedInputStream buf = new BufferedInputStream(new FileInputStream(file));
+            buf.read(bytes, 0, bytes.length);
+            buf.close();
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return bytes;
+    }
+
+
+    public Uri bitmapToUriConverter(Bitmap mBitmap) {
+        Uri uri = null;
+
+
+        try {
+            final BitmapFactory.Options options = new BitmapFactory.Options();
+            // Calculate inSampleSize
+            options.inSampleSize = calculateInSampleSize(options, 100, 100);
+            int w = mBitmap.getWidth();
+            int h = mBitmap.getHeight();
+            // Decode bitmap with inSampleSize set
+            options.inJustDecodeBounds = false;
+            Bitmap newBitmap = Bitmap.createScaledBitmap(mBitmap, w, h,
+                    true);
+            String path1 = Environment.getExternalStorageDirectory()
+                    .toString();
+            File file = new File(path1 + "/" + "DCIM"+"/"+"Sender");
+            if (!file.exists())
+                file.mkdirs();
+            File file1 = new File(file, "Image-"+ new Random().nextInt() + ".jpg");
+            if (file1.exists())
+                file1.delete();
+           /* File file = new File(SharefunctionActivity.this.getFilesDir(), "Image"
+                    + new Random().nextInt() + ".jpeg");*/
+            FileOutputStream out = new FileOutputStream(file1);
+            newBitmap.compress(Bitmap.CompressFormat.JPEG, 75, out);
+            out.flush();
+            out.close();
+            //attachment = file1.getAbsolutePath();
+            path = file1.toString();
+            Imagefilename = file1.getName();
+
+            chatMessage = new ChatMessage();
+            chatMessage.setMessage(message);
+            chatMessage.setStatus("Sender");
+            chatMessage.setMessageDate(timestamp);
+            chatMessage.setUsername(UserName);
+            UUID uuid = UUID.randomUUID();
+            String uuidInString = uuid.toString();
+            chatMessage.setMessageId(uuidInString);
+            chatMessage.setChatRoomId(ChatRoomId);
+            chatMessage.setUserMasterId(UserMasterId);
+            chatMessage.setMessageType("text:");
+            chatMessage.setIsDownloaded("No");
+            if (path != null) {
+                chatMessage.setAttachment(path);
+            }
+            cf.AddGroupMessage(chatMessage);
+            AddChatRoomActivity.this.runOnUiThread(new Thread(new Runnable() {
+                public void run() {
+
+
+                    groupMessage(ChatRoomId, AddChatRoomActivity.this);
+
+
+                }
+
+            }));
+
+
+            if (isnet()) {
+                async = new PostUploadImageMethod().execute(uuidInString);
+
+
+            }
+
+
+
+
+
+            //	uri = Uri.fromFile(f);
+//file:///data/data/vworkbench7.vritti.com.vworkbench7/files/Image1825476171.jpeg
+
+
+        } catch (Exception e) {
+            Log.e("Your Error Message", e.getMessage());
+        }
+        return uri;
+    }
+
+    public static String getFilePathFromURI(Context context, Uri contentUri) {
+        //copy file and send new file path
+        String fileName = getFileName(contentUri);
+        if (!TextUtils.isEmpty(fileName)) {
+            File copyFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS) + File.separator + fileName);
+            copy(context, contentUri, copyFile);
+            return copyFile.getAbsolutePath();
+        }
+        return null;
+    }
+
+    public static String getFileName(Uri uri) {
+        if (uri == null) return null;
+        String fileName = null;
+        String path = uri.getPath();
+        int cut = path.lastIndexOf('/');
+        if (cut != -1) {
+            fileName = path.substring(cut + 1);
+        }
+        return fileName;
+    }
+
+    public static void copy(Context context, Uri srcUri, File dstFile) {
+        try {
+            InputStream inputStream = context.getContentResolver().openInputStream(srcUri);
+            if (inputStream == null) return;
+            OutputStream outputStream = new FileOutputStream(dstFile);
+            IOUtils.copy(inputStream, outputStream);
+            inputStream.close();
+            outputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

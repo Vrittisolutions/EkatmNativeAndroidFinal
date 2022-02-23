@@ -116,5 +116,6 @@ public class ProspectSelectionActivity extends AppCompatActivity {
         super.onBackPressed();
         finish();
         overridePendingTransition(R.anim.slide_right_to_left,R.anim.slide_left_to_right);
+
     }
 }

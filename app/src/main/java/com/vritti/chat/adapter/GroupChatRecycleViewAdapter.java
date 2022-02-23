@@ -729,7 +729,7 @@ public class GroupChatRecycleViewAdapter extends RecyclerView.Adapter<GroupChatR
 
                     } else {
                         holder.outgoing_rel_image.setVisibility(View.VISIBLE);
-                        String path1 = Environment.getExternalStorageDirectory()
+                        String path1 = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM)
                                 .toString();
                         File file = new File(path1 + "/" + "Vwb" + "/" + "Receive");
                         if (!file.exists())
@@ -1143,10 +1143,10 @@ public class GroupChatRecycleViewAdapter extends RecyclerView.Adapter<GroupChatR
         //String ReceiverImage = ((ChatModelObject) consolidatedList.get(position)).getChatMessage().getAttachment();
         String path1 = Environment.getExternalStorageDirectory()
                 .toString();
-        File recFile = new File(path1 + "/" + "Vwb" + "/" + "Receive");
+        File recFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM) + "/" + "Vwb" + "/" + "Receive");
         if (!recFile.exists())
             recFile.mkdirs();
-        File sendFile = new File(path1 + "/" + "Vwb" + "/" + "Sender");
+        File sendFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM) + "/" + "Vwb" + "/" + "Sender");
         if (!sendFile.exists())
             sendFile.mkdirs();
         imgFileReceiver = new File(ReceiverImage);
@@ -1561,7 +1561,7 @@ public class GroupChatRecycleViewAdapter extends RecyclerView.Adapter<GroupChatR
             File file = new File(attachment);
             String fileName  = file.getAbsoluteFile().getName();
 
-            String path1 = Environment.getExternalStorageDirectory()
+            String path1 = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)
                     .toString();
             File file1 = new File(path1 + "/" + "Vwb" + "/" + "Receive" );
             if (!file1.exists())
@@ -1594,15 +1594,17 @@ public class GroupChatRecycleViewAdapter extends RecyclerView.Adapter<GroupChatR
                 String[] latLong = uri.getQueryParameter("center").split(",");
                 double lat = Double.parseDouble(latLong[0]);
                 double lang = Double.parseDouble(latLong[1]);
-                // String uriMap = String.format(Locale.ENGLISH, "geo:%f,%f", lat, lang);  // use for faocus to location by google map
                 String nameAdd = "?q=" + Uri.encode(String.valueOf(lat) + " ," + String.valueOf(lang) + ((ChatModelObject) chatMessages.get(getAdapterPosition())).getChatMessage().getUsername());  // use for add marker on location
                 String uriMap = "http://maps.google.com/maps?q=loc:" + lat + "," + lang + " (" + ((ChatModelObject) chatMessages.get(getAdapterPosition())).getChatMessage().getUsername() + ")";
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uriMap + nameAdd));
                 context.startActivity(intent);
-            } else if (((ChatModelObject) chatMessages.get(getAdapterPosition())).getChatMessage().getMessageType().equals("video:")) {
+            }
+            else if (((ChatModelObject) chatMessages.get(getAdapterPosition())).getChatMessage().getMessageType().equals("video:")) {
                 ((AddChatRoomActivity) context).playVideo(Attachment);
 
-            } else {
+            }
+            else {
+
                 File file = new File(Attachment);
 
 
@@ -1740,51 +1742,17 @@ public class GroupChatRecycleViewAdapter extends RecyclerView.Adapter<GroupChatR
             Uri uri = Uri.fromFile(file);
 
             Intent intent = new Intent(Intent.ACTION_VIEW);
-            // Check what kind of file you are trying to open, by comparing the url with extensions.
-            // When the if condition is matched, plugin sets the correct intent (mime) type,
-            // so Android knew what application to use to open the file
             if (url.toString().contains(".doc") || url.toString().contains(".docx")) {
-                // Word document
                 intent.setDataAndType(uri, "application/msword");
             } else if (url.toString().contains(".pdf")) {
-                // PDF file
                 intent.setDataAndType(uri, "application/pdf");
             } else if (url.toString().contains(".ppt") || url.toString().contains(".pptx")) {
-                // Powerpoint file
                 intent.setDataAndType(uri, "application/vnd.ms-powerpoint");
             } else if (url.toString().contains(".xls") || url.toString().contains(".xlsx")) {
-                // Excel file
                 intent.setDataAndType(uri, "application/vnd.ms-excel");
-            } /*else if(url.toString().contains(".zip") || url.toString().contains(".rar")) {
-            // WAV audio file
-            intent.setDataAndType(uri, "application/x-wav");
-        } else if(url.toString().contains(".rtf")) {
-            // RTF file
-            intent.setDataAndType(uri, "application/rtf");
-        } else if(url.toString().contains(".wav") || url.toString().contains(".mp3")) {
-            // WAV audio file
-            intent.setDataAndType(uri, "audio/x-wav");
-        } else if(url.toString().contains(".gif")) {
-            // GIF file
-            intent.setDataAndType(uri, "image/gif");
-        } else if(url.toString().contains(".jpg") || url.toString().contains(".jpeg") || url.toString().contains(".png")) {
-            // JPG file
-            intent.setDataAndType(uri, "image/jpeg");
-        } else if(url.toString().contains(".txt")) {
-            // Text file
-            intent.setDataAndType(uri, "text/plain");
-        } else if(url.toString().contains(".3gp") || url.toString().contains(".mpg") || url.toString().contains(".mpeg") || url.toString().contains(".mpe") || url.toString().contains(".mp4") || url.toString().contains(".avi")) {
-            // Video files
-            intent.setDataAndType(uri, "video*//*");
-        }*/ else {
-                //if you want you can also define the intent type for any other file
-
-                //additionally use else clause below, to manage other unknown extensions
-                //in this case, Android will show all applications installed on the device
-                //so you can choose which application to use
+            }  else {
                 intent.setDataAndType(uri, "*/*");
             }
-
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
         }

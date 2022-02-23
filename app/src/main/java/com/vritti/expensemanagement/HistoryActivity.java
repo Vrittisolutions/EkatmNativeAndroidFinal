@@ -697,7 +697,8 @@ public class HistoryActivity extends AppCompatActivity {
                 progressDialog.setIndeterminate(false);
                 progressDialog.setCancelable(true);
 
-            }        }
+            }
+        }
 
         @Override
         protected void onPostExecute(String integer) {

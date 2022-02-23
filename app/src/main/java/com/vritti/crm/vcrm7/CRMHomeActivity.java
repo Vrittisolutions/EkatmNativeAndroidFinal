@@ -89,7 +89,7 @@ import java.util.List;
 
 import static com.vritti.crm.vcrm7.CallListActivity.setListViewHeightBasedOnChildren;
 
-public class CRMHomeActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+public class CRMHomeActivity extends AppCompatActivity /*implements LoaderManager.LoaderCallbacks<Cursor>*/ {
 
 
     String PlantMasterId = "", LoginId = "", Password = "", CompanyURL = "", EnvMasterId = "",
@@ -105,7 +105,8 @@ public class CRMHomeActivity extends AppCompatActivity implements LoaderManager.
             lay_today_opp, lay_Tommorow_opp, lay_this_week_opp, lay_collection, lay_collection_view,
             lay_overdue_collection, lay_today_overdue_collection, lay_tomorrow_overdue_collection,
             lay_week_overdue_collection, lay_callrating, lay_hot_call, lay_warm_call, lay_week_overdue_feedback, lay_today_overdue_feedback, lay_tomorrow_overdue_feedback,
-            lay_overdue_feedback, lay_new_feedback, lay_new_collection, lay_feedback, lay_new_opp, lay_revived_opp, lay_yesterday_opp;
+            lay_overdue_feedback, lay_new_feedback, lay_new_collection, lay_feedback, lay_new_opp,
+            lay_revived_opp, lay_yesterday_opp,lay_start_again;
     RelativeLayout rly_birthday, rly_notification, rly_meeting, rel_call_list, rel_calender;
     TextView layloadmore;
     Dialog dialog;
@@ -120,7 +121,7 @@ public class CRMHomeActivity extends AppCompatActivity implements LoaderManager.
     TextView tv_collection_cnt;
     TextView tv_callrating_cnt;
     TextView tv_overdue_opp, tv_yesterday_opp;
-    TextView tv_today_opp, tv_callagain_opp, tv_revived_opp;
+    TextView tv_today_opp, tv_callagain_opp, tv_revived_opp,tv_start_again;
     TextView tv_tommorow_oppportunity;
     TextView tv_this_week_opp;
     TextView tv_overdue_collection;
@@ -325,7 +326,9 @@ public class CRMHomeActivity extends AppCompatActivity implements LoaderManager.
 
        // sendDualSimSMSOption();
 
+/*
         getSupportLoaderManager().initLoader(1, null, CRMHomeActivity.this);
+*/
 
 
         Cursor c1 = sql.rawQuery("SELECT * FROM " + db.TABLE_CALL_LOG, null);
@@ -431,6 +434,7 @@ public class CRMHomeActivity extends AppCompatActivity implements LoaderManager.
         tv_this_week_opp = (TextView) findViewById(R.id.tv_this_week_opp);
         tv_new_opp = (TextView) findViewById(R.id.tv_new_opp);
         tv_revived_opp = (TextView) findViewById(R.id.tv_revived_opp);
+        tv_start_again = (TextView) findViewById(R.id.tv_start_again);
         // view_Enquiry =  findViewById(R.id.view_Enquiry);
         //tv_username.setText(R.string.app_name);
 
@@ -467,6 +471,7 @@ public class CRMHomeActivity extends AppCompatActivity implements LoaderManager.
         lay_collection = (LinearLayout) findViewById(R.id.lay_collection);
         lay_collection_view = (LinearLayout) findViewById(R.id.lay_collectionview);
         lay_yesterday_opp = (LinearLayout) findViewById(R.id.lay_yesterday_opp);
+        lay_start_again = (LinearLayout) findViewById(R.id.lay_start_again);
         if (IsCollectionApplicable.equalsIgnoreCase(Salesmodulevisible)) {
             lay_collection_view.setVisibility(View.VISIBLE);
         } else {
@@ -542,6 +547,8 @@ public class CRMHomeActivity extends AppCompatActivity implements LoaderManager.
             String Today = cur.getString(cur.getColumnIndex("Today"));
             String CallAgain = cur.getString(cur.getColumnIndex("CallAgain"));
             String Revived = cur.getString(cur.getColumnIndex("Revived"));
+            String StartAgain = cur.getString(cur.getColumnIndex("StartAgain"));
+            tv_start_again.setText(StartAgain);
 
 
             if (a.equals("0")) {
@@ -1799,6 +1806,27 @@ public class CRMHomeActivity extends AppCompatActivity implements LoaderManager.
                 }
             }
         });
+
+        lay_start_again.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (tv_this_week_opp.getText().toString().equalsIgnoreCase("0")) {
+                    Toast.makeText(CRMHomeActivity.this, "No Opportunity Found", Toast.LENGTH_LONG).show();
+                   /* Intent intent = new Intent(CRMHomeActivity.this, CreateNewOppActivity.class);
+                    intent.putExtra("newopp", "opp_week");
+                    startActivity(intent);*/
+                } else {
+                    Intent intent = new Intent(CRMHomeActivity.this, OpportunityActivity_V1.class);
+                    intent.putExtra("Opportunity", "start_again");
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.slide_right_to_left, R.anim.slide_left_to_right);
+                }
+
+            }
+        });
+
         lay_collection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -2227,7 +2255,7 @@ public class CRMHomeActivity extends AppCompatActivity implements LoaderManager.
         FinalObj = FinalObj.replaceAll("\\\\", "");
     }
 
-    @Override
+    /*@Override
     public Loader<Cursor> onCreateLoader(int id, @Nullable Bundle args) {
         cursorLoader = new Loader<>(this);
         cursorLoader = new CursorLoader(this, Uri.parse("content://com.example.contentproviderexample.MyProvider1/cte"), null,
@@ -2308,7 +2336,7 @@ public class CRMHomeActivity extends AppCompatActivity implements LoaderManager.
     @Override
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
 
-    }
+    }*/
 
     @Override
     public void onBackPressed() {

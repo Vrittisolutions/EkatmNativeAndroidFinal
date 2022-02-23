@@ -46,6 +46,7 @@ import com.vritti.crm.bean.CityBean;
 import com.vritti.crm.bean.CityMaster;
 import com.vritti.crm.bean.Country;
 import com.vritti.crm.bean.LeadWiseBean;
+import com.vritti.crm.bean.ListData;
 import com.vritti.crm.bean.ProductBean;
 import com.vritti.crm.bean.ProspectsourceBean;
 import com.vritti.crm.bean.ReferenceBean;
@@ -83,6 +84,7 @@ public class ProspectFilterActivity extends AppCompatActivity {
     Utility ut;
     DatabaseHandlers db;
     CommonFunctionCrm cf;
+    String prospectType = "";
 
 
     CheckBox checkBox_added_by, checkBoxcity, checkBoxcontact_name, checkBoxmobile_no, checkBoxfirmname, checkBoxProduct,
@@ -92,7 +94,7 @@ public class ProspectFilterActivity extends AppCompatActivity {
             checkBoxNotSurveyRating, checkBoxNotFuturPlanDate,
             checkBoxLastSODate, checkBOXLastSOScheduleDate, checkBOXLastShipmentDate;
     AutoCompleteTextView eAutoCity, spinner_added_date, edtcontact_name, edtmobile_no, edtalias,
-            edt_territory, edtsource, edt_country, edtSurveyRating, spinner_added_by, spinner_viewReseller,edt_Reference2;
+            edt_territory, edtsource, edt_country, edtSurveyRating, spinner_added_by, spinner_viewReseller, edt_Reference2;
 
     ImageView buttonShowProspect, buttonAddProspect;
     ProgressHUD progressHUD;
@@ -128,7 +130,8 @@ public class ProspectFilterActivity extends AppCompatActivity {
             ln_lastshipDtEdt;
     LinearLayout ln_bet_Future, ln_SODt, ln_SOSCDt, ln_ShipmentDt;
 
-    AutoCompleteTextView edtfirm, edt_state, edt_businessDetails, edt_AddressContains, edt_SalesFamily, edt_Reference, edt_Businesssegment;
+    AutoCompleteTextView edtfirm, edt_state, edt_businessDetails, edt_AddressContains, edt_SalesFamily, edt_Reference,
+            edt_Businesssegment;
     TextView edt_FromDt_addedby, edt_ToDt_addedby, edt_addeddate;
     ArrayList<State> stateArrayList;
     ArrayList<CityMaster> cityArrayList;
@@ -140,7 +143,7 @@ public class ProspectFilterActivity extends AppCompatActivity {
     ArrayList<ReferenceBean> referenceBeanArrayList;
     List<String> lstTerrority = new ArrayList<String>();
     String countryid = "", stateId = "", cityId = "", territoryId = "", sourceId = "", salesId = "", businessId = "";
-    String saleFamilyName = "", cityName = "", referenceName = "", referenceId = "",reference2Name="",reference2Id="";
+    String saleFamilyName = "", cityName = "", referenceName = "", referenceId = "", reference2Name = "", reference2Id = "";
     AutoCompleteTextView spinner_FuturePlan, spinner_LastSOScheduleDate, spinner_LastSODate, spinner_LastShipmentDate;
     ImageView img_futurePlan, img_SoDate, img_SoScheduleDate, img_LastShipmentDate, img_SurveyRating;
     TextView edtLastSOScheduleDate, edt_LastShipmentDate;
@@ -154,8 +157,12 @@ public class ProspectFilterActivity extends AppCompatActivity {
     LinearLayout ln_Reference2;
     ArrayList<LeadWiseBean> leadWiseBeanArrayList;
 
-    ImageView img_add,img_refresh,img_back;
+    ImageView img_add, img_refresh, img_back;
     TextView txt_title;
+
+    boolean isTerritory,isSource,isCountry,isState,isCity,isSalesFamily,isBusinessSegment,isAddedBy;
+    public static final int COUNTRY = 2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -1104,9 +1111,9 @@ public class ProspectFilterActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        txt_title=findViewById(R.id.txt_title);
-       // img_add=findViewById(R.id.img_add);
-        img_back=findViewById(R.id.img_back);
+        txt_title = findViewById(R.id.txt_title);
+        // img_add=findViewById(R.id.img_add);
+        img_back = findViewById(R.id.img_back);
 
         txt_title.setText("Search Prospect");
 
@@ -1269,7 +1276,7 @@ public class ProspectFilterActivity extends AppCompatActivity {
                 ((AutoCompleteTextView) v).showDropDown();
                 InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                 View focusedView = getCurrentFocus();
-                if(focusedView != null) {
+                if (focusedView != null) {
                     imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
                 }
                 return true;
@@ -1283,7 +1290,7 @@ public class ProspectFilterActivity extends AppCompatActivity {
                 ((AutoCompleteTextView) view).showDropDown();
                 InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                 View focusedView = getCurrentFocus();
-                if(focusedView != null) {
+                if (focusedView != null) {
                     imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
                 }
                 return true;
@@ -1314,7 +1321,7 @@ public class ProspectFilterActivity extends AppCompatActivity {
                 ((AutoCompleteTextView) view).showDropDown();
                 InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                 View focusedView = getCurrentFocus();
-                if(focusedView != null) {
+                if (focusedView != null) {
                     imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
                 }
                 return true;
@@ -1346,7 +1353,7 @@ public class ProspectFilterActivity extends AppCompatActivity {
                 ((AutoCompleteTextView) view).showDropDown();
                 InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                 View focusedView = getCurrentFocus();
-                if(focusedView != null) {
+                if (focusedView != null) {
                     imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
                 }
                 return true;
@@ -1379,7 +1386,7 @@ public class ProspectFilterActivity extends AppCompatActivity {
                 ((AutoCompleteTextView) view).showDropDown();
                 InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                 View focusedView = getCurrentFocus();
-                if(focusedView != null) {
+                if (focusedView != null) {
                     imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
                 }
                 return true;
@@ -1410,7 +1417,7 @@ public class ProspectFilterActivity extends AppCompatActivity {
                 ((AutoCompleteTextView) view).showDropDown();
                 InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                 View focusedView = getCurrentFocus();
-                if(focusedView != null) {
+                if (focusedView != null) {
                     imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
                 }
                 return true;
@@ -1434,7 +1441,7 @@ public class ProspectFilterActivity extends AppCompatActivity {
             }
         });
 
-        spinner_added_by.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+     /*   spinner_added_by.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String query = "SELECT distinct UserName,UserLoginId" +
@@ -1455,7 +1462,7 @@ public class ProspectFilterActivity extends AppCompatActivity {
                     Added_id = "";
                 }
             }
-        });
+        });*/
 
 
        /* img_date.setOnClickListener(new View.OnClickListener() {
@@ -1587,6 +1594,21 @@ public class ProspectFilterActivity extends AppCompatActivity {
         }
     }
 
+    public boolean validate_firmAlias() {
+        // TODO Auto-generated method stub
+
+        if ((edtalias.getText().toString().equalsIgnoreCase("") ||
+                edtalias.getText().toString().equalsIgnoreCase(" ") ||
+                edtalias.getText().toString().equalsIgnoreCase(null)) ||
+                edtalias.getText().toString().length() < 1) {
+
+            //  Toast.makeText(context, "Enter Firm name", Toast.LENGTH_LONG).show();
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     public boolean validate_mobile_no() {
         // TODO Auto-generated method stub
 
@@ -1618,9 +1640,16 @@ public class ProspectFilterActivity extends AppCompatActivity {
     }*/
 
     private void setListener() {
+
+
         buttonAddProspect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+               // getprospect();
+
+
                 if (EnvMasterId.equalsIgnoreCase("emami") || EnvMasterId.equalsIgnoreCase("dabar")
                         || EnvMasterId.equalsIgnoreCase("dabur") || EnvMasterId.equalsIgnoreCase("unireal") ||
                         EnvMasterId.equalsIgnoreCase("pragati") || EnvMasterId.equalsIgnoreCase("Pragati") || EnvMasterId.equalsIgnoreCase("b207")) {
@@ -1629,44 +1658,58 @@ public class ProspectFilterActivity extends AppCompatActivity {
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
                     startActivity(intent);
-                    overridePendingTransition(R.anim.slide_right_to_left,R.anim.slide_left_to_right);
+                    overridePendingTransition(R.anim.slide_right_to_left, R.anim.slide_left_to_right);
                 } else if (EnvMasterId.equalsIgnoreCase("ssidf")) {    //if b207 appenv
                     Intent intent1 = new Intent(context, BusinessProspectusActivity.class);
                     intent1.putExtra("keymode", "AddNew");
                     intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent1);
                     startActivity(intent1);
-                    overridePendingTransition(R.anim.slide_right_to_left,R.anim.slide_left_to_right);
+                    overridePendingTransition(R.anim.slide_right_to_left, R.anim.slide_left_to_right);
                 } else {
-                    if (isnet()) {
-                        showProgressDialog();
-                        new StartSession(ProspectFilterActivity.this, new CallbackInterface() {
-                            @Override
-                            public void callMethod() {
-                                new DownloadDefaultProspect().execute();
-                            }
 
-                            @Override
-                            public void callfailMethod(String msg) {
-                                dismissProgressDialog();
-                                Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
-                                SharedPreferences userpreferences = getSharedPreferences(WebUrlClass.Sharedpreference_Prospect,
-                                        Context.MODE_PRIVATE);
-                                String defaultprospect = userpreferences.getString(WebUrlClass.Key_Default_Prospect, "");
-                                //      CallDefaultProspectActivity(getApplicationContext(), defaultprospect);
-                                callProspectSelection();
-                            }
-                        });
-                    } else {
-                        // Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_LONG).show();
-                        SharedPreferences userpreferences = getSharedPreferences(WebUrlClass.Sharedpreference_Prospect,
-                                Context.MODE_PRIVATE);
-                        String defaultprospect = userpreferences.getString(WebUrlClass.Key_Default_Prospect, "");
-                        //  CallDefaultProspectActivity(getApplicationContext(), defaultprospect);
-
-                        callProspectSelection();
-                    }
+                    SharedPreferences spa = getSharedPreferences(WebUrlClass.Sharedpreference_Prospect, Context.MODE_PRIVATE);
+                    prospectType = spa.getString(WebUrlClass.Key_Default_Prospect, "");
+                    Intent intent = new Intent(ProspectFilterActivity.this, ProspectSelectionActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.slide_right_to_left, R.anim.slide_left_to_right);
                 }
+
+                   /* if(prospectType.equals("")){
+                        if (isnet()) {
+                            showProgressDialog();
+                            new StartSession(ProspectFilterActivity.this, new CallbackInterface() {
+                                @Override
+                                public void callMethod() {
+                                    new DownloadDefaultProspect().execute();
+                                }
+
+                                @Override
+                                public void callfailMethod(String msg) {
+                                    dismissProgressDialog();
+                                    Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+                                    SharedPreferences userpreferences = getSharedPreferences(WebUrlClass.Sharedpreference_Prospect,
+                                            Context.MODE_PRIVATE);
+                                    String defaultprospect = userpreferences.getString(WebUrlClass.Key_Default_Prospect, "");
+                                    //      CallDefaultProspectActivity(getApplicationContext(), defaultprospect);
+                                    callProspectSelection();
+                                }
+                            });
+                        } else {
+                            // Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_LONG).show();
+                            SharedPreferences userpreferences = getSharedPreferences(WebUrlClass.Sharedpreference_Prospect,
+                                    Context.MODE_PRIVATE);
+                            String defaultprospect = userpreferences.getString(WebUrlClass.Key_Default_Prospect, "");
+                            //  CallDefaultProspectActivity(getApplicationContext(), defaultprospect);
+
+                            callProspectSelection();
+                        }
+                    }else{
+                        callProspectSelection();
+                    }*/
+
+
             }
         });
 
@@ -1688,8 +1731,8 @@ public class ProspectFilterActivity extends AppCompatActivity {
                 }
 
                 if (checkBoxfirmalias.isChecked()) {
-                    if (validate_firm()) {
-                        SelCriteria += "AND FirmAlias like '%" + edtfirm.getText().toString() + "%'";
+                    if (validate_firmAlias()) {
+                        SelCriteria += "AND FirmAlias like '%" + edtalias.getText().toString() + "%'";
                     }
                 }
 
@@ -1819,12 +1862,12 @@ public class ProspectFilterActivity extends AppCompatActivity {
 
                 //Reference
 
-                if(checkBoxReference.isChecked()){
+                if (checkBoxReference.isChecked()) {
                     //AND LeadGivenBYId = '" + fname + "'
 
-                    if(edt_Reference.getText().toString() == null){
+                    if (edt_Reference.getText().toString() == null) {
                         Toast.makeText(ProspectFilterActivity.this, "Please select reference", Toast.LENGTH_SHORT).show();
-                    }else{
+                    } else {
                         SelCriteria += "AND LeadGivenBYId = '" + reference2Id + "'";
                     }
 
@@ -1884,13 +1927,13 @@ public class ProspectFilterActivity extends AppCompatActivity {
                     } else {
                         //AND IsReseller='" + fname + "'
                         if (viewResellerName.equals("Vendor")) {
-                            SelCriteria += "AND IsReseller = " + viewResellerCode + "'";
+                            SelCriteria += "AND IsReseller = '" + viewResellerCode + "'";
                         } else if (viewResellerName.equals("Retail Agency")) {
-                            SelCriteria += "AND IsReseller = " + viewResellerCode + "'";
+                            SelCriteria += "AND IsReseller = '" + viewResellerCode + "'";
                         } else if (viewResellerName.equals("Corporate Agency")) {
-                            SelCriteria += "AND IsReseller = " + viewResellerCode + "'";
+                            SelCriteria += "AND IsReseller = '" + viewResellerCode + "'";
                         } else if (viewResellerName.equals("Retails Dealer")) {
-                            SelCriteria += "AND IsReseller = " + viewResellerCode + "'";
+                            SelCriteria += "AND IsReseller = '" + viewResellerCode + "'";
                         }
                     }
                 }
@@ -2211,6 +2254,28 @@ public class ProspectFilterActivity extends AppCompatActivity {
                 if (isChecked) {
                     ln_country.setVisibility(View.VISIBLE);
                     edt_country.setVisibility(View.VISIBLE);
+                    Intent intent = new Intent(ProspectFilterActivity.this,
+                            FilterListActivity.class);
+                    isCountry = true;
+                    isState = false;
+                    isCity = false;
+                    isTerritory = false;
+                    isBusinessSegment = false;
+                    isSalesFamily = false;
+                    isSource = false;
+                    //isSelProduct = false;
+
+                    String url = CompanyURL + WebUrlClass.api_getCountry;
+                    intent.putExtra("Table_Name", db.TABLE_COUNTRY);
+                    intent.putExtra("Id", "PKCountryId");
+                    intent.putExtra("DispName", "CountryName");
+                    intent.putExtra("Type","Country");
+                    //  intent.putExtra("WHClauseParameter", "");
+                    //intent.putExtra("WHClauseParamVal","");
+                    // intent.putExtra("APIName", url);
+                    //intent.putExtra("APIParameters","");
+                    //intent.putExtra("ArrayList",    "ArrayList<Country> mList = new ArrayList<>()");
+                    startActivityForResult(intent, COUNTRY);
                 } else {
                     ln_country.setVisibility(View.GONE);
                     edt_country.setVisibility(View.GONE);
@@ -2249,11 +2314,11 @@ public class ProspectFilterActivity extends AppCompatActivity {
                 if (isChecked) {
                     ln_added_by.setVisibility(View.VISIBLE);
                     spinner_added_by.setVisibility(View.VISIBLE);
-                    edt_addeddate.setVisibility(View.VISIBLE);
+
                 } else {
                     ln_added_by.setVisibility(View.GONE);
                     spinner_added_by.setVisibility(View.GONE);
-                    edt_addeddate.setVisibility(View.GONE);
+                    // edt_addeddate.setVisibility(View.GONE);
                 }
             }
         });
@@ -2305,9 +2370,11 @@ public class ProspectFilterActivity extends AppCompatActivity {
                 if (isChecked) {
                     len_added_date.setVisibility(View.VISIBLE);
                     spinner_added_date.setVisibility(View.VISIBLE);
+                    //edt_addeddate.setVisibility(View.VISIBLE);
                 } else {
                     len_added_date.setVisibility(View.GONE);
                     spinner_added_date.setVisibility(View.GONE);
+                    //  edt_addeddate.setVisibility(View.GONE);
                 }
             }
         });
@@ -2341,9 +2408,11 @@ public class ProspectFilterActivity extends AppCompatActivity {
                 if (isChecked) {
                     ln_Reference.setVisibility(View.VISIBLE);
                     edt_Reference.setVisibility(View.VISIBLE);
+
                 } else {
                     ln_Reference.setVisibility(View.GONE);
                     edt_Reference.setVisibility(View.GONE);
+                    ln_Reference2.setVisibility(View.GONE);
                 }
             }
         });
@@ -2413,20 +2482,57 @@ public class ProspectFilterActivity extends AppCompatActivity {
             }
         });
 
-        edt_country.setOnTouchListener(new View.OnTouchListener() {
+     /*   edt_country.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                ((AutoCompleteTextView) v).showDropDown();
+             //   ((AutoCompleteTextView) v).showDropDown();
                 InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                 View focusedView = getCurrentFocus();
-                if(focusedView != null) {
+                if (focusedView != null) {
                     imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
                 }
-                return true;
+                return false;
+            }
+        });*/
+
+
+        edt_country.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 
-        edt_country.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        edt_state.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProspectFilterActivity.this,
+                        FilterListActivity.class);
+                isCountry = false;
+                isState = true;
+                isCity = false;
+                isTerritory = false;
+                isBusinessSegment = false;
+                isSalesFamily = false;
+                isSource = false;
+                //isSelProduct = false;
+
+                // String url = CompanyURL + WebUrlClass.api_getCountry;
+                intent.putExtra("Table_Name", db.TABLE_STATE);
+                intent.putExtra("Id", "PKStateId");
+                intent.putExtra("DispName", "StateDesc");
+                intent.putExtra("Type","State");
+                //intent.putExtra("WHClauseParameter", "");
+                //intent.putExtra("WHClauseParamVal","");
+                // intent.putExtra("APIName", url);
+                //intent.putExtra("APIParameters","");
+                //intent.putExtra("ArrayList",    "ArrayList<Country> mList = new ArrayList<>()");
+                startActivityForResult(intent, COUNTRY);
+            }
+        });
+
+
+     /*   edt_country.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (countryArrayList.size() > 0) {
@@ -2441,15 +2547,15 @@ public class ProspectFilterActivity extends AppCompatActivity {
                     }
                 }
             }
-        });
+        });*/
 
-        edt_state.setOnTouchListener(new View.OnTouchListener() {
+    /*    edt_state.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 ((AutoCompleteTextView) v).showDropDown();
                 InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                 View focusedView = getCurrentFocus();
-                if(focusedView != null) {
+                if (focusedView != null) {
                     imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
                 }
                 return true;
@@ -2471,15 +2577,15 @@ public class ProspectFilterActivity extends AppCompatActivity {
 
                 }
             }
-        });
+        });*/
 
-        eAutoCity.setOnTouchListener(new View.OnTouchListener() {
+    /*    eAutoCity.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 ((AutoCompleteTextView) v).showDropDown();
                 InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                 View focusedView = getCurrentFocus();
-                if(focusedView != null) {
+                if (focusedView != null) {
                     imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
                 }
                 return true;
@@ -2501,15 +2607,98 @@ public class ProspectFilterActivity extends AppCompatActivity {
 
                 }
             }
+        });*/
+
+        eAutoCity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProspectFilterActivity.this,
+                        FilterListActivity.class);
+                isCountry = false;
+                isState = false;
+                isCity = true;
+                isTerritory = false;
+                isBusinessSegment = false;
+                isSalesFamily = false;
+                isSource = false;
+                //isSelProduct = false;
+
+                // String url = CompanyURL + WebUrlClass.api_getCountry;
+                intent.putExtra("Table_Name", db.TABLE_CITY);
+                intent.putExtra("Id", "PKCityID");
+                intent.putExtra("DispName", "CityName");
+                intent.putExtra("Type","City");
+                //intent.putExtra("WHClauseParameter", "");
+                //intent.putExtra("WHClauseParamVal","");
+                // intent.putExtra("APIName", url);
+                //intent.putExtra("APIParameters","");
+                //intent.putExtra("ArrayList",    "ArrayList<Country> mList = new ArrayList<>()");
+                startActivityForResult(intent, COUNTRY);
+            }
         });
 
-        edt_territory.setOnTouchListener(new View.OnTouchListener() {
+        edt_territory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProspectFilterActivity.this, FilterListActivity.class);
+                isCountry = false;
+                isState = false;
+                isCity = false;
+                isTerritory = true;
+                isBusinessSegment = false;
+                isSalesFamily = false;
+                isSource = false;
+                //isSelProduct = false;
+
+                // String url = CompanyURL + WebUrlClass.api_getCountry;
+                intent.putExtra("Table_Name", db.TABLE_Teritory);
+                intent.putExtra("Id", "PKTerritoryId");
+                intent.putExtra("DispName", "TerritoryName");
+                intent.putExtra("Type","Territory");
+                //intent.putExtra("WHClauseParameter", "");
+                //intent.putExtra("WHClauseParamVal","");
+                // intent.putExtra("APIName", url);
+                //intent.putExtra("APIParameters","");
+                //intent.putExtra("ArrayList",    "ArrayList<Country> mList = new ArrayList<>()");
+                startActivityForResult(intent, COUNTRY);
+            }
+        });
+
+        spinner_added_by.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProspectFilterActivity.this, FilterListActivity.class);
+                isCountry = false;
+                isState = false;
+                isCity = false;
+                isTerritory = false;
+                isBusinessSegment = false;
+                isSalesFamily = false;
+                isSource = false;
+                isAddedBy = true;
+                //isSelProduct = false;
+
+                // String url = CompanyURL + WebUrlClass.api_getCountry;
+                intent.putExtra("Table_Name", db.TABLE_AddBy);
+                intent.putExtra("Id", "UserLoginId");
+                intent.putExtra("DispName", "UserName");
+                intent.putExtra("Type","Added By");
+                //intent.putExtra("WHClauseParameter", "");
+                //intent.putExtra("WHClauseParamVal","");
+                // intent.putExtra("APIName", url);
+                //intent.putExtra("APIParameters","");
+                //intent.putExtra("ArrayList",    "ArrayList<Country> mList = new ArrayList<>()");
+                startActivityForResult(intent, COUNTRY);
+            }
+        });
+
+    /*    edt_territory.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 ((AutoCompleteTextView) v).showDropDown();
                 InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                 View focusedView = getCurrentFocus();
-                if(focusedView != null) {
+                if (focusedView != null) {
                     imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
                 }
                 return true;
@@ -2531,15 +2720,15 @@ public class ProspectFilterActivity extends AppCompatActivity {
 
                 }
             }
-        });
+        });*/
 
-        edtsource.setOnTouchListener(new View.OnTouchListener() {
+       /* edtsource.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 ((AutoCompleteTextView) v).showDropDown();
                 InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                 View focusedView = getCurrentFocus();
-                if(focusedView != null) {
+                if (focusedView != null) {
                     imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
                 }
                 return true;
@@ -2562,15 +2751,71 @@ public class ProspectFilterActivity extends AppCompatActivity {
                 }
 
             }
+        });*/
+
+        edtsource.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProspectFilterActivity.this,
+                        FilterListActivity.class);
+                isCountry = false;
+                isState = false;
+                isCity = false;
+                isTerritory = false;
+                isBusinessSegment = false;
+                isSalesFamily = false;
+                isSource = true;
+                //isSelProduct = false;
+
+                // String url = CompanyURL + WebUrlClass.api_getCountry;
+                intent.putExtra("Table_Name", db.TABLE_Prospectsource);
+                intent.putExtra("Id", "PKSuspSourceId");
+                intent.putExtra("DispName", "SourceName");
+                intent.putExtra("Type","Source");
+                //intent.putExtra("WHClauseParameter", "");
+                //intent.putExtra("WHClauseParamVal","");
+                // intent.putExtra("APIName", url);
+                //intent.putExtra("APIParameters","");
+                //intent.putExtra("ArrayList",    "ArrayList<Country> mList = new ArrayList<>()");
+                startActivityForResult(intent, COUNTRY);
+            }
         });
 
-        edt_SalesFamily.setOnTouchListener(new View.OnTouchListener() {
+        edt_SalesFamily.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProspectFilterActivity.this,
+                        FilterListActivity.class);
+                isCountry = false;
+                isState = false;
+                isCity = false;
+                isTerritory = false;
+                isBusinessSegment = false;
+                isSalesFamily = true;
+                isSource = false;
+                //isSelProduct = false;
+
+                // String url = CompanyURL + WebUrlClass.api_getCountry;
+                intent.putExtra("Table_Name", db.TABLE_SALES_FAMILY_PRODUCT);
+                intent.putExtra("Id", "FamilyId");
+                intent.putExtra("DispName", "FamilyDesc");
+                intent.putExtra("Type","Family");
+                //intent.putExtra("WHClauseParameter", "");
+                //intent.putExtra("WHClauseParamVal","");
+                // intent.putExtra("APIName", url);
+                //intent.putExtra("APIParameters","");
+                //intent.putExtra("ArrayList",    "ArrayList<Country> mList = new ArrayList<>()");
+                startActivityForResult(intent, COUNTRY);
+            }
+        });
+
+       /* edt_SalesFamily.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 ((AutoCompleteTextView) v).showDropDown();
                 InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                 View focusedView = getCurrentFocus();
-                if(focusedView != null) {
+                if (focusedView != null) {
                     imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
                 }
                 return true;
@@ -2593,7 +2838,7 @@ public class ProspectFilterActivity extends AppCompatActivity {
                     }
                 }
             }
-        });
+        });*/
 
         edt_Reference.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -2601,7 +2846,7 @@ public class ProspectFilterActivity extends AppCompatActivity {
                 ((AutoCompleteTextView) v).showDropDown();
                 InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                 View focusedView = getCurrentFocus();
-                if(focusedView != null) {
+                if (focusedView != null) {
                     imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
                 }
                 return true;
@@ -2624,6 +2869,7 @@ public class ProspectFilterActivity extends AppCompatActivity {
                     }
 
                     if (referenceId != "") {
+                        showProgressDialog();
                         if (ut.isNet(ProspectFilterActivity.this)) {
                             new StartSession(ProspectFilterActivity.this, new CallbackInterface() {
                                 @Override
@@ -2635,12 +2881,13 @@ public class ProspectFilterActivity extends AppCompatActivity {
 
                                 @Override
                                 public void callfailMethod(String msg) {
-
+                                    dismissProgressDialog();
                                 }
                             });
                         }
                     } else {
                         ln_Reference2.setVisibility(View.GONE);
+                        dismissProgressDialog();
                     }
                 }
             }
@@ -2652,7 +2899,7 @@ public class ProspectFilterActivity extends AppCompatActivity {
                 ((AutoCompleteTextView) v).showDropDown();
                 InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                 View focusedView = getCurrentFocus();
-                if(focusedView != null) {
+                if (focusedView != null) {
                     imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
                 }
                 return true;
@@ -2678,13 +2925,13 @@ public class ProspectFilterActivity extends AppCompatActivity {
             }
         });
 
-        edt_Businesssegment.setOnTouchListener(new View.OnTouchListener() {
+        /*edt_Businesssegment.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 ((AutoCompleteTextView) v).showDropDown();
                 InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                 View focusedView = getCurrentFocus();
-                if(focusedView != null) {
+                if (focusedView != null) {
                     imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
                 }
                 return true;
@@ -2708,8 +2955,70 @@ public class ProspectFilterActivity extends AppCompatActivity {
                     }
                 }
             }
+        });*/
+
+
+        edt_Businesssegment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProspectFilterActivity.this, FilterListActivity.class);
+                isCountry = false;
+                isState = false;
+                isCity = false;
+                isTerritory = false;
+                isBusinessSegment = true;
+                isSalesFamily = false;
+                isSource = false;
+                //isSelProduct = false;
+
+                // String url = CompanyURL + WebUrlClass.api_getCountry;
+                intent.putExtra("Table_Name", db.TABLE_Business_segment);
+                intent.putExtra("Id", "PKBusiSegmentID");
+                intent.putExtra("DispName", "SegmentDescription");
+                intent.putExtra("Type","Bussiness Segment");
+                //intent.putExtra("WHClauseParameter", "");
+                //intent.putExtra("WHClauseParamVal","");
+                // intent.putExtra("APIName", url);
+                //intent.putExtra("APIParameters","");
+                //intent.putExtra("ArrayList",    "ArrayList<Country> mList = new ArrayList<>()");
+                startActivityForResult(intent, COUNTRY);
+            }
         });
 
+    }
+
+    private void getprospect() {
+        if(prospectType.equals("")){
+            if (isnet()) {
+                showProgressDialog();
+                new StartSession(ProspectFilterActivity.this, new CallbackInterface() {
+                    @Override
+                    public void callMethod() {
+                        new DownloadDefaultProspect().execute();
+                    }
+
+                    @Override
+                    public void callfailMethod(String msg) {
+                        dismissProgressDialog();
+                        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+                        SharedPreferences userpreferences = getSharedPreferences(WebUrlClass.Sharedpreference_Prospect,
+                                Context.MODE_PRIVATE);
+                        String defaultprospect = userpreferences.getString(WebUrlClass.Key_Default_Prospect, "");
+                        //      CallDefaultProspectActivity(getApplicationContext(), defaultprospect);
+                        callProspectSelection();
+                    }
+                });
+            } else {
+                // Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_LONG).show();
+                SharedPreferences userpreferences = getSharedPreferences(WebUrlClass.Sharedpreference_Prospect,
+                        Context.MODE_PRIVATE);
+                String defaultprospect = userpreferences.getString(WebUrlClass.Key_Default_Prospect, "");
+
+                callProspectSelection();
+            }
+        }else{
+            callProspectSelection();
+        }
 
     }
 
@@ -2795,6 +3104,7 @@ public class ProspectFilterActivity extends AppCompatActivity {
         }
         return salesId; //it wasn't found at all
     }
+
     private String getPosition_Reference2fromspin(ArrayList<LeadWiseBean> lst_product, String salesName1)
             throws JSONException {
         String salesId = "";
@@ -2990,7 +3300,7 @@ public class ProspectFilterActivity extends AppCompatActivity {
                     Intent intent = new Intent(ProspectFilterActivity.this, FilteredProspectListActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
-                    overridePendingTransition(R.anim.slide_right_to_left,R.anim.slide_left_to_right);
+                    overridePendingTransition(R.anim.slide_right_to_left, R.anim.slide_left_to_right);
                 }
 
                 //  overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
@@ -3137,24 +3447,25 @@ public class ProspectFilterActivity extends AppCompatActivity {
                     JSONObject jsonObject = jsonArray.getJSONObject(0);
                     String DefaultProspect = jsonObject.getString("ModuleSetupValue");
                     Log.e("" + DefaultProspect, "" + DefaultProspect);
-                    SharedPreferences userpreferences = getSharedPreferences(WebUrlClass.Sharedpreference_Prospect,
-                            Context.MODE_PRIVATE);
+                    SharedPreferences userpreferences = getSharedPreferences(WebUrlClass.Sharedpreference_Prospect, Context.MODE_PRIVATE);
+                  /*  SharedPreferences setDefaultVal = getSharedPreferences("Prospecttype",Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor1 = setDefaultVal.edit();
+                    editor1.putString("ProspectType",DefaultProspect);*/
+
                     SharedPreferences.Editor editor = userpreferences.edit();
                     editor.putString(WebUrlClass.Key_Default_Prospect, DefaultProspect);
                     editor.commit();
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    SharedPreferences userpreferences = getSharedPreferences(WebUrlClass.Sharedpreference_Prospect,
-                            Context.MODE_PRIVATE);
+                    SharedPreferences userpreferences = getSharedPreferences(WebUrlClass.Sharedpreference_Prospect, Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = userpreferences.edit();
                     editor.putString(WebUrlClass.Key_Default_Prospect, "");
                     editor.commit();
                 }
 
 
-                SharedPreferences userpreferences = getSharedPreferences(WebUrlClass.Sharedpreference_Prospect,
-                        Context.MODE_PRIVATE);
+                SharedPreferences userpreferences = getSharedPreferences(WebUrlClass.Sharedpreference_Prospect, Context.MODE_PRIVATE);
                 String defaultprospect = userpreferences.getString(WebUrlClass.Key_Default_Prospect, "");
                 //    CallDefaultProspectActivity(getApplicationContext(), defaultprospect);
                 callProspectSelection();
@@ -3424,7 +3735,7 @@ public class ProspectFilterActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         finish();
-        overridePendingTransition(R.anim.slide_right_to_left,R.anim.slide_left_to_right);
+        overridePendingTransition(R.anim.slide_right_to_left, R.anim.slide_left_to_right);
 
     }
 
@@ -3531,7 +3842,7 @@ public class ProspectFilterActivity extends AppCompatActivity {
         Intent intent = new Intent(ProspectFilterActivity.this, ProspectSelectionActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
-        overridePendingTransition(R.anim.slide_right_to_left,R.anim.slide_left_to_right);
+        overridePendingTransition(R.anim.slide_right_to_left, R.anim.slide_left_to_right);
     }
 
     public void CallDefaultProspectActivity(Context context, String defaultprospect) {
@@ -4134,6 +4445,7 @@ public class ProspectFilterActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+            dismissProgressDialog();
             if (!response.equals("error")) {
                 try {
                     leadWiseBeanArrayList.clear();
@@ -4173,6 +4485,50 @@ public class ProspectFilterActivity extends AppCompatActivity {
             }
         }
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == COUNTRY && resultCode == COUNTRY) {
+            if (isCountry == true) {
+                countryid = data.getStringExtra("ID");
+                String countryName = data.getStringExtra("Name");
+                //Toast.makeText(ProspectFilterActivity.this, countryName, Toast.LENGTH_SHORT).show();
+                edt_country.setText(countryName);
+            }else if(isState == true){
+                stateId = data.getStringExtra("ID");
+                String stateName = data.getStringExtra("Name");
+                edt_state.setText(stateName);
+            }else if(isCity == true){
+                cityId = data.getStringExtra("ID");
+                String cityName1 = data.getStringExtra("Name");
+                eAutoCity.setText(cityName1);
+            }else if(isTerritory == true){
+                territoryId = data.getStringExtra("ID");
+                String territoryName = data.getStringExtra("Name");
+                edt_territory.setText(territoryName);
+            }else if(isSource == true){
+                sourceId = data.getStringExtra("ID");
+                String sourceName = data.getStringExtra("Name");
+                edtsource.setText(sourceName);
+            }else if(isSalesFamily == true){
+                salesId = data.getStringExtra("ID");
+                saleFamilyName = data.getStringExtra("Name");
+                edt_SalesFamily.setText(saleFamilyName);
+            }else if(isBusinessSegment == true){
+                businessId = data.getStringExtra("ID");
+                String businessName = data.getStringExtra("Name");
+                edt_Businesssegment.setText(businessName);
+            }else if(isAddedBy == true){
+                Added_id = data.getStringExtra("ID");
+                String name =  data.getStringExtra("Name");
+                spinner_added_by.setText(name);
+            }
+
+        }
+    }
+
 
 }
 

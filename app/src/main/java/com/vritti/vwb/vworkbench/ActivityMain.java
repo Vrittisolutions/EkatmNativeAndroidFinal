@@ -94,6 +94,7 @@ import com.vritti.ekatm.BuildConfig;
 import com.vritti.ekatm.Constants;
 import com.vritti.ekatm.activity.ActivityLogIn;
 import com.vritti.ekatm.activity.ActivityModuleSelection;
+import com.vritti.ekatm.receiver.MyAlarmReceiver;
 import com.vritti.sessionlib.CallbackInterface;
 import com.vritti.sessionlib.StartSession;
 import com.vritti.vwb.Adapter.ActivityListMainAdapter;
@@ -233,6 +234,8 @@ public class ActivityMain extends AppCompatActivity {
         InitView();
         setListner();
 
+        MyAlarmReceiver.stopAlarm();
+
         mContext = ActivityMain.this;
         lsBirthdayList = new ArrayList<BirthdayBean>();
         lsmyworkspace = new ArrayList<MyWorkspaceBean>();
@@ -291,8 +294,21 @@ public class ActivityMain extends AppCompatActivity {
                 boolean endHasBeenReached = lastVisible + 5 >= totalItemCount;
                 if (totalItemCount > 0 && endHasBeenReached) {
                     //you have reached to the bottom of your recycler view
-                    String reQuery = "N";
-                    loadNextActivity(reQuery);
+                    String reQuery = "Y";
+                    if (activityType.equalsIgnoreCase("critical")) {
+                        loadNextActivity(reQuery);
+                    }else if(activityType.equalsIgnoreCase("Ticket")) {
+                        loadNextActivity(reQuery);
+                    }
+                    else if(activityType.equalsIgnoreCase("Today")) {
+                        loadNextActivity(reQuery);
+                    }else if(activityType.equalsIgnoreCase("Critical")) {
+                        loadNextActivity(reQuery);
+                    }else if(activityType.equalsIgnoreCase("Overdue")) {
+                        loadNextActivity(reQuery);
+                    }else {
+                        loadNextActivity(reQuery);
+                    }
                 }else {
 
                 }
@@ -605,10 +621,18 @@ public class ActivityMain extends AppCompatActivity {
         img_back=findViewById(R.id.img_back);
         img_back.setVisibility(View.GONE);
 
-        /*
+
         img_add.setVisibility(View.VISIBLE);
-        img_add.setImageDrawable(getResources().getDrawable(R.drawable.save_icon));
-*/
+        img_add.setImageDrawable(getResources().getDrawable(R.drawable.icon_filter));
+
+
+        img_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ActivityMain.this,ActivityFiliterList.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+            }
+        });
+
         txt_title.setText("Work List");
 
         img_back.setOnClickListener(new View.OnClickListener() {
@@ -971,7 +995,7 @@ public class ActivityMain extends AppCompatActivity {
                     startActivity(intent5);*/
                     AppCommon.getInstance(ActivityMain.this).setChatPostion(0);
                 } else {
-                    Toast.makeText(ActivityMain.this, "Chat module is not installed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ActivityMain.this, "Conversation module is not installed", Toast.LENGTH_SHORT).show();
                 }
                 /*Intent intent = new Intent(ActivityMain.this, MeetingActivity.class);
                 startActivity(intent);*/
@@ -2284,7 +2308,9 @@ public class ActivityMain extends AppCompatActivity {
         }
     }
 
+
     private void getTodayActivity_Paging() {
+
         lsActivityList.clear();
         String query = "SELECT * FROM " + db.TABLE_ACTIVITYMASTER_PAGING;
         Cursor cur = sql.rawQuery(query, null);
@@ -2399,8 +2425,8 @@ public class ActivityMain extends AppCompatActivity {
                 }
 
             } while (cur.moveToNext());
-            /*activityListadapter = new ActivityListMainAdapter(ActivityMain.this, lsActivityList);
-            lsactivity_list.setAdapter(activityListadapter);*/
+            //activityListadapterNew = new ActivityListMainAdapter_New(ActivityMain.this, lsActivityList);
+           // lsactivity_list.setAdapter(activityListadapterNew);
             activityListadapterNew.notifyDataSetChanged();
             filterTempList.clear();
             filterTempList.addAll(lsActivityList);
@@ -2500,14 +2526,30 @@ public class ActivityMain extends AppCompatActivity {
             }
             return true;
         } else if (id == R.id.refreshall) {
+            Activity_AssignByMe=false;
+            Activity_Unapprove=false;
             if (isnet()) {
                 showProgresHud();
-                new StartSession(ActivityMain.this, new CallbackInterface() {
+                new StartSession(context, new CallbackInterface() {
                     @Override
                     public void callMethod() {
-                        FlagiSRefresh = true;
+                        lsActivityList.clear();
+                        rowEnd = 9;
+                        rowStart = 0;
+                        reQuery = "Y";
+                        new DownloadTeamDataJSON().execute();
 
-                        getActicityData();
+                        if(cf.getOfflineDataCnt() > 0){
+
+                            Intent intent = new Intent(ActivityMain.this, ActivityOfflineData.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(intent);
+
+
+                        }else{
+                            new DownloadWorkloadActivity().execute(UserMasterId, "");
+                        }
+
                     }
 
                     @Override
@@ -2517,7 +2559,7 @@ public class ActivityMain extends AppCompatActivity {
                     }
                 });
             } else {
-                ut.displayToast(ActivityMain.this, "No Internet Connection");
+                ut.displayToast(ActivityMain.this, "No Internet connection");
             }
             return true;
         }/* else if (id == R.id.empinfo) {
@@ -2559,7 +2601,7 @@ public class ActivityMain extends AppCompatActivity {
                 startActivity(intent5);*/
                 AppCommon.getInstance(ActivityMain.this).setChatPostion(0);
             } else {
-                Toast.makeText(ActivityMain.this, "Chat module is not installed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ActivityMain.this, "Conversation module is not installed", Toast.LENGTH_SHORT).show();
             }
             return true;
         } else if (id == R.id.meeting) {
@@ -2877,7 +2919,7 @@ public class ActivityMain extends AppCompatActivity {
                 if (n.equalsIgnoreCase("0")) {
                     lay_not_acted.setVisibility(View.GONE);
                 } else {
-                    lay_not_acted.setVisibility(View.VISIBLE);
+                    lay_not_acted.setVisibility(View.GONE);
                 }
             }
 
@@ -4511,7 +4553,7 @@ public class ActivityMain extends AppCompatActivity {
                 edt_search.setVisibility(View.VISIBLE);
             }
 
-
+            Activity_AssignByMe=false;
             activityListadapterNew = new ActivityListMainAdapter_New(ActivityMain.this, lsActivityList,"fromDoc");
             RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
             lsactivity_list.setLayoutManager(mLayoutManager);
@@ -4631,7 +4673,7 @@ public class ActivityMain extends AppCompatActivity {
             super.onPostExecute(res);
 
             progress_bar.setVisibility(View.GONE);
-            if (response.equals("[]")) {
+            if (response.equals("[]")||response.equalsIgnoreCase("{\"Activity\":\"[]\n" + "\"}")) {
 
                 progress_bar.setVisibility(View.GONE);
             } else {
@@ -4649,6 +4691,13 @@ public class ActivityMain extends AppCompatActivity {
                                 getCriticalActivity_Paging();
                             }else if(activity_Type.equalsIgnoreCase("Ticket")) {
                                 getTicketActivity_Paging();
+                            }
+                            else if(activity_Type.equalsIgnoreCase("Today")) {
+                                getTodayActivity_Paging();
+                            }else if(activity_Type.equalsIgnoreCase("Critical")) {
+                                getCriticalActivity_Paging();
+                            }else if(activity_Type.equalsIgnoreCase("Overdue")) {
+                                getOverdueActivity_Paging();
                             }
                             else {
                                 // test(jResults);
@@ -5156,7 +5205,7 @@ public class ActivityMain extends AppCompatActivity {
         int a = cursor.getCount();
 
 
-      //  if (cursor.getCount() == 0) {
+        if (cursor.getCount() == 0) {
 
             if (ut.isNet(context)) {
                 new StartSession(ActivityMain.this, new CallbackInterface() {
@@ -5171,157 +5220,13 @@ public class ActivityMain extends AppCompatActivity {
                     }
                 });
             }
-       // }
+        }else {
+
+
+        }
     }
 
 
-/*
-    public void getActivityDetails(String schoolId, String type) {
-        //  showProgressDialog();
-
-        // JSONArray jsArray = new JSONArray(schoolId);
-
-        commonObjectProperties = new commonObjectProperties();
-
-        JSONObject jsoncommonObj = commonObjectProperties.WorkDataObj();
-        JSONObject jsonObj;
-        commonObgj = new CommonObject();
-
-
-        commonObgj.setActivityCode(new CommonSubObject("activityCode"));
-        commonObgj.getActivityCode().setOperator("eq");
-        commonObgj.setActDesc(new CommonSubObject("actDesc"));
-        commonObgj.getActDesc().setOperator("eq");
-        commonObgj.setIssuedTo(new CommonSubObject("issuedTo"));
-        commonObgj.getIssuedTo().setOperator("eq");
-        commonObgj.setAssignBy(new CommonSubObject("assignBy"));
-        commonObgj.getAssignBy().setOperator("eq");
-        commonObgj.setProjId(new CommonSubObject("ProjId"));
-        commonObgj.getProjId().setOperator("eq");
-        commonObgj.setMainGrpId(new CommonSubObject("MainGrpId"));
-        commonObgj.getMainGrpId().setOperator("eq");
-        commonObgj.setUnitId(new CommonSubObject("UnitId"));
-        commonObgj.getUnitId().setOperator("eq");
-
-        commonObgj.setFromDt(new CommonSubObject("FromDt"));
-        commonObgj.getFromDt().setOperator("eq");
-        commonObgj.getFromDt().setSet(false);
-        commonObgj.getFromDt().setValue1("");
-
-        commonObgj.setToDt(new CommonSubObject("ToDt"));
-        //commonObgj.getToDt().setName("ToDt");
-        commonObgj.getToDt().setOperator("eq");
-        commonObgj.getToDt().setValue1("");
-        commonObgj.getToDt().setSet(false);
-
-
-        commonObgj.setExpCompltnDt(new CommonSubObject("ExpCompltnDt"));
-        commonObgj.getExpCompltnDt().setOperator("eq");
-        commonObgj.setSourceType(new CommonSubObject("SourceType"));
-        commonObgj.getSourceType().setOperator("eq");
-        commonObgj.setSourceId(new CommonSubObject("SourceId"));
-        commonObgj.getSourceId().setOperator("eq");
-
-        commonObgj.setStatus(new CommonSubObject("Status"));
-        commonObgj.getStatus().setName("Status");
-        commonObgj.getStatus().setSet(true);
-        commonObgj.getStatus().setOperator("<>");
-        if (type.equalsIgnoreCase("PreviousView")) {
-            commonObgj.getStatus().setValue1("('15','13')");
-        } else if (type.equalsIgnoreCase("CurrentReview")) {
-            commonObgj.getStatus().setValue1("('15','12')");
-        }
-
-        commonObgj.setPriorityId(new CommonSubObject("PriorityId"));
-        commonObgj.getPriorityId().setOperator("eq");
-        commonObgj.setHoursRequired(new CommonSubObject("HoursRequired"));
-        commonObgj.getHoursRequired().setOperator("eq");
-        commonObgj.setComFromDt(new CommonSubObject("comFromDt"));
-        commonObgj.getComFromDt().setOperator("eq");
-        commonObgj.setComToDt(new CommonSubObject("comToDt"));
-        commonObgj.getComToDt().setOperator("eq");
-        commonObgj.setPerform(new CommonSubObject("perform"));
-        commonObgj.getPerform().setOperator("eq");
-        commonObgj.setIsSystemGenerated(new CommonSubObject("IsSystemGenerated"));
-        commonObgj.getIsSystemGenerated().setOperator("eq");
-        commonObgj.setIsUnplanned(new CommonSubObject("IsUnplanned"));
-        commonObgj.getIsUnplanned().setOperator("eq");
-        commonObgj.setAwait(new CommonSubObject("Await"));
-        commonObgj.getAwait().setOperator("eq");
-        commonObgj.setPriorityIndex(new CommonSubObject("PriorityIndex"));
-        commonObgj.getPriorityIndex().setOperator("eq");
-
-
-        commonObgj.setParentActId(new CommonSubObject("ParentActId"));
-        commonObgj.getParentActId().setName("ParentActId");
-        commonObgj.getParentActId().setSet(true);
-        commonObgj.getParentActId().setValue1("");//"["wsc
-        commonObgj.getParentActId().setOperator("eq");
-
-        commonObgj.setModifiedDt(new CommonSubObject("ModifiedDt"));
-        commonObgj.getModifiedDt().setOperator("eq");
-
-        commonObgj.setYear(new CommonSubObject("year"));
-        commonObgj.getYear().setSet(false);
-        commonObgj.getYear().setValue1("");
-        commonObgj.getYear().setOperator("eq");
-
-
-        commonObgj.setFormId(new CommonSubObject("FormId"));
-        commonObgj.getFormId().setSet(false);
-        commonObgj.getFormId().setValue1("");
-        commonObgj.getFormId().setOperator("eq");
-
-
-        commonObgj.setDocumentType(new CommonSubObject("DocumentType"));
-        commonObgj.getDocumentType().setSet(true);
-        commonObgj.getDocumentType().setValue1(type);
-        commonObgj.getDocumentType().setOperator("eq");
-
-
-        commonObgj.setSchholId(new CommonSubObject("SchholId"));
-        commonObgj.getSchholId().setValue1(schoolId);
-        commonObgj.getSchholId().setSet(true);
-        commonObgj.getSchholId().setOperator("eq");
-
-
-        commonObgj.setDatasheetStatus(new CommonSubObject("DatasheetStatus"));
-        commonObgj.getDatasheetStatus().setSet(true);
-        String es = "=";
-        if (type.equalsIgnoreCase("PreviousView")) {
-            commonObgj.getDatasheetStatus().setValue1("30");
-            commonObgj.getDatasheetStatus().setOperator(es);
-        } else if (type.equalsIgnoreCase("CurrentReview")) {
-            commonObgj.getDatasheetStatus().setValue1("('20','21','11')");
-            commonObgj.getDatasheetStatus().setOperator("bet");
-        }
-
-
-        try {
-            FinalObj = new JSONObject(new Gson().toJson(commonObgj)).toString();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        if (ut.isNet(context)) {
-            new StartSession(ActivityMain.this, new CallbackInterface() {
-                @Override
-                public void callMethod() {
-                    new DownloadCommanDataURLJSON().execute();
-                }
-
-                @Override
-                public void callfailMethod(String msg) {
-                    Toast.makeText(ActivityMain.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
-                }
-            });
-
-        } else {
-            Toast.makeText(ActivityMain.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
-        }
-
-
-    }
-*/
 
 
 

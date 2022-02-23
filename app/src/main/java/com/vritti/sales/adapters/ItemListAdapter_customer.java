@@ -35,6 +35,7 @@ public class ItemListAdapter_customer extends BaseAdapter implements Filterable 
     private ArrayList<AllCatSubcatItems> arrayList;
     ArrayList<AllCatSubcatItems> arrayList1;
     private ArrayList<AllCatSubcatItems> arrayListFiltered;
+    private ArrayList<AllCatSubcatItems> arrayListFiltered_temp;
     private Context[] parent;
     private LayoutInflater mInflater;
     private ViewHolder holder = null;
@@ -59,6 +60,7 @@ public class ItemListAdapter_customer extends BaseAdapter implements Filterable 
         this.arrayList = list;
         mInflater = LayoutInflater.from(context);
         this.arrayListFiltered= list;
+        this.arrayListFiltered_temp = list;
         this.arrayList1=new ArrayList<>();
         this.arrayList1.addAll(list);
     }
@@ -301,13 +303,13 @@ public class ItemListAdapter_customer extends BaseAdapter implements Filterable 
 
     public ArrayList<AllCatSubcatItems> getAllCatSubcatItemsList() {
         ArrayList<AllCatSubcatItems> list = new ArrayList<>();
-        for (int i = 0; i < arrayList.size(); i++) {
+        for (int i = 0; i < arrayList1.size(); i++) {
             /*//if (arrayList.get(i).getIsChecked())
             list.add(arrayList.get(i));*/
-            boolean a1 = (arrayList.get(i).getEdtQty() != 0);
+            boolean a1 = (arrayList1.get(i).getEdtQty() != 0);
 
-                if(arrayList.get(i).getEdtQty() != 0){
-                    list.add(arrayList.get(i));
+                if(arrayList1.get(i).getEdtQty() != 0){
+                    list.add(arrayList1.get(i));
                    // Toast.makeText(context,arrayList.get(i).getItemName()+" added to Ordered list",Toast.LENGTH_SHORT).show();
                 }else{
 
@@ -323,18 +325,22 @@ public class ItemListAdapter_customer extends BaseAdapter implements Filterable 
 
     public ArrayList<AllCatSubcatItems> filter(String charText) {
         charText = charText.toLowerCase(Locale.getDefault());
-        arrayListFiltered.clear();
+
+        arrayListFiltered_temp.clear();
+       // arrayListFiltered.clear();
         if (charText.length() == 0) {
-            arrayListFiltered.addAll(arrayList1);
+            //arrayListFiltered.addAll(arrayList1);
+            arrayListFiltered_temp.addAll(arrayList1);
         } else {
             for (AllCatSubcatItems wp : arrayList1) {
                 if (wp.getItemName().toLowerCase(Locale.getDefault()).contains(charText)) {
-                    arrayListFiltered.add(wp);
+                    arrayListFiltered_temp.add(wp);
+                   // arrayListFiltered.add(wp);
                 }
             }
         }
         notifyDataSetChanged();
-        return arrayListFiltered;
+        return arrayListFiltered_temp;
     }
 
     @Override

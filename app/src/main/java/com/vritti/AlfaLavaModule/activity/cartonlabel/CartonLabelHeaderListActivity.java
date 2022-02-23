@@ -1,6 +1,7 @@
 package com.vritti.AlfaLavaModule.activity.cartonlabel;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.content.Intent;
@@ -26,11 +27,13 @@ import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,11 +47,14 @@ import com.vritti.AlfaLavaModule.activity.DOPackingScanDetails;
 import com.vritti.AlfaLavaModule.activity.picking.ItemWisePickListDetailActivity;
 import com.vritti.AlfaLavaModule.activity.unpacking.CartonHeaderListActivity;
 import com.vritti.AlfaLavaModule.activity.unpacking.UnPackingCartonDetailActivity;
+import com.vritti.AlfaLavaModule.adapter.Adapter_PrinterName;
 import com.vritti.AlfaLavaModule.adapter.Adp_CartonListData;
 import com.vritti.AlfaLavaModule.bean.CartonData;
+import com.vritti.AlfaLavaModule.bean.PrinterName;
 import com.vritti.databaselib.data.DatabaseHandlers;
 import com.vritti.databaselib.other.Utility;
 import com.vritti.databaselib.other.WebUrlClass;
+import com.vritti.ekatm.Constants;
 import com.vritti.ekatm.R;
 import com.vritti.inventory.physicalInventory.bean.BluetoothClass;
 import com.vritti.inventory.physicalInventory.bean.Utils_print;
@@ -61,6 +67,8 @@ import com.zj.btsdk.BluetoothService;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
@@ -87,6 +95,10 @@ public class CartonLabelHeaderListActivity extends AppCompatActivity {
     BluetoothService mService = null;
     BluetoothDevice con_dev = null;
     private boolean deviceConnected = false;
+    ArrayList<PrinterName>printerNameArrayList;
+    private String printerName;
+    private Adapter_PrinterName adapterPrinterName;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -129,6 +141,8 @@ public class CartonLabelHeaderListActivity extends AppCompatActivity {
         adapter=new Adp_CartonLabelListData(cartonDataArrayList);
         recycler.setAdapter(adapter);
 
+
+        printerNameArrayList=new ArrayList<>();
         len_search.setVisibility(View.GONE);
 
         PackOrderNo=getIntent().getStringExtra("CODE");
@@ -190,10 +204,35 @@ public class CartonLabelHeaderListActivity extends AppCompatActivity {
 
     public void setdonumber(String DONumber,String Pack_OrdHdrId ) {
 
+        CartanCode=DONumber;
      //  Packetdeletedialog(DONumber,Pack_OrdHdrId);
 
        String packorderno=getIntent().getStringExtra("CODE");
-       printlabel(DONumber,packorderno);
+
+        if (Constants.type == Constants.Type.Alfa) {
+            if (isnet()) {
+                progress.setVisibility(View.VISIBLE);
+                new StartSession(CartonLabelHeaderListActivity.this, new CallbackInterface() {
+                    @Override
+                    public void callMethod() {
+                        new DownloadPrinterData().execute();
+                    }
+
+                    @Override
+                    public void callfailMethod(String msg) {
+
+                    }
+
+
+                });
+
+            } else {
+                Toast.makeText(CartonLabelHeaderListActivity.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+            }        }
+        else {
+
+            printlabel(DONumber, packorderno);
+      }
 
     }
 
@@ -589,5 +628,202 @@ public class CartonLabelHeaderListActivity extends AppCompatActivity {
         b = dialogBuilder.create();
         b.show();
     }
+
+    class DownloadPrinterData extends AsyncTask<String, Void, String> {
+        Object res;
+        String response;
+        ProgressDialog progressDialog;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            //showProgressDialog();
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            String url = CompanyURL + WebUrlClass.api_GetPrinterName;
+
+            try {
+                res = ut.OpenConnection(url, CartonLabelHeaderListActivity.this);
+                if (res != null) {
+                    response = res.toString();
+                    response = res.toString().replaceAll("\\\\", "");
+                    response = response.replaceAll("\\\\\\\\/", "");
+                    response = response.substring(1, response.length() - 1);
+
+                    printerNameArrayList.clear();
+                    JSONArray jResults = new JSONArray(response);
+
+                    for (int i = 0; i < jResults.length(); i++) {
+                        PrinterName userList = new PrinterName();
+                        JSONObject jorder = jResults.getJSONObject(i);
+                        userList.setPrinterName(jorder.getString("PrinterName"));
+                        printerNameArrayList.add(userList);
+
+
+                    }
+
+
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String integer) {
+            super.onPostExecute(integer);
+
+
+            progress.setVisibility(View.GONE);
+
+            if (response.contains("[]")) {
+
+                Toast.makeText(CartonLabelHeaderListActivity.this, "Printer not found", Toast.LENGTH_SHORT).show();
+            } if (response.equals("")) {
+                printerName="";
+                //   Toast.makeText(ItemWisePickListDetailActivity.this, "Printer not found", Toast.LENGTH_SHORT).show();
+
+                if (isnet()) {
+                    progress.setVisibility(View.VISIBLE);
+                    new StartSession(CartonLabelHeaderListActivity.this, new CallbackInterface() {
+                        @Override
+                        public void callMethod() {
+                            new UpLoadSplitData().execute();
+                        }
+
+                        @Override
+                        public void callfailMethod(String msg) {
+                            new UpLoadSplitData().execute();
+
+                        }
+
+
+                    });
+
+                } else {
+                    Toast.makeText(CartonLabelHeaderListActivity.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+
+                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(CartonLabelHeaderListActivity.this);
+                LayoutInflater inflater = CartonLabelHeaderListActivity.this.getLayoutInflater();
+                final View myView = inflater.inflate(R.layout.printername_lay, null);
+                dialogBuilder.setView(myView);
+                Spinner printername = (Spinner) myView .findViewById(R.id.spinner_printer);
+
+                adapterPrinterName = new Adapter_PrinterName(CartonLabelHeaderListActivity.this, printerNameArrayList);
+                printername.setAdapter(adapterPrinterName);
+                printername.setSelection(0,false);
+
+
+                printername.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+
+                        printerName=printerNameArrayList.get(position).getPrinterName();
+
+
+                        if (isnet()) {
+                            b.dismiss();
+                            progress.setVisibility(View.VISIBLE);
+                            new StartSession(CartonLabelHeaderListActivity.this, new CallbackInterface() {
+                                @Override
+                                public void callMethod() {
+                                    new UpLoadSplitData().execute();
+                                }
+
+                                @Override
+                                public void callfailMethod(String msg) {
+                                    new UpLoadSplitData().execute();
+
+                                }
+
+
+                            });
+
+                        } else {
+                            Toast.makeText(CartonLabelHeaderListActivity.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                        }
+
+
+
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+
+                b = dialogBuilder.create();
+                b.show();
+
+            }
+
+
+        }
+    }
+
+    private class UpLoadSplitData extends AsyncTask<String, String, String> {
+        Object res;
+        String response, data;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            String url = null;
+            try {
+                url = CompanyURL + WebUrlClass.api_Get_Carton_Packet_For_QR+"?CartonNo="+CartanCode+"&PackOrderNo="+PackOrderNo+"&PrinterName="+ URLEncoder.encode(printerName,"UTF-8");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+            try {
+                res = ut.OpenConnection(url, CartonLabelHeaderListActivity.this);
+                response = res.toString().replaceAll("\\\\", "");
+
+            } catch (Exception e) {
+                response = "Error";
+            }
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            progress.setVisibility(View.GONE);
+            if (s.equalsIgnoreCase("ok")) {
+                onResume();
+                Toast.makeText(CartonLabelHeaderListActivity.this, "Label Printed Successfully", Toast.LENGTH_LONG).show();
+                //b.dismiss();
+            } else {
+                //    Toast.makeText(ItemWisePickListDetailActivity.this, "Packet split Successfully", Toast.LENGTH_LONG).show();
+
+                Toast toast = Toast.makeText(CartonLabelHeaderListActivity.this, "Label Printed Successfully", Toast.LENGTH_LONG);
+                View toastView = toast.getView();
+                TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                toastMessage.setTextSize(18);
+                toastMessage.setTextColor(Color.GREEN);
+                toastMessage.setGravity(Gravity.CENTER);
+                toastView.setBackgroundColor(Color.WHITE);
+                toast.show();
+
+
+
+                //   onResume();
+                // b.dismiss();
+            }
+        }
+    }
+
 
 }

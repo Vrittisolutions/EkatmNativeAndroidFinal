@@ -28,7 +28,7 @@ public class CRMDayEndReportAdapter extends RecyclerView.Adapter<CRMDayEndReport
 
     Context context;
     ArrayList<CRMDayEndReportDetailsBean> crmDayEndReportDetailsBeanArrayList;
-    String prospectName = "-", person = "-", followupType = "-", outCome = "-", reason = "-", time = "-", duration = "-",
+    String prospectName = "-", person = "-", followupType = "-", outCome = "-", reason = "-", time = "-", duration = "-",notes="",
             callPurposeDesc = "-", historyNotes = "-", details1 = "";
     int initiatedBy;
     StringBuilder fullString1 = new StringBuilder();
@@ -60,6 +60,16 @@ public class CRMDayEndReportAdapter extends RecyclerView.Adapter<CRMDayEndReport
         outCome = crmDayEndReportDetailsBeanArrayList.get(position).getOutcome().trim();
         reason = crmDayEndReportDetailsBeanArrayList.get(position).getReasonDescription().trim();
         time = crmDayEndReportDetailsBeanArrayList.get(position).getSchTime().trim();
+        notes = crmDayEndReportDetailsBeanArrayList.get(position).getHistorynotes().trim();
+
+       /* if (notes.equals(null) || notes.equals("null") || notes.equals("")) {
+           holder.txt_historyNotes.setVisibility(View.GONE);
+        }else {
+            holder.txt_historyNotes.setVisibility(View.VISIBLE);
+            holder.txt_historyNotes.setText(notes);
+
+
+        }*/
         try{
             String[] split1;
             String[] splitTime = new String[0];
@@ -179,11 +189,18 @@ Client busy*/
         }
 
 
-        if (reason.equals("")) {
-            details1 = "Outcome was " + outCome + reasonappend + "\n";
+        if (reason.equals("-")) {
+            if (notes.equalsIgnoreCase("null")||notes.equalsIgnoreCase("")||notes==null){
+                details1 = "Outcome was " + outCome + reasonappend + "\n";
+            }else {
+                details1 = "Outcome was " + outCome + reasonappend + "\n" + "Notes: " + notes;
+            }
         } else {
-            details1 = "Outcome was " + outCome + reasonappend + "\n";
-
+            if (notes.equalsIgnoreCase("null")||notes.equalsIgnoreCase("")||notes==null){
+                details1 = "Outcome was " + outCome + reasonappend + "\n";
+            }else {
+                details1 = "Outcome was " + outCome + reasonappend + "\n" + "Notes: " + notes;
+            }
         }
         holder.txt_reason.setText(details1);
 
@@ -295,6 +312,7 @@ Client busy*/
             //txt_historyNotes = itemView.findViewById(R.id.txt_historyNote);
             img_followuptype = itemView.findViewById(R.id.img_followuptype);
             txt_time = itemView.findViewById(R.id.txt_time);
+          //  txt_historyNotes = itemView.findViewById(R.id.txt_notes);
             img_initiatedBy = itemView.findViewById(R.id.img_initiatedBy);
             ln_contactperson = itemView.findViewById(R.id.ln_contactperson);
         }

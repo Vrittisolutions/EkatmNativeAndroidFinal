@@ -113,9 +113,8 @@ public class AttendanceDisplayActivity extends AppCompatActivity {
             }
         });
 
-
         Calendar aCalendar = Calendar.getInstance();
-        aCalendar.add(Calendar.DATE, -30);
+        aCalendar.set(Calendar.DATE, 1);
         Date firstDateOfCurrentMonth = aCalendar.getTime();
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
@@ -315,9 +314,9 @@ public class AttendanceDisplayActivity extends AppCompatActivity {
                                 attendance.setBioInTime(jsonObject.getString("BioInTime"));
                                 attendance.setBioDiff(jsonObject.getString("BioDiff"));
                                 attendance.setBioOutTime(jsonObject.getString("BioOutTime"));
-                                attendance.setWorkHours(jsonObject.getString("WorkHours"));
+                                attendance.setWorkHours(jsonObject.getString("StartTime"));
                                 attendance.setEndTime(jsonObject.getString("EndTime"));
-                                attendance.setMainDiff(jsonObject.getString("MainDiff"));
+                                attendance.setMainDiff(jsonObject.getString("WorkHours"));
                                 attendance.setLeaveType(jsonObject.getString("LeaveType"));
                                 attendance.setAttendanceCode(jsonObject.getString("AttendanceCode"));
                                 attendance.setRemarks(jsonObject.getString("Remarks"));

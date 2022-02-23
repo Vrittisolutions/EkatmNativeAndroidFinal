@@ -233,7 +233,7 @@ public class AddDatasheetActivityMain extends AppCompatActivity implements Locat
 
                 @Override
                 public void callfailMethod(String msg) {
-                    ut.displayToast(getApplicationContext(), msg);
+                    ut.displayToast(AddDatasheetActivityMain.this, msg);
 
                 }
             });
@@ -252,7 +252,7 @@ public class AddDatasheetActivityMain extends AppCompatActivity implements Locat
 
                 @Override
                 public void callfailMethod(String msg) {
-                    ut.displayToast(getApplicationContext(), msg);
+                    ut.displayToast(AddDatasheetActivityMain.this, msg);
                 }
             });
         } else {
@@ -704,8 +704,8 @@ getCurrentLocationNew();
     private void openDocument(String attachment) {
         Intent intent = new Intent(Intent.ACTION_VIEW);
         File file = new File(attachment);
-        String extension = android.webkit.MimeTypeMap.getFileExtensionFromUrl(Uri.fromFile(file).toString());
-        String mimetype = android.webkit.MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension);
+        String extension = MimeTypeMap.getFileExtensionFromUrl(Uri.fromFile(file).toString());
+        String mimetype = MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension);
         if (extension.equalsIgnoreCase("") || mimetype == null) {
             // if there is no extension or there is no definite mimetype, still try to open the file
             intent.setDataAndType(Uri.fromFile(file), "text/*");
@@ -915,7 +915,7 @@ getCurrentLocationNew();
 
             try {
                 String url = CompanyURL + WebUrlClass.api_change_activity_status_Sahara + "?Status=" + status + "&ActivityId=" + ActivityId;
-                res = ut.OpenConnection(url, getApplicationContext());
+                res = ut.OpenConnection(url, AddDatasheetActivityMain.this);
                 if (res != null) {
                   /*  res = res.substring(1, res.length() - 1);
                     res = res.replaceAll("\\\\", "");*/
@@ -962,7 +962,7 @@ getCurrentLocationNew();
 
             try {
                 String url = CompanyURL + WebUrlClass.api_change_activity_status_Sahara + "?Status=" + headerId;
-                res = ut.OpenConnection(url, getApplicationContext());
+                res = ut.OpenConnection(url, AddDatasheetActivityMain.this);
                 if (res != null) {
                   *//*  res = res.substring(1, res.length() - 1);
                     res = res.replaceAll("\\\\", "");*//*
@@ -1027,7 +1027,7 @@ getCurrentLocationNew();
 
             try {
                 String url = CompanyURL + WebUrlClass.api_HierarchyCount_Sahara + "?HeaderId=" + headerId;
-                res = ut.OpenConnection(url, getApplicationContext());
+                res = ut.OpenConnection(url, AddDatasheetActivityMain.this);
                 if (res != null) {
                   /*  res = res.substring(1, res.length() - 1);
                     res = res.replaceAll("\\\\", "");*/
@@ -1108,7 +1108,7 @@ getCurrentLocationNew();
 
             try {
                 String url = CompanyURL + WebUrlClass.api_getReportingTo_sahara;
-                res = ut.OpenConnection(url, getApplicationContext());
+                res = ut.OpenConnection(url, AddDatasheetActivityMain.this);
                 if (res != null) {
                     res = res.substring(1, res.length() - 1);
                     res = res.replaceAll("\\\\", "");
@@ -1272,7 +1272,7 @@ getCurrentLocationNew();
             url = CompanyURL + WebUrlClass.api_GetUserList + "?UserName=" + "";
 
             try {
-                res = ut.OpenConnection(url, getApplicationContext());
+                res = ut.OpenConnection(url, AddDatasheetActivityMain.this);
                 if (res != null) {
                     response = res.toString().replaceAll("\\\\", "");
                     response = response.replaceAll("\\\\\\\\/", "");
@@ -1358,7 +1358,7 @@ getCurrentLocationNew();
 
             try {
                 String url = CompanyURL + WebUrlClass.api_saveApproval_Reassign + "?ActivityId=" + ActivityId;
-                res = ut.OpenConnection(url, getApplicationContext());
+                res = ut.OpenConnection(url, AddDatasheetActivityMain.this);
                 if (res != null) {
                     res = res.substring(1, res.length() - 1);
                     res = res.replaceAll("\\\\", "");
@@ -1521,7 +1521,7 @@ getCurrentLocationNew();
 
                         @Override
                         public void callfailMethod(String msg) {
-                            ut.displayToast(getApplicationContext(), msg);
+                            ut.displayToast(AddDatasheetActivityMain.this, msg);
 
                         }
                     });
@@ -1564,7 +1564,7 @@ getCurrentLocationNew();
             String finalApprObj = params[0];
             String url = CompanyURL + WebUrlClass.api_reassignActivity;
             try {
-                res = ut.OpenPostConnection(url, finalApprObj, getApplicationContext());
+                res = ut.OpenPostConnection(url, finalApprObj, AddDatasheetActivityMain.this);
                 response = res.toString().replaceAll("\\\\", "");
                 response = response.replaceAll("\\\\\\\\/", "");
                 response = response.substring(1, response.length() - 1);
@@ -1594,7 +1594,7 @@ getCurrentLocationNew();
                         new String[]{Activityid});
                 String msg = "Datasheet Saved Sucessfully and Send To  " + reassignToName;
                 Toast.makeText(AddDatasheetActivityMain.this, msg, Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(AddDatasheetActivityMain.this, com.vritti.vwb.vworkbench.ActivityMain.class);
+                Intent intent = new Intent(AddDatasheetActivityMain.this, ActivityMain.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 finish();
@@ -2073,7 +2073,7 @@ getCurrentLocationNew();
             try {
                 FinalObj = DatasheetFinalobj.toString();
                 FinalObj = FinalObj.replaceAll("\\\\", "");
-                respond = ut.OpenPostConnection(url, FinalObj, getApplicationContext());
+                respond = ut.OpenPostConnection(url, FinalObj, AddDatasheetActivityMain.this);
                 res = respond.toString();
                 res = res.replaceAll("\"", "");
 
@@ -2114,7 +2114,7 @@ getCurrentLocationNew();
                 //  url = CompanyURL + WebUrlClass.api_Datasheet_GetData + "?FormId=" + URLEncoder.encode(FormId, "UTF-8");
                 // }
 
-                res = ut.OpenConnection(url, getApplicationContext());
+                res = ut.OpenConnection(url, AddDatasheetActivityMain.this);
                 res = res.toString().replaceAll("\\\\", "");
                 res = res.substring(1, res.length() - 1);
                 Log.i("responseData::", res);
@@ -2174,19 +2174,19 @@ getCurrentLocationNew();
 
     private void CreateOfflinedatasheetfill(final String url, final String parameter,
                                             final int method, final String remark, final String op) {
-        //final DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+        //final DatabaseHandler db = new DatabaseHandler(AddDatasheetActivityMain.this);
         long a = cf.addofflinedata(url, parameter, method, remark, op);
         if (a != -1) {
             SQLiteDatabase sql1 = db.getWritableDatabase();
-           /* sql1.delete(db.TABLE_ACTIVITYMASTER, "ActivityId=?",
-                    new String[]{ActivityId});*/
+            sql1.delete(db.TABLE_ACTIVITYMASTER_PAGING, "ActivityId=?",
+                    new String[]{ActivityId});
             Toast.makeText(AddDatasheetActivityMain.this, "Datasheet save successfully", Toast.LENGTH_LONG).show();
             //  dismissProgressDialog();
-            Intent intent1 = new Intent(getApplicationContext(), SendOfflineData.class);
+            Intent intent1 = new Intent(AddDatasheetActivityMain.this, SendOfflineData.class);
             startService(intent1);
             onBackPressed();
         } else {
-            Toast.makeText(getApplicationContext(), "Data not Saved ", Toast.LENGTH_LONG).show();
+            Toast.makeText(AddDatasheetActivityMain.this, "Data not Saved ", Toast.LENGTH_LONG).show();
 
 
         }
@@ -2196,7 +2196,7 @@ getCurrentLocationNew();
 
     private void CreateOfflinedatasheetfill_Appr(final String url, final String parameter,
                                                  final int method, final String remark, final String op) {
-        //final DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+        //final DatabaseHandler db = new DatabaseHandler(AddDatasheetActivityMain.this);
         long a = cf.addofflinedata(url, parameter, method, remark, op);
         if (a != -1) {
             SQLiteDatabase sql1 = db.getWritableDatabase();
@@ -2204,11 +2204,12 @@ getCurrentLocationNew();
                     new String[]{ActivityId});
             Toast.makeText(AddDatasheetActivityMain.this, "Datasheet save successfully", Toast.LENGTH_LONG).show();
             //  dismissProgressDialog();
-            Intent intent1 = new Intent(getApplicationContext(), SendOfflineData.class);
+            Intent intent1 = new Intent(AddDatasheetActivityMain.this, SendOfflineData.class);
             startService(intent1);
+            onBackPressed();
 
         } else {
-            Toast.makeText(getApplicationContext(), "Data not Saved ", Toast.LENGTH_LONG).show();
+            Toast.makeText(AddDatasheetActivityMain.this, "Data not Saved ", Toast.LENGTH_LONG).show();
 
 
         }
@@ -2339,7 +2340,7 @@ getCurrentLocationNew();
 
     private void GetCurrentLocation(double lat, double lon) {
         try {
-            Geocoder geocoder = new Geocoder(getApplicationContext(),
+            Geocoder geocoder = new Geocoder(AddDatasheetActivityMain.this,
                     Locale.getDefault());
 
             List<Address> addressList = geocoder.getFromLocation(lat,
@@ -2387,7 +2388,7 @@ getCurrentLocationNew();
                         public void run() {
                             try {
                                 String url = "https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyD3ONS8gu5RY-Db5shmfI1Fc4NyygBGHSk&latlng=" + latitude + "," + longitude + "&sensor=true";
-                                Object res = ut.OpenConnection(url, getApplicationContext());
+                                Object res = ut.OpenConnection(url, AddDatasheetActivityMain.this);
                                 if (res == null) {
 
                                 } else {
@@ -2431,7 +2432,7 @@ getCurrentLocationNew();
 
 
             } else {
-                ut.displayToast(getApplicationContext(), "No Internet Connection");
+                ut.displayToast(AddDatasheetActivityMain.this, "No Internet Connection");
             }
             LocationName = result;
           //  txtMyLocation.setText(result);
@@ -2447,7 +2448,7 @@ getCurrentLocationNew();
     }
 
     private boolean isGooglePlayServicesAvailable() {
-        int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());
+        int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(AddDatasheetActivityMain.this);
 
         if (status == ConnectionResult.SUCCESS) {
             return true;

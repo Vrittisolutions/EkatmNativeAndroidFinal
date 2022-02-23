@@ -2,7 +2,6 @@ package com.vritti.AlfaLavaModule.activity.AlfaShipment;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
@@ -27,11 +26,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.vritti.AlfaLavaModule.activity.DOPackingScanDetails;
-import com.vritti.AlfaLavaModule.activity.ReceiptPackagingDOListActivity;
-import com.vritti.AlfaLavaModule.adapter.Adp_PickOrderNo;
 import com.vritti.AlfaLavaModule.bean.PicklistNO;
-import com.vritti.AlfaLavaModule.utility.ProgressHUD;
 import com.vritti.databaselib.data.DatabaseHandlers;
 import com.vritti.databaselib.other.Utility;
 import com.vritti.databaselib.other.WebUrlClass;
@@ -65,6 +60,7 @@ public class DOShipmentListActivity extends AppCompatActivity {
     private String PackOrdHdrId = "";
     private String PackOrderNo = "";
     private AlertDialog alertDialog;
+    SharedPreferences.Editor editor;
 
 
     @Override
@@ -81,6 +77,7 @@ public class DOShipmentListActivity extends AppCompatActivity {
         }
 
         userpreferences = getSharedPreferences(WebUrlClass.USERINFO, Context.MODE_PRIVATE);
+        editor= userpreferences.edit();
         ut = new Utility();
         cf = new CommonFunction(DOShipmentListActivity.this);
         String settingKey = ut.getSharedPreference_SettingKey(DOShipmentListActivity.this);
@@ -465,7 +462,12 @@ public class DOShipmentListActivity extends AppCompatActivity {
             String s = resp;
 
             if (s.contains("Success")) {
-
+                editor.remove(WebUrlClass.MyPREFERENCES_HEADER);
+                editor.remove(WebUrlClass.MyPREFERENCES_CODE);
+                editor.remove("OrdNo");
+                editor.remove("OrdNo");
+                editor.commit();
+               //cf.DeleteAllRecord(db.TABLE_SECONDARY_BOX);
                 Toast toast = Toast.makeText(DOShipmentListActivity.this, "Shipment created Successfully", Toast.LENGTH_LONG);
                 View toastView = toast.getView();
                 TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);

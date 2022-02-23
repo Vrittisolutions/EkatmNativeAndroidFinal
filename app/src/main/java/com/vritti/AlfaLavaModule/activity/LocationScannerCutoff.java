@@ -10,11 +10,13 @@ import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.speech.tts.TextToSpeech;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -29,6 +31,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import com.pixplicity.htmlcompat.HtmlCompat;
 import com.vritti.AlfaLavaModule.PI.LocationScanner;
 import com.vritti.AlfaLavaModule.bean.PutAwayDetail;
 import com.vritti.AlfaLavaModule.utility.ProgressHUD;
@@ -172,17 +175,23 @@ public class LocationScannerCutoff extends AppCompatActivity {
                     integrator.setBarcodeImageEnabled(false);
                     integrator.initiateScan();
                 }else {
-                    Toast toast = Toast.makeText(LocationScannerCutoff.this, "Please enter LOT", Toast.LENGTH_LONG);
-                    View toastView = toast.getView();
-                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-                    toastMessage.setTextSize(18);
-                    toastMessage.setTextColor(Color.RED);
-                    toastMessage.setGravity(Gravity.CENTER);
-                    toastMessage.setCompoundDrawablePadding(5);
-                    toastView.setBackgroundColor(Color.TRANSPARENT);
-                    toast.show();
-                    final MediaPlayer mp = MediaPlayer.create(LocationScannerCutoff.this, R.raw.alert);
-                    mp.start();
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                        Toast toast = Toast.makeText(LocationScannerCutoff.this, "Please enter LOT", Toast.LENGTH_LONG);
+                        View toastView = toast.getView();
+                        TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                        toastMessage.setTextSize(18);
+                        toastMessage.setTextColor(Color.RED);
+                        toastMessage.setGravity(Gravity.CENTER);
+                        toastMessage.setCompoundDrawablePadding(5);
+                        toastView.setBackgroundColor(Color.TRANSPARENT);
+                        toast.show();
+                        final MediaPlayer mp = MediaPlayer.create(LocationScannerCutoff.this, R.raw.alert);
+                        mp.start();
+                    }else {
+                        Toast toast = Toast.makeText(LocationScannerCutoff.this, Html.fromHtml("<font color='#EF4F4F' ><b>"+"Please enter LOT"+"</b></font>"), Toast.LENGTH_LONG);
+                        toast.setGravity(Gravity.CENTER, 0, 0);
+                        toast.show();
+                    }
                 }
             }
         });
@@ -231,17 +240,24 @@ public class LocationScannerCutoff extends AppCompatActivity {
                             .putExtra("fifo", FIFODate).
                                     setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                 }else {
-                    Toast toast = Toast.makeText(LocationScannerCutoff.this, "Please fill all fields", Toast.LENGTH_LONG);
-                    View toastView = toast.getView();
-                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-                    toastMessage.setTextSize(18);
-                    toastMessage.setTextColor(Color.RED);
-                    toastMessage.setGravity(Gravity.CENTER);
-                    toastMessage.setCompoundDrawablePadding(5);
-                    toastView.setBackgroundColor(Color.TRANSPARENT);
-                    toast.show();
-                    final MediaPlayer mp = MediaPlayer.create(LocationScannerCutoff.this, R.raw.alert);
-                    mp.start();
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                        Toast toast = Toast.makeText(LocationScannerCutoff.this, "Please fill all fields", Toast.LENGTH_LONG);
+                        View toastView = toast.getView();
+                        TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                        toastMessage.setTextSize(18);
+                        toastMessage.setTextColor(Color.RED);
+                        toastMessage.setGravity(Gravity.CENTER);
+                        toastMessage.setCompoundDrawablePadding(5);
+                        toastView.setBackgroundColor(Color.TRANSPARENT);
+                        toast.show();
+                        final MediaPlayer mp = MediaPlayer.create(LocationScannerCutoff.this, R.raw.alert);
+                        mp.start();
+                    }
+                    else {
+                        Toast toast = Toast.makeText(LocationScannerCutoff.this, Html.fromHtml("<font color='#EF4F4F' ><b>"+"Please fill all fields"+"</b></font>"), Toast.LENGTH_LONG);
+                        toast.setGravity(Gravity.CENTER, 0, 0);
+                        toast.show();
+                    }
                 }
             }
         });
@@ -293,19 +309,29 @@ public class LocationScannerCutoff extends AppCompatActivity {
                                 .putExtra("fifo", FIFODate).
                                         setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                     }else {
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+
                         locationId.setText(locationCode);
-                        Toast toast = Toast.makeText(LocationScannerCutoff.this, "Please fill all fields", Toast.LENGTH_LONG);
-                        View toastView = toast.getView();
-                        TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-                        toastMessage.setTextSize(18);
-                        toastMessage.setTextColor(Color.RED);
-                        toastMessage.setGravity(Gravity.CENTER);
-                        toastMessage.setCompoundDrawablePadding(5);
-                        toastView.setBackgroundColor(Color.TRANSPARENT);
+                    Toast toast = Toast.makeText(LocationScannerCutoff.this, "Please fill all fields", Toast.LENGTH_LONG);
+                    View toastView = toast.getView();
+                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                    toastMessage.setTextSize(18);
+                    toastMessage.setTextColor(Color.RED);
+                    toastMessage.setGravity(Gravity.CENTER);
+                    toastMessage.setCompoundDrawablePadding(5);
+                    toastView.setBackgroundColor(Color.WHITE);
+                    toast.show();
+                    final MediaPlayer mp = MediaPlayer.create(LocationScannerCutoff.this, R.raw.alert);
+                    mp.start();
+                }
+                    else {
+                        Toast toast = Toast.makeText(LocationScannerCutoff.this, Html.fromHtml("<font color='#EF4F4F' ><b>" + "Please fill all fields" + "</b></font>"), Toast.LENGTH_LONG);
+                        toast.setGravity(Gravity.CENTER, 0, 0);
                         toast.show();
-                        final MediaPlayer mp = MediaPlayer.create(LocationScannerCutoff.this, R.raw.alert);
-                        mp.start();
                     }
+            }
+
+
 
 
             }

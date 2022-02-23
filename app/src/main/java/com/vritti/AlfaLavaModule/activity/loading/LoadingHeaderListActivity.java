@@ -13,6 +13,7 @@ import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -23,6 +24,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -36,10 +38,14 @@ import android.widget.Toast;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.common.BitMatrix;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import com.vritti.AlfaLavaModule.activity.CreateSecondaryPackActivity;
+import com.vritti.AlfaLavaModule.activity.DOPackingScanDetails;
 import com.vritti.AlfaLavaModule.activity.cartonlabel.Adp_CartonLabelListData;
+import com.vritti.AlfaLavaModule.activity.packing_qc.QCPackingCartonDetailActivity;
 import com.vritti.AlfaLavaModule.activity.pick_riversal.PickPacketScanDetails;
 import com.vritti.AlfaLavaModule.activity.picking.ItemWisePickListDetailActivity;
 import com.vritti.AlfaLavaModule.activity.unpacking.UnPackingCartonDetailActivity;
@@ -89,7 +95,7 @@ public class LoadingHeaderListActivity extends AppCompatActivity {
     private boolean deviceConnected = false;
     private String data;
     private String PacketNo="";
-
+    ImageView img_barcode;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -131,6 +137,8 @@ public class LoadingHeaderListActivity extends AppCompatActivity {
         recycler.setLayoutManager(layoutManager);
         adapter=new Adp_LoadingCartonListData(cartonDataArrayList);
         recycler.setAdapter(adapter);
+        img_barcode = findViewById(R.id.img_barcode);
+        img_barcode.setVisibility(View.VISIBLE);
 
         len_search.setVisibility(View.VISIBLE);
 
@@ -231,6 +239,21 @@ public class LoadingHeaderListActivity extends AppCompatActivity {
 
             }
         });
+        img_barcode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IntentIntegrator integrator = new IntentIntegrator(LoadingHeaderListActivity.this);
+                integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
+                integrator.setPrompt("Scan");
+                integrator.setCameraId(0);
+                integrator.setBeepEnabled(false);
+                integrator.setBarcodeImageEnabled(false);
+                integrator.initiateScan();
+
+            }
+        });
+
+
     }
 
     public void setdonumber(String DONumber,String Pack_OrdHdrId ) {
@@ -303,14 +326,22 @@ public class LoadingHeaderListActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             } else if (s.contains("[]")) {
-                Toast toast = Toast.makeText(LoadingHeaderListActivity.this, "Carton not found in " +PackOrderNo, Toast.LENGTH_LONG);
-                View toastView = toast.getView();
-                TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-                toastMessage.setTextSize(18);
-                toastMessage.setTextColor(Color.RED);
-                toastMessage.setGravity(Gravity.CENTER);
-                toastView.setBackgroundColor(Color.WHITE);
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                    Toast toast = Toast.makeText(LoadingHeaderListActivity.this, "Carton not found in " + PackOrderNo, Toast.LENGTH_LONG);
+                    View toastView = toast.getView();
+                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                    toastMessage.setTextSize(18);
+                    toastMessage.setTextColor(Color.RED);
+                    toastMessage.setGravity(Gravity.CENTER);
+                    toastView.setBackgroundColor(Color.WHITE);
+                    toast.show();
+                }else {
+
+                Toast toast = Toast.makeText(LoadingHeaderListActivity.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + "Carton not found in " + PackOrderNo+ "</big></b></font>"), Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();
+
+            }
                 progress.setVisibility(View.GONE);
                 final MediaPlayer mp = MediaPlayer.create(LoadingHeaderListActivity.this, R.raw.alert);
                 mp.start();
@@ -540,8 +571,8 @@ public class LoadingHeaderListActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data1) {
+        super.onActivityResult(requestCode, resultCode, data1);
 
         if (requestCode == CreateSecondaryPackActivity.REQUEST_ENABLE_BT && resultCode == RESULT_OK) {
             //bluetooth enabled and request for showing available bluetooth devices
@@ -549,11 +580,26 @@ public class LoadingHeaderListActivity extends AppCompatActivity {
             BluetoothClass.pairPrinter(getApplicationContext(), LoadingHeaderListActivity.this);
         }else if (requestCode == CreateSecondaryPackActivity.REQUEST_CONNECT_DEVICE && resultCode == RESULT_OK) {
             //bluetooth device selected and request pairing with device
-            String address = data.getExtras().getString(DeviceListActivity.EXTRA_DEVICE_ADDRESS);
+            String address = data1.getExtras().getString(DeviceListActivity.EXTRA_DEVICE_ADDRESS);
             String Address = address.substring(address.length() - 17);
             BluetoothClass.pairedPrinterAddress(getApplicationContext(), LoadingHeaderListActivity.this,Address);
 
 
+        }else {
+            IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data1);
+            if (result != null) {
+                if (result.getContents() == null) {
+                    Log.e("Scan*******", "Cancelled scan");
+
+                } else {
+                    Log.e("Scan", "Scanned");
+
+
+                    data = result.getContents().toString();
+                    filter(data);
+
+                }
+            }
         }
     }
 
@@ -630,7 +676,9 @@ public class LoadingHeaderListActivity extends AppCompatActivity {
 
 
                 }else {
-                    Toast toast = Toast.makeText(LoadingHeaderListActivity.this, "Scanned carton not in list", Toast.LENGTH_LONG);
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+
+                        Toast toast = Toast.makeText(LoadingHeaderListActivity.this, "Scanned carton not in list", Toast.LENGTH_LONG);
                     View toastView = toast.getView();
                     TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
                     toastMessage.setTextSize(18);
@@ -639,7 +687,13 @@ public class LoadingHeaderListActivity extends AppCompatActivity {
                     toastMessage.setCompoundDrawablePadding(5);
                     toastView.setBackgroundColor(Color.TRANSPARENT);
                     toast.show();
+                }else {
 
+                Toast toast = Toast.makeText(LoadingHeaderListActivity.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + "Scanned carton not in list"+"</big></b></font>"), Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+
+            }
                     final MediaPlayer mp = MediaPlayer.create(LoadingHeaderListActivity.this, R.raw.alert);
                     mp.start();
                 }
@@ -707,7 +761,9 @@ public class LoadingHeaderListActivity extends AppCompatActivity {
                     try {
                         JSONObject jsonObject = new JSONObject(s);
                         String status = jsonObject.getString("ERROR");
-                        Toast toast = Toast.makeText(LoadingHeaderListActivity.this, status, Toast.LENGTH_LONG);
+                        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+
+                            Toast toast = Toast.makeText(LoadingHeaderListActivity.this, status, Toast.LENGTH_LONG);
                         View toastView = toast.getView();
                         TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
                         toastMessage.setTextSize(18);
@@ -716,6 +772,13 @@ public class LoadingHeaderListActivity extends AppCompatActivity {
                         toastMessage.setCompoundDrawablePadding(5);
                         toastView.setBackgroundColor(Color.TRANSPARENT);
                         toast.show();
+                    }else {
+
+                        Toast toast = Toast.makeText(LoadingHeaderListActivity.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + status+"</big></b></font>"), Toast.LENGTH_LONG);
+                        toast.setGravity(Gravity.CENTER, 0, 0);
+                        toast.show();
+
+                    }
                         final MediaPlayer mp = MediaPlayer.create(LoadingHeaderListActivity.this, R.raw.alert);
                         mp.start();
                     } catch (Exception e) {
@@ -723,7 +786,9 @@ public class LoadingHeaderListActivity extends AppCompatActivity {
                     }
                 }
                 else {
-                    Toast toast = Toast.makeText(LoadingHeaderListActivity.this, s, Toast.LENGTH_LONG);
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+
+                        Toast toast = Toast.makeText(LoadingHeaderListActivity.this, s, Toast.LENGTH_LONG);
                     View toastView = toast.getView();
                     TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
                     toastMessage.setTextSize(18);
@@ -731,6 +796,13 @@ public class LoadingHeaderListActivity extends AppCompatActivity {
                     toastMessage.setGravity(Gravity.CENTER);
                     toastView.setBackgroundColor(Color.WHITE);
                     toast.show();
+                }else {
+
+                    Toast toast = Toast.makeText(LoadingHeaderListActivity.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + s+"</big></b></font>"), Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+
+                }
 
                     final MediaPlayer mp = MediaPlayer.create(LoadingHeaderListActivity.this, R.raw.alert);
                     mp.start();

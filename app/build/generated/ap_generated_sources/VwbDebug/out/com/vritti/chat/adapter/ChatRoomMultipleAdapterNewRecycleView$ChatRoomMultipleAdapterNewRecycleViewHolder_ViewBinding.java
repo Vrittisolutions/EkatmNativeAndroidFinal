@@ -19,7 +19,7 @@ import java.lang.Override;
 public class ChatRoomMultipleAdapterNewRecycleView$ChatRoomMultipleAdapterNewRecycleViewHolder_ViewBinding implements Unbinder {
   private ChatRoomMultipleAdapterNewRecycleView.ChatRoomMultipleAdapterNewRecycleViewHolder target;
 
-  private View view2131296783;
+  private View view2131296790;
 
   @UiThread
   public ChatRoomMultipleAdapterNewRecycleView$ChatRoomMultipleAdapterNewRecycleViewHolder_ViewBinding(final ChatRoomMultipleAdapterNewRecycleView.ChatRoomMultipleAdapterNewRecycleViewHolder target,
@@ -38,7 +38,7 @@ public class ChatRoomMultipleAdapterNewRecycleView$ChatRoomMultipleAdapterNewRec
     target.profile_image = Utils.findRequiredViewAsType(source, R.id.profile_image, "field 'profile_image'", SimpleDraweeView.class);
     view = Utils.findRequiredView(source, R.id.card_view, "field 'card_view' and method 'roeClick'");
     target.card_view = Utils.castView(view, R.id.card_view, "field 'card_view'", RelativeLayout.class);
-    view2131296783 = view;
+    view2131296790 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -65,7 +65,7 @@ public class ChatRoomMultipleAdapterNewRecycleView$ChatRoomMultipleAdapterNewRec
     target.profile_image = null;
     target.card_view = null;
 
-    view2131296783.setOnClickListener(null);
-    view2131296783 = null;
+    view2131296790.setOnClickListener(null);
+    view2131296790 = null;
   }
 }

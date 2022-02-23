@@ -1683,7 +1683,7 @@ public class Tbuds_commonFunctions {
                                        String Range,String mrp,String distance,String UOMDigit,String UOMCode,String DeliveryTerms,
                                        String Mobile,String Brand,String Content,String ContentUOM,String SellingUOM,String PackOfQty,
                                        String FreeAboveAmt,String FreeDelyMaxDist,String MinDelyKg,String MinDelyKm,String ExprDelyWithinMin,
-                                       String ExpressDelyChg){
+                                       String ExpressDelyChg,String tax){
 
         ContentValues values = new ContentValues();
         values.put("sono",sono);
@@ -1718,6 +1718,7 @@ public class Tbuds_commonFunctions {
         values.put("MinDelyKm", MinDelyKm);
         values.put("ExprDelyWithinMin", ExprDelyWithinMin);
         values.put("ExpressDelyChg", ExpressDelyChg);
+        values.put("TotTaxAmt", tax);
         long q = sql_db.insert(DatabaseHandlers.TABLE_MY_ORDER_ACCEPTANCE, null, values);
 
     }

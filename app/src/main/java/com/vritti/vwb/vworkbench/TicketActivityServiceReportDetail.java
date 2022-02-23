@@ -329,6 +329,7 @@ public class TicketActivityServiceReportDetail extends AppCompatActivity {
                 response = response.substring(1, response.length() - 1);
 
 
+
             } catch (Exception e) {
                 e.printStackTrace();
                 response = "error";

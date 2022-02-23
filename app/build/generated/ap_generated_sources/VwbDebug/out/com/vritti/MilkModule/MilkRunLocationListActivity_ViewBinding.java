@@ -17,7 +17,7 @@ import java.lang.Override;
 public class MilkRunLocationListActivity_ViewBinding implements Unbinder {
   private MilkRunLocationListActivity target;
 
-  private View view2131296828;
+  private View view2131296836;
 
   @UiThread
   public MilkRunLocationListActivity_ViewBinding(MilkRunLocationListActivity target) {
@@ -33,7 +33,7 @@ public class MilkRunLocationListActivity_ViewBinding implements Unbinder {
     target.toolBar = Utils.findRequiredViewAsType(source, R.id.toolbar1, "field 'toolBar'", Toolbar.class);
     view = Utils.findRequiredView(source, R.id.changeStatus, "field 'changeStatus' and method 'clcikComplete'");
     target.changeStatus = Utils.castView(view, R.id.changeStatus, "field 'changeStatus'", Button.class);
-    view2131296828 = view;
+    view2131296836 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -54,7 +54,7 @@ public class MilkRunLocationListActivity_ViewBinding implements Unbinder {
     target.changeStatus = null;
     target.recycleview = null;
 
-    view2131296828.setOnClickListener(null);
-    view2131296828 = null;
+    view2131296836.setOnClickListener(null);
+    view2131296836 = null;
   }
 }

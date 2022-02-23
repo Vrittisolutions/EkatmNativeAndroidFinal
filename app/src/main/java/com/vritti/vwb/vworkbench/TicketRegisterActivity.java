@@ -294,7 +294,8 @@ public class TicketRegisterActivity extends AppCompatActivity {
         txt_book_ticket.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (edt_search_name.equals("")||edt_search_name==null){
+
+                if (edt_search_name.getText().toString().equals("")||edt_search_name.getText().toString()==null||edt_search_name.getText().toString().equalsIgnoreCase("null")){
                     Toast.makeText(TicketRegisterActivity.this,"Please select customer name",Toast.LENGTH_SHORT).show();
                 }else {
                     txt_customer_name.setVisibility(View.VISIBLE);
@@ -656,6 +657,7 @@ public class TicketRegisterActivity extends AppCompatActivity {
 
                 String data[] = ReportedName.split(",");
                 Name=data[0];
+
                 if (Name.equals("")) {
                     edt_ticket_reportedby.setText("");
                 } else {
@@ -663,6 +665,7 @@ public class TicketRegisterActivity extends AppCompatActivity {
                 }
 
                 Mobile=data[1];
+
                 if (Mobile.equals("")) {
                     edt_ticket_mobno.setText("");
 
@@ -853,12 +856,6 @@ public class TicketRegisterActivity extends AppCompatActivity {
                         jsonObject1.put("ReportedBy", Name);
                         jsonObject1.put("MobileNo", Mobile);
                         jsonObject1.put("Email", Email);
-
-                        //  String  Enitity = jsonObject1.toString().replaceAll("\\\\", "");
-//                    String C = jsonObject1.toString().replaceAll("\\\\", "");
-//                    Enitity = Enitity.replaceAll("\\\\\\\\/", "");
-//                    Enitity=Enitity.toString().replaceAll("\"","");
-//                    Enitity = Enitity.toString().replaceAll("^\"|\"$", "");
 
 
                         JsonObject.put("obj", jsonObject1);
@@ -1757,6 +1754,9 @@ public class TicketRegisterActivity extends AppCompatActivity {
             return res;
         }
     }
+
+
+
 
     class GetMobileDetails extends AsyncTask<String, Void, String> {
         String res;

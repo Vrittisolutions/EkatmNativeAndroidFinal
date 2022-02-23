@@ -317,8 +317,12 @@ public class FilteredProspectListActivity extends AppCompatActivity {
 
             String CustVendorName = prospectList.get(position).getCustVendorName();
             String BusinessDetails = prospectList.get(position).getBusinessDetails();
-            if (!CustVendorName.equals("")) {
+            if (CustVendorName.equals("")||CustVendorName.equalsIgnoreCase("null")||CustVendorName==null) {
+                   holder.len_refer.setVisibility(View.GONE);
+            }else {
+                holder.len_refer.setVisibility(View.VISIBLE);
                 holder.txtItemdesc.setText("refered by :" + prospectList.get(position).getCustVendorName());
+
             }
             if (!BusinessDetails.equals("")) {
                 holder.txtItemdesc.setText("Segment :" + prospectList.get(position).getSegmentDescription());
@@ -330,7 +334,12 @@ public class FilteredProspectListActivity extends AppCompatActivity {
 
 
             holder.txtFName.setText(Firmname);
-            holder.txtcity.setText(CityName);
+            if (CityName.equalsIgnoreCase("")||CityName.equalsIgnoreCase("null")||CityName==null){
+                holder.len_city.setVisibility(View.GONE);
+            }else {
+                holder.len_city.setVisibility(View.VISIBLE);
+                holder.txtcity.setText(CityName);
+            }
             //   holder.txtItemdesc.setText(prospectList.get(position).getFamilyDesc());
             //  holder.txtcallclose.setText(prospectList.get(position).getCloseCalls() + " Close call");
             System.out.println(" CloseCall :" + prospectList.get(position).getCloseCalls());
@@ -392,7 +401,7 @@ public class FilteredProspectListActivity extends AppCompatActivity {
             TextView txtItemdesc, txtEmail;
             TextView txtcallclose, txtcallopen, txtAddress;
             ImageView img_edit;
-            LinearLayout llName;//,img_edit;
+            LinearLayout llName,len_city,len_refer;//,img_edit;
             CardView card_view;
             ImageView click;
 
@@ -408,6 +417,8 @@ public class FilteredProspectListActivity extends AppCompatActivity {
                 txtcallopen = (TextView) itemView.findViewById(R.id.txtcallopen);
                 txtAddress = (TextView) itemView.findViewById(R.id.txtAddress);
                 llName = (LinearLayout) itemView.findViewById(R.id.llName);
+                len_city = (LinearLayout) itemView.findViewById(R.id.len_city);
+                len_refer = (LinearLayout) itemView.findViewById(R.id.len_refer);
                 card_view = itemView.findViewById(R.id.card_view);
                 click = (ImageView) itemView.findViewById(R.id.click);
                 img_edit = itemView.findViewById(R.id.img_edit);

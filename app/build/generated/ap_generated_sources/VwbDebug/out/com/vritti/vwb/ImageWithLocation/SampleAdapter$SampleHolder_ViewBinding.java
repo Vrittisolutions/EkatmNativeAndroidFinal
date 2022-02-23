@@ -16,7 +16,7 @@ import java.lang.Override;
 public class SampleAdapter$SampleHolder_ViewBinding implements Unbinder {
   private SampleAdapter.SampleHolder target;
 
-  private View view2131299034;
+  private View view2131299053;
 
   @UiThread
   public SampleAdapter$SampleHolder_ViewBinding(final SampleAdapter.SampleHolder target,
@@ -28,7 +28,7 @@ public class SampleAdapter$SampleHolder_ViewBinding implements Unbinder {
     target.locationName = Utils.findRequiredViewAsType(source, R.id.locationName, "field 'locationName'", TextView.class);
     target.sdvImage = Utils.findRequiredViewAsType(source, R.id.sdvImage, "field 'sdvImage'", SimpleDraweeView.class);
     view = Utils.findRequiredView(source, R.id.row_layout, "method 'rowClick'");
-    view2131299034 = view;
+    view2131299053 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -48,7 +48,7 @@ public class SampleAdapter$SampleHolder_ViewBinding implements Unbinder {
     target.locationName = null;
     target.sdvImage = null;
 
-    view2131299034.setOnClickListener(null);
-    view2131299034 = null;
+    view2131299053.setOnClickListener(null);
+    view2131299053 = null;
   }
 }

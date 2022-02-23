@@ -18,9 +18,9 @@ import java.lang.Override;
 public class EnoSamplingHomePage_ViewBinding implements Unbinder {
   private EnoSamplingHomePage target;
 
-  private View view2131296361;
+  private View view2131296362;
 
-  private View view2131298760;
+  private View view2131298779;
 
   @UiThread
   public EnoSamplingHomePage_ViewBinding(EnoSamplingHomePage target) {
@@ -37,7 +37,7 @@ public class EnoSamplingHomePage_ViewBinding implements Unbinder {
     target.locationNameET = Utils.findRequiredViewAsType(source, R.id.locationNameET, "field 'locationNameET'", EditText.class);
     target.progressBar = Utils.findRequiredViewAsType(source, R.id.toolbar_progress_logging, "field 'progressBar'", ProgressBar.class);
     view = Utils.findRequiredView(source, R.id.addImageBtn, "method 'addImgButton'");
-    view2131296361 = view;
+    view2131296362 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -45,7 +45,7 @@ public class EnoSamplingHomePage_ViewBinding implements Unbinder {
       }
     });
     view = Utils.findRequiredView(source, R.id.nextBtn, "method 'nextBtn'");
-    view2131298760 = view;
+    view2131298779 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -66,9 +66,9 @@ public class EnoSamplingHomePage_ViewBinding implements Unbinder {
     target.locationNameET = null;
     target.progressBar = null;
 
-    view2131296361.setOnClickListener(null);
-    view2131296361 = null;
-    view2131298760.setOnClickListener(null);
-    view2131298760 = null;
+    view2131296362.setOnClickListener(null);
+    view2131296362 = null;
+    view2131298779.setOnClickListener(null);
+    view2131298779 = null;
   }
 }

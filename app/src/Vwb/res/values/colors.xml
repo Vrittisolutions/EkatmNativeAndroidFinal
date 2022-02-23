@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#0A9BC5</color>
     <color name="colorPrimaryDark">#016A97</color>
-    <color name="colorAccent">#0A9BC5</color>
+    <color name="colorAccent">#888888</color>
     <color name="background">#777777</color>
     <color name="textColor">#FFF</color>
     <color name="textFieldColor">#000</color>
@@ -45,6 +45,9 @@
     <color name="colorAccent1">#FF4081</color>
 
     <color name="alfa_green">#7FEA98</color>
+    <color name="start_again">#e8e831</color>
+
+    <color name="notify">#094c84</color>
 
 
 </resources>

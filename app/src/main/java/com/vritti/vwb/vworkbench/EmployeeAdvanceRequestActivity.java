@@ -1,5 +1,6 @@
 package com.vritti.vwb.vworkbench;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
@@ -19,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -39,9 +41,12 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import com.vritti.crm.vcrm7.CountryListActivity;
+import com.vritti.crm.vcrm7.OpportunityUpdateActivity_New;
 import com.vritti.databaselib.data.DatabaseHandlers;
 import com.vritti.databaselib.other.Utility;
 import com.vritti.databaselib.other.WebUrlClass;
+import com.vritti.ekatm.other.FileUtilities;
 import com.vritti.sessionlib.CallbackInterface;
 import com.vritti.sessionlib.StartSession;
 import com.vritti.vwb.Beans.Username;
@@ -64,7 +69,8 @@ public class EmployeeAdvanceRequestActivity extends AppCompatActivity {
 
     SimpleDateFormat dateFormatdate,dateFormatdate_1;
     EditText edt_date, ed_travel_purpose, edt_amount;
-    Spinner sp_approver, spinner_employee;
+    Spinner sp_approver;
+    AutoCompleteTextView spinner_employee;
     ImageView img_date;
     String date;
 
@@ -82,6 +88,7 @@ public class EmployeeAdvanceRequestActivity extends AppCompatActivity {
     LinearLayout len_amount;
     String Source="AdvancePay",docHdrId="";
     String Advance="";
+    public final int Followup = 2;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -167,7 +174,7 @@ public class EmployeeAdvanceRequestActivity extends AppCompatActivity {
         edt_amount = (EditText) findViewById(R.id.edt_amount);
         img_date = (ImageView) findViewById(R.id.img_date);
         sp_approver = (Spinner) findViewById(R.id.sp_approver);
-        spinner_employee = (Spinner) findViewById(R.id.spinner_employee);
+        spinner_employee = (AutoCompleteTextView) findViewById(R.id.spinner_employee_1);
         txt_send_request = (TextView) findViewById(R.id.txt_send_request);
         txt_cancel = (TextView) findViewById(R.id.txt_cancel);
         txt_out_date = (TextView) findViewById(R.id.txt_out_date);
@@ -279,7 +286,7 @@ public class EmployeeAdvanceRequestActivity extends AppCompatActivity {
         });
 
 
-        spinner_employee.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        /*spinner_employee.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
@@ -294,10 +301,33 @@ public class EmployeeAdvanceRequestActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
+        });*/
+
+        spinner_employee.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(EmployeeAdvanceRequestActivity.this,
+                        CountryListActivity.class);
+
+                String url = "";
+
+
+                url = CompanyURL + WebUrlClass.api_GetUserName;
+                intent.putExtra("Table_Name", db.TABLE_GETALLUsers);
+                intent.putExtra("Id", "UserMasterId");
+                intent.putExtra("DispName", "UserName");
+                intent.putExtra("WHClauseParameter", "");
+                intent.putExtra("APIName", url);
+                intent.putExtra("out", "expense");
+                //intent.putExtra("APIParameters","");
+                //intent.putExtra("ArrayList",    "ArrayList<Territory> mList = new ArrayList<>()");
+                startActivityForResult(intent, Followup);
+                overridePendingTransition(R.anim.slide_right_to_left, R.anim.slide_left_to_right);
+
+            }
         });
 
-
-        txt_send_request.setOnClickListener(new View.OnClickListener() {
+       txt_send_request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -735,6 +765,7 @@ public class EmployeeAdvanceRequestActivity extends AppCompatActivity {
             try {
                 res = ut.OpenPostConnection(url, params[0], EmployeeAdvanceRequestActivity.this);
                 response = res.toString();
+
                 response = response.replaceAll("\\\\\\\\/", "");
                 response = response.substring(1, response.length() - 1);
 
@@ -910,4 +941,18 @@ public class EmployeeAdvanceRequestActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+            super.onActivityResult(requestCode, resultCode, data);
+             if (requestCode == Followup && resultCode == Followup) {
+
+                     String Username = data.getStringExtra("Name");
+                     EmployeeId = data.getStringExtra("ID");
+                     spinner_employee.setText(Username);
+             }
+
+             }
+
 }
+

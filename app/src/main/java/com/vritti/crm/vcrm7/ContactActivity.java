@@ -548,89 +548,95 @@ public class ContactActivity extends AppCompatActivity {
         protected void onPostExecute(String integer) {
             super.onPostExecute(integer);
             progressDialog.dismiss();
-            if (!integer.equals("")) {
+            try {
+                if (!integer.equals("")) {
 
-                if (getIntent().hasExtra("callmob")) {
-                    if (getIntent().getStringExtra("callmob").equalsIgnoreCase("")) {
-                        onBackPressed();
-                    } else {
-                        Intent intent = new Intent(ContactActivity.this, OpportunityUpdateActivity_New.class);
-                        intent.putExtra("callid", Call_Callid);
-                        intent.putExtra("firmname", Firmname);
-                        intent.putExtra("firm", Firmname);
-                        intent.putExtra("calltype", getIntent().getStringExtra("call_type"));
-                        intent.putExtra("table", "Call");
-                        intent.putExtra("date", Actiondatetime);
-                        intent.putExtra("remark", Remark);
-                        intent.putExtra("call", call);
-                        intent.putExtra("status", Status);
-                        intent.putExtra("call_type_1", Call);
-                        intent.putExtra("SourceId", SourceId);
-                        intent.putExtra("mile", Milestone);
-                        intent.putExtra("mobile", Mobile);
-                        intent.putExtra("evalue", EstimateValue);
-                        intent.putExtra("call_type", Call_CallType);
-                        intent.putExtra("action", NextAction);
-                        intent.putExtra("ProspectId", Call_ProspectId);
-                        intent.putExtra("type", "Callfromcalllogs");
-                        intent.putExtra("starttime", Start);
-                        intent.putExtra("endtime", EndTime);
-                        intent.putExtra("duration", Duration);
-                        intent.putExtra("rowNo", RowNo);
-                        if (getIntent().hasExtra("callmob")) {
-                            intent.putExtra("callmob", getIntent().getStringExtra("callmob"));
+                    if (getIntent().hasExtra("callmob")) {
+                        if (getIntent().getStringExtra("callmob").equalsIgnoreCase("")) {
+                            onBackPressed();
+                        } else {
+                            Intent intent = new Intent(ContactActivity.this, OpportunityUpdateActivity_New.class);
+                            intent.putExtra("callid", Call_Callid);
+                            intent.putExtra("firmname", Firmname);
+                            intent.putExtra("firm", Firmname);
+                            intent.putExtra("calltype", getIntent().getStringExtra("call_type"));
+                            intent.putExtra("table", "Call");
+                            intent.putExtra("date", Actiondatetime);
+                            intent.putExtra("remark", Remark);
+                            intent.putExtra("call", call);
+                            intent.putExtra("status", Status);
+                            intent.putExtra("call_type_1", Call);
+                            intent.putExtra("SourceId", SourceId);
+                            intent.putExtra("mile", Milestone);
+                            intent.putExtra("mobile", Mobile);
+                            intent.putExtra("evalue", EstimateValue);
+                            intent.putExtra("call_type", Call_CallType);
+                            intent.putExtra("action", NextAction);
+                            intent.putExtra("ProspectId", Call_ProspectId);
+                            intent.putExtra("type", "Callfromcalllogs");
+                            intent.putExtra("starttime", Start);
+                            intent.putExtra("endtime", EndTime);
+                            intent.putExtra("duration", Duration);
+                            intent.putExtra("rowNo", RowNo);
+                            if (getIntent().hasExtra("callmob")) {
+                                intent.putExtra("callmob", getIntent().getStringExtra("callmob"));
+                            }
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(intent);
+                            finish();
+                            overridePendingTransition(R.anim.slide_right_to_left, R.anim.slide_left_to_right);
                         }
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
-                        overridePendingTransition(R.anim.slide_right_to_left, R.anim.slide_left_to_right);
-                    }
-                }else {
-
-                    onBackPressed();
-                }
-            } else {
-                if (getIntent().hasExtra("callmob")) {
-                    if (getIntent().getStringExtra("callmob").equalsIgnoreCase("")) {
-                        onBackPressed();
                     } else {
-                        Intent intent = new Intent(ContactActivity.this, OpportunityUpdateActivity_New.class);
-                        intent.putExtra("callid", Call_Callid);
-                        intent.putExtra("firmname", Firmname);
-                        intent.putExtra("firm", Firmname);
-                        intent.putExtra("calltype", getIntent().getStringExtra("call_type"));
-                        intent.putExtra("table", "Call");
-                        intent.putExtra("date", Actiondatetime);
-                        intent.putExtra("remark", Remark);
-                        intent.putExtra("call", call);
-                        intent.putExtra("status", Status);
-                        intent.putExtra("call_type_1", Call);
-                        intent.putExtra("SourceId", SourceId);
-                        intent.putExtra("mile", Milestone);
-                        intent.putExtra("mobile", Mobile);
-                        intent.putExtra("evalue", EstimateValue);
-                        intent.putExtra("call_type", Call_CallType);
-                        intent.putExtra("action", NextAction);
-                        intent.putExtra("ProspectId", Call_ProspectId);
-                        intent.putExtra("type", "Callfromcalllogs");
-                        intent.putExtra("starttime", Start);
-                        intent.putExtra("endtime", EndTime);
-                        intent.putExtra("duration", Duration);
-                        intent.putExtra("rowNo", RowNo);
-                        if (getIntent().hasExtra("callmob")) {
-                            intent.putExtra("callmob", getIntent().getStringExtra("callmob"));
-                        }
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
-                        overridePendingTransition(R.anim.slide_right_to_left, R.anim.slide_left_to_right);
 
+                        onBackPressed();
                     }
-                }else{
+                } else {
+                    if (getIntent().hasExtra("callmob")) {
+                        if (getIntent().getStringExtra("callmob").equalsIgnoreCase("")) {
+                            onBackPressed();
+                        } else {
+                            Intent intent = new Intent(ContactActivity.this, OpportunityUpdateActivity_New.class);
+                            intent.putExtra("callid", Call_Callid);
+                            intent.putExtra("firmname", Firmname);
+                            intent.putExtra("firm", Firmname);
+                            intent.putExtra("calltype", getIntent().getStringExtra("call_type"));
+                            intent.putExtra("table", "Call");
+                            intent.putExtra("date", Actiondatetime);
+                            intent.putExtra("remark", Remark);
+                            intent.putExtra("call", call);
+                            intent.putExtra("status", Status);
+                            intent.putExtra("call_type_1", Call);
+                            intent.putExtra("SourceId", SourceId);
+                            intent.putExtra("mile", Milestone);
+                            intent.putExtra("mobile", Mobile);
+                            intent.putExtra("evalue", EstimateValue);
+                            intent.putExtra("call_type", Call_CallType);
+                            intent.putExtra("action", NextAction);
+                            intent.putExtra("ProspectId", Call_ProspectId);
+                            intent.putExtra("type", "Callfromcalllogs");
+                            intent.putExtra("starttime", Start);
+                            intent.putExtra("endtime", EndTime);
+                            intent.putExtra("duration", Duration);
+                            intent.putExtra("rowNo", RowNo);
+                            if (getIntent().hasExtra("callmob")) {
+                                intent.putExtra("callmob", getIntent().getStringExtra("callmob"));
+                            }
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(intent);
+                            finish();
+                            overridePendingTransition(R.anim.slide_right_to_left, R.anim.slide_left_to_right);
 
-                    onBackPressed();
+                        }
+                    } else {
+
+                        onBackPressed();
+                    }
                 }
+
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
-
     }
 
     @Override

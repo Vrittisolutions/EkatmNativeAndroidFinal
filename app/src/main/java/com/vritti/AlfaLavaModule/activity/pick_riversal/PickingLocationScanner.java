@@ -9,22 +9,28 @@ import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.speech.tts.TextToSpeech;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 import com.vritti.AlfaLavaModule.activity.PutAwayScanDetails;
 import com.vritti.AlfaLavaModule.activity.loading.LoadingHeaderListActivity;
+import com.vritti.AlfaLavaModule.activity.loading.LoadingPackingOrderListActivity;
 import com.vritti.AlfaLavaModule.bean.PutAwayDetail;
 import com.vritti.AlfaLavaModule.utility.ProgressHUD;
 import com.vritti.databaselib.data.DatabaseHandlers;
@@ -69,7 +75,7 @@ public class PickingLocationScanner extends AppCompatActivity {
     private String LocationType="";
     private String PickNo;
     private String Pick_HeaderId="";
-
+    ImageView img_barcode;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -108,6 +114,7 @@ public class PickingLocationScanner extends AppCompatActivity {
         });
         txt_scan=findViewById(R.id.txt_scan);
         txt_scan.setText("Begin by scanning location.Then scan packets");
+        img_barcode = findViewById(R.id.img_barcode);
 
 
         t1.speak("Scan Location", TextToSpeech.QUEUE_FLUSH, null);
@@ -214,6 +221,21 @@ public class PickingLocationScanner extends AppCompatActivity {
                 return false;
             }
         });
+
+        img_barcode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IntentIntegrator integrator = new IntentIntegrator(PickingLocationScanner.this);
+                integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
+                integrator.setPrompt("Scan");
+                integrator.setCameraId(0);
+                integrator.setBeepEnabled(false);
+                integrator.setBarcodeImageEnabled(false);
+                integrator.initiateScan();
+
+            }
+        });
+
     }
 
 
@@ -317,14 +339,22 @@ public class PickingLocationScanner extends AppCompatActivity {
                     //Intent intent = new Intent();
                     if (LocationType.contains("Packing Buffer")) {
                         locationId.setText("");
-                        Toast toast = Toast.makeText(PickingLocationScanner.this, "You cannot reverse picklist in packing buffer", Toast.LENGTH_LONG);
-                        View toastView = toast.getView();
-                        TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-                        toastMessage.setTextSize(18);
-                        toastMessage.setTextColor(Color.RED);
-                        toastMessage.setGravity(Gravity.CENTER);
-                        toastView.setBackgroundColor(Color.WHITE);
-                        toast.show();
+                        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                            Toast toast = Toast.makeText(PickingLocationScanner.this, "You cannot reverse picklist in packing buffer", Toast.LENGTH_LONG);
+                            View toastView = toast.getView();
+                            TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                            toastMessage.setTextSize(18);
+                            toastMessage.setTextColor(Color.RED);
+                            toastMessage.setGravity(Gravity.CENTER);
+                            toastView.setBackgroundColor(Color.WHITE);
+                            toast.show();
+                        }
+                        else {
+                            Toast toast = Toast.makeText(PickingLocationScanner.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + "You cannot reverse picklist in packing buffer" + "</big></b></font>"), Toast.LENGTH_LONG);
+                            toast.setGravity(Gravity.CENTER, 0, 0);
+                            toast.show();
+                        }
+
 
                         final MediaPlayer mp = MediaPlayer.create(PickingLocationScanner.this, R.raw.alert);
                         mp.start();
@@ -364,4 +394,94 @@ public class PickingLocationScanner extends AppCompatActivity {
         super.onResume();
         locationId.setText("");
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data1) {
+        super.onActivityResult(requestCode, resultCode, data1);
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data1);
+        if (result != null) {
+            if (result.getContents() == null) {
+                Log.e("Scan*******", "Cancelled scan");
+
+            } else {
+                Log.e("Scan", "Scanned");
+
+
+                locationCode= result.getContents().toString();
+                if (Constants.type == Constants.Type.Alfa) {
+
+                    try {
+
+                        locationCode = new JSONObject(locationCode.replace("Info:", "")).getString("Location");
+                        locationId.setText("");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    Log.i("id", locationId.getText().toString());
+                    // callApi id pass
+                    //      public string GetScanLocation(string LocationCode)
+                    if (locationCode != null && !(locationCode.equals(""))) {
+
+
+                        if (isnet()) {
+                            ProgressHUD.show(pContext, "Fetching location details ...", true, false);
+                            new StartSession(pContext, new CallbackInterface() {
+                                @Override
+                                public void callMethod() {
+                                    downloadPutAwayDetails = new DownloadPutAwayDetails();
+                                    downloadPutAwayDetails.execute();
+                                }
+
+                                @Override
+                                public void callfailMethod(String msg) {
+                                    downloadPutAwayDetails = new DownloadPutAwayDetails();
+                                    downloadPutAwayDetails.execute();
+                                }
+
+
+                            });
+
+                        } else {
+                            Toast.makeText(pContext, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                        }
+
+
+                    }
+                    ;
+                }else {
+                    if (locationCode != null && !(locationCode.equals(""))) {
+
+
+                        if (isnet()) {
+                            ProgressHUD.show(pContext, "Fetching location details ...", true, false);
+                            new StartSession(pContext, new CallbackInterface() {
+                                @Override
+                                public void callMethod() {
+                                    downloadPutAwayDetails = new DownloadPutAwayDetails();
+                                    downloadPutAwayDetails.execute();
+                                }
+
+                                @Override
+                                public void callfailMethod(String msg) {
+                                    downloadPutAwayDetails = new DownloadPutAwayDetails();
+                                    downloadPutAwayDetails.execute();
+                                }
+
+
+                            });
+
+                        } else {
+                            Toast.makeText(pContext, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                        }
+
+
+                    }
+
+                }
+
+            }
+        }
+    }
+
 }

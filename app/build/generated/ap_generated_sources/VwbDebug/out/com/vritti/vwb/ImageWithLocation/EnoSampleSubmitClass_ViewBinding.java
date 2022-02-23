@@ -15,7 +15,7 @@ import java.lang.Override;
 public class EnoSampleSubmitClass_ViewBinding implements Unbinder {
   private EnoSampleSubmitClass target;
 
-  private View view2131296500;
+  private View view2131296504;
 
   @UiThread
   public EnoSampleSubmitClass_ViewBinding(EnoSampleSubmitClass target) {
@@ -31,7 +31,7 @@ public class EnoSampleSubmitClass_ViewBinding implements Unbinder {
     target.txtsampleunit = Utils.findRequiredViewAsType(source, R.id.txtsampleunit, "field 'txtsampleunit'", EditText.class);
     target.txtsaleunit = Utils.findRequiredViewAsType(source, R.id.txtsaleunit, "field 'txtsaleunit'", EditText.class);
     view = Utils.findRequiredView(source, R.id.btn_finalsave, "method 'finalSubmit'");
-    view2131296500 = view;
+    view2131296504 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -51,7 +51,7 @@ public class EnoSampleSubmitClass_ViewBinding implements Unbinder {
     target.txtsampleunit = null;
     target.txtsaleunit = null;
 
-    view2131296500.setOnClickListener(null);
-    view2131296500 = null;
+    view2131296504.setOnClickListener(null);
+    view2131296504 = null;
   }
 }

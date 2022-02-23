@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.vritti.chat.activity.UserListDisplayActivity;
 import com.vritti.crm.bean.OfflineBean;
 import com.vritti.crm.classes.CommonFunctionCrm;
 import com.vritti.crm.vcrm7.ActivityOfflineData;
@@ -111,6 +112,11 @@ public class OfflineActivityAdapter extends BaseAdapter {
                                     sendRecord(mycount.get(pos).getRecordID(),context);
                                 }else  if (item.getItemId()== R.id.delete){
                                     deleteRecord(mycount.get(pos).getRecordID(), context);
+                                }else  if (item.getItemId()== R.id.share){
+                                    ((ActivityOfflineData)context).sharedata(
+                                     mycount.get(pos).getLinkurl(),mycount.get(pos).getParameter(),mycount.get(pos).getOutput()
+                                     ,mycount.get(pos).getRemark(),mycount.get(position).getAddedDt());
+
                                 }
 
                                 return false;
@@ -127,6 +133,12 @@ public class OfflineActivityAdapter extends BaseAdapter {
 
                                 if(item.getItemId()== R.id.delete) {
                                     deleteRecord(mycount.get(pos).getRecordID(), context);
+                                }
+                                else  if (item.getItemId()== R.id.share){
+                                    ((ActivityOfflineData)context).sharedata(
+                                            mycount.get(pos).getLinkurl(),mycount.get(pos).getParameter(),mycount.get(pos).getOutput()
+                                            ,mycount.get(pos).getRemark(),mycount.get(position).getAddedDt());
+
                                 }
 
                                 return false;
@@ -145,6 +157,12 @@ public class OfflineActivityAdapter extends BaseAdapter {
                                     sendRecord(mycount.get(pos).getRecordID(),context);
                                 }else  if (item.getItemId()== R.id.delete){
                                     deleteRecord(mycount.get(pos).getRecordID(), context);
+                                }
+                                else  if (item.getItemId()== R.id.share){
+                                    ((ActivityOfflineData)context).sharedata(
+                                            mycount.get(pos).getLinkurl(),mycount.get(pos).getParameter(),mycount.get(pos).getOutput()
+                                            ,mycount.get(pos).getRemark(),mycount.get(position).getAddedDt());
+
                                 }
 
                                 return false;
@@ -181,11 +199,19 @@ public class OfflineActivityAdapter extends BaseAdapter {
     }
 
     private void deleteRecord(String RecID, Context context) {
-
+/*
         sql.delete(db.TABLE_DATA_OFFLINE, "recordID=?",
                 new String[]{RecID});
        // sql.close();
-        actdata.updateData();
+        actdata.updateData();*/
+
+
+        SQLiteDatabase sql = db.getWritableDatabase();
+        sql.delete(db.TABLE_DATA_OFFLINE, "recordID=?",
+                new String[]{RecID});
+        sql.close();
+        ((ActivityOfflineData)context).updateData();
+
 
     }
 
@@ -335,7 +361,8 @@ public class OfflineActivityAdapter extends BaseAdapter {
                 Toast.makeText(context,"Record not send due to server error",Toast.LENGTH_LONG).show();
 
             }
-            actdata.updateData();
+           // actdata.updateData();
+            ((ActivityOfflineData)context).updateData();
            // sql.close();
         }
     }

@@ -15,7 +15,7 @@
         android:gravity="center"
         android:padding="10dp"
         android:layout_below="@+id/data"
-        android:text="Exit Chat Room"
+        android:text="Exit Conversation Room"
         android:textColor="@color/red"
         android:textSize="16dp"
         android:visibility="visible" />

@@ -10,6 +10,7 @@ import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.speech.tts.TextToSpeech;
@@ -18,6 +19,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -206,7 +208,9 @@ public class PacketScanDataCutoff extends AppCompatActivity {
                     }
 
                 }else {
-                    Toast toast = Toast.makeText(PacketScanDataCutoff.this, "Wrong packet scanned", Toast.LENGTH_LONG);
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+
+                        Toast toast = Toast.makeText(PacketScanDataCutoff.this, "Wrong packet scanned", Toast.LENGTH_LONG);
                     View toastView = toast.getView();
                     TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
                     toastMessage.setTextSize(18);
@@ -217,6 +221,12 @@ public class PacketScanDataCutoff extends AppCompatActivity {
                     toast.show();
                     final MediaPlayer mp = MediaPlayer.create(PacketScanDataCutoff.this, R.raw.alert);
                     mp.start();
+                }
+                    else {
+                    Toast toast = Toast.makeText(PacketScanDataCutoff.this, Html.fromHtml("<font color='#EF4F4F' ><b>" + "Wrong packet scanned" + "</b></font>"), Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                }
                 }
                /* String searchQuery = "SELECT  * FROM " + db.TABLE_GRN_PACKET + " where PacketNo='" + packetno + "'";
                 Cursor cursor = sql.rawQuery(searchQuery, null);
@@ -297,7 +307,9 @@ public class PacketScanDataCutoff extends AppCompatActivity {
 
 
                         }else {
-                        Toast toast = Toast.makeText(PacketScanDataCutoff.this, "Wrong packet scanned", Toast.LENGTH_LONG);
+                        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+
+                            Toast toast = Toast.makeText(PacketScanDataCutoff.this, "Wrong packet scanned", Toast.LENGTH_LONG);
                         View toastView = toast.getView();
                         TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
                         toastMessage.setTextSize(18);
@@ -308,6 +320,12 @@ public class PacketScanDataCutoff extends AppCompatActivity {
                         toast.show();
                         final MediaPlayer mp = MediaPlayer.create(PacketScanDataCutoff.this, R.raw.alert);
                         mp.start();
+                    }
+                    else {
+                        Toast toast = Toast.makeText(PacketScanDataCutoff.this, Html.fromHtml("<font color='#EF4F4F' ><b>" + "Wrong packet scanned" + "</b></font>"), Toast.LENGTH_LONG);
+                        toast.setGravity(Gravity.CENTER, 0, 0);
+                        toast.show();
+                    }
                     }
 
 
@@ -396,18 +414,26 @@ public class PacketScanDataCutoff extends AppCompatActivity {
                             recycler.smoothScrollToPosition(0);
                         }
                     });
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
 
-                    Toast toast = Toast.makeText(PacketScanDataCutoff.this, "Data send successfully", Toast.LENGTH_LONG);
-                    View toastView = toast.getView();
-                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-                    toastMessage.setTextSize(18);
-                    toastMessage.setTextColor(Color.GREEN);
-                    toastMessage.setGravity(Gravity.CENTER);
-                    toastMessage.setCompoundDrawablePadding(5);
-                    toastView.setBackgroundColor(Color.TRANSPARENT);
-                    toast.show();
-                    final MediaPlayer mp = MediaPlayer.create(PacketScanDataCutoff.this, R.raw.ok);
-                    mp.start();
+                        Toast toast = Toast.makeText(PacketScanDataCutoff.this, "Data send successfully", Toast.LENGTH_LONG);
+                        View toastView = toast.getView();
+                        TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                        toastMessage.setTextSize(18);
+                        toastMessage.setTextColor(Color.GREEN);
+                        toastMessage.setGravity(Gravity.CENTER);
+                        toastMessage.setCompoundDrawablePadding(5);
+                        toastView.setBackgroundColor(Color.TRANSPARENT);
+                        toast.show();
+                        final MediaPlayer mp = MediaPlayer.create(PacketScanDataCutoff.this, R.raw.ok);
+                        mp.start();
+                    }
+                    else {
+                        Toast toast = Toast.makeText(PacketScanDataCutoff.this, Html.fromHtml("<font color='#26C14B' ><b>" + "Data send successfully" + "</b></font>"), Toast.LENGTH_LONG);
+                        toast.setGravity(Gravity.CENTER, 0, 0);
+                        toast.show();
+                    }
+
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -421,7 +447,9 @@ public class PacketScanDataCutoff extends AppCompatActivity {
                     t1.stop();
                     t1.shutdown();
                 }
-                Toast toast = Toast.makeText(PacketScanDataCutoff.this, "Packet not found", Toast.LENGTH_LONG);
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+
+                    Toast toast = Toast.makeText(PacketScanDataCutoff.this, "Packet not found", Toast.LENGTH_LONG);
                 View toastView = toast.getView();
                 TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
                 toastMessage.setTextSize(18);
@@ -432,8 +460,15 @@ public class PacketScanDataCutoff extends AppCompatActivity {
                 toast.show();
                 final MediaPlayer mp = MediaPlayer.create(PacketScanDataCutoff.this, R.raw.alert);
                 mp.start();
+            }
+                    else {
+                Toast toast = Toast.makeText(PacketScanDataCutoff.this, Html.fromHtml("<font color='#EF4F4F' ><b>" + "Packet not found" + "</b></font>"), Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+            }
 
             }
+
         }
 
 
@@ -498,7 +533,9 @@ public class PacketScanDataCutoff extends AppCompatActivity {
                         Toast.makeText(pContext, "No Internet Connection", Toast.LENGTH_SHORT).show();
                     }
                 }else {
-                    edt_scanPacket.setText("");
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+
+                        edt_scanPacket.setText("");
                     Toast toast = Toast.makeText(PacketScanDataCutoff.this, "Wrong packet scanned", Toast.LENGTH_LONG);
                     View toastView = toast.getView();
                     TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
@@ -509,7 +546,15 @@ public class PacketScanDataCutoff extends AppCompatActivity {
                     toast.show();
                     final MediaPlayer mp = MediaPlayer.create(PacketScanDataCutoff.this, R.raw.alert);
                     mp.start();
+
                 }
+                    else {
+                    Toast toast = Toast.makeText(PacketScanDataCutoff.this, Html.fromHtml("<font color='#EF4F4F' ><b>" + "Wrong packet scanned" + "</b></font>"), Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                }
+
+            }
 
 
             }
@@ -584,17 +629,26 @@ public class PacketScanDataCutoff extends AppCompatActivity {
 
 
                 edt_scanPacket.setText("");
-                    Toast toast = Toast.makeText(PacketScanDataCutoff.this, "Data send successfully", Toast.LENGTH_LONG);
-                    View toastView = toast.getView();
-                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-                    toastMessage.setTextSize(18);
-                    toastMessage.setTextColor(Color.GREEN);
-                    toastMessage.setGravity(Gravity.CENTER);
-                    toastMessage.setCompoundDrawablePadding(5);
-                    toastView.setBackgroundColor(Color.TRANSPARENT);
-                    toast.show();
-                    final MediaPlayer mp = MediaPlayer.create(PacketScanDataCutoff.this, R.raw.ok);
-                    mp.start();
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+
+                        Toast toast = Toast.makeText(PacketScanDataCutoff.this, "Data send successfully", Toast.LENGTH_LONG);
+                        View toastView = toast.getView();
+                        TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                        toastMessage.setTextSize(18);
+                        toastMessage.setTextColor(Color.GREEN);
+                        toastMessage.setGravity(Gravity.CENTER);
+                        toastMessage.setCompoundDrawablePadding(5);
+                        toastView.setBackgroundColor(Color.TRANSPARENT);
+                        toast.show();
+                        final MediaPlayer mp = MediaPlayer.create(PacketScanDataCutoff.this, R.raw.ok);
+                        mp.start();
+                    }
+                    else {
+                        Toast toast = Toast.makeText(PacketScanDataCutoff.this, Html.fromHtml("<font color='#26C14B' ><b>" + "Data send successfully" + "</b></font>"), Toast.LENGTH_LONG);
+                        toast.setGravity(Gravity.CENTER, 0, 0);
+                        toast.show();
+                    }
+
 
                     packetno=edt_scanPacket.getText().toString();
                     IntentIntegrator integrator = new IntentIntegrator(PacketScanDataCutoff.this);
@@ -617,17 +671,26 @@ public class PacketScanDataCutoff extends AppCompatActivity {
                     t1.stop();
                     t1.shutdown();
                 }
-                Toast toast = Toast.makeText(PacketScanDataCutoff.this, "Packet not found", Toast.LENGTH_LONG);
-                View toastView = toast.getView();
-                TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-                toastMessage.setTextSize(18);
-                toastMessage.setTextColor(Color.RED);
-                toastMessage.setGravity(Gravity.CENTER);
-                toastMessage.setCompoundDrawablePadding(5);
-                toastView.setBackgroundColor(Color.TRANSPARENT);
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+
+                    Toast toast = Toast.makeText(PacketScanDataCutoff.this, "Packet not found", Toast.LENGTH_LONG);
+                    View toastView = toast.getView();
+                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                    toastMessage.setTextSize(18);
+                    toastMessage.setTextColor(Color.RED);
+                    toastMessage.setGravity(Gravity.CENTER);
+                    toastMessage.setCompoundDrawablePadding(5);
+                    toastView.setBackgroundColor(Color.TRANSPARENT);
+                    toast.show();
+                    final MediaPlayer mp = MediaPlayer.create(PacketScanDataCutoff.this, R.raw.alert);
+                    mp.start();
+
+            }
+                else {
+                Toast toast = Toast.makeText(PacketScanDataCutoff.this, Html.fromHtml("<font color='#EF4F4F' ><b>" + "Packet not found" + "</b></font>"), Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();
-                final MediaPlayer mp = MediaPlayer.create(PacketScanDataCutoff.this, R.raw.alert);
-                mp.start();
+            }
 
             }
         }

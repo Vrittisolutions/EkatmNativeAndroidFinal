@@ -859,6 +859,19 @@ public class CommonObjectProperties {
         }
         return activityCode;
     }
+    public JSONObject IsCallAgain () {
+        activityCode = new JSONObject();
+        try {
+            activityCode.put("name", "IsCallAgain");
+            activityCode.put("IsSet", true);
+            activityCode.put("Operator", "eq");
+            activityCode.put("value1", "");
+            activityCode.put("value2", "");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return activityCode;
+    }
 
 
 
@@ -913,6 +926,7 @@ public class CommonObjectProperties {
             abc.put("CallReviewDate",CallReviewDate());
             abc.put("Product",Product());
             abc.put("Remark",Remark());
+            abc.put("IsCallAgain",IsCallAgain());
         } catch (Exception e) {
             e.printStackTrace();
         }

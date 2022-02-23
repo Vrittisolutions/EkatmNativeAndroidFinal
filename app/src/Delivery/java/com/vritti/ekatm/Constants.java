@@ -6,7 +6,7 @@ package com.vritti.ekatm;
 
 public class Constants {
     public  enum Type{
-        Vwb, CRM,PM ,Delivery ,MilkRun,Sahara,Alfa;
+        Vwb, CRM,PM ,Delivery ,MilkRun,Sahara,Alfa,NepalPM,ZP;
     }
 
     public  static  final Type type = Type.Delivery;

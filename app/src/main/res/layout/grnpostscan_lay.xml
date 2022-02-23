@@ -43,7 +43,14 @@
             android:textStyle="bold"
             android:layout_marginRight="5dp"
             android:textSize="16dp"/>
-
+        <ImageView
+            android:id="@+id/img_barcode"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="5dp"
+            android:visibility="visible"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/barcode"/>
     </LinearLayout>
     <RadioGroup
         android:id="@+id/radio_gr"

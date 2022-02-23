@@ -50,7 +50,7 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="Create Chat Room"
+            android:text="Create Conversation Room"
             android:gravity="center"
             android:textSize="16dp"
             android:textColor="@color/white"

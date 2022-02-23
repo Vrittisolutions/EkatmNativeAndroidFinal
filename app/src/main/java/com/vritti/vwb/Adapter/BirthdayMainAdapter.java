@@ -482,7 +482,7 @@ public class BirthdayMainAdapter extends RecyclerView.Adapter<BirthdayMainAdapte
 
 
                         }
-                        Toast.makeText(context, "Private chat created successfully", Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, "Private conversation  created successfully", Toast.LENGTH_LONG).show();
 
                         Intent intent = new Intent(context, AddChatRoomActivity.class);
                         intent.putExtra("ChatRoomid", ChatRoomId);

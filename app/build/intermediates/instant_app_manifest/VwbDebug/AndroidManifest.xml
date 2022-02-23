@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="vworkbench7.vritti.com.vworkbench7"
     android:targetSandboxVersion="2"
-    android:versionCode="127"
-    android:versionName="5.5.7" >
+    android:versionCode="146"
+    android:versionName="7.2" >
 
     <uses-sdk
         android:minSdkVersion="19"
@@ -32,7 +32,9 @@
     <uses-permission android:name="android.permission.READ_CALL_LOG"/>
     -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
+<!--     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/> -->
+
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
     <!--
@@ -52,6 +54,21 @@
         <intent>
             <action android:name="android.media.action.IMAGE_CAPTURE" />
         </intent>
+    </queries>
+
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.HOME" />
+        </intent>
+    </queries>
+    <queries>
+        <provider android:authorities="com.example.contentproviderexample.MyProvider1" />
+
+        <package android:name="com.crm.calllogs" />
     </queries>
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
@@ -191,6 +208,15 @@
                 <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
             </intent-filter>
         </service>
+
+        <receiver
+            android:name="com.vritti.ekatm.receiver.MyBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="com.crm.calllogs" />
+            </intent-filter>
+        </receiver>
 
         <activity android:name="com.vritti.vwb.vworkbench.Hajmola_End_Screen" />
 
@@ -510,12 +536,12 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name="com.vritti.chat.activity.AddChatRoomActivity"
-            android:label="Chat Room"
+            android:label="Conversation Room"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
             android:name="com.vritti.chat.activity.GroupmemberShowActivity"
-            android:label="Chat Room"
+            android:label="Conversation Room"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
@@ -617,6 +643,9 @@
             android:launchMode="singleTop" />
         <activity
             android:name="com.vritti.vwb.vworkbench.LoggingTimeActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name="com.vritti.vwb.vworkbench.MarkAttendanceActivity"
             android:launchMode="singleTop" />
         <activity
             android:name="com.vritti.vwb.vworkbench.BirthdayListAcyivity"
@@ -777,7 +806,7 @@
         <activity
             android:name="com.vritti.crm.vcrm7.AdvanceProvisionalActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"
+            android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity
             android:name="com.vritti.crm.vcrm7.ProvisionalActivity"
@@ -967,12 +996,17 @@
             android:windowSoftInputMode="stateHidden" />
         <activity android:name="com.vritti.AlfaLavaModule.activity.DeviceLablelPrint" />
         <activity
-            android:name="com.vritti.AlfaLavaModule.activity.DOListActivity"
+            android:name="com.vritti.AlfaLavaModule.activity.picking.DOListActivity"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="com.vritti.AlfaLavaModule.activity.ReceiptPackagingDOListActivity"
+            android:name="com.vritti.AlfaLavaModule.activity.Consolidation.PickListNoListActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.packaging.ReceiptPackagingDOListActivity"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
@@ -1027,6 +1061,11 @@
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="com.vritti.AlfaLavaModule.PI.PacketScanDetails"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.packetenquiry.PacketEnquiryDetails"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
@@ -1209,9 +1248,10 @@
             android:windowSoftInputMode="adjustResize" />
 
         <service
-            android:name="com.vritti.ekatm.services.ForegroundService"
+            android:name="com.vritti.ekatm.services.ShipmeForegroundService"
             android:enabled="true"
-            android:exported="true" />
+            android:exported="true"
+            android:stopWithTask="false" />
 
         <activity
             android:name="com.vritti.AlfaLavaModule.activity.unpacking.UpPackingOrderListActivity"
@@ -1230,6 +1270,16 @@
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="com.vritti.AlfaLavaModule.activity.cartonlabel.CartonLabelHeaderListActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.Inspection.InspectionCartonLabelHeaderListActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.Inspection.InspectionPackingOrderListActivity"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
@@ -1403,6 +1453,19 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.vritti.vwb.vworkbench.ActivityFiliterList"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.vritti.crm.vcrm7.FilterListActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.vritti.crm.vcrm7.ReportSelectionActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" >
+        </activity>
         <activity android:name="com.vritti.sessionlib.MainActivity" />
         <activity android:name="com.vritti.databaselib.other.MainActivity" />
 
@@ -1566,6 +1629,96 @@ Service handling Google Sign-In user revocation. For apps that do not integrate 
                 <action android:name="com.google.android.gms.gcm.ACTION_TASK_READY" />
             </intent-filter>
         </service>
+
+        <provider
+            android:name="androidx.work.impl.WorkManagerInitializer"
+            android:authorities="vworkbench7.vritti.com.vworkbench7.workmanager-init"
+            android:directBootAware="false"
+            android:exported="false"
+            android:multiprocess="true" />
+
+        <service
+            android:name="androidx.work.impl.background.systemalarm.SystemAlarmService"
+            android:directBootAware="false"
+            android:enabled="@bool/enable_system_alarm_service_default"
+            android:exported="false" />
+        <service
+            android:name="androidx.work.impl.background.systemjob.SystemJobService"
+            android:directBootAware="false"
+            android:enabled="@bool/enable_system_job_service_default"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <receiver
+            android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver"
+            android:directBootAware="false"
+            android:enabled="true"
+            android:exported="false" />
+        <receiver
+            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy"
+            android:directBootAware="false"
+            android:enabled="false"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy"
+            android:directBootAware="false"
+            android:enabled="false"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="android.intent.action.BATTERY_OKAY" />
+                <action android:name="android.intent.action.BATTERY_LOW" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy"
+            android:directBootAware="false"
+            android:enabled="false"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEVICE_STORAGE_LOW" />
+                <action android:name="android.intent.action.DEVICE_STORAGE_OK" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy"
+            android:directBootAware="false"
+            android:enabled="false"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver"
+            android:directBootAware="false"
+            android:enabled="false"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver"
+            android:directBootAware="false"
+            android:enabled="@bool/enable_system_alarm_service_default"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="androidx.work.impl.background.systemalarm.UpdateProxies" />
+            </intent-filter>
+        </receiver>
+
+        <provider
+            android:name="android.arch.lifecycle.ProcessLifecycleOwnerInitializer"
+            android:authorities="vworkbench7.vritti.com.vworkbench7.lifecycle-trojan"
+            android:exported="false"
+            android:multiprocess="true" />
     </application>
 
 </manifest>

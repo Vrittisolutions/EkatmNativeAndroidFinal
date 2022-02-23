@@ -23,23 +23,23 @@ import java.lang.Override;
 public class GroupChatRecycleViewAdapter$ChatHolder_ViewBinding implements Unbinder {
   private GroupChatRecycleViewAdapter.ChatHolder target;
 
-  private View view2131298795;
+  private View view2131298814;
 
-  private View view2131298796;
+  private View view2131298815;
 
-  private View view2131299874;
+  private View view2131299909;
 
-  private View view2131296760;
+  private View view2131296766;
 
-  private View view2131296360;
+  private View view2131296361;
 
-  private View view2131297708;
+  private View view2131297719;
 
-  private View view2131297834;
+  private View view2131297845;
 
-  private View view2131298834;
+  private View view2131298853;
 
-  private View view2131298807;
+  private View view2131298826;
 
   @UiThread
   public GroupChatRecycleViewAdapter$ChatHolder_ViewBinding(final GroupChatRecycleViewAdapter.ChatHolder target,
@@ -54,7 +54,7 @@ public class GroupChatRecycleViewAdapter$ChatHolder_ViewBinding implements Unbin
     view = source.findViewById(R.id.outgoing_img_chat);
     target.outgoing_img_chat = Utils.castView(view, R.id.outgoing_img_chat, "field 'outgoing_img_chat'", SimpleDraweeView.class);
     if (view != null) {
-      view2131298795 = view;
+      view2131298814 = view;
       view.setOnClickListener(new DebouncingOnClickListener() {
         @Override
         public void doClick(View p0) {
@@ -72,7 +72,7 @@ public class GroupChatRecycleViewAdapter$ChatHolder_ViewBinding implements Unbin
     view = source.findViewById(R.id.outgoing_layout_bubble);
     target.outgoing_layout_bubble = Utils.castView(view, R.id.outgoing_layout_bubble, "field 'outgoing_layout_bubble'", LinearLayout.class);
     if (view != null) {
-      view2131298796 = view;
+      view2131298815 = view;
       view.setOnClickListener(new DebouncingOnClickListener() {
         @Override
         public void doClick(View p0) {
@@ -89,7 +89,7 @@ public class GroupChatRecycleViewAdapter$ChatHolder_ViewBinding implements Unbin
     view = source.findViewById(R.id.txt_download);
     target.txt_download = Utils.castView(view, R.id.txt_download, "field 'txt_download'", ImageView.class);
     if (view != null) {
-      view2131299874 = view;
+      view2131299909 = view;
       view.setOnClickListener(new DebouncingOnClickListener() {
         @Override
         public void doClick(View p0) {
@@ -120,7 +120,7 @@ public class GroupChatRecycleViewAdapter$ChatHolder_ViewBinding implements Unbin
     view = source.findViewById(R.id.callBtn);
     target.callBtn = Utils.castView(view, R.id.callBtn, "field 'callBtn'", Button.class);
     if (view != null) {
-      view2131296760 = view;
+      view2131296766 = view;
       view.setOnClickListener(new DebouncingOnClickListener() {
         @Override
         public void doClick(View p0) {
@@ -131,7 +131,7 @@ public class GroupChatRecycleViewAdapter$ChatHolder_ViewBinding implements Unbin
     view = source.findViewById(R.id.addContactBtn);
     target.addContactBtn = Utils.castView(view, R.id.addContactBtn, "field 'addContactBtn'", Button.class);
     if (view != null) {
-      view2131296360 = view;
+      view2131296361 = view;
       view.setOnClickListener(new DebouncingOnClickListener() {
         @Override
         public void doClick(View p0) {
@@ -147,7 +147,7 @@ public class GroupChatRecycleViewAdapter$ChatHolder_ViewBinding implements Unbin
     view = source.findViewById(R.id.img_chat);
     target.img_chat = Utils.castView(view, R.id.img_chat, "field 'img_chat'", ImageView.class);
     if (view != null) {
-      view2131297708 = view;
+      view2131297719 = view;
       view.setOnClickListener(new DebouncingOnClickListener() {
         @Override
         public void doClick(View p0) {
@@ -165,7 +165,7 @@ public class GroupChatRecycleViewAdapter$ChatHolder_ViewBinding implements Unbin
     view = source.findViewById(R.id.incoming_layout_bubble);
     target.incoming_layout_bubble = Utils.castView(view, R.id.incoming_layout_bubble, "field 'incoming_layout_bubble'", LinearLayout.class);
     if (view != null) {
-      view2131297834 = view;
+      view2131297845 = view;
       view.setOnClickListener(new DebouncingOnClickListener() {
         @Override
         public void doClick(View p0) {
@@ -182,7 +182,7 @@ public class GroupChatRecycleViewAdapter$ChatHolder_ViewBinding implements Unbin
     view = source.findViewById(R.id.play);
     target.play = Utils.castView(view, R.id.play, "field 'play'", ImageView.class);
     if (view != null) {
-      view2131298834 = view;
+      view2131298853 = view;
       view.setOnClickListener(new DebouncingOnClickListener() {
         @Override
         public void doClick(View p0) {
@@ -193,7 +193,7 @@ public class GroupChatRecycleViewAdapter$ChatHolder_ViewBinding implements Unbin
     view = source.findViewById(R.id.pause);
     target.pause = Utils.castView(view, R.id.pause, "field 'pause'", ImageView.class);
     if (view != null) {
-      view2131298807 = view;
+      view2131298826 = view;
       view.setOnClickListener(new DebouncingOnClickListener() {
         @Override
         public void doClick(View p0) {
@@ -267,45 +267,45 @@ public class GroupChatRecycleViewAdapter$ChatHolder_ViewBinding implements Unbin
     target.rootLayout = null;
     target.imageMessage = null;
 
-    if (view2131298795 != null) {
-      view2131298795.setOnClickListener(null);
-      view2131298795.setOnLongClickListener(null);
-      view2131298795 = null;
+    if (view2131298814 != null) {
+      view2131298814.setOnClickListener(null);
+      view2131298814.setOnLongClickListener(null);
+      view2131298814 = null;
     }
-    if (view2131298796 != null) {
-      view2131298796.setOnClickListener(null);
-      view2131298796.setOnLongClickListener(null);
-      view2131298796 = null;
+    if (view2131298815 != null) {
+      view2131298815.setOnClickListener(null);
+      view2131298815.setOnLongClickListener(null);
+      view2131298815 = null;
     }
-    if (view2131299874 != null) {
-      view2131299874.setOnClickListener(null);
-      view2131299874 = null;
+    if (view2131299909 != null) {
+      view2131299909.setOnClickListener(null);
+      view2131299909 = null;
     }
-    if (view2131296760 != null) {
-      view2131296760.setOnClickListener(null);
-      view2131296760 = null;
+    if (view2131296766 != null) {
+      view2131296766.setOnClickListener(null);
+      view2131296766 = null;
     }
-    if (view2131296360 != null) {
-      view2131296360.setOnClickListener(null);
-      view2131296360 = null;
+    if (view2131296361 != null) {
+      view2131296361.setOnClickListener(null);
+      view2131296361 = null;
     }
-    if (view2131297708 != null) {
-      view2131297708.setOnClickListener(null);
-      view2131297708.setOnLongClickListener(null);
-      view2131297708 = null;
+    if (view2131297719 != null) {
+      view2131297719.setOnClickListener(null);
+      view2131297719.setOnLongClickListener(null);
+      view2131297719 = null;
     }
-    if (view2131297834 != null) {
-      view2131297834.setOnClickListener(null);
-      view2131297834.setOnLongClickListener(null);
-      view2131297834 = null;
+    if (view2131297845 != null) {
+      view2131297845.setOnClickListener(null);
+      view2131297845.setOnLongClickListener(null);
+      view2131297845 = null;
     }
-    if (view2131298834 != null) {
-      view2131298834.setOnClickListener(null);
-      view2131298834 = null;
+    if (view2131298853 != null) {
+      view2131298853.setOnClickListener(null);
+      view2131298853 = null;
     }
-    if (view2131298807 != null) {
-      view2131298807.setOnClickListener(null);
-      view2131298807 = null;
+    if (view2131298826 != null) {
+      view2131298826.setOnClickListener(null);
+      view2131298826 = null;
     }
   }
 }

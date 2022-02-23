@@ -36,7 +36,7 @@ import com.google.zxing.EncodeHintType;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
-import com.vritti.AlfaLavaModule.bean.PacketListDetail;
+import com.vritti.AlfaLavaModule.activity.packaging.ReceiptPackagingDOListActivity;
 import com.vritti.AlfaLavaModule.utility.ProgressHUD;
 import com.vritti.databaselib.data.DatabaseHandlers;
 import com.vritti.databaselib.other.Utility;
@@ -51,7 +51,6 @@ import com.vritti.sessionlib.StartSession;
 import com.vritti.vwb.classes.CommonFunction;
 import com.zj.btsdk.BluetoothService;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -755,7 +754,7 @@ public class CreateSecondaryPackActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = userpreferences.edit();
                 editor.remove(WebUrlClass.MyPREFERENCES_HEADER);
                 editor.commit();
-                startActivity(new Intent(CreateSecondaryPackActivity.this,ReceiptPackagingDOListActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                startActivity(new Intent(CreateSecondaryPackActivity.this, ReceiptPackagingDOListActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                  finish();
             } else {
 

@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -44,7 +45,7 @@ public class SOApproveDetailActivity extends AppCompatActivity {
     private Context parent;
     ListView listitems;
     TextView delchrge;
-    static TextView total_amount;
+    static TextView total_amount,TotTaxAmt,txt_tot_amount;
     ProgressBar progressBar;
     static ProgressHUD progress;
     SOApprDetailsAdapter dtlAdapter;
@@ -72,6 +73,9 @@ public class SOApproveDetailActivity extends AppCompatActivity {
     Dialog dialog;
     String reason="";
     static float deliveryCharge = 0,FreeAboveAmt = 0, Distance = 0,ValPerKm = 0,MaxFreeDelDist=0;
+    LinearLayout len_tax,len_total;
+    String tax="",TotalAmount="";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,9 +119,13 @@ public class SOApproveDetailActivity extends AppCompatActivity {
         btnapprove = findViewById(R.id.btnapprove);
         btndisapprove = findViewById(R.id.btndisapprove);
         total_amount = findViewById(R.id.total_amount);
+        TotTaxAmt = findViewById(R.id.TotTaxAmt);
+        txt_tot_amount = findViewById(R.id.txt_tot_amount);
         //progressBar = findViewById(R.id.toolbar_progress_Assgnwork);
         progressBar = findViewById(R.id.tbuds_tbar_prgrs_bar);
         delchrge = findViewById(R.id.delchrge);
+        len_tax = findViewById(R.id.len_tax);
+        len_total = findViewById(R.id.len_total);
 
         sharedpreferences = getSharedPreferences(WebUrlClass.MyPREFERENCES, Context.MODE_PRIVATE);
         restoredText = sharedpreferences.getString("Mobileno", null);
@@ -420,6 +428,21 @@ public class SOApproveDetailActivity extends AppCompatActivity {
         String formatted = formatter.format(amount);
 
         //total_amount.setText(String.format("%.2f",amt));
+        tax = getIntent().getStringExtra("Tax");
+        if (tax.equalsIgnoreCase("0")||tax.equalsIgnoreCase("")||tax.equalsIgnoreCase("0.0")||tax.equalsIgnoreCase("0.0000")){
+            len_tax.setVisibility(View.GONE);
+            len_total.setVisibility(View.GONE);
+        }else {
+            len_tax.setVisibility(View.VISIBLE);
+            len_total.setVisibility(View.VISIBLE);
+            double Tottax=Double.parseDouble(tax);
+            TotTaxAmt.setText(String.format("%.2f", Tottax));
+
+            double TotalAmount= amount+Tottax;
+            txt_tot_amount.setText(String.format("%.2f", TotalAmount));
+
+
+        }
         total_amount.setText(aAmt);
     }
 
@@ -456,7 +479,13 @@ public class SOApproveDetailActivity extends AppCompatActivity {
 
             jsonMain.put("Sono",SONO);
             jsonMain.put("SOHeaderId",soHeaderid);
-            jsonMain.put("ApprTotalOrdValue",totAmt);
+
+            if (tax.equalsIgnoreCase("0")||tax.equalsIgnoreCase("")||tax.equalsIgnoreCase("0.0")||tax.equalsIgnoreCase("0.0000")) {
+                jsonMain.put("ApprTotalOrdValue",totAmt);
+            }else {
+                jsonMain.put("ApprTotalOrdValue",txt_tot_amount.getText().toString());
+            }
+
             jsonMain.put("ConsigneeName",consigneeName);
             jsonMain.put("CustomerMasterId",consigneeId);
             jsonMain.put("Reason","");

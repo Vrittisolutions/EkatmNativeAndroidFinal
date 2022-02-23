@@ -9,13 +9,19 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.AsyncTask;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.ImageViewCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,14 +48,18 @@ import com.vritti.databaselib.other.Utility;
 import com.vritti.databaselib.other.WebUrlClass;
 import com.vritti.ekatm.R;
 import com.vritti.ekatm.services.ForegroundService;
+import com.vritti.sessionlib.CallbackInterface;
+import com.vritti.sessionlib.StartSession;
 import com.vritti.vwb.Beans.ActivityBean;
 import com.vritti.vwb.vworkbench.LoggingTimeActivity;
 
 import org.w3c.dom.Text;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -78,10 +88,14 @@ public class OpportunityAdapter_V1 extends RecyclerView.Adapter<OpportunityAdapt
     String actid, time, Starttime, sp_date;
     String getdate, currentTime;
     private int backToposition;
-    private String Opportunity_type="";
+    private String Opportunity_type="",OppType="";
+    Date review_date,current_date2;
+    String Response_Call="",Call_ID="";
+    private boolean Flag=false;
+
 
     public OpportunityAdapter_V1(Context context,ArrayList<PartialCallList> partialCallLists,String flag,
-                                 String Contact,String starttime,String endtime,String duration,String rowNo) {
+                                 String Contact,String starttime,String endtime,String duration,String rowNo,String OppType) {
         this.context = context;
         this.partialCallListArrayList = partialCallLists;
         this.flag=flag;
@@ -90,6 +104,7 @@ public class OpportunityAdapter_V1 extends RecyclerView.Adapter<OpportunityAdapt
         this.endtime=endtime;
         this.duration=duration;
         this.rowNo=rowNo;
+        this.OppType=OppType;
         ut = new Utility();
         cf = new CommonFunctionCrm(context);
         String settingKey = ut.getSharedPreference_SettingKey(context);
@@ -336,6 +351,13 @@ public class OpportunityAdapter_V1 extends RecyclerView.Adapter<OpportunityAdapt
 
             holder.card_viewfill.setPreventCornerOverlap(false);
 
+            if (OppType.equalsIgnoreCase("start_again")){
+                holder.len_start.setVisibility(View.VISIBLE);
+            }else {
+                holder.len_start.setVisibility(View.GONE);
+
+            }
+
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -350,9 +372,9 @@ public class OpportunityAdapter_V1 extends RecyclerView.Adapter<OpportunityAdapt
 
     public class OpportunityHolder extends RecyclerView.ViewHolder {
 
-        LinearLayout  laycall_type,len_action,len_call,len_callslist;
+        LinearLayout  laycall_type,len_action,len_call,len_callslist,len_start;
         public TextView txtfirmname, txtcityname, tv_latestremark, txtactiondatetime,
-                tvcall, txt_chat,txtaddress,txt_expvalue,txt_email,milestone;
+                tvcall, txt_chat,txtaddress,txt_expvalue,txt_email,milestone,txt_start,txt_ignore;
         ImageView img_action, img_appotunity_update,img_contact,img_nextaction,callrating;
         RelativeLayout realcolors;
         CardView card_viewfill;
@@ -382,8 +404,11 @@ public class OpportunityAdapter_V1 extends RecyclerView.Adapter<OpportunityAdapt
             callrating = convertView.findViewById(R.id.callrating);
             len_call = (LinearLayout)convertView.findViewById(R.id.lencall);
             len_callslist = (LinearLayout)convertView.findViewById(R.id.len_callslist);
+            len_start = (LinearLayout)convertView.findViewById(R.id.len_start);
             milestone = (TextView) convertView.findViewById(R.id.milestone);
             card_viewfill = (CardView) convertView.findViewById(R.id.card_viewfill);
+            txt_start = (TextView) convertView.findViewById(R.id.txt_start);
+            txt_ignore = (TextView) convertView.findViewById(R.id.txt_ignore);
 
 
             len_callslist.setOnClickListener(new View.OnClickListener() {
@@ -402,80 +427,85 @@ public class OpportunityAdapter_V1 extends RecyclerView.Adapter<OpportunityAdapt
             len_call.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    String resp = "";
 
-                    if (flag.equalsIgnoreCase("1")){
+                            if (OppType.equalsIgnoreCase("start_again")) {
+                            } else {
 
-                        ((OpportunityActivity_V1)context).expense(getAdapterPosition(),partialCallListArrayList.get(getPosition()).getCallId(), partialCallListArrayList.get(getAdapterPosition()).getFirmname());
-                    }
-                    else if (flag.equalsIgnoreCase("2")) {
-                        Intent intent = new Intent(context, ContactActivity.class);
-                        intent.putExtra("firm", partialCallListArrayList.get(getAdapterPosition()).getFirmname());
-                        intent.putExtra("date", partialCallListArrayList.get(getAdapterPosition()).getActiondatetime());
-                        intent.putExtra("action", partialCallListArrayList.get(getAdapterPosition()).getNextAction());
-                        intent.putExtra("status", partialCallListArrayList.get(getAdapterPosition()).getCallStatus());
-                        intent.putExtra("call", tvcall.getText().toString());
-                        intent.putExtra("remark", tv_latestremark.getText().toString());
-                        String Call_ProspectId = partialCallListArrayList.get(getPosition()).getPKSuspectId();
-                        String Call_CallType = partialCallListArrayList.get(getPosition()).getCallType();
-                        String Call_Callid = partialCallListArrayList.get(getPosition()).getCallId();
-                        String SourceId = partialCallListArrayList.get(getPosition()).getSourceId();
-                        intent.putExtra("callid", Call_Callid);
-                        intent.putExtra("call_prospect", Call_ProspectId);
-                        intent.putExtra("call_type", Call_CallType);
-                        intent.putExtra("call_type_1", "Crm_Opportunity");
-                        intent.putExtra("projmasterId", "");
-                        intent.putExtra("AssignBy", UserName);
-                        intent.putExtra("AssignById", UserMasterId);
-                        intent.putExtra("SourceId", SourceId);
-                        intent.putExtra("mile", partialCallListArrayList.get(getAdapterPosition()).getNextMilestone());
-                        intent.putExtra("mobile", partialCallListArrayList.get(getAdapterPosition()).getMobileno());
-                        intent.putExtra("evalue", partialCallListArrayList.get(getAdapterPosition()).getExpectedValue());
-                        intent.putExtra("type", "Callfromcalllogs");
-                        intent.putExtra("starttime", starttime);
-                        intent.putExtra("endtime", endtime);
-                        intent.putExtra("duration", duration);
-                        intent.putExtra("rowNo", rowNo);
-                        if (flag.equalsIgnoreCase("2")){
-                            intent.putExtra("callmob", Contact);
+                                if (flag.equalsIgnoreCase("1")) {
+
+                                    ((OpportunityActivity_V1) context).expense(getAdapterPosition(), partialCallListArrayList.get(getPosition()).getCallId(), partialCallListArrayList.get(getAdapterPosition()).getFirmname());
+                                } else if (flag.equalsIgnoreCase("2")) {
+                                    Intent intent = new Intent(context, ContactActivity.class);
+                                    intent.putExtra("firm", partialCallListArrayList.get(getAdapterPosition()).getFirmname());
+                                    intent.putExtra("date", partialCallListArrayList.get(getAdapterPosition()).getActiondatetime());
+                                    intent.putExtra("action", partialCallListArrayList.get(getAdapterPosition()).getNextAction());
+                                    intent.putExtra("status", partialCallListArrayList.get(getAdapterPosition()).getCallStatus());
+                                    intent.putExtra("call", tvcall.getText().toString());
+                                    intent.putExtra("remark", tv_latestremark.getText().toString());
+                                    String Call_ProspectId = partialCallListArrayList.get(getPosition()).getPKSuspectId();
+                                    String Call_CallType = partialCallListArrayList.get(getPosition()).getCallType();
+                                    String Call_Callid = partialCallListArrayList.get(getPosition()).getCallId();
+                                    String SourceId = partialCallListArrayList.get(getPosition()).getSourceId();
+                                    intent.putExtra("callid", Call_Callid);
+                                    intent.putExtra("call_prospect", Call_ProspectId);
+                                    intent.putExtra("call_type", Call_CallType);
+                                    intent.putExtra("call_type_1", "Crm_Opportunity");
+                                    intent.putExtra("projmasterId", "");
+                                    intent.putExtra("AssignBy", UserName);
+                                    intent.putExtra("AssignById", UserMasterId);
+                                    intent.putExtra("SourceId", SourceId);
+                                    intent.putExtra("mile", partialCallListArrayList.get(getAdapterPosition()).getNextMilestone());
+                                    intent.putExtra("mobile", partialCallListArrayList.get(getAdapterPosition()).getMobileno());
+                                    intent.putExtra("evalue", partialCallListArrayList.get(getAdapterPosition()).getExpectedValue());
+                                    intent.putExtra("type", "Callfromcalllogs");
+                                    intent.putExtra("starttime", starttime);
+                                    intent.putExtra("endtime", endtime);
+                                    intent.putExtra("duration", duration);
+                                    intent.putExtra("rowNo", rowNo);
+                                    if (flag.equalsIgnoreCase("2")) {
+                                        intent.putExtra("callmob", Contact);
+                                    }
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    context.startActivity(intent);
+                                    ((OpportunityActivity_V1) context).overridePendingTransition(R.anim.slide_right_to_left, R.anim.slide_left_to_right);
+                                } else {
+
+                                    Intent intent = new Intent(context, CRM_Callslist_Partial.class);
+                                    intent.putExtra("firm", partialCallListArrayList.get(getAdapterPosition()).getFirmname());
+                                    intent.putExtra("date", partialCallListArrayList.get(getAdapterPosition()).getActiondatetime());
+                                    intent.putExtra("action", partialCallListArrayList.get(getAdapterPosition()).getNextAction());
+                                    intent.putExtra("status", partialCallListArrayList.get(getAdapterPosition()).getCallStatus());
+                                    intent.putExtra("call", tvcall.getText().toString());
+                                    intent.putExtra("remark", tv_latestremark.getText().toString());
+                                    String Call_ProspectId = partialCallListArrayList.get(getPosition()).getPKSuspectId();
+                                    String Call_CallType = partialCallListArrayList.get(getPosition()).getCallType();
+                                    String Call_Callid = partialCallListArrayList.get(getPosition()).getCallId();
+                                    String SourceId = partialCallListArrayList.get(getPosition()).getSourceId();
+                                    intent.putExtra("callid", Call_Callid);
+                                    intent.putExtra("call_prospect", Call_ProspectId);
+                                    intent.putExtra("call_type", Call_CallType);
+                                    intent.putExtra("call_type_1", "Crm_Opportunity");
+                                    intent.putExtra("projmasterId", "");
+                                    intent.putExtra("AssignBy", UserName);
+                                    intent.putExtra("AssignById", UserMasterId);
+                                    intent.putExtra("SourceId", SourceId);
+                                    intent.putExtra("mile", partialCallListArrayList.get(getAdapterPosition()).getNextMilestone());
+                                    intent.putExtra("mobile", partialCallListArrayList.get(getAdapterPosition()).getMobileno());
+                                    intent.putExtra("evalue", partialCallListArrayList.get(getAdapterPosition()).getExpectedValue());
+                                    if (flag.equalsIgnoreCase("2")) {
+                                        intent.putExtra("callmob", Contact);
+                                    }
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    context.startActivity(intent);
+                                    ((OpportunityActivity_V1) context).overridePendingTransition(R.anim.slide_right_to_left, R.anim.slide_left_to_right);
+
+                                }
+                            }
                         }
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        context.startActivity(intent);
-                        ((OpportunityActivity_V1) context).overridePendingTransition(R.anim.slide_right_to_left, R.anim.slide_left_to_right);
-                    }
-                    else {
 
-                        Intent intent = new Intent(context, CRM_Callslist_Partial.class);
-                        intent.putExtra("firm", partialCallListArrayList.get(getAdapterPosition()).getFirmname());
-                        intent.putExtra("date", partialCallListArrayList.get(getAdapterPosition()).getActiondatetime());
-                        intent.putExtra("action", partialCallListArrayList.get(getAdapterPosition()).getNextAction());
-                        intent.putExtra("status", partialCallListArrayList.get(getAdapterPosition()).getCallStatus());
-                        intent.putExtra("call", tvcall.getText().toString());
-                        intent.putExtra("remark", tv_latestremark.getText().toString());
-                        String Call_ProspectId = partialCallListArrayList.get(getPosition()).getPKSuspectId();
-                        String Call_CallType = partialCallListArrayList.get(getPosition()).getCallType();
-                        String Call_Callid = partialCallListArrayList.get(getPosition()).getCallId();
-                        String SourceId = partialCallListArrayList.get(getPosition()).getSourceId();
-                        intent.putExtra("callid", Call_Callid);
-                        intent.putExtra("call_prospect", Call_ProspectId);
-                        intent.putExtra("call_type", Call_CallType);
-                        intent.putExtra("call_type_1", "Crm_Opportunity");
-                        intent.putExtra("projmasterId", "");
-                        intent.putExtra("AssignBy", UserName);
-                        intent.putExtra("AssignById", UserMasterId);
-                        intent.putExtra("SourceId", SourceId);
-                        intent.putExtra("mile", partialCallListArrayList.get(getAdapterPosition()).getNextMilestone());
-                        intent.putExtra("mobile", partialCallListArrayList.get(getAdapterPosition()).getMobileno());
-                        intent.putExtra("evalue", partialCallListArrayList.get(getAdapterPosition()).getExpectedValue());
-                        if (flag.equalsIgnoreCase("2")){
-                            intent.putExtra("callmob", Contact);
-                        }
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        context.startActivity(intent);
-                        ((OpportunityActivity_V1) context).overridePendingTransition(R.anim.slide_right_to_left, R.anim.slide_left_to_right);
 
-                    }
 
-                }
             });
 
             txt_chat.setOnClickListener(new View.OnClickListener() {
@@ -520,6 +550,22 @@ public class OpportunityAdapter_V1 extends RecyclerView.Adapter<OpportunityAdapt
                     ((OpportunityActivity)  context).overridePendingTransition(R.anim.slide_up,R.anim.no_anim);
                 }
             });
+
+
+            txt_start.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ((OpportunityActivity_V1)context).callstartagain(getAdapterPosition(),partialCallListArrayList);
+                }
+            });
+
+            txt_ignore.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ((OpportunityActivity_V1)context).callignore(getAdapterPosition(),partialCallListArrayList);
+                }
+            });
+
 
            /* tvcall.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -714,6 +760,25 @@ public class OpportunityAdapter_V1 extends RecyclerView.Adapter<OpportunityAdapt
         }
 
 
+    }
+
+
+
+
+
+
+    private boolean isnet() {
+        // TODO Auto-generated method stub
+        Context context = this.context;
+        ConnectivityManager cm = (ConnectivityManager) context
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        if (netInfo != null && netInfo.isConnectedOrConnecting()) {
+            return true;
+        } else {
+            Toast.makeText(context, "No internet connection", Toast.LENGTH_LONG).show();
+            return false;
+        }
     }
 
 

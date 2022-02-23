@@ -2,7 +2,9 @@ package com.vritti.expensemanagement;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -16,12 +18,22 @@ import com.vritti.vwb.vworkbench.ClaimLedgerActivity;
 import com.vritti.vwb.vworkbench.ClaimNewActivity;
 import com.vritti.vwb.vworkbench.ClaimNotificationActivity;
 import com.vritti.vwb.vworkbench.ClaimRecordActivity;
+import com.vritti.vwb.vworkbench.EmployeeAdvanceRequestActivity;
+import com.vritti.vwb.vworkbench.VWBRightMenuActivity;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.Locale;
 
 public class ExpenseSelectionActivity extends AppCompatActivity {
     Context parent;
-    LinearLayout lay_record_expense,lay_record_history,lay_claim,lay_payment,lay_ledger,lay_claim_history;
+    LinearLayout lay_record_expense,lay_record_history,lay_claim,lay_payment,lay_ledger,lay_claim_history,txt_service_report;
     ImageView img_add,img_refresh,img_back;
-    TextView txt_title;
+    TextView txt_title,txt_desc;
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +42,8 @@ public class ExpenseSelectionActivity extends AppCompatActivity {
         init();
 
         setListeners();
+
+
     }
     
     public void init(){
@@ -39,6 +53,7 @@ public class ExpenseSelectionActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         txt_title=findViewById(R.id.txt_title);
+        txt_desc=findViewById(R.id.txt_desc);
         img_add=findViewById(R.id.img_add);
         img_back=findViewById(R.id.img_back);
 
@@ -58,6 +73,7 @@ public class ExpenseSelectionActivity extends AppCompatActivity {
         lay_payment = findViewById(R.id.lay_payment);
         lay_ledger = findViewById(R.id.lay_ledger);
         lay_claim_history = findViewById(R.id.lay_claim_history);
+        txt_service_report = findViewById(R.id.txt_service_report);
     }
     
     public void setListeners(){
@@ -118,7 +134,15 @@ public class ExpenseSelectionActivity extends AppCompatActivity {
                 overridePendingTransition(R.anim.slide_right_to_left,R.anim.slide_left_to_right);
             }
         });
-        
+        txt_service_report.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ExpenseSelectionActivity.this, EmployeeAdvanceRequestActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_right_to_left,R.anim.slide_left_to_right);
+            }
+        });
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem) {

@@ -3,6 +3,7 @@ package com.vritti.AlfaLavaModule.activity.packing_qc;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.media.MediaPlayer;
@@ -20,6 +21,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatRadioButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -37,6 +40,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+import com.vritti.AlfaLavaModule.activity.picking.ItemWisePickListDetailActivity;
 import com.vritti.AlfaLavaModule.adapter.AdapterCartonDetail;
 import com.vritti.AlfaLavaModule.adapter.Adapter_PrinterName;
 import com.vritti.AlfaLavaModule.bean.CartonDetail;
@@ -44,6 +50,7 @@ import com.vritti.AlfaLavaModule.bean.PrinterName;
 import com.vritti.databaselib.data.DatabaseHandlers;
 import com.vritti.databaselib.other.Utility;
 import com.vritti.databaselib.other.WebUrlClass;
+import com.vritti.ekatm.Constants;
 import com.vritti.ekatm.R;
 import com.vritti.sessionlib.CallbackInterface;
 import com.vritti.sessionlib.StartSession;
@@ -102,6 +109,7 @@ public class QCPackingCartonDetailActivity extends AppCompatActivity {
     AppCompatRadioButton radio_approved,radio_notapproved;
     String QCStatus="";
     ArrayList<CartonDetail> dummyList = new ArrayList<>();
+    ImageView img_barcode;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -130,6 +138,7 @@ public class QCPackingCartonDetailActivity extends AppCompatActivity {
         IsChatApplicable = ut.getValue(QCPackingCartonDetailActivity.this, WebUrlClass.GET_ISCHATAPPLICABLE_KEY, settingKey);
 
         progress=findViewById(R.id.progress);
+        img_barcode = findViewById(R.id.img_barcode);
 
 
         DONumber=getIntent().getStringExtra("dono");
@@ -216,6 +225,19 @@ public class QCPackingCartonDetailActivity extends AppCompatActivity {
         });
 
 
+        img_barcode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IntentIntegrator integrator = new IntentIntegrator(QCPackingCartonDetailActivity.this);
+                integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
+                integrator.setPrompt("Scan");
+                integrator.setCameraId(0);
+                integrator.setBeepEnabled(false);
+                integrator.setBarcodeImageEnabled(false);
+                integrator.initiateScan();
+
+            }
+        });
 
 
 
@@ -727,6 +749,24 @@ public class QCPackingCartonDetailActivity extends AppCompatActivity {
 
         b = dialogBuilder.create();
         b.show();
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data1) {
+        super.onActivityResult(requestCode, resultCode, data1);
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data1);
+        if (result != null) {
+            if (result.getContents() == null) {
+                Log.e("Scan*******", "Cancelled scan");
+
+            } else {
+                Log.e("Scan", "Scanned");
+
+
+                data = result.getContents().toString();
+                filter(data);
+
+            }
+        }
     }
 
 

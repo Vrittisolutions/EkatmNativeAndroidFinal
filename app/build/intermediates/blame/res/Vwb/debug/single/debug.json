@@ -112,12 +112,12 @@
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\generated\\res\\pngs\\Vwb\\debug\\drawable-anydpi-v21\\visit24.xml"
     },
     {
-        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\drawable_rcv_n6.png.flat",
-        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\drawable\\rcv_n6.png"
-    },
-    {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_follow_schedule_time.xml.flat",
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\follow_schedule_time.xml"
+    },
+    {
+        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\drawable_rcv_n6.png.flat",
+        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\drawable\\rcv_n6.png"
     },
     {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout-sw720dp_activity_hajmola__end__screen.xml.flat",
@@ -166,6 +166,14 @@
     {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_dialog_change_workspace.xml.flat",
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\Vwb\\res\\layout\\dialog_change_workspace.xml"
+    },
+    {
+        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\raw_alarm.mp3.flat",
+        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\raw\\alarm.mp3"
+    },
+    {
+        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_activity_filter_v1.xml.flat",
+        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\activity_filter_v1.xml"
     },
     {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\drawable_border_orenge.xml.flat",
@@ -408,12 +416,12 @@
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\tbuds_activity_locate_on_map.xml"
     },
     {
-        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\drawable_spam.png.flat",
-        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\drawable\\spam.png"
-    },
-    {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\raw_beep.mp3.flat",
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\raw\\beep.mp3"
+    },
+    {
+        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\drawable_spam.png.flat",
+        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\drawable\\spam.png"
     },
     {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_tbuds_checkoutadapter.xml.flat",
@@ -452,12 +460,12 @@
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\crm_activity_travel_plan_show.xml"
     },
     {
-        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_option_lay.xml.flat",
-        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\option_lay.xml"
-    },
-    {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_sales_soappr_details_adapter.xml.flat",
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\sales_soappr_details_adapter.xml"
+    },
+    {
+        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_option_lay.xml.flat",
+        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\option_lay.xml"
     },
     {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_activity_audi_screen.xml.flat",
@@ -948,12 +956,12 @@
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\drawable\\btn_play.png"
     },
     {
-        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_packaging_order_lay.xml.flat",
-        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\packaging_order_lay.xml"
-    },
-    {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_vwb_start_time_logging_fragment_v1.xml.flat",
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\vwb_start_time_logging_fragment_v1.xml"
+    },
+    {
+        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_packaging_order_lay.xml.flat",
+        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\packaging_order_lay.xml"
     },
     {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_crm_view_spinner_item.xml.flat",
@@ -1046,6 +1054,10 @@
     {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\mipmap-xxhdpi_ic_progress3.png.flat",
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_progress3.png"
+    },
+    {
+        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\drawable_dummy.png.flat",
+        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\drawable\\dummy.png"
     },
     {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_target_achievement_activity.xml.flat",
@@ -1184,12 +1196,12 @@
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\drawable\\username_pic.png"
     },
     {
-        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\drawable_button_blue_border.xml.flat",
-        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\drawable\\button_blue_border.xml"
-    },
-    {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\drawable_whtsaap_button_background_white.xml.flat",
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\drawable\\whtsaap_button_background_white.xml"
+    },
+    {
+        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\drawable_button_blue_border.xml.flat",
+        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\drawable\\button_blue_border.xml"
     },
     {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_vwb_open_chat__listview_lay_new.xml.flat",
@@ -1272,12 +1284,12 @@
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\callaction_history_items_row.xml"
     },
     {
-        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_confim_ui_sahara.xml.flat",
-        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\confim_ui_sahara.xml"
-    },
-    {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_app_bar_main.xml.flat",
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\Vwb\\res\\layout\\app_bar_main.xml"
+    },
+    {
+        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_confim_ui_sahara.xml.flat",
+        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\confim_ui_sahara.xml"
     },
     {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\mipmap-xhdpi_ic_toolbar_logo_crm.png.flat",
@@ -1374,6 +1386,10 @@
     {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\drawable_ic_tab_person.png.flat",
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\drawable\\ic_tab_person.png"
+    },
+    {
+        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\raw_shapath.mp3.flat",
+        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\raw\\shapath.mp3"
     },
     {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_activity_wishlist2.xml.flat",
@@ -1474,6 +1490,10 @@
     {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\drawable_playstore.png.flat",
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\drawable\\playstore.png"
+    },
+    {
+        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_alfa_pickno_item_lay.xml.flat",
+        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\alfa_pickno_item_lay.xml"
     },
     {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_tbuds_custom_get_address.xml.flat",
@@ -2284,12 +2304,12 @@
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\drawable\\refresh.png"
     },
     {
-        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\drawable_border_holo_black.xml.flat",
-        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\drawable\\border_holo_black.xml"
-    },
-    {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\drawable_ic_ad_receipt.png.flat",
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\drawable\\ic_ad_receipt.png"
+    },
+    {
+        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\drawable_border_holo_black.xml.flat",
+        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\drawable\\border_holo_black.xml"
     },
     {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_activity_sales_charge.xml.flat",
@@ -2484,12 +2504,12 @@
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\generated\\res\\pngs\\Vwb\\debug\\drawable-xxhdpi\\ic_menu_send.png"
     },
     {
-        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\xml_provider_paths.xml.flat",
-        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\xml\\provider_paths.xml"
-    },
-    {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_crm_contact_list_row.xml.flat",
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\crm_contact_list_row.xml"
+    },
+    {
+        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\xml_provider_paths.xml.flat",
+        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\xml\\provider_paths.xml"
     },
     {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\drawable-ldpi_asd.xml.flat",
@@ -3316,6 +3336,10 @@
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\generated\\res\\pngs\\Vwb\\debug\\drawable-ldpi\\ic_menu_manage.png"
     },
     {
+        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\drawable_start_again_lay_border.xml.flat",
+        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\drawable\\start_again_lay_border.xml"
+    },
+    {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\drawable-xxxhdpi_initiatedarrow.png.flat",
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\generated\\res\\pngs\\Vwb\\debug\\drawable-xxxhdpi\\initiatedarrow.png"
     },
@@ -3596,12 +3620,12 @@
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\drawable\\chat_user1.xml"
     },
     {
-        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_grnpostscan_lay.xml.flat",
-        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\grnpostscan_lay.xml"
-    },
-    {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\drawable_cancelord.png.flat",
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\drawable\\cancelord.png"
+    },
+    {
+        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_grnpostscan_lay.xml.flat",
+        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\grnpostscan_lay.xml"
     },
     {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_crm_custom_filtered_prospect.xml.flat",
@@ -3706,6 +3730,10 @@
     {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\drawable_refresh20.png.flat",
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\drawable\\refresh20.png"
+    },
+    {
+        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout-sw600dp_welcome_screen.xml.flat",
+        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout-sw600dp\\welcome_screen.xml"
     },
     {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_activity_country_list.xml.flat",
@@ -4224,6 +4252,10 @@
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\drawable\\back_hajmola.png"
     },
     {
+        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_callagain_alert_lay.xml.flat",
+        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\callagain_alert_lay.xml"
+    },
+    {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_crm_spinner_text.xml.flat",
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\crm_spinner_text.xml"
     },
@@ -4312,12 +4344,12 @@
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\generated\\res\\pngs\\Vwb\\debug\\drawable-ldpi\\crm_back_arrow.png"
     },
     {
-        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\drawable-anydpi-v21_office.xml.flat",
-        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\generated\\res\\pngs\\Vwb\\debug\\drawable-anydpi-v21\\office.xml"
-    },
-    {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\drawable_target.png.flat",
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\drawable\\target.png"
+    },
+    {
+        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\drawable-anydpi-v21_office.xml.flat",
+        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\generated\\res\\pngs\\Vwb\\debug\\drawable-anydpi-v21\\office.xml"
     },
     {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\drawable_tbuds_edt_login_transprtant.xml.flat",
@@ -4354,6 +4386,10 @@
     {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_app_bar_activity_module_selection.xml.flat",
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\app_bar_activity_module_selection.xml"
+    },
+    {
+        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\drawable_thanku.jpg.flat",
+        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\drawable\\thanku.jpg"
     },
     {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_vwb_user_lay.xml.flat",
@@ -4420,12 +4456,20 @@
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\drawable\\add_chat.png"
     },
     {
+        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_activity_filter_list.xml.flat",
+        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\activity_filter_list.xml"
+    },
+    {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\drawable_add_user.png.flat",
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\drawable\\add_user.png"
     },
     {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_tbuds_custom_purchase_item_list_cb.xml.flat",
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\tbuds_custom_purchase_item_list_cb.xml"
+    },
+    {
+        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_billing_otp_lay.xml.flat",
+        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\billing_otp_lay.xml"
     },
     {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\mipmap-xhdpi_ic_micro.png.flat",
@@ -4482,6 +4526,10 @@
     {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_custom_snackbar_view.xml.flat",
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\custom_snackbar_view.xml"
+    },
+    {
+        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_vwb_already_login.xml.flat",
+        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\vwb_already_login.xml"
     },
     {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\drawable_single_user_icon.png.flat",
@@ -4554,6 +4602,10 @@
     {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_sampling_dummy_ui.xml.flat",
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\sampling_dummy_ui.xml"
+    },
+    {
+        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\drawable_election.jpg.flat",
+        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\drawable\\election.jpg"
     },
     {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\drawable-anydpi-v21_ic_menu_slideshow.xml.flat",
@@ -4668,12 +4720,12 @@
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\crm_activity_enquiry_form_setting.xml"
     },
     {
-        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_content_activity_module_selection.xml.flat",
-        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\content_activity_module_selection.xml"
-    },
-    {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_item_report_lay.xml.flat",
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\item_report_lay.xml"
+    },
+    {
+        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_content_activity_module_selection.xml.flat",
+        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\content_activity_module_selection.xml"
     },
     {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\mipmap-mdpi_ic_app_logo.png.flat",
@@ -4722,6 +4774,10 @@
     {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\drawable_tbuds_pending_del.png.flat",
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\drawable\\tbuds_pending_del.png"
+    },
+    {
+        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_alfa_pickno_list_lay.xml.flat",
+        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\alfa_pickno_list_lay.xml"
     },
     {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_vwb_view_ticket_main.xml.flat",
@@ -5464,12 +5520,16 @@
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\crm_activity_prospect_entry_2.xml"
     },
     {
+        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\drawable_delscootr.png.flat",
+        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\drawable\\delscootr.png"
+    },
+    {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_vwb_trail_details_item_lay.xml.flat",
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\vwb_trail_details_item_lay.xml"
     },
     {
-        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\drawable_delscootr.png.flat",
-        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\drawable\\delscootr.png"
+        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_location_permission_dialog.xml.flat",
+        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\location_permission_dialog.xml"
     },
     {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_activity_item_master_sync.xml.flat",
@@ -5478,6 +5538,10 @@
     {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_vwb_custom_myclients.xml.flat",
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\vwb_custom_myclients.xml"
+    },
+    {
+        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\drawable_icon_filter.png.flat",
+        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\drawable\\icon_filter.png"
     },
     {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_vwb_timesheet_log_lay.xml.flat",
@@ -6368,6 +6432,10 @@
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\tbuds_custom_add_items.xml"
     },
     {
+        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_layout_search.xml.flat",
+        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\layout_search.xml"
+    },
+    {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_add_packet_lay.xml.flat",
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\add_packet_lay.xml"
     },
@@ -6780,6 +6848,10 @@
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\vwb_custom_activity_list_v1.xml"
     },
     {
+        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_crm_team_report_lay.xml.flat",
+        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\crm_team_report_lay.xml"
+    },
+    {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\drawable_sahara_gradient.xml.flat",
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\drawable\\sahara_gradient.xml"
     },
@@ -6964,12 +7036,12 @@
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\Vwb\\res\\mipmap-hdpi\\ic_toolbar_logo_crm.png"
     },
     {
-        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_crm_progress_hud.xml.flat",
-        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\crm_progress_hud.xml"
-    },
-    {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\drawable_train.png.flat",
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\drawable\\train.png"
+    },
+    {
+        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_crm_progress_hud.xml.flat",
+        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout\\crm_progress_hud.xml"
     },
     {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout_crm_custom_notification_list.xml.flat",
@@ -7346,6 +7418,10 @@
     {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\drawable_button_border_row_dark.xml.flat",
         "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\drawable\\button_border_row_dark.xml"
+    },
+    {
+        "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\layout-sw720dp_welcome_screen.xml.flat",
+        "source": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\src\\main\\res\\layout-sw720dp\\welcome_screen.xml"
     },
     {
         "merged": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\res\\merged\\Vwb\\debug\\menu_menu_item.xml.flat",

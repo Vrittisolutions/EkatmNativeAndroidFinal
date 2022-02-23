@@ -3,6 +3,11 @@ package com.vritti.ekatm.activity;
 import android.Manifest;
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.app.AlarmManager;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.ContentValues;
@@ -15,8 +20,10 @@ import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.media.RingtoneManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -24,19 +31,20 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.PowerManager;
+import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.CardView;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -47,12 +55,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.GridView;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -70,17 +73,11 @@ import com.firebase.jobdispatcher.Lifetime;
 import com.firebase.jobdispatcher.RetryStrategy;
 import com.firebase.jobdispatcher.Trigger;
 import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.ChartTouchListener;
-import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
-import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.ResultCallback;
@@ -91,26 +88,19 @@ import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStates;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
-import com.google.android.gms.location.places.Place;
-import com.google.android.gms.location.places.ui.PlacePicker;
+import com.google.android.gms.vision.Frame;
+import com.google.android.gms.vision.barcode.BarcodeDetector;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.scichart.charting.modifiers.PieSegmentSelectionModifier;
 import com.scichart.charting.visuals.SciPieChartSurface;
 import com.scichart.charting.visuals.legend.SciChartLegend;
-import com.scichart.charting.visuals.renderableSeries.IPieRenderableSeries;
 import com.scichart.extensions.builders.SciChartBuilder;
 import com.vritti.AlfaLavaModule.activity.AlfaHomePage;
 import com.vritti.chat.activity.OpenChatroomActivity;
-import com.vritti.chat.activity.PrivateChatActvity;
-import com.vritti.chat.adapter.PrivateChatAdapter;
-import com.vritti.chat.bean.PrivateUser;
 import com.vritti.crm.bean.CallLogsDetails;
 import com.vritti.crm.vcrm7.CRMHomeActivity;
 import com.vritti.crm.vcrm7.CRM_CallLogList;
-import com.vritti.crm.vcrm7.CallListActivity;
 import com.vritti.crm.vcrm7.KnowMoreActivity;
-import com.vritti.crm.vcrm7.OpportunityUpdateActivity_New;
 import com.vritti.crm.vcrm7.TargetAchievmentReport;
 import com.vritti.databaselib.data.DatabaseHandlers;
 import com.vritti.databaselib.other.Utility;
@@ -122,19 +112,15 @@ import com.vritti.ekatm.adapter.CustomAdapter;
 import com.vritti.ekatm.bean.BeanLogInsetting;
 import com.vritti.ekatm.bean.ModuleName;
 import com.vritti.ekatm.receiver.ConnectivityReceiver;
+import com.vritti.ekatm.receiver.MyAlarmReceiver;
 import com.vritti.ekatm.services.DownloadJobService;
 import com.vritti.ekatm.services.PaidLocationFusedLocationTracker1;
-import com.vritti.expensemanagement.AddExpenseActivity;
-import com.vritti.expensemanagement.AddExpenseActivity_V1;
-import com.vritti.expensemanagement.ExpenseData;
 import com.vritti.expensemanagement.ExpenseSelectionActivity;
-import com.vritti.expensemanagement.HistoryActivity;
 import com.vritti.inventory.activity.SelectModuleActivity;
 import com.vritti.inventory.physicalInventory.activity.BluetoothConnectivityActivity;
 import com.vritti.sales.activity.Sales_HomeSActivity;
 import com.vritti.sessionlib.CallbackInterface;
 import com.vritti.sessionlib.StartSession;
-import com.vritti.vwb.Adapter.ModuleAdapter;
 import com.vritti.vwb.Beans.BirthdayBean;
 import com.vritti.vwb.CommonClass.AppCommon;
 import com.vritti.vwb.classes.CommonFunction;
@@ -142,8 +128,8 @@ import com.vritti.vwb.vworkbench.ActivityMain;
 import com.vritti.vwb.vworkbench.ActvityNotificationTypeNameActivity;
 import com.vritti.vwb.vworkbench.AttendanceDisplayActivity;
 import com.vritti.vwb.vworkbench.BirthdayListAcyivity;
+import com.vritti.ekatm.receiver.MyBroadcastReceiver;
 import com.vritti.vwb.vworkbench.TicketRegisterActivity;
-import com.vritti.vwb.vworkbench.VWBHomeActivity;
 import com.vritti.vwb.vworkbench.WelcomeScreenActivity;
 
 import org.json.JSONArray;
@@ -151,27 +137,16 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Type;
-import java.net.URLEncoder;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
-import butterknife.BindView;
-import lecho.lib.hellocharts.model.PieChartData;
-import lecho.lib.hellocharts.model.SliceValue;
 import lecho.lib.hellocharts.view.PieChartView;
 
-
-import com.scichart.charting.modifiers.PieSegmentSelectionModifier;
-import com.scichart.charting.visuals.SciPieChartSurface;
-import com.scichart.charting.visuals.legend.SciChartLegend;
-import com.scichart.charting.visuals.renderableSeries.IPieRenderableSeries;
-
-public class ActivityModuleSelection extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LoaderManager.LoaderCallbacks<Cursor> {
+public class ActivityModuleSelection extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener /*LoaderManager.LoaderCallbacks<Cursor>*/ {
 
     private DrawerLayout mDrawerLayout;
     private DrawerLayout mDrawerLayout1;
@@ -242,12 +217,27 @@ public class ActivityModuleSelection extends AppCompatActivity implements Google
     TextView txt_avg;
     CardView card_target;
     String EndMonth="",EndDt="";
+    private MyBroadcastReceiver myBroadcastReceiver;
+    private NotificationChannel channel;
+    private String incoming="Incoming",outgoing="Outgoing",opportunitycollection="Opportunity/collection",opportunity="Opportunity";
+    private PackageManager pm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_module_selection);
         // isServiceRunning();
+
+
+        if (android.os.Build.VERSION.SDK_INT > 9) {
+
+            StrictMode.ThreadPolicy policy =
+                    new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+
+        }
+
+
 
         topToolBar = (Toolbar) findViewById(R.id.toolbar);
         topToolBar.setTitle("");
@@ -279,6 +269,9 @@ public class ActivityModuleSelection extends AppCompatActivity implements Google
         if(Constants.type == Constants.Type.Sahara)
             img_back.setImageDrawable(getResources().getDrawable(R.mipmap.ic_toolbar_logo_vwb));
        // topToolBar.setLogo(R.mipmap.ic_toolbar_logo_vwb);
+        if(Constants.type == Constants.Type.PM)
+            img_back.setImageDrawable(getResources().getDrawable(R.mipmap.ic_simplify));
+
         else
             img_back.setImageDrawable(getResources().getDrawable(R.drawable.app_logo_1));
       //  topToolBar.setLogo(R.mipmap.ic_toolbar_logo_vwb);
@@ -288,6 +281,20 @@ public class ActivityModuleSelection extends AppCompatActivity implements Google
             getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
         }
 
+         try {
+             myBroadcastReceiver = new MyBroadcastReceiver();
+             IntentFilter intentFilter = new IntentFilter("com.crm.calllogs");
+             if (intentFilter != null) {
+                 registerReceiver(myBroadcastReceiver, intentFilter);
+             }
+         }catch (Exception e){
+             e.printStackTrace();
+         }
+
+     /*   MyBroadcastReceiver mReceiver = new MyBroadcastReceiver();
+        registerReceiver(mReceiver,
+                new IntentFilter("com.crm.calllogs"));
+*/
 
 
         pieChart = (PieChart) findViewById(R.id.idPieChart);
@@ -363,6 +370,8 @@ public class ActivityModuleSelection extends AppCompatActivity implements Google
         img_wms = (ImageView) findViewById(R.id.img_wms);
         img_call = (ImageView) findViewById(R.id.img_call);
 
+       // BackgroundLocationTracking backgroundLocationTracking=new BackgroundLocationTracking(ActivityModuleSelection.this);
+
 
         len_wms=findViewById(R.id.len_wms);
         len_vwb_crm=findViewById(R.id.len_vwb_crm);
@@ -388,8 +397,13 @@ public class ActivityModuleSelection extends AppCompatActivity implements Google
         len=findViewById(R.id.len);
         img_playstore=findViewById(R.id.img_playstore);
 
-        PackageManager pm = ActivityModuleSelection.this.getPackageManager();
-        isPackageInstalled("com.crm.calllogs",pm);
+        pm = ActivityModuleSelection.this.getPackageManager();
+
+
+
+
+
+
 
 
 
@@ -414,14 +428,13 @@ public class ActivityModuleSelection extends AppCompatActivity implements Google
         });
 
 
-        getSupportLoaderManager().initLoader(1, null, ActivityModuleSelection.this);
+       // getSupportLoaderManager().initLoader(1, null, ActivityModuleSelection.this);
 
 
-        Cursor c1 = sql.rawQuery("SELECT * FROM " + db.TABLE_CALL_LOG, null);
-        int count1 = c1.getCount();
-        count1 = count1 + 1;
-        Log.e("Call Log Count", "" + count1);
+        /*Cursor c1 = sql.rawQuery("SELECT * FROM " + db.TABLE_CALL_LOG, null);
+        int count1 = c1.getCount();*/
 
+        //count1 = count1 + 1;
         Date c = Calendar.getInstance().getTime();
         System.out.println("Current time => " + c);
         SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
@@ -488,7 +501,6 @@ public class ActivityModuleSelection extends AppCompatActivity implements Google
 
         if (isnet()) {
 
-            progressDialog = new ProgressDialog(ActivityModuleSelection.this);
             progressDialog.setCancelable(true);
             progressDialog.show();
             progressDialog.setContentView(R.layout.vwb_progress_lay);
@@ -561,7 +573,6 @@ public class ActivityModuleSelection extends AppCompatActivity implements Google
             if (isnet()) {
 
                 if (progressDialog == null) {
-                    progressDialog = new ProgressDialog(ActivityModuleSelection.this);
                     progressDialog.setCancelable(true);
                     progressDialog.show();
                     progressDialog.setContentView(R.layout.vwb_progress_lay);
@@ -607,7 +618,6 @@ public class ActivityModuleSelection extends AppCompatActivity implements Google
             if (moduleNameArrayList.size() == 0) {
                 if (isnet()) {
 
-                    progressDialog = new ProgressDialog(ActivityModuleSelection.this);
                     progressDialog.setCancelable(true);
                     progressDialog.show();
                     progressDialog.setContentView(R.layout.vwb_progress_lay);
@@ -641,7 +651,8 @@ public class ActivityModuleSelection extends AppCompatActivity implements Google
                     card_service.setVisibility(View.GONE);
                     img_wms.setVisibility(View.GONE);
                     card_inventory.setVisibility(View.GONE);
-                    len_pi.setVisibility(View.GONE);
+                    card_print.setVisibility(View.GONE);
+                  //  len_pi.setVisibility(View.GONE);
 
                     for (int i=0;i<moduleNameArrayList.size();i++){
                             String home=moduleNameArrayList.get(i).getModuleName();
@@ -652,6 +663,8 @@ public class ActivityModuleSelection extends AppCompatActivity implements Google
                         }
                         if (home.equalsIgnoreCase("CRM")){
                             card_crm.setVisibility(View.VISIBLE);
+                            isPackageInstalled("com.crm.calllogs",pm);
+
                         }
                         if (home.equalsIgnoreCase("Inventory")){
                             card_inventory.setVisibility(View.VISIBLE);
@@ -665,7 +678,8 @@ public class ActivityModuleSelection extends AppCompatActivity implements Google
                             img_wms.setVisibility(View.VISIBLE);
                         }
                         if (home.equalsIgnoreCase("PI")){
-                            len_pi.setVisibility(View.VISIBLE);
+                            //len_pi.setVisibility(View.VISIBLE);
+                            card_print.setVisibility(View.VISIBLE);
                         }
                         else {
 
@@ -706,10 +720,11 @@ public class ActivityModuleSelection extends AppCompatActivity implements Google
 
 
             // card_pm.setVisibility(View.VISIBLE);
+            horizontal_view.setVisibility(View.VISIBLE);
             len_vwb.setVisibility(View.GONE);
-            len_pm.setVisibility(View.VISIBLE);
             card_vwb.setVisibility(View.GONE);
-            card_pm_crm.setVisibility(View.VISIBLE);
+            card_crm.setVisibility(View.VISIBLE);
+            card_pm.setVisibility(View.VISIBLE);
             card_service.setVisibility(View.GONE);
             img_wms.setVisibility(View.GONE);
 
@@ -841,6 +856,7 @@ public class ActivityModuleSelection extends AppCompatActivity implements Google
             public void onClick(View v) {
                // Intent intent = new Intent(ActivityModuleSelection.this, VWBHomeActivity.class);
                 Intent intent = new Intent(ActivityModuleSelection.this, ActivityMain.class);
+               // Intent intent = new Intent(ActivityModuleSelection.this, VWBHomeActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_right_to_left,R.anim.slide_left_to_right);
@@ -883,7 +899,7 @@ public class ActivityModuleSelection extends AppCompatActivity implements Google
                     overridePendingTransition(R.anim.slide_right_to_left,R.anim.slide_left_to_right);
 
                 } else {
-                  //  ut.displayToast(getApplicationContext(), "You are not CRM user");
+                  // ut.displayToast(getApplicationContext(), "You are not CRM user");
 
                     Intent intent = new Intent(ActivityModuleSelection.this, CRMHomeActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -1010,6 +1026,7 @@ public class ActivityModuleSelection extends AppCompatActivity implements Google
                 Intent intent = new Intent(ActivityModuleSelection.this, AlfaHomePage.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
+                finish();
                 overridePendingTransition(R.anim.slide_right_to_left,R.anim.slide_left_to_right);
 
             }
@@ -1083,6 +1100,9 @@ public class ActivityModuleSelection extends AppCompatActivity implements Google
             finishAffinity();
         }*/
     }
+
+
+
 
     private void getIsDeliveryBoy() {
         if (isnet()) {
@@ -1174,6 +1194,7 @@ public class ActivityModuleSelection extends AppCompatActivity implements Google
     }
 
     private void callJobDispacher() {
+
         myJob = dispatcher.newJobBuilder()
                 // the JobService that will be called
                 .setService(DownloadJobService.class)
@@ -1200,13 +1221,15 @@ public class ActivityModuleSelection extends AppCompatActivity implements Google
                 )
                 .build();
 
-        dispatcher.mustSchedule(myJob);
+        dispatcher.schedule(myJob);
         AppCommon.getInstance(this).setServiceStarted(true);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+       // BackgroundLocationTracking backgroundLocationTracking=new BackgroundLocationTracking(ActivityModuleSelection.this);
+
         getLogindata();
         SharedPreferences sharedpreferences = getSharedPreferences(WebUrlClass.MyPREFERENCES, MODE_PRIVATE);
         String setKey = sharedpreferences.getString(WebUrlClass.MyPREFERENCES_SETTING_KEY, "");
@@ -1221,10 +1244,14 @@ public class ActivityModuleSelection extends AppCompatActivity implements Google
         } else
             chatCount.setVisibility(View.GONE);
         chatCount.setText(Msgcount);
-        Cursor c1 = sql.rawQuery("SELECT * FROM " + db.TABLE_CALL_LOG, null);
+        Cursor c1 = sql.rawQuery("SELECT * FROM " + db.TABLE_CALL_LOG +
+                " WHERE MobileCallType='" + incoming + "' OR MobileCallType='" + outgoing + "'"+
+                " OR MobileCallType='" + opportunity + "' OR MobileCallType='" + opportunitycollection + "'" +
+                "Order by StartTime DESC limit 100", null);
         int count1 = c1.getCount();
-        if (count1!=0) {
+        if (count1>0) {
             rel_call.setVisibility(View.VISIBLE);
+            tv_call_cnt.setVisibility(View.VISIBLE);
             tv_call_cnt.setText(String.valueOf(count1));
         }
 
@@ -1233,8 +1260,8 @@ public class ActivityModuleSelection extends AppCompatActivity implements Google
 
     private void getLogindata() {
         beanLogInsettingArrayList.clear();
-        SQLiteDatabase Sql = db.getWritableDatabase();
-        Cursor c = Sql.rawQuery("Select * from " + db.TABLE_LOGIN_SETTING, null);
+        String searchQuery = "SELECT * FROM " + db.TABLE_LOGIN_SETTING;
+        Cursor c = sql.rawQuery(searchQuery, null);
         int Count = c.getCount();
         if (Count > 0) {
             c.moveToFirst();
@@ -1265,8 +1292,7 @@ public class ActivityModuleSelection extends AppCompatActivity implements Google
 
     private void setLogindata(String settingKey) {
         //   beanLogInsettingArrayList.clear();
-        SQLiteDatabase Sql = db.getWritableDatabase();
-        Cursor c = Sql.rawQuery("Select * from " + db.TABLE_LOGIN_SETTING + " where LogInKey='" + settingKey + "'", null);
+        Cursor c = sql.rawQuery("Select * from " + db.TABLE_LOGIN_SETTING + " where LogInKey='" + settingKey + "'", null);
         int Count = c.getCount();
         if (Count > 0) {
             c.moveToFirst();
@@ -1591,7 +1617,8 @@ public class ActivityModuleSelection extends AppCompatActivity implements Google
                         card_service.setVisibility(View.GONE);
                         img_wms.setVisibility(View.GONE);
                         card_inventory.setVisibility(View.GONE);
-                        len_pi.setVisibility(View.GONE);
+                        card_print.setVisibility(View.GONE);
+                        //len_pi.setVisibility(View.GONE);
 
                         if (moduleNameArrayList.size()>0){
                             SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(ActivityModuleSelection.this);
@@ -1610,6 +1637,8 @@ public class ActivityModuleSelection extends AppCompatActivity implements Google
                                 }
                                 if (home.equalsIgnoreCase("CRM")){
                                     card_crm.setVisibility(View.VISIBLE);
+                                    isPackageInstalled("com.crm.calllogs",pm);
+
                                 }
                                 if (home.equalsIgnoreCase("Inventory")){
                                     card_inventory.setVisibility(View.VISIBLE);
@@ -1623,7 +1652,7 @@ public class ActivityModuleSelection extends AppCompatActivity implements Google
                                     img_wms.setVisibility(View.VISIBLE);
                                 }
                                 if (home.equalsIgnoreCase("PI")){
-                                    len_pi.setVisibility(View.VISIBLE);
+                                    card_print.setVisibility(View.VISIBLE);
                                 }
                                 else {
 
@@ -1663,11 +1692,15 @@ public class ActivityModuleSelection extends AppCompatActivity implements Google
             String url = CompanyURL + WebUrlClass.api_GetAttenDashData;
             try {
                 res = ut.OpenConnection(url, ActivityModuleSelection.this);
-                response = res.toString();
-                response = res.toString().replaceAll("\\\\", "");
-                response = response.substring(1, response.length() - 1);
+                if (res!=null) {
+                    response = res.toString();
+                    response = res.toString().replaceAll("\\\\", "");
+                    response = response.substring(1, response.length() - 1);
+                }
             } catch (Exception e) {
                 e.printStackTrace();
+                Toast.makeText(ActivityModuleSelection.this,e.getMessage(),Toast.LENGTH_LONG).show();
+                response=e.getMessage();
             }
             return response;
         }
@@ -1690,10 +1723,10 @@ public class ActivityModuleSelection extends AppCompatActivity implements Google
                             JSONObject jsonObject = jsonArray.getJSONObject(i);
                             double Present=jsonObject.getDouble("Present");
                             double AU=jsonObject.getDouble("AU");
-                            String s = String.valueOf(AU);
+                           /* String s = String.valueOf(AU);
                             String str = s.replace(".0", "");
                             int AB = Integer.parseInt(str);
-                            tv_meeting_cnt.setText(String.valueOf(AB));
+                            tv_meeting_cnt.setText(String.valueOf(AB));*/
                             double Leave=jsonObject.getDouble("Leave");
                             double NotOnRoll=jsonObject.getDouble("NotOnRoll");
 
@@ -1725,6 +1758,8 @@ public class ActivityModuleSelection extends AppCompatActivity implements Google
                             pieChart.setTransparentCircleAlpha(0);
                             pieChart.setCenterText("Attendance");
                             pieChart.setCenterTextSize(7);
+                            pieChart.setNoDataText("Attendance");
+
 
                             ArrayList<PieEntry> yEntrys = new ArrayList<>();
                             ArrayList<String> xEntrys = new ArrayList<>();
@@ -1787,6 +1822,8 @@ public class ActivityModuleSelection extends AppCompatActivity implements Google
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
+                        pieChart.setNoDataText("Attendance");
+
                     }
                 }
 
@@ -2049,11 +2086,16 @@ public class ActivityModuleSelection extends AppCompatActivity implements Google
 
     }
 
-    @Override
+   /* @Override
     public Loader<Cursor> onCreateLoader(int id, @Nullable Bundle args) {
         cursorLoader = new Loader<>(this);
-        cursorLoader = new CursorLoader(this, Uri.parse("content://com.example.contentproviderexample.MyProvider1/cte"), null,
-                null, null, null);
+        try {
+            //content://com.example.contentproviderexample.MyProvider1/cte
+            cursorLoader = new CursorLoader(this, Uri.parse("content://com.example.contentproviderexample.MyProvider1/cte"), null,
+                    null, null, null);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return cursorLoader;
     }
 
@@ -2065,7 +2107,7 @@ public class ActivityModuleSelection extends AppCompatActivity implements Google
             ArrayList<CallLogsDetails> callLogsDetailsArrayList = new ArrayList<>();
 
 
-            sql.delete(db.TABLE_CALL_LOG, null, null);
+           // sql.delete(db.TABLE_CALL_LOG, null, null);
 
             cursor.moveToFirst();
             StringBuilder res = new StringBuilder();
@@ -2133,7 +2175,7 @@ public class ActivityModuleSelection extends AppCompatActivity implements Google
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
 
     }
-
+*/
 
     private boolean isPackageInstalled(String packageName, PackageManager packageManager) {
         try {
@@ -2205,7 +2247,11 @@ public class ActivityModuleSelection extends AppCompatActivity implements Google
     protected void onDestroy() {
         super.onDestroy();
         unregisterReceiver(mNetworkReceiver);
+        if(myBroadcastReceiver != null){
+            unregisterReceiver(myBroadcastReceiver);
     }
+    }
+
     class DownExpenseCount extends AsyncTask<String, Void, String> {
 
         Object res;
@@ -2282,8 +2328,6 @@ public class ActivityModuleSelection extends AppCompatActivity implements Google
                 super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
-
-
 
 
 }

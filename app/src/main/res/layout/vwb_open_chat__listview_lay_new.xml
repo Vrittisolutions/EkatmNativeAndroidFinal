@@ -75,7 +75,7 @@
         android:id="@+id/txt_chatroom_add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Chat Room not available"
+        android:text="Conversation room not available"
         android:textColor="@color/black"
         android:textSize="18dp"
         android:layout_centerHorizontal="true"

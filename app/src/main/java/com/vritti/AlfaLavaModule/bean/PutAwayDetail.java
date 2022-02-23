@@ -50,17 +50,65 @@ public class PutAwayDetail {
     String PacketMasterId;
 
 
+    @SerializedName("BalenceQty")
+    int BalQty;
+
+
     @SerializedName("BalQty")
-    String BalQty;
+    String BalenceQty;
 
 
-    public String getBalQty() {
+    @SerializedName("RecvdQty")
+    int RecvdQty;
+
+    @SerializedName("MovedQty")
+    int MovedQty;
+
+    @SerializedName("QCStatus")
+    String QCStatus;
+
+
+    public String getQCStatus() {
+        return QCStatus;
+    }
+
+    public void setQCStatus(String QCStatus) {
+        this.QCStatus = QCStatus;
+    }
+
+    public String getBalenceQty() {
+        return BalenceQty;
+    }
+
+    public void setBalenceQty(String balenceQty) {
+        BalenceQty = balenceQty;
+    }
+
+    public int getBalQty() {
         return BalQty;
     }
 
-    public void setBalQty(String balQty) {
+    public void setBalQty(int balQty) {
         BalQty = balQty;
     }
+
+    public int getRecvdQty() {
+        return RecvdQty;
+    }
+
+    public void setRecvdQty(int recvdQty) {
+        RecvdQty = recvdQty;
+    }
+
+    public int getMovedQty() {
+        return MovedQty;
+    }
+
+    public void setMovedQty(int movedQty) {
+        MovedQty = movedQty;
+    }
+
+
 
     public String getPacketMasterId() {
         return PacketMasterId;

@@ -4,13 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/background_color"
     android:orientation="vertical">
-
+    <include
+        layout="@layout/toolbar_header"
+        />
     <LinearLayout
         android:id="@+id/lay1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@color/card_back"
+        android:layout_marginTop="5dp"
         android:orientation="vertical">
 
         <ScrollView
@@ -53,6 +56,9 @@
                                 android:textColor="#111"
                                 android:hint="Customer Name"
                                 android:textSize="14dp"
+                                android:editable="false"
+                                android:focusable="false"
+                                android:clickable="true"
                                 android:drawableLeft="@drawable/travel_name"
                                 android:padding="10dp"
                                 android:drawablePadding="8dp">
@@ -64,7 +70,7 @@
                             android:layout_height="wrap_content"
                             >
 
-                            <EditText
+                            <AutoCompleteTextView
                                 android:id="@+id/spinner_consignee"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -92,6 +98,7 @@
                                 android:layout_height="wrap_content"
                                 android:imeOptions="actionNext"
                                 android:singleLine="true"
+                                android:inputType="number"
                                 android:textColorHint="@color/colorPrimary"
                                 android:textColor="#111"
                                 android:hint="Amount"
@@ -152,7 +159,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
-                            <EditText
+                            <AutoCompleteTextView
                                 android:id="@+id/spinner_bankname"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -242,6 +249,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:gravity="center"
+        android:visibility="gone"
         android:orientation="horizontal">
 
         <TableRow

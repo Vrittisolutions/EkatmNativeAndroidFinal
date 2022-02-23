@@ -2251,7 +2251,7 @@ public class ActivityMain_1 extends AppCompatActivity {
             Intent intentsupport = new Intent(ActivityMain_1.this, HolidayActivity.class);//LeaveSummary
             startActivity(intentsupport);
             return true;
-        }else if (id == R.id.credit_sanction) {
+        }/*else if (id == R.id.credit_sanction) {
 
             Intent intentsupport = new Intent(ActivityMain_1.this, CreditApprovalListActivity.class);
             intentsupport.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -2259,7 +2259,7 @@ public class ActivityMain_1 extends AppCompatActivity {
 
             return true;
 
-        }
+        }*/
 
         /* else if (id == R.id.docCompleted) {
             if (Designation.equalsIgnoreCase("school")) {

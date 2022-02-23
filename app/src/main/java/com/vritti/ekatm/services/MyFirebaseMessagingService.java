@@ -3,6 +3,7 @@ package com.vritti.ekatm.services;
 
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
+import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -44,6 +45,8 @@ import com.vritti.databaselib.other.Utility;
 import com.vritti.databaselib.other.WebUrlClass;
 import com.vritti.ekatm.Constants;
 import com.vritti.ekatm.R;
+import com.vritti.ekatm.activity.ActivityModuleSelection;
+import com.vritti.ekatm.receiver.MyAlarmReceiver;
 import com.vritti.ekatm.receiver.NotificationReceiver;
 import com.vritti.vwb.Beans.ActivityBean;
 import com.vritti.vwb.Beans.ClaimNotification;
@@ -567,6 +570,13 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
                         if (SourceType.equalsIgnoreCase("support")) {
                             MSG = "Activity " + ActivityName + " has been assign by " + nameby + " on " + AddedDt + " having end date " + EndDate + " by " + ConsigneeName;
+                            /*Intent intentAlarmReceiver = new Intent(context, MyAlarmReceiver.class);
+                            PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 234324243, intentAlarmReceiver, 0);
+                            AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+                            alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (1 * 1000), pendingIntent);
+
+                            getalarm(MSG);
+*/
 
                         } else {
                             MSG = "Activity " + ActivityName + " has been assign by " + nameby + " on " + AddedDt + " having end date " + EndDate + ".";
@@ -1211,7 +1221,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 .setContentTitle(Title)
                 .setContentText(messageBody)
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(messageBody))
-                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.app_logo))
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ekatm_logo))
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent)
@@ -1224,12 +1234,12 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             if (Constants.type == Constants.Type.Delivery) {
                 notificationBuilder.setSmallIcon(R.drawable.notification_delivery);
             } else
-                notificationBuilder.setSmallIcon(R.mipmap.dummy);
-            notificationBuilder.setColor(getResources().getColor(R.color.blue_color));
+                notificationBuilder.setSmallIcon(R.drawable.dummy);
+            notificationBuilder.setColor(getResources().getColor(R.color.notify));
         } else {
 //                notificationBuilder.setSmallIcon(R.drawable.noti_imag);
 //                notificationBuilder.setColor(getResources().getColor(R.color.rating_bar_color));
-            notificationBuilder.setSmallIcon(R.mipmap.ic_vwb);
+            notificationBuilder.setSmallIcon(R.drawable.ekatm_logo);
         }
        /* NotificationCompat.InboxStyle inboxStyle =
                 new NotificationCompat.InboxStyle();
@@ -1292,7 +1302,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 .setContentTitle(Title)
                 .setContentText(messageBody)
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(messageBody))
-                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.app_logo))
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ekatm_logo))
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent)
@@ -1304,12 +1314,12 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                 .setSubText("Tap to open Activity List");
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            notificationBuilder.setSmallIcon(R.mipmap.dummy);
-            notificationBuilder.setColor(getResources().getColor(R.color.blue_color));
+            notificationBuilder.setSmallIcon(R.drawable.dummy);
+            notificationBuilder.setColor(getResources().getColor(R.color.notify));
         } else {
 //                notificationBuilder.setSmallIcon(R.drawable.noti_imag);
 //                notificationBuilder.setColor(getResources().getColor(R.color.rating_bar_color));
-            notificationBuilder.setSmallIcon(R.drawable.vwb_logo);
+            notificationBuilder.setSmallIcon(R.drawable.ekatm_logo);
         }
 
         NotificationManager notificationManager =
@@ -1359,7 +1369,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 this);
         NotificationCompat.Builder notification = mBuilder
                 .setAutoCancel(true)
-                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.crm_logo_2))
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ekatm_logo))
                 .setContentTitle(title)
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(NotificationMessage))
                 .setContentIntent(piResult)
@@ -1370,12 +1380,12 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 .setContentText(NotificationMessage);
 
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            notification.setSmallIcon(R.mipmap.dummy);
-            notification.setColor(getResources().getColor(R.color.blue_color));
+            notification.setSmallIcon(R.drawable.dummy);
+            notification.setColor(getResources().getColor(R.color.notify));
         } else {
 //                notificationBuilder.setSmallIcon(R.drawable.noti_imag);
 //                notificationBuilder.setColor(getResources().getColor(R.color.rating_bar_color));
-            notification.setSmallIcon(R.drawable.vwb_logo);
+            notification.setSmallIcon(R.drawable.ekatm_logo);
         }
         NotificationManager notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
 
@@ -1455,7 +1465,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 this, channel_id2);
         NotificationCompat.Builder notification = mBuilder
                 .setAutoCancel(true)
-                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.vwb_logo))
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ekatm_logo))
                 .setContentTitle(Chatroomname)
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(Add_ChatMessage))
                 .setContentIntent(piResult)
@@ -1468,12 +1478,12 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                 .setContentText(Add_ChatMessage);
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            notification.setSmallIcon(R.mipmap.dummy);
-            notification.setColor(getResources().getColor(R.color.blue_color));
+            notification.setSmallIcon(R.drawable.dummy);
+            notification.setColor(getResources().getColor(R.color.notify));
         } else {
 //                notificationBuilder.setSmallIcon(R.drawable.noti_imag);
 //                notificationBuilder.setColor(getResources().getColor(R.color.rating_bar_color));
-            notification.setSmallIcon(R.drawable.vwb_logo);
+            notification.setSmallIcon(R.drawable.ekatm_logo);
         }
 
         NotificationManager notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -1550,7 +1560,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                     .setLabel("Reply")
                     .build();
             NotificationCompat.Action action =
-                    new NotificationCompat.Action.Builder(R.drawable.app_logo,
+                    new NotificationCompat.Action.Builder(R.drawable.ekatm_logo,
                             "Reply Now...", helpPendingIntent)
                             .addRemoteInput(remoteInput)
                             .build();
@@ -1572,12 +1582,12 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                     .setContentText(msgText);
 
             if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                notification.setSmallIcon(R.mipmap.dummy);
-                notification.setColor(getResources().getColor(R.color.blue_color));
+                notification.setSmallIcon(R.drawable.dummy);
+                notification.setColor(getResources().getColor(R.color.notify));
             } else {
 //                notificationBuilder.setSmallIcon(R.drawable.noti_imag);
 //                notificationBuilder.setColor(getResources().getColor(R.color.rating_bar_color));
-                notification.setSmallIcon(R.mipmap.ic_vwb);
+                notification.setSmallIcon(R.mipmap.ic_ekatm_applogo);
             }
 
 
@@ -1594,8 +1604,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, channel_id3);
             Notification notification = mBuilder
                     .setAutoCancel(true)
-                    .setSmallIcon(R.drawable.vwb_logo) //ok
-                    .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.vwb_logo))
+                    .setSmallIcon(R.drawable.ekatm_logo) //ok
+                    .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ekatm_logo))
                     .setContentTitle(UserName + " - " + ChatRoomName)
                     .setStyle(new NotificationCompat.BigTextStyle().bigText("Document Received"))
                     .setContentIntent(piResult)
@@ -1617,8 +1627,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, channel_id3);
             Notification notification = mBuilder
                     .setAutoCancel(true)
-                    .setSmallIcon(R.drawable.vwb_logo) //ok
-                    .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.vwb_logo))
+                    .setSmallIcon(R.drawable.ekatm_logo) //ok
+                    .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ekatm_logo))
                     .setContentTitle(UserName + " - " + ChatRoomName)
                     .setStyle(new NotificationCompat.BigTextStyle().bigText("Audio Received"))
                     .setContentIntent(piResult)
@@ -1641,8 +1651,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, channel_id3);
             Notification notification = mBuilder
                     .setAutoCancel(true)
-                    .setSmallIcon(R.drawable.vwb_logo) //ok
-                    .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.vwb_logo))
+                    .setSmallIcon(R.drawable.ekatm_logo) //ok
+                    .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ekatm_logo))
                     .setContentTitle(UserName + " - " + ChatRoomName)
                     .setStyle(new NotificationCompat.BigTextStyle().bigText("Video Received"))
                     .setContentIntent(piResult)
@@ -1665,8 +1675,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, channel_id3);
             Notification notification = mBuilder
                     .setAutoCancel(true)
-                    .setSmallIcon(R.drawable.vwb_logo) //ok
-                    .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.vwb_logo))
+                    .setSmallIcon(R.drawable.ekatm_logo) //ok
+                    .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ekatm_logo))
                     .setContentTitle(UserName + " - " + ChatRoomName)
                     .setStyle(new NotificationCompat.BigTextStyle().bigText("Image Received"))
                     .setContentIntent(piResult)
@@ -1720,7 +1730,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 .setContentTitle(getResources().getString(R.string.app_name_notification))
                 .setContentText(messageBody)
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(messageBody))
-                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.app_logo))
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ekatm_logo))
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent)
@@ -1729,12 +1739,12 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                 .setSubText("Tap to open Activity List");
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            notificationBuilder.setSmallIcon(R.mipmap.dummy);
-            notificationBuilder.setColor(getResources().getColor(R.color.blue_color));
+            notificationBuilder.setSmallIcon(R.drawable.dummy);
+            notificationBuilder.setColor(getResources().getColor(R.color.notify));
         } else {
 //                notificationBuilder.setSmallIcon(R.drawable.noti_imag);
 //                notificationBuilder.setColor(getResources().getColor(R.color.rating_bar_color));
-            notificationBuilder.setSmallIcon(R.mipmap.ic_vwb);
+            notificationBuilder.setSmallIcon(R.drawable.ekatm_logo);
         }
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
@@ -1782,7 +1792,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 .setContentTitle(getResources().getString(R.string.app_name_notification))
                 .setContentText(ChatroomName + " has been closed by " + AddedBy)
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(ChatroomName + " has been closed by " + AddedBy))
-                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.app_logo))
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ekatm_logo))
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent)
@@ -1794,12 +1804,12 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                 .setSubText("Tap to open List");
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            notificationBuilder.setSmallIcon(R.mipmap.dummy);
-            notificationBuilder.setColor(getResources().getColor(R.color.blue_color));
+            notificationBuilder.setSmallIcon(R.drawable.dummy);
+            notificationBuilder.setColor(getResources().getColor(R.color.notify));
         } else {
 //                notificationBuilder.setSmallIcon(R.drawable.noti_imag);
 //                notificationBuilder.setColor(getResources().getColor(R.color.rating_bar_color));
-            notificationBuilder.setSmallIcon(R.drawable.vwb_logo);
+            notificationBuilder.setSmallIcon(R.drawable.ekatm_logo);
         }
 
         NotificationManager notificationManager =
@@ -1847,10 +1857,10 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         }
 
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, channel_id1)
-                .setContentTitle("Sahara Notification")
+                .setContentTitle("Business Notification")
                 .setContentText(message)
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
-                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.app_logo))
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ekatm_logo))
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent)
@@ -1862,12 +1872,12 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                 .setSubText("Tap to open List");
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            notificationBuilder.setSmallIcon(R.mipmap.dummy);
-            notificationBuilder.setColor(getResources().getColor(R.color.blue_color));
+            notificationBuilder.setSmallIcon(R.drawable.dummy);
+            notificationBuilder.setColor(getResources().getColor(R.color.notify));
         } else {
 //                notificationBuilder.setSmallIcon(R.drawable.noti_imag);
 //                notificationBuilder.setColor(getResources().getColor(R.color.rating_bar_color));
-            notificationBuilder.setSmallIcon(R.drawable.vwb_logo);
+            notificationBuilder.setSmallIcon(R.drawable.ekatm_logo);
         }
 
         NotificationManager notificationManager =
@@ -1997,7 +2007,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 .setContentTitle(ChatRoomName)
                 .setContentText(Delete)
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(Delete))
-                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.app_logo))
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ekatm_logo))
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent)
@@ -2009,12 +2019,12 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                 .setSubText("Tap to open ");
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            notificationBuilder.setSmallIcon(R.mipmap.dummy);
-            notificationBuilder.setColor(getResources().getColor(R.color.blue_color));
+            notificationBuilder.setSmallIcon(R.drawable.dummy);
+            notificationBuilder.setColor(getResources().getColor(R.color.notify));
         } else {
 //                notificationBuilder.setSmallIcon(R.drawable.noti_imag);
 //                notificationBuilder.setColor(getResources().getColor(R.color.rating_bar_color));
-            notificationBuilder.setSmallIcon(R.drawable.vwb_logo);
+            notificationBuilder.setSmallIcon(R.drawable.ekatm_logo);
         }
 
         NotificationManager notificationManager =
@@ -2065,7 +2075,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 .setContentTitle(getResources().getString(R.string.app_name_notification))
                 .setContentText(Message)
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(Message))
-                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.app_logo))
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ekatm_logo))
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent)
@@ -2077,12 +2087,12 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                 .setSubText("Tap to open List");
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            notificationBuilder.setSmallIcon(R.mipmap.dummy);
-            notificationBuilder.setColor(getResources().getColor(R.color.blue_color));
+            notificationBuilder.setSmallIcon(R.drawable.dummy);
+            notificationBuilder.setColor(getResources().getColor(R.color.notify));
         } else {
 //                notificationBuilder.setSmallIcon(R.drawable.noti_imag);
 //                notificationBuilder.setColor(getResources().getColor(R.color.rating_bar_color));
-            notificationBuilder.setSmallIcon(R.drawable.vwb_logo);
+            notificationBuilder.setSmallIcon(R.drawable.ekatm_logo);
         }
 
         NotificationManager notificationManager =
@@ -2134,7 +2144,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 .setContentTitle(getResources().getString(R.string.app_name_notification))
                 .setContentText(Message)
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(Message))
-                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.app_logo))
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ekatm_logo))
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent)
@@ -2146,12 +2156,12 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                 .setSubText("Tap to open ");
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            notificationBuilder.setSmallIcon(R.mipmap.dummy);
-            notificationBuilder.setColor(getResources().getColor(R.color.blue_color));
+            notificationBuilder.setSmallIcon(R.drawable.dummy);
+            notificationBuilder.setColor(getResources().getColor(R.color.notify));
         } else {
 //                notificationBuilder.setSmallIcon(R.drawable.noti_imag);
 //                notificationBuilder.setColor(getResources().getColor(R.color.rating_bar_color));
-            notificationBuilder.setSmallIcon(R.drawable.vwb_logo);
+            notificationBuilder.setSmallIcon(R.drawable.ekatm_logo);
         }
 
         NotificationManager notificationManager =
@@ -2201,7 +2211,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 .setContentTitle(getResources().getString(R.string.app_name_notification))
                 .setContentText(Message)
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(Message))
-                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.app_logo))
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ekatm_logo))
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent)
@@ -2213,12 +2223,12 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                 .setSubText("Tap to open ");
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            notificationBuilder.setSmallIcon(R.mipmap.dummy);
-            notificationBuilder.setColor(getResources().getColor(R.color.blue_color));
+            notificationBuilder.setSmallIcon(R.drawable.dummy);
+            notificationBuilder.setColor(getResources().getColor(R.color.notify));
         } else {
 //                notificationBuilder.setSmallIcon(R.drawable.noti_imag);
 //                notificationBuilder.setColor(getResources().getColor(R.color.rating_bar_color));
-            notificationBuilder.setSmallIcon(R.drawable.vwb_logo);
+            notificationBuilder.setSmallIcon(R.drawable.ekatm_logo);
         }
 
         NotificationManager notificationManager =
@@ -2233,6 +2243,92 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         }
         Random random = new Random();
         int code=random.nextInt(9999 - 1000) + 1000;
+
+        notificationManager.notify(code, notificationBuilder.build());
+    }
+
+
+    private void getalarm(String MSG) {
+
+      //  MyAlarmReceiver.stopAlarm();
+
+        Intent intentAlarm;
+        if (Constants.type == Constants.Type.Delivery)
+             intentAlarm= new Intent(context, ActivityMain.class);
+        else {
+
+            if (bean.getSourceType().equalsIgnoreCase("Datasheet")) {
+                intentAlarm = new Intent(context, ActivityMain.class);
+            } else {
+                intentAlarm = new Intent(context, ActivityDetailsActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("actbean", bean);
+                intentAlarm.putExtra("checkassign", "");
+                intentAlarm.putExtra("unapprove", "");
+                intentAlarm.putExtra("Flag", "1");
+                intentAlarm.putExtras(bundle);
+            }
+        }
+        intentAlarm.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+        PendingIntent pendingIntent_1 = PendingIntent.getActivity(this, 0, intentAlarm,
+                PendingIntent.FLAG_UPDATE_CURRENT);//PendingIntent.FLAG_ONE_SHOT//FLAG_UPDATE_CURRENT
+        Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        String userName = "";
+        String CHANNEL_ID = "AlarmChannel";// The id of the channel.
+
+        int importance = NotificationManager.IMPORTANCE_HIGH;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+
+            channel = new NotificationChannel(CHANNEL_ID,
+                    "Alarm",
+                    NotificationManager.IMPORTANCE_HIGH);
+            channel.enableLights(true);
+            // Sets whether notification posted to this channel should vibrate.
+            channel.enableVibration(true);
+            // Sets the notification light color for notifications posted to this channel
+            channel.setLightColor(Color.GREEN);
+            // Sets whether notifications posted to this channel appear on the lockscreen or not
+            channel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
+            channel.setShowBadge(true);
+
+
+        }
+
+// Create a notification and set the notification channel.
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, CHANNEL_ID)
+                .setContentTitle("Ticket Assign Notification")
+                .setContentText(MSG)
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(MSG))
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ekatm_logo))
+                .setAutoCancel(true)
+                .setSound(defaultSoundUri)
+                .setContentIntent(pendingIntent_1)
+                .setDefaults(Notification.DEFAULT_ALL)
+                .setGroupSummary(true)
+                .setPriority(Notification.PRIORITY_HIGH)
+                .setDefaults(Notification.DEFAULT_ALL)
+                .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+                .setSubText("Tap to open ");
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            notificationBuilder.setSmallIcon(R.drawable.dummy);
+            notificationBuilder.setColor(getResources().getColor(R.color.notify));
+        } else {
+            notificationBuilder.setSmallIcon(R.drawable.ekatm_logo);
+        }
+
+        NotificationManager notificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
+
+            notificationManager.createNotificationChannel(channel);
+
+        }
+        Random random = new Random();
+        int code = random.nextInt(9999 - 1000) + 1000;
 
         notificationManager.notify(code, notificationBuilder.build());
     }

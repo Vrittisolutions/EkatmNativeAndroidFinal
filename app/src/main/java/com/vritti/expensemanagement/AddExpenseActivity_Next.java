@@ -1017,7 +1017,7 @@ public class AddExpenseActivity_Next extends AppCompatActivity {
 
 	public String getdate(String exp_date) {
 		//Format of the date defined in the input String
-		DateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm aa");
+		@SuppressLint("SimpleDateFormat") DateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm aa");
 		//Desired format: 24 hour format: Change the pattern as per the need
 		DateFormat outputformat = new SimpleDateFormat("yyyy-MM-dd HH:mm ");
 		Date date = null;

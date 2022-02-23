@@ -55,7 +55,7 @@
                     android:background="@drawable/btn_border_button"
                     android:gravity="center"
                     android:padding="3dp"
-                    android:text="Chat"
+                    android:text="Conversation"
                     android:textColor="@color/white"
                     android:textSize="14dp"
                     android:visibility="visible"

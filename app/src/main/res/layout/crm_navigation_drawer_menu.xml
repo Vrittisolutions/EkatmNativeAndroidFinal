@@ -426,6 +426,50 @@ android:paddingTop="2dp">
             android:background="#292E3E"></View>
 
 
+
+        <LinearLayout
+            android:id="@+id/lay_start_again"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|left"
+            android:gravity="center|left"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:tint="@color/start_again"
+                android:src="@drawable/refresh" />
+
+            <TextView
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.99"
+                android:padding="5dp"
+                android:text=" Start again"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_start_again"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/start_again_lay_border"
+                android:gravity="center|right"
+                android:layout_gravity="right|center"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="0"
+                android:textColor="#fff" />
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#292E3E"></View>
         <LinearLayout
             android:id="@+id/lay_callrating"
             android:layout_width="match_parent"

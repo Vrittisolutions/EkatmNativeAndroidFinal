@@ -46,6 +46,7 @@ public class StartSession {
         //    new GetSessionFromServer().execute();
 
            new DownloadUserMasterIdFromServer().execute();
+
     }
 
 

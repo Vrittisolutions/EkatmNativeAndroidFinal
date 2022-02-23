@@ -7,179 +7,161 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appBarLayout"
+    <include
+        layout="@layout/toolbar_header"
+        />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme">
+        android:background="#6E6F72"
+        android:visibility="gone"
+        android:orientation="horizontal"
+        android:padding="8dp">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar1"
-            style="@style/MyToolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?android:attr/actionBarSize"
-            android:background="@color/colorPrimary"
-            app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay"
-            app:subtitleTextAppearance="@style/ToolbarTextAppearance.Subtitle"
-            app:titleTextAppearance="@style/ToolbarTextAppearance.Title" >
-
-            <ProgressBar
-                android:id="@+id/toolbar_progress_Activity_main"
-                style="?android:attr/progressBarStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:indeterminateDrawable="@drawable/spinner"
-                android:visibility="gone" />
-        </android.support.v7.widget.Toolbar>
-
-        <LinearLayout
-            android:id="@+id/ln_worklist"
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#6E6F72"
-            android:orientation="horizontal"
-            android:padding="8dp">
+            android:layout_gravity="center"
+            android:text="Activity List"
+            android:padding="@dimen/sp_5"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:textSize="16dp" />
 
-            <TextView
-                android:id="@+id/txt_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Work List"
-                android:textColor="#fff"
-                android:layout_marginRight="20dp"
-                android:layout_weight="1"
-                android:textSize="16dp" />
+        <LinearLayout
+            android:id="@+id/layout_meeting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
 
-            <LinearLayout
-                android:id="@+id/layout_meeting"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
+            >
 
-                >
+            <RelativeLayout
 
-                <RelativeLayout
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="5dp"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/sp_5"
+                android:visibility="visible">
 
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_centerVertical="true"
-                    android:visibility="visible">
-
-                    <ImageView
-
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:layout_centerVertical="true"
-                        android:layout_gravity="center|right"
-                        android:background="@drawable/icon_chat"
-                        android:visibility="gone"
-                        />
-
-                    <TextView
-                        android:id="@+id/tv_meeting_cnt"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_centerHorizontal="true"
-                        android:background="@drawable/circular_count_background"
-                        android:gravity="center"
-                        android:text="99"
-                        android:textColor="#fff"
-                        android:textSize="12sp"
-                        android:textStyle="bold"
-                        android:visibility="gone" />
-                </RelativeLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layout_notification"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-
-                >
-
-                <RelativeLayout
-
+                <ImageView
+                    android:id="@+id/img_att"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_centerVertical="true"
-                    android:visibility="visible">
+                    android:layout_gravity="center|right"
+                    android:padding="2dp"
+                    android:src="@drawable/list_icon"
+                    android:layout_marginRight="@dimen/sp_5"
+                    android:visibility="visible"
+                    />
 
-                    <ImageView
-                        android:id="@+id/img_notification"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_centerVertical="true"
-                        android:layout_gravity="center|right"
-                        android:paddingLeft="10dp" />
-
-                    <TextView
-                        android:id="@+id/tv_notification_cnt"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_centerHorizontal="true"
-                        android:background="@drawable/circular_count_background"
-                        android:gravity="center"
-                        android:text="99"
-                        android:textColor="#fff"
-                        android:textSize="12sp"
-                        android:textStyle="bold"
-                        android:visibility="gone" />
-                </RelativeLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layout_birthday"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:visibility="visible"
-
-                >
-
-                <RelativeLayout
-
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_centerVertical="true"
-                    android:visibility="visible">
-
-                    <ImageView
-                        android:id="@+id/img_birthday"
-
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_centerVertical="true"
-                        android:layout_gravity="center|right"
-                        android:background="@drawable/birthday_icon"
-                        android:paddingLeft="10dp" />
-
-                    <TextView
-                        android:id="@+id/tv_birthday_cnt"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_centerHorizontal="true"
-                        android:background="@drawable/circular_count_background"
-                        android:gravity="center"
-                        android:text="99"
-                        android:textColor="#fff"
-                        android:textSize="12sp"
-                        android:textStyle="bold"
-                        android:visibility="gone" />
-                </RelativeLayout>
-            </LinearLayout>
+                <TextView
+                    android:id="@+id/tv_meeting_cnt"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/circular_count_background"
+                    android:gravity="center"
+                    android:text="99"
+                    android:textColor="#fff"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+            </RelativeLayout>
         </LinearLayout>
 
-    </android.support.design.widget.AppBarLayout>
+        <LinearLayout
+            android:id="@+id/layout_notification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
 
-    <include layout="@layout/content_main_activitylist" />
+            >
+
+            <RelativeLayout
+
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerVertical="true"
+                android:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/img_notification"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center|right"
+                    android:background="@drawable/notification_icon"
+                    android:paddingLeft="10dp" />
+
+                <TextView
+                    android:id="@+id/tv_notification_cnt"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/circular_count_background"
+                    android:gravity="center"
+                    android:text="99"
+                    android:textColor="#fff"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_birthday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+
+            >
+
+            <RelativeLayout
+
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/img_birthday"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center|right"
+                    android:background="@drawable/birthday_icon"
+                    android:paddingLeft="10dp" />
+
+                <TextView
+                    android:id="@+id/tv_birthday_cnt"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/circular_count_background"
+                    android:gravity="center"
+                    android:text="99"
+                    android:textColor="#fff"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <include layout="@layout/content_main_activitylist"
+        />
 
 </LinearLayout>

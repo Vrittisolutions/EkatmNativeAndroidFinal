@@ -635,7 +635,7 @@
                         android:drawablePadding="5dp"
                         android:gravity="center_vertical"
                         android:padding="1dp"
-                        android:text="Visit: "
+                        android:text="Telephone: "
                         android:textSize="14dp" />
 
                         <TextView

@@ -117,7 +117,7 @@ public class ActivityIndentApprovalNew extends AppCompatActivity {
             txtApproverType,
             txtDate,
             txtDocApprDtlId,
-            txtStatusId, leave_date, Assigned_By,OnDutydate="";
+            txtStatusId, leave_date, Assigned_By;
 
     Boolean LeaveApprovalFlag = false, ClaimApprovalFlag = false;
     WebView webView;
@@ -128,7 +128,7 @@ public class ActivityIndentApprovalNew extends AppCompatActivity {
     Button btn_ok, btn_cancel;
     ScrollView scroll_location;
     private String Publish_date;
-    private String onDutydate="";
+    private String onDutydate="",onDutyEnddate="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -398,22 +398,26 @@ public class ActivityIndentApprovalNew extends AppCompatActivity {
                         Url = Url.trim();
                         new DowmloadAppoveHTML().execute(Url);
                     } else {
-                        if (clsMthdFORHtmlBody.equals("")){
+                        if (clsMthdFORHtmlBody.equals("")||clsMthdFORHtmlBody.equalsIgnoreCase(" ")){
                             txt_nofound.setVisibility(View.VISIBLE);
                             web_pdf.setVisibility(View.GONE);
                         }else {
-                        String data[] = clsMthdFORHtmlBody.split(Pattern.quote("|"));
+                            try {
+                                String data[] = clsMthdFORHtmlBody.split(Pattern.quote("|"));
 
-                        String ApiName = data[0];
-                        ApiName = ApiName.substring(0, ApiName.length() - 10);
-                        String MethodName = data[1];
-                        PrimaryKeyColumn = PrimaryKeyColumn.trim();
-                        String Url = "/api/" + ApiName + "/" + MethodName + "?" + PrimaryKeyColumn + "=";
-                        //Url = Url.trim();
+                                String ApiName = data[0];
+                                ApiName = ApiName.substring(0, ApiName.length() - 10);
+                                String MethodName = data[1];
+                                PrimaryKeyColumn = PrimaryKeyColumn.trim();
+                                String Url = "/api/" + ApiName + "/" + MethodName + "?" + PrimaryKeyColumn + "=";
+                                //Url = Url.trim();
 
-                        new DowmloadAppoveHTML().execute(Url);
+                                new DowmloadAppoveHTML().execute(Url);
 
+                            }catch (Exception e){
+                                e.printStackTrace();
 
+                            }
                         }
 
                     }
@@ -502,8 +506,11 @@ public class ActivityIndentApprovalNew extends AppCompatActivity {
         protected String doInBackground(String... params) {
 
             try {
+            //OLD API- 20-9-21
+              //  String url = CompanyURL + WebUrlClass.api_approval_Getdiv + "?DocApprHdrId=" + URLEncoder.encode(DocApprHdrId, "UTF-8") + "&SourceId=" + URLEncoder.encode(DocSourceId, "UTF-8");
 
-                String url = CompanyURL + WebUrlClass.api_approval_Getdiv + "?DocApprHdrId=" + URLEncoder.encode(DocApprHdrId, "UTF-8") + "&SourceId=" + URLEncoder.encode(DocSourceId, "UTF-8");
+                // Changes given by shubham -20-9-21
+                String url = CompanyURL + WebUrlClass.api_approval_Getdiv + "?DocApprHdrId=" + URLEncoder.encode(DocApprHdrId, "UTF-8") + "&SourceId=" + URLEncoder.encode(DocApprDtlId, "UTF-8");
 
                 res = ut.OpenConnection(url, getApplicationContext());
                 if (res != null) {
@@ -537,6 +544,7 @@ public class ActivityIndentApprovalNew extends AppCompatActivity {
                         txtDocApprDtlId = jorder.getString("DocApprDtlId");
                         txtStatusId = jorder.getString("StatusId");
                         onDutydate = jorder.getString("StartDate");
+                        onDutyEnddate = jorder.getString("EndDate");
                         TextView mTxtlevel, mTxtname, mTxtreqtype, mTxtremark, mTxtreqdate;
                         LayoutInflater layoutInflater = getLayoutInflater();
                         View view = layoutInflater.inflate(R.layout.vwb_itemlevel, mLincontainer, false);
@@ -559,7 +567,8 @@ public class ActivityIndentApprovalNew extends AppCompatActivity {
                         if (ActivityName.contains("OnDuty")) {
                             if (txtLevel.equals("1")) {
 
-                                OnDutydate = formateDateFromstring("dd MMM yyyy", "yyyy-MM-dd", onDutydate);
+                                onDutydate = formateDateFromstring("dd MMM yyyy", "yyyy-MM-dd", onDutydate);
+                                onDutyEnddate = formateDateFromstring("dd MMM yyyy", "yyyy-MM-dd", onDutyEnddate);
                             }
 
 
@@ -706,7 +715,11 @@ public class ActivityIndentApprovalNew extends AppCompatActivity {
         protected String doInBackground(String... params) {
             String url = null;
             try {
+
+
                 url = CompanyURL + WebUrlClass.api_getDtl + "?SourceId=" + URLEncoder.encode(SourceId, "UTF-8");
+
+
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
@@ -968,7 +981,10 @@ public class ActivityIndentApprovalNew extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
             try {
-                String url = CompanyURL + params[0] + URLEncoder.encode(DocSourceId, "UTF-8");
+               String url = CompanyURL + params[0] + URLEncoder.encode(DocSourceId, "UTF-8");
+
+               // String url = "http://c207.ekatm.co.in/approval_UI/Approval.html?A,2544f2fa-e915-4834-8281-af10039cb90d";
+
                 res = ut.OpenConnection(url, getApplicationContext());
                 res = res.substring(1, res.length() - 1);
 
@@ -1093,7 +1109,8 @@ public class ActivityIndentApprovalNew extends AppCompatActivity {
                 webView.loadUrl(url);
             } else {
                 url = CompanyURL + "/attachments/" + url;
-                url = "https://docs.google.com/viewer?url=" + url;
+                url = "https://docs.google.com/viewer?url=" + url + "&embedded=true";
+              //  url = "https://docs.google.com/gview?url=" + url + "&embedded=true";
                 webView.loadUrl(url);
             }
 
@@ -1179,7 +1196,12 @@ public class ActivityIndentApprovalNew extends AppCompatActivity {
         protected String doInBackground(String... params) {
             //String url = CompanyURL + WebUrlClass.api_GetRefreshChatRoom + "?ApplicationCode="+WebUrlClass.AppNameFCM;
 
-            String url = CompanyURL + WebUrlClass.api_GetGPSDetailForOnDuty + "?UserMasterId=" + AssignedById + "&StartDate=" + OnDutydate + "&EndDate=" + OnDutydate;
+            String url = null;
+            try {
+                url = CompanyURL + WebUrlClass.api_GetGPSDetailForOnDuty + "?UserMasterId=" + AssignedById + "&StartDate=" + URLEncoder.encode(onDutydate,"UTF-8") + "&EndDate=" + URLEncoder.encode(onDutyEnddate,"UTF-8");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
 
             try {
                 res = ut.OpenConnection(url, ActivityIndentApprovalNew.this);

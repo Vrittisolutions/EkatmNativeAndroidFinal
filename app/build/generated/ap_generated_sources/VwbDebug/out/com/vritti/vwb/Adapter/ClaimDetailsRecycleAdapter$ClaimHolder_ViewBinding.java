@@ -15,9 +15,9 @@ import java.lang.Override;
 public class ClaimDetailsRecycleAdapter$ClaimHolder_ViewBinding implements Unbinder {
   private ClaimDetailsRecycleAdapter.ClaimHolder target;
 
-  private View view2131299576;
+  private View view2131299602;
 
-  private View view2131299575;
+  private View view2131299601;
 
   @UiThread
   public ClaimDetailsRecycleAdapter$ClaimHolder_ViewBinding(final ClaimDetailsRecycleAdapter.ClaimHolder target,
@@ -39,7 +39,7 @@ public class ClaimDetailsRecycleAdapter$ClaimHolder_ViewBinding implements Unbin
     target.tv_distance = Utils.findRequiredViewAsType(source, R.id.tv_distance, "field 'tv_distance'", TextView.class);
     view = Utils.findRequiredView(source, R.id.tv_claim_edit, "field 'tv_claim_edit' and method 'editClaim'");
     target.tv_claim_edit = Utils.castView(view, R.id.tv_claim_edit, "field 'tv_claim_edit'", TextView.class);
-    view2131299576 = view;
+    view2131299602 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -48,7 +48,7 @@ public class ClaimDetailsRecycleAdapter$ClaimHolder_ViewBinding implements Unbin
     });
     view = Utils.findRequiredView(source, R.id.tv_claim_cancel, "field 'tv_claim_cancel' and method 'deleteClaim'");
     target.tv_claim_cancel = Utils.castView(view, R.id.tv_claim_cancel, "field 'tv_claim_cancel'", TextView.class);
-    view2131299575 = view;
+    view2131299601 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -83,9 +83,9 @@ public class ClaimDetailsRecycleAdapter$ClaimHolder_ViewBinding implements Unbin
     target.to = null;
     target.by = null;
 
-    view2131299576.setOnClickListener(null);
-    view2131299576 = null;
-    view2131299575.setOnClickListener(null);
-    view2131299575 = null;
+    view2131299602.setOnClickListener(null);
+    view2131299602 = null;
+    view2131299601.setOnClickListener(null);
+    view2131299601 = null;
   }
 }

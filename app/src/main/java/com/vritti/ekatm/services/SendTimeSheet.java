@@ -128,18 +128,20 @@ public class SendTimeSheet extends Service {
             super.onPostExecute(integer);
             String a = integer;
             Log.e(" string ..", a);
+
             if (a.contains("You can not fill time sheet from less than IN time")) {
                 ut.displayToast(getApplicationContext(), "You can not fill time sheet from less than IN time");
             } else if (a.contains("You can not fill time sheet for more than")) {
                 ut.displayToast(getApplicationContext(), "You can not fill time sheet for more than current Time");
 
-            } else if (a.contains("From time should not be grater than To time")) {
+            } else if (a.contains("From time should not be grater than To time")||a.equalsIgnoreCase("30")) {
                ut.displayToast(getApplicationContext(), "From time should not be grater than To time");
 
-            } else if (a.contains("You can not fill time sheet greater than current time")) {
+            } else if (a.contains("You can not fill time sheet greater than current time")||a.equalsIgnoreCase("40")) {
                 ut.displayToast(getApplicationContext(), "You can not fill time sheet greater than current time");
-            } else if (a.contains("You have already filled the time slot")) {
+            } else if (a.contains("You have already filled the time slot")||a.equalsIgnoreCase("10")) {
                 ut.displayToast(getApplicationContext(), "You have already filled the time slot");
+
             } else if (a.equalsIgnoreCase("1")) {
                 ut.displayToast(getApplicationContext(), "Record Added successfully");
 
@@ -152,7 +154,7 @@ public class SendTimeSheet extends Service {
 
                 stopSelf();
             } else {
-                ut.displayToast(getApplicationContext(), "Could not Establish Connection with Server");
+                ut.displayToast(getApplicationContext(), a);
             }
         }
 
@@ -161,7 +163,7 @@ public class SendTimeSheet extends Service {
             try {
                 String url = CompanyURL + WebUrlClass.api_getInsertTimesheet + "?forDate=" +  URLEncoder.encode(params[0],"UTF-8") + "&SaveChecked="
                         + URLEncoder.encode(params[1], "UTF-8") + "&fromTime=" + URLEncoder.encode(params[2],"UTF-8") + "&ActivityId=" + URLEncoder.encode(params[3], "UTF-8") +
-                        "&toTime=" + URLEncoder.encode(params[4],"UTF-8") + "&workDesc=" + URLEncoder.encode(params[5], "UTF-8")+"&Timehrs=0";
+                        "&toTime=" + URLEncoder.encode(params[4],"UTF-8") + "&workDesc=" + URLEncoder.encode(params[5], "UTF-8")+"&Timehrs=0&ActivityTypeId=";
 
                 res = ut.OpenConnection(url,getApplicationContext());
                 Log.e("response data", res + "");

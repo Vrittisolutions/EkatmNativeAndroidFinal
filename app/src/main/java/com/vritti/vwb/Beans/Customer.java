@@ -15,6 +15,31 @@ public class Customer implements Serializable {
     String customerId;
     boolean IsShipInvRequired;
     String shipTomasterId="",AddedBy="";
+    String FileName="",Path="",AttachGuid;
+
+    public String getAttachGuid() {
+        return AttachGuid;
+    }
+
+    public void setAttachGuid(String attachGuid) {
+        AttachGuid = attachGuid;
+    }
+
+    public String getFileName() {
+        return FileName;
+    }
+
+    public void setFileName(String fileName) {
+        FileName = fileName;
+    }
+
+    public String getPath() {
+        return Path;
+    }
+
+    public void setPath(String path) {
+        Path = path;
+    }
 
     public String getAddedBy() {
         return AddedBy;

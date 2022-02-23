@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="10dp"
-        android:background="@drawable/end"
+        android:background="@drawable/thanku"
         android:textSize="50dp"
         android:visibility="visible"/>
 

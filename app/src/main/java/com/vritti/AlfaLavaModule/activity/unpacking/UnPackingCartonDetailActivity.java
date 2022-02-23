@@ -1,7 +1,6 @@
 package com.vritti.AlfaLavaModule.activity.unpacking;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -20,6 +19,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -35,16 +35,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.vritti.AlfaLavaModule.activity.DOListActivity;
-import com.vritti.AlfaLavaModule.activity.pick_riversal.PickPacketScanDetails;
-import com.vritti.AlfaLavaModule.activity.picking.ItemWisePickListDetailActivity;
 import com.vritti.AlfaLavaModule.adapter.AdapterCartonDetail;
-import com.vritti.AlfaLavaModule.adapter.AdapterPicklistDetail;
 import com.vritti.AlfaLavaModule.adapter.Adapter_PrinterName;
-import com.vritti.AlfaLavaModule.bean.CartonData;
 import com.vritti.AlfaLavaModule.bean.CartonDetail;
 import com.vritti.AlfaLavaModule.bean.Packet;
-import com.vritti.AlfaLavaModule.bean.PickListDetail;
 import com.vritti.AlfaLavaModule.bean.PrinterName;
 import com.vritti.databaselib.data.DatabaseHandlers;
 import com.vritti.databaselib.other.Utility;
@@ -210,15 +204,21 @@ public class UnPackingCartonDetailActivity extends AppCompatActivity {
                             cursor.moveToFirst();
                             do {
                                 s_search1.setText("");
-                                Toast toast = Toast.makeText(UnPackingCartonDetailActivity.this, "Already scanned packet", Toast.LENGTH_LONG);
-                                View toastView = toast.getView();
-                                TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-                                toastMessage.setTextSize(18);
-                                toastMessage.setTextColor(Color.RED);
-                                toastMessage.setGravity(Gravity.CENTER);
-                                toastMessage.setCompoundDrawablePadding(5);
-                                toastView.setBackgroundColor(Color.TRANSPARENT);
-                                toast.show();
+                                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                                    Toast toast = Toast.makeText(UnPackingCartonDetailActivity.this, "Already scanned packet", Toast.LENGTH_LONG);
+                                    View toastView = toast.getView();
+                                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                                    toastMessage.setTextSize(18);
+                                    toastMessage.setTextColor(Color.RED);
+                                    toastMessage.setGravity(Gravity.CENTER);
+                                    toastMessage.setCompoundDrawablePadding(5);
+                                    toastView.setBackgroundColor(Color.TRANSPARENT);
+                                    toast.show();
+                                }else {
+                                    Toast toast = Toast.makeText(UnPackingCartonDetailActivity.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + "Already scanned packet" + "</big></b></font>"), Toast.LENGTH_LONG);
+                                    toast.setGravity(Gravity.CENTER, 0, 0);
+                                    toast.show();
+                                }
                                 final MediaPlayer mp = MediaPlayer.create(UnPackingCartonDetailActivity.this, R.raw.alert);
                                 mp.start();
                             } while (cursor.moveToNext());
@@ -478,6 +478,7 @@ public class UnPackingCartonDetailActivity extends AppCompatActivity {
                     progress.setVisibility(View.GONE);
 
                 } else {
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
                     Toast toast = Toast.makeText(UnPackingCartonDetailActivity.this, "Carton details not found", Toast.LENGTH_LONG);
                     View toastView = toast.getView();
                     TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
@@ -486,6 +487,12 @@ public class UnPackingCartonDetailActivity extends AppCompatActivity {
                     toastMessage.setGravity(Gravity.CENTER);
                     toastView.setBackgroundColor(Color.WHITE);
                     toast.show();
+                }else{
+                    Toast toast = Toast.makeText(UnPackingCartonDetailActivity.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + "Carton details not found" + "</big></b></font>"), Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                }
+
                     progress.setVisibility(View.GONE);
 
                     final MediaPlayer mp = MediaPlayer.create(UnPackingCartonDetailActivity.this, R.raw.alert);
@@ -497,7 +504,9 @@ public class UnPackingCartonDetailActivity extends AppCompatActivity {
 
             } else {
                 cf.DeleteAllRecord(db.TABLE_CARTAN_PICKLIST);
-                Toast toast = Toast.makeText(UnPackingCartonDetailActivity.this, "Carton details not found", Toast.LENGTH_LONG);
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+
+                    Toast toast = Toast.makeText(UnPackingCartonDetailActivity.this, "Carton details not found", Toast.LENGTH_LONG);
                 View toastView = toast.getView();
                 TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
                 toastMessage.setTextSize(18);
@@ -505,6 +514,11 @@ public class UnPackingCartonDetailActivity extends AppCompatActivity {
                 toastMessage.setGravity(Gravity.CENTER);
                 toastView.setBackgroundColor(Color.WHITE);
                 toast.show();
+            }else{
+                Toast toast = Toast.makeText(UnPackingCartonDetailActivity.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + "Carton details not found" + "</big></b></font>"), Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+            }
                 progress.setVisibility(View.GONE);
                 final MediaPlayer mp = MediaPlayer.create(UnPackingCartonDetailActivity.this, R.raw.alert);
                 mp.start();
@@ -545,30 +559,40 @@ public class UnPackingCartonDetailActivity extends AppCompatActivity {
                 Packet grnpost_1 = new Packet();
                 grnpost_1.setPacketNo(data);
                 cf.Insert_GRNPACKETNO(grnpost_1);
-
-                Toast toast = Toast.makeText(UnPackingCartonDetailActivity.this, "Packet scanned", Toast.LENGTH_LONG);
-                View toastView = toast.getView();
-                TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-                toastMessage.setTextSize(18);
-                toastMessage.setTextColor(Color.GREEN);
-                toastMessage.setGravity(Gravity.CENTER);
-                toastMessage.setCompoundDrawablePadding(5);
-                toastView.setBackgroundColor(Color.TRANSPARENT);
-                toast.show();
-
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                    Toast toast = Toast.makeText(UnPackingCartonDetailActivity.this, "Packet scanned", Toast.LENGTH_LONG);
+                    View toastView = toast.getView();
+                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                    toastMessage.setTextSize(18);
+                    toastMessage.setTextColor(Color.GREEN);
+                    toastMessage.setGravity(Gravity.CENTER);
+                    toastMessage.setCompoundDrawablePadding(5);
+                    toastView.setBackgroundColor(Color.TRANSPARENT);
+                    toast.show();
+                }else {
+                    Toast toast = Toast.makeText(UnPackingCartonDetailActivity.this, Html.fromHtml("<font color='#26C14B' ><b><big>" + "Packet scanned" + "</big></b></font>"), Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                }
                 final MediaPlayer mp = MediaPlayer.create(UnPackingCartonDetailActivity.this, R.raw.ok);
                 mp.start();
 
             }else {
-                Toast toast = Toast.makeText(UnPackingCartonDetailActivity.this, "Packet not found in carton details", Toast.LENGTH_LONG);
-                View toastView = toast.getView();
-                TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-                toastMessage.setTextSize(18);
-                toastMessage.setTextColor(Color.RED);
-                toastMessage.setGravity(Gravity.CENTER);
-                toastMessage.setCompoundDrawablePadding(5);
-                toastView.setBackgroundColor(Color.TRANSPARENT);
-                toast.show();
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                    Toast toast = Toast.makeText(UnPackingCartonDetailActivity.this, "Packet not found in carton details", Toast.LENGTH_LONG);
+                    View toastView = toast.getView();
+                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                    toastMessage.setTextSize(18);
+                    toastMessage.setTextColor(Color.RED);
+                    toastMessage.setGravity(Gravity.CENTER);
+                    toastMessage.setCompoundDrawablePadding(5);
+                    toastView.setBackgroundColor(Color.TRANSPARENT);
+                    toast.show();
+                }else {
+                    Toast toast = Toast.makeText(UnPackingCartonDetailActivity.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + "Packet not found in carton details" + "</big></b></font>"), Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                }
 
                 final MediaPlayer mp = MediaPlayer.create(UnPackingCartonDetailActivity.this, R.raw.alert);
                 mp.start();
@@ -689,15 +713,21 @@ public class UnPackingCartonDetailActivity extends AppCompatActivity {
             if (integer.contains("Success")) {
 
                 cartondetailslist.clear();
-                Toast toast = Toast.makeText(UnPackingCartonDetailActivity.this, "Record removed successfully", Toast.LENGTH_LONG);
-                View toastView = toast.getView();
-                TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-                toastMessage.setTextSize(18);
-                toastMessage.setTextColor(Color.GREEN);
-                toastMessage.setGravity(Gravity.CENTER);
-                toastMessage.setCompoundDrawablePadding(5);
-                toastView.setBackgroundColor(Color.TRANSPARENT);
-                toast.show();
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                    Toast toast = Toast.makeText(UnPackingCartonDetailActivity.this, "Record removed successfully", Toast.LENGTH_LONG);
+                    View toastView = toast.getView();
+                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                    toastMessage.setTextSize(18);
+                    toastMessage.setTextColor(Color.GREEN);
+                    toastMessage.setGravity(Gravity.CENTER);
+                    toastMessage.setCompoundDrawablePadding(5);
+                    toastView.setBackgroundColor(Color.TRANSPARENT);
+                    toast.show();
+                }else {
+                    Toast toast = Toast.makeText(UnPackingCartonDetailActivity.this, Html.fromHtml("<font color='#26C14B' ><b><big>" + "Record removed successfully" + "</big></b></font>"), Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                }
                onBackPressed();
 
             }
@@ -706,15 +736,21 @@ public class UnPackingCartonDetailActivity extends AppCompatActivity {
                     integer = integer.substring(1, integer.length() - 1);
                     JSONObject jsonObject = new JSONObject(integer);
                     String status = jsonObject.getString("ERROR");
-                    Toast toast = Toast.makeText(UnPackingCartonDetailActivity.this, status, Toast.LENGTH_LONG);
-                    View toastView = toast.getView();
-                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-                    toastMessage.setTextSize(18);
-                    toastMessage.setTextColor(Color.RED);
-                    toastMessage.setGravity(Gravity.CENTER);
-                    toastMessage.setCompoundDrawablePadding(5);
-                    toastView.setBackgroundColor(Color.TRANSPARENT);
-                    toast.show();
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                        Toast toast = Toast.makeText(UnPackingCartonDetailActivity.this, status, Toast.LENGTH_LONG);
+                        View toastView = toast.getView();
+                        TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                        toastMessage.setTextSize(18);
+                        toastMessage.setTextColor(Color.RED);
+                        toastMessage.setGravity(Gravity.CENTER);
+                        toastMessage.setCompoundDrawablePadding(5);
+                        toastView.setBackgroundColor(Color.TRANSPARENT);
+                        toast.show();
+                    }else {
+                        Toast toast = Toast.makeText(UnPackingCartonDetailActivity.this, Html.fromHtml("<font color='#EF4F4F' ><b><big>" + status+ "</big></b></font>"), Toast.LENGTH_LONG);
+                        toast.setGravity(Gravity.CENTER, 0, 0);
+                        toast.show();
+                    }
 
                     final MediaPlayer mp = MediaPlayer.create(UnPackingCartonDetailActivity.this, R.raw.alert);
                     mp.start();

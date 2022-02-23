@@ -7,7 +7,65 @@
     android:layout_height="match_parent"
     tools:context="com.vritti.vwb.vworkbench.Hajmola_MainActivity"
     android:orientation="vertical"
-    android:background="@drawable/back_hajmola">
+    xmlns:example="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        >
+
+        <TextView
+            android:id="@+id/tv_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00" />
+
+        <SeekBar
+            android:id="@+id/seek_play"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tv_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center|top"
+        android:visibility="gone"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Play"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_pause"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pause"
+            android:textAllCaps="false" />
+
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:textColor="@color/red"
+        android:textStyle="bold"
+        android:layout_margin="@dimen/sp_14"
+        android:text="मैं एक भारतीय नागरिक शपथ लेती हूँ कि मैं भारत के संविधान द्वारा दिए गए अपने बहुमूल्य अधिकार का हरसंभव परिस्थिति में और जब भी मुझे अक्सर मिलेगा, मतदान करने की अपने बहुमूल्य अधिकार का प्रयोग करूंगी । मतदान द्वारा अपने प्रतिनिधि का चुनाव ना केवल हमारा अधिकार है बल्कि देश के प्रति हमारा कर्तव्य भी है । मैं अपने वोट का उपयोग करने के लिए एक जन प्रतिनिधि का चुनाव करने के लिए हरसंभव प्रयास करूंगी, जो देश की अपेक्षाओं को पूरा करेगा और मैं ये भी शपथ लेती हूँ कि मैं अन्य लोगों को भी जागरूकता के साथ मतदान करने के लिए प्रोत्साहित करूंगी।"
+        android:layout_marginTop="@dimen/sp_10"/>
 
     <LinearLayout
         android:id="@+id/ln_details"
@@ -15,10 +73,9 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="@dimen/sp_10"
         android:layout_marginLeft="@dimen/sp_10"
-        android:layout_marginTop="10dp"
         android:padding="@dimen/sp_10"
         android:orientation="vertical"
-        android:background="@drawable/fill_border">
+        android:background="@drawable/edittext_border">
 
 
 
@@ -30,6 +87,7 @@
             android:background="@drawable/business_edit_text"
             android:layout_gravity="center|left"
             android:padding="8dp"
+            android:visibility="gone"
             android:gravity="left|center"
             >
             <ImageView
@@ -54,7 +112,6 @@
                     android:hint="@string/name_hindi"
                     android:paddingLeft="@dimen/sp_5"
                     android:singleLine="true"
-                    android:inputType="textCapCharacters"
                     android:gravity="center|left"
                     android:background="@android:color/transparent"
                     />
@@ -113,6 +170,7 @@
             android:background="@drawable/business_edit_text"
             android:gravity="center|left"
             android:orientation="horizontal"
+            android:visibility="gone"
             android:padding="10dp">
             <ImageView
                 android:layout_width="40dp"
@@ -196,7 +254,7 @@
                 android:padding="5dp"/>
 
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/txtlay_age"
+                android:id="@+id/txt_age"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|left"
@@ -222,13 +280,55 @@
             </android.support.design.widget.TextInputLayout>
 
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/business_edit_text"
+            android:layout_gravity="center|left"
+            android:padding="8dp"
+            android:visibility="gone"
+            android:layout_marginTop="10dp"
+            android:gravity="left|center"
+            >
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="@dimen/sp_5"
+                android:src="@drawable/location"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/txtlay_age"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:orientation="horizontal"
+                android:padding="3dp">
+
+                <EditText
+                    android:id="@+id/edt_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/age_address"
+                    android:background="@android:color/transparent"
+                    android:gravity="center|left"
+                    android:layout_marginLeft="10dp"
+                    />
+
+
+
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+
         <Button
             android:id="@+id/btn_forward"
             android:layout_width="150dp"
             android:layout_height="60dp"
             android:layout_gravity="center"
             android:background="@drawable/yellow_border"
-            android:text="@string/btn_forward"
+            android:text="@string/submit"
             android:layout_marginTop="20dp"
             android:textColor="@color/black"
             android:textStyle="bold"

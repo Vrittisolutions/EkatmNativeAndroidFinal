@@ -79,7 +79,7 @@
                 android:layout_alignParentBottom="true"
                 android:gravity="center|bottom"
                 android:padding="10dp"
-                android:text="Exit Chat Room"
+                android:text="Exit Conversation Room"
                 android:textColor="@color/red"
                 android:textSize="16dp"
                 android:visibility="visible" />

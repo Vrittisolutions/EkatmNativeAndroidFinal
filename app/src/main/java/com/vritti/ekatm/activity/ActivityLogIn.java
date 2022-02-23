@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
@@ -15,6 +16,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.StrictMode;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
@@ -64,6 +66,7 @@ import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.splunk.mint.Mint;
+import com.vritti.AlfaLavaModule.PI.PacketScanDetails;
 import com.vritti.AlfaLavaModule.activity.AlfaHomePage;
 import com.vritti.SaharaModule.SplashActivity;
 import com.vritti.databaselib.data.DatabaseHandlers;
@@ -74,6 +77,8 @@ import com.vritti.ekatm.Interface.CallBack;
 import com.vritti.ekatm.R;
 import com.vritti.ekatm.other.SetAppName;
 import com.vritti.ekatm.other.ValidateUser;
+import com.vritti.sessionlib.CallbackInterface;
+import com.vritti.sessionlib.StartSession;
 import com.vritti.vwb.CommonClass.AppCommon;
 import com.vritti.vwb.classes.CommonFunction;
 import com.vritti.vwb.vworkbench.ActivityMain;
@@ -145,10 +150,10 @@ public class ActivityLogIn extends AppCompatActivity implements GoogleApiClient.
     public volatile static boolean fixForMatch = false;
     GoogleApiClient googleApiClient = null;
 
-   // private String APP_URL_Alfa = "http://alfatest.ekatm.co.in";
+//    private String APP_URL_Alfa = "http://alfatest.ekatm.co.in";
 
 
-     private String APP_URL_Alfa = "http://10.128.72.105";
+    private String APP_URL_Alfa = "http://10.128.72.105";
 
     private FirebaseAuth mAuth;
     private String mVerificationId;
@@ -156,7 +161,12 @@ public class ActivityLogIn extends AppCompatActivity implements GoogleApiClient.
     ImageView img_back;
     TextView txt_title;
     String[] PERMISSIONS;
+    private AlertDialog dialog;
+    private int cnt;
+    EditText input_company;
 
+    static String settingKey = "";
+    private SQLiteDatabase sql;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -195,6 +205,7 @@ public class ActivityLogIn extends AppCompatActivity implements GoogleApiClient.
         }
 */
 
+
         if (googleApiClient == null) {
 
 
@@ -202,6 +213,7 @@ public class ActivityLogIn extends AppCompatActivity implements GoogleApiClient.
                 if(Constants.type == Constants.Type.Alfa){
 
                 }else {
+                    //getpermissiondialog();
                     EnableGPSAutoMatically();
                 }
             } else {
@@ -216,6 +228,16 @@ public class ActivityLogIn extends AppCompatActivity implements GoogleApiClient.
                     startActivity(intent);
                     finish();
                 }*/ if (getLogINCount() ) {
+
+                    context = ActivityLogIn.this;
+                    ut = new Utility();
+                    settingKey = ut.getSharedPreference_SettingKey(context);
+                    String dabasename = ut.getValue(context, WebUrlClass.GET_DATABASE_NAME_KEY, settingKey);
+                    db = new DatabaseHandlers(context, dabasename);
+                    sql = db.getWritableDatabase();
+                    CompanyURL = ut.getValue(context, WebUrlClass.GET_COMPANY_URL_KEY, settingKey);
+                    EnvMasterId = ut.getValue(context, WebUrlClass.GET_EnvMasterID_KEY, settingKey);
+
                     if(Constants.type == Constants.Type.Sahara) {
                         startActivity(new Intent(ActivityLogIn.this, SplashActivity.class));
                         finish();
@@ -230,12 +252,20 @@ public class ActivityLogIn extends AppCompatActivity implements GoogleApiClient.
                     {
 
                         Intent intent = new Intent(ActivityLogIn.this, AlfaHomePage.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         finish();
                     }else {
-                        Intent intent = new Intent(ActivityLogIn.this, ActivityModuleSelection.class);
-                        startActivity(intent);
-                        finish();
+                        if (EnvMasterId.equalsIgnoreCase("dabur")||EnvMasterId.equalsIgnoreCase("sharthtest")){
+                            Intent intent = new Intent(ActivityLogIn.this, WelcomeScreenActivity.class);
+                            startActivity(intent);
+                            finish();
+
+                        }else {
+                            Intent intent = new Intent(ActivityLogIn.this, ActivityModuleSelection.class);
+                            startActivity(intent);
+                            finish();
+                        }
                     }
                 }
 
@@ -333,6 +363,36 @@ public class ActivityLogIn extends AppCompatActivity implements GoogleApiClient.
         //    sendVerificationCode("+918600669097");
     }
 
+    private void getpermissiondialog() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = ActivityLogIn.this.getLayoutInflater();
+        final View myView = inflater.inflate(R.layout.location_permission_dialog, null);
+        builder.setView(myView);
+
+        TextView btn_accept=myView.findViewById(R.id.btn_accept);
+        TextView btn_deny=myView.findViewById(R.id.btn_deny);
+
+        btn_accept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        btn_deny.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+
+        dialog = builder.create();
+        dialog.show();
+
+    }
+
     private void setListner() {
         AppCommon.getInstance(ActivityLogIn.this).onHideKeyBoard(ActivityLogIn.this);
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -397,36 +457,52 @@ public class ActivityLogIn extends AppCompatActivity implements GoogleApiClient.
                 }else {
 */
                 if (ut.isNet(getApplicationContext())) {
+
                     if (isGooglePlayServicesAvailable()) {
                         if (googleApiClient == null) {
                             EnableGPSAutoMatically();
                         } else {
                             if (checkEditTextUrl()) {
-                                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q){
+                  /*              if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q){
                                     String[] PERMISSIONS = {
-                                             Manifest.permission.ACCESS_COARSE_LOCATION,
-                                             Manifest.permission.ACCESS_FINE_LOCATION,
-                                             Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                                             Manifest.permission.INTERNET,
-                                             Manifest.permission.READ_CONTACTS,
-                                           //  Manifest.permission.ACCESS_BACKGROUND_LOCATION,
-                                     };
-                                    if (!hasPermissions(ActivityLogIn.this, PERMISSIONS)) {
-                                        ActivityCompat.requestPermissions(ActivityLogIn.this, PERMISSIONS, PERMISSION_ALL);
-                                    } else {
-                                        BtnOk.setEnabled(false);
-                                        methodEnvirnment();
-                                    }
-                                } else {
-                                    String[] PERMISSIONS =
-                                            {
-                                                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                                            Manifest.permission.ACCESS_COARSE_LOCATION,
                                             Manifest.permission.ACCESS_FINE_LOCATION,
                                             Manifest.permission.WRITE_EXTERNAL_STORAGE,
                                             Manifest.permission.INTERNET,
                                             Manifest.permission.READ_CONTACTS,
-                                    };
+                                            Manifest.permission.ACCESS_BACKGROUND_LOCATION,
+                                     };
+                                    if (!hasPermissions(ActivityLogIn.this, PERMISSIONS)) {
+                                        try {
+                                            ActivityCompat.requestPermissions(ActivityLogIn.this,PERMISSIONS, PERMISSION_ALL);
+                                        }catch (Exception e){
+                                            e.printStackTrace();
+                                            Log.d("Excep :",e.getMessage());
+                                        }
+                                    } else {
+                                        BtnOk.setEnabled(false);
+                                        methodEnvirnment();
+                                    }
+                                } else {*/
 
+                                if(Constants.type == Constants.Type.PM){
+                                    PERMISSIONS =
+                                            new String[]{
+                                            
+                                                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                                                    Manifest.permission.ACCESS_FINE_LOCATION,
+                                                    Manifest.permission.INTERNET,
+                                            };
+                                }else {
+                                     PERMISSIONS =
+                                             new String[]{
+                                                     Manifest.permission.ACCESS_COARSE_LOCATION,
+                                                     Manifest.permission.ACCESS_FINE_LOCATION,
+                                                     Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                                                     Manifest.permission.INTERNET,
+                                                     Manifest.permission.READ_CONTACTS,
+                                             };
+                                }
                                     if (!hasPermissions(ActivityLogIn.this, PERMISSIONS)) {
                                         ActivityCompat.requestPermissions(ActivityLogIn.this, PERMISSIONS, PERMISSION_ALL);
                                     } else {
@@ -436,7 +512,7 @@ public class ActivityLogIn extends AppCompatActivity implements GoogleApiClient.
                                 }
                             }
 
-                        }
+
                     }
 
 
@@ -514,24 +590,45 @@ public class ActivityLogIn extends AppCompatActivity implements GoogleApiClient.
             if (mSecure.isChecked()) {
                 extn = "https://";
             } else {
-                if (mEturl.getText().toString().toLowerCase().trim().contains("vritti") || mEturl.getText().toString().toLowerCase().trim().contains("mmpl") || mEturl.getText().toString().toLowerCase().trim().contains("vst"))
+                if (input_company.getText().toString().toLowerCase().trim().contains("vritti") || input_company.getText().toString().toLowerCase().trim().contains("mmpl") || input_company.getText().toString().toLowerCase().trim().contains("vst"))
                     extn = "https://";
                 else
                     extn = "http://";
             }
 
-            CompanyURL = extn + mEturl.getText().toString().toLowerCase().trim();
+            if (input_company.getText().toString().equalsIgnoreCase("") || input_company.getText().toString().equalsIgnoreCase("null")
+                    || input_company.getText().toString()==null){
+
+                Toast.makeText(ActivityLogIn.this,"Enter company name",Toast.LENGTH_SHORT).show();
+            }
+            else if (mEturl.getText().toString().equalsIgnoreCase("")||
+                    mEturl.getText().toString().equalsIgnoreCase("null")||
+                    mEturl.getText().toString()==null){
+                Toast.makeText(ActivityLogIn.this,"Enter company code",Toast.LENGTH_SHORT).show();
+            }
+            else {
+
+
+                String FinalURL = input_company.getText().toString().toLowerCase().trim() + mEturl.getText().toString().toLowerCase().trim();
+                //  CompanyURL = extn + mEturl.getText().toString().toLowerCase().trim();
+                CompanyURL = extn + FinalURL;
+                GetEnv getEnv = new GetEnv();
+                getEnv.execute(CompanyURL);
+            }
+
+           /* CompanyURL = extn + mEturl.getText().toString().toLowerCase().trim();
             GetEnv getEnv = new GetEnv();
             getEnv.execute(CompanyURL);
-
+*/
         } else if (Constants.type == Constants.Type.PM) {
-
+             mEturl.setHint("Enter Company Code");
             String compcode = mEturl.getText().toString().toLowerCase().trim();
             compcode = compcode.replaceAll("\\s", "");
             String strcomp = compcode.trim();//
 
             CheckEnv checkEnv = new CheckEnv();
             checkEnv.execute(strcomp);
+
         } else if (Constants.type == Constants.Type.Delivery) {
 
             Boolean flaBoolean = mSecure.isChecked();
@@ -566,10 +663,25 @@ public class ActivityLogIn extends AppCompatActivity implements GoogleApiClient.
                     extn = "http://";
             }
 
-            CompanyURL = extn + mEturl.getText().toString().toLowerCase().trim();
-            GetEnv getEnv = new GetEnv();
-            getEnv.execute(CompanyURL);
+            if (input_company.getText().toString().equalsIgnoreCase("") || input_company.getText().toString().equalsIgnoreCase("null")
+                    || input_company.getText().toString()==null){
 
+                Toast.makeText(ActivityLogIn.this,"Enter company name",Toast.LENGTH_SHORT).show();
+            }
+            else if (mEturl.getText().toString().equalsIgnoreCase("")||
+                        mEturl.getText().toString().equalsIgnoreCase("null")||
+                        mEturl.getText().toString()==null){
+                Toast.makeText(ActivityLogIn.this,"Enter company code",Toast.LENGTH_SHORT).show();
+            }
+            else {
+
+
+                String FinalURL = input_company.getText().toString().toLowerCase().trim() + mEturl.getText().toString().toLowerCase().trim();
+                //  CompanyURL = extn + mEturl.getText().toString().toLowerCase().trim();
+                CompanyURL = extn + FinalURL;
+                GetEnv getEnv = new GetEnv();
+                getEnv.execute(CompanyURL);
+            }
         }
     }
 
@@ -587,18 +699,21 @@ public class ActivityLogIn extends AppCompatActivity implements GoogleApiClient.
         BtnOk = (Button) findViewById(R.id.BtnOK);
         mCbShowPwd = (CheckBox) findViewById(R.id.checkBox);
         mSecure = (CheckBox) findViewById(R.id.checkBoxsecure);
-
+        mEturl = (EditText) findViewById(R.id.input_Url);
+        input_company = (EditText) findViewById(R.id.input_company);
         if (Constants.type == Constants.Type.Vwb) {
 
             mSecure.setVisibility(View.VISIBLE);
+            mCbShowPwd.setChecked(true);
         } else if (Constants.type == Constants.Type.PM) {
-
+            input_company.setVisibility(View.GONE);
+                mEturl.setHint("Enter Company Code");
             mSecure.setVisibility(View.GONE);
         }
-        mEturl = (EditText) findViewById(R.id.input_Url);
+
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.showSoftInput(mEturl, InputMethodManager.SHOW_IMPLICIT);
-        mEturl.requestFocus();
+        imm.showSoftInput(input_company, InputMethodManager.SHOW_IMPLICIT);
+        input_company.requestFocus();
         relProgress = (RelativeLayout) findViewById(R.id.rel_progress);
 
     }
@@ -612,7 +727,12 @@ public class ActivityLogIn extends AppCompatActivity implements GoogleApiClient.
         txt_title = findViewById(R.id.txt_title);
 
         txt_title.setText(R.string.app_name_toolbar_Ekatm);
+
+        if(Constants.type == Constants.Type.PM)
+            img_back.setImageDrawable(getResources().getDrawable(R.drawable.simplify));
+        else
         img_back.setImageDrawable(getResources().getDrawable(R.drawable.app_logo_1));
+
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
@@ -726,8 +846,8 @@ public class ActivityLogIn extends AppCompatActivity implements GoogleApiClient.
                 editor.putString(WebUrlClass.MyPREFERENCES_PSW_KEY, userPsw);
                 editor.putString(WebUrlClass.MyPREFERENCES_MOBILE_KEY, mobile);
                 editor.commit();
-                new DownloadAuthenticate().execute();
-                //new DownloadUserMasterIdFromServer().execute();
+                //new DownloadAuthenticate().execute();
+                new DownloadUserMasterIdFromServer().execute();
 
             } else {
                 btnLogin.setEnabled(true);
@@ -830,45 +950,81 @@ public class ActivityLogIn extends AppCompatActivity implements GoogleApiClient.
         protected void onPostExecute(Integer integer) {
             super.onPostExecute(integer);
             ut.hideProgress(relProgress);
-            SharedPreferences.Editor editor = sharedpreferences.edit();
-            editor.putString(WebUrlClass.MyPREFERENCES_IS_CRMUSER_KEY, IsCrmUser);
-            editor.commit();
 
-            int cnt = insertLoginData();
-            editor.putInt(WebUrlClass.MyPREFERENCES_SETTING_POSITION_KEY, cnt - 1);
-            editor.commit();
-            btnLogin.setEnabled(true);
-            MySnackbar("Login Successful...");
             if (getLogINCountgps()) {
                 // regservicenonGPS(getApplicationContext());
             }
-            if(Constants.type == Constants.Type.Sahara){
-                Intent intent = new Intent(ActivityLogIn.this, ActivityMain.class);
-                //  intent.putExtra("cnt", cnt);
-                startActivity(intent);
-                finish();
+            if (/*EnvMasterId.contains("c207")||*/EnvMasterId.contains("hyva")) {
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+                editor.putString(WebUrlClass.MyPREFERENCES_IS_CRMUSER_KEY, IsCrmUser);
+                editor.commit();
 
-            }else if(CompanyURL.equals(APP_URL_HAJMOLA)){
-                Intent intent = new Intent(ActivityLogIn.this, WelcomeScreenActivity.class);
-                // intent.putExtra("cnt", cnt);
-                startActivity(intent);
-                finish();
+                cnt = insertLoginData();
+                editor.putInt(WebUrlClass.MyPREFERENCES_SETTING_POSITION_KEY, cnt - 1);
+                editor.commit();
+                btnLogin.setEnabled(true);
+                MySnackbar("Login Successful...");
 
-            } else{
-                if(Constants.type == Constants.Type.Alfa ){
-                    Intent intent = new Intent(ActivityLogIn.this, AlfaHomePage.class);
-                    intent.putExtra("cnt", cnt);
-                    startActivity(intent);
-                    finish();
-                }else {
-                    Intent intent = new Intent(ActivityLogIn.this, ActivityModuleSelection.class);
-                    intent.putExtra("cnt", cnt);
-                    startActivity(intent);
-                    finish();
+                if (ut.isNet(ActivityLogIn.this)) {
+
+                    new StartSession(ActivityLogIn.this, new CallbackInterface() {
+                        @Override
+                        public void callMethod() {
+                            new GetDeviceAuthentication().execute();
+                        }
+
+                        @Override
+                        public void callfailMethod(String msg) {
+                            ut.displayToast(ActivityLogIn.this, msg);
+                        }
+                    });
+                } else {
+                    ut.displayToast(ActivityLogIn.this, "No Internet connection");
                 }
+            }else {
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+                editor.putString(WebUrlClass.MyPREFERENCES_IS_CRMUSER_KEY, IsCrmUser);
+                editor.commit();
+
+                cnt = insertLoginData();
+                editor.putInt(WebUrlClass.MyPREFERENCES_SETTING_POSITION_KEY, cnt - 1);
+                editor.commit();
+                btnLogin.setEnabled(true);
+                MySnackbar("Login Successful...");
+
+                if (EnvMasterId.equalsIgnoreCase("dabur")||EnvMasterId.equalsIgnoreCase("sharthtest")){
+                    Intent intent = new Intent(ActivityLogIn.this, WelcomeScreenActivity.class);
+                    startActivity(intent);
+                    finish();
+
+                }else if (Constants.type == Constants.Type.Sahara) {
+                    Intent intent = new Intent(ActivityLogIn.this, ActivityMain.class);
+                    //  intent.putExtra("cnt", cnt);
+                    startActivity(intent);
+                    finish();
+
+                } else if (CompanyURL.equals(APP_URL_HAJMOLA)) {
+                    Intent intent = new Intent(ActivityLogIn.this, WelcomeScreenActivity.class);
+                    // intent.putExtra("cnt", cnt);
+                    startActivity(intent);
+                    finish();
+
+                } else {
+                    if (Constants.type == Constants.Type.Alfa) {
+                        Intent intent = new Intent(ActivityLogIn.this, AlfaHomePage.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.putExtra("cnt", cnt);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Intent intent = new Intent(ActivityLogIn.this, ActivityModuleSelection.class);
+                        intent.putExtra("cnt", cnt);
+                        startActivity(intent);
+                        finish();
+                    }
+                }
+
             }
-
-
 
 
         }
@@ -1196,8 +1352,10 @@ public class ActivityLogIn extends AppCompatActivity implements GoogleApiClient.
                         EnvName.add(jorder.getString("AppEnvMasterId"));
                         String isChatApplicable = jorder.getString("IsChatApplicable");
                         String isGPSLocation = jorder.getString("IsGPSLocation");
+                        String AppCode = jorder.getString("AppCode");
                         editor.putString(WebUrlClass.MyPREFERENCES_IS_CHAT_APPLICABLE_KEY, isChatApplicable);
                         editor.putString(WebUrlClass.MyPREFERENCES_IS_GPS_LOCATION_KEY, isGPSLocation);
+                        editor.putString(WebUrlClass.MyPREFERENCES_IS_APPCODE, AppCode);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -1208,7 +1366,7 @@ public class ActivityLogIn extends AppCompatActivity implements GoogleApiClient.
                 dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 edEnv.setAdapter(dataAdapter);
             } else {
-                mEturl.setText("");
+               // mEturl.setText("");
                 lin_compcode.setVisibility(View.VISIBLE);
                 lin_login.setVisibility(View.GONE);
                 //ut.displayToast(getApplicationContext(), "Enter valid Url");
@@ -1390,7 +1548,7 @@ public class ActivityLogIn extends AppCompatActivity implements GoogleApiClient.
             imei_number = telephonyManager.getDeviceId();
 
         } catch (SecurityException e) {
-            imei_number = "Security Exception";
+            imei_number = "0";
         }
         String android_id = Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID);
@@ -1414,6 +1572,7 @@ public class ActivityLogIn extends AppCompatActivity implements GoogleApiClient.
         contentValues.put("IMEINumber", imei_number);
         contentValues.put("FCMToken", ut.getSharedPreference_getFCMToken(getApplicationContext()));
         contentValues.put("Designation", ut.getSharedPreference_Designation(getApplicationContext()));
+        contentValues.put("Material", "");
 
         final int min = 1000;
         final int max = 9999;
@@ -1478,7 +1637,10 @@ public class ActivityLogIn extends AppCompatActivity implements GoogleApiClient.
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && context != null && permissions != null) {
             for (String permission : permissions) {
                 if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+                    Log.d("Failed","Permission grant");
                     return false;
+                }else {
+                    Log.d("Failed","Permission failed");
                 }
             }
         }
@@ -1560,26 +1722,38 @@ public class ActivityLogIn extends AppCompatActivity implements GoogleApiClient.
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
 
         if (requestCode == PERMISSION_ALL) {
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q){
+            /*if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q){
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED &&
                         grantResults[1] == PackageManager.PERMISSION_GRANTED &&
                         grantResults[2] == PackageManager.PERMISSION_GRANTED &&
                         grantResults[3] == PackageManager.PERMISSION_GRANTED &&
-                        grantResults[4] == PackageManager.PERMISSION_GRANTED
-                    /*    grantResults[5] == PackageManager.PERMISSION_GRANTED*/) {
+                        grantResults[4] == PackageManager.PERMISSION_GRANTED &&
+                        grantResults[5] == PackageManager.PERMISSION_GRANTED) {
                     BtnOk.setEnabled(false);
                     methodEnvirnment();
                 }
-            }else {
+            }else {*/
+
+            if(Constants.type == Constants.Type.PM){
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED &&
-                    grantResults[1] == PackageManager.PERMISSION_GRANTED &&
-                    grantResults[2] == PackageManager.PERMISSION_GRANTED &&
-                    grantResults[3] == PackageManager.PERMISSION_GRANTED &&
-                    grantResults[4] == PackageManager.PERMISSION_GRANTED){
+                        grantResults[1] == PackageManager.PERMISSION_GRANTED &&
+                        grantResults[2] == PackageManager.PERMISSION_GRANTED )
+                       /* grantResults[3] == PackageManager.PERMISSION_GRANTED &&
+                        grantResults[4] == PackageManager.PERMISSION_GRANTED)*/ {
+                    BtnOk.setEnabled(false);
+                    methodEnvirnment();
+                }
+                }else {
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED &&
+                        grantResults[1] == PackageManager.PERMISSION_GRANTED &&
+                        grantResults[2] == PackageManager.PERMISSION_GRANTED &&
+                        grantResults[3] == PackageManager.PERMISSION_GRANTED &&
+                        grantResults[4] == PackageManager.PERMISSION_GRANTED) {
                     BtnOk.setEnabled(false);
                     methodEnvirnment();
                 }
             }
+
         }
     }
 
@@ -1745,6 +1919,125 @@ public class ActivityLogIn extends AppCompatActivity implements GoogleApiClient.
         }
     };*/
 
+    class GetDeviceAuthentication extends AsyncTask<String, Void, String> {
+        String res;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            ut.showProgress(relProgress);
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            String url = ut.getSharedPreference_URL(getApplicationContext()) + WebUrlClass.api_GetDeviceAuthentication + "?AppCode="+SetAppName.AppNameFCM;
+            try {
+                res = ut.OpenConnection(url, getApplicationContext());
+                res = res.toString();
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                res = WebUrlClass.setError;
+            }
+            return res;
+        }
+
+        @Override
+        protected void onPostExecute(String str) {
+            super.onPostExecute(str);
+
+
+            if (res.contains("Device_Id")) {
+
+                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(ActivityLogIn.this);
+                LayoutInflater inflater = getLayoutInflater();
+                final View dialogView = inflater.inflate(R.layout.vwb_already_login, null);
+                dialogBuilder.setView(dialogView);
+
+                Button button = (Button) dialogView.findViewById(R.id.txt_submit);
+                Button txt_resend_otp = (Button) dialogView.findViewById(R.id.txt_resend_otp);
+                // TextView txt_resend_otp=dialogView.findViewById(R.id.txt_resend_otp);
+                dialogBuilder.setCancelable(false);
+                final AlertDialog b = dialogBuilder.create();
+                b.show();
+
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        if (Constants.type == Constants.Type.Sahara) {
+                            Intent intent = new Intent(ActivityLogIn.this, ActivityMain.class);
+                            //  intent.putExtra("cnt", cnt);
+                            startActivity(intent);
+                            finish();
+
+                        } else if (CompanyURL.equals(APP_URL_HAJMOLA)) {
+                            Intent intent = new Intent(ActivityLogIn.this, WelcomeScreenActivity.class);
+                            // intent.putExtra("cnt", cnt);
+                            startActivity(intent);
+                            finish();
+
+                        } else {
+                            if (Constants.type == Constants.Type.Alfa) {
+                                Intent intent = new Intent(ActivityLogIn.this, AlfaHomePage.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                intent.putExtra("cnt", cnt);
+                                startActivity(intent);
+                                finish();
+                            } else {
+                                Intent intent = new Intent(ActivityLogIn.this, ActivityModuleSelection.class);
+                                intent.putExtra("cnt", cnt);
+                                startActivity(intent);
+                                finish();
+                            }
+                        }
+
+                        b.dismiss();
+                    }
+                });
+
+                txt_resend_otp.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                      b.dismiss();
+                      finish();
+
+                    }
+                });
+
+            }else {
+                if (Constants.type == Constants.Type.Sahara) {
+                    Intent intent = new Intent(ActivityLogIn.this, ActivityMain.class);
+                    //  intent.putExtra("cnt", cnt);
+                    startActivity(intent);
+                    finish();
+
+                } else if (CompanyURL.equals(APP_URL_HAJMOLA)) {
+                    Intent intent = new Intent(ActivityLogIn.this, WelcomeScreenActivity.class);
+                    // intent.putExtra("cnt", cnt);
+                    startActivity(intent);
+                    finish();
+
+                } else {
+                    if (Constants.type == Constants.Type.Alfa) {
+                        Intent intent = new Intent(ActivityLogIn.this, AlfaHomePage.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.putExtra("cnt", cnt);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Intent intent = new Intent(ActivityLogIn.this, ActivityModuleSelection.class);
+                        intent.putExtra("cnt", cnt);
+                        startActivity(intent);
+                        finish();
+                    }
+                }
+            }
+        }
+    }
 
 }
 

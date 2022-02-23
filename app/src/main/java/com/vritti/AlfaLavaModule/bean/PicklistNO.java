@@ -5,6 +5,15 @@ import java.io.Serializable;
 public class PicklistNO implements Serializable {
 
     String Pick_listHdrId,PicklistNo,AWBNO,Remark,QCStatus;
+    boolean isSelected;
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
+    }
 
     public String getQCStatus() {
         return QCStatus;

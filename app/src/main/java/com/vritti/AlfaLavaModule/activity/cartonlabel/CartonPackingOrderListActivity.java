@@ -215,7 +215,13 @@ public class CartonPackingOrderListActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... params) {
-            String url = CompanyURL + WebUrlClass.api_getShipmentNo;
+            String url="";
+            if (Constants.type == Constants.Type.Alfa) {
+                url = CompanyURL + WebUrlClass.api_GetPackOrdNO;
+
+            }else {
+                url = CompanyURL + WebUrlClass.api_getShipmentNo;
+            }
             try {
                 res = ut.OpenConnection(url, CartonPackingOrderListActivity.this);
                 response = res.toString().replaceAll("\\\\", "");
@@ -247,9 +253,19 @@ public class CartonPackingOrderListActivity extends AppCompatActivity {
                     for (int i=0;i<jResults.length();i++){
                         PicklistNO picklistNO=new PicklistNO();
                         JSONObject jsonObject=jResults.getJSONObject(i);
-                        picklistNO.setPick_listHdrId(jsonObject.getString("Pack_OrdHdrId"));
-                        picklistNO.setPicklistNo(jsonObject.getString("InvoiceNo"));
-                        picklistNOList.add(picklistNO);
+                        if (Constants.type == Constants.Type.Alfa) {
+                            picklistNO.setPick_listHdrId(jsonObject.getString("Pack_OrdHdrId"));
+                            if (jsonObject.getString("AWBNO").equalsIgnoreCase("")){
+                                picklistNO.setPicklistNo(jsonObject.getString("Pack_OrdNo"));
+                            }else {
+                                picklistNO.setPicklistNo(jsonObject.getString("AWBNO"));
+                            }
+                            picklistNOList.add(picklistNO);
+                        }else {
+                            picklistNO.setPick_listHdrId(jsonObject.getString("Pack_OrdHdrId"));
+                            picklistNO.setPicklistNo(jsonObject.getString("InvoiceNo"));
+                            picklistNOList.add(picklistNO);
+                        }
                     }
 
                     adapter.update(picklistNOList);

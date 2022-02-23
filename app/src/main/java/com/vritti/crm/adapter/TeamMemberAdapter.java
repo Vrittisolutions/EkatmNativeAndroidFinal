@@ -29,6 +29,7 @@ import com.vritti.crm.classes.CommonObjectProperties;
 import com.vritti.crm.classes.FeedbackCommonObjectProperties;
 import com.vritti.crm.vcrm7.OpportunityActivity;
 import com.vritti.crm.vcrm7.OpportunityActivity_V1;
+import com.vritti.crm.vcrm7.ReportSelectionActivity;
 import com.vritti.crm.vcrm7.SubTeamMemberActivity;
 import com.vritti.crm.vcrm7.TeamMemberActivity;
 import com.vritti.crm.vcrm7.TeamMemberOpportunityActivity;
@@ -261,23 +262,10 @@ public class TeamMemberAdapter extends BaseAdapter {
            @Override
            public void onClick(View v) {
                Usermasterid = TeamMemberBeanArrayList.get(position).getUserMasterId();
-               userpreferences = context.getSharedPreferences(WebUrlClass.USERINFO,
-                       Context.MODE_PRIVATE);
-
-               if (isnet()) {
-                   new StartSession(context, new CallbackInterface() {
-                       @Override
-                       public void callMethod() {
-                           new DownloadTeamJSON().execute(Usermasterid);
-                       }
-
-                       @Override
-                       public void callfailMethod(String msg) {
-
-                       }
-                   });
-
-               }
+               UserName = TeamMemberBeanArrayList.get(position).getUserName();
+              context.startActivity(new Intent(context, ReportSelectionActivity.class)
+              .putExtra("usermasterid",Usermasterid).putExtra("name",UserName).
+                              setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP ));
            }
        });
 
@@ -1876,15 +1864,19 @@ public class TeamMemberAdapter extends BaseAdapter {
         protected void onPostExecute(String integer) {
             super.onPostExecute(integer);
             progressDialog.dismiss();
-            if (response != null) {
+            try {
+                if (response != null) {
 
-                context.startActivity(new Intent(context,
-                        SubTeamMemberActivity.class).
-                        putExtra("User",Usermasterid).
-                        setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|FLAG_ACTIVITY_NEW_TASK));
+                    context.startActivity(new Intent(context,
+                            SubTeamMemberActivity.class).
+                            putExtra("User", Usermasterid).
+                            setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | FLAG_ACTIVITY_NEW_TASK));
 
-                ((TeamMemberActivity) context).overridePendingTransition(R.anim.slide_right_to_left,R.anim.slide_left_to_right);
+                    ((TeamMemberActivity) context).overridePendingTransition(R.anim.slide_right_to_left, R.anim.slide_left_to_right);
 
+                }
+            }catch (Exception e){
+                e.printStackTrace();
             }
 
 

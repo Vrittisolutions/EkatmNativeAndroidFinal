@@ -21,9 +21,11 @@
    <!-- <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
     <uses-permission android:name="android.permission.READ_CALL_LOG"/>-->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
 <!--
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
 -->
+
     <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
 
    <!-- <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
@@ -43,6 +45,22 @@
             <action android:name="android.media.action.IMAGE_CAPTURE" />
         </intent>
     </queries>
+
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission" />
+
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.HOME" />
+        </intent>
+    </queries>
+
+    <queries>
+        <provider android:authorities="com.example.contentproviderexample.MyProvider1" />
+        <package android:name="com.crm.calllogs" />
+    </queries>
+
 
     <application
         android:name="com.vritti.vwb.vworkbench.Myapplication"
@@ -132,8 +150,17 @@
                 <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
             </intent-filter>
         </service>
+        <receiver
+            android:name=".receiver.MyBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.crm.calllogs" />
+            </intent-filter>
+        </receiver>
 
 
 
     </application>
+
 </manifest>

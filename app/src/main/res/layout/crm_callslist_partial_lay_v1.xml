@@ -520,7 +520,7 @@
                     android:gravity="center"
                     android:padding="3dp"
                     android:layout_marginLeft="2dp"
-                    android:text="Chat"
+                    android:text="Conversation"
                     android:textColor="@color/white"
                     android:textSize="14dp"
                     android:visibility="visible"
@@ -839,6 +839,40 @@
                     android:layout_weight="1"
                     android:layout_marginBottom="2dp"
                     android:textSize="12dp" />
+
+                <LinearLayout
+                    android:id="@+id/len_start"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|right"
+                    android:gravity="right|center"
+                    android:layout_marginBottom="2dp"
+                    android:visibility="gone"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/txt_start"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="Start"
+                        android:padding="3dp"
+                        android:gravity="center"
+                        android:textSize="@dimen/sp_14"
+                        android:textColor="@color/white"
+                        android:layout_marginRight="@dimen/sp_5"
+                        android:background="@drawable/button_green"/>
+                    <TextView
+                        android:id="@+id/txt_ignore"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/sp_5"
+                        android:text="Ignore"
+                        android:gravity="center"
+                        android:textSize="@dimen/sp_14"
+                        android:textColor="@color/white"
+                        android:padding="3dp"
+                        android:background="@drawable/button_orange"/>
+                </LinearLayout>
 
                 <TextView
                     android:text="Change to detail view"

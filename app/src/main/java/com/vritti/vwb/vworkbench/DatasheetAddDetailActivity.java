@@ -169,7 +169,7 @@ public class DatasheetAddDetailActivity extends AppCompatActivity {
             datasheetArrayList =  new Gson().fromJson(getIntent().getStringExtra("datasheetList") , DatasheetListObject.class).getDatasheets();
 
             FormId = objDatasheet.getFormId();
-           position = getIntent().getIntExtra("position", 0);
+            position = getIntent().getIntExtra("position", 0);
             FKQuesId = objDatasheet.getFKQuesId();
             call_type = getIntent().getStringExtra("call_type");
             datasheetList = getIntent().getStringExtra("datasheetList");
@@ -253,8 +253,7 @@ public class DatasheetAddDetailActivity extends AppCompatActivity {
         /************************************* Text ****************************************************************/
 
         if (ResponseType.equals("Text")) {
-            if (SelectionType.equals("Value"))
-            {
+            if (SelectionType.equals("Value")) {
 
              //   UUID uuid = UUID.randomUUID();
               //  detailid = uuid.toString();
@@ -286,9 +285,9 @@ public class DatasheetAddDetailActivity extends AppCompatActivity {
                 edtAns.setHint("Enter answer");
                 edtAns.setFocusable(true);
 
-                String answer = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                String answer = AddDatasheetActivityMain.datasheetlists.get(position)
                         .getAnswer();
-                detailid = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                detailid = AddDatasheetActivityMain.datasheetlists.get(position)
                         .getDetailid();
 
                 if (!(answer == null || answer.equalsIgnoreCase(""))) {
@@ -570,7 +569,7 @@ public class DatasheetAddDetailActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(DatasheetAddDetailActivity.this, MultipleGroupActivity.class);
-                        intent.putExtra("callid",com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                        intent.putExtra("callid", AddDatasheetActivityMain.datasheetlists.get(position)
                                 .getDetailid()); // Source Id
                         intent.putExtra("call_type", WebUrlClass.AppNameChat + "_" + "Activity");// Source Type
                         intent.putExtra("firm", QuesText);
@@ -633,45 +632,45 @@ public class DatasheetAddDetailActivity extends AppCompatActivity {
                         newId = position - 1;
                         if (newId > -1) {
 
-                            Answer = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            Answer = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getAnswer();
-                            Answer_Value = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            Answer_Value = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getAnswer_value();
-                            detailid = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            detailid = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getDetailid();
-                            setFlag = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            setFlag = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getFlag();
 
-                            FKQuesId = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            FKQuesId = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getFKQuesId();
-                            QuesText = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            QuesText = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getQuesText();
-                            ValueMax = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            ValueMax = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getValueMax();
 
-                            PKCssFormsQuesID = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            PKCssFormsQuesID = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getPKCssFormsQuesID();
-                            Weightage = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            Weightage = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getWeightage();
 
-                            IsResponseMandatory = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            IsResponseMandatory = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getIsResponseMandatory();
-                            SelectionText = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            SelectionText = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getSelectionText();
-                            SelectionValue = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            SelectionValue = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getSelectionValue();
-                            ValueMin = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            ValueMin = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getValueMin();
 
-                            MaxValueText = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            MaxValueText = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getMaxValueText();
-                            SelectionType = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            SelectionType = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getSelectionType();
-                            ControlWidth = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            ControlWidth = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getControlWidth();
-                            MaxNoOfResponses = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            MaxNoOfResponses = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getMaxNoOfResponses();
-                            ResponseType = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            ResponseType = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getResponseType();
 
                             if (ResponseType.equals("Numeric")
@@ -686,34 +685,34 @@ public class DatasheetAddDetailActivity extends AppCompatActivity {
                             } else {
 
                             }
-                            Notes = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                            Notes = AddDatasheetActivityMain.datasheetlists.get(newId)
                                     .getNotes();
-                            FKPrimaryQuesId = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            FKPrimaryQuesId = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getFKPrimaryQuesId();
-                            FKSecondaryQuesId = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            FKSecondaryQuesId = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getFKSecondaryQuesId();
 
-                            IsBranching = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            IsBranching = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getIsBranching();
-                            ExpectedResponse = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            ExpectedResponse = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getExpectedResponse();
-                            IfResponseId = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            IfResponseId = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getIfResponseId();
-                            DisableQuesStr = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            DisableQuesStr = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getDisableQuesStr();
-                            GroupID = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            GroupID = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getGroupID();
-                            GroupName = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            GroupName = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getGroupName();
-                            QuesCode = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            QuesCode = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getQuesCode();
 
-                            MaxExpectedResponse = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            MaxExpectedResponse = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getMaxExpectedResponse();
 
-                            ResponseValue = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            ResponseValue = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getResponseValue();
-                            ExpectedResponse = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            ExpectedResponse = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getExpectedResponse();
 
                             txtque.setText(QuesText);
@@ -757,67 +756,67 @@ public class DatasheetAddDetailActivity extends AppCompatActivity {
                                         radiselection_text,
                                         Answer_Value, flag, FormId));
 
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setFlag(flag);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setDetailid(detailid);
 
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setAnswer(radiselection_text);
 
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setAnswer_value(Answer_Value);
 
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setFKQuesId(FKQuesId);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setSequenceNo(SequenceNo);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setQuesText(QuesText);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setValueMax(ValueMax);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setSelectionValue(SelectionValue);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setWeightage(Weightage);
 
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setPKCssFormsQuesID(PKCssFormsQuesID);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setIsResponseMandatory(
                                                 IsResponseMandatory);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setSelectionText(SelectionText);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setMaxValueText(MaxValueText);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setControlWidth(ControlWidth);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setMaxNoOfResponses(MaxNoOfResponses);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setResponseType(ResponseType);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setNotes(Notes);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setFKPrimaryQuesId(FKPrimaryQuesId);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                AddDatasheetActivityMain.datasheetlists
                                         .get(position)
                                         .setExpectedResponse(radiselection_text);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                AddDatasheetActivityMain.datasheetlists
                                         .get(position)
                                         .setFKSecondaryQuesId(FKSecondaryQuesId);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setDisableQuesStr(DisableQuesStr);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setGroupID(GroupID);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setGroupName(GroupName);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setQuesCode(QuesCode);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setMaxExpectedResponse(
                                                 MaxExpectedResponse);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setResponseValue(ResponseValue);
                                 datasheetArrayList.get(position).setAnswer(radioselection_value);
                                 datasheetArrayList.get(position).setAnswer_value(Answer_Value);
@@ -825,77 +824,77 @@ public class DatasheetAddDetailActivity extends AppCompatActivity {
                             }
                             newId = position + 1;
 
-                            if (newId <= com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            if (newId <= AddDatasheetActivityMain.datasheetlists
                                     .size() - 1) {
 
-                                setFlag = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                                setFlag = AddDatasheetActivityMain.datasheetlists.get(
                                         newId).getFlag();
-                                Answer = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                                Answer = AddDatasheetActivityMain.datasheetlists.get(
                                         newId).getAnswer();
-                                detailid = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                detailid = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getDetailid();
-                                Answer_Value = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                Answer_Value = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getAnswer_value();
-                                FKQuesId = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                FKQuesId = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getFKQuesId();
-                                QuesText = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                QuesText = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getQuesText();
-                                ValueMax = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                ValueMax = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getValueMax();
 
-                                PKCssFormsQuesID = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                PKCssFormsQuesID = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getPKCssFormsQuesID();
-                                Weightage = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                Weightage = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getWeightage();
 
-                                IsResponseMandatory = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                IsResponseMandatory = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getIsResponseMandatory();
-                                SelectionText = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                SelectionText = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getSelectionText();
-                                SelectionValue = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                SelectionValue = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getSelectionValue();
-                                ValueMin = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                ValueMin = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getValueMin();
 
-                                MaxValueText = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                MaxValueText = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getMaxValueText();
-                                SelectionType = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                SelectionType = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getSelectionType();
-                                ControlWidth = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                ControlWidth = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getControlWidth();
-                                MaxNoOfResponses = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                MaxNoOfResponses = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getMaxNoOfResponses();
-                                ResponseType = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                ResponseType = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getResponseType();
 
-                                Notes = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                                Notes = AddDatasheetActivityMain.datasheetlists.get(
                                         newId).getNotes();
-                                FKPrimaryQuesId = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                FKPrimaryQuesId = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getFKPrimaryQuesId();
-                                FKSecondaryQuesId = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                FKSecondaryQuesId = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getFKSecondaryQuesId();
 
-                                IsBranching = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                IsBranching = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getIsBranching();
-                                ExpectedResponse = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                ExpectedResponse = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getExpectedResponse();
-                                IfResponseId = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                IfResponseId = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getIfResponseId();
-                                DisableQuesStr = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                DisableQuesStr = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getDisableQuesStr();
-                                GroupID = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                                GroupID = AddDatasheetActivityMain.datasheetlists.get(
                                         newId).getGroupID();
-                                GroupName = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                GroupName = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getGroupName();
-                                QuesCode = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                QuesCode = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getQuesCode();
 
-                                MaxExpectedResponse = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                MaxExpectedResponse = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getMaxExpectedResponse();
 
-                                ResponseValue = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                ResponseValue = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getResponseValue();
-                                ExpectedResponse = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                ExpectedResponse = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getExpectedResponse();
                                 txtque.setText(QuesText);
 
@@ -939,7 +938,7 @@ public class DatasheetAddDetailActivity extends AppCompatActivity {
             }
             else {
               //  UUID uuid = UUID.randomUUID();
-                detailid = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position).getDetailid();
+                detailid = AddDatasheetActivityMain.datasheetlists.get(position).getDetailid();
 
                 final TextView txtque = new TextView(this);
                 RelativeLayout.LayoutParams paramstxt = new RelativeLayout.LayoutParams(
@@ -962,7 +961,7 @@ public class DatasheetAddDetailActivity extends AppCompatActivity {
                 //  edtAns.setBackgroundResource(R.drawable.edittext_border);
                 edtAns.setPadding(10, 10, 10, 10);
                 // edtAns.setFocusable(true);
-                String answer = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                String answer = AddDatasheetActivityMain.datasheetlists.get(position)
                         .getAnswer();
 
                 if (!(answer == null || answer.equalsIgnoreCase(""))) {
@@ -1260,7 +1259,7 @@ public class DatasheetAddDetailActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(DatasheetAddDetailActivity.this, MultipleGroupActivity.class);
-                        intent.putExtra("callid",com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                        intent.putExtra("callid", AddDatasheetActivityMain.datasheetlists.get(position)
                                 .getFKQuesId()); // Source Id
                         intent.putExtra("call_type", WebUrlClass.AppNameChat + "_" + "Activity");// Source Type
                         intent.putExtra("firm", QuesText);
@@ -1305,45 +1304,45 @@ public class DatasheetAddDetailActivity extends AppCompatActivity {
                         newId = position - 1;
                         if (newId > -1) {
 
-                            Answer = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            Answer = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getAnswer();
-                            Answer_Value = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            Answer_Value = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getAnswer_value();
-                            detailid = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            detailid = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getDetailid();
-                            setFlag = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            setFlag = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getFlag();
 
-                            FKQuesId = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            FKQuesId = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getFKQuesId();
-                            QuesText = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            QuesText = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getQuesText();
-                            ValueMax = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            ValueMax = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getValueMax();
 
-                            PKCssFormsQuesID = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            PKCssFormsQuesID = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getPKCssFormsQuesID();
-                            Weightage = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            Weightage = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getWeightage();
 
-                            IsResponseMandatory = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            IsResponseMandatory = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getIsResponseMandatory();
-                            SelectionText = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            SelectionText = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getSelectionText();
-                            SelectionValue = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            SelectionValue = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getSelectionValue();
-                            ValueMin = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            ValueMin = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getValueMin();
 
-                            MaxValueText = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            MaxValueText = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getMaxValueText();
-                            SelectionType = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            SelectionType = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getSelectionType();
-                            ControlWidth = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            ControlWidth = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getControlWidth();
-                            MaxNoOfResponses = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            MaxNoOfResponses = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getMaxNoOfResponses();
-                            ResponseType = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            ResponseType = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getResponseType();
 
                             if (ResponseType.equals("Numeric")
@@ -1358,34 +1357,34 @@ public class DatasheetAddDetailActivity extends AppCompatActivity {
                             } else {
 
                             }
-                            Notes = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                            Notes = AddDatasheetActivityMain.datasheetlists.get(newId)
                                     .getNotes();
-                            FKPrimaryQuesId = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            FKPrimaryQuesId = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getFKPrimaryQuesId();
-                            FKSecondaryQuesId = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            FKSecondaryQuesId = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getFKSecondaryQuesId();
 
-                            IsBranching = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            IsBranching = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getIsBranching();
-                            ExpectedResponse = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            ExpectedResponse = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getExpectedResponse();
-                            IfResponseId = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            IfResponseId = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getIfResponseId();
-                            DisableQuesStr = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            DisableQuesStr = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getDisableQuesStr();
-                            GroupID = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            GroupID = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getGroupID();
-                            GroupName = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            GroupName = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getGroupName();
-                            QuesCode = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            QuesCode = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getQuesCode();
 
-                            MaxExpectedResponse = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            MaxExpectedResponse = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getMaxExpectedResponse();
 
-                            ResponseValue = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            ResponseValue = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getResponseValue();
-                            ExpectedResponse = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            ExpectedResponse = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getExpectedResponse();
 
                             txtque.setText(QuesText);
@@ -1429,144 +1428,144 @@ public class DatasheetAddDetailActivity extends AppCompatActivity {
                                         radiselection_text,
                                         Answer_Value, flag, FormId));
 
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setFlag(flag);
                                // com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
                                   //      .setDetailid(detailid);
                                 //  AddDatasheetActivityMain.datasheetlists.get(position).setAnswer(radiselection_text);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setAnswer(radiselection_text);
 
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setAnswer_value(Answer_Value);
 
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setFKQuesId(FKQuesId);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setSequenceNo(SequenceNo);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setQuesText(QuesText);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setValueMax(ValueMax);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setSelectionValue(SelectionValue);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setWeightage(Weightage);
 
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setPKCssFormsQuesID(PKCssFormsQuesID);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setIsResponseMandatory(
                                                 IsResponseMandatory);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setSelectionText(SelectionText);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setMaxValueText(MaxValueText);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setControlWidth(ControlWidth);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setMaxNoOfResponses(MaxNoOfResponses);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setResponseType(ResponseType);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setNotes(Notes);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setFKPrimaryQuesId(FKPrimaryQuesId);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                AddDatasheetActivityMain.datasheetlists
                                         .get(position)
                                         .setExpectedResponse(radiselection_text);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                AddDatasheetActivityMain.datasheetlists
                                         .get(position)
                                         .setFKSecondaryQuesId(FKSecondaryQuesId);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setDisableQuesStr(DisableQuesStr);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setGroupID(GroupID);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setGroupName(GroupName);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setQuesCode(QuesCode);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setMaxExpectedResponse(
                                                 MaxExpectedResponse);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setResponseValue(ResponseValue);
                                 datasheetArrayList.get(position).setAnswer(edtAns.getText().toString());;
                                 datasheetArrayList.get(position).setAnswer_value(Answer_Value);
                             }
                             newId = position + 1;
 
-                            if (newId <= com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            if (newId <= AddDatasheetActivityMain.datasheetlists
                                     .size() - 1) {
 
-                                setFlag = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                                setFlag = AddDatasheetActivityMain.datasheetlists.get(
                                         newId).getFlag();
-                                Answer = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                                Answer = AddDatasheetActivityMain.datasheetlists.get(
                                         newId).getAnswer();
-                                detailid = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                detailid = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getDetailid();
-                                Answer_Value = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                Answer_Value = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getAnswer_value();
-                                FKQuesId = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                FKQuesId = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getFKQuesId();
-                                QuesText = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                QuesText = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getQuesText();
-                                ValueMax = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                ValueMax = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getValueMax();
 
-                                PKCssFormsQuesID = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                PKCssFormsQuesID = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getPKCssFormsQuesID();
-                                Weightage = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                Weightage = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getWeightage();
 
-                                IsResponseMandatory = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                IsResponseMandatory = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getIsResponseMandatory();
-                                SelectionText = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                SelectionText = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getSelectionText();
-                                SelectionValue = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                SelectionValue = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getSelectionValue();
-                                ValueMin = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                ValueMin = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getValueMin();
 
-                                MaxValueText = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                MaxValueText = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getMaxValueText();
-                                SelectionType = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                SelectionType = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getSelectionType();
-                                ControlWidth = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                ControlWidth = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getControlWidth();
-                                MaxNoOfResponses = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                MaxNoOfResponses = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getMaxNoOfResponses();
-                                ResponseType = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                ResponseType = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getResponseType();
 
-                                Notes = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                                Notes = AddDatasheetActivityMain.datasheetlists.get(
                                         newId).getNotes();
-                                FKPrimaryQuesId = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                FKPrimaryQuesId = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getFKPrimaryQuesId();
-                                FKSecondaryQuesId = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                FKSecondaryQuesId = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getFKSecondaryQuesId();
 
-                                IsBranching = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                IsBranching = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getIsBranching();
-                                ExpectedResponse = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                ExpectedResponse = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getExpectedResponse();
-                                IfResponseId = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                IfResponseId = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getIfResponseId();
-                                DisableQuesStr = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                DisableQuesStr = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getDisableQuesStr();
-                                GroupID = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                                GroupID = AddDatasheetActivityMain.datasheetlists.get(
                                         newId).getGroupID();
-                                GroupName = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                GroupName = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getGroupName();
-                                QuesCode = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                QuesCode = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getQuesCode();
 
-                                MaxExpectedResponse = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                MaxExpectedResponse = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getMaxExpectedResponse();
 
-                                ResponseValue = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                ResponseValue = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getResponseValue();
-                                ExpectedResponse = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                ExpectedResponse = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getExpectedResponse();
                                 txtque.setText(QuesText);
 
@@ -1616,7 +1615,7 @@ public class DatasheetAddDetailActivity extends AppCompatActivity {
 
             if (SelectionType.equalsIgnoreCase("Check box list")) {
                 UUID uuid = UUID.randomUUID();
-                detailid = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                detailid = AddDatasheetActivityMain.datasheetlists.get(
                         newId).getDetailid();
                 int totalLength = 0;
                 String token = null;
@@ -1743,7 +1742,7 @@ public class DatasheetAddDetailActivity extends AppCompatActivity {
                 layoutque.setOrientation(LinearLayout.VERTICAL);
                 layoutque.addView(txtque);
                 radiselection_text = "";
-                String answer = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                String answer = AddDatasheetActivityMain.datasheetlists.get(position)
                         .getAnswer();
                 checkBoxcheck = new AppCompatCheckBox(this);
                 checkBoxcheck.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
@@ -1897,74 +1896,74 @@ public class DatasheetAddDetailActivity extends AppCompatActivity {
 
                             cf.deleteDatasheetSelection(selectionid,
                                     selection_Text, selection_Value);
-                            detailid = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                            detailid = AddDatasheetActivityMain.datasheetlists.get(newId)
                                     .getDetailid();
-                            setFlag = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                            setFlag = AddDatasheetActivityMain.datasheetlists.get(newId)
                                     .getFlag();
-                            Answer = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                            Answer = AddDatasheetActivityMain.datasheetlists.get(newId)
                                     .getAnswer();
-                            Answer_Value = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            Answer_Value = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getAnswer_value();
-                            FKQuesId = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                            FKQuesId = AddDatasheetActivityMain.datasheetlists.get(newId)
                                     .getFKQuesId();
-                            QuesText = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                            QuesText = AddDatasheetActivityMain.datasheetlists.get(newId)
                                     .getQuesText();
-                            ValueMax = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                            ValueMax = AddDatasheetActivityMain.datasheetlists.get(newId)
                                     .getValueMax();
 
-                            PKCssFormsQuesID = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            PKCssFormsQuesID = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getPKCssFormsQuesID();
-                            Weightage = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                            Weightage = AddDatasheetActivityMain.datasheetlists.get(newId)
                                     .getWeightage();
 
-                            IsResponseMandatory = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            IsResponseMandatory = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getIsResponseMandatory();
-                            SelectionText = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            SelectionText = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getSelectionText();
-                            SelectionValue = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            SelectionValue = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getSelectionValue();
-                            ValueMin = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                            ValueMin = AddDatasheetActivityMain.datasheetlists.get(newId)
                                     .getValueMin();
 
-                            MaxValueText = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            MaxValueText = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getMaxValueText();
-                            SelectionType = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            SelectionType = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getSelectionType();
-                            ControlWidth = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            ControlWidth = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getControlWidth();
-                            MaxNoOfResponses = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            MaxNoOfResponses = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getMaxNoOfResponses();
-                            ResponseType = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            ResponseType = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getResponseType();
 
-                            Notes = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                            Notes = AddDatasheetActivityMain.datasheetlists.get(newId)
                                     .getNotes();
-                            FKPrimaryQuesId = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            FKPrimaryQuesId = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getFKPrimaryQuesId();
-                            FKSecondaryQuesId = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            FKSecondaryQuesId = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getFKSecondaryQuesId();
 
-                            IsBranching = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            IsBranching = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getIsBranching();
-                            ExpectedResponse = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            ExpectedResponse = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getExpectedResponse();
-                            IfResponseId = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            IfResponseId = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getIfResponseId();
-                            DisableQuesStr = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            DisableQuesStr = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getDisableQuesStr();
-                            GroupID = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                            GroupID = AddDatasheetActivityMain.datasheetlists.get(newId)
                                     .getGroupID();
-                            GroupName = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                            GroupName = AddDatasheetActivityMain.datasheetlists.get(newId)
                                     .getGroupName();
-                            QuesCode = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                            QuesCode = AddDatasheetActivityMain.datasheetlists.get(newId)
                                     .getQuesCode();
 
-                            MaxExpectedResponse = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            MaxExpectedResponse = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getMaxExpectedResponse();
 
-                            ResponseValue = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            ResponseValue = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getResponseValue();
-                            ExpectedResponse = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            ExpectedResponse = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getExpectedResponse();
 
                             txtque.setText(QuesText);
@@ -2045,68 +2044,68 @@ public class DatasheetAddDetailActivity extends AppCompatActivity {
                                         flag, FormId));
                                 cf.deleteDatasheetSelection(selectionid,
                                         selection_Text, selection_Value);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setFlag(flag);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setDetailid(detailid);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setAnswer(data);
 
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setAnswer_value(data1);
 
                                 selectedcvalue.clear();
                                 selectedTravelId.clear();
 
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setFKQuesId(FKQuesId);
 
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setSequenceNo(SequenceNo);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setQuesText(QuesText);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setValueMax(ValueMax);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setSelectionValue(SelectionValue);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setWeightage(Weightage);
 
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setPKCssFormsQuesID(PKCssFormsQuesID);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                AddDatasheetActivityMain.datasheetlists
                                         .get(position)
                                         .setIsResponseMandatory(IsResponseMandatory);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setSelectionText(SelectionText);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setMaxValueText(MaxValueText);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setControlWidth(ControlWidth);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setMaxNoOfResponses(MaxNoOfResponses);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setResponseType(ResponseType);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setNotes(Notes);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setFKPrimaryQuesId(FKPrimaryQuesId);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setExpectedResponse(radiselection_text);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setFKSecondaryQuesId(FKSecondaryQuesId);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setDisableQuesStr(DisableQuesStr);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setGroupID(GroupID);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setGroupName(GroupName);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setQuesCode(QuesCode);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                AddDatasheetActivityMain.datasheetlists
                                         .get(position)
                                         .setMaxExpectedResponse(MaxExpectedResponse);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setResponseValue(ResponseValue);
                                 datasheetArrayList.get(position).setAnswer(radioselection_value);
                                 datasheetArrayList.get(position).setAnswer_value(Answer_Value);
@@ -2115,75 +2114,75 @@ public class DatasheetAddDetailActivity extends AppCompatActivity {
                             }
                             newId = position + 1;
 
-                            if (newId <= com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.size() - 1) {
-                                detailid = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            if (newId <= AddDatasheetActivityMain.datasheetlists.size() - 1) {
+                                detailid = AddDatasheetActivityMain.datasheetlists.get(
                                         newId).getDetailid();
-                                setFlag = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                                setFlag = AddDatasheetActivityMain.datasheetlists.get(
                                         newId).getFlag();
-                                Answer = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                Answer = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getAnswer();
-                                Answer_Value = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                Answer_Value = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getAnswer_value();
-                                FKQuesId = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                                FKQuesId = AddDatasheetActivityMain.datasheetlists.get(
                                         newId).getFKQuesId();
-                                QuesText = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                                QuesText = AddDatasheetActivityMain.datasheetlists.get(
                                         newId).getQuesText();
-                                ValueMax = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                                ValueMax = AddDatasheetActivityMain.datasheetlists.get(
                                         newId).getValueMax();
 
-                                PKCssFormsQuesID = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                PKCssFormsQuesID = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getPKCssFormsQuesID();
-                                Weightage = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                                Weightage = AddDatasheetActivityMain.datasheetlists.get(
                                         newId).getWeightage();
 
-                                IsResponseMandatory = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                IsResponseMandatory = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getIsResponseMandatory();
-                                SelectionText = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                SelectionText = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getSelectionText();
-                                SelectionValue = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                SelectionValue = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getSelectionValue();
-                                ValueMin = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                                ValueMin = AddDatasheetActivityMain.datasheetlists.get(
                                         newId).getValueMin();
 
-                                MaxValueText = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                MaxValueText = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getMaxValueText();
-                                SelectionType = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                SelectionType = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getSelectionType();
-                                ControlWidth = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                ControlWidth = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getControlWidth();
-                                MaxNoOfResponses = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                MaxNoOfResponses = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getMaxNoOfResponses();
-                                ResponseType = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                ResponseType = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getResponseType();
 
-                                Notes = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                                Notes = AddDatasheetActivityMain.datasheetlists.get(newId)
                                         .getNotes();
-                                FKPrimaryQuesId = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                FKPrimaryQuesId = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getFKPrimaryQuesId();
-                                FKSecondaryQuesId = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                FKSecondaryQuesId = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getFKSecondaryQuesId();
 
-                                IsBranching = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                                IsBranching = AddDatasheetActivityMain.datasheetlists.get(
                                         newId).getIsBranching();
-                                ExpectedResponse = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                ExpectedResponse = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getExpectedResponse();
-                                IfResponseId = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                IfResponseId = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getIfResponseId();
-                                DisableQuesStr = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                DisableQuesStr = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getDisableQuesStr();
-                                GroupID = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                                GroupID = AddDatasheetActivityMain.datasheetlists.get(
                                         newId).getGroupID();
-                                GroupName = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                                GroupName = AddDatasheetActivityMain.datasheetlists.get(
                                         newId).getGroupName();
-                                QuesCode = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                                QuesCode = AddDatasheetActivityMain.datasheetlists.get(
                                         newId).getQuesCode();
 
-                                MaxExpectedResponse = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                MaxExpectedResponse = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getMaxExpectedResponse();
 
-                                ResponseValue = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                ResponseValue = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getResponseValue();
-                                ExpectedResponse = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                ExpectedResponse = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getExpectedResponse();
                                 txtque.setText(QuesText);
 
@@ -2228,9 +2227,10 @@ public class DatasheetAddDetailActivity extends AppCompatActivity {
                 });
 
                 // }
-            }else {
+            }
+            else {
                 UUID uuid = UUID.randomUUID();
-                detailid = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                detailid = AddDatasheetActivityMain.datasheetlists.get(
                         newId).getDetailid();
                // detailid = uuid.toString();
                 int totalLength = 0;
@@ -2348,7 +2348,7 @@ public class DatasheetAddDetailActivity extends AppCompatActivity {
 
                 layoutque.addView(txtque);
                 radiselection_text = "";
-                String answer = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                String answer = AddDatasheetActivityMain.datasheetlists.get(position)
                         .getAnswer();
                 final RadioGroup rGroup3 = new RadioGroup(this);
                 RadioGroup radioGroup = new RadioGroup(this);
@@ -2519,74 +2519,74 @@ public class DatasheetAddDetailActivity extends AppCompatActivity {
 
                             cf.deleteDatasheetSelection(selectionid,
                                     selection_Text, selection_Value);
-                            detailid = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                            detailid = AddDatasheetActivityMain.datasheetlists.get(newId)
                                     .getDetailid();
-                            setFlag = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                            setFlag = AddDatasheetActivityMain.datasheetlists.get(newId)
                                     .getFlag();
-                            Answer = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                            Answer = AddDatasheetActivityMain.datasheetlists.get(newId)
                                     .getAnswer();
-                            Answer_Value = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            Answer_Value = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getAnswer_value();
-                            FKQuesId = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                            FKQuesId = AddDatasheetActivityMain.datasheetlists.get(newId)
                                     .getFKQuesId();
-                            QuesText = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                            QuesText = AddDatasheetActivityMain.datasheetlists.get(newId)
                                     .getQuesText();
-                            ValueMax = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                            ValueMax = AddDatasheetActivityMain.datasheetlists.get(newId)
                                     .getValueMax();
 
-                            PKCssFormsQuesID = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            PKCssFormsQuesID = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getPKCssFormsQuesID();
-                            Weightage = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                            Weightage = AddDatasheetActivityMain.datasheetlists.get(newId)
                                     .getWeightage();
 
-                            IsResponseMandatory = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            IsResponseMandatory = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getIsResponseMandatory();
-                            SelectionText = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            SelectionText = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getSelectionText();
-                            SelectionValue = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            SelectionValue = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getSelectionValue();
-                            ValueMin = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                            ValueMin = AddDatasheetActivityMain.datasheetlists.get(newId)
                                     .getValueMin();
 
-                            MaxValueText = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            MaxValueText = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getMaxValueText();
-                            SelectionType = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            SelectionType = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getSelectionType();
-                            ControlWidth = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            ControlWidth = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getControlWidth();
-                            MaxNoOfResponses = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            MaxNoOfResponses = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getMaxNoOfResponses();
-                            ResponseType = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            ResponseType = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getResponseType();
 
-                            Notes = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                            Notes = AddDatasheetActivityMain.datasheetlists.get(newId)
                                     .getNotes();
-                            FKPrimaryQuesId = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            FKPrimaryQuesId = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getFKPrimaryQuesId();
-                            FKSecondaryQuesId = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            FKSecondaryQuesId = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getFKSecondaryQuesId();
 
-                            IsBranching = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            IsBranching = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getIsBranching();
-                            ExpectedResponse = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            ExpectedResponse = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getExpectedResponse();
-                            IfResponseId = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            IfResponseId = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getIfResponseId();
-                            DisableQuesStr = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            DisableQuesStr = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getDisableQuesStr();
-                            GroupID = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                            GroupID = AddDatasheetActivityMain.datasheetlists.get(newId)
                                     .getGroupID();
-                            GroupName = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                            GroupName = AddDatasheetActivityMain.datasheetlists.get(newId)
                                     .getGroupName();
-                            QuesCode = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                            QuesCode = AddDatasheetActivityMain.datasheetlists.get(newId)
                                     .getQuesCode();
 
-                            MaxExpectedResponse = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            MaxExpectedResponse = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getMaxExpectedResponse();
 
-                            ResponseValue = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            ResponseValue = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getResponseValue();
-                            ExpectedResponse = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            ExpectedResponse = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getExpectedResponse();
 
                             txtque.setText(QuesText);
@@ -2627,141 +2627,142 @@ public class DatasheetAddDetailActivity extends AppCompatActivity {
                                         flag, FormId));
                                 cf.deleteDatasheetSelection(selectionid,
                                         selection_Text, selection_Value);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setFlag(flag);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setDetailid(detailid);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setAnswer(radiselection_text);
 
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setAnswer_value(radioselection_value);
 
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setFKQuesId(FKQuesId);
 
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setSequenceNo(SequenceNo);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setQuesText(QuesText);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setValueMax(ValueMax);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setSelectionValue(SelectionValue);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setWeightage(Weightage);
 
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setPKCssFormsQuesID(PKCssFormsQuesID);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                AddDatasheetActivityMain.datasheetlists
                                         .get(position)
                                         .setIsResponseMandatory(IsResponseMandatory);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setSelectionText(SelectionText);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setMaxValueText(MaxValueText);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setControlWidth(ControlWidth);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setMaxNoOfResponses(MaxNoOfResponses);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setResponseType(ResponseType);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setNotes(Notes);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setFKPrimaryQuesId(FKPrimaryQuesId);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setExpectedResponse(radiselection_text);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setFKSecondaryQuesId(FKSecondaryQuesId);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setDisableQuesStr(DisableQuesStr);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setGroupID(GroupID);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setGroupName(GroupName);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setQuesCode(QuesCode);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                AddDatasheetActivityMain.datasheetlists
                                         .get(position)
                                         .setMaxExpectedResponse(MaxExpectedResponse);
-                                com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                                AddDatasheetActivityMain.datasheetlists.get(position)
                                         .setResponseValue(ResponseValue);
-                                datasheetArrayList.get(position).setAnswer(radioselection_value);
+                               // datasheetArrayList.get(position).setAnswer(radioselection_value);
+                                datasheetArrayList.get(position).setAnswer(radiselection_text);
                                 datasheetArrayList.get(position).setAnswer_value(Answer_Value);
 
                             }
                             newId = position + 1;
 
-                            if (newId <= com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.size() - 1) {
-                                detailid = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            if (newId <= AddDatasheetActivityMain.datasheetlists.size() - 1) {
+                                detailid = AddDatasheetActivityMain.datasheetlists.get(
                                         newId).getDetailid();
-                                setFlag = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                                setFlag = AddDatasheetActivityMain.datasheetlists.get(
                                         newId).getFlag();
-                                Answer = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                Answer = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getAnswer();
-                                Answer_Value = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                Answer_Value = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getAnswer_value();
-                                FKQuesId = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                                FKQuesId = AddDatasheetActivityMain.datasheetlists.get(
                                         newId).getFKQuesId();
-                                QuesText = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                                QuesText = AddDatasheetActivityMain.datasheetlists.get(
                                         newId).getQuesText();
-                                ValueMax = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                                ValueMax = AddDatasheetActivityMain.datasheetlists.get(
                                         newId).getValueMax();
 
-                                PKCssFormsQuesID = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                PKCssFormsQuesID = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getPKCssFormsQuesID();
-                                Weightage = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                                Weightage = AddDatasheetActivityMain.datasheetlists.get(
                                         newId).getWeightage();
 
-                                IsResponseMandatory = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                IsResponseMandatory = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getIsResponseMandatory();
-                                SelectionText = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                SelectionText = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getSelectionText();
-                                SelectionValue = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                SelectionValue = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getSelectionValue();
-                                ValueMin = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                                ValueMin = AddDatasheetActivityMain.datasheetlists.get(
                                         newId).getValueMin();
 
-                                MaxValueText = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                MaxValueText = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getMaxValueText();
-                                SelectionType = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                SelectionType = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getSelectionType();
-                                ControlWidth = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                ControlWidth = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getControlWidth();
-                                MaxNoOfResponses = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                MaxNoOfResponses = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getMaxNoOfResponses();
-                                ResponseType = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                ResponseType = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getResponseType();
 
-                                Notes = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                                Notes = AddDatasheetActivityMain.datasheetlists.get(newId)
                                         .getNotes();
-                                FKPrimaryQuesId = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                FKPrimaryQuesId = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getFKPrimaryQuesId();
-                                FKSecondaryQuesId = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                FKSecondaryQuesId = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getFKSecondaryQuesId();
 
-                                IsBranching = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                                IsBranching = AddDatasheetActivityMain.datasheetlists.get(
                                         newId).getIsBranching();
-                                ExpectedResponse = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                ExpectedResponse = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getExpectedResponse();
-                                IfResponseId = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                IfResponseId = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getIfResponseId();
-                                DisableQuesStr = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                DisableQuesStr = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getDisableQuesStr();
-                                GroupID = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                                GroupID = AddDatasheetActivityMain.datasheetlists.get(
                                         newId).getGroupID();
-                                GroupName = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                                GroupName = AddDatasheetActivityMain.datasheetlists.get(
                                         newId).getGroupName();
-                                QuesCode = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                                QuesCode = AddDatasheetActivityMain.datasheetlists.get(
                                         newId).getQuesCode();
 
-                                MaxExpectedResponse = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                MaxExpectedResponse = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getMaxExpectedResponse();
 
-                                ResponseValue = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                ResponseValue = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getResponseValue();
-                                ExpectedResponse = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                                ExpectedResponse = AddDatasheetActivityMain.datasheetlists
                                         .get(newId).getExpectedResponse();
                                 txtque.setText(QuesText);
 
@@ -2809,7 +2810,7 @@ public class DatasheetAddDetailActivity extends AppCompatActivity {
         /************************************* Numeric ****************************************************************/
         else if (ResponseType.equals("Numeric")) {
             UUID uuid = UUID.randomUUID();
-            detailid = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+            detailid = AddDatasheetActivityMain.datasheetlists.get(
                     newId).getDetailid();
 
             final TextView txtque = new TextView(this);
@@ -2837,7 +2838,7 @@ public class DatasheetAddDetailActivity extends AppCompatActivity {
             edtAns.setHint("Enter answer " + ValueMin + " - " + ValueMax);
             edtAns.setFocusable(true);
 
-            final String answer = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+            final String answer = AddDatasheetActivityMain.datasheetlists.get(position)
                     .getAnswer();
             if (!(answer == null || answer.equalsIgnoreCase(""))) {
                 if (getpos == position) {
@@ -3177,46 +3178,46 @@ public class DatasheetAddDetailActivity extends AppCompatActivity {
                     radiselection_text = "";
                     newId = position - 1;
                     if (newId > -1) {
-                        detailid = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                        detailid = AddDatasheetActivityMain.datasheetlists.get(newId)
                                 .getDetailid();
 
-                        Answer = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                        Answer = AddDatasheetActivityMain.datasheetlists.get(newId)
                                 .getAnswer();
-                        Answer_Value = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                        Answer_Value = AddDatasheetActivityMain.datasheetlists.get(
                                 newId).getAnswer_value();
-                        setFlag = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                        setFlag = AddDatasheetActivityMain.datasheetlists.get(newId)
                                 .getFlag();
 
-                        FKQuesId = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                        FKQuesId = AddDatasheetActivityMain.datasheetlists.get(newId)
                                 .getFKQuesId();
-                        QuesText = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                        QuesText = AddDatasheetActivityMain.datasheetlists.get(newId)
                                 .getQuesText();
-                        ValueMax = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                        ValueMax = AddDatasheetActivityMain.datasheetlists.get(newId)
                                 .getValueMax();
 
-                        PKCssFormsQuesID = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                        PKCssFormsQuesID = AddDatasheetActivityMain.datasheetlists
                                 .get(newId).getPKCssFormsQuesID();
-                        Weightage = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                        Weightage = AddDatasheetActivityMain.datasheetlists.get(newId)
                                 .getWeightage();
 
-                        IsResponseMandatory = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                        IsResponseMandatory = AddDatasheetActivityMain.datasheetlists
                                 .get(newId).getIsResponseMandatory();
-                        SelectionText = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                        SelectionText = AddDatasheetActivityMain.datasheetlists.get(
                                 newId).getSelectionText();
-                        SelectionValue = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                        SelectionValue = AddDatasheetActivityMain.datasheetlists.get(
                                 newId).getSelectionValue();
-                        ValueMin = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                        ValueMin = AddDatasheetActivityMain.datasheetlists.get(newId)
                                 .getValueMin();
 
-                        MaxValueText = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                        MaxValueText = AddDatasheetActivityMain.datasheetlists.get(
                                 newId).getMaxValueText();
-                        SelectionType = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                        SelectionType = AddDatasheetActivityMain.datasheetlists.get(
                                 newId).getSelectionType();
-                        ControlWidth = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                        ControlWidth = AddDatasheetActivityMain.datasheetlists.get(
                                 newId).getControlWidth();
-                        MaxNoOfResponses = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                        MaxNoOfResponses = AddDatasheetActivityMain.datasheetlists
                                 .get(newId).getMaxNoOfResponses();
-                        ResponseType = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                        ResponseType = AddDatasheetActivityMain.datasheetlists.get(
                                 newId).getResponseType();
 
                         if (ResponseType.equals("Numeric")
@@ -3231,34 +3232,34 @@ public class DatasheetAddDetailActivity extends AppCompatActivity {
                         } else {
                             radiselection_text = "";
                         }
-                        Notes = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                        Notes = AddDatasheetActivityMain.datasheetlists.get(newId)
                                 .getNotes();
-                        FKPrimaryQuesId = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                        FKPrimaryQuesId = AddDatasheetActivityMain.datasheetlists.get(
                                 newId).getFKPrimaryQuesId();
-                        FKSecondaryQuesId = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                        FKSecondaryQuesId = AddDatasheetActivityMain.datasheetlists
                                 .get(newId).getFKSecondaryQuesId();
 
-                        IsBranching = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                        IsBranching = AddDatasheetActivityMain.datasheetlists.get(
                                 newId).getIsBranching();
-                        ExpectedResponse = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                        ExpectedResponse = AddDatasheetActivityMain.datasheetlists
                                 .get(newId).getExpectedResponse();
-                        IfResponseId = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                        IfResponseId = AddDatasheetActivityMain.datasheetlists.get(
                                 newId).getIfResponseId();
-                        DisableQuesStr = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                        DisableQuesStr = AddDatasheetActivityMain.datasheetlists.get(
                                 newId).getDisableQuesStr();
-                        GroupID = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                        GroupID = AddDatasheetActivityMain.datasheetlists.get(newId)
                                 .getGroupID();
-                        GroupName = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                        GroupName = AddDatasheetActivityMain.datasheetlists.get(newId)
                                 .getGroupName();
-                        QuesCode = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                        QuesCode = AddDatasheetActivityMain.datasheetlists.get(newId)
                                 .getQuesCode();
 
-                        MaxExpectedResponse = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                        MaxExpectedResponse = AddDatasheetActivityMain.datasheetlists
                                 .get(newId).getMaxExpectedResponse();
 
-                        ResponseValue = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                        ResponseValue = AddDatasheetActivityMain.datasheetlists.get(
                                 newId).getResponseValue();
-                        ExpectedResponse = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                        ExpectedResponse = AddDatasheetActivityMain.datasheetlists
                                 .get(newId).getExpectedResponse();
 
                         txtque.setText(QuesText);
@@ -3292,8 +3293,8 @@ public class DatasheetAddDetailActivity extends AppCompatActivity {
 
                         // int edt =
                         // Integer.parseInt(edtAns.getText().toString());
-                        int valuemax = Integer.parseInt(ValueMax);
-                        int valuemin = Integer.parseInt(ValueMin);
+                       // int valuemax = Integer.parseInt(ValueMax);
+                       // int valuemin = Integer.parseInt(ValueMin);
                         flag = 1;
                         radiselection_text = edtAns.getText().toString();
                         Answer_Value = "-1";
@@ -3304,65 +3305,65 @@ public class DatasheetAddDetailActivity extends AppCompatActivity {
                                     PKCssFormsQuesID, FKQuesId,
                                     radiselection_text, Answer_Value, flag, FormId));
 
-                            com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                            AddDatasheetActivityMain.datasheetlists.get(position)
                                     .setFlag(flag);
-                            com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                            AddDatasheetActivityMain.datasheetlists.get(position)
                                     .setDetailid(detailid);
 
-                            com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                            AddDatasheetActivityMain.datasheetlists.get(position)
                                     .setAnswer(radiselection_text);
 
-                            com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                            AddDatasheetActivityMain.datasheetlists.get(position)
                                     .setAnswer_value(Answer_Value);
 
-                            com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                            AddDatasheetActivityMain.datasheetlists.get(position)
                                     .setFKQuesId(FKQuesId);
-                            com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                            AddDatasheetActivityMain.datasheetlists.get(position)
                                     .setSequenceNo(SequenceNo);
-                            com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                            AddDatasheetActivityMain.datasheetlists.get(position)
                                     .setQuesText(QuesText);
-                            com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                            AddDatasheetActivityMain.datasheetlists.get(position)
                                     .setValueMax(ValueMax);
-                            com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                            AddDatasheetActivityMain.datasheetlists.get(position)
                                     .setSelectionValue(SelectionValue);
-                            com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                            AddDatasheetActivityMain.datasheetlists.get(position)
                                     .setWeightage(Weightage);
 
-                            com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                            AddDatasheetActivityMain.datasheetlists.get(position)
                                     .setPKCssFormsQuesID(PKCssFormsQuesID);
-                            com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            AddDatasheetActivityMain.datasheetlists
                                     .get(position)
                                     .setIsResponseMandatory(IsResponseMandatory);
-                            com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                            AddDatasheetActivityMain.datasheetlists.get(position)
                                     .setSelectionText(SelectionText);
-                            com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                            AddDatasheetActivityMain.datasheetlists.get(position)
                                     .setMaxValueText(MaxValueText);
-                            com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                            AddDatasheetActivityMain.datasheetlists.get(position)
                                     .setControlWidth(ControlWidth);
-                            com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                            AddDatasheetActivityMain.datasheetlists.get(position)
                                     .setMaxNoOfResponses(MaxNoOfResponses);
-                            com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                            AddDatasheetActivityMain.datasheetlists.get(position)
                                     .setResponseType(ResponseType);
-                            com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                            AddDatasheetActivityMain.datasheetlists.get(position)
                                     .setNotes(Notes);
-                            com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                            AddDatasheetActivityMain.datasheetlists.get(position)
                                     .setFKPrimaryQuesId(FKPrimaryQuesId);
-                            com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                            AddDatasheetActivityMain.datasheetlists.get(position)
                                     .setExpectedResponse(radiselection_text);
-                            com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                            AddDatasheetActivityMain.datasheetlists.get(position)
                                     .setFKSecondaryQuesId(FKSecondaryQuesId);
-                            com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                            AddDatasheetActivityMain.datasheetlists.get(position)
                                     .setDisableQuesStr(DisableQuesStr);
-                            com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                            AddDatasheetActivityMain.datasheetlists.get(position)
                                     .setGroupID(GroupID);
-                            com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                            AddDatasheetActivityMain.datasheetlists.get(position)
                                     .setGroupName(GroupName);
-                            com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                            AddDatasheetActivityMain.datasheetlists.get(position)
                                     .setQuesCode(QuesCode);
-                            com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            AddDatasheetActivityMain.datasheetlists
                                     .get(position)
                                     .setMaxExpectedResponse(MaxExpectedResponse);
-                            com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(position)
+                            AddDatasheetActivityMain.datasheetlists.get(position)
                                     .setResponseValue(ResponseValue);
                             // AddDatasheetActivityMain.datasheetlists.add(datasheet);
                             datasheetArrayList.get(position).setAnswer_value(Answer_Value);
@@ -3371,73 +3372,73 @@ public class DatasheetAddDetailActivity extends AppCompatActivity {
                         }
                         newId = position + 1;
 
-                        if (newId <= com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.size() - 1) {
-                            detailid = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                        if (newId <= AddDatasheetActivityMain.datasheetlists.size() - 1) {
+                            detailid = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getDetailid();
-                            setFlag = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            setFlag = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getFlag();
-                            Answer = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            Answer = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getAnswer();
-                            Answer_Value = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            Answer_Value = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getAnswer_value();
-                            FKQuesId = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            FKQuesId = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getFKQuesId();
-                            QuesText = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            QuesText = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getQuesText();
-                            ValueMax = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            ValueMax = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getValueMax();
 
-                            PKCssFormsQuesID = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            PKCssFormsQuesID = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getPKCssFormsQuesID();
-                            Weightage = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            Weightage = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getWeightage();
 
-                            IsResponseMandatory = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            IsResponseMandatory = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getIsResponseMandatory();
-                            SelectionText = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            SelectionText = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getSelectionText();
-                            SelectionValue = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            SelectionValue = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getSelectionValue();
-                            ValueMin = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            ValueMin = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getValueMin();
 
-                            MaxValueText = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            MaxValueText = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getMaxValueText();
-                            SelectionType = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            SelectionType = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getSelectionType();
-                            ControlWidth = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            ControlWidth = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getControlWidth();
-                            MaxNoOfResponses = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            MaxNoOfResponses = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getMaxNoOfResponses();
-                            ResponseType = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            ResponseType = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getResponseType();
 
-                            Notes = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(newId)
+                            Notes = AddDatasheetActivityMain.datasheetlists.get(newId)
                                     .getNotes();
-                            FKPrimaryQuesId = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            FKPrimaryQuesId = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getFKPrimaryQuesId();
-                            FKSecondaryQuesId = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            FKSecondaryQuesId = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getFKSecondaryQuesId();
 
-                            IsBranching = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            IsBranching = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getIsBranching();
-                            ExpectedResponse = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            ExpectedResponse = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getExpectedResponse();
-                            IfResponseId = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            IfResponseId = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getIfResponseId();
-                            DisableQuesStr = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            DisableQuesStr = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getDisableQuesStr();
-                            GroupID = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            GroupID = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getGroupID();
-                            GroupName = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            GroupName = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getGroupName();
-                            QuesCode = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists.get(
+                            QuesCode = AddDatasheetActivityMain.datasheetlists.get(
                                     newId).getQuesCode();
 
-                            MaxExpectedResponse = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            MaxExpectedResponse = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getMaxExpectedResponse();
 
-                            ResponseValue = com.vritti.vwb.vworkbench.AddDatasheetActivityMain.datasheetlists
+                            ResponseValue = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getResponseValue();
                             ExpectedResponse = AddDatasheetActivityMain.datasheetlists
                                     .get(newId).getExpectedResponse();
@@ -3641,7 +3642,7 @@ public class DatasheetAddDetailActivity extends AppCompatActivity {
                     Intent.createChooser(intent, "Select a File to Upload"),
                     RESULT_DOCUMENT);
 
-        } catch (android.content.ActivityNotFoundException ex) {
+        } catch (ActivityNotFoundException ex) {
             Toast.makeText(DatasheetAddDetailActivity.this, "Please install a File Manager.",
                     Toast.LENGTH_SHORT).show();
         }
@@ -3649,7 +3650,7 @@ public class DatasheetAddDetailActivity extends AppCompatActivity {
 
     private void startCameraIntent() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        file = new File(Environment.getExternalStorageDirectory(),
+        file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM),
                 "attachment.jpg");
         outPutfileUri = FileProvider.getUriForFile(this,
                 BuildConfig.APPLICATION_ID + ".provider",
@@ -3727,9 +3728,9 @@ public class DatasheetAddDetailActivity extends AppCompatActivity {
             options.inJustDecodeBounds = false;
             Bitmap newBitmap = Bitmap.createScaledBitmap(mBitmap, w, h,
                     true);
-            String path1 = Environment.getExternalStorageDirectory()
+            String path1 = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM)
                     .toString();
-            File file = new File(path1 + "/" + "Sahara"+"/"+"Sender");
+            File file = new File(path1 + "/" + "Attachment"+"/"+"Sender");
             if (!file.exists())
                 file.mkdirs();
             File file1 = new File(file, "Image-"+ new Random().nextInt() + ".jpg");
@@ -3909,17 +3910,17 @@ public class DatasheetAddDetailActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         try {
-            if (requestCode == RESULT_CAPTURE_IMG && resultCode == this.RESULT_OK) {
+            if (requestCode == 3) {
                 String uri = outPutfileUri.toString();
                 Log.e("uri-:", uri);
                 try {
 
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), outPutfileUri);
-                    FileOutputStream out = new FileOutputStream(file);
+                   /* FileOutputStream out = new FileOutputStream(file);
 
                     bitmap.compress(Bitmap.CompressFormat.JPEG, 30, out);
                     String url = MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, "title", null);
-                    outPutfileUri = Uri.parse(url);
+                    outPutfileUri = Uri.parse(url);*/
                     if (outPutfileUri.toString().contains("content")) {
                         handleSendImage(outPutfileUri);
                     }else {
@@ -3960,10 +3961,10 @@ public class DatasheetAddDetailActivity extends AppCompatActivity {
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), outPutfileUri);
                     //	uploadFileBitMap = bitmap;
                     file = new File(getRealPathFromURI(outPutfileUri));
-                    FileOutputStream out = new FileOutputStream(file);
-                    bitmap.compress(Bitmap.CompressFormat.JPEG, 75, out);
-                    String url = MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, "attachment", null);
-                    outPutfileUri = Uri.parse(url);
+                   /* FileOutputStream out = new FileOutputStream(file);
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 75, out);*/
+                  //  String url = MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, "attachment", null);
+                    //outPutfileUri = Uri.parse(url);
                     if (outPutfileUri.toString().contains("content")) {
                         handleSendImage(outPutfileUri);
                     }else {
@@ -4059,9 +4060,8 @@ public class DatasheetAddDetailActivity extends AppCompatActivity {
         protected String doInBackground(String... urls) {
 
             try {
-                String upLoadServerUri = CompanyURL + WebUrlClass.api_UploadAttechmentnew + "?AppEnvMasterId=" + EnvMasterId +"&ActivityId="+ detailid;
+                String upLoadServerUri = CompanyURL + WebUrlClass.api_UploadAttechmentDatasheet + "?AppEnvMasterId=" + EnvMasterId +"&ActivityId="+ detailid+"&SourceType=CSSDetail";
                 FileInputStream fileInputStream = new FileInputStream(attachment);
-                Object res = null;
                 File file = new File(attachment);
                 response = String.valueOf(Utility.OpenMultiPart(upLoadServerUri , file));
                 response = response.replaceAll("^\"|\"$", "");

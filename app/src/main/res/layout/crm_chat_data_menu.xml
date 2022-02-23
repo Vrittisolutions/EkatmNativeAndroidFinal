@@ -26,7 +26,7 @@ android:background="@color/white"
                 android:layout_height="wrap_content"
                 android:gravity="center|left"
                 android:padding="10dp"
-                android:text="New Chat Room"
+                android:text="New Conversation Room"
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 />

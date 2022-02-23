@@ -8,13 +8,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.vritti.ekatm.R;
 
 public class WelcomeScreenActivity extends Activity {
 
 
-    ImageView btn_next;
+   // ImageView btn_next;
+    TextView btn_next;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -27,11 +29,22 @@ public class WelcomeScreenActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(WelcomeScreenActivity.this,Hajmola_MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                startActivity(new Intent(WelcomeScreenActivity.this,Hajmola_MainActivity.class).
+                        setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+
             }
         });
 
 
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent setIntent = new Intent(Intent.ACTION_MAIN);
+        setIntent.addCategory(Intent.CATEGORY_HOME);
+        setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(setIntent);
     }
 }

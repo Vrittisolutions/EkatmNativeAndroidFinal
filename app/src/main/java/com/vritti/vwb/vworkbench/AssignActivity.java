@@ -2498,7 +2498,6 @@ public class AssignActivity extends AppCompatActivity {
 
     }
 
-
     class DownloadUserlistData extends AsyncTask<String, Void, String> {
         Object res;
         String response;

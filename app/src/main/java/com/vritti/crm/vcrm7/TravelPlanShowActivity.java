@@ -313,7 +313,7 @@ public class TravelPlanShowActivity extends AppCompatActivity {
             lay_travelplan.removeAllViews();
             Date d1;
             String query = "SELECT  PKTravelPlanId,Date,Notes,CityName" +
-                    " FROM " + db.TABLE_Travelplan + " ORDER BY Date desc";
+                    " FROM " + db.TABLE_Travelplan + " ORDER BY Date asc";
 
             Cursor cur = sql.rawQuery(query, null);
 

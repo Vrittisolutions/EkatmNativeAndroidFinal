@@ -80,9 +80,10 @@ public class CallUpdateActivity extends AppCompatActivity {
     JSONArray opportunityJsonArray = null;
     JSONArray collectionJsonArray = null;
     JSONArray colleagueJsonArray = null;
-    String callingType = "", UsernameRecord = "";
+    String callingType = "", UsernameRecord = "",ContactName="";
     ImageView img_add,img_refresh,img_back,img_nextaction;
-    TextView txt_title,txt_durationdetails,txt_add_existing,txt_create_opp,txt_personal,txt_spam,txt_collegue,txt_add_collection_call;
+    TextView txt_title,txt_durationdetails,txt_add_existing,txt_create_opp,
+            txt_personal,txt_spam,txt_collegue,txt_add_collection_call,txt_mobile;
 
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -155,6 +156,7 @@ public class CallUpdateActivity extends AppCompatActivity {
             Date = formateDateFromstring("yyyy-MM-dd HH:mm:ss.SSS", "dd-MMM",
                     callLogsDetailsArrayList.get(pos).getStartTime());
             callType = callLogsDetailsArrayList.get(pos).getCallType();
+            ContactName=getIntent().getStringExtra("contactname");
 
 
             String Date = formateDateFromstring("yyyy-MM-dd HH:mm:ss.SSS", "dd-MMM",
@@ -170,11 +172,25 @@ public class CallUpdateActivity extends AppCompatActivity {
 
             if (callType.equalsIgnoreCase("outgoing")) {
                 //txt_type_status.setText("");
-                txt_type_status.setText(contactedMobNo);
-                txt_durationdetails.setText(Date + " " + StartTime);
+                if (ContactName==null||ContactName.equalsIgnoreCase("null")||ContactName.equalsIgnoreCase("")) {
+                    txt_type_status.setText(contactedMobNo);
+                    txt_durationdetails.setText(Date + " " + StartTime);
+                }else {
+                    txt_mobile.setVisibility(View.VISIBLE);
+                    txt_type_status.setText(ContactName);
+                    txt_mobile.setText(contactedMobNo);
+                    txt_durationdetails.setText(Date + " " + StartTime);
+                }
             } else {
-                txt_type_status.setText(contactedMobNo);
-                txt_durationdetails.setText(Date + " " + StartTime);
+                if (ContactName==null||ContactName.equalsIgnoreCase("null")||ContactName.equalsIgnoreCase("")) {
+                    txt_type_status.setText(contactedMobNo);
+                    txt_durationdetails.setText(Date + " " + StartTime);
+                }else {
+                    txt_mobile.setVisibility(View.VISIBLE);
+                    txt_type_status.setText(ContactName);
+                    txt_mobile.setText(contactedMobNo);
+                    txt_durationdetails.setText(Date + " " + StartTime);
+                }
             }
 
             String CallType=callLogsDetailsArrayList.get(pos).getCallType();
@@ -204,7 +220,7 @@ public class CallUpdateActivity extends AppCompatActivity {
                         ContentValues cv = new ContentValues();
                         cv.put("MobileCallType", "Colleague");
                         cv.put("ContactPersonName", UsernameRecord);
-                        sql.update(db.TABLE_CALL_LOG, cv, "RowNo=?", new String[]{callLogsDetailsArrayList.get(pos).getRowNo()});
+                        sql.update(db.TABLE_CALL_LOG, cv, "MobileNo=?", new String[]{contactedMobNo});
                     }
                 }
 
@@ -353,7 +369,7 @@ public class CallUpdateActivity extends AppCompatActivity {
                     // cv.put("MobileCallType", "Opportunity");
                     cv.put("ContactPersonName", userNameRecord);
                     cv.put("CustomerName", FirmName);
-                    sql.update(db.TABLE_CALL_LOG, cv, "RowNo=?", new String[]{callLogsDetailsArrayList.get(pos).getRowNo()});
+                    sql.update(db.TABLE_CALL_LOG, cv, "MobileNo=?", new String[]{contactedMobNo});
 
                     /*Intent intent = new Intent(CallUpdateActivity.this,
                             CreateOpportunityActivity.class);
@@ -412,7 +428,6 @@ public class CallUpdateActivity extends AppCompatActivity {
                                 }
                                 else if (columnName.equalsIgnoreCase("NextMilestone")) {
                                     contentValues.put("NextMilestone", "");
-
                                 }else {
                                     columnValue = jorder.getString(columnName);
                                     contentValues.put(columnName, columnValue);
@@ -458,7 +473,7 @@ public class CallUpdateActivity extends AppCompatActivity {
                // cv.put("MobileCallType", "Collection");
                 cv.put("ContactPersonName", userNameRecord);
                 cv.put("CustomerName", firmName);
-                sql.update(db.TABLE_CALL_LOG, cv, "RowNo=?", new String[]{callLogsDetailsArrayList.get(pos).getRowNo()});
+                sql.update(db.TABLE_CALL_LOG, cv, "MobileNo=?", new String[]{contactedMobNo});
 
 
                 String sTime = formateDateFromstring("yyyy-MM-dd HH:mm:ss.SSS", "hh:mm:ss",
@@ -508,10 +523,10 @@ public class CallUpdateActivity extends AppCompatActivity {
 
                     SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy HH:mm");
                     String date = sdf1.format(new Date());
-                    String remark1 = "Incomingcall Record has been added of Number " + contactedMobNo + " on " + date;
+                    String remark1 = "Record has been added for Number " + contactedMobNo + " on " + date;
                     String url = CompanyURL + WebUrlClass.api_save_Mocall_Record;
                     String op = "true";
-                   // CreateOfflineIntend(url, FinalJSOnObject, WebUrlClass.POSTFLAG, remark1, op, context);
+                    CreateOfflineIntend(url, FinalJSOnObject, WebUrlClass.POSTFLAG, remark1, op, context);
 
                     //CreateOfflineIntend(url, FinalJSOnObject, WebUrlClass.GETFlAG, "Call Update", op, CRM_CallLogList.this);
                     //sql.execSQL("UPDATE " + db.TABLE_CALL_LOG + " SET MobileCallType =" + callType + " WHERE RowNo =" + rowNo);
@@ -523,14 +538,25 @@ public class CallUpdateActivity extends AppCompatActivity {
                     cv.put("MobileCallType", callType);
 
                     sql.update(db.TABLE_CALL_LOG, cv, "MobileNo=?", new String[]{contactedMobNo});
-                    int uri = context.getContentResolver().update(Uri.parse("content://com.example.contentproviderexample.MyProvider1/cte"), cv,"MobileNo=?",
-                            new String[]{contactedMobNo});
+
+                    /*int uri = context.getContentResolver().update(Uri.parse("content://com.example.contentproviderexample.MyProvider1/cte"), cv,"MobileNo=?",
+                            new String[]{contactedMobNo});*/
+
+
                     /*sql.update(db.TABLE_CALL_LOG, cv,
                             "RowNo=?", new String[]{callLogsDetailsArrayList.get(pos).getRowNo()
                     });*/
+
                     sql.update(db.TABLE_CALL_LOG, cv,
                             "MobileNo=?", new String[]{contactedMobNo});
 
+
+                    Intent intent = new Intent();
+                    intent.setClassName("com.crm.calllogs", "com.crm.calllogs.MyBroadcastReceiver");
+                    intent.setAction("com.crm.calllogs.MyBroadcastReceiver");
+                    intent.putExtra("calltype",callType);
+                    intent.putExtra("mobile",contactedMobNo);
+                    sendBroadcast(intent);
 
 
                     Toast.makeText(CallUpdateActivity.this, "Call type is updated", Toast.LENGTH_SHORT).show();
@@ -676,6 +702,7 @@ public class CallUpdateActivity extends AppCompatActivity {
         });
 
         txt_type_status = findViewById(R.id.txt_type_status);
+        txt_mobile = findViewById(R.id.txt_mobile);
         btn_collection = findViewById(R.id.btn_collection);
         btn_opporunity = findViewById(R.id.btn_opporunity);
         txt_statusdetails = findViewById(R.id.txt_statusdetails);

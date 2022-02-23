@@ -12,6 +12,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 
 import com.vritti.crm.vcrm7.OpportunityActivity;
+import com.vritti.crm.vcrm7.OpportunityActivity_V1;
 import com.vritti.ekatm.R;
 import com.vritti.vwb.vworkbench.ActivityMain;
 import com.vritti.vwb.vworkbench.LoggingTimeActivity;
@@ -52,8 +53,8 @@ public class ForegroundService extends Service {
             pendingIntent = PendingIntent.getActivity(this,
                     0, notificationIntent, 0);
         }else {
-            Intent notificationIntent = new Intent(this, OpportunityActivity.class);
-            notificationIntent.putExtra("Opportunity",Opportunity);
+            Intent notificationIntent = new Intent(this, OpportunityActivity_V1.class);
+            notificationIntent.putExtra("Opportunity","main_opp");
             notificationIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
             pendingIntent = PendingIntent.getActivity(this,
                     0, notificationIntent, 0);
@@ -72,7 +73,7 @@ public class ForegroundService extends Service {
         startForeground(1, notification);
         //do heavy work on a background thread
         //stopSelf();
-        return START_NOT_STICKY;
+        return START_STICKY;
     }
     @Override
     public void onDestroy() {

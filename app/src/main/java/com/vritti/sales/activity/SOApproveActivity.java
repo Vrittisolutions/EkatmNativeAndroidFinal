@@ -89,6 +89,7 @@ public class SOApproveActivity extends AppCompatActivity {
             SOHeaderId = "", OrgQty = "",Qty = "", Rate = "",SODate = "",DoAck = "",SODetailId = "", Range = "",
             DeliveryTerms = "",distance = "",UOMCode = "",mrp = "",UOMDigit = "",custMobile = "",numTomakeCall =  "",Brand = "",Content = "",
             ContentUOM = "",SellingUOM ="",PackOfQty="0",FreeAboveAmt="",FreeDelyMaxDist="",MinDelyKg="",MinDelyKm="",ExprDelyWithinMin="",ExpressDelyChg="";
+    private String tax="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -211,6 +212,7 @@ public class SOApproveActivity extends AppCompatActivity {
                 intent.putExtra("Distance",merchcustdist);
                 intent.putExtra("ValPerKm",perkmchrg);
                 intent.putExtra("MaxFreeDelDist",maxfreedeldist);
+                intent.putExtra("Tax",listSO.get(position).getTax());
                 startActivity(intent);
             }
         });
@@ -404,6 +406,7 @@ public class SOApproveActivity extends AppCompatActivity {
                 MinDelyKm = jsonArray.getJSONObject(i).getString("MinDelyKm");
                 ExprDelyWithinMin = jsonArray.getJSONObject(i).getString("ExprDelyWithinMin");
                 ExpressDelyChg = jsonArray.getJSONObject(i).getString("ExpressDelyChg");
+                tax = jsonArray.getJSONObject(i).getString("TotTaxAmt");
 
                 try{
                     PackOfQty = jsonArray.getJSONObject(i).getString("PackOfQty");
@@ -432,12 +435,14 @@ public class SOApproveActivity extends AppCompatActivity {
                 historybean.setMinDelyKm(MinDelyKm);
                 historybean.setExprDelyWithinMin(ExprDelyWithinMin);
                 historybean.setExpressDelyChg(ExpressDelyChg);
+                historybean.setTax(tax);
+
 
                 listSO.add(historybean);
 
                 tcf.insert_OpenOrdersData(SOApproveActivity.this,sono,SOHeaderId,SODetailId,ConsigneeName,CustomerMasterId,ItemDesc,ItemMasterId,Qty,OrgQty,
                         Rate,LineAmt, TotalOrderValue,SODate,DoAck,Range,mrp,distance,UOMDigit,UOMCode,DeliveryTerms,custMobile,Brand,Content,
-                        ContentUOM,SellingUOM,PackOfQty,FreeAboveAmt,FreeDelyMaxDist,MinDelyKg,MinDelyKm,ExprDelyWithinMin,ExpressDelyChg);
+                        ContentUOM,SellingUOM,PackOfQty,FreeAboveAmt,FreeDelyMaxDist,MinDelyKg,MinDelyKm,ExprDelyWithinMin,ExpressDelyChg,tax);
             }
 
         } catch (JSONException e) {
@@ -527,7 +532,8 @@ public class SOApproveActivity extends AppCompatActivity {
     public void getDataFromDatabase(){
         listSO.clear();
 
-        String qry = "Select distinct sono,SOHeaderId,TotalOrderValue,SODate,DoAck,ConsigneeName,CustomerMasterId,Mobile,DeliveryTerms" +
+        String qry = "Select distinct sono,SOHeaderId,TotalOrderValue," +
+                "SODate,DoAck,ConsigneeName,CustomerMasterId,Mobile,DeliveryTerms,TotTaxAmt" +
                 " from "+ DatabaseHandlers.TABLE_MY_ORDER_ACCEPTANCE +
                 " order by SODate desc";
         Cursor c = sql_db.rawQuery(qry,null);
@@ -543,6 +549,7 @@ public class SOApproveActivity extends AppCompatActivity {
                 CustomerMasterId = c.getString(c.getColumnIndex("CustomerMasterId"));
                 DeliveryTerms = c.getString(c.getColumnIndex("DeliveryTerms"));
                 custMobile = c.getString(c.getColumnIndex("Mobile"));
+                tax = c.getString(c.getColumnIndex("TotTaxAmt"));
                 //Range = c.getString(c.getColumnIndex("Range"));
 
                 String q = "Select FreeAboveAmt,FreeDelyMaxDist,MinDelyKg,MinDelyKm,distance from "+
@@ -572,6 +579,7 @@ public class SOApproveActivity extends AppCompatActivity {
                 historybean.setMinDelyKm(MinDelyKm);
                 historybean.setMinDelyKg(MinDelyKg);
                 historybean.setDistance(distance);
+                historybean.setTax(tax);
 
                 listSO.add(historybean);
 

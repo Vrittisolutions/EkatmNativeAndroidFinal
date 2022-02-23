@@ -13,6 +13,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.provider.ContactsContract;
 import android.provider.Settings;
 import android.support.annotation.Nullable;
@@ -98,6 +99,7 @@ public class CRM_CallLogList extends AppCompatActivity {
 
     ImageView img_add,img_refresh,img_back;
     TextView txt_title;
+    private String ContactName="";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -112,6 +114,15 @@ public class CRM_CallLogList extends AppCompatActivity {
         IsCollectionApplicable = userpreferences.getString(WebUrlClass.USERINFO_ISCOLLECTION_APPLICABLE, Salesmodulevisible);
 
         //CalendarCollection.date_collection_arr = new ArrayList<CalendarCollection>();
+
+
+        /*StrictMode.VmPolicy policy = new StrictMode.VmPolicy.Builder()
+                .detectLeakedClosableObjects()
+                .detectLeakedSqlLiteObjects()
+                .penaltyDeath()
+                .penaltyLog()
+                .build();
+        StrictMode.setVmPolicy(policy);*/
 
 
         context = getApplicationContext();
@@ -136,10 +147,13 @@ public class CRM_CallLogList extends AppCompatActivity {
 
 
 
-        Cursor c1 = sql.rawQuery("SELECT * FROM " + db.TABLE_CALL_LOG, null);
+
+
+
+       /* Cursor c1 = sql.rawQuery("SELECT * FROM " + db.TABLE_CALL_LOG, null);
         int count1 = c1.getCount();
         count1 = count1 + 1;
-        Log.e("Call Log Count", "" + count1);
+        Log.e("Call Log Count", "" + count1);*/
 
        /* sql.delete(db.TABLE_CALL_LOG, null,
                 null);*/
@@ -165,11 +179,10 @@ public class CRM_CallLogList extends AppCompatActivity {
     }
 
     private void getDatafromLocalDatabase() {
-        callLogsDetailsArrayList.clear();
+       callLogsDetailsArrayList.clear();
 
-        Cursor c = sql.rawQuery("SELECT * FROM " + db.TABLE_CALL_LOG +" Order by StartTime DESC", null);
+        Cursor c = sql.rawQuery("SELECT * FROM " + db.TABLE_CALL_LOG +" Order by StartTime DESC limit 100", null);
         int count = c.getCount();
-        Log.e("Call Log Count", "" + count);
 
         if (count > 0) {
             c.moveToFirst();
@@ -202,7 +215,8 @@ public class CRM_CallLogList extends AppCompatActivity {
 
                 if(callLogsDetails.getCallType().equalsIgnoreCase("incoming") ||
                         callLogsDetails.getCallType().equalsIgnoreCase("outgoing") ||
-                        callLogsDetails.getCallType().equalsIgnoreCase("Opportunity/collection")) {
+                        callLogsDetails.getCallType().equalsIgnoreCase("Opportunity/collection")
+                ||callLogsDetails.getCallType().equalsIgnoreCase("Opportunity")) {
                     callLogsDetailsArrayList.add(callLogsDetails);
                 }
             } while (c.moveToNext());
@@ -333,6 +347,7 @@ public class CRM_CallLogList extends AppCompatActivity {
         endTime = callLogsDetailsArrayList.get(adapterPosition).getEndTime();
         duration = callLogsDetailsArrayList.get(adapterPosition).getDuration();
         rowNo = callLogsDetailsArrayList.get(adapterPosition).getRowNo();
+        ContactName = callLogsDetailsArrayList.get(adapterPosition).getUsername();
         final String uniqueID = UUID.randomUUID().toString();
 
         String query1 = "SELECT * FROM " + db.TABLE_CRM_CALL_OPPORTUNITY + " WHERE  Mobile ='" + contactedMobNo + "'";
@@ -405,12 +420,12 @@ public class CRM_CallLogList extends AppCompatActivity {
                     cv.put("MobileCallType", "Opportunity");
                     cv.put("ContactPersonName", contactname);
                     cv.put("CustomerName", firmname);
-                    sql.update(db.TABLE_CALL_LOG, cv, "RowNo=?", new String[]{rowNo});
+                    sql.update(db.TABLE_CALL_LOG, cv, "MobileNo=?", new String[]{contactedMobNo});
 
 
-                    String sTime = formateDateFromstring("yyyy-MM-dd HH:mm:ss.SSS", "hh:mm:ss",
+                    String sTime = formateDateFromstring("yyyy-MM-dd HH:mm:ss.SSS", "hh:mm",
                             callLogsDetailsArrayList.get(editRowPos).getStartTime());
-                    String eTime = formateDateFromstring("yyyy-MM-dd HH:mm:ss.SSS", "hh:mm:ss",
+                    String eTime = formateDateFromstring("yyyy-MM-dd HH:mm:ss.SSS", "hh:mm",
                             callLogsDetailsArrayList.get(editRowPos).getEndTime());
 
 
@@ -419,8 +434,8 @@ public class CRM_CallLogList extends AppCompatActivity {
                     Intent intent = new Intent(CRM_CallLogList.this, OpportunityActivity_V1.class);
                     intent.putExtra("Opportunity", "opportunitycall");
                     intent.putExtra("MobileNo", contactedMobNo);
-                    intent.putExtra("starttime", sTime);
-                    intent.putExtra("endtime", eTime);
+                    intent.putExtra("starttime",  callLogsDetailsArrayList.get(editRowPos).getStartTime());
+                    intent.putExtra("endtime", callLogsDetailsArrayList.get(editRowPos).getEndTime());
                     intent.putExtra("duration", callLogsDetailsArrayList.get(editRowPos).getDuration());
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
@@ -476,7 +491,7 @@ public class CRM_CallLogList extends AppCompatActivity {
                     cv.put("MobileCallType", "Collection");
                     cv.put("ContactPersonName", contactname);
                     cv.put("CustomerName", firmname);
-                    sql.update(db.TABLE_CALL_LOG, cv, "RowNo=?", new String[]{rowNo});
+                    sql.update(db.TABLE_CALL_LOG, cv, "MobileNo=?", new String[]{contactedMobNo});
 
                     String sTime = formateDateFromstring("yyyy-MM-dd HH:mm:ss.SSS", "hh:mm:ss",
                             callLogsDetailsArrayList.get(editRowPos).getStartTime());
@@ -490,6 +505,7 @@ public class CRM_CallLogList extends AppCompatActivity {
                     intent.putExtra("MobileNo", contactedMobNo);
                     intent.putExtra("starttime", sTime);
                     intent.putExtra("endtime", eTime);
+                    intent.putExtra("currentdate", callLogsDetailsArrayList.get(editRowPos).getStartTime());
                     intent.putExtra("duration", callLogsDetailsArrayList.get(editRowPos).getDuration());
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
@@ -607,19 +623,22 @@ public class CRM_CallLogList extends AppCompatActivity {
                     cv.put("MobileCallType", "Opportunity");
                     cv.put("ContactPersonName", contactname);
                     cv.put("CustomerName", firmname);
-                    sql.update(db.TABLE_CALL_LOG, cv, "RowNo=?", new String[]{rowNo});
+                    sql.update(db.TABLE_CALL_LOG, cv, "MobileNo=?", new String[]{contactedMobNo});
+
+
+
+                    String sTime = formateDateFromstring("yyyy-MM-dd HH:mm:ss.SSS", "hh:mm",
+                            callLogsDetailsArrayList.get(editRowPos).getStartTime());
+                    String eTime = formateDateFromstring("yyyy-MM-dd HH:mm:ss.SSS", "hh:mm",
+                            callLogsDetailsArrayList.get(editRowPos).getEndTime());
+
 
                     Intent intent = new Intent(CRM_CallLogList.this, OpportunityActivity_V1.class);
                     intent.putExtra("Opportunity", "opportunitycall");
                     intent.putExtra("MobileNo", contactedMobNo);
-                    intent.putExtra("starttime", callLogsDetailsArrayList.get(adapterPosition).getStartTime());
-                    intent.putExtra("endtime", callLogsDetailsArrayList.get(adapterPosition).getEndTime());
-                    intent.putExtra("duration", callLogsDetailsArrayList.get(adapterPosition).getDuration());
-                    intent.putExtra("MobileCallType", calltype);
-                    intent.putExtra("CallingType", "2");
-                    intent.putExtra("CallType","Opportunity");
-                    intent.putExtra("CallId", callid);
-                    intent.putExtra("NewId", uniqueID);
+                    intent.putExtra("starttime",  callLogsDetailsArrayList.get(editRowPos).getStartTime());
+                    intent.putExtra("endtime", callLogsDetailsArrayList.get(editRowPos).getEndTime());
+                    intent.putExtra("duration", callLogsDetailsArrayList.get(editRowPos).getDuration());
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     overridePendingTransition(R.anim.slide_right_to_left,R.anim.slide_left_to_right);
@@ -687,7 +706,7 @@ public class CRM_CallLogList extends AppCompatActivity {
                     cv.put("MobileCallType", "Collection");
                     cv.put("ContactPersonName", contactname);
                     cv.put("CustomerName", firmname);
-                    sql.update(db.TABLE_CALL_LOG, cv, "RowNo=?", new String[]{rowNo});
+                    sql.update(db.TABLE_CALL_LOG, cv, "MobileNo=?", new String[]{contactedMobNo});
 
                    /* String sTime = formateDateFromstring("yyyy-MM-dd HH:mm:ss.SSS", "hh:mm:ss",
                             startTime);
@@ -953,6 +972,7 @@ public class CRM_CallLogList extends AppCompatActivity {
                 intent.putExtra("collectionjson",collectionjson);
                 intent.putExtra("position",editRowPos);
                 intent.putExtra("IsBoth","fromOppCollec");
+                intent.putExtra("contactname",ContactName);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_right_to_left,R.anim.slide_left_to_right);
             }
@@ -1053,7 +1073,22 @@ public class CRM_CallLogList extends AppCompatActivity {
                     cv.put("MobileCallType", "Opportunity");
                     cv.put("ContactPersonName", userNameRecord);
                     cv.put("CustomerName", FirmName);
-                    sql.update(db.TABLE_CALL_LOG, cv, "RowNo=?", new String[]{rowNo});
+                    sql.update(db.TABLE_CALL_LOG, cv, "MobileNo=?", new String[]{contactedMobNo});
+
+                    String sTime = formateDateFromstring("yyyy-MM-dd HH:mm:ss.SSS", "hh:mm",
+                            callLogsDetailsArrayList.get(editRowPos).getStartTime());
+                    String eTime = formateDateFromstring("yyyy-MM-dd HH:mm:ss.SSS", "hh:mm",
+                            callLogsDetailsArrayList.get(editRowPos).getEndTime());
+
+                    Intent intent = new Intent(CRM_CallLogList.this, OpportunityActivity_V1.class);
+                    intent.putExtra("Opportunity", "opportunitycall");
+                    intent.putExtra("MobileNo", contactedMobNo);
+                    intent.putExtra("starttime",  callLogsDetailsArrayList.get(editRowPos).getStartTime());
+                    intent.putExtra("endtime", callLogsDetailsArrayList.get(editRowPos).getEndTime());
+                    intent.putExtra("duration", callLogsDetailsArrayList.get(editRowPos).getDuration());
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.slide_right_to_left,R.anim.slide_left_to_right);
 
                     /*String sTime = formateDateFromstring("yyyy-MM-dd HH:mm:ss.SSS", "hh:mm:ss",
                             callLogsDetailsArrayList.get(editRowPos).getStartTime());
@@ -1158,7 +1193,7 @@ public class CRM_CallLogList extends AppCompatActivity {
                     cv.put("MobileCallType", "Collection");
                     cv.put("ContactPersonName", userNameRecord);
                     cv.put("CustomerName", firmName);
-                    sql.update(db.TABLE_CALL_LOG, cv, "RowNo=?", new String[]{rowNo});
+                    sql.update(db.TABLE_CALL_LOG, cv, "MobileNo=?", new String[]{contactedMobNo});
 
 
                     /*String sTime = formateDateFromstring("yyyy-MM-dd HH:mm:ss.SSS", "hh:mm:ss",
@@ -1193,6 +1228,7 @@ public class CRM_CallLogList extends AppCompatActivity {
                     intent.putExtra("collectionjson",collectionjson);
                     intent.putExtra("position",editRowPos);
                     intent.putExtra("IsBoth","fromIndi");
+                    intent.putExtra("contactname",ContactName);
                     startActivity(intent);
                     overridePendingTransition(R.anim.slide_right_to_left,R.anim.slide_left_to_right);
 

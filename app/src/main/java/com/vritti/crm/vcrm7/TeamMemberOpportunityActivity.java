@@ -344,6 +344,12 @@ public class TeamMemberOpportunityActivity extends AppCompatActivity implements 
 
        // editsearch.setOnQueryTextListener(this);
 
+        img_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
 
        /* editsearch.setOnSearchClickListener(new View.OnClickListener() {
