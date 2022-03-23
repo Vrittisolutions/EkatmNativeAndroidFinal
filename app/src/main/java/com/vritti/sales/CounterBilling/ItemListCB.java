@@ -3916,6 +3916,8 @@ public class ItemListCB extends AppCompatActivity {
                 String url = CompanyURL + WebUrlClass.api_postCounterBill;
 
                 res = ut.OpenPostConnection(url,finalData,parent);
+
+
                 response = res.toString().replaceAll("\\\\", "");
                 response = response.toString().replaceAll("^\"+ \"+$","");
 
@@ -3933,6 +3935,8 @@ public class ItemListCB extends AppCompatActivity {
 
             try{
                 String invoiceNo = "", status = "",otp="";
+
+
                 if(response.contains("InvoiceNo")){
                     try{
                         String res = response.replace("\"[","[");

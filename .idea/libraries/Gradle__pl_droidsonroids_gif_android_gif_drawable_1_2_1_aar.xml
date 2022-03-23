@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: pl.droidsonroids.gif:android-gif-drawable:1.2.1@aar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/transforms-2/files-2.1/c9c2c86809728202bd8ca9ae009ac63d/android-gif-drawable-1.2.1/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/transforms-2/files-2.1/c9c2c86809728202bd8ca9ae009ac63d/android-gif-drawable-1.2.1/res" />
+      <root url="file://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/transforms-2/files-2.1/c9c2c86809728202bd8ca9ae009ac63d/android-gif-drawable-1.2.1/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/modules-2/files-2.1/pl.droidsonroids.gif/android-gif-drawable/1.2.1/7a13ae172cf29fce89c5fcecdae0d3aaac07b0f3/android-gif-drawable-1.2.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/modules-2/files-2.1/pl.droidsonroids.gif/android-gif-drawable/1.2.1/f68281b83dddea95fe7ccb0487eb8921388f45d2/android-gif-drawable-1.2.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

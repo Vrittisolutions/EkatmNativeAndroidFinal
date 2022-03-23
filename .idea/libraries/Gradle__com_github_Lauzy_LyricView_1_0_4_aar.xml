@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.Lauzy:LyricView:1.0.4@aar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/transforms-2/files-2.1/85c1a2d70f49273e1ca494627626485c/LyricView-1.0.4/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/transforms-2/files-2.1/85c1a2d70f49273e1ca494627626485c/LyricView-1.0.4/res" />
+      <root url="file://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/transforms-2/files-2.1/85c1a2d70f49273e1ca494627626485c/LyricView-1.0.4/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/modules-2/files-2.1/com.github.Lauzy/LyricView/1.0.4/d074e979c749f377a9764b47f6469205708c8a3/LyricView-1.0.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

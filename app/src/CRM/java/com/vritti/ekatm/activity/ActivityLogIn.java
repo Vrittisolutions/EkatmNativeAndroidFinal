@@ -117,7 +117,8 @@ public class ActivityLogIn extends AppCompatActivity {
         PlantMasterId = ut.getValue(context, WebUrlClass.GET_PlantID_KEY, settingKey);
         LoginId = ut.getValue(context, WebUrlClass.GET_LOGIN_KEY, settingKey);
         Password =ut.getValue(context, WebUrlClass.GET_PSW_KEY, settingKey);
-       UserMasterId = ut.getValue(context, WebUrlClass.GET_USERMASTERID_KEY, settingKey);        UserName = ut.getValue(context, WebUrlClass.GET_USERNAME_KEY, settingKey);
+       UserMasterId = ut.getValue(context, WebUrlClass.GET_USERMASTERID_KEY, settingKey);   
+       UserName = ut.getValue(context, WebUrlClass.GET_USERNAME_KEY, settingKey);
         UserType = userpreferences.getString("UserType", null);
         Token = userpreferences.getString("Token", null);
         sql = db.getWritableDatabase();

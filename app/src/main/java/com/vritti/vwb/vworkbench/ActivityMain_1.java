@@ -333,7 +333,6 @@ public class ActivityMain_1 extends AppCompatActivity {
         }
 
 
-
         if (Activity.equals("act_work")){
             Activity_AssignByMe = false;
             Activity_Unapprove = false;
@@ -374,16 +373,17 @@ public class ActivityMain_1 extends AppCompatActivity {
             rowEnd = 9;
             reQuery = "Y";
             if (ut.isNet(context)) {
+
                 new StartSession(ActivityMain_1.this, new CallbackInterface() {
+
                     @Override
                     public void callMethod() {
                         new DownloadWorkloadActivity().execute(UserMasterId, "Today");
                     }
 
                     @Override
-                    public void callfailMethod(String msg) {
+                    public void callfailMethod(String msg) {}
 
-                    }
                 });
             }
 
@@ -3235,10 +3235,7 @@ public class ActivityMain_1 extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-
         }
-
-
         //}
     }
 

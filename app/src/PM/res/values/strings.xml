@@ -1,6 +1,8 @@
 <resources>
-    <string name="app_name">PM</string>
-    <string name="app_name_notification">PM</string>
+   <!-- <string name="app_name">PM</string>
+    <string name="app_name_notification">PM</string>-->
+     <string name="app_name">Simplify Practice</string>
+    <string name="app_name_notification">Simplify Practice</string>
     <string name="title_activity_pmdashboard">ActivityPMDashboard</string>
 
     <string name="app_name_toolbar_CRM">Simplify Practice</string>

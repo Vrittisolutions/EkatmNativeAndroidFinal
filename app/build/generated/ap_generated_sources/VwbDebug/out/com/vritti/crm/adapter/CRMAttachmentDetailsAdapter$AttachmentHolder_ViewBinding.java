@@ -16,9 +16,9 @@ import java.lang.Override;
 public class CRMAttachmentDetailsAdapter$AttachmentHolder_ViewBinding implements Unbinder {
   private CRMAttachmentDetailsAdapter.AttachmentHolder target;
 
-  private View view2131297059;
+  private View view2131297060;
 
-  private View view2131297030;
+  private View view2131297031;
 
   @UiThread
   public CRMAttachmentDetailsAdapter$AttachmentHolder_ViewBinding(final CRMAttachmentDetailsAdapter.AttachmentHolder target,
@@ -29,7 +29,7 @@ public class CRMAttachmentDetailsAdapter$AttachmentHolder_ViewBinding implements
     target.txt_attachment = Utils.findRequiredViewAsType(source, R.id.txt_attachment, "field 'txt_attachment'", TextView.class);
     view = Utils.findRequiredView(source, R.id.downloadFile, "field 'downloadFile' and method 'downloadFile'");
     target.downloadFile = Utils.castView(view, R.id.downloadFile, "field 'downloadFile'", ImageView.class);
-    view2131297059 = view;
+    view2131297060 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -38,7 +38,7 @@ public class CRMAttachmentDetailsAdapter$AttachmentHolder_ViewBinding implements
     });
     view = Utils.findRequiredView(source, R.id.deleteFile, "field 'deleteFile' and method 'deleteFile'");
     target.deleteFile = Utils.castView(view, R.id.deleteFile, "field 'deleteFile'", ImageView.class);
-    view2131297030 = view;
+    view2131297031 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -58,9 +58,9 @@ public class CRMAttachmentDetailsAdapter$AttachmentHolder_ViewBinding implements
     target.downloadFile = null;
     target.deleteFile = null;
 
-    view2131297059.setOnClickListener(null);
-    view2131297059 = null;
-    view2131297030.setOnClickListener(null);
-    view2131297030 = null;
+    view2131297060.setOnClickListener(null);
+    view2131297060 = null;
+    view2131297031.setOnClickListener(null);
+    view2131297031 = null;
   }
 }

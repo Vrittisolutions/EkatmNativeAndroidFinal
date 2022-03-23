@@ -10,8 +10,8 @@
       "apkData": {
         "type": "MAIN",
         "splits": [],
-        "versionCode": 146,
-        "versionName": "7.2",
+        "versionCode": 152,
+        "versionName": "7.7",
         "outputFile": "app-Vwb-debug.apk",
         "fullName": "VwbDebug",
         "baseName": "Vwb-debug",

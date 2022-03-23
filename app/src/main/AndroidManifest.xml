@@ -18,10 +18,11 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
@@ -29,23 +30,18 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
- <!--   <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
-    <uses-permission android:name="android.permission.READ_CALL_LOG"/>-->
-    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
-
-<!--
-    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
--->
-
-
-    <!--// Chetana-->
-
-    <!--<uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
-        tools:ignore="ScopedStorage" />-->
-
-
-
+    <!--
+   <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
+    <uses-permission android:name="android.permission.READ_CALL_LOG"/>
+    -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <!--     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/> -->
+    <!-- // Chetana -->
+    <!--
+<uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    -->
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
@@ -68,18 +64,19 @@
         android:largeHeap="true"
         android:requestLegacyExternalStorage="true"
         android:usesCleartextTraffic="true">
-        <activity android:name="com.vritti.vwb.vworkbench.Hajmola_End_Screen"></activity>
+        <activity android:name=".activity.CountryListViewActivity"></activity>
+        <activity android:name="com.vritti.vwb.vworkbench.Hajmola_End_Screen" />
 
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
 
-
-        <meta-data android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version"/>
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
 
         <activity android:name="com.vritti.SaharaModule.SplashActivity" />
-        <activity android:name="com.vritti.sales.activity.CollectionReceiptActivity"></activity>
+        <activity android:name="com.vritti.sales.activity.CollectionReceiptActivity" />
         <activity android:name="com.vritti.sales.activity.ReceiptActivity" />
         <activity android:name="com.vritti.sales.CounterBilling.PrintedBillDetailsActivity" />
         <activity android:name="com.vritti.sales.CounterBilling.BillsHistory" />
@@ -149,15 +146,14 @@
         <activity
             android:name="com.vritti.sales.activity.ThankyouActivity"
             android:theme="@style/AppTheme_tbuds" />
-
         <activity
             android:name="com.vritti.crm.vcrm7.CRM_CallLogList"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity
             android:name="com.vritti.crm.vcrm7.CallUpdateActivity"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <!--
            <activity
             android:name="com.vritti.sales.P"
@@ -206,17 +202,19 @@
         <activity
             android:name=".activity.ActivityModuleSelection"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data
                     android:host="*.ekatm.com"
-                    android:scheme="https"
-                    android:pathPattern=".*" />
-                  <!--This line to define schema -->
+                    android:pathPattern=".*"
+                    android:scheme="https" />
+                <!-- This line to define schema -->
             </intent-filter>
         </activity>
         <activity
@@ -226,7 +224,6 @@
             android:name=".services.SendTimeSheet"
             android:enabled="true"
             android:exported="true" />
-
         <service
             android:name=".services.DownloadWorkspaceData"
             android:enabled="true"
@@ -298,7 +295,6 @@
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
-
         <receiver android:name=".receiver.CallReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.PHONE_STATE" />
@@ -307,8 +303,7 @@
                 <action android:name="android.intent.action.NEW_OUTGOING_CALL" />
             </intent-filter>
         </receiver>
-
-       <receiver android:name=".receiver.CallReceiver1">
+        <receiver android:name=".receiver.CallReceiver1">
             <intent-filter>
                 <action android:name="android.intent.action.PHONE_STATE" />
             </intent-filter>
@@ -316,7 +311,6 @@
                 <action android:name="android.intent.action.NEW_OUTGOING_CALL" />
             </intent-filter>
         </receiver>
-
         <receiver
             android:name=".receiver.SendGPSNotificationBroadcastReceiver"
             android:enabled="true"
@@ -438,7 +432,6 @@
             android:name="com.vritti.chat.services.MessageRecieveBackground"
             android:enabled="true" />
         <service android:name="com.vritti.chat.services.ChattingDataSendBackground" /> <!-- Manifest receiver  Chat -->
-
         <service
             android:name=".services.CallReceiverIntentService"
             android:exported="false"
@@ -459,8 +452,6 @@
         </receiver>
         -->
         <!-- Manifest Activity  vwb -->
-
-
         <activity
             android:name="com.vritti.vwb.vworkbench.TicketUpdateDNAActivity"
             android:launchMode="singleTop"
@@ -520,16 +511,14 @@
         <activity
             android:name="com.vritti.vwb.vworkbench.LoggingTimeActivity"
             android:launchMode="singleTop" />
-
         <activity
             android:name="com.vritti.vwb.vworkbench.MarkAttendanceActivity"
             android:launchMode="singleTop" />
-
         <activity
             android:name="com.vritti.vwb.vworkbench.BirthdayListAcyivity"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="com.vritti.vwb.vworkbench.NotificationActivity"
             android:launchMode="singleTop" />
@@ -591,23 +580,26 @@
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
         <activity android:name="com.vritti.crm.vcrm7.CallListActionActivity" />
         <activity android:name="com.vritti.crm.vcrm7.CallRatingActivity" />
-        <activity android:name="com.vritti.crm.vcrm7.ActivityOfflineData"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name="com.vritti.crm.vcrm7.ActivityOfflineData"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name="com.vritti.crm.vcrm7.DatasheetMainActivity" />
         <activity android:name="com.vritti.crm.vcrm7.DatasheetAddDetailActivity" />
         <activity android:name="com.vritti.crm.vcrm7.AddDatasheetActivityMain" />
         <activity android:name="com.vritti.crm.vcrm7.EditDatasheetActivityMain" />
         <activity android:name="com.vritti.crm.vcrm7.EditDatasheetDetailActivity" />
-        <activity android:name="com.vritti.crm.vcrm7.TravelPlanAddActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name="com.vritti.crm.vcrm7.TravelPlanShowActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name="com.vritti.crm.vcrm7.TravelPlanDeleteActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
-        <activity android:name="com.vritti.crm.vcrm7.TravelPlanEditActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
+        <activity
+            android:name="com.vritti.crm.vcrm7.TravelPlanAddActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.vritti.crm.vcrm7.TravelPlanShowActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.vritti.crm.vcrm7.TravelPlanDeleteActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.vritti.crm.vcrm7.TravelPlanEditActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.vritti.crm.vcrm7.OpportunityUpdateActivity"
             android:windowSoftInputMode="adjustResize" />
@@ -615,28 +607,32 @@
             android:name="com.vritti.crm.vcrm7.ProspectEnterpriseActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
-
         <activity
             android:name="com.vritti.crm.vcrm7.ProspectEnterpriseActivity1"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name="com.vritti.crm.vcrm7.ProspectFilterActivity"
+        <activity
+            android:name="com.vritti.crm.vcrm7.ProspectFilterActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden"/>
-        <activity android:name="com.vritti.crm.vcrm7.FilteredProspectListActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name="com.vritti.crm.vcrm7.ProductActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name="com.vritti.crm.vcrm7.TeamMemberActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.crm.vcrm7.FilteredProspectListActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.vritti.crm.vcrm7.ProductActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.vritti.crm.vcrm7.TeamMemberActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name="com.vritti.crm.vcrm7.PromotionalFormSettingActivity" />
         <activity android:name="com.vritti.crm.vcrm7.PromotionalFormActivity" />
         <activity android:name="com.vritti.crm.vcrm7.EnquiryFormActivityNew" />
-        <activity android:name="com.vritti.crm.vcrm7.TeamMemberOpportunityActivity"
+        <activity
+            android:name="com.vritti.crm.vcrm7.TeamMemberOpportunityActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name="com.vritti.crm.vcrm7.TeamsCallListActionActivity" />
         <activity android:name="com.vritti.crm.vcrm7.ReassignCallsActivity" />
         <activity
@@ -650,8 +646,9 @@
             android:name="com.vritti.crm.vcrm7.CreateNewOppActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity android:name="com.vritti.crm.vcrm7.TravelPlanShowFormActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name="com.vritti.crm.vcrm7.TravelPlanShowFormActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.vritti.crm.vcrm7.CallDetailsHistoryActivity"
             android:windowSoftInputMode="stateAlwaysHidden" />
@@ -672,8 +669,8 @@
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name="com.vritti.crm.vcrm7.SubTeamMemberActivity"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name="com.vritti.crm.vcrm7.AdvanceProvisionalActivity"
             android:screenOrientation="portrait"
@@ -716,8 +713,6 @@
         <activity android:name="com.vritti.crm.vcrm7.ActivityServiceReportDetail" />
         <activity android:name="com.vritti.crm.vcrm7.ActivityServiceReportDetail1" />
         <activity android:name="com.vritti.crm.vcrm7.AddEnquiry" /> <!-- Manifest services  crm -->
-
-
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="${applicationId}.provider"
@@ -727,7 +722,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />
         </provider>
-
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -743,9 +737,7 @@
         <activity android:name="com.vritti.chat.activity.VideoPlayerClass" />
         <activity android:name="com.vritti.inventory.activity.SelectModuleActivity" />
         <activity android:name="com.vritti.inventory.activity.VendorRegistrationForm" />
-
-
-        <activity android:name="com.vritti.chat.activity.AddImageWithTextForChat"/>
+        <activity android:name="com.vritti.chat.activity.AddImageWithTextForChat" />
 
         <service
             android:name=".services.DownloadJobService"
@@ -774,267 +766,235 @@
             android:enabled="true"
             android:exported="false" />
 
-
-        <activity android:name="com.vritti.expensemanagement.AddExpenseActivity"
-            android:theme="@style/AppTheme">
-        </activity>
-        <activity android:name="com.vritti.expensemanagement.RecycleExpenseMainActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
-        <activity android:name="com.vritti.expensemanagement.HistoryActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name="com.vritti.expensemanagement.LocationActivity"
-            android:theme="@style/AppTheme"/>
-        <activity android:name="com.vritti.expensemanagement.EditExpensesActivity"
-            android:theme="@style/AppTheme"/>
-        <activity android:name="com.vritti.expensemanagement.ImageActivity"
-            android:theme="@style/AppTheme"/>
-
-        <activity android:name="com.vritti.expensemanagement.FromLocationActivity"
-            android:theme="@style/AppTheme">
-        </activity>
-
-
-        <!--Alfa Laval-->
-        <activity android:name="com.vritti.AlfaLavaModule.activity.AlfaHomePage"
+        <activity
+            android:name="com.vritti.expensemanagement.AddExpenseActivity"
+            android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name="com.vritti.expensemanagement.RecycleExpenseMainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.vritti.expensemanagement.HistoryActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.vritti.expensemanagement.LocationActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name="com.vritti.expensemanagement.EditExpensesActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name="com.vritti.expensemanagement.ImageActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name="com.vritti.expensemanagement.FromLocationActivity"
+            android:theme="@style/AppTheme"></activity> <!-- Alfa Laval -->
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.AlfaHomePage"
             android:launchMode="singleTop"
             android:windowSoftInputMode="stateHidden" />
-            />
-
-        <activity android:name="com.vritti.AlfaLavaModule.activity.PackagingActivity"
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.PackagingActivity"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-        />
-        <activity android:name="com.vritti.AlfaLavaModule.activity.PickingActivity"
-            android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-        />
-
-        <activity android:name="com.vritti.AlfaLavaModule.activity.ActivityGRNPutAway"
-            android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-        />
-
-        <activity android:name="com.vritti.AlfaLavaModule.activity.PutAwayPacketDetails"
-            android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-        />
-        <activity android:name="com.vritti.AlfaLavaModule.activity.PutAwayDetails"
-            android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-        />
-        <activity android:name="com.vritti.AlfaLavaModule.activity.LabelPrintData"
-            android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-        />
-
-        <activity android:name="com.vritti.AlfaLavaModule.activity.MRSHeaderActivity"
-            android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-        />
-
-
-
-        <activity android:name="com.vritti.AlfaLavaModule.activity.AlfaItemMasterSyncActivity"
-            android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        />
-
-        <activity android:name="com.vritti.inventory.physicalInventory.activity.PartCodeActivity"
-            android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        />
-        <activity android:name="com.vritti.inventory.physicalInventory.activity.PartNameActivity"
-            android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        />
-
-
-        <activity android:name="com.vritti.inventory.physicalInventory.activity.LocationPIActivity"
-            android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        />
-
-        <activity android:name="com.vritti.AlfaLavaModule.activity.MRSDetailActivity"
-            android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-        />
-        <activity android:name="com.vritti.AlfaLavaModule.activity.CreateSecondaryPackActivity"
-            android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-        />
-        <activity android:name="com.vritti.AlfaLavaModule.activity.BoxmasterActivity"
-            android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-        />
-        <activity android:name="com.vritti.AlfaLavaModule.activity.GRNScanner"
-            android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
             android:theme="@style/AppTheme"
-           />
-        />
-        <activity android:name="com.vritti.AlfaLavaModule.activity.PutAwayScanDetails"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.PickingActivity"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
             android:theme="@style/AppTheme"
-            />
-
-
-        <activity android:name="com.vritti.AlfaLavaModule.activity.DOPackingScanDetails"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.ActivityGRNPutAway"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
             android:theme="@style/AppTheme"
-            />
-        />
-
-        <activity android:name="com.vritti.AlfaLavaModule.activity.PackagingOrderActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.PutAwayPacketDetails"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-        />
-        <activity android:name="com.vritti.AlfaLavaModule.activity.PickListDetailActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.PutAwayDetails"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-
-        <activity android:name="com.vritti.AlfaLavaModule.activity.DeviceLablelPrint"/>
-        <activity android:name="com.vritti.AlfaLavaModule.activity.picking.DOListActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.LabelPrintData"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-        />
-
-        <activity android:name="com.vritti.AlfaLavaModule.activity.Consolidation.PickListNoListActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.MRSHeaderActivity"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-        />
-        <activity android:name="com.vritti.AlfaLavaModule.activity.packaging.ReceiptPackagingDOListActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.AlfaItemMasterSyncActivity"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-        />
-        <activity android:name="com.vritti.AlfaLavaModule.activity.AlfaShipment.DOShipmentListActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.inventory.physicalInventory.activity.PartCodeActivity"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-        />
-        <activity android:name="com.vritti.sales.activity.SOApproveDetailActivity"></activity>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.inventory.physicalInventory.activity.PartNameActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.inventory.physicalInventory.activity.LocationPIActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.MRSDetailActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.CreateSecondaryPackActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.BoxmasterActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.GRNScanner"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.PutAwayScanDetails"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.DOPackingScanDetails"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.PackagingOrderActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.PickListDetailActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name="com.vritti.AlfaLavaModule.activity.DeviceLablelPrint" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.picking.DOListActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.Consolidation.PickListNoListActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.packaging.ReceiptPackagingDOListActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.AlfaShipment.DOShipmentListActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name="com.vritti.sales.activity.SOApproveDetailActivity" />
         <activity android:name="com.vritti.sales.activity.SOApproveActivity" />
-        <activity android:name="com.vritti.AlfaLavaModule.activity.ShipingInspectionSheetActivity"
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.ShipingInspectionSheetActivity"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme">
-
-        </activity>
-        <activity android:name="com.vritti.crm.vcrm7.NearBySearch"
-            android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        />
-        <activity android:name="com.vritti.crm.vcrm7.LocationSelectActivity"
-            android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
             android:theme="@style/AppTheme"
-           >
-
-        </activity>
-
-        <activity android:name="com.vritti.AlfaLavaModule.activity.PackingDONOReportActivity"
+            android:windowSoftInputMode="stateHidden"></activity>
+        <activity
+            android:name="com.vritti.crm.vcrm7.NearBySearch"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-        />
-        <activity android:name="com.vritti.AlfaLavaModule.activity.InspectionReportActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.crm.vcrm7.LocationSelectActivity"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-        />
-
-        <activity android:name="com.vritti.AlfaLavaModule.activity.SummaryDONOReportActivity"
-            android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-        />
-
-        <activity android:name="com.vritti.AlfaLavaModule.activity.ShippingPostActivity"
-            android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-
-        <activity android:name="com.vritti.AlfaLavaModule.PI.LocationScanner"
-            android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
             android:theme="@style/AppTheme"
-            />
-        <activity android:name="com.vritti.AlfaLavaModule.PI.PacketScanDetails"
+            android:windowSoftInputMode="stateHidden"></activity>
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.PackingDONOReportActivity"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
             android:theme="@style/AppTheme"
-            />
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.InspectionReportActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.SummaryDONOReportActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.ShippingPostActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.PI.LocationScanner"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.PI.PacketScanDetails"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.packetenquiry.PacketEnquiryDetails"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.PI.ItemCreateActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.PI.CreateBatchActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.PI.AddPacketActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
 
-        <activity android:name="com.vritti.AlfaLavaModule.activity.packetenquiry.PacketEnquiryDetails"
-            android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"
-            />
-
-        <activity android:name="com.vritti.AlfaLavaModule.PI.ItemCreateActivity"
-            android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"
-            />
-
-        <activity android:name="com.vritti.AlfaLavaModule.PI.CreateBatchActivity"
-            android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"
-            />
-
-        <activity android:name="com.vritti.AlfaLavaModule.PI.AddPacketActivity"
-            android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"
-            />
         <service
             android:name="com.vritti.crm.service.FetchAddressIntentService"
             android:exported="false" />
 
-
-
-        <activity android:name="com.vritti.AlfaLavaModule.activity.LocationScannerCutoff"
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.LocationScannerCutoff"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
             android:theme="@style/AppTheme"
-            />
-
-        <activity android:name="com.vritti.AlfaLavaModule.activity.PacketScanDataCutoff"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.PacketScanDataCutoff"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
             android:theme="@style/AppTheme"
-            />
-
-        <activity android:name="com.vritti.AlfaLavaModule.activity.LocationOptionsSelection"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.LocationOptionsSelection"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
             android:theme="@style/AppTheme"
-            />
-
-        <activity android:name="com.vritti.sales.OrderBookingNew.ItemlistActivityNewBooking"></activity>
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name="com.vritti.sales.OrderBookingNew.ItemlistActivityNewBooking" />
         <activity android:name="com.vritti.sales.OrderBookingNew.SubCategorySelectionActivity" />
         <activity android:name="com.vritti.sales.OrderBookingNew.CategorySelectionActivity" />
         <activity
@@ -1079,20 +1039,16 @@
         <activity android:name="com.vritti.sales.activity.SalesItemActivity" />
         <activity android:name="com.vritti.sales.activity.SalesHeaderActivity" />
         <activity android:name="com.vritti.inventory.physicalInventory.activity.Devicelist_LablelPrint" />
-
-
-        <activity android:name="com.vritti.AlfaLavaModule.activity.picking.ItemPickListDetailActivity"
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.picking.ItemPickListDetailActivity"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-
-
-        <activity android:name="com.vritti.AlfaLavaModule.activity.picking.ItemWisePickListDetailActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.picking.ItemWisePickListDetailActivity"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-
-
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name="com.vritti.inventory.physicalInventory.activity.SelectLableSize" />
         <activity android:name="com.vritti.inventory.physicalInventory.activity.BluetoothClass_QSPrinter" />
         <activity android:name="com.vritti.inventory.physicalInventory.activity.Devicelist_NewPrinterSetting" />
@@ -1107,297 +1063,270 @@
         <activity android:name="com.vritti.inventory.physicalInventory.activity.AudiScreenActivity" />
         <activity android:name="com.vritti.inventory.physicalInventory.activity.ItemMasterSyncActivity" />
         <activity android:name="com.vritti.sales.activity.NewSalesOrderBooking" />
-        <activity android:name="com.journeyapps.barcodescanner.CaptureActivity"
+        <activity
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:screenOrientation="portrait"
             tools:replace="screenOrientation" />
         <activity android:name="com.vritti.inventory.physicalInventory.activity.OcrCaptureActivity" />
         <activity android:name="com.vritti.inventory.physicalInventory.activity.PrintScreenWIFI" />
         <activity android:name="com.vritti.inventory.physicalInventory.activity.WifiListActivity" />
         <activity android:name="com.vritti.inventory.physicalInventory.activity.PIEntryPrintingActivity" />
-
-        <activity android:name="com.vritti.AlfaLavaModule.activity.PacketNoDisplayActivity"
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.PacketNoDisplayActivity"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
             android:theme="@style/AppTheme"
-            />
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="com.vritti.crm.vcrm7.CRMDayEndReport"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
-
-        <activity android:name="com.vritti.AlfaLavaModule.activity.PacketNoEnquiryActivity"
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.PacketNoEnquiryActivity"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
             android:theme="@style/AppTheme"
-            />
-
-
-        <activity android:name="com.vritti.crm.vcrm7.CRMHomeActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.crm.vcrm7.CRMHomeActivity"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden"
-            />
-
-        <activity android:name="com.vritti.vwb.vworkbench.AttendanceDisplayActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.vwb.vworkbench.AttendanceDisplayActivity"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
             android:theme="@style/AppTheme.NoActionBar"
-            />
-
-
-        <activity android:name="com.vritti.AlfaLavaModule.Wifi.WIFINetworkActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.Wifi.WIFINetworkActivity"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
             android:theme="@style/AppTheme"
-            />
-
-        <activity android:name="com.vritti.crm.vcrm7.ProspectSelectionActivity"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
-        <activity android:name="com.vritti.crm.vcrm7.CountryListActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.crm.vcrm7.ProspectSelectionActivity"
             android:theme="@style/AppTheme.NoActionBar"
-           />
-
-        <activity android:name="com.vritti.vwb.vworkbench.CreditSanctionActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"
-            />
-        <activity android:name="com.vritti.vwb.vworkbench.TeamAttendanceDisplayActivity"
-            android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"
-            />
-        <activity android:name="com.vritti.crm.vcrm7.CRMRightMenuActivity"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
-        <activity android:name="com.vritti.crm.vcrm7.CallHistoryActivity"
+            android:windowSoftInputMode="stateHidden"></activity>
+        <activity
+            android:name="com.vritti.crm.vcrm7.CountryListActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.vritti.vwb.vworkbench.CreditSanctionActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden"/>
-
-
-        <activity android:name="com.vritti.vwb.vworkbench.CreditApprovalListActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.vritti.vwb.vworkbench.TeamAttendanceDisplayActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.crm.vcrm7.CRMRightMenuActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.crm.vcrm7.CallHistoryActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.vwb.vworkbench.CreditApprovalListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize" />
 
         <service
             android:name=".services.ShipmeForegroundService"
             android:enabled="true"
-            android:stopWithTask="false"
-            android:exported="true"></service>
-        <activity android:name="com.vritti.AlfaLavaModule.activity.unpacking.UpPackingOrderListActivity"
-            android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-        />
-        <activity android:name="com.vritti.AlfaLavaModule.activity.unpacking.CartonHeaderListActivity"
-            android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-        />
-        <activity android:name="com.vritti.AlfaLavaModule.activity.unpacking.UnPackingCartonDetailActivity"
-            android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
+            android:exported="true"
+            android:stopWithTask="false" />
 
-        <activity android:name="com.vritti.AlfaLavaModule.activity.cartonlabel.CartonLabelHeaderListActivity"
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.unpacking.UpPackingOrderListActivity"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-        />
-        <activity android:name="com.vritti.AlfaLavaModule.activity.Inspection.InspectionCartonLabelHeaderListActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.unpacking.CartonHeaderListActivity"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-        />
-        <activity android:name="com.vritti.AlfaLavaModule.activity.Inspection.InspectionPackingOrderListActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.unpacking.UnPackingCartonDetailActivity"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-        />
-        <activity android:name="com.vritti.AlfaLavaModule.activity.cartonlabel.CartonPackingOrderListActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.cartonlabel.CartonLabelHeaderListActivity"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-        />
-        <activity android:name="com.vritti.AlfaLavaModule.activity.weight.WeightCartonHeaderListActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.Inspection.InspectionCartonLabelHeaderListActivity"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-        />
-        <activity android:name="com.vritti.AlfaLavaModule.activity.weight.WeightPackingOrderListActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.Inspection.InspectionPackingOrderListActivity"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-        />
-        <activity android:name="com.vritti.AlfaLavaModule.activity.loading.LoadingPackingOrderListActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.cartonlabel.CartonPackingOrderListActivity"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-        />
-        <activity android:name="com.vritti.AlfaLavaModule.activity.loading.LoadingHeaderListActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.weight.WeightCartonHeaderListActivity"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-        />
-
-        <activity android:name="com.vritti.AlfaLavaModule.activity.pick_riversal.PickPacketScanDetails"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.weight.WeightPackingOrderListActivity"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-        />
-
-        <activity android:name="com.vritti.AlfaLavaModule.activity.pick_riversal.PickingLocationScanner"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.loading.LoadingPackingOrderListActivity"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-        />
-
-        <activity android:name="com.vritti.AlfaLavaModule.activity.pick_riversal.PickReversalActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.loading.LoadingHeaderListActivity"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-        />
-
-        <activity android:name="com.vritti.AlfaLavaModule.activity.packing_qc.QCCartonHeaderListActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.pick_riversal.PickPacketScanDetails"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-        />
-
-        <activity android:name="com.vritti.AlfaLavaModule.activity.packing_qc.QCPackingCartonDetailActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.pick_riversal.PickingLocationScanner"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-        />
-
-        <activity android:name="com.vritti.AlfaLavaModule.activity.packing_qc.QCPackingOrderListActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.pick_riversal.PickReversalActivity"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-        />
-        <activity android:name="com.vritti.AlfaLavaModule.activity.grn.GRNPendingActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.packing_qc.QCCartonHeaderListActivity"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-        />
-
-        <activity android:name="com.vritti.AlfaLavaModule.activity.grn.GRNPOSTPACKETSacnDetails"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.packing_qc.QCPackingCartonDetailActivity"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-        />
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.packing_qc.QCPackingOrderListActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.grn.GRNPendingActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.grn.GRNPOSTPACKETSacnDetails"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="com.vritti.crm.vcrm7.CallListLoggingTimeActivity"
             android:launchMode="singleTop" />
-
-        <activity android:name="com.vritti.AlfaLavaModule.activity.packing_loading.LoadingPackOrderListActivity"
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.packing_loading.LoadingPackOrderListActivity"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme"/>
-        />
-
-        <activity android:name="com.vritti.AlfaLavaModule.activity.packing_loading.CartonScanner"
-            android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden"
             android:theme="@style/AppTheme"
-            />
-        />
-
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.AlfaLavaModule.activity.packing_loading.CartonScanner"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="com.vritti.crm.vcrm7.OpportunityActivity_V1"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"/>
-
-        <activity android:name="com.vritti.crm.vcrm7.CallRatingActivity_V1"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+        <activity
+            android:name="com.vritti.crm.vcrm7.CallRatingActivity_V1"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"/>
-
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity
             android:name="com.vritti.crm.vcrm7.ContactShowActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
-
         <activity
             android:name="com.vritti.crm.vcrm7.CRM_Callslist_Partial"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
-
         <activity
             android:name="com.vritti.crm.vcrm7.OpportunityUpdateActivity_New"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateVisible|adjustResize" />
-
         <activity
             android:name="com.vritti.crm.vcrm7.CRM_Collection_List"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
-
-        <activity android:name="com.vritti.expensemanagement.AddExpenseActivity_V1"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <activity android:name="com.vritti.expensemanagement.AddExpenseActivity_Next"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+        <activity
+            android:name="com.vritti.expensemanagement.AddExpenseActivity_V1"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name="com.vritti.expensemanagement.AddExpenseActivity_Next"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name="com.vritti.crm.vcrm7.DiscountVoucherActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
-
-        <activity android:name="com.vritti.crm.vcrm7.CommonListActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
-
-<!--
-        // VWB V_1 Activity
--->
-
-        <activity android:name="com.vritti.vwb.vworkbench.VWBHomeActivity"
+        <activity
+            android:name="com.vritti.crm.vcrm7.CommonListActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <!--         // VWB V_1 Activity -->
+        <activity
+            android:name="com.vritti.vwb.vworkbench.VWBHomeActivity"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden"
-            />
-        <activity android:name="com.vritti.vwb.vworkbench.VWBRightMenuActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.vwb.vworkbench.VWBRightMenuActivity"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden"
-            />
-        <activity android:name="com.vritti.expensemanagement.ExpenseSelectionActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.expensemanagement.ExpenseSelectionActivity"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden"
-            />
-        <activity android:name="com.vritti.crm.vcrm7.FollowupActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.crm.vcrm7.FollowupActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden"/>
-        <activity android:name="com.vritti.crm.vcrm7.KnowMoreActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.crm.vcrm7.KnowMoreActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden"/>
-        <activity android:name="com.vritti.vwb.vworkbench.ClaimLedgerActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.vritti.vwb.vworkbench.ClaimLedgerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="com.vritti.crm.vcrm7.TargetAchievmentReport"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
-
         <activity
             android:name="com.vritti.crm.vcrm7.ProspectEnterpriseActivity2"
             android:screenOrientation="portrait"
@@ -1408,7 +1337,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustResize" />
-
         <activity
             android:name="com.vritti.vwb.vworkbench.ActivityFiliterList"
             android:screenOrientation="portrait"
@@ -1424,19 +1352,13 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name="com.vritti.crm.vcrm7.FilterListActivity"
+        <activity
+            android:name="com.vritti.crm.vcrm7.FilterListActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.vritti.crm.vcrm7.ReportSelectionActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            ></activity>
-
-        <activity android:name="com.vritti.crm.vcrm7.ReportSelectionActivity"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
-
-       <!-- &lt;!&ndash;alarm play for unreleased advs&ndash;&gt;
-        <receiver android:name=".receiver.MyAlarmReceiver" ></receiver>
--->
+            android:windowSoftInputMode="stateHidden"></activity>
     </application>
 
 </manifest>

@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.citux:datetimepicker:0.2.0@aar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/transforms-2/files-2.1/bcefe1a63aaad0e225ad14675b4e8bed/datetimepicker-0.2.0/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/transforms-2/files-2.1/bcefe1a63aaad0e225ad14675b4e8bed/datetimepicker-0.2.0/res" />
+      <root url="file://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/transforms-2/files-2.1/bcefe1a63aaad0e225ad14675b4e8bed/datetimepicker-0.2.0/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/modules-2/files-2.1/com.github.citux/datetimepicker/0.2.0/7bfbe7047ca0a1061f1af74049caf3a9ef667288/datetimepicker-0.2.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/modules-2/files-2.1/com.github.citux/datetimepicker/0.2.0/bd77b2b7bb1ae3c2e20f263dfba5364ab9b203b9/datetimepicker-0.2.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

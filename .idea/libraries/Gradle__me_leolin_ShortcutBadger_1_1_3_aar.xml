@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: me.leolin:ShortcutBadger:1.1.3@aar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/transforms-2/files-2.1/1a7a6927c2e6d722b2b10f578b66e949/ShortcutBadger-1.1.3/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/transforms-2/files-2.1/1a7a6927c2e6d722b2b10f578b66e949/ShortcutBadger-1.1.3/res" />
+      <root url="file://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/transforms-2/files-2.1/1a7a6927c2e6d722b2b10f578b66e949/ShortcutBadger-1.1.3/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/modules-2/files-2.1/me.leolin/ShortcutBadger/1.1.3/ef2ce075ec8d3a6324c9b9f7884c5eea0ad09369/ShortcutBadger-1.1.3-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/modules-2/files-2.1/me.leolin/ShortcutBadger/1.1.3/ea8069a5904c23124ad074800c862d7c7cd6069/ShortcutBadger-1.1.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,1 +1,20 @@
-[{"outputType":{"type":"APK"},"apkInfo":{"type":"MAIN","splits":[],"versionCode":18,"versionName":"1.2.4","enabled":true,"outputFile":"app-PM-release.apk","fullName":"PMRelease","baseName":"PM-release"},"path":"app-PM-release.apk","properties":{}}]
+{
+  "version": 1,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "practice.vritti.com",
+  "variantName": "PMRelease",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "properties": [],
+      "versionCode": 24,
+      "versionName": "24",
+      "enabled": true,
+      "outputFile": "app-PM-release.apk"
+    }
+  ]
+}

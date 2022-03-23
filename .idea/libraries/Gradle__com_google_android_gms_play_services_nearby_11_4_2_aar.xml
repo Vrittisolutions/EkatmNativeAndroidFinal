@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.google.android.gms:play-services-nearby:11.4.2@aar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/transforms-2/files-2.1/1661c3b563c638fdff596d30ad6f021a/play-services-nearby-11.4.2/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/transforms-2/files-2.1/1661c3b563c638fdff596d30ad6f021a/play-services-nearby-11.4.2/res" />
+      <root url="file://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/transforms-2/files-2.1/1661c3b563c638fdff596d30ad6f021a/play-services-nearby-11.4.2/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

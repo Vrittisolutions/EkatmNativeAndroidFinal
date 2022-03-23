@@ -1454,6 +1454,7 @@ public class AddEditItemForCBilling extends AppCompatActivity {
 
             tcf.clearTable(parent, dbhandler.TABLE_ADD_ITEMS_COUNTERBILL);
 
+
             for(int i=0; i<=jResults.length();i++){
                 try {
                     JSONObject jsonObject = jResults.getJSONObject(i);

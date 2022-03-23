@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="vworkbench7.vritti.com.vworkbench7"
-    android:versionCode="146"
-    android:versionName="7.2" >
+    android:versionCode="152"
+    android:versionName="7.7" >
 
     <uses-sdk
         android:minSdkVersion="19"
@@ -64,11 +64,6 @@
             <category android:name="android.intent.category.HOME" />
         </intent>
     </queries>
-    <queries>
-        <provider android:authorities="com.example.contentproviderexample.MyProvider1" />
-
-        <package android:name="com.crm.calllogs" />
-    </queries>
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
@@ -123,7 +118,12 @@
     <uses-permission android:name="com.sonyericsson.home.permission.BROADCAST_BADGE" /> <!-- for apex -->
     <uses-permission android:name="com.anddoes.launcher.permission.UPDATE_COUNT" /> <!-- for solid -->
     <uses-permission android:name="com.majeur.launcher.permission.UPDATE_BADGE" />
-
+    <!--
+ <queries>
+        <provider android:authorities="com.example.contentproviderexample.MyProvider1"/>
+        <package android:name="com.crm.calllogs" />
+    </queries>
+    -->
     <application
         android:name="com.vritti.vwb.vworkbench.Myapplication"
         android:allowBackup="false"
@@ -217,6 +217,7 @@
             </intent-filter>
         </receiver>
 
+        <activity android:name="com.vritti.ekatm.activity.CountryListViewActivity" />
         <activity android:name="com.vritti.vwb.vworkbench.Hajmola_End_Screen" />
 
         <uses-library
@@ -873,8 +874,7 @@
 
         <activity
             android:name="com.vritti.expensemanagement.AddExpenseActivity"
-            android:theme="@style/AppTheme" >
-        </activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name="com.vritti.expensemanagement.RecycleExpenseMainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -892,8 +892,7 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name="com.vritti.expensemanagement.FromLocationActivity"
-            android:theme="@style/AppTheme" >
-        </activity> <!-- Alfa Laval -->
+            android:theme="@style/AppTheme" /> <!-- Alfa Laval -->
         <activity
             android:name="com.vritti.AlfaLavaModule.activity.AlfaHomePage"
             android:launchMode="singleTop"
@@ -1020,8 +1019,7 @@
             android:name="com.vritti.AlfaLavaModule.activity.ShipingInspectionSheetActivity"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="stateHidden" >
-        </activity>
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="com.vritti.crm.vcrm7.NearBySearch"
             android:launchMode="singleTop"
@@ -1031,8 +1029,7 @@
             android:name="com.vritti.crm.vcrm7.LocationSelectActivity"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="stateHidden" >
-        </activity>
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="com.vritti.AlfaLavaModule.activity.PackingDONOReportActivity"
             android:launchMode="singleTop"
@@ -1216,8 +1213,7 @@
         <activity
             android:name="com.vritti.crm.vcrm7.ProspectSelectionActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden" >
-        </activity>
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="com.vritti.crm.vcrm7.CountryListActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -1392,12 +1388,10 @@
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity
             android:name="com.vritti.expensemanagement.AddExpenseActivity_V1"
-            android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.vritti.expensemanagement.AddExpenseActivity_Next"
-            android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.vritti.crm.vcrm7.DiscountVoucherActivity"
             android:screenOrientation="portrait"
@@ -1405,8 +1399,7 @@
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity
             android:name="com.vritti.crm.vcrm7.CommonListActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-<!--         // VWB V_1 Activity -->
+            android:theme="@style/AppTheme.NoActionBar" /> <!-- // VWB V_1 Activity -->
         <activity
             android:name="com.vritti.vwb.vworkbench.VWBHomeActivity"
             android:launchMode="singleTop"
@@ -1463,8 +1456,7 @@
         <activity
             android:name="com.vritti.crm.vcrm7.ReportSelectionActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden" >
-        </activity>
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name="com.vritti.sessionlib.MainActivity" />
         <activity android:name="com.vritti.databaselib.other.MainActivity" />
 

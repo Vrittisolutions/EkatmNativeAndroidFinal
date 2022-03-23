@@ -56,10 +56,10 @@
         </intent>
     </queries>
 
-    <queries>
-        <provider android:authorities="com.example.contentproviderexample.MyProvider1" />
+   <!-- <queries>
+        <provider android:authorities="com.example.contentproviderexample.MyProvider1"/>
         <package android:name="com.crm.calllogs" />
-    </queries>
+    </queries>-->
 
 
     <application

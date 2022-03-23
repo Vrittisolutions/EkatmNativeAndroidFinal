@@ -14,7 +14,7 @@ import java.lang.Override;
 public class PrivateChatAdapter$PrivateHolder_ViewBinding implements Unbinder {
   private PrivateChatAdapter.PrivateHolder target;
 
-  private View view2131298181;
+  private View view2131298182;
 
   @UiThread
   public PrivateChatAdapter$PrivateHolder_ViewBinding(final PrivateChatAdapter.PrivateHolder target,
@@ -23,7 +23,7 @@ public class PrivateChatAdapter$PrivateHolder_ViewBinding implements Unbinder {
 
     View view;
     view = Utils.findRequiredView(source, R.id.len, "method 'rowclick'");
-    view2131298181 = view;
+    view2131298182 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -39,7 +39,7 @@ public class PrivateChatAdapter$PrivateHolder_ViewBinding implements Unbinder {
     target = null;
 
 
-    view2131298181.setOnClickListener(null);
-    view2131298181 = null;
+    view2131298182.setOnClickListener(null);
+    view2131298182 = null;
   }
 }

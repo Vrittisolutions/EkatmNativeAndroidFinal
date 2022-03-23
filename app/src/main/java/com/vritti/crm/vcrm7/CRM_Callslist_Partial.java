@@ -623,11 +623,7 @@ public class CRM_Callslist_Partial extends AppCompatActivity {
         });
 
 
-
-
-
         // Contact
-
         image_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -680,7 +676,6 @@ public class CRM_Callslist_Partial extends AppCompatActivity {
         }
 
 
-
                /* Intent intent = new Intent(CRM_Callslist_Partial.this, ContactShowActivity.class);
                 intent.putExtra("callid", CallId);
                 intent.putExtra("call_prospect", Prospect);
@@ -698,7 +693,6 @@ public class CRM_Callslist_Partial extends AppCompatActivity {
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_right_to_left,R.anim.slide_left_to_right);
 */
-
 
             }
         });
@@ -1380,12 +1374,10 @@ public class CRM_Callslist_Partial extends AppCompatActivity {
                         jsonObject.put("ExpectedClosureDate", editTextExpecteddate.getText().toString());
                         jsonparams = jsonObject.toString();
                         jsonparams = jsonparams.replaceAll("\\\\", "");
-
-
                     } catch (Exception e) {
-
                         e.printStackTrace();
                     }
+
                     if (isnet()) {
                         progressDialog.setCancelable(true);
                         if (!isFinishing()) {

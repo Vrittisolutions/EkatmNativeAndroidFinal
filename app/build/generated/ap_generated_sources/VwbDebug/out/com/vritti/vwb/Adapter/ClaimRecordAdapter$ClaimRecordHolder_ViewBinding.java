@@ -17,9 +17,9 @@ import java.lang.Override;
 public class ClaimRecordAdapter$ClaimRecordHolder_ViewBinding implements Unbinder {
   private ClaimRecordAdapter.ClaimRecordHolder target;
 
-  private View view2131297128;
+  private View view2131297129;
 
-  private View view2131297028;
+  private View view2131297029;
 
   @UiThread
   public ClaimRecordAdapter$ClaimRecordHolder_ViewBinding(final ClaimRecordAdapter.ClaimRecordHolder target,
@@ -40,7 +40,7 @@ public class ClaimRecordAdapter$ClaimRecordHolder_ViewBinding implements Unbinde
     target.updateLayout = Utils.findRequiredViewAsType(source, R.id.updateLayout, "field 'updateLayout'", LinearLayout.class);
     target.claimLayout = Utils.findRequiredViewAsType(source, R.id.claimLayout, "field 'claimLayout'", LinearLayout.class);
     view = Utils.findRequiredView(source, R.id.edit, "method 'editBtn'");
-    view2131297128 = view;
+    view2131297129 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -48,7 +48,7 @@ public class ClaimRecordAdapter$ClaimRecordHolder_ViewBinding implements Unbinde
       }
     });
     view = Utils.findRequiredView(source, R.id.delete, "method 'deleteBtn'");
-    view2131297028 = view;
+    view2131297029 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -77,9 +77,9 @@ public class ClaimRecordAdapter$ClaimRecordHolder_ViewBinding implements Unbinde
     target.updateLayout = null;
     target.claimLayout = null;
 
-    view2131297128.setOnClickListener(null);
-    view2131297128 = null;
-    view2131297028.setOnClickListener(null);
-    view2131297028 = null;
+    view2131297129.setOnClickListener(null);
+    view2131297129 = null;
+    view2131297029.setOnClickListener(null);
+    view2131297029 = null;
   }
 }

@@ -219,12 +219,13 @@ public class AlfaHomePage extends AppCompatActivity
         }*/
 
 
+        MenuModel menuModel = new MenuModel("Inward", true, true); //Menu of Java Tutorials
+        headerList.add(menuModel);
+
         MenuModel menuModel1 = new MenuModel("Location Transfer", true, false); //Menu of Java Tutorials
         headerList.add(menuModel1);
 
 
-        MenuModel menuModel = new MenuModel("Inward", true, true); //Menu of Java Tutorials
-        headerList.add(menuModel);
         List<MenuModel> childModelsList = new ArrayList<>();
 
         MenuModel childModel = new MenuModel("GRN Putaway-Manual", false, false);

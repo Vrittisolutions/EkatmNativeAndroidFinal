@@ -110,6 +110,8 @@ public class GPSMyOwnLocation extends AppCompatActivity {
         if(isInternetAvailable(getApplicationContext())){
             getRowFromDatabase();
         }
+
+
        /* if (getCount() > 0) {
 
             updateListfirst();

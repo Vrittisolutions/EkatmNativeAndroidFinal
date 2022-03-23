@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.devs:acr:1.0.1@aar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/transforms-2/files-2.1/2e2d8000350eef41e6b62da921f370ce/acr-1.0.1/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/transforms-2/files-2.1/2e2d8000350eef41e6b62da921f370ce/acr-1.0.1/res" />
+      <root url="file://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/transforms-2/files-2.1/2e2d8000350eef41e6b62da921f370ce/acr-1.0.1/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/modules-2/files-2.1/com.devs/acr/1.0.1/260ebde1499a162788214eb903da6da78b5a507b/acr-1.0.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/modules-2/files-2.1/com.devs/acr/1.0.1/bea36cee39cf99dd99674d7e1131c9baca43317f/acr-1.0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

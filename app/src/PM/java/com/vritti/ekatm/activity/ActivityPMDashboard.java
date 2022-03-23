@@ -28,9 +28,6 @@ public class ActivityPMDashboard extends AppCompatActivity
         setContentView(R.layout.pm_activity_pmdashboard);
 
 
-
-
-
     }
 
    public void setToolbar(){
@@ -55,6 +52,7 @@ public class ActivityPMDashboard extends AppCompatActivity
        navigationView.setNavigationItemSelectedListener(this);
 
    }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

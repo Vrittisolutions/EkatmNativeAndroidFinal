@@ -17,9 +17,9 @@ import java.lang.Override;
 public class BirthdayMainAdapter$BirthDayHoldaer_ViewBinding implements Unbinder {
   private BirthdayMainAdapter.BirthDayHoldaer target;
 
-  private View view2131297719;
+  private View view2131297720;
 
-  private View view2131297772;
+  private View view2131297773;
 
   @UiThread
   public BirthdayMainAdapter$BirthDayHoldaer_ViewBinding(final BirthdayMainAdapter.BirthDayHoldaer target,
@@ -31,7 +31,7 @@ public class BirthdayMainAdapter$BirthDayHoldaer_ViewBinding implements Unbinder
     target.tv_bod = Utils.findRequiredViewAsType(source, R.id.tv_bod, "field 'tv_bod'", TextView.class);
     view = Utils.findRequiredView(source, R.id.img_chat, "field 'img_chat' and method 'Chatmessage'");
     target.img_chat = Utils.castView(view, R.id.img_chat, "field 'img_chat'", ImageView.class);
-    view2131297719 = view;
+    view2131297720 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -40,7 +40,7 @@ public class BirthdayMainAdapter$BirthDayHoldaer_ViewBinding implements Unbinder
     });
     view = Utils.findRequiredView(source, R.id.img_message, "field 'img_message' and method 'sendmessage'");
     target.img_message = Utils.castView(view, R.id.img_message, "field 'img_message'", ImageView.class);
-    view2131297772 = view;
+    view2131297773 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -63,9 +63,9 @@ public class BirthdayMainAdapter$BirthDayHoldaer_ViewBinding implements Unbinder
     target.img_message = null;
     target.profileImag = null;
 
-    view2131297719.setOnClickListener(null);
-    view2131297719 = null;
-    view2131297772.setOnClickListener(null);
-    view2131297772 = null;
+    view2131297720.setOnClickListener(null);
+    view2131297720 = null;
+    view2131297773.setOnClickListener(null);
+    view2131297773 = null;
   }
 }

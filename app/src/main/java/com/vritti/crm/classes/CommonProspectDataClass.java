@@ -63,7 +63,6 @@ public class CommonProspectDataClass {
         UserMasterId = ut.getValue(parent, WebUrlClass.GET_USERMASTERID_KEY, settingKey);
         UserName = ut.getValue(parent, WebUrlClass.GET_USERNAME_KEY, settingKey);
         sql = db.getWritableDatabase();
-
     }
 
     public ArrayList<Country> getCountryData(){

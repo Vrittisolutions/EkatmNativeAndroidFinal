@@ -138,7 +138,8 @@ public class QCPackingOrderListActivity extends AppCompatActivity {
                     //      public string GetScanLocation(string LocationCode)
 
 
-                  *//*  if(PackOrderNo != null && !(PackOrderNo.equals(""))) {
+                  */
+        /*  if(PackOrderNo != null && !(PackOrderNo.equals(""))) {
 
 
                         if (isnet()) {
@@ -172,6 +173,7 @@ public class QCPackingOrderListActivity extends AppCompatActivity {
             }
         });
 */
+
         img_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

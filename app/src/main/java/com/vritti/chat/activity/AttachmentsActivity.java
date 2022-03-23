@@ -14,6 +14,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -109,7 +110,7 @@ public class AttachmentsActivity extends AppCompatActivity {
         StrictMode.setVmPolicy(builder.build());
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("  Attachments");
+        toolbar.setTitle("  Attachments ");
         toolbar.setTitleTextColor(Color.WHITE);
         toolbar.setLogo(R.drawable.vworkbench);
         setSupportActionBar(toolbar);
@@ -392,7 +393,12 @@ public class AttachmentsActivity extends AppCompatActivity {
                                 Toast.makeText(context, "File Already downloaded", Toast.LENGTH_SHORT).show();
 
                                 MimeTypeMap myMime = MimeTypeMap.getSingleton();
+                                //Intent newIntent = new Intent(Intent.ACTION_VIEW);
                                 Intent newIntent = new Intent(Intent.ACTION_VIEW);
+                                //newIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                                newIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+
+                                newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 String extension = MimeTypeMap.getFileExtensionFromUrl(Uri.fromFile(fileNew).toString());
                                 String mimeType = myMime.getMimeTypeFromExtension(fileNew.getAbsolutePath());
                                 String file = fileNew.getAbsolutePath();
@@ -401,16 +407,36 @@ public class AttachmentsActivity extends AppCompatActivity {
                                         file.contains("PNG") || file.contains("JPEG")) {
                                     Intent intent = new Intent();
                                     intent.setAction(Intent.ACTION_VIEW);
+                                    intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                     intent.setDataAndType(Uri.fromFile(fileNew), "image/*");
                                     startActivity(intent);
                                 } else {
+                                    Log.e("FILENAME --> "," --> "+fileNew);
+                                    //newIntent.setPackage("com.google.android.apps.docs");
                                     newIntent.setDataAndType(Uri.fromFile(fileNew), mimeType);
+                                    newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                     newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+
+                                    Log.e("FILENAME --> "," Package--> "+newIntent.getPackage());
+
+                                    Intent intent = Intent.createChooser(newIntent, "Open File");
+
                                     try {
+                                        startActivity(intent);
+                                    } catch (ActivityNotFoundException e) {
+                                        // Instruct the user to install a PDF reader here, or something
+                                        Toast.makeText(context, "Facing some issue to open this file!", Toast.LENGTH_LONG).show();
+                                    }
+
+                                    // urlGetMimeType(fileNew.getAbsolutePath());
+
+                                   /* try {
                                         context.startActivity(newIntent);
                                     } catch (ActivityNotFoundException e) {
                                         Toast.makeText(context, "No handler for this type of file.", Toast.LENGTH_LONG).show();
-                                    }
+                                    }*/
                                 }
 
                                /* MimeTypeMap myMime = MimeTypeMap.getSingleton();
@@ -588,7 +614,9 @@ public class AttachmentsActivity extends AppCompatActivity {
 
       //  Uri uri = FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID, new File(url));
         Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+
+        Log.e("FILETYPE --> "," --> "+url);
 
         if (url.toString().contains(".doc") || url.toString().contains(".docx")) {
             // Word document
@@ -631,7 +659,12 @@ public class AttachmentsActivity extends AppCompatActivity {
             intent.setDataAndType(uri, "*/*");
         }
 
+        Log.e("FILETYPE --> "," --> "+intent.getType());
+
+
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
         context.startActivity(intent);
 
     }
@@ -706,13 +739,18 @@ public class AttachmentsActivity extends AppCompatActivity {
                         public void run() {
                             pDialog.dismiss();
                             MimeTypeMap myMime = MimeTypeMap.getSingleton();
+
+                            //Intent newIntent = new Intent(Intent.ACTION_VIEW);
                             Intent newIntent = new Intent(Intent.ACTION_VIEW);
-                            newIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                            newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            newIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
                             String mimeType = myMime.getMimeTypeFromExtension(fileNew.getAbsolutePath());
                             String file=fileNew.getAbsolutePath();
                             if(file.contains("jpg")||file.contains("png")||file.contains("jpeg")||file.contains("JPG")||file.contains("PNG")||file.contains("JPEG")){
                                 Intent intent = new Intent();
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 intent.setAction(Intent.ACTION_VIEW);
+                                intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
                                 intent.setDataAndType(Uri.fromFile(fileNew), "image/*");
                                 startActivity(intent);
                             }else{
@@ -831,23 +869,40 @@ public class AttachmentsActivity extends AppCompatActivity {
                         handler.post(new Runnable() {
                             public void run() {
                                 MimeTypeMap myMime = MimeTypeMap.getSingleton();
+
+                                //Intent newIntent = new Intent(Intent.ACTION_VIEW);
                                 Intent newIntent = new Intent(Intent.ACTION_VIEW);
+                                newIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+                                newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 String mimeType = myMime.getMimeTypeFromExtension(fileNew.getAbsolutePath());
                                 String file=fileNew.getAbsolutePath();
                                 if(file.contains("jpg")||file.contains("png")||file.contains("jpeg")||file.contains("JPG")||file.contains("PNG")||file.contains("JPEG")){
                                     Intent intent = new Intent();
                                     intent.setAction(Intent.ACTION_VIEW);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
                                     intent.setDataAndType(Uri.fromFile(fileNew), "image/*");
+                                    //intent.setDataAndType(Uri.fromFile(fileNew), "*/*");
                                     startActivity(intent);
                                 }else{
                                     newIntent.setDataAndType(Uri.fromFile(fileNew), mimeType);
+                                    //urlGetMimeType(fileNew.getAbsolutePath());
                                     //newIntent.setDataAndType(Uri.fromFile(fileNew), "/*");
                                     newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                                    Intent intent = Intent.createChooser(newIntent, "Open File");
                                     try {
+                                        startActivity(intent);
+                                    } catch (ActivityNotFoundException e) {
+                                        // Instruct the user to install a PDF reader here, or something
+                                        Toast.makeText(context, "Facing some issue to open this file!", Toast.LENGTH_LONG).show();
+                                    }
+
+                                    /*try {
                                         context.startActivity(newIntent);
                                     } catch (ActivityNotFoundException e) {
                                         Toast.makeText(context, "No handler for this type of file.", Toast.LENGTH_LONG).show();
-                                    }
+                                    }*/
                                     //((NotificationActivity)context).sendResult(directory.getName());
                                 }
 

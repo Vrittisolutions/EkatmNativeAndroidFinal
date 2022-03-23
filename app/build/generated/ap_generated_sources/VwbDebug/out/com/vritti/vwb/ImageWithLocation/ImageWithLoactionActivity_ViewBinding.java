@@ -21,7 +21,7 @@ public class ImageWithLoactionActivity_ViewBinding implements Unbinder {
 
   private View view2131296952;
 
-  private View view2131299072;
+  private View view2131299073;
 
   @UiThread
   public ImageWithLoactionActivity_ViewBinding(ImageWithLoactionActivity target) {
@@ -49,7 +49,7 @@ public class ImageWithLoactionActivity_ViewBinding implements Unbinder {
     target.locationImage = Utils.findRequiredViewAsType(source, R.id.locationImage, "field 'locationImage'", SimpleDraweeView.class);
     view = Utils.findRequiredView(source, R.id.saveImage, "field 'saveImage' and method 'setScreeenShot'");
     target.saveImage = Utils.castView(view, R.id.saveImage, "field 'saveImage'", Button.class);
-    view2131299072 = view;
+    view2131299073 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -76,7 +76,7 @@ public class ImageWithLoactionActivity_ViewBinding implements Unbinder {
 
     view2131296952.setOnClickListener(null);
     view2131296952 = null;
-    view2131299072.setOnClickListener(null);
-    view2131299072 = null;
+    view2131299073.setOnClickListener(null);
+    view2131299073 = null;
   }
 }

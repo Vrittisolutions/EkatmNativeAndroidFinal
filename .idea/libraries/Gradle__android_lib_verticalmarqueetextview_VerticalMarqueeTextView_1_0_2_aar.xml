@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: android.lib.verticalmarqueetextview:VerticalMarqueeTextView:1.0.2@aar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/transforms-2/files-2.1/392719c808e9057b7962230c0d8192b8/VerticalMarqueeTextView-1.0.2/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/transforms-2/files-2.1/392719c808e9057b7962230c0d8192b8/VerticalMarqueeTextView-1.0.2/res" />
+      <root url="file://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/transforms-2/files-2.1/392719c808e9057b7962230c0d8192b8/VerticalMarqueeTextView-1.0.2/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/modules-2/files-2.1/android.lib.verticalmarqueetextview/VerticalMarqueeTextView/1.0.2/8f7952bc7cf786f99502aa0ae02a953a6bdcdae3/VerticalMarqueeTextView-1.0.2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/modules-2/files-2.1/android.lib.verticalmarqueetextview/VerticalMarqueeTextView/1.0.2/5c0dfe34d66438ee80313a92aad57f6875deaed5/VerticalMarqueeTextView-1.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

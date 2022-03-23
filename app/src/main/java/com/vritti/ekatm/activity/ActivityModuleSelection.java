@@ -370,7 +370,7 @@ public class ActivityModuleSelection extends AppCompatActivity implements Google
         img_wms = (ImageView) findViewById(R.id.img_wms);
         img_call = (ImageView) findViewById(R.id.img_call);
 
-       // BackgroundLocationTracking backgroundLocationTracking=new BackgroundLocationTracking(ActivityModuleSelection.this);
+       BackgroundLocationTracking backgroundLocationTracking=new BackgroundLocationTracking(ActivityModuleSelection.this);
 
 
         len_wms=findViewById(R.id.len_wms);
@@ -1228,7 +1228,7 @@ public class ActivityModuleSelection extends AppCompatActivity implements Google
     @Override
     protected void onResume() {
         super.onResume();
-       // BackgroundLocationTracking backgroundLocationTracking=new BackgroundLocationTracking(ActivityModuleSelection.this);
+       BackgroundLocationTracking backgroundLocationTracking=new BackgroundLocationTracking(ActivityModuleSelection.this);
 
         getLogindata();
         SharedPreferences sharedpreferences = getSharedPreferences(WebUrlClass.MyPREFERENCES, MODE_PRIVATE);
@@ -1729,8 +1729,7 @@ public class ActivityModuleSelection extends AppCompatActivity implements Google
                             tv_meeting_cnt.setText(String.valueOf(AB));*/
                             double Leave=jsonObject.getDouble("Leave");
                             double NotOnRoll=jsonObject.getDouble("NotOnRoll");
-
-        /*                    if (Present==0.00||Present==0){
+                            /*                    if (Present==0.00||Present==0){
                             }else {
                                 pieData.add(new SliceValue((float) Present, getResources().getColor(R.color.present)).setLabel(String.valueOf(Present)));
                             }
@@ -1954,7 +1953,7 @@ public class ActivityModuleSelection extends AppCompatActivity implements Google
 
                        // JSONObject jsonObject=new JSONObject(response);
 
-                        JSONArray jsonArray=new JSONArray(response);
+                         JSONArray jsonArray=new JSONArray(response);
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject object=jsonArray.getJSONObject(i);
                             String  IndividualAchievement=object.getString("IndividualAchievement");

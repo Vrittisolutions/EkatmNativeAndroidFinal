@@ -17,7 +17,7 @@ import java.lang.Override;
 public class ClaimRecordActivity_ViewBinding implements Unbinder {
   private ClaimRecordActivity target;
 
-  private View view2131299800;
+  private View view2131299801;
 
   @UiThread
   public ClaimRecordActivity_ViewBinding(ClaimRecordActivity target) {
@@ -33,7 +33,7 @@ public class ClaimRecordActivity_ViewBinding implements Unbinder {
     target.mRecycler = Utils.findRequiredViewAsType(source, R.id.recycleView, "field 'mRecycler'", RecyclerView.class);
     target.mProgress = Utils.findRequiredViewAsType(source, R.id.toolbar_progress_App_bar, "field 'mProgress'", ProgressBar.class);
     view = Utils.findRequiredView(source, R.id.txt_add_claim, "method 'claimAdd'");
-    view2131299800 = view;
+    view2131299801 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -53,7 +53,7 @@ public class ClaimRecordActivity_ViewBinding implements Unbinder {
     target.mRecycler = null;
     target.mProgress = null;
 
-    view2131299800.setOnClickListener(null);
-    view2131299800 = null;
+    view2131299801.setOnClickListener(null);
+    view2131299801 = null;
   }
 }

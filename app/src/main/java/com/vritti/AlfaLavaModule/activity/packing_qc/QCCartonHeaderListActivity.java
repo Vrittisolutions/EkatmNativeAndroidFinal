@@ -236,13 +236,13 @@ public class QCCartonHeaderListActivity extends AppCompatActivity {
 
 
                 Toast toast = Toast.makeText(QCCartonHeaderListActivity.this, "Carton not found in " +PackOrderNo, Toast.LENGTH_LONG);
-                View toastView = toast.getView();
+                /*View toastView = toast.getView();
                 TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
                 toastMessage.setTextSize(18);
                 toastMessage.setTextColor(Color.RED);
                 toastMessage.setGravity(Gravity.CENTER);
                 toastView.setBackgroundColor(Color.WHITE);
-                toast.show();
+                toast.show();*/
                 progress.setVisibility(View.GONE);
 
                 final MediaPlayer mp = MediaPlayer.create(QCCartonHeaderListActivity.this, R.raw.alert);

@@ -257,11 +257,12 @@ public class ProspectFilterActivity extends AppCompatActivity {
 
         SharedPreferences userpreferences = getSharedPreferences(WebUrlClass.Sharedpreference_Prospect, Context.MODE_PRIVATE);
         String data = userpreferences.getString(WebUrlClass.Key_indivisual, "");
-        if (data.equalsIgnoreCase("")) {
+
+        /*if (data.equalsIgnoreCase("")) {
             new StartSession(ProspectFilterActivity.this, new CallbackInterface() {
                 @Override
                 public void callMethod() {
-                    new DownloadProspectID().execute();
+                    //new DownloadProspectID().execute();
                 }
 
                 @Override
@@ -269,28 +270,30 @@ public class ProspectFilterActivity extends AppCompatActivity {
 
                 }
             });
-        }
+        }*/
 
-      /*  if (cf.getCountrycount() > 0) {
+      if (cf.getCountrycount() > 0) {
             AllMethodCall();
-        } else {*/
-
-        if (isnet()) {
-            new StartSession(ProspectFilterActivity.this, new CallbackInterface() {
-                @Override
-                public void callMethod() {
-                    new DownloadAllDropDown().execute();
-                }
-
-                @Override
-                public void callfailMethod(String msg) {
-
-                }
-            });
-
         } else {
-            Toast.makeText(ProspectFilterActivity.this, "No internet connection", Toast.LENGTH_SHORT).show();
-        }
+
+          if (isnet()) {
+              new StartSession(ProspectFilterActivity.this, new CallbackInterface() {
+                  @Override
+                  public void callMethod() {
+                      new DownloadAllDropDown().execute();
+                  }
+
+                  @Override
+                  public void callfailMethod(String msg) {
+
+                  }
+              });
+
+
+          } else {
+              Toast.makeText(ProspectFilterActivity.this, "No internet connection", Toast.LENGTH_SHORT).show();
+          }
+      }
         //}
 
         if (cf.getSalesFamilyProuctcount() > 0) {
@@ -311,7 +314,6 @@ public class ProspectFilterActivity extends AppCompatActivity {
             }
         }
 
-
       /*  if (cf.check_City() > 0) {
             setautocomplete_city();
         } else {
@@ -330,7 +332,6 @@ public class ProspectFilterActivity extends AppCompatActivity {
 
             }
         }*/
-
 
         if (cf.getAddbycount() > 0) {
             getAddedby();
@@ -3364,7 +3365,10 @@ public class ProspectFilterActivity extends AppCompatActivity {
                 try {
                     JSONObject obj = new JSONObject(response);
                     // JSONObject objLocation = obj.getJSONObject("location");
+                    Log.e("RESPONSE"," CRM --> "+obj);
                     JSONArray jResults = obj.getJSONArray(obj.toString());
+                    Log.e("RESPONSE"," CRM  jResults--> "+jResults);
+
                     JSONObject obj0 = jResults.getJSONObject(0);//Enterprise ProspectSelectionActivity
                     JSONObject obj1 = jResults.getJSONObject(1);//Small Business
                     JSONObject obj2 = jResults.getJSONObject(2);//Individual ProspectSelectionActivity
@@ -3920,6 +3924,8 @@ public class ProspectFilterActivity extends AppCompatActivity {
 
                     JSONArray counrtyJSONArray = jsonObjectMain.getJSONArray("Country");
 
+                    Log.e("ADDEDDATE--> "," counrtyJSONArray--> "+counrtyJSONArray);
+
                     sql.delete(db.TABLE_COUNTRY, null,
                             null);
                     Cursor countryC = sql.rawQuery("SELECT * FROM " + db.TABLE_COUNTRY, null);
@@ -3934,7 +3940,14 @@ public class ProspectFilterActivity extends AppCompatActivity {
                                 String jsonAddeddt = jorder.getString("AddedDt");
                                 String jsonModifiedDt = jorder.getString("ModifiedDt");
                                 if (columnNameCountry.equalsIgnoreCase("AddedDt")) {
-                                    jsonAddeddt = jsonAddeddt.substring(jsonAddeddt.indexOf("(") + 1, jsonAddeddt.lastIndexOf(")"));
+                                    Log.e("ADDEDDATE--> "," --> "+jsonAddeddt);
+                                    //if(jsonAddeddt.contains("(")){
+                                        jsonAddeddt = jsonAddeddt.substring(jsonAddeddt.indexOf("(") + 1, jsonAddeddt.lastIndexOf(")"));
+                                //    }
+                                /*else{
+                                        jsonAddeddt = jsonAddeddt.substring(jsonAddeddt.indexOf("(") + 1, jsonAddeddt.lastIndexOf(")"));
+                                    }*/
+
                                     long DOB_date = Long.parseLong(jsonAddeddt);
                                     DOBDate = new Date(DOB_date);
                                     jsonAddeddt = sdf.format(DOBDate);
@@ -4197,7 +4210,6 @@ public class ProspectFilterActivity extends AppCompatActivity {
 
     private void AllMethodCall() {
         getCountry();
-
     }
 
     private void getCountry() {

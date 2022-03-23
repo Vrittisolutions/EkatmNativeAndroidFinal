@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.cachapa:ExpandableLayout:2.9.2@aar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/transforms-2/files-2.1/48b441cf80963e8da97572cabf581149/ExpandableLayout-2.9.2/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/transforms-2/files-2.1/48b441cf80963e8da97572cabf581149/ExpandableLayout-2.9.2/res" />
+      <root url="file://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/transforms-2/files-2.1/48b441cf80963e8da97572cabf581149/ExpandableLayout-2.9.2/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/modules-2/files-2.1/com.github.cachapa/ExpandableLayout/2.9.2/45fb818f360d50fa98d7f7fc790a0a04742a01a6/ExpandableLayout-2.9.2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/modules-2/files-2.1/com.github.cachapa/ExpandableLayout/2.9.2/70a8549da8486dbfb25da75f1a5b7e515fc4c2f4/ExpandableLayout-2.9.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

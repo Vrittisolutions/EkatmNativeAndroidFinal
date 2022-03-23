@@ -276,12 +276,16 @@ public class CountryListActivity extends AppCompatActivity {
         String dispVal = "";
 
         String qry = "Select "+ColId+" as Id,"+ColDisp+" as Dispname from "+TABLE_NAME+" "+WhereClause_params;
+        Log.e("Query -22-> "," --> "+qry);
         Cursor c = sql.rawQuery(qry,null);
         if(c.getCount()>0){
             c.moveToFirst();
             do{
                 id = c.getString(0);
                 dispVal = c.getString(1);
+
+                Log.e("Query -11-> "," dispVal --> "+dispVal);
+
 
                 listDataArrayList.add(new ListData(dispVal,id));
 

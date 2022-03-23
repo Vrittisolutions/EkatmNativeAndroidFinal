@@ -1,6 +1,10 @@
 package com.vritti.databaselib.other;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.preference.Preference;
+import android.preference.PreferenceManager;
 import android.provider.SyncStateContract;
 
 /**
@@ -12,7 +16,12 @@ public class WebUrlClass {
     /*  ----------------------------  static strings common  ----------------------------------------- */
 
            public static final String APP_URL_PM = "https://app.simplifypractice.com";  // Production
-         // public static final String APP_URL_PM = "http://vritti1.simplifypractice.com"; // Testing
+           public static final String APP_URL_PM_NEPAL = "https://nepal.simplifypractice.com";  // Production
+    //For Nepal PM
+
+    //public static final String APP_URL_PM = "https://nepal.simplifypractice.com";  // Production
+
+    // public static final String APP_URL_PM = "http://vritti1.simplifypractice.com"; // Testing
 
 
 
@@ -73,6 +82,8 @@ public class WebUrlClass {
 
 
     public static final String MyPREFERENCES = "LoggingPrefs";// login preference
+    public static final String SELECTED_COUNTRY = "SELECTED_COUNTRY";// login preference
+    public static final String SELECTED_COUNTRY_NAME = "SELECTED_COUNTRY_NAME";// login preference
     public static final String MyPREFERENCES_URL_KEY = "Url";
     public static final String MyPREFERENCES_EnvMasterID_KEY = "EnvMasterID";
     public static final String MyPREFERENCES_PlantID_KEY = "Plantidkey";
@@ -222,6 +233,7 @@ public class WebUrlClass {
     public static final String api_get_Prospect_validations = "/api/ProspectSettingAPI/getDatabyId";
     public static final String api_get_Referencetype = "/api/SuspectMasterAPI/GetFillLead";
     public static final String api_get_Reference = "/api/SuspectMasterAPI/GetFillLeadwiseCustomer";
+    public static final String api_getCustomerListUserBy = "/api/SuspectMasterAPI/GetCustomerListUserBy";//?Usermasterid=46df9824-a95f-4a9c-8d4f-c1b320e6c918
     public static final String api_Post_Prospect = "/api/SuspectMasterAPI/POST";
 
     public static final String api_Post_Enquiry = "/api/SuspectMasterAPI/PostEnquiry";

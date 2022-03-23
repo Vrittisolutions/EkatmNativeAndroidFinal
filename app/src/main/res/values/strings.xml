@@ -686,79 +686,79 @@
     <string name="notransit">No transit packages found.</string>
 
     <!--==========================================================================================-->
-        <string name="name_hindi">नाम</string>
-<!--
+    <string name="name_hindi">नाम</string>
+    <!--
         <string name="mobno_hindi">मोबाइल नंबर</string>
 -->
-        <string name="mobno_hindi">मोबाइल</string>
-        <string name="gender_hindi">लिंग</string>
-        <string name="age_hindi">उम्र</string>
-        <string name="age_address">पता</string>
-        <string name="btn_forward">आगे</string>
-        <string name="txt_greet">वोट देने के लिए धन्यवाद</string>
-        <string name="txt_male">पुरुष</string>
-        <string name="txt_female">महिला</string>
-        <string name="txt_other">अन्य</string>
-        <string name="submit">प्रस्तुत करना</string>
+    <string name="mobno_hindi">मोबाइल</string>
+    <string name="gender_hindi">लिंग</string>
+    <string name="age_hindi">उम्र</string>
+    <string name="age_address">पता</string>
+    <string name="btn_forward">आगे</string>
+    <string name="txt_greet">वोट देने के लिए धन्यवाद</string>
+    <string name="txt_male">पुरुष</string>
+    <string name="txt_female">महिला</string>
+    <string name="txt_other">अन्य</string>
+    <string name="submit">प्रस्तुत करना</string>
 
-        <!--<string name="address">""</string>-->
-        <string name="zip_code">Area:</string>
-        <string name="phone_number">Loc:</string>
-        <string name="company_name">Qty:</string>
-        <string name="produce_name">Weight:</string>
-        <string name="produce_number">""</string>
+    <!--<string name="address">""</string>-->
+    <string name="zip_code">Area:</string>
+    <string name="phone_number">Loc:</string>
+    <string name="company_name">Qty:</string>
+    <string name="produce_name">Weight:</string>
+    <string name="produce_number">""</string>
 
-         <string-array name="nav_item_activity_titles">
-            <item>Home</item>
-            <item>Inward</item>
-            <item>Production</item>
-            <item>Shipping</item>
-            <item>Logout</item>
-
-
-        </string-array>
-        <string name="openDrawer">open_drawer</string>
-        <string name="closeDrawer">close_drawer</string>
+    <string-array name="nav_item_activity_titles">
+        <item>Home</item>
+        <item>Inward</item>
+        <item>Production</item>
+        <item>Shipping</item>
+        <item>Logout</item>
 
 
-        <string-array name="array_packaging">
-            <item>Create secondary pack</item>
-            <item>Suspend secondary pack</item>
-            <item>Resume secondary pack</item>
-            <item>Finished secondary pack</item>
-            <item>Weighing secondary pack</item>
-            <item>Print packing list</item>
+    </string-array>
+    <string name="openDrawer">open_drawer</string>
+    <string name="closeDrawer">close_drawer</string>
 
-        </string-array>
 
-        <string-array name="array_do_no">
-            <item>4368534</item>
-            <item>INV/19-20/018</item>
-            <item>INV/19-20/021</item>
-            <item>INV/19-20/024</item>
-            <item>INV/19-20/025</item>
-            <item>INV/19-20/026</item>
+    <string-array name="array_packaging">
+        <item>Create secondary pack</item>
+        <item>Suspend secondary pack</item>
+        <item>Resume secondary pack</item>
+        <item>Finished secondary pack</item>
+        <item>Weighing secondary pack</item>
+        <item>Print packing list</item>
 
-        </string-array>
-        <string-array name="array_picking">
-            <item>Load DO</item>
-            <item>Split primary label</item>
+    </string-array>
 
-        </string-array>
+    <string-array name="array_do_no">
+        <item>4368534</item>
+        <item>INV/19-20/018</item>
+        <item>INV/19-20/021</item>
+        <item>INV/19-20/024</item>
+        <item>INV/19-20/025</item>
+        <item>INV/19-20/026</item>
 
-        <string-array name="array_do">
-            <item>Select Delivery Note</item>
-            <item>4368534</item>
-            <item>INV/19-20/018</item>
-            <item>INV/19-20/021</item>
+    </string-array>
+    <string-array name="array_picking">
+        <item>Load DO</item>
+        <item>Split primary label</item>
 
-        </string-array>
+    </string-array>
+
+    <string-array name="array_do">
+        <item>Select Delivery Note</item>
+        <item>4368534</item>
+        <item>INV/19-20/018</item>
+        <item>INV/19-20/021</item>
+
+    </string-array>
     <string-array name="Calltype">
 
-    <item>Select Option</item>
-    <item>Colleague</item>
-    <item>Spam</item>
-    <item>Personal</item>
+        <item>Select Option</item>
+        <item>Colleague</item>
+        <item>Spam</item>
+        <item>Personal</item>
     </string-array>
 
     <string-array name="business">

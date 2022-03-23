@@ -116,6 +116,7 @@ import com.vritti.vwb.classes.commonObjectProperties;
 /**
  * Created by 300151 on 9/30/2016.
  */
+
 public class ActivityMain extends AppCompatActivity {
     String PlantMasterId = "", LoginId = "", Password = "", CompanyURL = "", EnvMasterId = "",
             UserMasterId = "", UserName = "", MobileNo = "", Sourcetype = "", Designation = "", SourceId = "";
@@ -443,13 +444,13 @@ public class ActivityMain extends AppCompatActivity {
         new downloadworkspacecnt().execute();
 
         ChatMessageCount();
+
         /*int notiCount = AppCommon.getInstance(this).getNotificationCount();
         String Msgcount = String.valueOf(notiCount);
         if (notiCount != 0) {
             // tv_meeting_cnt.setVisibility(View.VISIBLE);
             startActivity(new Intent(this, OpenChatroomActivity.class));
         }*/
-
 
         if (cf.getWorkspacecount() > 0) {
             getMyWorkOnly();
@@ -466,7 +467,6 @@ public class ActivityMain extends AppCompatActivity {
                     }
 
                     @Override
-
                     public void callfailMethod(String msg) {
                         ut.displayToast(ActivityMain.this, msg);
                         hideProgresHud();
@@ -633,7 +633,7 @@ public class ActivityMain extends AppCompatActivity {
             }
         });
 
-        txt_title.setText("Work List");
+        txt_title.setText("Work List ");
 
         img_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -1029,7 +1029,9 @@ public class ActivityMain extends AppCompatActivity {
                 Activity_Unapprove=false;
                 if (tv_ticket.getText().toString().equals("0")) {
                     drawer_layout.closeDrawers();
+                    Log.e("TICKETACTIVITIES --> "," --> IF MethodNotCalled");
                 } else {
+                    Log.e("TICKETACTIVITIES --> "," --> Else MethodCalled");
                     getTicketActivity_Paging();
                     drawer_layout.closeDrawers();
                 }
@@ -1079,30 +1081,41 @@ public class ActivityMain extends AppCompatActivity {
         lay_overdue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Activity_AssignByMe=false;
                 Activity_Unapprove=false;
+
                 if (tv_overdue.getText().toString().equals("0")) {
                     drawer_layout.closeDrawers();
                 } else {
                     getOverdueActivity_Paging();
                     drawer_layout.closeDrawers();
                 }
+
             }
         });
         lay_today.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.e("TodayActivities"," --> Called 11");
                 Activity_AssignByMe=false;
                 Activity_Unapprove=false;
                 if (tv_today.getText().toString().equals("0")) {
+                    Log.e("TodayActivities"," --> Called 22");
                     drawer_layout.closeDrawers();
                 } else {
+                    Log.e("TodayActivities"," --> Called 33");
+
+                    rowStart = 0;
+                    rowEnd = 9;
+
                     // getTodayActivity();
                     getTodayActivity_Paging();
                     drawer_layout.closeDrawers();
                 }
             }
         });
+
         lay_assign_by_me.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -1115,6 +1128,7 @@ public class ActivityMain extends AppCompatActivity {
                 }
             }
         });
+
         lay_unapprove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -1123,15 +1137,14 @@ public class ActivityMain extends AppCompatActivity {
                     drawer_layout.closeDrawers();
                 } else {
                     getunapproveActicityData();
+                    Log.e("PendingApproval"," --> Else Called");
                     drawer_layout.closeDrawers();
 
                 }
             }
         });
 
-
         // edit Profile
-
         img_userpic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -1704,6 +1717,10 @@ public class ActivityMain extends AppCompatActivity {
         String query = "SELECT * FROM " + db.TABLE_ACTIVITYMASTER_PAGING + " WHERE PriorityIndex='1'";
         Cursor cur = sql.rawQuery(query, null);
 
+        Log.e("TICKETACTIVITIES --> "," --> Method "+query);
+
+        Log.e("TICKETACTIVITIES --> "," --> Method "+cur.getCount());
+
         if (cur.getCount() > 0) {
 
             cur.moveToFirst();
@@ -1805,6 +1822,9 @@ public class ActivityMain extends AppCompatActivity {
             filterTempList.clear();
             filterTempList.addAll(lsActivityList);
             activityType = "Ticket";
+
+            Log.e("TICKETACTIVITIES --> "," FROM_DB--> Method "+cur.getCount());
+
         } else {
             rowStart =0;
             rowEnd = 9;
@@ -1825,6 +1845,9 @@ public class ActivityMain extends AppCompatActivity {
             } else {
                 Toast.makeText(ActivityMain.this, "No Record Present", Toast.LENGTH_SHORT).show();
             }
+
+            Log.e("TICKETACTIVITIES --> "," FROM_API--> Method "+cur.getCount());
+
         }
     }
 
@@ -2166,6 +2189,7 @@ public class ActivityMain extends AppCompatActivity {
     }
 
     private void getOverdueActivity_Paging() {
+        Log.e("Overdue "," --> Called");
         lsActivityList.clear();
         String query = "SELECT * FROM " + db.TABLE_ACTIVITYMASTER_PAGING;
         Cursor cur = sql.rawQuery(query, null);
@@ -2286,10 +2310,14 @@ public class ActivityMain extends AppCompatActivity {
             } while (cur.moveToNext());
             /*activityListadapter = new ActivityListMainAdapter(ActivityMain.this, lsActivityList);
             lsactivity_list.setAdapter(activityListadapter);*/
+
             activityListadapterNew.notifyDataSetChanged();
             filterTempList.clear();
             filterTempList.addAll(lsActivityList);
             activityType = "Overdue";
+
+            Log.e("Overdue "," --> 123 Called");
+
         } else {
 
             if (ut.isNet(context)) {
@@ -2305,6 +2333,9 @@ public class ActivityMain extends AppCompatActivity {
                     }
                 });
             }
+
+            Log.e("Overdue "," --> 456 Called");
+
         }
     }
 
@@ -2312,27 +2343,55 @@ public class ActivityMain extends AppCompatActivity {
     private void getTodayActivity_Paging() {
 
         lsActivityList.clear();
-        String query = "SELECT * FROM " + db.TABLE_ACTIVITYMASTER_PAGING;
-        Cursor cur = sql.rawQuery(query, null);
+
         Date EndDate = null, Todaydate = null;
         String Enddate, todaydate;
+
+        Todaydate = new Date();
+
+        //String query = "SELECT * FROM " + db.TABLE_ACTIVITYMASTER_PAGING;
+//-Changes By Pravin Kunnure Because Existing Logic Is
+// Fails To Fetch "Today" Activities  -- Change Date --> Sun 6th March 2022
+
+        String query = "SELECT * FROM " + db.TABLE_ACTIVITYMASTER_PAGING+" WHERE EndDate = "+"\"" + Todaydate + "\"";
+
+        Log.e("FETCHTODAYS_ACTIVITY "," query--> "+query);
+        Cursor cur = sql.rawQuery(query, null);
+
+        Log.e("FETCHTODAYS_ACTIVITY "," curCount--> "+cur.getCount());
+
+
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+
         if (cur.getCount() > 0) {
+
             cur.moveToFirst();
             do {
                 String jsonEDate = cur.getString(cur.getColumnIndex("EndDate"));
                 jsonEDate = jsonEDate.substring(jsonEDate.indexOf("(") + 1, jsonEDate.lastIndexOf(")"));
                 long Etime = Long.parseLong(jsonEDate);
                 EndDate = new Date(Etime);
+
                 Todaydate = new Date();
                 todaydate = sdf.format(Todaydate);
+
                 Enddate = sdf.format(EndDate);
                 try {
                     EndDate = sdf.parse(Enddate);
                     Todaydate = sdf.parse(todaydate);
+
+                    Log.e("TodayActivities"," 1 --> Called EndDate --> "+EndDate);
+
+                    Log.e("TodayActivities"," 2 --> Called Todaydate --> "+Todaydate);
+
                 } catch (Exception e) {
+                    Log.e("TodayActivities"," --> Called Exception"+e);
                     e.printStackTrace();
                 }
+
+                Log.e("TodayActivities"," --> Called EndDate"+EndDate);
+                Log.e("TodayActivities"," --> Called Todaydate"+Todaydate);
+
 
                 if (EndDate.equals(Todaydate)) {
                     ActivityBean bean = new ActivityBean();
@@ -2431,6 +2490,10 @@ public class ActivityMain extends AppCompatActivity {
             filterTempList.clear();
             filterTempList.addAll(lsActivityList);
             activityType = "Today";
+
+            Log.e("TodayActivities"," --> Called 44");
+            Log.e("TodayActivities"," --> Called 44 "+lsActivityList);
+
         } else {
 
 
@@ -2447,6 +2510,9 @@ public class ActivityMain extends AppCompatActivity {
                     }
                 });
             }
+
+            Log.e("TodayActivities"," --> Called 55");
+
         }
 
     }
@@ -2894,8 +2960,11 @@ public class ActivityMain extends AppCompatActivity {
     }
 
     private void getMyWork() {
+
         String query = "SELECT * FROM " + db.TABLE_MYWORK;
+
         Cursor cur = sql.rawQuery(query, null);
+
         if (cur.getCount() > 0) {
             cur.moveToFirst();
             tv_critical.setText(cur.getString(cur.getColumnIndex("Critical")));
@@ -2942,6 +3011,7 @@ public class ActivityMain extends AppCompatActivity {
                     lay_ticket.setVisibility(View.VISIBLE);
                 }
             }
+
             tv_today.setText(cur.getString(cur.getColumnIndex("Today")));
             String today = cur.getString(cur.getColumnIndex("Today"));
             if (today.equalsIgnoreCase("0")) {
@@ -2954,7 +3024,9 @@ public class ActivityMain extends AppCompatActivity {
             tv_workcnt.setText(cur.getString(cur.getColumnIndex("TotalCount")));
 
             tv_assign_by_me.setText(cur.getString(cur.getColumnIndex("AssByCount")));
+
             String a1 = cur.getString(cur.getColumnIndex("AssByCount"));
+
             if (Constants.type == Constants.Type.Sahara) {
                 lay_assign_by_me.setVisibility(View.VISIBLE);
             } else {
@@ -2964,6 +3036,7 @@ public class ActivityMain extends AppCompatActivity {
                     lay_assign_by_me.setVisibility(View.VISIBLE);
                 }
             }
+
             tv_unapprove.setText(cur.getString(cur.getColumnIndex("UnApproved")));
             String a2 = cur.getString(cur.getColumnIndex("UnApproved"));
 
@@ -2976,10 +3049,10 @@ public class ActivityMain extends AppCompatActivity {
                     lay_unapprove.setVisibility(View.VISIBLE);
                 }
             }
-
-
         }
+
         UpdateBirthdayList();
+
     }
 
     private void getMyWorkOnly() {
@@ -3083,6 +3156,8 @@ public class ActivityMain extends AppCompatActivity {
     }
 
     public void getunapproveActicityData() {
+        Log.e("PendingApproval"," --> In Method");
+
         Activity_Unapprove = true;
         Activity_AssignByMe = false;
         commonObj = new commonObjectProperties();
@@ -3093,8 +3168,11 @@ public class ActivityMain extends AppCompatActivity {
             jsonObj.put("IsSet", true);
             jsonObj.put("value1", UserMasterId);
 
+            Log.e("PendingApproval"," --> 1st Try");
+
         } catch (Exception e) {
             e.printStackTrace();
+            Log.e("PendingApproval"," --> 1st Catch "+e);
         }
         try {
             jsonObj = jsoncommonObj.getJSONObject("Status");
@@ -3113,14 +3191,18 @@ public class ActivityMain extends AppCompatActivity {
             jsonObj = jsoncommonObj.getJSONObject("ParentActId");
             jsonObj.put("IsSet", true);
 
+            Log.e("PendingApproval"," --> 2nd Try ");
 
         } catch (Exception e) {
             e.printStackTrace();
+            Log.e("PendingApproval"," --> 2nd Catch "+e);
             //dismissProgressDialog();
         }
 
         FinalObj = jsoncommonObj.toString();
         FinalObj = FinalObj.replaceAll("\\\\", "");
+
+        Log.e("PendingApproval"," --> FinalObj "+FinalObj);
 
         new DownloadCommanDataURLJSON().execute();
     }
@@ -4298,6 +4380,8 @@ public class ActivityMain extends AppCompatActivity {
 
                 ContentValues values = new ContentValues();
                 JSONArray jResults = new JSONArray(response);
+                Log.e("PendingApproval"," --> APICallTryjResults "+jResults);
+
                 String msg = "";
                 sql.delete(db.TABLE_ACTIVITYMASTER, null,
                         null);
@@ -4320,8 +4404,12 @@ public class ActivityMain extends AppCompatActivity {
                     long a = sql.insert(db.TABLE_ACTIVITYMASTER, null, values);
                     Log.e("", "" + a);
                 }
+                Log.e("PendingApproval"," --> APICallTry ");
+
             } catch (Exception e) {
                 e.printStackTrace();
+                Log.e("PendingApproval"," --> APICallCatch "+e);
+
                 response = WebUrlClass.Errormsg;
             }
             return response;
@@ -4601,8 +4689,6 @@ public class ActivityMain extends AppCompatActivity {
             rowEnd = Integer.parseInt(params[3]);*/
 
 
-
-
             if (rowStart == 0) {
                 sql.delete(db.TABLE_ACTIVITYMASTER_PAGING, null, null);
             } else {
@@ -4642,9 +4728,12 @@ public class ActivityMain extends AppCompatActivity {
                 jResults = new JSONArray(Msgcontent);
 
                 Cursor c = sql.rawQuery("SELECT * FROM " + db.TABLE_ACTIVITYMASTER_PAGING, null);
+
                 int count = c.getCount();
                 String columnName, columnValue;
+
                 for (int i = 0; i < jResults.length(); i++) {
+
                     JSONObject jorder = jResults.getJSONObject(i);
                     for (int j = 0; j < c.getColumnCount(); j++) {
                         columnName = c.getColumnName(j);
@@ -4657,8 +4746,10 @@ public class ActivityMain extends AppCompatActivity {
                     }
 
                     long a = sql.insert(db.TABLE_ACTIVITYMASTER_PAGING, null, values);
-                    Log.i("Activity List", "" + a);
+                    Log.i("Activity List Inserted", "" + a);
+
                 }
+
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -4685,7 +4776,6 @@ public class ActivityMain extends AppCompatActivity {
                                 drawer_layout.closeDrawers();
                             }
 
-
                         } else {
                             if (activityType.equalsIgnoreCase("critical")) {
                                 getCriticalActivity_Paging();
@@ -4697,11 +4787,18 @@ public class ActivityMain extends AppCompatActivity {
                             }else if(activity_Type.equalsIgnoreCase("Critical")) {
                                 getCriticalActivity_Paging();
                             }else if(activity_Type.equalsIgnoreCase("Overdue")) {
+                                Log.e("Overdue "," --> 77 Called");
+
                                 getOverdueActivity_Paging();
+
+                                Log.e("Overdue "," --> 98 Called");
+
                             }
                             else {
                                 // test(jResults);
                                 updateList_Paging();
+                                Log.e("Overdue "," --> 55 Called");
+
                             }
 
                         }
@@ -4717,6 +4814,8 @@ public class ActivityMain extends AppCompatActivity {
                     ut.displayToast(ActivityMain.this, "Could Not Connect to server");
                 }
             }
+
+            Log.e("Overdue "," --> 33 Called");
 
             /*if (FlagiSRefresh) {
                 showProgresHud();

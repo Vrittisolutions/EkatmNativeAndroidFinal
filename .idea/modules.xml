@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/EkatmNativeAndroidFinal.iml" filepath="$PROJECT_DIR$/.idea/EkatmNativeAndroidFinal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/EkatmNativeAndroidFinal.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/EkatmNativeAndroidFinal.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/chatlib/EkatmNativeAndroidFinal.chatlib.iml" filepath="$PROJECT_DIR$/.idea/modules/chatlib/EkatmNativeAndroidFinal.chatlib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/crmlib/EkatmNativeAndroidFinal.crmlib.iml" filepath="$PROJECT_DIR$/.idea/modules/crmlib/EkatmNativeAndroidFinal.crmlib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/databaselib/EkatmNativeAndroidFinal.databaselib.iml" filepath="$PROJECT_DIR$/.idea/modules/databaselib/EkatmNativeAndroidFinal.databaselib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sessionlib/EkatmNativeAndroidFinal.sessionlib.iml" filepath="$PROJECT_DIR$/.idea/modules/sessionlib/EkatmNativeAndroidFinal.sessionlib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/vwblib/EkatmNativeAndroidFinal.vwblib.iml" filepath="$PROJECT_DIR$/.idea/modules/vwblib/EkatmNativeAndroidFinal.vwblib.iml" />
+    </modules>
+  </component>
+</project>

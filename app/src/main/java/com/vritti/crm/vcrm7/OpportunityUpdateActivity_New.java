@@ -141,6 +141,7 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
             spinner_demo, spinner_whowillvisit, spinner_ReassigntoBOE, spinner_processed, spinner_Natureofcall, spinner_Initiatedby,
             spinner_With_Towhom, spinner_Reason, spinner_time,spinner_Followupreason, spinner_Outcome, spinner_SEName, spinner_Approver, spinner_Nextaction,
             spinner_AssigntoBOE_SE, spinner_PresaleSE, spinner_Mode, spinner_Callagain, spinner_dochandover;
+
     Button btngetordertype, buttonminusca, buttonplusca, buttonminusta, buttonplusta, buttonminusda,
             buttonplusda, buttonplusnw, buttonminusnw, buttonpluspta, buttonminuspta, buttonpluspbt,
             buttonminuspbt, buttonSave_opportunity, buttonClose_opportunity, buttonminuspb, buttonpluspb,
@@ -4548,9 +4549,9 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
             //  edt_inwarddate.setError("Fill Inward date");
             Toast.makeText(context, "Select When do you call", Toast.LENGTH_LONG).show();
             return false;
-        } else if ((editTextReason.getText().toString().equalsIgnoreCase("") ||
-                editTextReason.getText().toString().equalsIgnoreCase(" ") ||
-                editTextReason.getText().toString().equalsIgnoreCase(null))) {
+        } else if ((reasonid.equalsIgnoreCase("") ||
+                reasonid.equalsIgnoreCase(" ") ||
+                reasonid.equalsIgnoreCase(null))) {
             //  edt_inwarddate.setError("Fill Inward date");
             Toast.makeText(context, "Enter Reason", Toast.LENGTH_LONG).show();
             return false;
@@ -4777,6 +4778,7 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                                 date = dayOfMonth + "/"
                                         + String.format("%02d", (monthOfYear + 1))
                                         + "/" + year;
+
 
 
                                 txt3dateshow.setText(date);
@@ -5154,6 +5156,28 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
         img_add_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                /*if (selected_outcome_code.equalsIgnoreCase("PRMS")){
+                    try {
+                        String whenToCallString = formateDateFromstring("dd/MM/yyyy", "yyyy-MM-dd", editTextWhendoyoucall.getText().toString().trim());
+                        String nextActionString = formateDateFromstring("dd/MM/yyyy", "yyyy-MM-dd", txt3dateshow.getText().toString().trim());
+
+
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                        Date whenToCallDate = sdf.parse(whenToCallString);
+                        Date nextActionDate = sdf.parse(nextActionString);
+
+                        if(nextActionDate.after(whenToCallDate)){
+                            Toast.makeText(OpportunityUpdateActivity_New.this,
+                                    "The next action date is greater than current promise date. Please change promise date first.",
+                                    Toast.LENGTH_LONG).show();
+                        }
+
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+
+                }*/
 
                     try {
                         duration = calculate_time_diff(edtfrom.getText().toString(), edtto.getText().toString());
@@ -8052,137 +8076,157 @@ public class OpportunityUpdateActivity_New extends AppCompatActivity {
                             Log.d("crm_dialog_action", "json" + finaljson);
 
                         } else if (selected_outcome_code.equalsIgnoreCase("PRMS")) {
-                            if (validate_pdc() == true) {
-                                //Call Again
-                                jsonObject.put("CallReason", "");
-                                //Appointment
-                                jsonObject.put("AssignToSEId", "");
-                                jsonObject.put("AssignToSEName", "");
-                                //Transfer to BOE
-                                jsonObject.put("ReAssignToTMEId", "");
-                                jsonObject.put("ReAssignToTMEName", "");
-                                jsonObject.put("CallReasonTTB", "");
-                                jsonObject.put("CallReasonTTBName", "");
-                                //Order Received
-                                jsonObject.put("OR_OrderReceivedById", "");
-                                jsonObject.put("OR_OrderReceivedByName", "");
-                                jsonObject.put("OR_OrderReceivedDate", "");
-                                jsonObject.put("OR_OrderPONo", "");
-                                jsonObject.put("OR_OrderPOValue", "");
-                                jsonObject.put("OR_OrderContractReview", "");
-                                jsonObject.put("OR_OrderType", "");
-                                //Order Lost
-                                jsonObject.put("OL_OrderLostReasonId", "");
-                                jsonObject.put("OL_OrderLostReasonName", "");
-                                jsonObject.put("OL_OrderLostApproverId", "");
-                                jsonObject.put("OL_OrderLostApproverName", "");
-                                jsonObject.put("OL_OrderLostDetails", "");
-                                jsonObject.put("OL_OrderLostCallCustAgain", "");
-                                jsonObject.put("OL_OrderLostWhenUCall", "");
-                                jsonObject.put("OL_OrderLostOLNotes", "");
-                                //Visit
-                                jsonObject.put("SV_VisitById", "");
-                                jsonObject.put("SV_VisitByName", "");
-                                jsonObject.put("SV_VisitDate", "");
-                                //Reschedule
-                                jsonObject.put("Res_RescheduleReasonId", "");
-                                jsonObject.put("Res_RescheduleReasonName", "");
-                                //Transfer to SE
-                                jsonObject.put("RTS_TransferSEId", "");
-                                jsonObject.put("RTS_TransferSEName", "");
-                                jsonObject.put("RTS_TransferReasonId", "");
-                                jsonObject.put("RTS_TransferReasonName", "");
-                                //Call Close Without Order
-                                jsonObject.put("CC_CallCloseReasonId", "");
-                                jsonObject.put("CC_CallCloseReasonName", "");
-                                jsonObject.put("CC_CallCloseApproverId", "");
-                                jsonObject.put("CC_CallCloseApproverName", "");
-                                jsonObject.put("CC_CallCloseDetails", "");
-                                jsonObject.put("CC_CallCloseCallCustAgain", "");
-                                jsonObject.put("CC_CallCloseWhenUCall", "");
-                                jsonObject.put("CC_CallCloseNotes", "");
-                                //Disput
-                                jsonObject.put("Disp_Reason", "");
-                                //COLLCT
-                                jsonObject.put("Collect_Mode", "");
-                                jsonObject.put("Collect_InstrNo", "");
-                                jsonObject.put("Collect_InstrDate", "");
-                                jsonObject.put("Collect_BankName", "");
-                                jsonObject.put("Collect_BranchName", "");
-                                jsonObject.put("Collect_ChqAmount", "");
-                                jsonObject.put("Collect_TDSAmount", "");
-                                jsonObject.put("Collect_DiffAmount", "");
-                                jsonObject.put("Collect_Reason", "");
-                                //WI / WCF
-                                jsonObject.put("WIWCF_Details", "");
-                                //Customer Profile Update (CPU)
-                                jsonObject.put("CPU_txtEBITDA", "");
-                                jsonObject.put("CPU_txtPAT", "");
-                                jsonObject.put("CPU_txtNetworth", "");
-                                jsonObject.put("CPU_txtBorrowings", "");
-                                jsonObject.put("CPU_txtRatings", "");
-                                jsonObject.put("CPU_ddlCurrency", "");
-                                jsonObject.put("CPU_txtMComments", "");
-                                jsonObject.put("CPU_ddlCurrencyVal", "");
-                                //Insurance Update (IU)
-                                jsonObject.put("IU_txtInsuBank", "");
-                                jsonObject.put("IU_txtInsCos", "");
-                                jsonObject.put("IU_txtPreRec", "");
-                                jsonObject.put("IU_txtPartIns", "");
-                                //Demo Reschedule (DRes)
-                                jsonObject.put("DRes_DemoResReasonId", "");
-                                jsonObject.put("DRes_DemoResReasonName", "");
-                                jsonObject.put("DRes_DemoGivenById", "");
-                                jsonObject.put("DRes_DemoGivenByName", "");
-                                jsonObject.put("DRes_DemoDate", "");
-                                jsonObject.put("DRes_DemoTime", "");
+                            try {
+                                String whenToCallString = formateDateFromstring("dd/MM/yyyy", "yyyy-MM-dd", editTextWhendoyoucall.getText().toString().trim());
+                                String nextActionString = formateDateFromstring("dd/MM/yyyy", "yyyy-MM-dd", txt3dateshow.getText().toString().trim());
 
-                                //Demo Request
-                                jsonObject.put("DReq_DemoGivenById", "");
-                                jsonObject.put("DReq_DemoTime", "");
-                                jsonObject.put("DReq_DemoDate", "");
-                                //Demo Complete(DC)
-                                jsonObject.put("DC_chkdemocomplete", "");
-                                //Demo Cancelled (DCans)
-                                jsonObject.put("DCans_ReasonId", "");
-                                jsonObject.put("DCans_ReasonName", "");
-                                //Customer will Call (CustCall)
-                                jsonObject.put("CustCall_ReasonId", "");
-                                jsonObject.put("CustCall_ReasonName", "");
-                                //Order Regret (Oreg)
-                                jsonObject.put("OReg_OrderRegretReasonId", "");
-                                jsonObject.put("OReg_OrderRegretReasonName", "");
-                                jsonObject.put("OReg_OrderRegretApproverId", "");
-                                jsonObject.put("OReg_OrderRegretApproverName", "");
-                                jsonObject.put("OReg_OrderRegretDetails", "");
-                                jsonObject.put("OReg_OrderRegretCallCustAgain", "");
-                                jsonObject.put("OReg_OrderRegretWhenUCall", "");
-                                jsonObject.put("OReg_OrderRegretOLNotes", "");
-                                //Presales Support (PS)
-                                jsonObject.put("PS_PresaleSEId", "");
-                                jsonObject.put("PS_PresaleSEName", "");
-                                jsonObject.put("PS_PresaleDetails", "");
-                                jsonObject.put("PS_PresaleDueDate", "");
-                                // Quotation Submitted(QS)
-                                jsonObject.put("QS_QuotationNo", "");
-                                jsonObject.put("QS_CustBudgetSanct", "");
-                                jsonObject.put("QS_CustBudget", "");
-                                jsonObject.put("QS_QuotationValue", "");
-                                jsonObject.put("QS_QuotDoc", "");
-                                //Promise Date Change (PRMS)
-                                jsonObject.put("PRMS_NextDate", editTextWhendoyoucall.getText().toString());
-                           //     jsonObject.put("PRMS_Reason", editTextReason.getText().toString());
-                                jsonObject.put("PRMS_Reason", reasonid);
 
-                                finaljson = jsonObject.toString();
-                                finaljson = finaljson.replaceAll("\\\\", "");
-                                finaljson = finaljson.replaceAll(" ", " ");
-                                finaljson = finaljson.replaceAll("=", " ");
-                                UpdateOpportunity(finaljson);
-                                Log.d("crm_dialog_action", "json" + finaljson);
+                                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                                Date whenToCallDate = sdf.parse(whenToCallString);
+                                Date nextActionDate = sdf.parse(nextActionString);
 
-                            } else {
+                                if(nextActionDate.after(whenToCallDate)){
+                                    Toast.makeText(OpportunityUpdateActivity_New.this,
+                                            "The next action date is greater than current promise date. Please change promise date first.",
+                                            Toast.LENGTH_LONG).show();
+                                }else {
 
+
+                                    if (validate_pdc() == true) {
+                                        //Call Again
+                                        jsonObject.put("CallReason", "");
+                                        //Appointment
+                                        jsonObject.put("AssignToSEId", "");
+                                        jsonObject.put("AssignToSEName", "");
+                                        //Transfer to BOE
+                                        jsonObject.put("ReAssignToTMEId", "");
+                                        jsonObject.put("ReAssignToTMEName", "");
+                                        jsonObject.put("CallReasonTTB", "");
+                                        jsonObject.put("CallReasonTTBName", "");
+                                        //Order Received
+                                        jsonObject.put("OR_OrderReceivedById", "");
+                                        jsonObject.put("OR_OrderReceivedByName", "");
+                                        jsonObject.put("OR_OrderReceivedDate", "");
+                                        jsonObject.put("OR_OrderPONo", "");
+                                        jsonObject.put("OR_OrderPOValue", "");
+                                        jsonObject.put("OR_OrderContractReview", "");
+                                        jsonObject.put("OR_OrderType", "");
+                                        //Order Lost
+                                        jsonObject.put("OL_OrderLostReasonId", "");
+                                        jsonObject.put("OL_OrderLostReasonName", "");
+                                        jsonObject.put("OL_OrderLostApproverId", "");
+                                        jsonObject.put("OL_OrderLostApproverName", "");
+                                        jsonObject.put("OL_OrderLostDetails", "");
+                                        jsonObject.put("OL_OrderLostCallCustAgain", "");
+                                        jsonObject.put("OL_OrderLostWhenUCall", "");
+                                        jsonObject.put("OL_OrderLostOLNotes", "");
+                                        //Visit
+                                        jsonObject.put("SV_VisitById", "");
+                                        jsonObject.put("SV_VisitByName", "");
+                                        jsonObject.put("SV_VisitDate", "");
+                                        //Reschedule
+                                        jsonObject.put("Res_RescheduleReasonId", "");
+                                        jsonObject.put("Res_RescheduleReasonName", "");
+                                        //Transfer to SE
+                                        jsonObject.put("RTS_TransferSEId", "");
+                                        jsonObject.put("RTS_TransferSEName", "");
+                                        jsonObject.put("RTS_TransferReasonId", "");
+                                        jsonObject.put("RTS_TransferReasonName", "");
+                                        //Call Close Without Order
+                                        jsonObject.put("CC_CallCloseReasonId", "");
+                                        jsonObject.put("CC_CallCloseReasonName", "");
+                                        jsonObject.put("CC_CallCloseApproverId", "");
+                                        jsonObject.put("CC_CallCloseApproverName", "");
+                                        jsonObject.put("CC_CallCloseDetails", "");
+                                        jsonObject.put("CC_CallCloseCallCustAgain", "");
+                                        jsonObject.put("CC_CallCloseWhenUCall", "");
+                                        jsonObject.put("CC_CallCloseNotes", "");
+                                        //Disput
+                                        jsonObject.put("Disp_Reason", "");
+                                        //COLLCT
+                                        jsonObject.put("Collect_Mode", "");
+                                        jsonObject.put("Collect_InstrNo", "");
+                                        jsonObject.put("Collect_InstrDate", "");
+                                        jsonObject.put("Collect_BankName", "");
+                                        jsonObject.put("Collect_BranchName", "");
+                                        jsonObject.put("Collect_ChqAmount", "");
+                                        jsonObject.put("Collect_TDSAmount", "");
+                                        jsonObject.put("Collect_DiffAmount", "");
+                                        jsonObject.put("Collect_Reason", "");
+                                        //WI / WCF
+                                        jsonObject.put("WIWCF_Details", "");
+                                        //Customer Profile Update (CPU)
+                                        jsonObject.put("CPU_txtEBITDA", "");
+                                        jsonObject.put("CPU_txtPAT", "");
+                                        jsonObject.put("CPU_txtNetworth", "");
+                                        jsonObject.put("CPU_txtBorrowings", "");
+                                        jsonObject.put("CPU_txtRatings", "");
+                                        jsonObject.put("CPU_ddlCurrency", "");
+                                        jsonObject.put("CPU_txtMComments", "");
+                                        jsonObject.put("CPU_ddlCurrencyVal", "");
+                                        //Insurance Update (IU)
+                                        jsonObject.put("IU_txtInsuBank", "");
+                                        jsonObject.put("IU_txtInsCos", "");
+                                        jsonObject.put("IU_txtPreRec", "");
+                                        jsonObject.put("IU_txtPartIns", "");
+                                        //Demo Reschedule (DRes)
+                                        jsonObject.put("DRes_DemoResReasonId", "");
+                                        jsonObject.put("DRes_DemoResReasonName", "");
+                                        jsonObject.put("DRes_DemoGivenById", "");
+                                        jsonObject.put("DRes_DemoGivenByName", "");
+                                        jsonObject.put("DRes_DemoDate", "");
+                                        jsonObject.put("DRes_DemoTime", "");
+
+                                        //Demo Request
+                                        jsonObject.put("DReq_DemoGivenById", "");
+                                        jsonObject.put("DReq_DemoTime", "");
+                                        jsonObject.put("DReq_DemoDate", "");
+                                        //Demo Complete(DC)
+                                        jsonObject.put("DC_chkdemocomplete", "");
+                                        //Demo Cancelled (DCans)
+                                        jsonObject.put("DCans_ReasonId", "");
+                                        jsonObject.put("DCans_ReasonName", "");
+                                        //Customer will Call (CustCall)
+                                        jsonObject.put("CustCall_ReasonId", "");
+                                        jsonObject.put("CustCall_ReasonName", "");
+                                        //Order Regret (Oreg)
+                                        jsonObject.put("OReg_OrderRegretReasonId", "");
+                                        jsonObject.put("OReg_OrderRegretReasonName", "");
+                                        jsonObject.put("OReg_OrderRegretApproverId", "");
+                                        jsonObject.put("OReg_OrderRegretApproverName", "");
+                                        jsonObject.put("OReg_OrderRegretDetails", "");
+                                        jsonObject.put("OReg_OrderRegretCallCustAgain", "");
+                                        jsonObject.put("OReg_OrderRegretWhenUCall", "");
+                                        jsonObject.put("OReg_OrderRegretOLNotes", "");
+                                        //Presales Support (PS)
+                                        jsonObject.put("PS_PresaleSEId", "");
+                                        jsonObject.put("PS_PresaleSEName", "");
+                                        jsonObject.put("PS_PresaleDetails", "");
+                                        jsonObject.put("PS_PresaleDueDate", "");
+                                        // Quotation Submitted(QS)
+                                        jsonObject.put("QS_QuotationNo", "");
+                                        jsonObject.put("QS_CustBudgetSanct", "");
+                                        jsonObject.put("QS_CustBudget", "");
+                                        jsonObject.put("QS_QuotationValue", "");
+                                        jsonObject.put("QS_QuotDoc", "");
+                                        //Promise Date Change (PRMS)
+                                        jsonObject.put("PRMS_NextDate", editTextWhendoyoucall.getText().toString());
+                                        //     jsonObject.put("PRMS_Reason", editTextReason.getText().toString());
+                                        jsonObject.put("PRMS_Reason", reasonid);
+
+                                        finaljson = jsonObject.toString();
+                                        finaljson = finaljson.replaceAll("\\\\", "");
+                                        finaljson = finaljson.replaceAll(" ", " ");
+                                        finaljson = finaljson.replaceAll("=", " ");
+                                        UpdateOpportunity(finaljson);
+                                        Log.d("crm_dialog_action", "json" + finaljson);
+
+                                    } else {
+
+                                    }
+                                }
+                              }catch (Exception e){
+                                e.printStackTrace();
                             }
                         } else if (selected_outcome.equalsIgnoreCase("Customer will Call")) {
                             if (validate_cwc() == true) {

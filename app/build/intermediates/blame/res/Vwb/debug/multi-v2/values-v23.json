@@ -1,20 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\incremental\\mergeVwbDebugResources\\merged.dir\\values-v23\\values-v23.xml",
+            "outputFile": "/Users/apple/Downloads/PravinWorkSpace/EkatmNativeFromGitHub/EkatmNativeAndroidFinal/app/build/intermediates/incremental/mergeVwbDebugResources/merged.dir/values-v23/values-v23.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Nilesh\\.gradle\\caches\\transforms-2\\files-2.1\\45f5fb91b346a9122cb074e7e752d3d9\\work-runtime-1.0.0\\res\\values-v23\\values-v23.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,121",
-                        "endColumns": "65,62",
-                        "endOffsets": "116,179"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Nilesh\\.gradle\\caches\\transforms-2\\files-2.1\\a6c0c4ed708fc9f103173d4b0875a235\\appcompat-v7-27.1.1\\res\\values-v23\\values-v23.xml",
+                    "source": "/Users/apple/Downloads/gradle-6.7/bin/caches/transforms-2/files-2.1/ce0f7e8914be9f2000b7464545a18b6d/appcompat-v7-27.1.1/res/values-v23/values-v23.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,19,32,33,34,35,36",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
@@ -33,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Nilesh\\.gradle\\caches\\transforms-2\\files-2.1\\58a5df2c3cc0806876a3227a27620c33\\cardview-v7-27.1.1\\res\\values-v23\\values-v23.xml",
+                    "source": "/Users/apple/Downloads/gradle-6.7/bin/caches/transforms-2/files-2.1/a83f6aa6309678bb98c047319fbdb9e6/cardview-v7-27.1.1/res/values-v23/values-v23.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -49,6 +39,16 @@
                         "endLines": "41",
                         "endColumns": "12",
                         "endOffsets": "2920"
+                    }
+                },
+                {
+                    "source": "/Users/apple/Downloads/gradle-6.7/bin/caches/transforms-2/files-2.1/e93ea18bbc15c8afd0a262714347fa3d/work-runtime-1.0.0/res/values-v23/values-v23.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,121",
+                        "endColumns": "65,62",
+                        "endOffsets": "116,179"
                     }
                 }
             ]

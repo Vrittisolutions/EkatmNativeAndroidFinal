@@ -1,4 +1,4 @@
-#Wed Feb 23 14:52:09 IST 2022
+#Wed Mar 23 11:39:45 IST 2022
 path.1=classes.dex
 path.0=classes.dex
 renamed.6=classes7.dex
@@ -8,13 +8,13 @@ renamed.3=classes4.dex
 renamed.2=classes3.dex
 renamed.1=classes2.dex
 renamed.0=classes.dex
-base.6=E\:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\dex\\VwbDebug\\mergeProjectDexVwbDebug\\classes2.dex
-base.5=E\:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\dex\\VwbDebug\\mergeLibDexVwbDebug\\classes_1.dex
-base.4=E\:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\dex\\VwbDebug\\mergeLibDexVwbDebug\\classes_0.dex
-base.3=E\:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\dex\\VwbDebug\\mergeExtDexVwbDebug\\classes3.dex
-base.2=E\:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\dex\\VwbDebug\\mergeExtDexVwbDebug\\classes2.dex
-base.1=E\:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\dex\\VwbDebug\\mergeProjectDexVwbDebug\\classes.dex
-base.0=E\:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\dex\\VwbDebug\\mergeExtDexVwbDebug\\classes.dex
+base.6=/Users/apple/Downloads/PravinWorkSpace/EkatmNativeFromGitHub/EkatmNativeAndroidFinal/app/build/intermediates/dex/VwbDebug/mergeProjectDexVwbDebug/classes2.dex
+base.5=/Users/apple/Downloads/PravinWorkSpace/EkatmNativeFromGitHub/EkatmNativeAndroidFinal/app/build/intermediates/dex/VwbDebug/mergeLibDexVwbDebug/classes_1.dex
+base.4=/Users/apple/Downloads/PravinWorkSpace/EkatmNativeFromGitHub/EkatmNativeAndroidFinal/app/build/intermediates/dex/VwbDebug/mergeLibDexVwbDebug/classes_0.dex
+base.3=/Users/apple/Downloads/PravinWorkSpace/EkatmNativeFromGitHub/EkatmNativeAndroidFinal/app/build/intermediates/dex/VwbDebug/mergeExtDexVwbDebug/classes3.dex
+base.2=/Users/apple/Downloads/PravinWorkSpace/EkatmNativeFromGitHub/EkatmNativeAndroidFinal/app/build/intermediates/dex/VwbDebug/mergeExtDexVwbDebug/classes2.dex
+base.1=/Users/apple/Downloads/PravinWorkSpace/EkatmNativeFromGitHub/EkatmNativeAndroidFinal/app/build/intermediates/dex/VwbDebug/mergeProjectDexVwbDebug/classes.dex
+base.0=/Users/apple/Downloads/PravinWorkSpace/EkatmNativeFromGitHub/EkatmNativeAndroidFinal/app/build/intermediates/dex/VwbDebug/mergeExtDexVwbDebug/classes.dex
 path.6=classes2.dex
 path.5=classes_1.dex
 path.4=classes_0.dex

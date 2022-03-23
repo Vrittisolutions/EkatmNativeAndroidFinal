@@ -60,7 +60,6 @@ public class EnoJobService extends JobService {
 
     public String mobno, link, LocationName;
 
-
     private Handler mHandler = new Handler();
 
     String PlantMasterId = "", LoginId = "", Password = "", CompanyURL = "", EnvMasterId = "",

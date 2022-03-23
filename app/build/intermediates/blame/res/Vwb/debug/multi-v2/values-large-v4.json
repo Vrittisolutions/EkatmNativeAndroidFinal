@@ -1,27 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\Vritti IMP Data\\Chetana Project KT\\Ekatm\\app\\build\\intermediates\\incremental\\mergeVwbDebugResources\\merged.dir\\values-large-v4\\values-large-v4.xml",
+            "outputFile": "/Users/apple/Downloads/PravinWorkSpace/EkatmNativeFromGitHub/EkatmNativeAndroidFinal/app/build/intermediates/incremental/mergeVwbDebugResources/merged.dir/values-large-v4/values-large-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Nilesh\\.gradle\\caches\\transforms-2\\files-2.1\\a6c0c4ed708fc9f103173d4b0875a235\\appcompat-v7-27.1.1\\res\\values-large-v4\\values-large-v4.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10",
-                        "startColumns": "4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,114,185,256,326,396,464,532,636",
-                        "endColumns": "58,70,70,69,69,67,67,103,115",
-                        "endOffsets": "109,180,251,321,391,459,527,631,747"
-                    },
-                    "to": {
-                        "startLines": "2,3,4,5,6,7,8,13,14",
-                        "startColumns": "4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,114,185,256,326,396,464,748,852",
-                        "endColumns": "58,70,70,69,69,67,67,103,115",
-                        "endOffsets": "109,180,251,321,391,459,527,847,963"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Nilesh\\.gradle\\caches\\transforms-2\\files-2.1\\7ab42ada7f98192bda92d065ceecef47\\MaterialStyledDialogs-2.0\\res\\values-large-v4\\values-large-v4.xml",
+                    "source": "/Users/apple/Downloads/gradle-6.7/bin/caches/transforms-2/files-2.1/857b08d63192276cbde4dfc41f504d6e/MaterialStyledDialogs-2.0/res/values-large-v4/values-large-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
@@ -35,6 +18,23 @@
                         "startOffsets": "532,588,638,696",
                         "endColumns": "55,49,57,51",
                         "endOffsets": "583,633,691,743"
+                    }
+                },
+                {
+                    "source": "/Users/apple/Downloads/gradle-6.7/bin/caches/transforms-2/files-2.1/ce0f7e8914be9f2000b7464545a18b6d/appcompat-v7-27.1.1/res/values-large-v4/values-large-v4.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,114,185,256,326,396,464,532,636",
+                        "endColumns": "58,70,70,69,69,67,67,103,115",
+                        "endOffsets": "109,180,251,321,391,459,527,631,747"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,13,14",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,114,185,256,326,396,464,748,852",
+                        "endColumns": "58,70,70,69,69,67,67,103,115",
+                        "endOffsets": "109,180,251,321,391,459,527,847,963"
                     }
                 }
             ]

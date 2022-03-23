@@ -102,7 +102,9 @@ public class ActivityListMainAdapter_New extends RecyclerView.Adapter<ActivityLi
         String jsonEDate = lsActivityList.get(position).getEndDate();
         String jsonSDate = lsActivityList.get(position).getStartDate();
         String endDate = "", todayDate, startDate = "",endDatedisplay = "",startDatedisplay = "";
+
         try {
+
             String EndDresults = jsonEDate.substring(jsonEDate.indexOf("(") + 1, jsonEDate.lastIndexOf(")"));
             long Etime = Long.parseLong(EndDresults);
             String StarDresult = jsonSDate.substring(jsonSDate.indexOf("(") + 1, jsonSDate.lastIndexOf(")"));
@@ -122,6 +124,7 @@ public class ActivityListMainAdapter_New extends RecyclerView.Adapter<ActivityLi
 
             StartDate = sdf.parse(startDate);
             System.out.println("Result Date: " + endDate);
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }

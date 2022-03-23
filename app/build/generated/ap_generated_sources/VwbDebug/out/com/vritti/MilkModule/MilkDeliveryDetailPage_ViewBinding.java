@@ -23,21 +23,21 @@ import java.lang.Override;
 public class MilkDeliveryDetailPage_ViewBinding implements Unbinder {
   private MilkDeliveryDetailPage target;
 
-  private View view2131298839;
+  private View view2131298840;
 
-  private View view2131299031;
+  private View view2131299032;
 
-  private View view2131298835;
+  private View view2131298836;
 
-  private View view2131299051;
+  private View view2131299052;
 
-  private View view2131299033;
+  private View view2131299034;
 
   private View view2131296400;
 
   private View view2131296399;
 
-  private View view2131298836;
+  private View view2131298837;
 
   @UiThread
   public MilkDeliveryDetailPage_ViewBinding(MilkDeliveryDetailPage target) {
@@ -51,7 +51,7 @@ public class MilkDeliveryDetailPage_ViewBinding implements Unbinder {
     View view;
     view = Utils.findRequiredView(source, R.id.pickupBtn, "field 'pickupBtn' and method 'setPickupBtn'");
     target.pickupBtn = Utils.castView(view, R.id.pickupBtn, "field 'pickupBtn'", Button.class);
-    view2131298839 = view;
+    view2131298840 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -60,7 +60,7 @@ public class MilkDeliveryDetailPage_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.resheduleBtn, "field 'resheduleBtn' and method 'setResheduleBtn'");
     target.resheduleBtn = Utils.castView(view, R.id.resheduleBtn, "field 'resheduleBtn'", Button.class);
-    view2131299031 = view;
+    view2131299032 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -70,7 +70,7 @@ public class MilkDeliveryDetailPage_ViewBinding implements Unbinder {
     target.otpLayout = Utils.findRequiredViewAsType(source, R.id.otpLayout, "field 'otpLayout'", LinearLayout.class);
     view = Utils.findRequiredView(source, R.id.phoneNumber, "field 'phoneNumber' and method 'setPhoneNumber'");
     target.phoneNumber = Utils.castView(view, R.id.phoneNumber, "field 'phoneNumber'", TextView.class);
-    view2131298835 = view;
+    view2131298836 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -88,7 +88,7 @@ public class MilkDeliveryDetailPage_ViewBinding implements Unbinder {
     target.changeStatusBtn = Utils.findRequiredViewAsType(source, R.id.changeStatusBtn, "field 'changeStatusBtn'", Button.class);
     view = Utils.findRequiredView(source, R.id.route, "field 'route' and method 'setRootBtn'");
     target.route = Utils.castView(view, R.id.route, "field 'route'", ImageView.class);
-    view2131299051 = view;
+    view2131299052 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -103,7 +103,7 @@ public class MilkDeliveryDetailPage_ViewBinding implements Unbinder {
     target.editTextSix = Utils.findRequiredViewAsType(source, R.id.editTextSix, "field 'editTextSix'", EditText.class);
     view = Utils.findRequiredView(source, R.id.resheduleTxt, "field 'resheduleTxt' and method 'setResheduleBtn'");
     target.resheduleTxt = Utils.castView(view, R.id.resheduleTxt, "field 'resheduleTxt'", TextView.class);
-    view2131299033 = view;
+    view2131299034 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -148,7 +148,7 @@ public class MilkDeliveryDetailPage_ViewBinding implements Unbinder {
       }
     });
     view = Utils.findRequiredView(source, R.id.phoneNumber1, "method 'setPhoneNumber'");
-    view2131298836 = view;
+    view2131298837 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -207,21 +207,21 @@ public class MilkDeliveryDetailPage_ViewBinding implements Unbinder {
     target.arraiveBtn_next = null;
     target.arraiveBtn = null;
 
-    view2131298839.setOnClickListener(null);
-    view2131298839 = null;
-    view2131299031.setOnClickListener(null);
-    view2131299031 = null;
-    view2131298835.setOnClickListener(null);
-    view2131298835 = null;
-    view2131299051.setOnClickListener(null);
-    view2131299051 = null;
-    view2131299033.setOnClickListener(null);
-    view2131299033 = null;
+    view2131298840.setOnClickListener(null);
+    view2131298840 = null;
+    view2131299032.setOnClickListener(null);
+    view2131299032 = null;
+    view2131298836.setOnClickListener(null);
+    view2131298836 = null;
+    view2131299052.setOnClickListener(null);
+    view2131299052 = null;
+    view2131299034.setOnClickListener(null);
+    view2131299034 = null;
     view2131296400.setOnClickListener(null);
     view2131296400 = null;
     view2131296399.setOnClickListener(null);
     view2131296399 = null;
-    view2131298836.setOnClickListener(null);
-    view2131298836 = null;
+    view2131298837.setOnClickListener(null);
+    view2131298837 = null;
   }
 }

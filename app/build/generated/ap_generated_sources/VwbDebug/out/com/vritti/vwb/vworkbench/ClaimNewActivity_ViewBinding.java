@@ -25,7 +25,7 @@ public class ClaimNewActivity_ViewBinding implements Unbinder {
 
   private View view2131296473;
 
-  private View view2131297657;
+  private View view2131297658;
 
   @UiThread
   public ClaimNewActivity_ViewBinding(ClaimNewActivity target) {
@@ -66,7 +66,7 @@ public class ClaimNewActivity_ViewBinding implements Unbinder {
       }
     });
     view = Utils.findRequiredView(source, R.id.imAttachment, "method 'addAttachment'");
-    view2131297657 = view;
+    view2131297658 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -99,7 +99,7 @@ public class ClaimNewActivity_ViewBinding implements Unbinder {
     view2131296460 = null;
     view2131296473.setOnClickListener(null);
     view2131296473 = null;
-    view2131297657.setOnClickListener(null);
-    view2131297657 = null;
+    view2131297658.setOnClickListener(null);
+    view2131297658 = null;
   }
 }

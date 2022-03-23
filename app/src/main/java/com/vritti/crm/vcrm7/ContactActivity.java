@@ -180,6 +180,7 @@ public class ContactActivity extends AppCompatActivity {
             Duration=getIntent().getStringExtra("duration");
             RowNo=getIntent().getStringExtra("rowNo");
             NextAction=getIntent().getStringExtra("action");
+            Log.e("NEXTACTION --> "," --> "+NextAction);
         }
 
         /*SubcategoryAdapter = ArrayAdapter.createFromResource(ContactActivity.this, R.array.department, android.R.layout.simple_spinner_item);
@@ -578,9 +579,11 @@ public class ContactActivity extends AppCompatActivity {
                             intent.putExtra("endtime", EndTime);
                             intent.putExtra("duration", Duration);
                             intent.putExtra("rowNo", RowNo);
+
                             if (getIntent().hasExtra("callmob")) {
                                 intent.putExtra("callmob", getIntent().getStringExtra("callmob"));
                             }
+
                             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
                             finish();

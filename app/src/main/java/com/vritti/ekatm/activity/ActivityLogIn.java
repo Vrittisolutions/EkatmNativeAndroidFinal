@@ -75,6 +75,7 @@ import com.vritti.databaselib.other.WebUrlClass;
 import com.vritti.ekatm.Constants;
 import com.vritti.ekatm.Interface.CallBack;
 import com.vritti.ekatm.R;
+import com.vritti.ekatm.bean.CountryModel;
 import com.vritti.ekatm.other.SetAppName;
 import com.vritti.ekatm.other.ValidateUser;
 import com.vritti.sessionlib.CallbackInterface;
@@ -91,6 +92,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -104,10 +106,11 @@ import me.leolin.shortcutbadger.ShortcutBadger;
 
 
 public class ActivityLogIn extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+
     // DownloadAuthenticate();
 
     public static final String APP_URL_SAHARA = "http://e207.ekatm.com";
-    // public static final String APP_URL_SAHARA = "http://education.talukahaveli.in";
+    //public static final String APP_URL_SAHARA = "http://education.talukahaveli.in";
     public static final String APP_URL_HAJMOLA = "http://hajmola.ekatm.com";
 
     String CompanyURL = "";
@@ -120,10 +123,10 @@ public class ActivityLogIn extends AppCompatActivity implements GoogleApiClient.
     public static Context context;
     Button btnLogin;
     Boolean IsSessionActivate, IsValidUser;
-    Spinner edEnv, edPlant;
+    Spinner edEnv, edPlant/*,spinnerCountry*/;
     String IsCrmUser;
     private ProgressDialog progressDialog;
-    EditText edLoginId, edPassword, edmob;
+    EditText edLoginId, edPassword, edmob/*,selectCountry*/;
     public static EditText textotp;
     public static Intent igpsalarm;
     String App_version;
@@ -167,6 +170,10 @@ public class ActivityLogIn extends AppCompatActivity implements GoogleApiClient.
 
     static String settingKey = "";
     private SQLiteDatabase sql;
+    private List<CountryModel> countryNamesListModels;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -175,6 +182,7 @@ public class ActivityLogIn extends AppCompatActivity implements GoogleApiClient.
         setToolbar();
         InitView();
         setListner();
+
         // App_version=intent.getStringExtra("version");
         context = getApplicationContext();
         ut = new Utility();
@@ -521,6 +529,7 @@ public class ActivityLogIn extends AppCompatActivity implements GoogleApiClient.
                 }
             }
         });
+
         edPlant.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -538,6 +547,22 @@ public class ActivityLogIn extends AppCompatActivity implements GoogleApiClient.
 
             }
         });
+
+       /* spinnerCountry.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String countryName = spinnerCountry.getSelectedItem().toString();
+                SharedPreferences sharedpreferences = getSharedPreferences(WebUrlClass.SELECTED_COUNTRY, MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+                editor.putString(WebUrlClass.SELECTED_COUNTRY_NAME, countryName);
+                editor.commit();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });*/
 
         edEnv.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -686,8 +711,11 @@ public class ActivityLogIn extends AppCompatActivity implements GoogleApiClient.
     }
 
     private void InitView() {
+        countryNamesListModels=new ArrayList<>();
         edEnv = (Spinner) findViewById(R.id.edEnv);
         edPlant = (Spinner) findViewById(R.id.edPlant);
+        //spinnerCountry = (Spinner) findViewById(R.id.spinnerCountry);
+        //selectCountry = findViewById(R.id.selectCountry);
         ((Spinner) findViewById(R.id.edEnv)).setSelection(0);
         ((Spinner) findViewById(R.id.edPlant)).setSelection(0);
         edLoginId = (EditText) findViewById(R.id.edLoginId);
@@ -716,7 +744,34 @@ public class ActivityLogIn extends AppCompatActivity implements GoogleApiClient.
         input_company.requestFocus();
         relProgress = (RelativeLayout) findViewById(R.id.rel_progress);
 
+
+        CountryModel countryModel  = new CountryModel();
+        countryModel.setCountryId("1");
+        countryModel.setCountryName("India");
+        countryNamesListModels.add(countryModel);
+        CountryModel countryModel1  = new CountryModel();
+        countryModel1.setCountryId("2");
+        countryModel1.setCountryName("Nepal");
+        countryNamesListModels.add(countryModel1);
+
+        //PM - Latest Release 22 march 2022
+        /*selectCountry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivityLogIn.this,CountryListViewActivity.class);
+                intent.putExtra("CountryList", (Serializable) countryNamesListModels);
+                startActivityForResult(intent,900);
+            }
+        });*/
+
+       /* ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(ActivityLogIn.this, android.R.layout.simple_spinner_item, countryNamesList);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerCountry.setAdapter(dataAdapter);*/
+
+
     }
+
+
 
     public void setToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -1391,6 +1446,7 @@ public class ActivityLogIn extends AppCompatActivity implements GoogleApiClient.
             String url = ut.getSharedPreference_URL(getApplicationContext()) + WebUrlClass.api_getEnvPM + "?AppEnvMasterId=" + params[0];
             url = url.replaceAll(" ", "%20");
             try {
+
                 res = ut.OpenConnection(url, getApplicationContext());
                 res = res.replaceAll("\\\\", "");
                 res = res.substring(1, res.length() - 1);
@@ -1453,7 +1509,19 @@ public class ActivityLogIn extends AppCompatActivity implements GoogleApiClient.
 
         @Override
         protected List<String> doInBackground(String... params) {
-            String url = WebUrlClass.APP_URL_PM + WebUrlClass.api_checkEnv + "?AppEnvMasterId=" + params[0];
+
+            SharedPreferences sharedpreferences = getSharedPreferences(WebUrlClass.SELECTED_COUNTRY, MODE_PRIVATE);
+            String countryName = sharedpreferences.getString(WebUrlClass.SELECTED_COUNTRY_NAME,"");
+
+            String url;
+
+
+            if(countryName.equalsIgnoreCase("India")){
+              url = WebUrlClass.APP_URL_PM + WebUrlClass.api_checkEnv + "?AppEnvMasterId=" + params[0];
+            }else{
+                url = WebUrlClass.APP_URL_PM_NEPAL + WebUrlClass.api_checkEnv + "?AppEnvMasterId=" + params[0];
+            }
+
             try {
                 res = Utility.OpenConnection(url, getApplicationContext());
                 response = res.toString().replaceAll("\\\\", "");
@@ -1480,10 +1548,21 @@ public class ActivityLogIn extends AppCompatActivity implements GoogleApiClient.
                 lin_compcode.setVisibility(View.GONE);
                 lin_login.setVisibility(View.VISIBLE);
                 /// URL Sharedpreference
+
+                SharedPreferences sharedpreferencesN = getSharedPreferences(WebUrlClass.SELECTED_COUNTRY, MODE_PRIVATE);
+                String countryName = sharedpreferencesN.getString(WebUrlClass.SELECTED_COUNTRY_NAME,"");
+
                 SharedPreferences sharedpreferences = getSharedPreferences(WebUrlClass.MyPREFERENCES, MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedpreferences.edit();
-                editor.putString(WebUrlClass.MyPREFERENCES_URL_KEY, WebUrlClass.APP_URL_PM);
-                editor.commit();
+
+                if(countryName.equalsIgnoreCase("India")){
+                    editor.putString(WebUrlClass.MyPREFERENCES_URL_KEY, WebUrlClass.APP_URL_PM);
+                }else{
+                    editor.putString(WebUrlClass.MyPREFERENCES_URL_KEY, WebUrlClass.APP_URL_PM_NEPAL);
+                }
+
+                editor.apply();
+
                 UpdateSpinner(s1);
             } else {
                 mEturl.setText("");
@@ -1759,6 +1838,18 @@ public class ActivityLogIn extends AppCompatActivity implements GoogleApiClient.
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        //PM - Release 21 - March - 2022
+       /* if (requestCode == 900 && resultCode == Activity.RESULT_OK){
+            String result=data.getStringExtra("CountrySelected");
+            Log.e("CountrySelected",result);
+            selectCountry.setText(result);
+            SharedPreferences sharedpreferences = getSharedPreferences(WebUrlClass.SELECTED_COUNTRY, MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedpreferences.edit();
+            editor.putString(WebUrlClass.SELECTED_COUNTRY_NAME, result);
+            editor.apply();
+
+        }*/
 
         if (requestCode == REQUEST_CODE) {
             if (resultCode == Activity.RESULT_OK) {

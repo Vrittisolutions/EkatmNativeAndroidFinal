@@ -16,7 +16,7 @@ import java.lang.Override;
 public class AddImageWithTextForChat_ViewBinding implements Unbinder {
   private AddImageWithTextForChat target;
 
-  private View view2131299130;
+  private View view2131299131;
 
   @UiThread
   public AddImageWithTextForChat_ViewBinding(AddImageWithTextForChat target) {
@@ -31,7 +31,7 @@ public class AddImageWithTextForChat_ViewBinding implements Unbinder {
     target.sdv_Image = Utils.findRequiredViewAsType(source, R.id.sdv_Image, "field 'sdv_Image'", SimpleDraweeView.class);
     target.img_message = Utils.findRequiredViewAsType(source, R.id.img_message, "field 'img_message'", EditText.class);
     view = Utils.findRequiredView(source, R.id.sendMessage, "method 'sendMessage'");
-    view2131299130 = view;
+    view2131299131 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -50,7 +50,7 @@ public class AddImageWithTextForChat_ViewBinding implements Unbinder {
     target.sdv_Image = null;
     target.img_message = null;
 
-    view2131299130.setOnClickListener(null);
-    view2131299130 = null;
+    view2131299131.setOnClickListener(null);
+    view2131299131 = null;
   }
 }

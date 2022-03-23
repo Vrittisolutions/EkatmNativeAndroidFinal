@@ -20,7 +20,7 @@ public class EnoSamplingHomePage_ViewBinding implements Unbinder {
 
   private View view2131296362;
 
-  private View view2131298779;
+  private View view2131298780;
 
   @UiThread
   public EnoSamplingHomePage_ViewBinding(EnoSamplingHomePage target) {
@@ -45,7 +45,7 @@ public class EnoSamplingHomePage_ViewBinding implements Unbinder {
       }
     });
     view = Utils.findRequiredView(source, R.id.nextBtn, "method 'nextBtn'");
-    view2131298779 = view;
+    view2131298780 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -68,7 +68,7 @@ public class EnoSamplingHomePage_ViewBinding implements Unbinder {
 
     view2131296362.setOnClickListener(null);
     view2131296362 = null;
-    view2131298779.setOnClickListener(null);
-    view2131298779 = null;
+    view2131298780.setOnClickListener(null);
+    view2131298780 = null;
   }
 }

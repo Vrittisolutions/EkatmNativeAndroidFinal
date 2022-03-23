@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="Gradle: com.firebase:firebase-jobdispatcher:0.8.5@aar">
+    <ANNOTATIONS>
+      <root url="jar://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/transforms-2/files-2.1/0b075d00b54121d10bacc4ba47c71cc3/firebase-jobdispatcher-0.8.5/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/transforms-2/files-2.1/0b075d00b54121d10bacc4ba47c71cc3/firebase-jobdispatcher-0.8.5/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/transforms-2/files-2.1/0b075d00b54121d10bacc4ba47c71cc3/firebase-jobdispatcher-0.8.5/res" />
+      <root url="file://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/transforms-2/files-2.1/0b075d00b54121d10bacc4ba47c71cc3/firebase-jobdispatcher-0.8.5/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/modules-2/files-2.1/com.firebase/firebase-jobdispatcher/0.8.5/6dcb6315ebba4fef6f8c64ef68aacb16a09e5614/firebase-jobdispatcher-0.8.5-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../../gradle-6.7/bin/caches/modules-2/files-2.1/com.firebase/firebase-jobdispatcher/0.8.5/77cd9cca5bdf7487dfde23e74929ed63416606e3/firebase-jobdispatcher-0.8.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

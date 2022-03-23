@@ -743,15 +743,11 @@ public class AddChatRoomActivity extends AppCompatActivity implements Connectivi
 
             }
         });
+
         enter_chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*InputMethodManager inputManager = (InputMethodManager)
-                        getSystemService(Context.INPUT_METHOD_SERVICE);
 
-                inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
-                        InputMethodManager.HIDE_NOT_ALWAYS);
-*/
                 isRefresh = "false";
                 fromEnterChat = 1;
                 isFocuse = false;
@@ -829,6 +825,7 @@ public class AddChatRoomActivity extends AppCompatActivity implements Connectivi
                         Intent intent = new Intent(AddChatRoomActivity.this, ChattingDataSendBackground.class);
                         intent.putExtra("pos", consolidatedList.size() - 1);
                         startService(intent);
+
                         cf.AddGroupMessage(chatMessage);
 
                     } catch (Exception e) {

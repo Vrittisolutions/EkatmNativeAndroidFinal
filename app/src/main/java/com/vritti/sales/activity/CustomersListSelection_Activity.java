@@ -112,6 +112,7 @@ public class CustomersListSelection_Activity extends AppCompatActivity {
                     public void callMethod() {
 
                         GetCustomerData();
+                        GetMyCustomerData();
                     }
                     @Override
                     public void callfailMethod(String msg) {
@@ -296,7 +297,7 @@ public class CustomersListSelection_Activity extends AppCompatActivity {
             public void onClick(View v) {
 
                 isAllCust = true;
-                if(isAllCust == true){
+                if(isAllCust){
                     rdbtn_allcust.setSelected(true);
                     rdbtn_mycust.setSelected(false);
                 }else {
@@ -304,7 +305,9 @@ public class CustomersListSelection_Activity extends AppCompatActivity {
                     rdbtn_mycust.setSelected(true);
                 }
 
-                getAllCustListFromDb(UserName);
+                GetCustomerData();
+
+                //getAllCustListFromDb(UserName);
             }
         });
 
@@ -312,7 +315,7 @@ public class CustomersListSelection_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 isAllCust = false;
-                if(isAllCust == true){
+                if(isAllCust){
                     rdbtn_allcust.setSelected(true);
                     rdbtn_mycust.setSelected(false);
                 }else {
@@ -320,7 +323,8 @@ public class CustomersListSelection_Activity extends AppCompatActivity {
                     rdbtn_mycust.setSelected(true);
                 }
 
-                getAllCustListFromDb(UserName);
+                GetMyCustomerData();
+                //getAllCustListFromDb(UserName);
             }
         });
     }
@@ -341,6 +345,10 @@ public class CustomersListSelection_Activity extends AppCompatActivity {
 
     public void GetCustomerData(){
         new DownloadReferenceJSON().execute();
+    }
+
+    public void GetMyCustomerData(){
+        new DownloadReferenceJSONMyCust().execute();
     }
 
     private void showProgress() {
@@ -449,13 +457,112 @@ public class CustomersListSelection_Activity extends AppCompatActivity {
         }
     }
 
-    public void getAllCustListFromDb(String AddedBy){
+    class DownloadReferenceJSONMyCust extends AsyncTask<String, Void, String> {
+        Object res;
+        String response;
+        JSONArray jResults;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            //       showProgressDialog();
+            //  progressHUD2 = ProgressHUD.show(context, " ", false, false, null);
+            //mprogress.setVisibility(View.VISIBLE);
+            showProgress();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                String url = CompanyURL + WebUrlClass.api_getCustomerListUserBy + "?Usermasterid="+UserMasterId;
+
+                res = ut.OpenConnection(url);
+                if (res != null) {
+                    response = res.toString().replaceAll("\\r\\n","");
+                    response = response.toString().replaceAll("\\\\", "");
+                    response = response.substring(1, response.length() - 1);
+                    ContentValues values = new ContentValues();
+                    jResults = new JSONArray(response);
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(String integer) {
+            super.onPostExecute(integer);
+            //  mprogress.setVisibility(View.GONE);
+            hideProgress();
+
+            customerArrayList.clear();
+            lstReference.clear();
+
+            //cf.clearTable(parent, db.TABLE_CONSIGNEES);
+
+            //parse it here and set to list and set list to adapter
+            try{
+                if(jResults != null){
+                    for(int i=0; i<=jResults.length();i++){
+                        try {
+                            JSONObject jsonObject = jResults.getJSONObject(i);
+                            String CustVendorName = jsonObject.getString("CustVendorName");
+                            String CustVendorMasterId = jsonObject.getString("CustVendorMasterId");
+                            String Mobile = jsonObject.getString("Mobile");
+                            String Email = jsonObject.getString("Email");
+                            String Address = jsonObject.getString("Address");
+                            String AddedBy = jsonObject.getString("AddedBy");
+
+                            Customer cust = new Customer();
+                            cust.setCustomer_name(CustVendorName);
+                            cust.setClient_id(CustVendorMasterId);
+                            cust.setShipToAddress(Address);
+                            cust.setShipToEmail(Email);
+                            cust.setShipToMobile(Mobile);
+                            cust.setAddedBy(AddedBy);
+
+                            if(isAllCust){
+                                customerArrayList.add(cust);
+                                lstReference.add(cust);
+                            }else {
+                                if(AddedBy.equals(UserName)){
+                                    customerArrayList.add(cust);
+                                    lstReference.add(cust);
+                                }
+                            }
+
+                            //cf.insertCustomer(CustVendorMasterId, CustVendorName, Email, Mobile, Address,AddedBy);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }else {
+
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+
+            }
+
+           /* stradapter = new MySpinnerAdapter(CustomersListSelection_Activity.this,
+                    R.layout.crm_custom_spinner_txt, lstReference);*/
+            custSelectionAdapter = new CustomerSelectionListAdapter(parent, lstReference);
+            list_consignee.setAdapter(custSelectionAdapter);
+            list_consignee.setTextFilterEnabled(true);
+            // sReference.setSelection(0);
+        }
+    }
+
+    /*public void getAllCustListFromDb(String AddedBy){
         lstReference.clear();
         customerArrayList.clear();
 
         String q="";
 
-        if(isAllCust == true){
+        if(isAllCust){
             q = "Select * from "+DatabaseHandlers.TABLE_CONSIGNEES;
         }else {
             q = "Select * from "+DatabaseHandlers.TABLE_CONSIGNEES+" Where AddedBy='"+AddedBy+"'";
@@ -492,7 +599,7 @@ public class CustomersListSelection_Activity extends AppCompatActivity {
             list_consignee.setTextFilterEnabled(true);
 
         }
-    }
+    }*/
 
     private static class MySpinnerAdapter extends ArrayAdapter<String> {
         // Initialise custom font, for example:
@@ -545,7 +652,7 @@ public class CustomersListSelection_Activity extends AppCompatActivity {
                 cust.setShipToMobile(Mobile);
                 cust.setAddedBy(AddedBy);
 
-                if(isAllCust == true){
+                if(isAllCust){
                     customerArrayList.add(cust);
                     lstReference.add(cust);
                 }else {

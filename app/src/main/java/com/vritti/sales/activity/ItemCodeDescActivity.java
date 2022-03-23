@@ -17,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -326,6 +327,8 @@ public class ItemCodeDescActivity extends AppCompatActivity {
             try {
                 String url = CompanyURL + WebUrlClass.api_GetItemsListForCounterBilling;
 
+                Log.e("ItemCodeDescURL"," --> "+url);
+
                 res = ut.OpenConnection(url);
 
                 if (res != null) {
@@ -334,7 +337,10 @@ public class ItemCodeDescActivity extends AppCompatActivity {
                     jResults = new JSONArray(response);
                 }
 
+                Log.e("ItemCodeDescURL"," -1-> "+url);
+
             } catch (Exception e) {
+                Log.e("ItemCodeDescURL"," Exception --> "+e);
                 e.printStackTrace();
             }
             return response;
